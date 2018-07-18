@@ -1,9 +1,15 @@
-import { configure } from '@storybook/react';
+import React from 'react';
+import { configure, addDecorator } from '@storybook/react';
 
-// automatically import all files ending in *.stories.js
-const req = require.context('../stories', true, /.stories.js$/);
-function loadStories() {
-  req.keys().forEach(filename => req(filename));
-}
+addDecorator(story => (
+  <div>
+    {story()}
+  </div>
+));
 
-configure(loadStories, module);
+/* eslint-disable global-require */
+configure(() => {
+  require('../stories/index.stories');
+  require('../stories/Button.stories');
+  require('../stories/Input.stories');
+}, module);
