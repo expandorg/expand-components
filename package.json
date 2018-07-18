@@ -1,11 +1,15 @@
 {
-  "name": "gems-components",
+  "name": "@gemsorg/components",
   "version": "0.1.0",
   "description": "Gems components",
-  "author": "gems.org",
-  "license": "ISC",
   "main": "src/index.js",
+  "license": "ISC",
+  "author": "gems.org",
   "private": true,
+  "files": [
+    "README.md",
+    "src"
+  ],
   "scripts": {
     "test": "jest --config jest.config.json",
     "lint": "node_modules/.bin/eslint --ext .js ./src/",
