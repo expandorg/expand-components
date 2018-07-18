@@ -1,0 +1,13 @@
+[ignore]
+
+[include]
+
+[libs]
+<PROJECT_ROOT>/flow-typed/
+
+[options]
+esproposal.class_static_fields=enable
+esproposal.class_instance_fields=enable
+suppress_comment=\\(.\\|\n\\)*\\$FlowFixMe
+suppress_type=$FlowFixMe
+module.name_mapper.extension='styl' -> '<PROJECT_ROOT>/scripts/CSSModule.js'

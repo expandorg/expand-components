@@ -1,0 +1,30 @@
+{
+  "parser": "babel-eslint",
+  "extends": [
+    "airbnb",
+    "plugin:flowtype/recommended",
+    "prettier",
+    "prettier/flowtype",
+    "prettier/react"
+  ],
+  "env": {
+    "browser": true,
+    "es6": true,
+    "jest": true
+  },
+  "rules": {
+    "prettier/prettier": "error",
+    "class-methods-use-this":  ["off"],
+    "object-curly-newline":  ["off"],
+    "import/no-extraneous-dependencies": ["off"],
+    "react/jsx-filename-extension": [1, { "extensions": [".js"] }],
+    "react/button-has-type": ["off"],
+    "react/prefer-stateless-function": ["off"],
+    "react/prop-types": [2, { "ignore": ['children'] }]
+  },
+  plugins: [
+    "react",
+    "flowtype",
+    "prettier"
+  ]
+}

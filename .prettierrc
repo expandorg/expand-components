@@ -1,0 +1,13 @@
+singleQuote: true
+trailingComma: es5
+overrides:
+- files: "*.js"
+  parser: flow
+- files: "*.flow"
+  parser: flow
+- files: "*.md"
+  options:
+    parser: markdown
+- files: ".babelrc,.eslintrc"
+  options:
+    parser: json
