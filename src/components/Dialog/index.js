@@ -1,3 +1,1 @@
-import Dialog from './Dialog';
-
-export default Dialog;
+export { default as Dialog, DialogHeadline } from './Dialog';
