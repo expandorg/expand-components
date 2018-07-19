@@ -12,6 +12,7 @@
   ],
   "scripts": {
     "test": "jest --config jest.config.json",
+    "coverage": "jest --collectCoverage --coverageDirectory ./coverage",
     "lint": "node_modules/.bin/eslint --ext .js ./src/",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
@@ -44,6 +45,8 @@
     "babel-preset-stage-0": "^6.24.1",
     "babel-runtime": "^6.26.0",
     "css-loader": "^0.28.11",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
     "eslint": "^4.19.1",
     "eslint-config-airbnb": "^17.0.0",
     "eslint-config-prettier": "^2.9.0",
