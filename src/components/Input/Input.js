@@ -1,10 +1,10 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import cn from 'classnames';
 
 import './Input.styl';
 
-export default class Input extends PureComponent {
+export default class Input extends Component {
   static propTypes = {
     value: PropTypes.string,
     className: PropTypes.string,
@@ -21,10 +21,10 @@ export default class Input extends PureComponent {
     const { onChange, className, value, ...rest } = this.props;
     return (
       <input
+        {...rest}
         className={cn('gem-input', className)}
         onChange={onChange}
         value={value}
-        {...rest}
       />
     );
   }

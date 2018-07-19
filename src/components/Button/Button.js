@@ -29,7 +29,6 @@ export default class Button extends Component {
 
   render() {
     const { children, className, theme, size, type, ...rest } = this.props;
-
     const classes = cn(
       'gem-button',
       `gem-button-${theme}`,
