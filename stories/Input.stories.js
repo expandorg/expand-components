@@ -2,6 +2,6 @@ import React from 'react';
 
 import { storiesOf } from '@storybook/react';
 
-import Input from '../src/input/Input';
+import Input from '../src/components/Input';
 
-storiesOf('Input', module).add('with text', () => <Input />);
+storiesOf('Components/Input', module).add('default', () => <Input />);

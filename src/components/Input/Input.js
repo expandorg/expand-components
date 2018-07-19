@@ -2,17 +2,18 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import cn from 'classnames';
 
-import styles from './Input.module.styl';
+import './Input.styl';
 
 export default class Input extends PureComponent {
   static propTypes = {
     value: PropTypes.string,
     className: PropTypes.string,
-    onChange: PropTypes.func.isRequired,
+    onChange: PropTypes.func,
   };
 
   static defaultProps = {
-    value: '',
+    value: undefined,
+    onChange: undefined,
     className: null,
   };
 
@@ -20,10 +21,10 @@ export default class Input extends PureComponent {
     const { onChange, className, value, ...rest } = this.props;
     return (
       <input
-        {...rest}
-        className={cn(styles.input, className)}
+        className={cn('gem-input', className)}
         onChange={onChange}
         value={value}
+        {...rest}
       />
     );
   }

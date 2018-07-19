@@ -1,0 +1,71 @@
+@import "../../uikit/font";
+@import "../../uikit/colors";
+
+.gem-button
+  box-sizing: border-box;
+
+  text-decoration: none;
+  cursor: pointer;
+  display: inline-block;
+
+  padding: 0 20px;
+
+  border: 0
+  outline: 0
+
+  &-small
+    font(font-preset[normal], false, false, 28px)
+    height: 30px
+    border-radius: 2px
+
+  &-medium
+    font(font-preset[menu], false, false, 38px)
+    height: 40px
+    border-radius: 4px
+
+  &-large
+    font(font-preset[menu], false, false, 48px)
+    height: 50px
+    border-radius: 4px
+
+  &-pink
+    color: color-white
+    background-color: color-pink
+    &:hover
+      background-image: linear-gradient(to bottom right, color-pink, color-pink-light)
+
+    &:disabled
+      background-color: darken(color-grey, 20%)
+
+      &:hover
+        background-image: none
+
+  &-white
+    color: color-pink
+    background-color: color-white
+    border: 2px solid color-pink
+
+    &:disabled
+      background-color: color-grey
+
+  &-transparent
+    color: color-text-1
+    background-color: transparent
+    border: 1px solid color-text-gray-1
+
+    &:hover
+      background: color-pink
+      border: 2px solid  color-pink
+
+  &-aqua
+    color: color-text-1
+    background-color: color-aqua
+
+    &:hover
+      background-image: linear-gradient(to bottom right, color-aqua, color-aqua-light)
+
+  &-blue
+    color: color-white
+    background-color: color-blue
+    &:hover
+      background-image: linear-gradient(to bottom right, color-blue, lighten(color-blue, 10%))
