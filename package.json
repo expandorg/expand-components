@@ -1,11 +1,10 @@
 {
-  "name": "@gemsorg/components",
+  "name": "@gigs/components",
   "version": "0.1.0",
   "description": "Gems components",
   "main": "src/index.js",
   "license": "ISC",
   "author": "gems.org",
-  "private": true,
   "files": [
     "README.md",
     "src"
