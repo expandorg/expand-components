@@ -1,11 +1,11 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import Button from '../../components/Button';
 
 import Alignment from '../Alignment';
 
-export default class Submit extends PureComponent {
+export default class Submit extends Component {
   static propTypes = {
     caption: PropTypes.string.isRequired,
     isSubmitting: PropTypes.bool.isRequired,

@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import Input from '../Input';
@@ -8,7 +8,7 @@ import Article from '../Article';
 import FieldType from './fieldType';
 import fieldProps from './fieldProps';
 
-export default class Field extends PureComponent {
+export default class Field extends Component {
   static propTypes = {
     field: fieldProps.isRequired,
     value: PropTypes.any, // eslint-disable-line

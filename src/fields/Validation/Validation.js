@@ -1,11 +1,11 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import ErrorMessage from '../../components/ErrorMessage';
 
 import styles from './Validation.module.styl';
 
-export default class Validation extends PureComponent {
+export default class Validation extends Component {
   static propTypes = {
     name: PropTypes.string.isRequired,
     error: PropTypes.shape({}),

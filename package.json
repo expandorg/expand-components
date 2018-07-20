@@ -1,8 +1,8 @@
 {
   "name": "@gigs/components",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Gems components",
-  "main": "src/index.js",
+  "main": "index.js",
   "license": "ISC",
   "author": "gems.org",
   "files": [
