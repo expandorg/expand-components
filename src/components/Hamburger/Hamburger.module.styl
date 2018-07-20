@@ -1,0 +1,48 @@
+.toggle
+  display: inline-block;
+  background-color: transparent;
+  text-align: center;
+  white-space: nowrap;
+
+  cursor: pointer;
+  touch-action: manipulation;
+  user-select: none;
+  outline: none;
+  border: 0;
+
+.icon
+  position: relative;
+  margin-top: 8px;
+  margin-bottom: 8px;
+
+.icon,
+.icon:before,
+.icon:after
+  display: block;
+  width: 24px;
+  height: 3px;
+  -webkit-transition: background-color 0.3s linear, -webkit-transform 0.3s linear;
+  transition: background-color 0.3s linear, -webkit-transform 0.3s linear;
+  transition: background-color 0.3s linear, transform 0.3s linear;
+  transition: background-color 0.3s linear, transform 0.3s linear, -webkit-transform 0.3s linear;
+  background-color: #ffffff;
+
+.icon:before,
+.icon:after
+  position: absolute;
+  content: "";
+
+.icon:before
+  top: -8px;
+
+.icon:after
+  top: 8px;
+
+.active .icon
+  background-color: transparent;
+
+.active .icon:before
+  transform: translateY(8px) rotate(45deg);
+
+.active .icon:after
+  transform: translateY(-8px) rotate(-45deg);

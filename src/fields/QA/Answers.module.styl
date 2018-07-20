@@ -1,0 +1,14 @@
+.container
+  display: flex;
+
+
+.cols2
+  align-content: stretch;
+  flex-wrap: wrap;
+
+  > *
+   width: 50%
+   margin-bottom: 12px;
+
+   @media(max-width: 768px)
+     width: 100%;

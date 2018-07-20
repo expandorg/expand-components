@@ -52,15 +52,3 @@ export default class Dialog extends Component {
     );
   }
 }
-
-export const DialogHeadline = ({ children, className }) => (
-  <div className={cn('gem-dialog-headline', className)}>{children}</div>
-);
-
-DialogHeadline.propTypes = {
-  className: PropTypes.string,
-};
-
-DialogHeadline.defaultProps = {
-  className: null,
-};

@@ -7,7 +7,9 @@
   "author": "gems.org",
   "files": [
     "README.md",
-    "src"
+    "src",
+    "index.js",
+    "fields.js"
   ],
   "scripts": {
     "test": "jest --config jest.config.json",
@@ -28,7 +30,8 @@
     "classnames": "^2.2.6",
     "prop-types": "^15.6.2",
     "react": "^16.4.1",
-    "react-dom": "^16.4.1"
+    "react-dom": "^16.4.1",
+    "react-modal": "^3.5.1"
   },
   "devDependencies": {
     "@storybook/addon-actions": "^3.4.8",
