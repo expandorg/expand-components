@@ -12,4 +12,5 @@ configure(() => {
   require('../stories/index.stories');
   require('../stories/Button.stories');
   require('../stories/Input.stories');
+  require('../stories/Checkbox.stories');
 }, module);
