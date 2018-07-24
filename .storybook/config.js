@@ -25,8 +25,10 @@ configure(() => {
   require('../stories/components/index.stories');
   require('../stories/components/Button.stories');
   require('../stories/components/Input.stories');
+  require('../stories/components/Autocomplete.stories');
   require('../stories/components/Checkbox.stories');
   require('../stories/components/Dialog.stories');
   require('../stories/components/Toast.stories');
+  require('../stories/components/Tooltip.stories');
   require('../stories/fields/index.stories');
 }, module);

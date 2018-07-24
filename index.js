@@ -1,5 +1,11 @@
 // @flow
 
+import {
+  AutocompleteInput,
+  Suggestions,
+  Suggestion,
+} from './src/components/Autocomplete';
+
 import Button from './src/components/Button';
 import Checkbox from './src/components/Checkbox';
 import DateInput from './src/components/DateInput';
@@ -15,6 +21,9 @@ import { Toast, ToastAnimated } from './src/components/Toast';
 import Tooltip from './src/components/Tooltip';
 
 export {
+  AutocompleteInput,
+  Suggestions,
+  Suggestion,
   Button,
   Checkbox,
   DateInput,

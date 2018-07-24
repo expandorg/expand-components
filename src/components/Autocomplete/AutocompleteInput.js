@@ -155,7 +155,7 @@ export default class AutocompleteInput extends Component {
       >
         <input
           type="text"
-          className="gem-autocomplete-input"
+          className="gem-input gem-autocomplete-input"
           value={value}
           ref={this.inputRef}
           onFocus={this.handleFocus}
