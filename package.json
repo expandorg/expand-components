@@ -1,6 +1,6 @@
 {
   "name": "@gigs/components",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Gems components",
   "main": "index.js",
   "license": "ISC",
@@ -28,6 +28,7 @@
   "homepage": "https://github.com/gemsorg/gems-components#readme",
   "dependencies": {
     "classnames": "^2.2.6",
+    "date-fns": "^1.29.0",
     "prop-types": "^15.6.2",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",

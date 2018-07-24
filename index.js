@@ -1,17 +1,32 @@
 // @flow
 
-export { default as Button } from './src/components/Button';
+import Button from './src/components/Button';
+import Checkbox from './src/components/Checkbox';
+import DateInput from './src/components/DateInput';
+import { Dialog, DialogHeadline, setAppElement } from './src/components/Dialog';
+import Dropdown from './src/components/Dropdown';
 
-export { default as Checkbox } from './src/components/Checkbox';
+import ErrorMessage from './src/components/ErrorMessage';
+import Hamburger from './src/components/Hamburger';
 
-export { Dialog, DialogHeadline, setAppElement } from './src/components/Dialog';
+import Input from './src/components/Input';
+import Panel from './src/components/Panel';
+import { Toast, ToastAnimated } from './src/components/Toast';
+import Tooltip from './src/components/Tooltip';
 
-export { default as ErrorMessage } from './src/components/ErrorMessage';
-
-export { default as Input } from './src/components/Input';
-
-export { default as Panel } from './src/components/Panel';
-
-export { default as Toast } from './src/components/Toast';
-
-export { default as Hamburger } from './src/components/Hamburger';
+export {
+  Button,
+  Checkbox,
+  DateInput,
+  Dialog,
+  DialogHeadline,
+  setAppElement,
+  Dropdown,
+  ErrorMessage,
+  Hamburger,
+  Input,
+  Panel,
+  Toast,
+  ToastAnimated,
+  Tooltip,
+};
