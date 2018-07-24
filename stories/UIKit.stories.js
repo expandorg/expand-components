@@ -1,5 +1,6 @@
 import React from 'react';
 import cn from 'classnames';
+import LinkTo from '@storybook/addon-links/react';
 
 import { storiesOf } from '@storybook/react';
 
@@ -8,7 +9,19 @@ import Kind from './kit/Kind';
 import styles from './UIKit.stories.module.styl';
 
 storiesOf('Gems UI', module)
-  .add('Introduction', () => <div className={styles.container} />)
+  .add('Introduction', () => (
+    <div className={styles.container}>
+      <h1 className={styles.header}>Gems Component library</h1>
+      <Kind title="Ui Kit">
+        <LinkTo kind="Gems UI" story="Colors" className={styles.link}>
+          Colors
+        </LinkTo>
+        <LinkTo kind="Gems UI" story="Typography" className={styles.link}>
+          Typography
+        </LinkTo>
+      </Kind>
+    </div>
+  ))
   .add('Colors', () => (
     <div className={styles.container}>
       <h1 className={styles.header}>Colors</h1>
@@ -45,9 +58,9 @@ storiesOf('Gems UI', module)
       </Kind>
     </div>
   ))
-  .add('Typograpy', () => (
+  .add('Typography', () => (
     <div className={styles.container}>
-      <h1 className={styles.header}>Typograpy</h1>
+      <h1 className={styles.header}>Typography</h1>
       <Kind title="headline — 24px, 1.3, 400">
         <div className={cn(styles.font, styles.headline)}>
           Lorem Ipsum is simply dummy text of the printing and typesetting
