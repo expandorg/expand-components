@@ -1,4 +1,5 @@
 // flow
 import Toast from './Toast';
+import ToastAnimated from './ToastAnimated';
 
-export default Toast;
+export { Toast, ToastAnimated };

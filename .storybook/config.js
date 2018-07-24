@@ -26,4 +26,5 @@ configure(() => {
   require('../stories/components/Input.stories');
   require('../stories/components/Checkbox.stories');
   require('../stories/components/Dialog.stories');
+  require('../stories/components/Toast.stories');
 }, module);

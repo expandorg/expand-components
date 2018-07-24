@@ -1,0 +1,57 @@
+@import '../../uikit/colors'
+@import '../../uikit/font'
+
+.gem-tooltip
+  position: absolute
+  padding: 15px 15px;
+
+  background: color-text-1
+  color: color-white
+  font(font-preset[caption])
+  border-radius: 3px
+  z-index: 2
+
+  &-position
+
+    &-right
+      right: 0
+
+      &:after
+        right: 8px
+
+    &-left
+      left: 0
+
+      &:after
+        left: 8px
+
+    &-center
+      left: 50%
+
+      transform: translateX(-50%)
+
+      &:after
+        left: calc(50% - 8px)
+
+  &-orientation
+    &-top
+      bottom: 40px
+
+      &:after
+        position: absolute
+        content: ''
+
+        bottom: -15px
+        border: 8px solid transparent
+        border-top: 8px solid color-text-1
+
+    &-bottom
+      top: 40px
+
+      &:after
+        position: absolute
+        content: ''
+
+        top: -15px
+        border: 8px solid transparent
+        border-bottom: 8px solid color-text-1

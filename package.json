@@ -31,7 +31,8 @@
     "prop-types": "^15.6.2",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
-    "react-modal": "^3.5.1"
+    "react-modal": "^3.5.1",
+    "react-spring": "^5.4.4"
   },
   "devDependencies": {
     "@storybook/addon-actions": "^3.4.8",
