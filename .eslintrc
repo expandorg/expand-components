@@ -4,8 +4,8 @@
     "airbnb",
     "plugin:flowtype/recommended",
     "prettier",
-    "prettier/react",
-    "prettier/flowtype"
+    "prettier/flowtype",
+    "prettier/react"
   ],
   "env": {
     "browser": true,

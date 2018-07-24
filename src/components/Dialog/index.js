@@ -1,5 +1,7 @@
 // flow
 
-export { default as Dialog } from './Dialog';
-export { default as DialogHeadline } from './DialogHeadline';
-export { default as setAppElement } from './setAppElement';
+import Dialog from './Dialog';
+import DialogHeadline from './DialogHeadline';
+import setAppElement from './setAppElement';
+
+export { Dialog, DialogHeadline, setAppElement };
