@@ -1,9 +1,22 @@
+// @flow
 import { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import { jsScripts } from '../../common/jsscripts';
 
-export default class JsScript extends Component {
+type Props = {
+  src: string,
+  async?: boolean,
+  defer?: boolean,
+  disable?: boolean,
+  children: Function,
+};
+
+type State = {
+  jsLoaded: boolean,
+};
+
+export default class JsScript extends Component<Props, State> {
   static propTypes = {
     src: PropTypes.string.isRequired,
     async: PropTypes.bool,
@@ -17,7 +30,7 @@ export default class JsScript extends Component {
     disable: false,
   };
 
-  constructor(props) {
+  constructor(props: Props) {
     super(props);
     this.state = {
       jsLoaded: jsScripts.isLoaded(props.src),
@@ -41,6 +54,8 @@ export default class JsScript extends Component {
   handleLoad = () => {
     this.setState({ jsLoaded: true });
   };
+
+  unsubsribe: Function;
 
   render() {
     const { children } = this.props;
