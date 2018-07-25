@@ -23,6 +23,7 @@ import Panel from './src/components/Panel';
 import {
   ServiceProvider,
   ServicesContext,
+  ServiceLocator,
 } from './src/components/ServiceProvider';
 
 import { Toast, ToastAnimated } from './src/components/Toast';
@@ -46,6 +47,7 @@ export {
   Panel,
   ServiceProvider,
   ServicesContext,
+  ServiceLocator,
   Toast,
   ToastAnimated,
   Tooltip,
