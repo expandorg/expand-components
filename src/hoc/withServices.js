@@ -1,3 +1,4 @@
+// @flow
 import React, { forwardRef } from 'react';
 
 import { ServicesContext } from '../components/ServiceProvider';

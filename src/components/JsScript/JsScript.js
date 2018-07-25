@@ -2,7 +2,7 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { jsScripts } from '../../common/jsscripts';
+import withServices from '../../hoc/withServices';
 
 type Props = {
   src: string,
@@ -16,12 +16,15 @@ type State = {
   jsLoaded: boolean,
 };
 
-export default class JsScript extends Component<Props, State> {
+class JsScript extends Component<Props, State> {
   static propTypes = {
     src: PropTypes.string.isRequired,
     async: PropTypes.bool,
     defer: PropTypes.bool,
     disable: PropTypes.bool,
+    services: PropTypes.shape({
+      resolve: PropTypes.func,
+    }).isRequired,
   };
 
   static defaultProps = {
@@ -32,21 +35,23 @@ export default class JsScript extends Component<Props, State> {
 
   constructor(props: Props) {
     super(props);
+    const jsScripts = props.services.resolve('jsScripts');
     this.state = {
       jsLoaded: jsScripts.isLoaded(props.src),
     };
   }
 
   componentDidMount() {
-    const { src, async, defer, disable } = this.props;
+    const { src, async, defer, disable, services } = this.props;
     if (!disable) {
+      const jsScripts = services.resolve('jsScripts');
       this.unsubsribe = jsScripts.addScript(src, async, defer, this.handleLoad);
     }
   }
 
   componentWillUnmount() {
     const { disable } = this.props;
-    if (!disable) {
+    if (!disable && this.unsubsribe) {
       this.unsubsribe();
     }
   }
@@ -59,7 +64,12 @@ export default class JsScript extends Component<Props, State> {
 
   render() {
     const { children } = this.props;
+    if (!children) {
+      return null;
+    }
     const { jsLoaded } = this.state;
     return children({ jsLoaded });
   }
 }
+
+export default withServices(JsScript);
