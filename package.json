@@ -1,6 +1,6 @@
 {
   "name": "@gigs/components",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Gems components",
   "main": "index.js",
   "license": "ISC",
@@ -9,7 +9,8 @@
     "README.md",
     "src",
     "index.js",
-    "fields.js"
+    "fields.js",
+    "hoc.js"
   ],
   "scripts": {
     "test": "jest --config jest.config.json",
@@ -26,14 +27,16 @@
     "url": "https://github.com/gemsorg/gems-components/issues"
   },
   "homepage": "https://github.com/gemsorg/gems-components#readme",
+  "peerDependencies": {
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
+    "react-modal": "^3.0.0",
+    "react-spring": "^5.0.0"
+  },
   "dependencies": {
     "classnames": "^2.2.6",
     "date-fns": "^1.29.0",
-    "prop-types": "^15.6.2",
-    "react": "^16.4.1",
-    "react-dom": "^16.4.1",
-    "react-modal": "^3.5.1",
-    "react-spring": "^5.4.4"
+    "prop-types": "^15.6.2"
   },
   "devDependencies": {
     "@storybook/addon-actions": "^3.4.8",
@@ -65,6 +68,10 @@
     "postcss-loader": "^2.1.6",
     "postcss-preset-env": "^5.2.2",
     "prettier": "^1.13.7",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
+    "react-modal": "^3.5.1",
+    "react-spring": "^5.4.4",
     "style-loader": "^0.21.0",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2"
