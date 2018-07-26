@@ -1,5 +1,7 @@
 // @flow
 
+export const canUseDOM = !!(typeof window !== 'undefined' && window.document);
+
 export const targetIsDescendant = (event: MouseEvent, parent: any): boolean => {
   let node = event.target;
   while (node !== null) {

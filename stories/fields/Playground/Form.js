@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 
 import styles from './Form.module.styl';
 
-import ErrorMessage from '../../src/components/ErrorMessage';
-import Button from '../../src/components/Button';
+import ErrorMessage from '../../../src/components/ErrorMessage';
+import Button from '../../../src/components/Button';
 
-import Validation from '../../src/fields/Validation';
-import { Field } from '../../src/fields/Field';
+import Validation from '../../../src/fields/Validation';
+import { Field } from '../../../src/fields/Field';
 
 export default class Form extends Component {
   static propTypes = {
