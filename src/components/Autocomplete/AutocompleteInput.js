@@ -4,6 +4,7 @@ import cn from 'classnames';
 
 import { targetIsDescendant, KeyCodes } from '../../common/dom';
 
+import Input from '../Input';
 import Suggestions from './Suggestions';
 import Suggestion from './Suggestion';
 
@@ -153,9 +154,9 @@ export default class AutocompleteInput extends Component {
         className={cn('gem-autocomplete', className)}
         ref={this.containerRef}
       >
-        <input
+        <Input
           type="text"
-          className="gem-input gem-autocomplete-input"
+          className="gem-autocomplete-input"
           value={value}
           ref={this.inputRef}
           onFocus={this.handleFocus}

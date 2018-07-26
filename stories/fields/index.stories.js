@@ -2,4 +2,6 @@ import React from 'react';
 
 import { storiesOf } from '@storybook/react';
 
-storiesOf('Fields', module).add('Readme', () => <div />);
+import Playground from './Playground';
+
+storiesOf('Fields', module).add('Playground', () => <Playground />);

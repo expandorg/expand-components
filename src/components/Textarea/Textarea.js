@@ -2,9 +2,9 @@ import React, { Component, forwardRef } from 'react';
 import PropTypes from 'prop-types';
 import cn from 'classnames';
 
-import './Input.styl';
+import './Textarea.styl';
 
-class Input extends Component {
+class Textarea extends Component {
   static propTypes = {
     value: PropTypes.string,
     className: PropTypes.string,
@@ -22,10 +22,10 @@ class Input extends Component {
   render() {
     const { onChange, className, value, forwardedRef, ...rest } = this.props;
     return (
-      <input
+      <textarea
         ref={forwardedRef}
         {...rest}
-        className={cn('gem-input', className)}
+        className={cn('gem-textarea', className)}
         onChange={onChange}
         value={value}
       />
@@ -34,5 +34,5 @@ class Input extends Component {
 }
 
 export default forwardRef((props, ref) => (
-  <Input {...props} forwardedRef={ref} />
+  <Textarea {...props} forwardedRef={ref} />
 ));

@@ -15,8 +15,10 @@ addDecorator((story) => (
 setOptions({
   name: 'Gems.org UI Kit',
   url: 'https://github.com/gemsorg/gems-components',
-  addonPanelInRight: true,
+  // addonPanelInRight: true,
   sidebarAnimations: true,
+  showAddonPanel: false,
+
 });
 
 /* eslint-disable global-require */
@@ -25,6 +27,7 @@ configure(() => {
   require('../stories/components/index.stories');
   require('../stories/components/Button.stories');
   require('../stories/components/Input.stories');
+  require('../stories/components/Textarea.stories');
   require('../stories/components/Autocomplete.stories');
   require('../stories/components/Checkbox.stories');
   require('../stories/components/Dialog.stories');
