@@ -5,7 +5,9 @@ const FieldType = {
   number: 'number',
   email: 'email',
   password: 'password',
+
   submit: 'submit',
+
   article: 'article',
 };
 

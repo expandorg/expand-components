@@ -5,6 +5,7 @@ import { action } from '@storybook/addon-actions';
 
 import Kind from '../kit/Kind';
 import StateProvider from '../kit/StateProvider';
+import panelDecorator from '../kit/panelDecorator';
 
 import { AutocompleteInput } from '../../src/components/Autocomplete';
 
@@ -21,6 +22,7 @@ const options = [
 ];
 
 storiesOf('Components/Autocomplete', module)
+  .addDecorator(panelDecorator)
   .add('default', () => {
     const type = action('type');
     return (

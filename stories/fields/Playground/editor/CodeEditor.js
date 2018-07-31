@@ -2,9 +2,9 @@ import React, { Component, createRef } from 'react';
 import PropTypes from 'prop-types';
 import cn from 'classnames';
 
-import Textarea from '../../../src/components/Textarea';
+import Textarea from '../../../../src/components/Textarea';
 
-import { KeyCodes } from '../../../src/common/dom';
+import { KeyCodes } from '../../../../src/common/dom';
 
 import styles from './CodeEditor.module.styl';
 
@@ -35,10 +35,10 @@ export default class CodeEditor extends Component {
     };
   }
 
-  static getDerivedStateFromProps({ value }, state) {
-    if (value !== state.value) {
+  static getDerivedStateFromProps({ source }, state) {
+    if (source !== state.value) {
       return {
-        value,
+        source,
       };
     }
     return null;
@@ -85,13 +85,13 @@ export default class CodeEditor extends Component {
 
   handleTab = evt => {
     evt.preventDefault();
-
     const { selectionStart } = this.editorRef.current;
     const { source } = this.state;
-
-    this.updateSource(insertAt(source, selectionStart, '  '), () =>
-      this.focusAt(selectionStart + 2)
-    );
+    if (!evt.shiftKey) {
+      this.updateSource(insertAt(source, selectionStart, '  '), () =>
+        this.focusAt(selectionStart + 2)
+      );
+    }
   };
 
   focusAt = at => {

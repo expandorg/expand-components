@@ -1,22 +1,9 @@
-// @flow
 import { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import withServices from '../../hoc/withServices';
 
-type Props = {
-  src: string,
-  async?: boolean,
-  defer?: boolean,
-  disable?: boolean,
-  children: Function,
-};
-
-type State = {
-  jsLoaded: boolean,
-};
-
-class JsScript extends Component<Props, State> {
+class JsScript extends Component {
   static propTypes = {
     src: PropTypes.string.isRequired,
     async: PropTypes.bool,
@@ -33,7 +20,7 @@ class JsScript extends Component<Props, State> {
     disable: false,
   };
 
-  constructor(props: Props) {
+  constructor(props) {
     super(props);
     const jsScripts = props.services.resolve('jsScripts');
     this.state = {
@@ -59,8 +46,6 @@ class JsScript extends Component<Props, State> {
   handleLoad = () => {
     this.setState({ jsLoaded: true });
   };
-
-  unsubsribe: Function;
 
   render() {
     const { children } = this.props;

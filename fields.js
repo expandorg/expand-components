@@ -1,23 +1,40 @@
 // @flow
 
-export { default as Alignment } from './src/fields/Alignment';
+import Alignment from './src/fields/Alignment';
 
-export { default as Article } from './src/fields/Article';
+import { Answers, Answer } from './src/fields/QA';
 
-export { Field, fieldProps, FieldType } from './src/fields/Field';
+import Article from './src/fields/Article';
 
-export { default as Image } from './src/fields/Image';
+import Image from './src/fields/Image';
 
-export { default as Input } from './src/fields/Input';
+import Input from './src/fields/Input';
 
-export { default as Modal } from './src/fields/Modal';
+import Modal from './src/fields/Modal';
 
-export { default as Paragraph } from './src/fields/Paragraph';
+import Paragraph from './src/fields/Paragraph';
 
-export { Answers, Answer } from './src/fields/QA';
+import Submit from './src/fields/Submit';
 
-export { default as Submit } from './src/fields/Submit';
+import Title from './src/fields/Title';
 
-export { default as Title } from './src/fields/Title';
+import Validation from './src/fields/Validation';
 
-export { default as Validation } from './src/fields/Validation';
+import { Field, fieldProps, FieldType } from './src/fields/Field';
+
+export {
+  Alignment,
+  Answers,
+  Answer,
+  Article,
+  Field,
+  fieldProps,
+  FieldType,
+  Image,
+  Input,
+  Modal,
+  Paragraph,
+  Submit,
+  Title,
+  Validation,
+};

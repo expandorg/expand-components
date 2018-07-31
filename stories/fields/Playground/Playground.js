@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import debounce from 'debounce';
 
-import ErrorMessage from '../../../src/components/ErrorMessage';
+import Editor from './editor/Editor';
 import Form from './Form';
-import CodeEditor from './CodeEditor';
+
+import { compileForm, appendField } from './formBuilder';
 
 import sample from './sample.json';
-import formBuilder from './formBuilder';
 
 import styles from './Playground.module.styl';
 
@@ -15,8 +15,7 @@ const DELAY = 300;
 export default class Playground extends Component {
   constructor(props) {
     super(props);
-
-    this.updateFormDebounced = debounce(this.updateForm, DELAY);
+    this.compileFormDebounced = debounce(this.compileForm, DELAY);
   }
 
   state = {
@@ -25,10 +24,10 @@ export default class Playground extends Component {
     error: null,
   };
 
-  updateForm = () => {
+  compileForm = () => {
     try {
       const { source } = this.state;
-      const form = formBuilder(source);
+      const form = compileForm(source);
       this.setState({ form, error: null });
     } catch (error) {
       this.setState({ error });
@@ -36,28 +35,31 @@ export default class Playground extends Component {
   };
 
   handleChange = source => {
-    this.setState({ source }, () => {
-      this.updateFormDebounced();
-    });
+    this.setState({ source }, this.compileFormDebounced);
+  };
+
+  handleAddField = fieldName => {
+    const { error, form } = this.state;
+    if (!error) {
+      try {
+        this.setState({ ...appendField(form, fieldName) });
+      } catch (err) {
+        this.setState({ error: err });
+      }
+    }
   };
 
   render() {
     const { source, form, error } = this.state;
     return (
       <div className={styles.container}>
-        <div className={styles.header}>Playground</div>
         <div className={styles.content}>
-          <div className={styles.editor}>
-            {error && (
-              <ErrorMessage error={{ commonMessage: error.toString() }} />
-            )}
-            <CodeEditor
-              className={styles.input}
-              source={source}
-              onChange={this.handleChange}
-            />
-            <button className={styles.add} />
-          </div>
+          <Editor
+            source={source}
+            error={error}
+            onChange={this.handleChange}
+            onAddField={this.handleAddField}
+          />
           <div className={styles.form}>
             <Form form={form} />
           </div>

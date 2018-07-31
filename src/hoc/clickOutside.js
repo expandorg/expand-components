@@ -17,8 +17,12 @@ export default function clickOutside(Wrapped) {
     }
 
     componentWillUnmount() {
-      document.removeEventListener('click', this.handleDocumentClick);
-      document.removeEventListener('touchstart', this.handleDocumentClick);
+      document.removeEventListener('click', this.handleDocumentClick, true);
+      document.removeEventListener(
+        'touchstart',
+        this.handleDocumentClick,
+        true
+      );
     }
 
     handleDocumentClick = evt => {

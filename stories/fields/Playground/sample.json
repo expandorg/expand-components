@@ -2,11 +2,6 @@
   "name": "Trivia",
   "description": "Write a trivia question with three multiple-choice answers. One answer should be correct and fact-checked,  and two answers should be incorrect.",
   "fields": [{
-    "name": "article",
-    "type": "article",
-    "title": "title",
-    "content": "Article content"
-  }, {
     "name": "question",
     "type": "text",
     "validation": ["isRequired"],

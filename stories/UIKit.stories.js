@@ -5,10 +5,12 @@ import LinkTo from '@storybook/addon-links/react';
 import { storiesOf } from '@storybook/react';
 
 import Kind from './kit/Kind';
+import panelDecorator from './kit/panelDecorator';
 
 import styles from './UIKit.stories.module.styl';
 
 storiesOf('Gems UI', module)
+  .addDecorator(panelDecorator)
   .add('Introduction', () => (
     <div className={styles.container}>
       <h1 className={styles.header}>Gems Component library</h1>

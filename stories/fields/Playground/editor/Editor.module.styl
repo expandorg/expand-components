@@ -1,0 +1,51 @@
+@import '../../../../src/uikit/colors'
+@import '../../../../src/uikit/font'
+
+.container
+  box-sizing: border-box;
+  width: 100%
+  margin-right: 10px
+  padding: 0 30px 0 0
+
+.content
+  position relative
+  height: 100%;
+
+.textarea
+  height: 100%;
+
+.menu
+  position absolute
+  right -20px
+  top: -20px
+
+.add
+  position: relative;
+  box-sizing: border-box;
+  padding: 0
+  margin: 0
+
+  width: 40px;
+  height: 40px
+
+  border-radius: 50%;
+
+  color: color-blue
+  box-shadow: 0 6px 6px 0 rgba(0, 0, 0, 0.24), 0 0 6px 0 rgba(0, 0, 0, 0.12)
+
+  cursor: pointer;
+  outline: 0
+
+  &:hover
+    box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.24), 0 0 10px 0 rgba(0, 0, 0, 0.12)
+
+  &:after
+    position: absolute;
+    left: 11px
+    top: 1px
+
+    content: '+'
+
+    font-family: sans-serif;
+    font-size: 30px;
+    font-weight: 300

@@ -6,13 +6,16 @@ import { action } from '@storybook/addon-actions';
 import { withKnobs, boolean } from '@storybook/addon-knobs/react';
 
 import Kind from '../kit/Kind';
+import panelDecorator from '../kit/panelDecorator';
 
 import Button from '../../src/components/Button';
 
 const themes = ['pink', 'white', 'transparent', 'aqua', 'blue', 'link'];
 const sizes = ['small', 'medium', 'large'];
 
-const stories = storiesOf('Components/Button', module).addDecorator(withKnobs);
+const stories = storiesOf('Components/Button', module)
+  .addDecorator(panelDecorator)
+  .addDecorator(withKnobs);
 
 themes.forEach(theme => {
   stories.add(theme, () => {
