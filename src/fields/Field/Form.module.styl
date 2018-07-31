@@ -1,0 +1,17 @@
+@import '../../uikit/colors'
+@import '../../uikit/font'
+@import '../../uikit/consts'
+
+.description
+  font(font-preset[title], false, 22px)
+  text-align: center
+  color: color-text-1
+
+  margin: s-margin-big 0;
+  padding: 0;
+  max-width: 800px;
+
+  @media(max-width: 660px)
+    font-size: 16px;
+    margin: s-margin-medium 0;
+    padding: 0 s-margin-medium;

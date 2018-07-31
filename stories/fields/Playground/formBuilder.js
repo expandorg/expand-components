@@ -17,16 +17,14 @@ const validateField = (field: Object) => {
 };
 
 export const compileForm = (source: string) => {
-  const { description, fields } = JSON.parse(source);
-  if (description && typeof description !== 'string') {
-    throw new Error('description should be a string');
-  }
+  const { description, fields, submit } = JSON.parse(source);
   if (!fields || !Array.isArray(fields)) {
     throw new Error('fields (Array<Input>) is required');
   }
   fields.forEach(field => validateField(field));
   return {
-    description: description || 'Empty description',
+    submit,
+    description,
     fields,
   };
 };
@@ -34,20 +32,29 @@ export const compileForm = (source: string) => {
 const fieldFactories = {
   [FieldType.text]: (params: Object) => ({
     ...params,
-    placeholder: 'text placeholder',
-  }),
-  [FieldType.email]: (params: Object) => ({
-    ...params,
-    placeholder: 'text placeholder',
+    placeholder: 'type some text',
   }),
   [FieldType.number]: (params: Object) => ({
     ...params,
-    placeholder: 'number',
+    placeholder: '0123',
+  }),
+  [FieldType.email]: (params: Object) => ({
+    ...params,
+    placeholder: 'enter you email',
+  }),
+  [FieldType.password]: (params: Object) => ({
+    ...params,
+    placeholder: 'enter your password',
+  }),
+  [FieldType.submit]: (params: Object) => ({
+    ...params,
+    caption: 'Submit',
   }),
   [FieldType.article]: (params: Object) => ({
     ...params,
     title: 'article title',
-    content: 'Article content',
+    content:
+      'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ',
   }),
 };
 

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import debounce from 'debounce';
 
+import Panel from '../../../src/components/Panel';
+
 import Editor from './editor/Editor';
 import Form from './Form';
 
@@ -49,10 +51,15 @@ export default class Playground extends Component {
     }
   };
 
+  handleSubmit = values => {
+    alert(JSON.stringify(values, undefined, 2));
+  };
+
   render() {
     const { source, form, error } = this.state;
     return (
-      <div className={styles.container}>
+      <Panel className={styles.panel}>
+        <div className={styles.title}>Playground</div>
         <div className={styles.content}>
           <Editor
             source={source}
@@ -61,10 +68,10 @@ export default class Playground extends Component {
             onAddField={this.handleAddField}
           />
           <div className={styles.form}>
-            <Form form={form} />
+            <Form form={form} onSubmit={this.handleSubmit} />
           </div>
         </div>
-      </div>
+      </Panel>
     );
   }
 }

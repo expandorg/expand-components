@@ -1,9 +1,23 @@
 @import '../../../src/uikit/colors'
 @import '../../../src/uikit/font'
 
-.content
+.panel
+  min-height: calc(100vh - 50px)
+  padding-bottom: 30px;
+
   display: flex;
-  margin-top: 25px
+  flex-direction: column;
+
+.title
+  font-size: 24px;
+  font-weight: 400;
+  text-transform: capitalize;
+  color: color-text-1
+
+.content
+  margin-top: 30px;
+  display: flex;
+  flex-grow: 1
 
 .form
   width: 100%

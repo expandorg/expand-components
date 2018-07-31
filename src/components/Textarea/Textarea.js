@@ -7,27 +7,25 @@ import './Textarea.styl';
 class Textarea extends Component {
   static propTypes = {
     value: PropTypes.string,
-    className: PropTypes.string,
     onChange: PropTypes.func,
+    className: PropTypes.string,
     forwardedRef: PropTypes.object, // eslint-disable-line
   };
 
   static defaultProps = {
-    value: undefined,
     forwardedRef: undefined,
+    value: undefined,
     onChange: undefined,
     className: null,
   };
 
   render() {
-    const { onChange, className, value, forwardedRef, ...rest } = this.props;
+    const { className, forwardedRef, ...rest } = this.props;
     return (
       <textarea
         ref={forwardedRef}
         {...rest}
         className={cn('gem-textarea', className)}
-        onChange={onChange}
-        value={value}
       />
     );
   }

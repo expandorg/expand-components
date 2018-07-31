@@ -35,13 +35,11 @@ export default class CodeEditor extends Component {
     };
   }
 
-  static getDerivedStateFromProps({ source }, state) {
-    if (source !== state.value) {
-      return {
-        source,
-      };
+  componentWillReceiveProps({ source: value }) {
+    const { source } = this.state;
+    if (source !== value) {
+      this.setState({ source: value });
     }
-    return null;
   }
 
   updateSource = (source, callback = Function.prototype) => {

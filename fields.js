@@ -20,7 +20,7 @@ import Title from './src/fields/Title';
 
 import Validation from './src/fields/Validation';
 
-import { Field, fieldProps, FieldType } from './src/fields/Field';
+import { Field, Form, fieldProps, FieldType } from './src/fields/Field';
 
 export {
   Alignment,
@@ -28,6 +28,7 @@ export {
   Answer,
   Article,
   Field,
+  Form,
   fieldProps,
   FieldType,
   Image,

@@ -20,14 +20,13 @@ const Add = Tooltip(({ children, ...rest }) => (
 
 export default class Editor extends Component {
   static propTypes = {
-    source: PropTypes.string,
+    source: PropTypes.string.isRequired,
     error: PropTypes.any, //eslint-disable-line
     onAddField: PropTypes.func.isRequired,
     onChange: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
-    source: undefined,
     error: null,
   };
 
