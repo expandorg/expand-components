@@ -8,14 +8,16 @@ import styles from './Title.module.styl';
 export default class Title extends Component {
   static propTypes = {
     className: PropTypes.string,
+    title: PropTypes.string,
   };
 
   static defaultProps = {
     className: null,
+    title: '',
   };
 
   render() {
-    const { children, className } = this.props;
-    return <h3 className={cn(styles.title, className)}>{children}</h3>;
+    const { title, className } = this.props;
+    return <h3 className={cn(styles.title, className)}>{title}</h3>;
   }
 }

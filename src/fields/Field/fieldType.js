@@ -8,6 +8,7 @@ const FieldType = {
 
   submit: 'submit',
 
+  title: 'title',
   article: 'article',
 };
 

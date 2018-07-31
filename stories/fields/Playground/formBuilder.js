@@ -50,6 +50,10 @@ const fieldFactories = {
     ...params,
     caption: 'Submit',
   }),
+  [FieldType.title]: (params: Object) => ({
+    ...params,
+    title: 'some title',
+  }),
   [FieldType.article]: (params: Object) => ({
     ...params,
     title: 'article title',

@@ -13,17 +13,20 @@ import styles from './Form.module.styl';
 
 export default class Form extends Component {
   static propTypes = {
+    className: PropTypes.string,
+
     form: PropTypes.shape({
       description: PropTypes.string,
       submit: fieldProps,
       fields: PropTypes.arrayOf(fieldProps),
     }).isRequired,
+
     submitState: PropTypes.shape({
       state: PropTypes.string.isRequired,
       error: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
     }).isRequired,
+
     onSubmit: PropTypes.func.isRequired,
-    className: PropTypes.string,
   };
 
   static defaultProps = {

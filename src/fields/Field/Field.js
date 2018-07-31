@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import Input from '../Input';
 import Submit from '../Submit';
 import Article from '../Article';
+import Title from '../Title';
 
 import FieldType from './fieldType';
 import fieldProps from './fieldProps';
@@ -30,6 +31,8 @@ export default class Field extends Component {
       case FieldType.email:
       case FieldType.password:
         return <Input {...field} value={value} onChange={onChange} />;
+      case FieldType.title:
+        return <Title {...field} />;
       case FieldType.article:
         return <Article {...field} />;
       case FieldType.submit:

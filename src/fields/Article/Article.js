@@ -33,7 +33,7 @@ export default class Article extends Component {
       <Alignment padding="small">
         <Alignment vertical>
           <Alignment padding="small">
-            <Title>{title}</Title>
+            <Title title={title} />
           </Alignment>
           <Alignment padding="small">
             <Paragraph

@@ -18,7 +18,6 @@ setOptions({
   // addonPanelInRight: true,
   sidebarAnimations: true,
   showAddonPanel: false,
-
 });
 
 /* eslint-disable global-require */
@@ -33,5 +32,5 @@ configure(() => {
   require('../stories/components/Dialog.stories');
   require('../stories/components/Toast.stories');
   require('../stories/components/Tooltip.stories');
-  require('../stories/fields/index.stories');
+  require('../stories/fields/Playground.stories');
 }, module);
