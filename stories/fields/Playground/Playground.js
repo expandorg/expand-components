@@ -3,8 +3,9 @@ import debounce from 'debounce';
 
 import Panel from '../../../src/components/Panel';
 
+import { Field, Form } from '../../../src/fields/Field';
+
 import Editor from './editor/Editor';
-import Form from './Form';
 
 import { compileForm, appendField } from './formBuilder';
 
@@ -17,14 +18,15 @@ const DELAY = 300;
 export default class Playground extends Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      source: JSON.stringify(sample, undefined, 2),
+      form: sample,
+      error: null,
+    };
+
     this.compileFormDebounced = debounce(this.compileForm, DELAY);
   }
-
-  state = {
-    source: JSON.stringify(sample, undefined, 2),
-    form: sample,
-    error: null,
-  };
 
   compileForm = () => {
     try {
@@ -68,7 +70,14 @@ export default class Playground extends Component {
             onAddField={this.handleAddField}
           />
           <div className={styles.form}>
-            <Form form={form} onSubmit={this.handleSubmit} />
+            <Form
+              form={form}
+              className={styles.form}
+              submitState={{ state: '' }}
+              onSubmit={this.handleSubmit}
+            >
+              {fieldProps => <Field {...fieldProps} />}
+            </Form>
           </div>
         </div>
       </Panel>
