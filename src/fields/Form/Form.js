@@ -7,25 +7,19 @@ import Submit from '../Submit';
 import Validation from '../Validation';
 import ErrorMessage from '../../components/ErrorMessage';
 
-import fieldProps from './fieldProps';
+import formProps from './formProps';
 
 import styles from './Form.module.styl';
 
 export default class Form extends Component {
   static propTypes = {
     className: PropTypes.string,
-
-    form: PropTypes.shape({
-      description: PropTypes.string,
-      submit: fieldProps,
-      fields: PropTypes.arrayOf(fieldProps),
-    }).isRequired,
+    form: formProps.isRequired,
 
     submitState: PropTypes.shape({
       state: PropTypes.string.isRequired,
       error: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
     }).isRequired,
-
     onSubmit: PropTypes.func.isRequired,
   };
 
@@ -65,8 +59,7 @@ export default class Form extends Component {
     evt.preventDefault();
     const { onSubmit } = this.props;
     const { values } = this.state;
-
-    onSubmit(values);
+    this.setState({ errors: null }, () => onSubmit(values));
   };
 
   render() {

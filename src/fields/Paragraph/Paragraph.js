@@ -8,6 +8,8 @@ export default class Paragraph extends Component {
   static propTypes = {
     className: PropTypes.string,
     fontSize: PropTypes.oneOf(['small', 'medium']),
+    content: PropTypes.oneOfType([PropTypes.string, PropTypes.element])
+      .isRequired,
     centered: PropTypes.bool,
   };
 
@@ -18,7 +20,7 @@ export default class Paragraph extends Component {
   };
 
   render() {
-    const { children, className, fontSize, centered } = this.props;
+    const { content, className, fontSize, centered } = this.props;
     const classes = cn(
       styles.p,
       styles[`${fontSize}Font`],
@@ -27,6 +29,6 @@ export default class Paragraph extends Component {
       },
       className
     );
-    return <p className={classes}>{children}</p>;
+    return <p className={classes}>{content}</p>;
   }
 }

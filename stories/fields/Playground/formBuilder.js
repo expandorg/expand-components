@@ -50,9 +50,23 @@ const fieldFactories = {
     ...params,
     caption: 'Submit',
   }),
+  [FieldType.select]: (params: Object) => ({
+    ...params,
+    options: [
+      { id: 1, caption: 'Option 1' },
+      { id: 2, caption: 'Option 2' },
+      { id: 3, caption: 'Option 2' },
+      { id: 4, caption: 'Option 4' },
+    ],
+  }),
   [FieldType.title]: (params: Object) => ({
     ...params,
     title: 'some title',
+  }),
+  [FieldType.paragraph]: (params: Object) => ({
+    ...params,
+    content:
+      'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ',
   }),
   [FieldType.article]: (params: Object) => ({
     ...params,

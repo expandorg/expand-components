@@ -2,18 +2,18 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import cn from 'classnames';
 
-import styles from './Answer.module.styl';
+import styles from './Choice.module.styl';
 
-const formatItem = answer => {
-  if (typeof answer === 'string') {
-    return { id: null, caption: answer };
+const formatItem = option => {
+  if (typeof option === 'string') {
+    return { id: null, caption: option };
   }
-  return answer;
+  return option;
 };
 
-export default class Answer extends Component {
+export default class Choice extends Component {
   static propTypes = {
-    answer: PropTypes.oneOfType([PropTypes.string, PropTypes.object])
+    option: PropTypes.oneOfType([PropTypes.string, PropTypes.object])
       .isRequired,
     className: PropTypes.string,
     selected: PropTypes.bool,
@@ -28,12 +28,12 @@ export default class Answer extends Component {
   handleSelect = evt => {
     evt.preventDefault();
 
-    const { onSelect, answer } = this.props;
-    onSelect(answer);
+    const { onSelect, option } = this.props;
+    onSelect(option);
   };
 
   render() {
-    const { className, answer, selected } = this.props;
+    const { className, option, selected } = this.props;
     const classes = cn(
       styles.container,
       {
@@ -42,7 +42,7 @@ export default class Answer extends Component {
       className
     );
 
-    const { id, caption } = formatItem(answer);
+    const { id, caption } = formatItem(option);
 
     return (
       <button type="button" className={classes} onClick={this.handleSelect}>

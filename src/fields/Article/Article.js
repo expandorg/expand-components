@@ -38,9 +38,8 @@ export default class Article extends Component {
           <Alignment padding="small">
             <Paragraph
               className={cn({ [styles.shrinked]: wide ? false : !image })}
-            >
-              {content}
-            </Paragraph>
+              content={content}
+            />
           </Alignment>
         </Alignment>
 

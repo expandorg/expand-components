@@ -2,19 +2,21 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import cn from 'classnames';
 
-import styles from './Answers.module.styl';
+import styles from './Select.module.styl';
 
-const getAnswrId = answer => {
-  if (typeof answer === 'string') {
-    return answer;
+const getAnswrId = option => {
+  if (typeof option === 'string') {
+    return option;
   }
-  return answer.id;
+  return option.id;
 };
 
-export default class Answers extends Component {
+export default class Select extends Component {
   static propTypes = {
-    answers: PropTypes.arrayOf(PropTypes.any).isRequired,
-    value: PropTypes.string,
+    options: PropTypes.arrayOf(
+      PropTypes.oneOfType([PropTypes.string, PropTypes.object])
+    ).isRequired,
+    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     className: PropTypes.string,
     onSelect: PropTypes.func.isRequired,
     layout: PropTypes.oneOf(['cols2']),
@@ -32,16 +34,16 @@ export default class Answers extends Component {
   };
 
   render() {
-    const { value, className, answers, children, layout } = this.props;
+    const { value, className, options, children, layout } = this.props;
     const classes = cn(styles.container, styles[layout], className);
     return (
       <div className={classes}>
-        {answers.map(answer => {
-          const key = getAnswrId(answer);
+        {options.map(option => {
+          const key = getAnswrId(option);
           return children({
             key,
             selected: key === value,
-            answer,
+            option,
             onSelect: this.handleSelect,
           });
         })}

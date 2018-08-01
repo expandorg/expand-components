@@ -3,7 +3,8 @@ import debounce from 'debounce';
 
 import Panel from '../../../src/components/Panel';
 
-import { Field, Form } from '../../../src/fields/Field';
+import { Field } from '../../../src/fields/Field';
+import { Form } from '../../../src/fields/Form';
 
 import Editor from './editor/Editor';
 

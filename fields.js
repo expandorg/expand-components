@@ -2,7 +2,7 @@
 
 import Alignment from './src/fields/Alignment';
 
-import { Answers, Answer } from './src/fields/QA';
+import { Select, Choice, SelectField } from './src/fields/Select';
 
 import Article from './src/fields/Article';
 
@@ -20,15 +20,18 @@ import Title from './src/fields/Title';
 
 import Validation from './src/fields/Validation';
 
-import { Field, Form, fieldProps, FieldType } from './src/fields/Field';
+import { Field, fieldProps, FieldType } from './src/fields/Field';
+import { Form, formProps } from './src/fields/Form';
 
 export {
   Alignment,
-  Answers,
-  Answer,
+  Select,
+  Choice,
+  SelectField,
   Article,
   Field,
   Form,
+  formProps,
   fieldProps,
   FieldType,
   Image,

@@ -5,6 +5,8 @@ import Input from '../Input';
 import Submit from '../Submit';
 import Article from '../Article';
 import Title from '../Title';
+import Paragraph from '../Paragraph';
+import { SelectField } from '../Select';
 
 import FieldType from './fieldType';
 import fieldProps from './fieldProps';
@@ -33,6 +35,10 @@ export default class Field extends Component {
         return <Input {...field} value={value} onChange={onChange} />;
       case FieldType.title:
         return <Title {...field} />;
+      case FieldType.paragraph:
+        return <Paragraph {...field} />;
+      case FieldType.select:
+        return <SelectField {...field} value={value} onChange={onChange} />;
       case FieldType.article:
         return <Article {...field} />;
       case FieldType.submit:

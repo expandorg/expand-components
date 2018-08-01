@@ -7,8 +7,10 @@ const FieldType = {
   password: 'password',
 
   submit: 'submit',
+  select: 'select',
 
   title: 'title',
+  paragraph: 'paragraph',
   article: 'article',
 };
 
