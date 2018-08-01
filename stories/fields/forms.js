@@ -17,9 +17,6 @@ const createForm = (
   };
 };
 
-// description:
-//   ,
-
 export const trivia = createForm(
   {
     caption: 'Next',
@@ -85,7 +82,7 @@ export const article = createForm('Got it', [
   },
 ]);
 
-export const checkbox = createForm(undefined, [
+export const checkbox = createForm('I Agree', [
   {
     name: 'checkbox',
     type: 'checkbox',
@@ -93,3 +90,23 @@ export const checkbox = createForm(undefined, [
     label: 'simple checkbox',
   },
 ]);
+
+export const select = createForm(
+  {
+    caption: 'Next',
+    justify: 'center',
+  },
+  [
+    {
+      name: 'select',
+      type: 'select',
+      options: [
+        { id: 'A', caption: 'Option 1' },
+        { id: 'b', caption: 'Option 2' },
+        { id: '3', caption: 'Option 2' },
+        { id: 'IV', caption: 'Option 4' },
+      ],
+    },
+  ],
+  'Select one'
+);
