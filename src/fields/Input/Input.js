@@ -9,7 +9,7 @@ import styles from './Input.module.styl';
 
 const inputTypes = {
   [FieldType.text]: 'text',
-  [FieldType.number]: 'text',
+  [FieldType.number]: 'number',
   [FieldType.email]: 'email',
   [FieldType.password]: 'password',
 };

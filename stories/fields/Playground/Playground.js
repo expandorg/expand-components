@@ -1,28 +1,40 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import debounce from 'debounce';
+import cn from 'classnames';
 
 import Panel from '../../../src/components/Panel';
 
 import { Field } from '../../../src/fields/Field';
-import { Form } from '../../../src/fields/Form';
+import { Form, formProps } from '../../../src/fields/Form';
 
 import Editor from './editor/Editor';
 
 import { compileForm, appendField } from './formBuilder';
-
-import sample from './sample.json';
 
 import styles from './Playground.module.styl';
 
 const DELAY = 300;
 
 export default class Playground extends Component {
+  static propTypes = {
+    title: PropTypes.string.isRequired,
+    editMode: PropTypes.oneOf(['full', 'edit', 'readOnly', 'hidden']),
+    fullscreen: PropTypes.bool,
+    form: formProps.isRequired,
+  };
+
+  static defaultProps = {
+    fullscreen: false,
+    editMode: 'full',
+  };
+
   constructor(props) {
     super(props);
 
     this.state = {
-      source: JSON.stringify(sample, undefined, 2),
-      form: sample,
+      source: JSON.stringify(props.form, undefined, 2),
+      form: props.form,
       error: null,
     };
 
@@ -59,17 +71,22 @@ export default class Playground extends Component {
   };
 
   render() {
+    const { title, children, editMode, fullscreen } = this.props;
     const { source, form, error } = this.state;
     return (
-      <Panel className={styles.panel}>
-        <div className={styles.title}>Playground</div>
+      <Panel className={cn(styles.panel, { [styles.fullscreen]: fullscreen })}>
+        <div className={styles.title}>{title}</div>
+        <div className={styles.description}>{children}</div>
         <div className={styles.content}>
-          <Editor
-            source={source}
-            error={error}
-            onChange={this.handleChange}
-            onAddField={this.handleAddField}
-          />
+          {editMode !== 'hidden' && (
+            <Editor
+              editMode={editMode}
+              source={source}
+              error={error}
+              onChange={this.handleChange}
+              onAddField={this.handleAddField}
+            />
+          )}
           <div className={styles.form}>
             <Form
               form={form}

@@ -17,12 +17,14 @@ const insertAt = (str, at, ins) => {
 export default class CodeEditor extends Component {
   static propTypes = {
     source: PropTypes.string,
+    readOnly: PropTypes.bool,
     className: PropTypes.string,
     onChange: PropTypes.func,
   };
 
   static defaultProps = {
     source: undefined,
+    readOnly: false,
     className: null,
     onChange: Function.prototype,
   };
@@ -108,11 +110,12 @@ export default class CodeEditor extends Component {
   };
 
   render() {
-    const { className } = this.props;
+    const { className, readOnly } = this.props;
     const { source } = this.state;
     return (
       <Textarea
         className={cn(styles.input, className)}
+        readOnly={readOnly}
         ref={this.editorRef}
         value={source}
         onKeyDown={this.handleKeyDown}

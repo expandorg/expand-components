@@ -24,7 +24,7 @@ setOptions({
 configure(() => {
   require('../stories/general/index.stories');
 
-  require('../stories/fields/index.stories');
+  require('../stories/fields/Playground.stories');
 
   require('../stories/components/index.stories');
   require('../stories/components/Button.stories');

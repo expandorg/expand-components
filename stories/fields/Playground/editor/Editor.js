@@ -21,6 +21,8 @@ const Add = Tooltip(({ children, ...rest }) => (
 export default class Editor extends Component {
   static propTypes = {
     source: PropTypes.string.isRequired,
+    editMode: PropTypes.oneOf(['full', 'edit', 'readOnly', 'hidden'])
+      .isRequired,
     error: PropTypes.any, //eslint-disable-line
     onAddField: PropTypes.func.isRequired,
     onChange: PropTypes.func.isRequired,
@@ -39,7 +41,7 @@ export default class Editor extends Component {
   };
 
   render() {
-    const { source, error, onChange, onAddField } = this.props;
+    const { source, error, onChange, onAddField, editMode } = this.props;
     const { menu } = this.state;
     return (
       <div className={styles.container}>
@@ -48,22 +50,25 @@ export default class Editor extends Component {
           <CodeEditor
             className={styles.textarea}
             source={source}
+            readOnly={editMode === 'readOnly'}
             onChange={onChange}
           />
-          <div className={styles.menu}>
-            <Add
-              tooltip="Add field"
-              className={styles.add}
-              onClick={this.handleToggleMenu}
-            />
-            {menu && (
-              <Menu
-                items={fields}
-                onHide={this.handleToggleMenu}
-                onSelect={onAddField}
+          {editMode === 'full' && (
+            <div className={styles.menu}>
+              <Add
+                tooltip="Add field"
+                className={styles.add}
+                onClick={this.handleToggleMenu}
               />
-            )}
-          </div>
+              {menu && (
+                <Menu
+                  items={fields}
+                  onHide={this.handleToggleMenu}
+                  onSelect={onAddField}
+                />
+              )}
+            </div>
+          )}
         </div>
       </div>
     );
