@@ -22,7 +22,10 @@ setOptions({
 
 /* eslint-disable global-require */
 configure(() => {
-  require('../stories/UIKit.stories');
+  require('../stories/general/index.stories');
+
+  require('../stories/fields/index.stories');
+
   require('../stories/components/index.stories');
   require('../stories/components/Button.stories');
   require('../stories/components/Input.stories');
@@ -32,5 +35,4 @@ configure(() => {
   require('../stories/components/Dialog.stories');
   require('../stories/components/Toast.stories');
   require('../stories/components/Tooltip.stories');
-  require('../stories/fields/Playground.stories');
 }, module);
