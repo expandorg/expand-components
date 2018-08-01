@@ -1,7 +1,7 @@
 // @flow
 
 const createForm = (
-  submit: string | Object,
+  submit: ?(string | Object),
   fields: Array<Object>,
   description?: string
 ) => {
