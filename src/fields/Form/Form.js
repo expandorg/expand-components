@@ -5,6 +5,7 @@ import cn from 'classnames';
 
 import Submit from '../Submit';
 import Validation from '../Validation';
+import Paragraph from '../Paragraph';
 import ErrorMessage from '../../components/ErrorMessage';
 
 import formProps from './formProps';
@@ -15,16 +16,15 @@ export default class Form extends Component {
   static propTypes = {
     className: PropTypes.string,
     form: formProps.isRequired,
-
-    submitState: PropTypes.shape({
-      state: PropTypes.string.isRequired,
-      error: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
-    }).isRequired,
+    errors: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
+    isSubmitting: PropTypes.bool,
     onSubmit: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
     className: null,
+    isSubmitting: false,
+    errors: null,
   };
 
   state = {
@@ -32,10 +32,10 @@ export default class Form extends Component {
     errors: null,
   };
 
-  componentWillReceiveProps({ submitState: nextState }) {
-    const { submitState } = this.props;
-    if (nextState.error && nextState.error !== submitState.error) {
-      this.setState({ errors: nextState.error });
+  componentWillReceiveProps({ errors: nextErrors }) {
+    const { errors } = this.props;
+    if (nextErrors && nextErrors !== errors) {
+      this.setState({ errors: nextErrors });
     }
   }
 
@@ -63,9 +63,8 @@ export default class Form extends Component {
   };
 
   render() {
-    const { className, submitState, form, children } = this.props;
+    const { className, isSubmitting, form, children } = this.props;
     const { values, errors } = this.state;
-    const isSubmitting = submitState.state === 'Fetching';
 
     const props = {
       isSubmitting,
@@ -78,7 +77,12 @@ export default class Form extends Component {
         onSubmit={this.handleSubmit}
       >
         {form.description && (
-          <div className={styles.description}>{form.description}</div>
+          <Paragraph
+            className={styles.description}
+            centered
+            fontSize="medium"
+            content={form.description}
+          />
         )}
         {form.fields.map(field => (
           <Validation key={field.name} name={field.name} error={errors}>

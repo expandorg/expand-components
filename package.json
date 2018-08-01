@@ -1,6 +1,6 @@
 {
   "name": "@gigs/components",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "description": "Gems components",
   "main": "index.js",
   "license": "ISC",
@@ -52,7 +52,7 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "babel-runtime": "^6.26.0",
-    "css-loader": "^1.0.0",
+    "css-loader": "^0.28.11",
     "debounce": "^1.1.0",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
