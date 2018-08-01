@@ -1,17 +1,20 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import cn from 'classnames';
 
 import './Checkbox.styl';
 
 export default class Checkbox extends Component {
   static propTypes = {
     name: PropTypes.string.isRequired,
+    className: PropTypes.string,
     label: PropTypes.string,
     value: PropTypes.bool,
     onChange: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
+    className: null,
     value: false,
     label: '',
   };
@@ -22,9 +25,9 @@ export default class Checkbox extends Component {
   };
 
   render() {
-    const { label, name, value } = this.props;
+    const { label, name, value, className } = this.props;
     return (
-      <label htmlFor={name} className="gem-checkbox">
+      <label htmlFor={name} className={cn('gem-checkbox', className)}>
         <input
           className="gem-checkbox-input"
           type="checkbox"

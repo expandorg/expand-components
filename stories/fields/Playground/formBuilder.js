@@ -59,6 +59,10 @@ const fieldFactories = {
       { id: 4, caption: 'Option 4' },
     ],
   }),
+  [FieldType.checkbox]: (params: Object) => ({
+    ...params,
+    label: 'Checkbox label',
+  }),
   [FieldType.title]: (params: Object) => ({
     ...params,
     title: 'some title',

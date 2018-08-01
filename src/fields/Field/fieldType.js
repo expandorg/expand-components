@@ -8,6 +8,7 @@ const FieldType = {
 
   submit: 'submit',
   select: 'select',
+  checkbox: 'checkbox',
 
   title: 'title',
   paragraph: 'paragraph',

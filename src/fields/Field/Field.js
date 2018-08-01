@@ -7,6 +7,7 @@ import Article from '../Article';
 import Title from '../Title';
 import Paragraph from '../Paragraph';
 import { SelectField } from '../Select';
+import Checkbox from '../Checkbox';
 
 import FieldType from './fieldType';
 import fieldProps from './fieldProps';
@@ -39,6 +40,8 @@ export default class Field extends Component {
         return <Paragraph {...field} />;
       case FieldType.select:
         return <SelectField {...field} value={value} onChange={onChange} />;
+      case FieldType.checkbox:
+        return <Checkbox {...field} value={value} onChange={onChange} />;
       case FieldType.article:
         return <Article {...field} />;
       case FieldType.submit:
