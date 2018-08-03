@@ -2,6 +2,13 @@
 module.exports = (storybookBaseConfig, configType) => {
   const dev = configType === 'DEVELOPMENT';
   storybookBaseConfig.module.rules.push({
+    test: /\.css$/,
+    use: [
+      'style-loader',
+      'css-loader?sourceMap&importLoaders=2',
+      'postcss-loader?sourceMap'
+    ]
+  },{
     test: /^((?!\.module).)*\.styl$/,
     use: [
       'style-loader',
