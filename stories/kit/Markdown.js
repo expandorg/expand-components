@@ -7,7 +7,7 @@ import './Markdown.styl';
 
 export default class Markdown extends Component {
   static propTypes = {
-    html: PropTypes.string.isRequired,
+    doc: PropTypes.string.isRequired,
   };
 
   constructor(props) {
@@ -25,12 +25,12 @@ export default class Markdown extends Component {
   }
 
   render() {
-    const { html } = this.props;
+    const { doc } = this.props;
     return (
       <div
         ref={this.containerRef}
         className="gem-gh-markdown"
-        dangerouslySetInnerHTML={{ __html: html }} // eslint-disable-line react/no-danger
+        dangerouslySetInnerHTML={{ __html: doc }} // eslint-disable-line react/no-danger
       />
     );
   }

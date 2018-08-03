@@ -1,9 +1,6 @@
 import React from 'react';
 import LinkTo from '@storybook/addon-links/react';
 
-import readme from '../../README.md';
-import Markdown from '../kit/Markdown';
-
 import Kind from '../kit/Kind';
 
 import styles from './styles.module.styl';
@@ -23,7 +20,6 @@ export default () => (
       <LinkTo kind="Fields" story="Playground" className={styles.link}>
         Playground
       </LinkTo>
-      <Markdown html={readme} />
     </Kind>
   </div>
 );

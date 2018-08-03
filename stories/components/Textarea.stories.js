@@ -6,10 +6,17 @@ import panelDecorator from '../kit/panelDecorator';
 
 import Textarea from '../../src/components/Textarea';
 
+import Markdown from '../kit/Markdown';
+
+import readme from './docs/Textarea.md';
+
 storiesOf('Components/Textarea', module)
   .addDecorator(panelDecorator)
   .add('default', () => (
-    <Kind title="Textarea">
-      <Textarea placeholder="Type something..." />
-    </Kind>
+    <div>
+      <Kind title="Textarea">
+        <Textarea placeholder="Type something..." />
+      </Kind>
+      <Markdown doc={readme} />
+    </div>
   ));

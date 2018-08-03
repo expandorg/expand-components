@@ -9,6 +9,10 @@ import panelDecorator from '../kit/panelDecorator';
 
 import ControlledCheckbox from '../../src/components/Checkbox';
 
+import Markdown from '../kit/Markdown';
+
+import readme from './docs/Checkbox.md';
+
 const Checkbox = asUncontrolled(ControlledCheckbox);
 
 storiesOf('Components/Checkbox', module)
@@ -16,8 +20,11 @@ storiesOf('Components/Checkbox', module)
   .add('default', () => {
     const clicked = action('clicked');
     return (
-      <Kind title="Checkbox">
-        <Checkbox name="test" label="Checkbox label" onChange={clicked} />
-      </Kind>
+      <div>
+        <Kind title="Checkbox">
+          <Checkbox name="test" label="Checkbox label" onChange={clicked} />
+        </Kind>
+        <Markdown doc={readme} />
+      </div>
     );
   });

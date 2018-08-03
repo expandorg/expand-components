@@ -9,6 +9,10 @@ import panelDecorator from '../kit/panelDecorator';
 import SimpleButton from '../../src/components/Button';
 import Tooltip from '../../src/components/Tooltip';
 
+import Markdown from '../kit/Markdown';
+
+import readme from './docs/Tooltip.md';
+
 import styles from './styles.module.styl';
 
 const Button = Tooltip(SimpleButton);
@@ -40,6 +44,7 @@ storiesOf('Components/Tooltip', module)
             Hover to see tooltip
           </Button>
         </Kind>
+        <Markdown doc={readme} />
       </div>
     );
   });

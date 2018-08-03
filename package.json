@@ -1,6 +1,6 @@
 {
   "name": "@gigs/components",
-  "version": "0.0.14",
+  "version": "0.0.15",
   "description": "Gems components",
   "main": "index.js",
   "license": "ISC",
