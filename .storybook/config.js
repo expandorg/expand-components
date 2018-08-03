@@ -20,19 +20,25 @@ setOptions({
   showAddonPanel: false,
 });
 
+const stories = [
+  'index',
+  'Button',
+  'Input',
+  'Textarea',
+  'Autocomplete',
+  'Checkbox',
+  'Dialog',
+  'Toast',
+  'Tooltip',
+];
+
 /* eslint-disable global-require */
 configure(() => {
   require('../stories/general/index.stories');
 
   require('../stories/fields/Playground.stories');
 
-  require('../stories/components/index.stories');
-  require('../stories/components/Button.stories');
-  require('../stories/components/Input.stories');
-  require('../stories/components/Textarea.stories');
-  require('../stories/components/Autocomplete.stories');
-  require('../stories/components/Checkbox.stories');
-  require('../stories/components/Dialog.stories');
-  require('../stories/components/Toast.stories');
-  require('../stories/components/Tooltip.stories');
+  stories.forEach(story => {
+    require(`../stories/components/${story}.stories`);
+  })
 }, module);
