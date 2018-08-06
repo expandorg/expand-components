@@ -1,7 +1,7 @@
 # Gems UI
 [![npm version](https://img.shields.io/npm/v/@gigs/components.svg?style=flat-square)](https://www.npmjs.com/package/@gigs/components)
 
-Gems UI is a collection of React components, tools and guidlines for creating Gems products.
+Gems UI is a collection of React components, tools and guidelines for creating Gems products.
 * **Forms:** Dynamic JSON powered form library for React.
 
 * **Components:** set of components such as Buttons, Panels, Menus, HOC's.
@@ -24,8 +24,8 @@ npm install  @gigs/components --save
 
 ## Prerequisites
 
-Gems UI use [stylus](http://stylus-lang.com/) and [css-modules](https://github.com/css-modules/css-modules) by default to import stylesheets.
-We recommend webpack, or any other bundler if it allow to import `.styl` files located in `node_modules`
+Gems UI uses [stylus](http://stylus-lang.com/) and [css-modules](https://github.com/css-modules/css-modules) by default to import stylesheets.
+It is necessary to import `.styl` files located in `node_modules`. We recommend using webpack, but other bundlers can be configured.
 
 Here is webpack config example
 ```jsx
