@@ -1,6 +1,6 @@
 {
   "name": "@gigs/components",
-  "version": "0.0.16",
+  "version": "0.0.17",
   "description": "Gems components",
   "main": "index.js",
   "license": "MPL-2.0",
