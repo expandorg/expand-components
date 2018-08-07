@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 
 import cn from 'classnames';
 
-import Submit from '../Submit';
 import Validation from '../Validation';
 import Paragraph from '../Paragraph';
 import ErrorMessage from '../../components/ErrorMessage';
@@ -28,12 +27,15 @@ export default class Form extends Component {
   };
 
   state = {
-    values: {},
+    values: null,
     errors: null,
   };
 
-  componentWillReceiveProps({ errors: nextErrors }) {
-    const { errors } = this.props;
+  componentWillReceiveProps({ form: nextForm, errors: nextErrors }) {
+    const { errors, form } = this.props;
+    if (form !== nextForm) {
+      this.setState({ values: null });
+    }
     if (nextErrors && nextErrors !== errors) {
       this.setState({ errors: nextErrors });
     }
@@ -42,16 +44,16 @@ export default class Form extends Component {
   handleChange = (field, value) => {
     this.setState(({ values, errors }) => ({
       values: {
-        ...values,
+        ...(values || {}),
         [field]: value,
       },
-      errors:
-        !errors || !errors[field]
-          ? errors
-          : {
-              ...errors,
-              [field]: undefined,
-            },
+      errors: !errors
+        ? errors
+        : {
+            ...errors,
+            commonMessage: undefined,
+            [field]: undefined,
+          },
     }));
   };
 
@@ -86,17 +88,14 @@ export default class Form extends Component {
         )}
         {form.fields.map(field => (
           <Validation key={field.name} name={field.name} error={errors}>
-            {children({ field, value: values[field.name], ...props })}
+            {children({
+              field,
+              value: values ? values[field.name] : undefined,
+              ...props,
+            })}
           </Validation>
         ))}
-        <ErrorMessage error={errors} />
-        {form.submit && (
-          <Submit
-            {...form.submit}
-            isSubmitting={isSubmitting}
-            onSubmit={this.handleSubmit}
-          />
-        )}
+        <ErrorMessage className={styles.error} error={errors} />
       </form>
     );
   }

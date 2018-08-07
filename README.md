@@ -1,5 +1,6 @@
 # Gems UI
 [![npm version](https://img.shields.io/npm/v/@gigs/components.svg?style=flat-square)](https://www.npmjs.com/package/@gigs/components)
+[![license](https://img.shields.io/npm/l/@gigs/components.svg?style=flat-square)](https://www.npmjs.com/package/@gigs/components)
 
 Gems UI is a collection of React components, tools and guidelines for creating Gems products.
 * **Forms:** Dynamic JSON powered form library for React.
@@ -118,3 +119,5 @@ storiesOf("Components/MyCustomComponent", module)
 ```
 
 ## License
+
+This project is licensed under the terms of [Mozilla Public License 2.0](./LICENSE).

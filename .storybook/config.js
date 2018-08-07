@@ -36,7 +36,10 @@ const stories = [
 configure(() => {
   require('../stories/general/index.stories');
 
+  require('../stories/fields/index.stories');
   require('../stories/fields/Playground.stories');
+  require('../stories/fields/Fields.stories');
+  require('../stories/fields/Validation.stories');
 
   stories.forEach(story => {
     require(`../stories/components/${story}.stories`);

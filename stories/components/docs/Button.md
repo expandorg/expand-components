@@ -7,7 +7,7 @@
 import React from 'react';
 import { Button } from '@gigs/components';
 
-export default   ({onClick }) => (
+export default   ({ onClick }) => (
   <Button onClick={onClick} theme={theme} disabled={disabled} >
     Hello Button
   </Button>
@@ -22,4 +22,4 @@ export default   ({onClick }) => (
 | *className*  | string                  | -        | null          |
 | *size*       | small, medium, large    | -        | medium        |
 | *onClick*    | func                    | -        | -             |
-| *theme*      | pink, white, transparent, aqua, blue, link, none  | -        | pink          |
+| *theme*      | pink, white, transparent, aqua, blue, link, none  | -  | pink  |

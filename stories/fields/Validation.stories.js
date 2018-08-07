@@ -4,15 +4,12 @@ import { storiesOf } from '@storybook/react';
 
 import Panel from '../../src/components/Panel';
 
-import Kind from '../kit/Kind';
 import Playground from './Playground/Playground';
 
 import { trivia } from './forms';
 
-storiesOf('Form Builder', module).add('Playground', () => (
+storiesOf('Form Builder', module).add('Validation', () => (
   <Panel>
-    <Kind title="Playground">
-      <Playground form={trivia} fullscreen />
-    </Kind>
+    <Playground form={trivia} />
   </Panel>
 ));

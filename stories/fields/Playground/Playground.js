@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 import debounce from 'debounce';
 import cn from 'classnames';
 
-import Panel from '../../../src/components/Panel';
-
 import { Field } from '../../../src/fields/Field';
 import { Form, formProps } from '../../../src/fields/Form';
 
@@ -71,12 +69,11 @@ export default class Playground extends Component {
   };
 
   render() {
-    const { title, children, editMode, fullscreen } = this.props;
+    const { editMode, fullscreen } = this.props;
     const { source, form, error } = this.state;
+    const classes = cn(styles.container, { [styles.fullscreen]: fullscreen });
     return (
-      <Panel className={cn(styles.panel, { [styles.fullscreen]: fullscreen })}>
-        <div className={styles.title}>{title}</div>
-        <div className={styles.description}>{children}</div>
+      <div className={classes}>
         <div className={styles.content}>
           {editMode !== 'hidden' && (
             <Editor
@@ -91,14 +88,13 @@ export default class Playground extends Component {
             <Form
               form={form}
               className={styles.form}
-              submitState={{ state: '' }}
               onSubmit={this.handleSubmit}
             >
               {fieldProps => <Field {...fieldProps} />}
             </Form>
           </div>
         </div>
-      </Panel>
+      </div>
     );
   }
 }
