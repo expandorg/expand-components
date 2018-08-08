@@ -1,16 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import Input from '../Input';
-import Submit from '../Submit';
-import Article from '../Article';
-import Title from '../Title';
-import Paragraph from '../Paragraph';
-import { SelectField } from '../Select';
-import Checkbox from '../Checkbox';
-
-import FieldType from './fieldType';
 import fieldProps from './fieldProps';
+import fieldControls from './fieldControls';
 
 export default class Field extends Component {
   static propTypes = {
@@ -19,38 +11,37 @@ export default class Field extends Component {
     isSubmitting: PropTypes.bool.isRequired,
     onChange: PropTypes.func.isRequired,
     onSubmit: PropTypes.func.isRequired,
+    controls: PropTypes.object, // eslint-disable-line
   };
 
   static defaultProps = {
     value: undefined,
+    controls: fieldControls,
   };
 
   render() {
-    const { field, value, onChange, isSubmitting, onSubmit } = this.props;
+    const {
+      field,
+      value,
+      onChange,
+      isSubmitting,
+      onSubmit,
+      controls,
+    } = this.props;
 
-    switch (field.type) {
-      case FieldType.text:
-      case FieldType.number:
-      case FieldType.email:
-      case FieldType.password:
-        return <Input {...field} value={value} onChange={onChange} />;
-      case FieldType.title:
-        return <Title {...field} />;
-      case FieldType.paragraph:
-        return <Paragraph {...field} />;
-      case FieldType.select:
-        return <SelectField {...field} value={value} onChange={onChange} />;
-      case FieldType.checkbox:
-        return <Checkbox {...field} value={value} onChange={onChange} />;
-      case FieldType.article:
-        return <Article {...field} />;
-      case FieldType.submit:
-        return (
-          <Submit {...field} onSubmit={onSubmit} isSubmitting={isSubmitting} />
-        );
-      default:
-        break;
+    const Control = controls[field.type];
+    if (!Control) {
+      return null;
     }
-    return null;
+
+    return (
+      <Control
+        {...field}
+        value={value}
+        onChange={onChange}
+        onSubmit={onSubmit}
+        isSubmitting={isSubmitting}
+      />
+    );
   }
 }

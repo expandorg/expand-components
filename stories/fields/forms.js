@@ -1,27 +1,11 @@
 // @flow
 
-const createForm = (
-  submit: ?(string | Object),
-  fields: Array<Object>,
-  description?: string
-) => {
-  let submitField = submit;
-  if (typeof submit === 'string') {
-    submitField = { caption: submit };
-  }
-  return {
-    name: 'Form',
-    description,
-    submit: submitField,
-    fields,
-  };
-};
+const createForm = (fields: Array<Object>, description?: string) => ({
+  description,
+  fields,
+});
 
 export const trivia = createForm(
-  {
-    caption: 'Next',
-    justify: 'center',
-  },
   [
     {
       name: 'question',
@@ -45,11 +29,17 @@ export const trivia = createForm(
       type: 'password',
       placeholder: 'Password',
     },
+    {
+      name: 'submit',
+      type: 'submit',
+      caption: 'Next',
+      justify: 'center',
+    },
   ],
   'Write a trivia question with three multiple-choice answers. One answer should be correct and fact-checked,  and two answers should be incorrect.'
 );
 
-export const input = createForm('Next', [
+export const input = createForm([
   {
     name: 'text',
     type: 'text',
@@ -70,9 +60,14 @@ export const input = createForm('Next', [
     type: 'email',
     placeholder: 'Email field',
   },
+  {
+    name: 'submit',
+    type: 'submit',
+    caption: 'Next',
+  },
 ]);
 
-export const article = createForm('Got it', [
+export const article = createForm([
   {
     name: 'article',
     type: 'article',
@@ -80,22 +75,28 @@ export const article = createForm('Got it', [
     content:
       'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ',
   },
+  {
+    name: 'submit',
+    type: 'submit',
+    caption: 'Got it',
+  },
 ]);
 
-export const checkbox = createForm('I Agree', [
+export const checkbox = createForm([
   {
     name: 'checkbox',
     type: 'checkbox',
     validation: ['isRequired'],
     label: 'simple checkbox',
   },
+  {
+    name: 'submit',
+    type: 'submit',
+    caption: 'I Agree',
+  },
 ]);
 
 export const select = createForm(
-  {
-    caption: 'Next',
-    justify: 'center',
-  },
   [
     {
       name: 'select',
@@ -106,6 +107,12 @@ export const select = createForm(
         { id: '3', caption: 'Option 2' },
         { id: 'IV', caption: 'Option 4' },
       ],
+    },
+    {
+      name: 'submit',
+      type: 'submit',
+      caption: 'Next',
+      justify: 'center',
     },
   ],
   'Select one'
