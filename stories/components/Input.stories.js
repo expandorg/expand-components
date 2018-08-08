@@ -11,7 +11,7 @@ import Markdown from '../kit/Markdown';
 
 import readme from './docs/Input.md';
 
-storiesOf('Components/Input', module)
+storiesOf('UI Components/Input', module)
   .addDecorator(panelDecorator)
   .add('default', () => (
     <div>

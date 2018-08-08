@@ -20,7 +20,7 @@ import styles from './styles.module.styl';
 
 setAppElement(document.getElementById('root'));
 
-storiesOf('Components/Dialog', module)
+storiesOf('UI Components/Dialog', module)
   .addDecorator(panelDecorator)
   .add('default', () => (
     <div>

@@ -1,10 +1,10 @@
 {
   "name": "@gigs/components",
-  "version": "0.0.17",
-  "description": "Gems components",
-  "main": "index.js",
-  "license": "ISC",
+  "version": "0.0.19",
+  "description": "Gems UI components library",
+  "license": "MPL-2.0",
   "author": "gems.org",
+  "main": "index.js",
   "files": [
     "README.md",
     "src",
@@ -27,6 +27,12 @@
     "url": "https://github.com/gemsorg/gems-components/issues"
   },
   "homepage": "https://github.com/gemsorg/gems-components#readme",
+  "keywords": [
+    "react",
+    "ui-kit",
+    "form-builder",
+    "storybook"
+  ],
   "peerDependencies": {
     "react": "^16.0.0",
     "react-dom": "^16.0.0",

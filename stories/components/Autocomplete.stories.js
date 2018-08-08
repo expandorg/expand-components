@@ -25,7 +25,7 @@ const options = [
   'brown',
 ];
 
-storiesOf('Components/Autocomplete', module)
+storiesOf('UI Components/Autocomplete', module)
   .addDecorator(panelDecorator)
   .add('default', () => {
     const type = action('type');

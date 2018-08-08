@@ -15,7 +15,7 @@ import readme from './docs/Checkbox.md';
 
 const Checkbox = asUncontrolled(ControlledCheckbox);
 
-storiesOf('Components/Checkbox', module)
+storiesOf('UI Components/Checkbox', module)
   .addDecorator(panelDecorator)
   .add('default', () => {
     const clicked = action('clicked');

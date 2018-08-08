@@ -1,14 +1,13 @@
-# Forms bulder
+# Forms builder
 
-
-## Usage
+## Basic Usage
 
 ```jsx
 const form = {
   fields: []
 }
 
-class Playground extends Component {
+class CustomForm extends Component {
   handleSubmit = values => {
     console.log(values);
   };
@@ -25,7 +24,6 @@ class Playground extends Component {
 }
 
 ```
-
 
 ## Form Props
 
@@ -49,6 +47,33 @@ class Playground extends Component {
 | *onSubmit*     | func                | -        | -             |
 
 
+## Using your own field
+```jsx
+
+class MyField extends Component {  
+  render() {  
+    const { field, value, onChange } = this.props;
+    switch (field.type) {
+      case: 'input' :
+        return <MyInput {...field} value={value} onChange={onChange} />;
+      case: 'autcomplete' :
+        return <AutocompleteField {...field} value={value} onChange={onChange} />;
+      default:
+        break;
+    }
+    return <Field {...this.props} />
+  }
+}
+
+const CustomForm = ({ onSubmit }) => (
+  <Form form={form} onSubmit={this.handleSubmit}>
+    {fieldProps => <MyField {...fieldProps} />}
+  </Form>  
+)
+
+```
+
+
 # Form example
 
-Basic form example 
+Basic form example

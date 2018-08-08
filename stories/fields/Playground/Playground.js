@@ -16,7 +16,6 @@ const DELAY = 300;
 
 export default class Playground extends Component {
   static propTypes = {
-    title: PropTypes.string.isRequired,
     editMode: PropTypes.oneOf(['full', 'edit', 'readOnly', 'hidden']),
     fullscreen: PropTypes.bool,
     form: formProps.isRequired,

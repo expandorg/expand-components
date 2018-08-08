@@ -14,7 +14,7 @@ import readme from './docs/Toast.md';
 
 import styles from './styles.module.styl';
 
-storiesOf('Components/Toast', module)
+storiesOf('UI Components/Toast', module)
   .addDecorator(panelDecorator)
   .add('default', () => (
     <div>

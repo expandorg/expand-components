@@ -18,7 +18,7 @@ import styles from './styles.module.styl';
 const themes = ['pink', 'white', 'transparent', 'aqua', 'blue', 'link'];
 const sizes = ['small', 'medium', 'large'];
 
-const stories = storiesOf('Components/Button', module)
+const stories = storiesOf('UI Components/Button', module)
   .addDecorator(panelDecorator)
   .addDecorator(withKnobs);
 

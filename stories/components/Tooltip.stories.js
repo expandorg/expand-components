@@ -17,7 +17,7 @@ import styles from './styles.module.styl';
 
 const Button = Tooltip(SimpleButton);
 
-storiesOf('Components/Tooltip', module)
+storiesOf('UI Components/Tooltip', module)
   .addDecorator(panelDecorator)
   .add('default', () => {
     const clicked = action('click');

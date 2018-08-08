@@ -22,15 +22,15 @@ const components = [
   'Tooltip',
 ];
 
-storiesOf('Components', module)
+storiesOf('UI Components', module)
   .addDecorator(panelDecorator)
   .add('Readme', () => (
     <div>
-      <Kind title="Gems components">
+      <Kind title="Gems UI components">
         {components.map(component => (
           <LinkTo
             key={component}
-            kind={`Components/${component}`}
+            kind={`UI Components/${component}`}
             story="default"
             className={styles.link}
           >

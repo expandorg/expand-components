@@ -10,7 +10,7 @@ import Markdown from '../kit/Markdown';
 
 import readme from './docs/Textarea.md';
 
-storiesOf('Components/Textarea', module)
+storiesOf('UI Components/Textarea', module)
   .addDecorator(panelDecorator)
   .add('default', () => (
     <div>
