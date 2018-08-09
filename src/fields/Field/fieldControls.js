@@ -8,6 +8,7 @@ import Paragraph from '../Paragraph';
 import { SelectField } from '../Select';
 import Checkbox from '../Checkbox';
 import Video from '../Video';
+import Image from '../Image';
 
 import FieldType from './fieldType';
 
@@ -23,6 +24,7 @@ const fieldControls = {
   [FieldType.article]: Article,
   [FieldType.submit]: Submit,
   [FieldType.video]: Video,
+  [FieldType.image]: Image,
 };
 
 export default fieldControls;

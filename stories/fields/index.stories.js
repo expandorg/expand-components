@@ -9,7 +9,7 @@ import Playground from './Playground/Playground';
 
 import readme from './docs/Readme.md';
 
-import { trivia } from './forms';
+import trivia from './trivia';
 
 storiesOf('Form Builder', module)
   .addDecorator(panelDecorator)

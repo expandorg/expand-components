@@ -81,6 +81,9 @@ const fieldFactories = {
   [FieldType.video]: (params: Object) => ({
     ...params,
   }),
+  [FieldType.image]: (params: Object) => ({
+    ...params,
+  }),
 };
 
 export const appendField = (

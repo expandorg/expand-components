@@ -20,7 +20,7 @@ setOptions({
   showAddonPanel: false,
 });
 
-const stories = [
+const componentStories = [
   'index',
   'Button',
   'Input',
@@ -32,16 +32,30 @@ const stories = [
   'Tooltip',
 ];
 
+
+const fieldStories = [
+  'Input',
+  'Select',
+  'Checkbox',
+  'Article',
+  'Image',
+  'Video',
+  'Submit',
+  'Validation',
+];
+
 /* eslint-disable global-require */
 configure(() => {
   require('../stories/general/index.stories');
 
   require('../stories/fields/index.stories');
-  require('../stories/fields/Playground.stories');
-  require('../stories/fields/Fields.stories');
-  require('../stories/fields/Validation.stories');
 
-  stories.forEach(story => {
+  fieldStories.forEach(story => {
+    require(`../stories/fields/${story}.stories`);
+  })
+  require('../stories/fields/Playground.stories');
+
+  componentStories.forEach(story => {
     require(`../stories/components/${story}.stories`);
   })
 }, module);

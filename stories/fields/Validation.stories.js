@@ -6,9 +6,9 @@ import Panel from '../../src/components/Panel';
 
 import Playground from './Playground/Playground';
 
-import { trivia } from './forms';
+import trivia from './trivia';
 
-storiesOf('Form Builder', module).add('Validation', () => (
+storiesOf('Form Builder/Fields', module).add('Validation', () => (
   <Panel>
     <Playground form={trivia} />
   </Panel>
