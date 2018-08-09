@@ -117,3 +117,20 @@ export const select = createForm(
   ],
   'Select one'
 );
+
+export const video = createForm(
+  [
+    {
+      name: 'video',
+      type: 'video',
+      src: 'http://media.gettyimages.com/videos/cap-video-id896606100',
+    },
+    {
+      name: 'submit',
+      type: 'submit',
+      caption: 'Next',
+      justify: 'center',
+    },
+  ],
+  'Select one'
+);

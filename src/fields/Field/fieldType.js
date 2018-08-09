@@ -13,6 +13,7 @@ const FieldType = {
   title: 'title',
   paragraph: 'paragraph',
   article: 'article',
+  video: 'video',
 };
 
 export default FieldType;

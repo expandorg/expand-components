@@ -78,6 +78,9 @@ const fieldFactories = {
     content:
       'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ',
   }),
+  [FieldType.video]: (params: Object) => ({
+    ...params,
+  }),
 };
 
 export const appendField = (

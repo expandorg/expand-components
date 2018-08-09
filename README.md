@@ -5,7 +5,7 @@
 Gems UI is a collection of React components, tools and guidelines for creating Gems products.
 * **Forms:** Dynamic JSON powered form library for React.
 
-* **Components:** set of components such as Buttons, Panels, Menus, HOC's.
+* **UI Components:** set of components such as Buttons, Panels, Menus, HOC's.
 
 * **UI kit:** colors, dimensions and typography used across gems.org apps
 
