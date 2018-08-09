@@ -8,7 +8,7 @@ import styles from './styles.module.styl';
 export default () => (
   <div className={styles.container}>
     <h1 className={styles.header}>Colors</h1>
-    <Kind title="Base Colors">
+    <Kind title="Base Colors" className={styles.frame}>
       <div className={styles.colors}>
         <div className={cn(styles.color, styles.pink)}>color-pink</div>
         <div className={cn(styles.color, styles.pinkLight)}>
@@ -21,7 +21,7 @@ export default () => (
         <div className={cn(styles.color, styles.blue)}>color-blue</div>
       </div>
     </Kind>
-    <Kind title="Text Colors">
+    <Kind title="Text Colors" className={styles.frame}>
       <div className={styles.colors}>
         <div className={cn(styles.color, styles.text1)}>color-text-1</div>
         <div className={cn(styles.color, styles.textGray1)}>
@@ -29,7 +29,7 @@ export default () => (
         </div>
       </div>
     </Kind>
-    <Kind title="Grayscale">
+    <Kind title="Grayscale" className={styles.frame}>
       <div className={styles.colors}>
         <div className={cn(styles.color, styles.black)}>color-black</div>
         <div className={cn(styles.color, styles.borderGray)}>

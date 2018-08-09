@@ -3,9 +3,10 @@
 [![license](https://img.shields.io/npm/l/@gigs/components.svg?style=flat-square)](https://www.npmjs.com/package/@gigs/components)
 
 Gems UI is a collection of React components, tools and guidelines for creating Gems products.
-* **[Forms](https://gemsorg.github.io/gems-components/?selectedKind=Form%20Builder&selectedStory=Readme&full=0&addons=0&stories=1&panelRight=0&addonPanel=storybook%2Factions%2Factions-panel):** Dynamic JSON powered form library for React.
+* **[Forms](https://gemsorg.github.io/gems-components/?selectedKind=Form%20Builder&selectedStory=Readme&full=0&addons=0&stories=1&panelRight=0&addonPanel=storybook%2Factions%2Factions-panel):** Dynamic extensible JSON powered form library for React.
 
-* **[UI Components](https://gemsorg.github.io/gems-components/?selectedKind=UI%20Components&selectedStory=Readme):** set of components such as Buttons, Panels, Menus, HOC's.
+* **[UI Components](https://gemsorg.github.io/gems-components/?selectedKind=UI%20Components&selectedStory=Readme):** set of components such as Buttons, Panels, Menus, HOC's. General purpose components used to build gems.org web applications.
+
 
 * **UI kit:** [colors](https://gemsorg.github.io/gems-components/?selectedKind=Gems%20UI&selectedStory=Colors), and [typography](https://gemsorg.github.io/gems-components/?selectedKind=Gems%20UI&selectedStory=Typography) used across [gems.org](https://gems.org) apps
 

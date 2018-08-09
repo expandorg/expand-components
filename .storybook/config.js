@@ -38,6 +38,8 @@ const fieldStories = [
   'Select',
   'Checkbox',
   'Article',
+  'Title',
+  'Paragraph',
   'Image',
   'Video',
   'Submit',
