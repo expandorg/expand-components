@@ -75,7 +75,39 @@ const MyComponent = () => (
     Hello World
   </Button>
 );
+```
 
+## Form Builder Usage
+
+```jsx
+import React from 'react'
+import { Form, Field } from '@gigs/components/fields';
+
+
+const form = {   // define form fields
+  fields: [{
+    name: "paragraph",
+    type: "paragraph",
+    content: "Lorem ipsum dolor sit amet"
+  }]
+}
+
+
+class CustomForm extends Component {    // your form component
+  handleSubmit = values => {
+    console.log(values);
+  };
+
+  render() {
+    return (
+      <Form form={form} onSubmit={this.handleSubmit}>
+        {fieldProps => (
+          <Field {...fieldProps} />
+        )}
+      </Form>
+    );
+  }
+}
 ```
 
 ## Development with Storybook

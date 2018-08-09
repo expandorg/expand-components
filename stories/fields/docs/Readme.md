@@ -1,8 +1,12 @@
 # Forms builder
 
+Dynamic extensible JSON powered form library for React.
+
 ## Basic Usage
 
 ```jsx
+import { Form, Fields } from '@gigs/components/fields';
+
 const form = {
   fields: []
 }
@@ -48,26 +52,40 @@ class CustomForm extends Component {
 
 
 ## Using your own field
-```jsx
 
-class MyField extends Component {  
-  render() {  
-    const { field, value, onChange } = this.props;
-    switch (field.type) {
-      case: 'input' :
-        return <MyInput {...field} value={value} onChange={onChange} />;
-      case: 'autcomplete' :
-        return <AutocompleteField {...field} value={value} onChange={onChange} />;
-      default:
-        break;
-    }
-    return <Field {...this.props} />
+Most simple way to add custom field to form bulder is overriding `controls` property of `Field`
+
+```jsx
+import React from 'react';
+import { Form, Fields, fieldControls } from '@gigs/components/fields';
+
+// your custom component
+class MyInputField extends Component {
+  static propTypes = {
+    value: PropTypes.string,
+    onChange: PropTypes.func.isRequired,
+  };
+
+  handleChange = ({ target }) => {
+    const { name, onChange } = this.props;
+    onChange(name, target.value);
+  };
+
+  render() {
+    const { type, value } = this.props;
+    return  <input type={inputType} onChange={this.handleChange} value={value} />;
   }
+}
+
+// override input field type with MyInputField
+const controls = {
+  ...fieldControls,
+  input: MyInputField,
 }
 
 const CustomForm = ({ onSubmit }) => (
   <Form form={form} onSubmit={this.handleSubmit}>
-    {fieldProps => <MyField {...fieldProps} />}
+    {fieldProps => <Field controls={controls} {...fieldProps} />}
   </Form>  
 )
 

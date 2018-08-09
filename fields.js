@@ -20,7 +20,12 @@ import Title from './src/fields/Title';
 
 import Validation from './src/fields/Validation';
 
-import { Field, fieldProps, FieldType } from './src/fields/Field';
+import {
+  Field,
+  fieldProps,
+  FieldType,
+  fieldControls,
+} from './src/fields/Field';
 import { Form, formProps } from './src/fields/Form';
 
 export {
@@ -29,11 +34,12 @@ export {
   Choice,
   SelectField,
   Article,
-  Field,
   Form,
   formProps,
+  Field,
   fieldProps,
   FieldType,
+  fieldControls,
   Image,
   Input,
   Modal,
