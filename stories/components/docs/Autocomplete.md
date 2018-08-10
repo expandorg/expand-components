@@ -5,7 +5,7 @@
 
 ```jsx
 import React from 'react';
-import { AutocompleteInput } from '@gigs/components';
+import { AutocompleteInput } from '@gemsorg/components';
 
 export default   ({ value, onChange, onSelect }) => (
   <AutocompleteInput

@@ -1,8 +1,8 @@
-# Gems UI
-[![npm version](https://img.shields.io/npm/v/@gigs/components.svg?style=flat-square)](https://www.npmjs.com/package/@gigs/components)
-[![license](https://img.shields.io/npm/l/@gigs/components.svg?style=flat-square)](https://www.npmjs.com/package/@gigs/components)
+# Gems UI & Modules
+[![npm version](https://img.shields.io/npm/v/@gemsorg/components.svg?style=flat-square)](https://www.npmjs.com/package/@gemsorg/components)
+[![license](https://img.shields.io/npm/l/@gemsorg/components.svg?style=flat-square)](https://www.npmjs.com/package/@gemsorg/components)
 
-Gems UI is a collection of React components, tools and guidelines for creating Gems products.
+Gems UI & Modules is a collection of React components, tools and guidelines for creating Gems products.
 * **[Forms](https://gemsorg.github.io/gems-components/?selectedKind=Form%20Builder&selectedStory=Readme&full=0&addons=0&stories=1&panelRight=0&addonPanel=storybook%2Factions%2Factions-panel):** Dynamic extensible JSON powered form library for React.
 
 * **[UI Components](https://gemsorg.github.io/gems-components/?selectedKind=UI%20Components&selectedStory=Readme):** set of components such as Buttons, Panels, Menus, HOC's. General purpose components used to build gems.org web applications.
@@ -17,15 +17,15 @@ https://gemsorg.github.io/gems-components/
 
 ## installation
 
-Gems components library is available as an [npm package](https://www.npmjs.com/package/@gigs/components):
+Gems components library is available as an [npm package](https://www.npmjs.com/package/@gemsorg/components):
 
 ```bash
-npm install  @gigs/components --save
+npm install  @gemsorg/components --save
 ```
 
 ## Prerequisites
 
-Gems UI uses [stylus](http://stylus-lang.com/) and [css-modules](https://github.com/css-modules/css-modules) by default to import stylesheets.
+Gems UI & Modules uses [stylus](http://stylus-lang.com/) and [css-modules](https://github.com/css-modules/css-modules) by default to import stylesheets.
 It is necessary to import `.styl` files located in `node_modules`. We recommend using webpack, but other bundlers can be configured.
 
 Here is webpack config example
@@ -45,7 +45,7 @@ export default (env = {}) => {
             'postcss-loader?sourceMap',
             'stylus-loader?paths[]=src',
           ],
-          exclude: /node_modules\/(?!(@gigs)\/).*/,
+          exclude: /node_modules\/(?!(@gemsorg)\/).*/,
         },
         {
           test: /\.module\.styl$/,
@@ -55,7 +55,7 @@ export default (env = {}) => {
             'postcss-loader?sourceMap',
             'stylus-loader?paths[]=src',
           ],
-          exclude: /node_modules\/(?!(@gigs)\/).*/,
+          exclude: /node_modules\/(?!(@gemsorg)\/).*/,
         }
       ],
     },
@@ -68,7 +68,7 @@ export default (env = {}) => {
 
 ```jsx
 import React from 'react'
-import { Button } from '@gigs/components';
+import { Button } from '@gemsorg/components';
 
 const MyComponent = () => (
   <Button size="medium" theme="pink" onClick={() => console.log('click!')}>
@@ -81,7 +81,7 @@ const MyComponent = () => (
 
 ```jsx
 import React from 'react'
-import { Form, Module } from '@gigs/components/modules';
+import { Form, Module } from '@gemsorg/components/modules';
 
 
 const form = {   // define form modules

@@ -5,7 +5,7 @@
 
 ```jsx
 import React from 'react';
-import { Input } from '@gigs/components';
+import { Input } from '@gemsorg/components';
 
 export default   ({ value, onChange }) => (
   <Input

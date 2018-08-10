@@ -8,7 +8,7 @@ Wrapped component should expose `children` as props and have top element style `
 
 ```jsx
 import React from 'react';
-import { Button as Btn, Tooltip } from '@gigs/components';
+import { Button as Btn, Tooltip } from '@gemsorg/components';
 
 const Button = Tooltip(Btn);
 

@@ -5,7 +5,7 @@
 
 ```jsx
 import React from 'react';
-import { Dialog, DialogHeadline } from '@gigs/components';
+import { Dialog, DialogHeadline } from '@gemsorg/components';
 
 export default   ({ value, onChange, onChange }) => (
   <Dialog onHide={onToggle} visible={visible} contentLabel="test" >
