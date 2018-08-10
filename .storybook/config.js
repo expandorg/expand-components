@@ -33,13 +33,17 @@ const componentStories = [
 ];
 
 
-const fieldStories = [
+const moduleStories = [
+  'index',
+  'Playground',
+
   'Input',
   'Select',
   'Checkbox',
   'Article',
   'Title',
   'Paragraph',
+  'Description',
   'Image',
   'Video',
   'Submit',
@@ -50,12 +54,9 @@ const fieldStories = [
 configure(() => {
   require('../stories/general/index.stories');
 
-  require('../stories/fields/index.stories');
-
-  fieldStories.forEach(story => {
-    require(`../stories/fields/${story}.stories`);
+  moduleStories.forEach(story => {
+    require(`../stories/modules/${story}.stories`);
   })
-  require('../stories/fields/Playground.stories');
 
   componentStories.forEach(story => {
     require(`../stories/components/${story}.stories`);

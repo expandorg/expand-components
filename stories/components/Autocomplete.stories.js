@@ -79,23 +79,26 @@ storiesOf('UI Components/Autocomplete', module)
   .add('allow add new', () => {
     const type = action('type');
     return (
-      <Kind title="Autocomplete">
-        <StateProvider initial="">
-          {(value, onChange) => (
-            <AutocompleteInput
-              placeholder="Type..."
-              value={value}
-              clear
-              allowAdd
-              onChange={evt => {
-                onChange(evt.target.value);
-                type(evt);
-              }}
-              onSelect={onChange}
-              options={options}
-            />
-          )}
-        </StateProvider>
-      </Kind>
+      <div>
+        <Kind title="Autocomplete">
+          <StateProvider initial="">
+            {(value, onChange) => (
+              <AutocompleteInput
+                placeholder="Type..."
+                value={value}
+                clear
+                allowAdd
+                onChange={evt => {
+                  onChange(evt.target.value);
+                  type(evt);
+                }}
+                onSelect={onChange}
+                options={options}
+              />
+            )}
+          </StateProvider>
+        </Kind>
+        <Markdown doc={readme} />
+      </div>
     );
   });

@@ -81,11 +81,11 @@ const MyComponent = () => (
 
 ```jsx
 import React from 'react'
-import { Form, Field } from '@gigs/components/fields';
+import { Form, Module } from '@gigs/components/modules';
 
 
-const form = {   // define form fields
-  fields: [{
+const form = {   // define form modules
+  modules: [{
     name: "paragraph",
     type: "paragraph",
     content: "Lorem ipsum dolor sit amet"
@@ -101,8 +101,8 @@ class CustomForm extends Component {    // your form component
   render() {
     return (
       <Form form={form} onSubmit={this.handleSubmit}>
-        {fieldProps => (
-          <Field {...fieldProps} />
+        {moduleProps => (
+          <Module {...moduleProps} />
         )}
       </Form>
     );

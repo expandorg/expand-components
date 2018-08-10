@@ -1,6 +1,6 @@
 {
   "name": "@gigs/components",
-  "version": "0.0.21",
+  "version": "0.0.22",
   "description": "Gems UI components library",
   "license": "MPL-2.0",
   "author": "gems.org",
@@ -9,7 +9,7 @@
     "README.md",
     "src",
     "index.js",
-    "fields.js",
+    "modules.js",
     "hoc.js"
   ],
   "scripts": {
