@@ -5,7 +5,6 @@ import Kind from '../kit/Kind';
 import panelDecorator from '../kit/panelDecorator';
 
 import Input from '../../src/components/Input';
-import ErrorMessage from '../../src/components/ErrorMessage';
 
 import Markdown from '../kit/Markdown';
 
@@ -17,15 +16,6 @@ storiesOf('UI Components/Input', module)
     <div>
       <Kind title="Input">
         <Input placeholder="Type something..." />
-      </Kind>
-      <Markdown doc={readme} />
-    </div>
-  ))
-  .add('with error', () => (
-    <div>
-      <Kind title="Input with error message">
-        <Input placeholder="Type something..." />
-        <ErrorMessage error={{ commonMessage: 'some error message' }} />
       </Kind>
       <Markdown doc={readme} />
     </div>
