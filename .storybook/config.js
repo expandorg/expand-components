@@ -13,7 +13,7 @@ addDecorator((story) => (
 ));
 
 setOptions({
-  name: 'Gems.org UI Kit',
+  name: 'Gems',
   url: 'https://github.com/gemsorg/gems-components',
   // addonPanelInRight: true,
   sidebarAnimations: true,
