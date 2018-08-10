@@ -3,10 +3,13 @@ import PropTypes from 'prop-types';
 
 import cn from 'classnames';
 
+import { validateForm } from '../../common/validation';
+
 import Validation from '../Validation';
 import ErrorMessage from '../../components/ErrorMessage';
 
 import formProps from './formProps';
+import formValidationRules from './formValidationRules';
 
 import styles from './Form.module.styl';
 
@@ -16,12 +19,14 @@ export default class Form extends Component {
     form: formProps.isRequired,
     errors: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
     isSubmitting: PropTypes.bool,
+    validation: PropTypes.bool,
     onSubmit: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
     className: null,
     isSubmitting: false,
+    validation: true,
     errors: null,
   };
 
@@ -58,9 +63,21 @@ export default class Form extends Component {
 
   handleSubmit = evt => {
     evt.preventDefault();
-    const { onSubmit } = this.props;
+    const { onSubmit, form, validation } = this.props;
     const { values } = this.state;
-    this.setState({ errors: null }, () => onSubmit(values));
+
+    if (validation) {
+      const rules = formValidationRules(form.modules);
+      const errors = validateForm(values || {}, rules);
+
+      if (errors) {
+        this.setState({ errors });
+      } else {
+        this.setState({ errors: null }, () => onSubmit(values));
+      }
+    } else {
+      this.setState({ errors: null }, () => onSubmit(values));
+    }
   };
 
   render() {

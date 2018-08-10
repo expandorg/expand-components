@@ -8,7 +8,7 @@ import Checkbox from './src/modules/Checkbox';
 
 import Description from './src/modules/Description';
 
-import { Form, formProps } from './src/modules/Form';
+import { Form, formProps, formValidationRules } from './src/modules/Form';
 
 import Image from './src/modules/Image';
 
@@ -42,6 +42,7 @@ export {
   Description,
   Form,
   formProps,
+  formValidationRules,
   Image,
   Input,
   Modal,
