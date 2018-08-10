@@ -25,7 +25,7 @@ npm install  @gemsorg/components --save
 
 ## Prerequisites
 
-Gems UI & Modules uses [stylus](http://stylus-lang.com/) and [css-modules](https://github.com/css-modules/css-modules) by default to import stylesheets.
+Gems UI & Modules use [stylus](http://stylus-lang.com/) and [css-modules](https://github.com/css-modules/css-modules) by default to import stylesheets.
 It is necessary to import `.styl` files located in `node_modules`. We recommend using webpack, but other bundlers can be configured.
 
 Here is webpack config example
