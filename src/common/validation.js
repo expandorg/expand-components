@@ -7,12 +7,6 @@ export const rules = {
   isEmail: (value: any) => typeof value !== 'undefined' && isEmail(value),
 };
 
-export const ruleMessages = {
-  isRequired: (field: string) => `${field} is required`,
-  isNotEmpty: (field: string) => `${field} shuld not be empty`,
-  isEmail: (field: string) => `${field} shuld be valid email address`,
-};
-
 export const validateField = (
   fieldValue: any,
   fieldRules: Array<any> | Object
