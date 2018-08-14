@@ -35,7 +35,6 @@ const componentStories = [
 
 const moduleStories = [
   'index',
-  'Playground',
 
   'Input',
   'Select',
@@ -48,7 +47,6 @@ const moduleStories = [
   'Image',
   'Video',
   'Submit',
-  'Validation',
 ];
 
 /* eslint-disable global-require */

@@ -15,7 +15,7 @@
 
 | Property     | type           | Required | Default | description |
 | ------------ | -------------- | -------- | ------- | ----------- |
-| *type*       | 'artcle'       | true     | -       | module type |
+| *type*       | `artcle`       | true     | -       | module type |
 | *name*       | string         | true     | -       | module name |
 | *title*      | string         | -        | -       | artcle title |
 | *content*    | string         | -        | -       | article body |

@@ -14,9 +14,9 @@
 
 | Property       | type           | Required | Default | description |
 | -------------- | -------------- | -------- | ------- | ----------- |
-| *type*         | 'text' 'number' 'email' 'password'     | true     | -       | module type  |
+| *type*         | `text` `number` `email` `password`     | true     | -       | module type  |
 | *name*         | string         | true     | -       | module name  |
 | *placeholder*  | string         | -        | -       | input placeholder  |
-
+| *[validation](https://gemsorg.github.io/gems-components/?selectedKind=Form%20Builder&selectedStory=Validation)*  | validtion | - | - | validation rules |
 
 ## Playground

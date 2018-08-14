@@ -15,10 +15,10 @@
 
 | Property  | type     | Required | Default | description |
 | --------- | -------- | -------- | ------- | ----------- |
-| *type*    | 'submit' | true     | -       | module type |
+| *type*    | `submit` | true     | -       | module type |
 | *name*    | string   | true     | -       | module name |
 | *caption* | string   | true     | -       | button text |
-| *justify* | 'left', 'right', 'center', 'between'  | -        | 'center'       | horizontal alignment |
+| *justify* | `left`, `right`, `center`, `between`  | -        | `center`       | horizontal alignment |
 
 
 ## Playground

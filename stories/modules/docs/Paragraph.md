@@ -14,7 +14,7 @@
 
 | Property     | type           | Required | Default | description |
 | ------------ | -------------- | -------- | ------- | ----------- |
-| *type*       | 'paragraph'    | true     | -       | module type |
+| *type*       | `paragraph`    | true     | -       | module type |
 | *name*       | string         | true     | -       | module name |
 | *content*    | string         | -        | -       | text        |
 

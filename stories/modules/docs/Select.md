@@ -19,10 +19,10 @@
 
 | Property       | type           | Required | Default | description  |
 | -------------- | -------------- | -------- | --------| ------------ |
-| *type*         | 'select'       | true     | -       | module type  |
+| *type*         | `select`       | true     | -       | module type  |
 | *name*         | string         | true     | -       | module name  |
-| *columns*      | [2, 3]         | false    | 2       | number of columns  |
+| *columns*      | `2`, `3`         | false    | `2`       | number of columns  |
 | *options*      | [ { id, caption, hint }, { id, caption, hint }... ]   | true   | -     | array of options   |
-
+| *[validation](https://gemsorg.github.io/gems-components/?selectedKind=Form%20Builder&selectedStory=Validation)*  | validtion | - | - | validation rules |
 
 ## Playground

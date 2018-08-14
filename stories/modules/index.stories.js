@@ -2,20 +2,76 @@ import React from 'react';
 
 import { storiesOf } from '@storybook/react';
 
-import panelDecorator from '../kit/panelDecorator';
+import Panel from '../../src/components/Panel';
+
 import Markdown from '../kit/Markdown';
+import Kind from '../kit/Kind';
 
 import Playground from './Playground/Playground';
 
 import readme from './docs/Readme.md';
+import validation from './docs/Validation.md';
 
-import trivia from './trivia';
+const trivia = {
+  modules: [
+    {
+      name: 'description',
+      type: 'description',
+      content:
+        'Write a trivia question with three multiple-choice answers. One answer should be correct and fact-checked, and two answers should be incorrect.',
+    },
+    {
+      name: 'question',
+      type: 'text',
+      validation: {
+        isRequired: 'Question is required',
+      },
+      placeholder: 'Question',
+    },
+    {
+      name: 'correctAnswer',
+      type: 'text',
+      validation: {
+        isRequired: 'correct answer is required',
+      },
+      placeholder: 'Correct Answer',
+    },
+    {
+      name: 'incorrectAnswerA',
+      type: 'text',
+      placeholder: 'Optional Incorrect Answer',
+    },
+    {
+      name: 'password',
+      type: 'password',
+      placeholder: 'Password',
+    },
+    {
+      name: 'submit',
+      type: 'submit',
+      caption: 'Next',
+      justify: 'center',
+    },
+  ],
+};
 
 storiesOf('Form Builder', module)
-  .addDecorator(panelDecorator)
   .add('Readme', () => (
-    <div>
+    <Panel>
       <Markdown doc={readme} />
       <Playground form={trivia} />
-    </div>
+    </Panel>
+  ))
+  .add('Validation', () => (
+    <Panel>
+      <Markdown doc={validation} />
+      <Playground form={trivia} />
+    </Panel>
+  ))
+  .add('Playground', () => (
+    <Panel>
+      <Kind title="Here you can build your own form">
+        <Playground form={trivia} fullscreen />
+      </Kind>
+    </Panel>
   ));

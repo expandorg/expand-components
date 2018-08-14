@@ -14,7 +14,7 @@
 
 | Property     | type           | Required | Default | description |
 | ------------ | -------------- | -------- | ------- | ----------- |
-| *type*       | 'title'        | true     | -       | module type |
+| *type*       | `title`        | true     | -       | module type |
 | *name*       | string         | true     | -       | module name |
 | *title*      | string         | true     | -       | title text  |
 
