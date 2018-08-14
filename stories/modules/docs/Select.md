@@ -10,7 +10,7 @@
     { id: 'A', caption: 'Option 1' },
     { id: 'b', caption: 'Option 2' },
     { id: '3', caption: 'Option 2' },
-    { id: 'IV', caption: 'Option 4' },
+    { id: 'IV', caption: 'Option 4', hint: 'Hint tooltip' },
   ]
 }
 ```
@@ -21,7 +21,8 @@
 | -------------- | -------------- | -------- | --------| ------------ |
 | *type*         | 'select'       | true     | -       | module type  |
 | *name*         | string         | true     | -       | module name  |
-| *options*      | [ { id, caption }, { id, caption }... ]   | true   | -     | array of options   |
+| *columns*      | [2, 3]         | false    | 2       | number of columns  |
+| *options*      | [ { id, caption, hint }, { id, caption, hint }... ]   | true   | -     | array of options   |
 
 
 ## Playground

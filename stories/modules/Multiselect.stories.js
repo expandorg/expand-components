@@ -13,16 +13,21 @@ const form = {
     {
       name: 'description',
       type: 'description',
-      content: 'Select few elements',
+      content: 'Select many',
     },
     {
       name: 'multiselect',
       type: 'multiselect',
+      columns: 3,
       options: [
-        { id: 'A', caption: 'Option 1' },
-        { id: 'b', caption: 'Option 2' },
-        { id: '3', caption: 'Option 2' },
-        { id: 'IV', caption: 'Option 4' },
+        { id: 'A', caption: 'Option 1', hint: 'Option 1' },
+        { id: 'b', caption: 'Option 2', hint: 'Option 1' },
+        { id: '3', caption: 'Option 2', hint: 'Option 1' },
+        {
+          id: 'IV',
+          caption: 'Option 4 with long text',
+          hint: 'Option 4 with long text',
+        },
       ],
     },
     {
@@ -37,6 +42,6 @@ const form = {
 storiesOf('Form Builder/Modules', module).add('Multiselect', () => (
   <Panel>
     <Markdown doc={readme} />
-    <Playground form={form} editMode="edit" />
+    <Playground form={form} editMode="edit" vertical />
   </Panel>
 ));

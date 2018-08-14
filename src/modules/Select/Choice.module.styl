@@ -1,5 +1,9 @@
 @import '../../uikit/colors'
 
+selected()
+  .selected &
+    {block}
+
 .container
   display: flex;
   justify-content: flex-start;
@@ -8,29 +12,79 @@
   box-sizing: border-box;
 
   border-radius: 4px
-  height: 100px
+  height: 80px
 
   padding: 0 12px
-
-  outline: none;
-  cursor pointer
-
   text-align: left;
 
   color: #1C2541
   background-color: transparent
 
+  border: 1px solid color-grey
+
+  outline: none;
+  cursor pointer
+
 .selected
   background-color: color-pink
   color: color-white
+  border-color: color-pink
+
+.mark
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 40px
+  height: 40px
+
+  margin-right: 4px;
+
+  border: 1px solid color-grey
+  border-radius: 4px
+
+  +selected()
+    border-color: transparent
+
+.icon
+  path
+    fill: none
+  +selected()
+    path
+      fill: color-white
 
 .id
   box-sizing: border-box;
-  font-size: 40px
+  font-size: 35px
   font-weight: 500;
-  padding: 0 25px
-  margin-right: 12px;
-
+  padding: 0 18px
+  margin-right: 4px;
 
 .caption
   font-size: 18px
+  flex-grow: 1
+  margin-right: 5px
+
+.hint
+  position: relative
+  box-sizing: border-box;
+
+  width: 24px
+  height: 24px
+  min-width: 24px
+
+  text-align: center;
+
+  line-height: 20px;
+
+  color #BBBEC6
+  border-radius: 12px
+  border: 2px solid #BBBEC6
+
+  +selected()
+    color: color-white
+    border-color: color-white
+
+.q
+  font-size: 14px
+  font-weight: 800

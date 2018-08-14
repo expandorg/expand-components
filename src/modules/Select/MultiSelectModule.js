@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Alignment from '../Alignment';
 
 import Choice from './Choice';
-import MultiSelect from './MultiSelect';
+import Select from './Select';
 
 export default class MultiSelectModule extends Component {
   static propTypes = {
@@ -15,36 +15,46 @@ export default class MultiSelectModule extends Component {
     value: PropTypes.arrayOf(
       PropTypes.oneOfType([PropTypes.string, PropTypes.number])
     ),
+    columns: PropTypes.oneOf([2, 3]),
     onChange: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
     value: [],
+    columns: 2,
   };
 
-  handleChange = value => {
-    const { name, onChange } = this.props;
-    onChange(name, value);
+  handleChange = answerId => {
+    const { name, onChange, value } = this.props;
+
+    const selection = value || [];
+
+    const updated = selection.includes(answerId)
+      ? selection.filter(el => el !== answerId)
+      : [...selection, answerId];
+
+    onChange(name, updated);
   };
 
   render() {
-    const { value, options } = this.props;
+    const { value, options, columns } = this.props;
     return (
       <Alignment padding="small">
-        <MultiSelect
+        <Select
           options={options}
           onSelect={this.handleChange}
-          value={value}
+          columns={columns}
         >
-          {({ key, onSelect, option, selected }) => (
+          {({ id, onSelect, option }) => (
             <Choice
-              key={key}
-              selected={selected}
+              key={id}
+              selected={value.includes(id)}
+              checkMark
               onSelect={onSelect}
               option={option}
             />
           )}
-        </MultiSelect>
+        </Select>
       </Alignment>
     );
   }

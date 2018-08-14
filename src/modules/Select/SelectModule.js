@@ -13,29 +13,35 @@ export default class SelectModule extends Component {
       PropTypes.oneOfType([PropTypes.string, PropTypes.object])
     ).isRequired,
     value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    columns: PropTypes.oneOf([2, 3]),
     onChange: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
     value: null,
+    columns: 2,
   };
 
-  handleChange = value => {
+  handleChange = answerId => {
     const { name, onChange } = this.props;
-    onChange(name, value);
+    onChange(name, answerId);
   };
 
   render() {
-    const { value, options } = this.props;
+    const { value, options, columns } = this.props;
     return (
       <Alignment padding="small">
-        <Select options={options} onSelect={this.handleChange} value={value}>
-          {({ key, onSelect, option, selected }) => (
+        <Select
+          options={options}
+          onSelect={this.handleChange}
+          columns={columns}
+        >
+          {({ id, onSelect, option }) => (
             <Choice
-              key={key}
-              selected={selected}
-              onSelect={onSelect}
+              key={id}
               option={option}
+              selected={value === id}
+              onSelect={onSelect}
             />
           )}
         </Select>

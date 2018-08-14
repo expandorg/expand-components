@@ -22,7 +22,7 @@ const form = {
         { id: 'A', caption: 'Option 1' },
         { id: 'b', caption: 'Option 2' },
         { id: '3', caption: 'Option 2' },
-        { id: 'IV', caption: 'Option 4' },
+        { id: 'IV', caption: 'Option 4', hint: 'Hint tooltip' },
       ],
     },
     {
@@ -37,6 +37,6 @@ const form = {
 storiesOf('Form Builder/Modules', module).add('Select', () => (
   <Panel>
     <Markdown doc={readme} />
-    <Playground form={form} editMode="edit" />
+    <Playground form={form} editMode="edit" vertical />
   </Panel>
 ));
