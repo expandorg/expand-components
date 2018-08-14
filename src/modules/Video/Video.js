@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, createRef } from 'react';
 import PropTypes from 'prop-types';
 import cn from 'classnames';
 
@@ -12,6 +12,8 @@ export default class Video extends Component {
     subtitles: PropTypes.string,
     playerControls: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
     autoPlay: PropTypes.bool,
+    loop: PropTypes.bool,
+    muted: PropTypes.bool,
     justify: PropTypes.oneOf(['left', 'right', 'center', 'between']),
     src: PropTypes.string.isRequired,
   };
@@ -19,10 +21,17 @@ export default class Video extends Component {
   static defaultProps = {
     className: null,
     subtitles: null,
-    playerControls: true,
     autoPlay: false,
+    loop: false,
+    muted: false,
+    playerControls: true,
     justify: 'center',
   };
+
+  constructor(props) {
+    super(props);
+    this.player = createRef();
+  }
 
   render() {
     const {
@@ -30,22 +39,27 @@ export default class Video extends Component {
       src,
       subtitles,
       autoPlay,
+      loop,
+      muted,
       justify,
       playerControls,
     } = this.props;
 
     /* eslint-disable jsx-a11y/media-has-caption */
     return (
-      <Alignment justify={justify}>
+      <Alignment justify={justify} className={styles.container}>
         <video
           className={cn(styles.video, className)}
           controls={playerControls}
           autoPlay={autoPlay}
-          name="media"
+          loop={loop}
+          ref={this.player}
+          muted={muted}
+          preload
         >
           <source src={src} type="video/mp4" />
           {subtitles && (
-            <track default kind="subtitles" srcLang="en" src={src} />
+            <track default kind="subtitles" srcLang="en" src={subtitles} />
           )}
         </video>
       </Alignment>
