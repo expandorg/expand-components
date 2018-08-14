@@ -5,7 +5,7 @@ import Submit from '../Submit';
 import Article from '../Article';
 import Title from '../Title';
 import Paragraph from '../Paragraph';
-import { SelectModule } from '../Select';
+import { SelectModule, MultiSelectModule } from '../Select';
 import Checkbox from '../Checkbox';
 import Video from '../Video';
 import Image from '../Image';
@@ -22,6 +22,7 @@ const moduleControls = {
   [ModuleType.article]: Article,
   [ModuleType.paragraph]: Paragraph,
   [ModuleType.select]: SelectModule,
+  [ModuleType.multiselect]: MultiSelectModule,
   [ModuleType.checkbox]: Checkbox,
   [ModuleType.submit]: Submit,
   [ModuleType.video]: Video,

@@ -10,6 +10,7 @@ const ModuleType = {
 
   submit: 'submit',
   select: 'select',
+  multiselect: 'multiselect',
   checkbox: 'checkbox',
 
   title: 'title',

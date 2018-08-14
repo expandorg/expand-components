@@ -6,26 +6,36 @@ import getAnswrId from './getAnswrId';
 
 import styles from './styles.module.styl';
 
-export default class Select extends Component {
+export default class MultiSelect extends Component {
   static propTypes = {
     options: PropTypes.arrayOf(
       PropTypes.oneOfType([PropTypes.string, PropTypes.object])
     ).isRequired,
-    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    value: PropTypes.arrayOf(
+      PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+    ),
     className: PropTypes.string,
     onSelect: PropTypes.func.isRequired,
     layout: PropTypes.oneOf(['cols2', 'cols3']),
   };
 
   static defaultProps = {
-    value: '',
+    value: [],
     className: null,
     layout: 'cols2',
   };
 
   handleSelect = answer => {
-    const { onSelect } = this.props;
-    onSelect(getAnswrId(answer));
+    const { onSelect, value } = this.props;
+
+    const selection = value || [];
+    const answerId = getAnswrId(answer);
+
+    const updated = selection.includes(answerId)
+      ? selection.filter(el => el !== answerId)
+      : [...selection, answerId];
+
+    onSelect(updated);
   };
 
   render() {
@@ -37,7 +47,7 @@ export default class Select extends Component {
           const key = getAnswrId(option);
           return children({
             key,
-            selected: key === value,
+            selected: value && value.includes(key),
             option,
             onSelect: this.handleSelect,
           });

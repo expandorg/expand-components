@@ -1,0 +1,30 @@
+.container
+  display: flex;
+  width: 100%
+  margin: 0 auto;
+
+.cols2
+  align-content: stretch;
+  flex-wrap: wrap;
+
+  > *
+   width: calc(50% - 10px)
+   margin-bottom: 12px;
+   margin-right: 10px
+
+   @media(max-width: 768px)
+     width: 100%;
+     margin-right: 0;
+
+.cols3
+  align-content: stretch;
+  flex-wrap: wrap;
+
+  > *
+   width: calc(33% - 10px)
+   margin-bottom: 12px;
+   margin-right: 10px
+
+   @media(max-width: 768px)
+     width: 100%;
+     margin-right: 0;

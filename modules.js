@@ -25,7 +25,12 @@ import {
 
 import Paragraph from './src/modules/Paragraph';
 
-import { Select, Choice, SelectModule } from './src/modules/Select';
+import {
+  Select,
+  Choice,
+  SelectModule,
+  MultiSelectModule,
+} from './src/modules/Select';
 
 import Submit from './src/modules/Submit';
 
@@ -54,6 +59,7 @@ export {
   Select,
   Choice,
   SelectModule,
+  MultiSelectModule,
   Submit,
   Title,
   Validation,

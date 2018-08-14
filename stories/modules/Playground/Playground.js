@@ -18,11 +18,13 @@ export default class Playground extends Component {
   static propTypes = {
     editMode: PropTypes.oneOf(['full', 'edit', 'readOnly', 'hidden']),
     fullscreen: PropTypes.bool,
+    vertical: PropTypes.bool,
     form: formProps.isRequired,
   };
 
   static defaultProps = {
     fullscreen: false,
+    vertical: false,
     editMode: 'full',
   };
 
@@ -68,12 +70,14 @@ export default class Playground extends Component {
   };
 
   render() {
-    const { editMode, fullscreen } = this.props;
+    const { editMode, fullscreen, vertical } = this.props;
     const { source, form, error } = this.state;
-    const classes = cn(styles.container, { [styles.fullscreen]: fullscreen });
+    const classes = cn(styles.container, {
+      [styles.fullscreen]: fullscreen,
+    });
     return (
       <div className={classes}>
-        <div className={styles.content}>
+        <div className={cn(styles.content, { [styles.vertical]: vertical })}>
           {editMode !== 'hidden' && (
             <Editor
               editMode={editMode}
@@ -83,7 +87,7 @@ export default class Playground extends Component {
               onAddModule={this.handleAddModule}
             />
           )}
-          <div className={styles.form}>
+          <div className={styles.formContainer}>
             <Form
               form={form}
               className={styles.form}
