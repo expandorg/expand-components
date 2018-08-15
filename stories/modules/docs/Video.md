@@ -22,6 +22,8 @@
 | *loop*      | bool    | -        | false   | loop video     |
 | *muted*     | bool    | -        | false   | play video muted |
 | *justify*   | `left`, `right`, `center`, `between`  | -        | `center`       | horizontal alignment |
+| *height*    | number  | -        | -       | video height |
+| *width*     | number  | -        | -       | video width  |
 
 
 ## Playground

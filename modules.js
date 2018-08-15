@@ -36,6 +36,8 @@ import Submit from './src/modules/Submit';
 
 import Title from './src/modules/Title';
 
+import Question from './src/modules/Question';
+
 import Validation from './src/modules/Validation';
 
 import Video from './src/modules/Video';
@@ -62,6 +64,7 @@ export {
   MultiSelectModule,
   Submit,
   Title,
+  Question,
   Validation,
   Video,
 };

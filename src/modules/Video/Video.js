@@ -15,6 +15,8 @@ export default class Video extends Component {
     loop: PropTypes.bool,
     muted: PropTypes.bool,
     justify: PropTypes.oneOf(['left', 'right', 'center', 'between']),
+    height: PropTypes.number,
+    width: PropTypes.number,
     src: PropTypes.string.isRequired,
   };
 
@@ -23,6 +25,8 @@ export default class Video extends Component {
     subtitles: null,
     autoPlay: false,
     loop: false,
+    height: undefined,
+    width: undefined,
     muted: false,
     playerControls: true,
     justify: 'center',
@@ -38,6 +42,8 @@ export default class Video extends Component {
       className,
       src,
       subtitles,
+      height,
+      width,
       autoPlay,
       loop,
       muted,
@@ -50,13 +56,15 @@ export default class Video extends Component {
       <Alignment justify={justify} className={styles.container} padding="small">
         <video
           key={src}
+          height={height}
+          width={width}
           className={cn(styles.video, className)}
           controls={playerControls}
           autoPlay={autoPlay}
           loop={loop}
           ref={this.player}
           muted={muted}
-          preload
+          preload="auto"
         >
           <source src={src} type="video/mp4" />
           {subtitles && (

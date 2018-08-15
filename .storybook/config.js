@@ -51,7 +51,8 @@ const moduleStories = [
 ];
 
 const examplesStories = [
-  'Video'
+  'Video',
+  'Trivia',
 ]
 
 /* eslint-disable global-require */

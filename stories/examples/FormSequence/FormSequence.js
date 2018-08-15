@@ -31,7 +31,6 @@ export default class FormSequence extends Component {
   handleSubmit = values => {
     const { forms } = this.props;
     const { index } = this.state;
-    console.log(values);
     if (index < forms.length - 1) {
       this.setState({ index: index + 1 });
     }

@@ -13,6 +13,7 @@ const createForm = (src, answers) => ({
     {
       name: 'video',
       type: 'video',
+      height: 360,
       src,
     },
     {

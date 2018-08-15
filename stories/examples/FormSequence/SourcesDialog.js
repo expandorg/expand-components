@@ -24,7 +24,7 @@ export default class SourceDialog extends Component {
     const { form, onHide, visible } = this.props;
     const source = JSON.stringify(form, undefined, 2);
     return (
-      <Dialog visible={visible} onHide={onHide}>
+      <Dialog visible={visible} onHide={onHide} contentLabel="sources">
         <DialogHeadline>Form source</DialogHeadline>
         <div className={styles.container}>
           <CodeEditor className={styles.textarea} source={source} readOnly />

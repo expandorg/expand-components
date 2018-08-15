@@ -13,9 +13,11 @@ export default class MultiSelectModule extends Component {
       PropTypes.oneOfType([PropTypes.string, PropTypes.object])
     ).isRequired,
     value: PropTypes.arrayOf(
-      PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+      PropTypes.oneOfType([PropTypes.string, PropTypes.object])
     ),
-    answers: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    answers: PropTypes.arrayOf(
+      PropTypes.oneOfType([PropTypes.string, PropTypes.object])
+    ),
     columns: PropTypes.oneOf([2, 3]),
     readOnly: PropTypes.bool,
     onChange: PropTypes.func.isRequired,
