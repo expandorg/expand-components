@@ -15,13 +15,17 @@ export default class MultiSelectModule extends Component {
     value: PropTypes.arrayOf(
       PropTypes.oneOfType([PropTypes.string, PropTypes.number])
     ),
+    answers: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     columns: PropTypes.oneOf([2, 3]),
+    readOnly: PropTypes.bool,
     onChange: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
     value: [],
+    answers: [],
     columns: 2,
+    readOnly: false,
   };
 
   handleChange = answerId => {
@@ -37,7 +41,8 @@ export default class MultiSelectModule extends Component {
   };
 
   render() {
-    const { value, options, columns } = this.props;
+    const { value, options, columns, answers, readOnly } = this.props;
+    const selection = readOnly ? answers : value;
     return (
       <Alignment padding="small">
         <Select
@@ -48,8 +53,9 @@ export default class MultiSelectModule extends Component {
           {({ id, onSelect, option }) => (
             <Choice
               key={id}
-              selected={value.includes(id)}
               checkMark
+              selected={selection.includes(id)}
+              readOnly={readOnly}
               onSelect={onSelect}
               option={option}
             />

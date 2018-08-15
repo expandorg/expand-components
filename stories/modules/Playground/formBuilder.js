@@ -98,6 +98,11 @@ const moduleFactories = {
     content:
       'Write a trivia question with three multiple-choice answers. One answer should be correct and fact-checked, and two answers should be incorrect',
   }),
+  [ModuleType.question]: (params: Object) => ({
+    ...params,
+    title: 'question title',
+    content: 'Lorem ipsum dolor sit amet, consectetur',
+  }),
 };
 
 export const appendModule = (

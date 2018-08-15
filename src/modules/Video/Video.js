@@ -47,8 +47,9 @@ export default class Video extends Component {
 
     /* eslint-disable jsx-a11y/media-has-caption */
     return (
-      <Alignment justify={justify} className={styles.container}>
+      <Alignment justify={justify} className={styles.container} padding="small">
         <video
+          key={src}
           className={cn(styles.video, className)}
           controls={playerControls}
           autoPlay={autoPlay}

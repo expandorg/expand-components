@@ -13,12 +13,16 @@ export default class SelectModule extends Component {
       PropTypes.oneOfType([PropTypes.string, PropTypes.object])
     ).isRequired,
     value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    answer: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     columns: PropTypes.oneOf([2, 3]),
+    readOnly: PropTypes.bool,
     onChange: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
     value: null,
+    answer: null,
+    readOnly: false,
     columns: 2,
   };
 
@@ -28,7 +32,8 @@ export default class SelectModule extends Component {
   };
 
   render() {
-    const { value, options, columns } = this.props;
+    const { value, options, columns, readOnly, answer } = this.props;
+    const selected = readOnly ? answer : value;
     return (
       <Alignment padding="small">
         <Select
@@ -40,7 +45,8 @@ export default class SelectModule extends Component {
             <Choice
               key={id}
               option={option}
-              selected={value === id}
+              readOnly={readOnly}
+              selected={selected === id}
               onSelect={onSelect}
             />
           )}

@@ -21,9 +21,6 @@ export default class Article extends Component {
     title: '',
     content: '',
     image: null,
-  };
-
-  static defaultProps = {
     wide: false,
   };
 

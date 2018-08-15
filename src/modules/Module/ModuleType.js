@@ -18,6 +18,7 @@ const ModuleType = {
   article: 'article',
   video: 'video',
   image: 'image',
+  question: 'question',
 };
 
 export default ModuleType;

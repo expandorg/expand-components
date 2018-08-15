@@ -16,6 +16,7 @@
 | ------------ | -------------- | -------- | ------- | ----------- |
 | *type*       | `title`        | true     | -       | module type |
 | *name*       | string         | true     | -       | module name |
+| *centered*   | bool           | false    | -       | text alignment: center |
 | *title*      | string         | true     | -       | title text  |
 
 ## Playground

@@ -22,28 +22,32 @@ export default class Choice extends Component {
     className: PropTypes.string,
     selected: PropTypes.bool,
     checkMark: PropTypes.bool,
+    readOnly: PropTypes.bool,
     onSelect: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
     className: null,
     checkMark: false,
+    readOnly: false,
     selected: false,
   };
 
   handleSelect = evt => {
     evt.preventDefault();
-
-    const { onSelect, option } = this.props;
-    onSelect(option);
+    const { onSelect, option, readOnly } = this.props;
+    if (!readOnly) {
+      onSelect(option);
+    }
   };
 
   render() {
-    const { className, option, selected, checkMark } = this.props;
+    const { className, option, selected, readOnly, checkMark } = this.props;
     const classes = cn(
       styles.container,
       {
         [styles.selected]: selected,
+        [styles.readOnly]: readOnly,
       },
       className
     );

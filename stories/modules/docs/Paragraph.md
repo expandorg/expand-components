@@ -16,6 +16,7 @@
 | ------------ | -------------- | -------- | ------- | ----------- |
 | *type*       | `paragraph`    | true     | -       | module type |
 | *name*       | string         | true     | -       | module name |
+| *centered*   | bool           | false    | -       | text alignment: center |
 | *content*    | string         | -        | -       | text        |
 
 

@@ -10,6 +10,7 @@ import Checkbox from '../Checkbox';
 import Video from '../Video';
 import Image from '../Image';
 import Description from '../Description';
+import Question from '../Question';
 
 import ModuleType from './ModuleType';
 
@@ -28,6 +29,7 @@ const moduleControls = {
   [ModuleType.video]: Video,
   [ModuleType.image]: Image,
   [ModuleType.description]: Description,
+  [ModuleType.question]: Question,
 };
 
 export default moduleControls;

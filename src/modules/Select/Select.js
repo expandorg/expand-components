@@ -8,7 +8,7 @@ const getAnswrId = option => {
   if (typeof option === 'string') {
     return option;
   }
-  return option.id;
+  return option.id || option.caption;
 };
 
 export default class Select extends Component {

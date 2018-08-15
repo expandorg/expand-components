@@ -1,0 +1,70 @@
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
+import Button from '../../../src/components/Button';
+import SourcesDialog from './SourcesDialog';
+
+import { Form, formProps } from '../../../src/modules/Form';
+import { Module } from '../../../src/modules/Module';
+
+import styles from './FormSequence.module.styl';
+
+export default class FormSequence extends Component {
+  static propTypes = {
+    forms: PropTypes.arrayOf(formProps).isRequired,
+    showSource: PropTypes.bool,
+  };
+
+  static defaultProps = {
+    showSource: true,
+  };
+
+  state = {
+    index: 0,
+    sources: false,
+  };
+
+  handleToggle = () => {
+    this.setState(({ sources }) => ({ sources: !sources }));
+  };
+
+  handleSubmit = values => {
+    const { forms } = this.props;
+    const { index } = this.state;
+    console.log(values);
+    if (index < forms.length - 1) {
+      this.setState({ index: index + 1 });
+    }
+  };
+
+  render() {
+    const { forms, showSource } = this.props;
+    const { index, sources } = this.state;
+
+    const form = forms[index];
+    return (
+      <div className={styles.container}>
+        {showSource && (
+          <div className={styles.actions}>
+            <Button
+              size="small"
+              onClick={this.handleToggle}
+              theme="link"
+              className={styles.button}
+            >
+              Form source
+            </Button>
+          </div>
+        )}
+        <Form form={form} onSubmit={this.handleSubmit} className={styles.form}>
+          {moduleProps => <Module {...moduleProps} />}
+        </Form>
+        <SourcesDialog
+          visible={sources}
+          onHide={this.handleToggle}
+          form={form}
+        />
+      </div>
+    );
+  }
+}

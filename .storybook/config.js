@@ -44,10 +44,15 @@ const moduleStories = [
   'Title',
   'Paragraph',
   'Description',
+  'Question',
   'Image',
   'Video',
   'Submit',
 ];
+
+const examplesStories = [
+  'Video'
+]
 
 /* eslint-disable global-require */
 configure(() => {
@@ -56,6 +61,11 @@ configure(() => {
   moduleStories.forEach(story => {
     require(`../stories/modules/${story}.stories`);
   })
+
+  examplesStories.forEach(story => {
+    require(`../stories/examples/${story}.stories`);
+  })
+
 
   componentStories.forEach(story => {
     require(`../stories/components/${story}.stories`);
