@@ -96,9 +96,9 @@ const forms = [
   },
 ];
 
-storiesOf('Form Builder/Examples', module).add('Video', () => (
+storiesOf('Form Builder/Examples', module).add('Video Onboarding', () => (
   <Panel>
-    <Kind title="Video task example">
+    <Kind title="Video Onboarding example">
       <FormSequence forms={forms} />
     </Kind>
   </Panel>
