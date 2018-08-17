@@ -20,6 +20,7 @@ const ModuleType = {
   image: 'image',
   question: 'question',
   instructions: 'instructions',
+  agreement: 'agreement',
 };
 
 export default ModuleType;

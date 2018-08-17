@@ -1,5 +1,7 @@
 // @flow
 
+import Agreement from './src/modules/Agreement';
+
 import Alignment from './src/modules/Alignment';
 
 import Article from './src/modules/Article';
@@ -45,6 +47,7 @@ import Validation from './src/modules/Validation';
 import Video from './src/modules/Video';
 
 export {
+  Agreement,
   Alignment,
   Article,
   Checkbox,

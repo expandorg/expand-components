@@ -14,6 +14,7 @@ import Video from '../Video';
 import Image from '../Image';
 import Description from '../Description';
 import Question from '../Question';
+import Agreement from '../Agreement';
 
 const moduleControls = {
   [ModuleType.text]: Input,
@@ -32,6 +33,7 @@ const moduleControls = {
   [ModuleType.description]: Description,
   [ModuleType.question]: Question,
   [ModuleType.instructions]: Instructions,
+  [ModuleType.agreement]: Agreement,
 };
 
 export default moduleControls;

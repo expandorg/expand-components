@@ -118,6 +118,13 @@ const moduleFactories = {
       },
     ],
   }),
+  [ModuleType.agreement]: (params: Object) => ({
+    ...params,
+    button: 'Rules',
+    label: 'You must agree with rules',
+    headline: 'question title',
+    content: 'Lorem ipsum dolor sit amet, consectetur',
+  }),
 };
 
 export const appendModule = (

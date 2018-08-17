@@ -131,6 +131,67 @@ const createForm = src => ({
 });
 
 const forms = [
+  {
+    modules: [
+      {
+        name: 'article',
+        type: 'article',
+        title: 'Intro',
+        content: `
+          In this task you should describe short video fragments, that can be described by none,
+          one or several tags. <b>Please note: you should select ALL relevant tags to the video!</b> All tags are
+          related to the shooting feature and the camera's behavior: <br /><hr />
+        `,
+      },
+      {
+        name: 'submit',
+        type: 'submit',
+        caption: 'Got it',
+      },
+    ],
+  },
+  {
+    modules: [
+      {
+        name: 'article',
+        type: 'article',
+        title: 'Intro',
+        content: `
+          In this task you should describe short video fragments, that can be described by none,
+          one or several tags. <b>Please note: you should select ALL relevant tags to the video!</b> All tags are
+          related to the shooting feature and the camera's behavior: <br /><hr />
+        `,
+      },
+      {
+        name: 'submit',
+        type: 'submit',
+        caption: 'Got it',
+      },
+    ],
+  },
+  {
+    modules: [
+      {
+        name: 'article',
+        type: 'article',
+        title: 'Rules',
+        content: `In this task you should describe short video fragments, that can be described by none,`,
+      },
+      {
+        name: 'rules',
+        type: 'agreement',
+        button: 'Rules',
+        label: 'I agree',
+        headline: 'Rules',
+        content: 'Lorem ipsum dolor sit amet, consectetur',
+      },
+      {
+        name: 'submit',
+        type: 'submit',
+        caption: 'Got it',
+      },
+    ],
+  },
   createForm('http://media.gettyimages.com/videos/cap-video-id864038046'),
   createForm('http://media.gettyimages.com/videos/cap-video-id498289390'),
   {

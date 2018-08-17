@@ -46,6 +46,7 @@ const moduleStories = [
   'Description',
   'Question',
   'Instructions',
+  'Agreement',
   'Image',
   'Video',
   'Submit',

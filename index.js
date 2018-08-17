@@ -8,6 +8,7 @@ import {
 
 import Button from './src/components/Button';
 import Checkbox from './src/components/Checkbox';
+import Collapsable from './src/components/Collapsable';
 import DateInput from './src/components/DateInput';
 import { Dialog, DialogHeadline, setAppElement } from './src/components/Dialog';
 import Dropdown from './src/components/Dropdown';
@@ -35,6 +36,7 @@ export {
   Suggestion,
   Button,
   Checkbox,
+  Collapsable,
   DateInput,
   Dialog,
   DialogHeadline,
