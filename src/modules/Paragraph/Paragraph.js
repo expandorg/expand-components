@@ -30,7 +30,12 @@ export default class Paragraph extends Component {
       className
     );
     if (typeof content === 'string') {
-      <div className={classes} dangerouslySetInnerHTML={{ __html: content }} />;
+      return (
+        <div
+          className={classes}
+          dangerouslySetInnerHTML={{ __html: content }}
+        />
+      );
     }
     return <div className={classes}>{content}</div>;
   }

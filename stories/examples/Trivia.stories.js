@@ -44,6 +44,22 @@ const forms = [
         placeholder: 'Password',
       },
       {
+        name: 'instructions',
+        type: 'instructions',
+        dialogs: [
+          {
+            action: 'See instructions',
+            title: 'Instructions',
+            content: '123',
+          },
+          {
+            action: 'See Rules',
+            title: 'Rules',
+            content: '123',
+          },
+        ],
+      },
+      {
         name: 'submit',
         type: 'submit',
         caption: 'Next',

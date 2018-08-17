@@ -14,6 +14,7 @@ const createForm = src => ({
       name: 'video',
       type: 'video',
       height: 360,
+      autoPlay: true,
       src,
     },
     {

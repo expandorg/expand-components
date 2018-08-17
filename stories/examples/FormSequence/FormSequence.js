@@ -28,7 +28,7 @@ export default class FormSequence extends Component {
     this.setState(({ sources }) => ({ sources: !sources }));
   };
 
-  handleSubmit = values => {
+  handleSubmit = () => {
     const { forms } = this.props;
     const { index } = this.state;
     if (index < forms.length - 1) {
