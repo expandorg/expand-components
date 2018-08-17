@@ -14,6 +14,8 @@ import Image from './src/modules/Image';
 
 import Input from './src/modules/Input';
 
+import { Instructions } from './src/modules/Instructions';
+
 import Modal from './src/modules/Modal';
 
 import {
@@ -52,6 +54,7 @@ export {
   formValidationRules,
   Image,
   Input,
+  Instructions,
   Modal,
   Module,
   ModuleType,

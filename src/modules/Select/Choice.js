@@ -4,6 +4,8 @@ import cn from 'classnames';
 
 import { Checkmark } from '../../components/SvgIcons';
 
+import { MediaTooltip } from '../Tooltip';
+
 import Hint from './Hint';
 
 import styles from './Choice.module.styl';
@@ -62,7 +64,7 @@ export default class Choice extends Component {
           </div>
         )}
         <span className={styles.caption}>{caption}</span>
-        {hint && <Hint tooltip={hint} />}
+        {hint && <Hint tooltip={<MediaTooltip content={hint} />} />}
       </button>
     );
   }

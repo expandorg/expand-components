@@ -25,6 +25,8 @@ export default class Title extends Component {
       { [styles.centered]: centered },
       className
     );
-    return <h3 className={classes}>{title}</h3>;
+    return (
+      <div className={classes} dangerouslySetInnerHTML={{ __html: title }} />
+    );
   }
 }

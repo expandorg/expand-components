@@ -19,6 +19,7 @@ const ModuleType = {
   video: 'video',
   image: 'image',
   question: 'question',
+  instructions: 'instructions',
 };
 
 export default ModuleType;

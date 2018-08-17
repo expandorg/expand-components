@@ -103,6 +103,21 @@ const moduleFactories = {
     title: 'question title',
     content: 'Lorem ipsum dolor sit amet, consectetur',
   }),
+  [ModuleType.instructions]: (params: Object) => ({
+    ...params,
+    dialogs: [
+      {
+        action: 'See instructions',
+        title: 'Instructions',
+        content: 'Lorem ipsum dolor sit amet, consectetur',
+      },
+      {
+        action: 'See Rules',
+        title: 'Rules',
+        content: 'Lorem ipsum dolor sit amet, consectetur',
+      },
+    ],
+  }),
 };
 
 export const appendModule = (

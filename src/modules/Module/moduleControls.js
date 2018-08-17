@@ -1,6 +1,9 @@
 // @flow
 
+import ModuleType from './ModuleType';
+
 import Input from '../Input';
+import { Instructions } from '../Instructions';
 import Submit from '../Submit';
 import Article from '../Article';
 import Title from '../Title';
@@ -11,8 +14,6 @@ import Video from '../Video';
 import Image from '../Image';
 import Description from '../Description';
 import Question from '../Question';
-
-import ModuleType from './ModuleType';
 
 const moduleControls = {
   [ModuleType.text]: Input,
@@ -30,6 +31,7 @@ const moduleControls = {
   [ModuleType.image]: Image,
   [ModuleType.description]: Description,
   [ModuleType.question]: Question,
+  [ModuleType.instructions]: Instructions,
 };
 
 export default moduleControls;
