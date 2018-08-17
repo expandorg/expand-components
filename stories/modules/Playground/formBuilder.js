@@ -125,6 +125,16 @@ const moduleFactories = {
     headline: 'question title',
     content: 'Lorem ipsum dolor sit amet, consectetur',
   }),
+  [ModuleType.collapsable]: (params: Object) => ({
+    ...params,
+    header: 'Click to Expand/Collapse',
+    children: {
+      type: 'article',
+      name: 'article',
+      content:
+        'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco ',
+    },
+  }),
 };
 
 export const appendModule = (

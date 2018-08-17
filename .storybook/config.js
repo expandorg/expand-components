@@ -49,6 +49,7 @@ const moduleStories = [
   'Agreement',
   'Image',
   'Video',
+  'Collapsable',
   'Submit',
 ];
 

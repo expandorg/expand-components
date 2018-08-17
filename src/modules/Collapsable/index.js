@@ -1,5 +1,5 @@
 // @flow
 
-import CollapsableArticle from './CollapsableArticle';
+import Collapsable from './Collapsable';
 
-export { CollapsableArticle };
+export default Collapsable;

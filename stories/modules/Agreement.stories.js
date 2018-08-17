@@ -14,7 +14,7 @@ const form = {
       name: 'agreement',
       type: 'agreement',
       button: 'Rules',
-      label: 'You must agree with rules',
+      label: 'I Agree',
       headline: 'question title',
       content: 'Lorem ipsum dolor sit amet, consectetur',
     },

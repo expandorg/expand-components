@@ -21,6 +21,7 @@ const ModuleType = {
   question: 'question',
   instructions: 'instructions',
   agreement: 'agreement',
+  collapsable: 'collapsable',
 };
 
 export default ModuleType;

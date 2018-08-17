@@ -15,6 +15,7 @@ import Image from '../Image';
 import Description from '../Description';
 import Question from '../Question';
 import Agreement from '../Agreement';
+import Collapsable from '../Collapsable';
 
 const moduleControls = {
   [ModuleType.text]: Input,
@@ -34,6 +35,7 @@ const moduleControls = {
   [ModuleType.question]: Question,
   [ModuleType.instructions]: Instructions,
   [ModuleType.agreement]: Agreement,
+  [ModuleType.collapsable]: Collapsable,
 };
 
 export default moduleControls;
