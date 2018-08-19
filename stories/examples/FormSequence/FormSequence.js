@@ -22,7 +22,7 @@ export default class FormSequence extends Component {
   state = {
     index: 0,
     sources: false,
-    formData: { allowedTries: 3, currentTry: 1 },
+    formData: { allowedRetries: 3, currentTry: 1 },
   };
 
   handleToggle = () => {

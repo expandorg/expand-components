@@ -34,7 +34,7 @@ export default class Playground extends Component {
     this.state = {
       source: JSON.stringify(props.form, undefined, 2),
       form: props.form,
-      formData: { allowedTries: 3, currentTry: 1 },
+      formData: { allowedRetries: 3, currentTry: 1 },
       error: null,
     };
 
