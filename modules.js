@@ -37,6 +37,8 @@ import {
 
 import Paragraph from './src/modules/Paragraph';
 
+import Progress from './src/modules/Progress';
+
 import {
   Select,
   Choice,
@@ -79,6 +81,7 @@ export {
   moduleProps,
   moduleControls,
   Paragraph,
+  Progress,
   Question,
   Select,
   Choice,
