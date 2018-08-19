@@ -8,7 +8,7 @@ import styles from './Progress.module.styl';
 class Progress extends Component {
   static propTypes = {
     formData: PropTypes.shape({
-      allowedTries: PropTypes.number,
+      allowedRetries: PropTypes.number,
       currentTry: PropTypes.number,
     }),
     number: PropTypes.number.isRequired,
@@ -24,8 +24,8 @@ class Progress extends Component {
     if (!formData) {
       return null;
     }
-    const { allowedTries, currentTry } = formData;
-    const triesLeft = (+allowedTries || 0) - (+currentTry || 0);
+    const { allowedRetries, currentTry } = formData;
+    const triesLeft = (+allowedRetries || 0) - (+currentTry || 0);
 
     return (
       <div className={styles.container}>
