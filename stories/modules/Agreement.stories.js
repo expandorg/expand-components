@@ -16,7 +16,11 @@ const form = {
       button: 'Rules',
       label: 'I Agree',
       headline: 'question title',
-      content: 'Lorem ipsum dolor sit amet, consectetur',
+      modules: {
+        name: 'p',
+        type: 'paragraph',
+        content: 'Lorem ipsum dolor sit amet, consectetur',
+      },
     },
     {
       name: 'submit',

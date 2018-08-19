@@ -7,7 +7,7 @@
   name: "collapsable",
   type: "collapsable",
   header: 'Click to Expand/Collapse',
-  children: {
+  modules: {
     type: 'article',
     name: 'article',
     content:

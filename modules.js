@@ -7,6 +7,7 @@ import Alignment from './src/modules/Alignment';
 import Article from './src/modules/Article';
 
 import Checkbox from './src/modules/Checkbox';
+import Collapsable from './src/modules/Collapsable';
 
 import Description from './src/modules/Description';
 
@@ -16,7 +17,7 @@ import Image from './src/modules/Image';
 
 import Input from './src/modules/Input';
 
-import { Instructions } from './src/modules/Instructions';
+import { Instructions, InstructionsItem } from './src/modules/Instructions';
 
 import Modal from './src/modules/Modal';
 
@@ -46,11 +47,14 @@ import Validation from './src/modules/Validation';
 
 import Video from './src/modules/Video';
 
+import { MediaTooltip } from './src/modules/Tooltip';
+
 export {
   Agreement,
   Alignment,
   Article,
   Checkbox,
+  Collapsable,
   Description,
   Form,
   formProps,
@@ -58,19 +62,21 @@ export {
   Image,
   Input,
   Instructions,
+  InstructionsItem,
   Modal,
   Module,
   ModuleType,
   moduleProps,
   moduleControls,
   Paragraph,
+  Question,
   Select,
   Choice,
   SelectModule,
   MultiSelectModule,
   Submit,
   Title,
-  Question,
   Validation,
   Video,
+  MediaTooltip,
 };

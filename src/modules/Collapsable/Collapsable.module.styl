@@ -5,14 +5,15 @@
   box-sizing: border-box;
 
   width: 100%;
-  padding: 15px 10px 15px 15px
-  border: 1px solid color-border-grey;
+  min-width: 600px
+  padding: 24px 24px
+  border: 1px solid #C4C4C4;
 
-  border-radius: 5px
+  border-radius: 4px
+
+  @media(max-width: 660px)
+    min-width: 100%
 
 .header
-  font(font-preset[menu], 600)
-  color: lighten(color-text-1, 10%)
-
-  &:hover
-    color: lighten(color-text-1, 30%)
+  font(font-preset[title], 600)
+  color: color-black

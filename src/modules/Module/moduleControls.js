@@ -3,7 +3,7 @@
 import ModuleType from './ModuleType';
 
 import Input from '../Input';
-import { Instructions } from '../Instructions';
+import { Instructions, InstructionsItem } from '../Instructions';
 import Submit from '../Submit';
 import Article from '../Article';
 import Title from '../Title';
@@ -34,6 +34,7 @@ const moduleControls = {
   [ModuleType.description]: Description,
   [ModuleType.question]: Question,
   [ModuleType.instructions]: Instructions,
+  [ModuleType.instructionsItem]: InstructionsItem,
   [ModuleType.agreement]: Agreement,
   [ModuleType.collapsable]: Collapsable,
 };

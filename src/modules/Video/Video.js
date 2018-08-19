@@ -35,7 +35,15 @@ export default class Video extends Component {
   constructor(props) {
     super(props);
     this.player = createRef();
+
+    this.state = {
+      loadError: false,
+    };
   }
+
+  handleError = () => {
+    this.setState({ loadError: true });
+  };
 
   render() {
     const {
@@ -51,6 +59,7 @@ export default class Video extends Component {
       playerControls,
     } = this.props;
 
+    const { loadError } = this.state;
     /* eslint-disable jsx-a11y/media-has-caption */
     return (
       <Alignment justify={justify} className={styles.container} padding="small">
@@ -66,11 +75,12 @@ export default class Video extends Component {
           muted={muted}
           preload="auto"
         >
-          <source src={src} type="video/mp4" />
+          <source src={src} type="video/mp4" onError={this.handleError} />
           {subtitles && (
             <track default kind="subtitles" srcLang="en" src={subtitles} />
           )}
         </video>
+        {loadError && <div className={styles.error}>Loading Error</div>}
       </Alignment>
     );
   }

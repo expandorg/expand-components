@@ -6,7 +6,6 @@ import Checkbox from '../../components/Checkbox';
 
 import Alignment from '../Alignment';
 import Modal from '../Modal';
-import Paragraph from '../Paragraph';
 
 export default class Agreement extends Component {
   static propTypes = {
@@ -14,7 +13,6 @@ export default class Agreement extends Component {
     button: PropTypes.string,
     label: PropTypes.string.isRequired,
     headline: PropTypes.string,
-    content: PropTypes.string,
     value: PropTypes.bool,
     onChange: PropTypes.func.isRequired,
   };
@@ -23,7 +21,6 @@ export default class Agreement extends Component {
     value: false,
     button: null,
     headline: null,
-    content: null,
   };
 
   state = {
@@ -39,7 +36,7 @@ export default class Agreement extends Component {
       value,
       name,
       button,
-      content,
+      children,
       headline,
       label,
       onChange,
@@ -65,7 +62,7 @@ export default class Agreement extends Component {
             headline={headline}
             button="Close"
           >
-            <Paragraph content={content} />
+            {children}
           </Modal>
         )}
       </Alignment>

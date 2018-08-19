@@ -20,6 +20,13 @@ import Input from './src/components/Input';
 
 import JsScript from './src/components/JsScript';
 
+import {
+  Checkmark,
+  SvgIcon,
+  ShevronUp,
+  ShevronDown,
+} from './src/components/SvgIcons';
+
 import Panel from './src/components/Panel';
 import {
   ServiceProvider,
@@ -50,6 +57,10 @@ export {
   ServiceProvider,
   ServicesContext,
   ServiceLocator,
+  Checkmark,
+  SvgIcon,
+  ShevronUp,
+  ShevronDown,
   Toast,
   ToastAnimated,
   Tooltip,

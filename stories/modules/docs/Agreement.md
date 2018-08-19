@@ -4,12 +4,16 @@
 ## Example
 ```jsx
 {
+  name: 'agreement',
   type: 'agreement',
-  name: 'rules',
   button: 'Rules',
-  label: 'You must agree with rules',
-  headline: 'Rules',
-  content: 'Lorem ipsum dolor sit amet, consectetur',
+  label: 'I Agree',
+  headline: 'question title',
+  modules: {
+    name: 'p',
+    type: 'paragraph',
+    content: 'Lorem ipsum dolor sit amet, consectetur',
+  }
 }
 ```
 

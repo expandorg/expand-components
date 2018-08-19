@@ -105,16 +105,24 @@ const moduleFactories = {
   }),
   [ModuleType.instructions]: (params: Object) => ({
     ...params,
-    dialogs: [
+    modules: [
       {
+        type: 'instructionsItem',
         action: 'See instructions',
         title: 'Instructions',
-        content: 'Lorem ipsum dolor sit amet, consectetur',
+        modules: {
+          type: 'paragraph',
+          content: 'Lorem ipsum dolor sit amet, consectetur',
+        },
       },
       {
+        type: 'instructionsItem',
         action: 'See Rules',
         title: 'Rules',
-        content: 'Lorem ipsum dolor sit amet, consectetur',
+        modules: {
+          type: 'paragraph',
+          content: 'Lorem ipsum dolor sit amet, consectetur',
+        },
       },
     ],
   }),
@@ -123,12 +131,16 @@ const moduleFactories = {
     button: 'Rules',
     label: 'You must agree with rules',
     headline: 'question title',
-    content: 'Lorem ipsum dolor sit amet, consectetur',
+    modules: {
+      name: 'p',
+      type: 'paragraph',
+      content: 'Lorem ipsum dolor sit amet, consectetur',
+    },
   }),
   [ModuleType.collapsable]: (params: Object) => ({
     ...params,
     header: 'Click to Expand/Collapse',
-    children: {
+    modules: {
       type: 'article',
       name: 'article',
       content:

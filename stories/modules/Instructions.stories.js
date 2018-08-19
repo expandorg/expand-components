@@ -13,16 +13,28 @@ const form = {
     {
       name: 'instructions',
       type: 'instructions',
-      dialogs: [
+      modules: [
         {
+          name: 'See instructions',
+          type: 'instructionsItem',
           action: 'See instructions',
           title: 'Instructions',
-          content: 'Lorem ipsum dolor sit amet, consectetur',
+          modules: {
+            name: 'paragraph',
+            type: 'paragraph',
+            content: 'Lorem ipsum dolor sit amet, consectetur',
+          },
         },
         {
+          name: 'See Rules',
+          type: 'instructionsItem',
           action: 'See Rules',
           title: 'Rules',
-          content: 'Lorem ipsum dolor sit amet, consectetur',
+          modules: {
+            name: 'paragraph',
+            type: 'paragraph',
+            content: 'Lorem ipsum dolor sit amet, consectetur',
+          },
         },
       ],
     },

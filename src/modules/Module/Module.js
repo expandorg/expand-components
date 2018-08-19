@@ -21,18 +21,18 @@ export default class Module extends Component {
     onSubmit: Function.prototype,
   };
 
-  renderChildren(children) {
+  renderModules(modules) {
     const { controls, isSubmitting } = this.props;
-    if (!Array.isArray(children)) {
+    if (!Array.isArray(modules)) {
       return (
         <Module
-          module={children}
+          module={modules}
           controls={controls}
           isSubmitting={isSubmitting}
         />
       );
     }
-    return children.map(module => (
+    return modules.map(module => (
       <Module
         key={module.name}
         module={module}
@@ -56,11 +56,11 @@ export default class Module extends Component {
     if (!Control) {
       return null;
     }
-    if (typeof module.children !== 'undefined') {
-      const { children, ...rest } = module;
+    if (typeof module.modules !== 'undefined') {
+      const { modules, ...rest } = module;
       return (
         <Control value={value} onChange={onChange} {...rest}>
-          {this.renderChildren(children)}
+          {this.renderModules(modules)}
         </Control>
       );
     }

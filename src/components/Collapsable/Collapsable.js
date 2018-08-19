@@ -4,6 +4,8 @@ import cn from 'classnames';
 
 import { Transition, animated, config } from 'react-spring';
 
+import { ShevronUp, ShevronDown } from '../SvgIcons';
+
 import './Collapsable.styl';
 
 const transitions = {
@@ -27,13 +29,17 @@ export default class Collapsable extends Component {
 
   render() {
     const { header, expanded, onToggle, children, className } = this.props;
+    const Shevron = expanded ? ShevronUp : ShevronDown;
     return (
       <div className={cn('gem-collapsable', className)}>
         <div
           className="gem-collapsable-header"
           onClick={() => onToggle(!expanded)}
         >
-          {header}
+          <div className="gem-collapsable-header-content">{header}</div>
+          <div className="gem-collapsable-header-toggle">
+            {<Shevron className="gem-collapsable-header-shevron" />}
+          </div>
         </div>
         <Transition
           native

@@ -6,18 +6,30 @@
 {
   name: 'instructions',
   type: 'instructions',
-  dialogs: [
+  modules: [
     {
+      name: 'See instructions',
+      type: 'instructionsItem',
       action: 'See instructions',
       title: 'Instructions',
-      content: 'Lorem ipsum dolor sit amet, consectetur',
+      modules: {
+        name: 'paragraph',
+        type: 'paragraph',
+        content: 'Lorem ipsum dolor sit amet, consectetur',
+      },
     },
     {
+      name: 'See Rules',
+      type: 'instructionsItem',
       action: 'See Rules',
       title: 'Rules',
-      content: 'Lorem ipsum dolor sit amet, consectetur',
-    },
-  ],
+      modules: {
+        name: 'paragraph',
+        type: 'paragraph',
+        content: 'Lorem ipsum dolor sit amet, consectetur',
+      }
+    }
+  ]
 }
 ```
 
@@ -27,9 +39,17 @@
 | ------------ | -------------- | -------- | ------- | ----------- |
 | *type*       | `instructions` | true     | -       | module type |
 | *name*       | string         | true     | -       | module name |
-| *dialogs*    | array          | true     | -       | dialog module |
-| *dialogs[{ action }]*| string          | true     | -       | button caption |
-| *dialogs[{ title }]*| string          | true     | -       | dialog title |
-| *dialogs[{ content }]*| string          | true     | -       | dialog content |
+| *modules*   | `module`       | true     | -       | modules     |
+
+## InstructionsItem
+ properties
+
+| Property     | type           | Required | Default | description |
+| ------------ | -------------- | -------- | ------- | ----------- |
+| *type*       | `instructionsItem` | true     | -       | module type |
+| *name*       | string         | true     | -       | module name |
+| *action*     | string         | true     | -       | button caption |
+| *title*      | string         | false    | -       | dialog title |
+| *modules*   | `module`       | true     | -       | modules     |
 
 ## Playground

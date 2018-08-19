@@ -16,8 +16,17 @@ export default class MediaTooltip extends Component {
     className: null,
   };
 
+  state = {
+    loadError: false,
+  };
+
+  handleError = () => {
+    this.setState({ loadError: true });
+  };
+
   render() {
     const { content, className } = this.props;
+    const { loadError } = this.state;
     if (typeof content === 'string') {
       return <span className={cn(styles.text, className)}>{content}</span>;
     }
@@ -33,8 +42,13 @@ export default class MediaTooltip extends Component {
               muted
               preload="auto"
             >
-              <source src={content.src} type="video/mp4" />
+              <source
+                src={content.src}
+                type="video/mp4"
+                onError={this.handleError}
+              />
             </video>
+            {loadError && <div className={styles.error}>Loading Error</div>}
             {content.message && (
               <div className={cn(styles.text)}>{content.message}</div>
             )}
