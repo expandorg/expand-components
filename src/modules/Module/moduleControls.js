@@ -16,6 +16,7 @@ import Description from '../Description';
 import Question from '../Question';
 import Agreement from '../Agreement';
 import Collapsable from '../Collapsable';
+import Progress from '../Progress';
 
 const moduleControls = {
   [ModuleType.text]: Input,
@@ -37,6 +38,7 @@ const moduleControls = {
   [ModuleType.instructionsItem]: InstructionsItem,
   [ModuleType.agreement]: Agreement,
   [ModuleType.collapsable]: Collapsable,
+  [ModuleType.progress]: Progress,
 };
 
 export default moduleControls;

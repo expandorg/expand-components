@@ -1,6 +1,6 @@
 {
   "name": "@gemsorg/components",
-  "version": "0.0.33",
+  "version": "0.0.34",
   "description": "Gems UI components library",
   "license": "MPL-2.0",
   "author": "gems.org",
@@ -61,7 +61,7 @@
     "babel-runtime": "^6.26.0",
     "css-loader": "^0.28.11",
     "debounce": "^1.2.0",
-    "enzyme": "^3.4.2",
+    "enzyme": "^3.4.4",
     "enzyme-adapter-react-16": "^1.2.0",
     "eslint": "^4.19.1",
     "eslint-config-airbnb": "^17.1.0",
@@ -71,7 +71,7 @@
     "eslint-plugin-jsx-a11y": "^6.1.1",
     "eslint-plugin-prettier": "^2.6.2",
     "eslint-plugin-react": "^7.11.1",
-    "flow-bin": "^0.78.0",
+    "flow-bin": "^0.79.1",
     "jest": "^23.5.0",
     "postcss-loader": "^2.1.6",
     "postcss-preset-env": "^5.2.2",
@@ -84,6 +84,6 @@
     "style-loader": "^0.22.1",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2",
-    "validator": "^10.5.0"
+    "validator": "^10.6.0"
   }
 }

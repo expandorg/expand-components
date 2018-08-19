@@ -23,6 +23,7 @@ const ModuleType = {
   instructionsItem: 'instructionsItem',
   agreement: 'agreement',
   collapsable: 'collapsable',
+  progress: 'progress',
 };
 
 export default ModuleType;

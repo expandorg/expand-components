@@ -50,6 +50,7 @@ const moduleStories = [
   'Image',
   'Video',
   'Collapsable',
+  'Progress',
   'Submit',
 ];
 

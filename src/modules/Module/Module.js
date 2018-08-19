@@ -12,6 +12,7 @@ export default class Module extends Component {
     onChange: PropTypes.func,
     onSubmit: PropTypes.func,
     controls: PropTypes.object, // eslint-disable-line
+    renderModules: PropTypes.func,
   };
 
   static defaultProps = {
@@ -19,9 +20,10 @@ export default class Module extends Component {
     controls: moduleControls,
     onChange: Function.prototype,
     onSubmit: Function.prototype,
+    renderModules: null,
   };
 
-  renderModules(modules) {
+  renderModules = modules => {
     const { controls, isSubmitting } = this.props;
     if (!Array.isArray(modules)) {
       return (
@@ -40,7 +42,7 @@ export default class Module extends Component {
         isSubmitting={isSubmitting}
       />
     ));
-  }
+  };
 
   render() {
     const {
@@ -50,7 +52,10 @@ export default class Module extends Component {
       isSubmitting,
       onSubmit,
       controls,
+      renderModules,
     } = this.props;
+
+    const moduleRenderer = renderModules || this.renderModules;
 
     const Control = controls[module.type];
     if (!Control) {
@@ -59,8 +64,13 @@ export default class Module extends Component {
     if (typeof module.modules !== 'undefined') {
       const { modules, ...rest } = module;
       return (
-        <Control value={value} onChange={onChange} {...rest}>
-          {this.renderModules(modules)}
+        <Control
+          renderModules={moduleRenderer}
+          value={value}
+          onChange={onChange}
+          {...rest}
+        >
+          {moduleRenderer(modules)}
         </Control>
       );
     }
@@ -71,6 +81,7 @@ export default class Module extends Component {
         onChange={onChange}
         onSubmit={onSubmit}
         isSubmitting={isSubmitting}
+        renderModules={moduleRenderer}
       />
     );
   }

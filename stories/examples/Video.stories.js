@@ -75,8 +75,14 @@ const option = (caption, src) => ({
   },
 });
 
-const createForm = src => ({
+const createForm = (src, total, index) => ({
   modules: [
+    {
+      name: 'progress',
+      type: 'progress',
+      total,
+      number: index,
+    },
     {
       name: 'video',
       type: 'video',
@@ -257,8 +263,8 @@ const forms = [
       },
     ],
   },
-  createForm('http://media.gettyimages.com/videos/cap-video-id498515049'),
-  createForm('http://media.gettyimages.com/videos/cap-video-id523299420'),
+  createForm('http://media.gettyimages.com/videos/cap-video-id498515049', 2, 1),
+  createForm('http://media.gettyimages.com/videos/cap-video-id523299420', 2, 2),
   {
     modules: [
       {

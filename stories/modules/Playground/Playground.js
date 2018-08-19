@@ -4,7 +4,7 @@ import debounce from 'debounce';
 import cn from 'classnames';
 
 import { Module } from '../../../src/modules/Module';
-import { Form, formProps } from '../../../src/modules/Form';
+import { Form, formProps, FormDataProvider } from '../../../src/modules/Form';
 
 import Editor from './editor/Editor';
 
@@ -34,6 +34,7 @@ export default class Playground extends Component {
     this.state = {
       source: JSON.stringify(props.form, undefined, 2),
       form: props.form,
+      formData: { allowedTries: 3, currentTry: 1 },
       error: null,
     };
 
@@ -71,7 +72,7 @@ export default class Playground extends Component {
 
   render() {
     const { editMode, fullscreen, vertical } = this.props;
-    const { source, form, error } = this.state;
+    const { source, form, formData, error } = this.state;
     const classes = cn(styles.container, {
       [styles.fullscreen]: fullscreen,
     });
@@ -88,13 +89,15 @@ export default class Playground extends Component {
             />
           )}
           <div className={styles.formContainer}>
-            <Form
-              form={form}
-              className={styles.form}
-              onSubmit={this.handleSubmit}
-            >
-              {moduleProps => <Module {...moduleProps} />}
-            </Form>
+            <FormDataProvider formData={formData}>
+              <Form
+                form={form}
+                className={styles.form}
+                onSubmit={this.handleSubmit}
+              >
+                {moduleProps => <Module {...moduleProps} />}
+              </Form>
+            </FormDataProvider>
           </div>
         </div>
       </div>

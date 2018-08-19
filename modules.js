@@ -11,7 +11,14 @@ import Collapsable from './src/modules/Collapsable';
 
 import Description from './src/modules/Description';
 
-import { Form, formProps, formValidationRules } from './src/modules/Form';
+import {
+  Form,
+  formProps,
+  formValidationRules,
+  FormContext,
+  FormDataProvider,
+  withFormData,
+} from './src/modules/Form';
 
 import Image from './src/modules/Image';
 
@@ -59,6 +66,9 @@ export {
   Form,
   formProps,
   formValidationRules,
+  FormContext,
+  FormDataProvider,
+  withFormData,
   Image,
   Input,
   Instructions,

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Button from '../../../src/components/Button';
 import SourcesDialog from './SourcesDialog';
 
-import { Form, formProps } from '../../../src/modules/Form';
+import { Form, formProps, FormDataProvider } from '../../../src/modules/Form';
 import { Module } from '../../../src/modules/Module';
 
 import styles from './FormSequence.module.styl';
@@ -22,6 +22,7 @@ export default class FormSequence extends Component {
   state = {
     index: 0,
     sources: false,
+    formData: { allowedTries: 3, currentTry: 1 },
   };
 
   handleToggle = () => {
@@ -38,7 +39,7 @@ export default class FormSequence extends Component {
 
   render() {
     const { forms, showSource } = this.props;
-    const { index, sources } = this.state;
+    const { index, sources, formData } = this.state;
 
     const form = forms[index];
     return (
@@ -55,9 +56,15 @@ export default class FormSequence extends Component {
             </Button>
           </div>
         )}
-        <Form form={form} onSubmit={this.handleSubmit} className={styles.form}>
-          {moduleProps => <Module {...moduleProps} />}
-        </Form>
+        <FormDataProvider formData={formData}>
+          <Form
+            form={form}
+            onSubmit={this.handleSubmit}
+            className={styles.form}
+          >
+            {moduleProps => <Module {...moduleProps} />}
+          </Form>
+        </FormDataProvider>
         <SourcesDialog
           visible={sources}
           onHide={this.handleToggle}
