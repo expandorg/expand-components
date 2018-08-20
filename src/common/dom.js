@@ -2,7 +2,7 @@
 
 export const canUseDOM = !!(typeof window !== 'undefined' && window.document);
 
-export const targetIsDescendant = (event: MouseEvent, parent: any): boolean => {
+export const targetIsDescendant = (event: Event, parent: any): boolean => {
   let node = event.target;
   while (node !== null) {
     if (node === parent) {

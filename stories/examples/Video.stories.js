@@ -188,10 +188,10 @@ const forms = [
       {
         name: 'article',
         type: 'article',
-        title: 'Intro',
+        title: 'Task',
         content: `
           In this task you will identify the different camera behavior in short video segments.
-          Each video can be described by none, one or several tags. Please note: you should select ALL relevant tags to the video!
+          Each video can be described by none, one or several tags. Please note: you should select ALL relevant tags to the video.
         `,
       },
       {
