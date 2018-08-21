@@ -152,6 +152,10 @@ const moduleFactories = {
     number: 1,
     total: 2,
   }),
+  [ModuleType.dropdown]: (params: Object) => ({
+    ...params,
+    options: ['Option 1', 'Option 2', 'Option 2', 'Option 4'],
+  }),
 };
 
 export const appendModule = (

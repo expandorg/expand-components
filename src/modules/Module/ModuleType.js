@@ -24,6 +24,7 @@ const ModuleType = {
   agreement: 'agreement',
   collapsable: 'collapsable',
   progress: 'progress',
+  dropdown: 'dropdown',
 };
 
 export default ModuleType;

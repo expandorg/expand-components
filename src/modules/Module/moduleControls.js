@@ -17,6 +17,7 @@ import Question from '../Question';
 import Agreement from '../Agreement';
 import Collapsable from '../Collapsable';
 import Progress from '../Progress';
+import Dropdown from '../Dropdown';
 
 const moduleControls = {
   [ModuleType.text]: Input,
@@ -39,6 +40,7 @@ const moduleControls = {
   [ModuleType.agreement]: Agreement,
   [ModuleType.collapsable]: Collapsable,
   [ModuleType.progress]: Progress,
+  [ModuleType.dropdown]: Dropdown,
 };
 
 export default moduleControls;

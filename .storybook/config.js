@@ -39,6 +39,7 @@ const moduleStories = [
   'Input',
   'Select',
   'Multiselect',
+  'Dropdown',
   'Checkbox',
   'Article',
   'Title',
