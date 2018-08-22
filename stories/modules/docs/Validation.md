@@ -25,6 +25,7 @@ You can define different validation rules for modules.
 | *[Checkbox](https://gemsorg.github.io/gems-components/?selectedKind=Form%20Builder%2FModules&selectedStory=Checkbox)*     | `isRequired` `isTrue`   |
 | *[Select](https://gemsorg.github.io/gems-components/?selectedKind=Form%20Builder%2FModules&selectedStory=Select)*       | `isRequired`            |
 | *[Multiselect](https://gemsorg.github.io/gems-components/?selectedKind=Form%20Builder%2FModules&selectedStory=Multiselect)*  | `isRequired`            |
+| *[Dropdown](https://gemsorg.github.io/gems-components/?selectedKind=Form%20Builder%2FModules&selectedStory=Dropdown)*  | `isRequired`            |
 
 
 ## Supported rules

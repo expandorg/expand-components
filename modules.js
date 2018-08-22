@@ -39,6 +39,8 @@ import Paragraph from './src/modules/Paragraph';
 
 import Progress from './src/modules/Progress';
 
+import RegionSelect from './src/modules/RegionSelect';
+
 import {
   Select,
   Choice,
@@ -82,6 +84,7 @@ export {
   moduleControls,
   Paragraph,
   Progress,
+  RegionSelect,
   Question,
   Select,
   Choice,

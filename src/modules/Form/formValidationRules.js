@@ -41,10 +41,7 @@ const ruleFactory = (module: Object, ruleName: string, message: ?string) => {
       break;
     case 'isNotEmpty':
     case 'isRequired': {
-      if (
-        module.type === ModuleType.select ||
-        module.type === ModuleType.multiselect
-      ) {
+      if (module.type === ModuleType.multiselect) {
         rule = (value: any) => !!value && value.length > 0;
       } else {
         rule = rules.isRequired;

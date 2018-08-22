@@ -20,6 +20,8 @@ import Input from './src/components/Input';
 
 import JsScript from './src/components/JsScript';
 
+import RegionSelect from './src/components/RegionSelect';
+
 import {
   Checkmark,
   SvgIcon,
@@ -54,6 +56,7 @@ export {
   Input,
   JsScript,
   Panel,
+  RegionSelect,
   ServiceProvider,
   ServicesContext,
   ServiceLocator,

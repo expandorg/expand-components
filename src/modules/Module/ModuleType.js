@@ -25,6 +25,7 @@ const ModuleType = {
   collapsable: 'collapsable',
   progress: 'progress',
   dropdown: 'dropdown',
+  regionSelect: 'regionSelect',
 };
 
 export default ModuleType;

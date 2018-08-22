@@ -13,6 +13,7 @@ export default class Dropdown extends Component {
     name: PropTypes.string.isRequired,
     options: PropTypes.arrayOf(PropTypes.string).isRequired,
     placeholder: PropTypes.string,
+    justify: PropTypes.string,
     value: PropTypes.string,
     onChange: PropTypes.func.isRequired,
   };
@@ -20,6 +21,7 @@ export default class Dropdown extends Component {
   static defaultProps = {
     placeholder: '',
     value: '',
+    justify: 'center',
   };
 
   handleChange = value => {
@@ -28,9 +30,9 @@ export default class Dropdown extends Component {
   };
 
   render() {
-    const { options, placeholder, value } = this.props;
+    const { options, placeholder, value, justify } = this.props;
     return (
-      <Alignment padding="small">
+      <Alignment padding="small" justify={justify}>
         <UIDropdown
           className={styles.dropdown}
           value={value}

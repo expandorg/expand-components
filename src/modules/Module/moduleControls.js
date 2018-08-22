@@ -18,6 +18,7 @@ import Agreement from '../Agreement';
 import Collapsable from '../Collapsable';
 import Progress from '../Progress';
 import Dropdown from '../Dropdown';
+import RegionSelect from '../RegionSelect';
 
 const moduleControls = {
   [ModuleType.text]: Input,
@@ -41,6 +42,7 @@ const moduleControls = {
   [ModuleType.collapsable]: Collapsable,
   [ModuleType.progress]: Progress,
   [ModuleType.dropdown]: Dropdown,
+  [ModuleType.regionSelect]: RegionSelect,
 };
 
 export default moduleControls;

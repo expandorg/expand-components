@@ -156,6 +156,10 @@ const moduleFactories = {
     ...params,
     options: ['Option 1', 'Option 2', 'Option 2', 'Option 4'],
   }),
+  [ModuleType.regionSelect]: (params: Object) => ({
+    ...params,
+    image: 'https://portal.gems.org/images/complete-tasks.png',
+  }),
 };
 
 export const appendModule = (

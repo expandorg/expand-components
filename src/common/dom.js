@@ -31,3 +31,27 @@ export const KeyCodes = {
   DOWN: 40,
   DELETE: 46,
 };
+export const getElementOffset = (el: HTMLElement) => {
+  const rect = el.getBoundingClientRect();
+  const top = rect.top - el.scrollTop - document.documentElement.clientTop;
+  const left = rect.left - el.scrollLeft - document.documentElement.clientLeft;
+  return {
+    top,
+    left,
+  };
+};
+
+export const getMousePosition = (event: MouseEvent) => ({
+  x: event.pageX - (window.scrollX || window.pageXOffset),
+  y: event.pageY - (window.scrollY || window.pageYOffset),
+});
+
+export const getTouchPosition = (event: TouchEvent) => ({
+  x: event.touches[0].pageX - (window.scrollX || window.pageXOffset),
+  y: event.touches[0].pageY - (window.scrollY || window.pageYOffset),
+});
+
+export const stopEvt = (event: Event): void => {
+  event.stopPropagation();
+  event.preventDefault();
+};

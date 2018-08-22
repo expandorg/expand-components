@@ -23,6 +23,7 @@
 | *type*         | `dropdown`     | true     | -       | module type  |
 | *name*         | string         | true     | -       | module name  |
 | *placeholder*  | string         | -        | -       | placeholder  |
+| *justify* | `left`, `right`, `center`, `between`  | -        | `center`       | horizontal alignment |
 | *options*      | Array<string>  | true   | -     | array of options   |
 | *[validation](https://gemsorg.github.io/gems-components/?selectedKind=Form%20Builder&selectedStory=Validation)*  | validtion | - | - | validation rules |
 

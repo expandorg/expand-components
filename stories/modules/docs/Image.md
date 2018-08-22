@@ -16,6 +16,6 @@
 | ---------| ------- | -------- | ------- | ----------- |
 | *type*   | `video` | true     | -       | module type |
 | *name*   | string  | true     | -       | module name |
-| *src*    | string  | true     | -       | video url   |
+| *src*    | string  | true     | -       | image url   |
 
 ## Playground
