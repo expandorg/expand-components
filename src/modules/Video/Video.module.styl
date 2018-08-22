@@ -1,22 +1,22 @@
 @import '../../uikit/colors'
 @import '../../uikit/font'
 
-.container
+.content
   position: relative;
 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
 .video
-  max-width: 100%
   min-height: 250px
+  max-width: 100%
 
 .error
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-
+  min-height: 250px
+  min-width: 400px
   font(font-preset[title], 600)
-  z-index: 2
+  background-color: color-blue
   color: color-white
 
   display: flex;

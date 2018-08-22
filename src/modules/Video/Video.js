@@ -63,24 +63,28 @@ export default class Video extends Component {
     /* eslint-disable jsx-a11y/media-has-caption */
     return (
       <Alignment justify={justify} className={styles.container} padding="small">
-        <video
-          key={src}
-          height={height}
-          width={width}
-          className={cn(styles.video, className)}
-          controls={playerControls}
-          autoPlay={autoPlay}
-          loop={loop}
-          ref={this.player}
-          muted={muted}
-          preload="auto"
-        >
-          <source src={src} type="video/mp4" onError={this.handleError} />
-          {subtitles && (
-            <track default kind="subtitles" srcLang="en" src={subtitles} />
+        <div className={styles.content}>
+          {!loadError && (
+            <video
+              key={src}
+              height={height}
+              width={width}
+              className={cn(styles.video, className)}
+              controls={playerControls}
+              autoPlay={autoPlay}
+              loop={loop}
+              ref={this.player}
+              muted={muted}
+              preload="auto"
+            >
+              <source src={src} type="video/mp4" onError={this.handleError} />
+              {subtitles && (
+                <track default kind="subtitles" srcLang="en" src={subtitles} />
+              )}
+            </video>
           )}
-        </video>
-        {loadError && <div className={styles.error}>Loading Error</div>}
+          {loadError && <div className={styles.error}>Video loading error</div>}
+        </div>
       </Alignment>
     );
   }

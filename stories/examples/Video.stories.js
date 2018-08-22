@@ -185,7 +185,7 @@ const createForm = (src, total, index) => ({
 const questions = [
   'http://media.gettyimages.com/videos/cap-video-id498515049',
   'http://media.gettyimages.com/videos/cap-video-id523299420',
-].map((src, index, array) => createForm(src, array.length, index));
+].map((src, index, array) => createForm(src, array.length, index + 1));
 
 const forms = [
   {
