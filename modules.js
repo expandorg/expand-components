@@ -20,6 +20,9 @@ import {
   withFormData,
 } from './src/modules/Form';
 
+import applyVariables from './src/modules/Form/variables/applyVariables';
+import makeVariables from './src/modules/Form/variables/makeVariables';
+
 import Image from './src/modules/Image';
 
 import Input from './src/modules/Input';
@@ -73,6 +76,8 @@ export {
   FormContext,
   FormDataProvider,
   withFormData,
+  applyVariables,
+  makeVariables,
   Image,
   Input,
   Instructions,
