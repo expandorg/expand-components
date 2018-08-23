@@ -21,10 +21,27 @@ export default class Dropdown extends Component {
     formatter: value => value,
   };
 
+  constructor(props) {
+    super(props);
+    this.updateOptions(props.options);
+  }
+
+  componentWillReceiveProps({ options }) {
+    this.updateOptions(options);
+  }
+
   handleChange = ({ target }) => {
     const { onChange } = this.props;
     onChange(target.value);
   };
+
+  updateOptions(options) {
+    this.options = options.reduce((prev, option) => {
+      const next = prev;
+      next[option.value || option] = option.label || option;
+      return next;
+    }, {});
+  }
 
   render() {
     const {
@@ -43,7 +60,7 @@ export default class Dropdown extends Component {
           className
         )}
       >
-        {children({ value, formatted: formatter(value) })}
+        {children({ value, formatted: formatter(this.options[value]) })}
         <select
           disabled={disabled}
           className={cn('gem-dropdown-select', {
@@ -52,11 +69,15 @@ export default class Dropdown extends Component {
           value={value}
           onChange={this.handleChange}
         >
-          {options.map(option => (
-            <option key={`${option}`} value={option}>
-              {formatter(option)}
-            </option>
-          ))}
+          {options.map(option => {
+            const optionValue = option.value || option;
+            const optionLabel = this.options[optionValue];
+            return (
+              <option key={optionValue} value={optionValue}>
+                {formatter(optionLabel)}
+              </option>
+            );
+          })}
         </select>
       </div>
     );

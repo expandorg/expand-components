@@ -11,10 +11,10 @@ import styles from './Dropdown.module.styl';
 export default class Dropdown extends Component {
   static propTypes = {
     name: PropTypes.string.isRequired,
-    options: PropTypes.arrayOf(PropTypes.string).isRequired,
+    options: PropTypes.arrayOf(PropTypes.any).isRequired,
     placeholder: PropTypes.string,
     justify: PropTypes.string,
-    value: PropTypes.string,
+    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     onChange: PropTypes.func.isRequired,
   };
 
