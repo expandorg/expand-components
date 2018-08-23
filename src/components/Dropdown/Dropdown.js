@@ -4,6 +4,13 @@ import cn from 'classnames';
 
 import './Dropdown.styl';
 
+const formatItem = option => {
+  if (typeof option === 'string') {
+    return { value: option, label: option };
+  }
+  return option;
+};
+
 export default class Dropdown extends Component {
   static propTypes = {
     className: PropTypes.string,
@@ -35,26 +42,35 @@ export default class Dropdown extends Component {
       disabled,
       formatter,
     } = this.props;
+
+    const classes = cn(
+      'gem-dropdown',
+      { 'gem-dropdown-disabled': disabled },
+      className
+    );
+
+    const selectClasses = cn('gem-dropdown-select', {
+      'gem-dropdown-hidden': !!children,
+    });
+
+    const items = options.map(formatItem);
+    const selected = items.find(x => `${x.value}` === `${value}`);
+
     return (
-      <div
-        className={cn(
-          'gem-dropdown',
-          { 'gem-dropdown-disabled': disabled },
-          className
-        )}
-      >
-        {children({ value, formatted: formatter(value) })}
+      <div className={classes}>
+        {children({
+          value,
+          formatted: formatter(selected ? selected.label : ''),
+        })}
         <select
           disabled={disabled}
-          className={cn('gem-dropdown-select', {
-            'gem-dropdown-hidden': !!children,
-          })}
+          className={selectClasses}
           value={value}
           onChange={this.handleChange}
         >
-          {options.map(option => (
-            <option key={`${option}`} value={option}>
-              {formatter(option)}
+          {items.map(option => (
+            <option key={option.value} value={option.value}>
+              {formatter(option.label)}
             </option>
           ))}
         </select>
