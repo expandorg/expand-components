@@ -11,10 +11,6 @@ import readme from './docs/Dropdown.md';
 const form = {
   modules: [
     {
-      name: 'description',
-      type: 'description',
-    },
-    {
       name: 'dropdown',
       type: 'dropdown',
       placeholder: 'Select...',
