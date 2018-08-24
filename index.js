@@ -20,7 +20,12 @@ import Input from './src/components/Input';
 
 import JsScript from './src/components/JsScript';
 
-import RegionSelect from './src/components/RegionSelect';
+import {
+  RegionSelect,
+  RegionMultiselect,
+  RegionSelection,
+  SelectRegionBase,
+} from './src/components/RegionSelect';
 
 import {
   Checkmark,
@@ -57,6 +62,9 @@ export {
   JsScript,
   Panel,
   RegionSelect,
+  RegionMultiselect,
+  RegionSelection,
+  SelectRegionBase,
   ServiceProvider,
   ServicesContext,
   ServiceLocator,

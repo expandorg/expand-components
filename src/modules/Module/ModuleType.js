@@ -26,6 +26,7 @@ const ModuleType = {
   progress: 'progress',
   dropdown: 'dropdown',
   regionSelect: 'regionSelect',
+  regionMultiselect: 'regionMultiselect',
 };
 
 export default ModuleType;

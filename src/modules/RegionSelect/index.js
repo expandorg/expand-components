@@ -1,5 +1,6 @@
 // @flow
 
 import RegionSelect from './RegionSelect';
+import RegionMultiselect from './RegionMultiselect';
 
-export default RegionSelect;
+export { RegionSelect, RegionMultiselect };

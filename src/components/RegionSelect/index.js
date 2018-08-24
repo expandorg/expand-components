@@ -1,4 +1,8 @@
 // flow
-import RegionSelect from './RegionSelect';
+import RegionSelection from './Selection';
+import SelectRegionBase from './SelectRegionBase';
 
-export default RegionSelect;
+import RegionSelect from './RegionSelect';
+import RegionMultiselect from './RegionMultiselect';
+
+export { RegionSelect, RegionMultiselect, RegionSelection, SelectRegionBase };

@@ -160,6 +160,10 @@ const moduleFactories = {
     ...params,
     image: 'https://portal.gems.org/images/complete-tasks.png',
   }),
+  [ModuleType.regionMultiselect]: (params: Object) => ({
+    ...params,
+    image: 'https://portal.gems.org/images/complete-tasks.png',
+  }),
 };
 
 export const appendModule = (

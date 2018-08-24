@@ -42,7 +42,7 @@ import Paragraph from './src/modules/Paragraph';
 
 import Progress from './src/modules/Progress';
 
-import RegionSelect from './src/modules/RegionSelect';
+import { RegionSelect, RegionMultiselect } from './src/modules/RegionSelect';
 
 import {
   Select,
@@ -90,6 +90,7 @@ export {
   Paragraph,
   Progress,
   RegionSelect,
+  RegionMultiselect,
   Question,
   Select,
   Choice,

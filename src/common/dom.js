@@ -32,12 +32,10 @@ export const KeyCodes = {
   DELETE: 46,
 };
 export const getElementOffset = (el: HTMLElement) => {
-  const rect = el.getBoundingClientRect();
-  const top = rect.top - el.scrollTop - document.documentElement.clientTop;
-  const left = rect.left - el.scrollLeft - document.documentElement.clientLeft;
+  const { top, left } = el.getBoundingClientRect();
   return {
-    top,
-    left,
+    top: top - el.scrollTop - document.documentElement.clientTop,
+    left: left - el.scrollLeft - document.documentElement.clientLeft,
   };
 };
 

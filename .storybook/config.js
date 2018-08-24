@@ -51,6 +51,7 @@ const moduleStories = [
   'Image',
   'Video',
   'RegionSelect',
+  'RegionMultiselect',
   'Collapsable',
   'Progress',
   'Submit',
