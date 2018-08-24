@@ -16,13 +16,10 @@ const applyPropVariables = (
   }
   switch (typeof property) {
     case 'object':
-      return Reflect.ownKeys(property).reduce(
-        (result, fieldName) => ({
-          ...result,
-          [fieldName]: applyPropVariables(property[fieldName], variables),
-        }),
-        {}
-      );
+      return Reflect.ownKeys(property).reduce((result, fieldName) => {
+        result[fieldName] = applyPropVariables(property[fieldName], variables); // eslint-disable-line
+        return result;
+      }, {});
     case 'string': {
       if (variables.has(property)) {
         return variables.get(property);
@@ -41,10 +38,10 @@ const applyVariables = (
 ): Module => {
   const { name, type } = module;
   return Reflect.ownKeys(module).reduce(
-    (mod, fieldName) => ({
-      ...mod,
-      [fieldName]: applyPropVariables(module[fieldName], variables),
-    }),
+    (mod, fieldName) => {
+      mod[fieldName] = applyPropVariables(module[fieldName], variables); // eslint-disable-line
+      return mod;
+    },
     { name, type }
   );
 };

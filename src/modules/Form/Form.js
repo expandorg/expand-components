@@ -11,7 +11,21 @@ import ErrorMessage from '../../components/ErrorMessage';
 import formProps from './formProps';
 import formValidationRules from './formValidationRules';
 
+import makeVariables from './variables/makeVariables';
+import applyVariables from './variables/applyVariables';
+
 import styles from './Form.module.styl';
+
+const overrideFormVars = (form, variables) => {
+  if (!variables) {
+    return form;
+  }
+  const vars = makeVariables(variables);
+  return {
+    ...form,
+    modules: form.modules.map(module => applyVariables(module, vars)),
+  };
+};
 
 export default class Form extends Component {
   static propTypes = {
@@ -20,6 +34,7 @@ export default class Form extends Component {
     errors: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
     isSubmitting: PropTypes.bool,
     validation: PropTypes.bool,
+    variables: PropTypes.object, // eslint-disable-line
     onSubmit: PropTypes.func.isRequired,
   };
 
@@ -30,15 +45,22 @@ export default class Form extends Component {
     errors: null,
   };
 
-  state = {
-    values: null,
-    errors: null,
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      values: null,
+      form: overrideFormVars(props.form, props.variables),
+      errors: null,
+    };
+  }
 
-  componentWillReceiveProps({ form: nextForm, errors: nextErrors }) {
+  componentWillReceiveProps({ form: nextForm, variables, errors: nextErrors }) {
     const { errors, form } = this.props;
     if (form !== nextForm) {
-      this.setState({ values: null });
+      this.setState({
+        values: null,
+        form: overrideFormVars(nextForm, variables),
+      });
     }
     if (nextErrors && nextErrors !== errors) {
       this.setState({ errors: nextErrors });
@@ -63,8 +85,8 @@ export default class Form extends Component {
 
   handleSubmit = evt => {
     evt.preventDefault();
-    const { onSubmit, form, validation } = this.props;
-    const { values } = this.state;
+    const { onSubmit, validation } = this.props;
+    const { values, form } = this.state;
 
     if (validation) {
       const rules = formValidationRules(form.modules);
@@ -81,8 +103,8 @@ export default class Form extends Component {
   };
 
   render() {
-    const { className, isSubmitting, form, children } = this.props;
-    const { values, errors } = this.state;
+    const { className, isSubmitting, children } = this.props;
+    const { values, errors, form } = this.state;
 
     const props = {
       isSubmitting,
