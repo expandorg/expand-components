@@ -26,6 +26,11 @@ export default class RegionSelect extends Component {
     onChange(selection);
   };
 
+  handleResize = selection => {
+    const { onChange } = this.props;
+    onChange(selection);
+  };
+
   render() {
     const { children, className, value } = this.props;
     return (
@@ -39,7 +44,11 @@ export default class RegionSelect extends Component {
             {selection ? (
               <Selection selection={selection} />
             ) : (
-              <Selection selection={value} />
+              <Selection
+                selection={value}
+                resize
+                onResize={this.handleResize}
+              />
             )}
           </Fragment>
         )}

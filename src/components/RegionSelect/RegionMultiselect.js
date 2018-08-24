@@ -1,6 +1,8 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 
+import { replaceAtIndex } from '../../common/immutable';
+
 import SelectRegionBase from './SelectRegionBase';
 import Selection from './Selection';
 
@@ -32,6 +34,17 @@ export default class RegionMultiselect extends Component {
     }
   };
 
+  handleResize = (value, index) => {
+    const { onChange, values } = this.props;
+    onChange(replaceAtIndex(values, index, value));
+  };
+  //
+  // handleClear = evt => {
+  //   evt.preventDefault();
+  //   const { onChange } = this.props;
+  //   onChange([]);
+  // };
+
   render() {
     const { children, values, className } = this.props;
     return (
@@ -42,10 +55,23 @@ export default class RegionMultiselect extends Component {
         {({ selection }) => (
           <Fragment>
             {children}
-            {values.map(value => (
-              <Selection selection={value} key={getKey(value)} />
+            {values.map((value, index) => (
+              <Selection
+                selection={value}
+                key={getKey(value)}
+                resize
+                onResize={resized => this.handleResize(resized, index)}
+              />
             ))}
             <Selection selection={selection} />
+            {/* {values.length !== 0 && (
+              <button
+                className="gem-selectregion-clear"
+                onClick={this.handleClear}
+              >
+                Clear
+              </button>
+            )} */}
           </Fragment>
         )}
       </SelectRegionBase>

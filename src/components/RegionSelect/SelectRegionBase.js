@@ -4,7 +4,7 @@ import cn from 'classnames';
 
 import { stopEvt, getElementOffset, getMousePosition } from '../../common/dom';
 
-import './SelectRegionBase.styl';
+import './styles.styl';
 
 export default class SelectRegionBase extends Component {
   static propTypes = {

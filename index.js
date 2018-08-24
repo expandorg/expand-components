@@ -11,6 +11,7 @@ import Checkbox from './src/components/Checkbox';
 import Collapsable from './src/components/Collapsable';
 import DateInput from './src/components/DateInput';
 import { Dialog, DialogHeadline, setAppElement } from './src/components/Dialog';
+import Draggable from './src/components/Draggable';
 import Dropdown from './src/components/Dropdown';
 
 import ErrorMessage from './src/components/ErrorMessage';
@@ -55,6 +56,7 @@ export {
   Dialog,
   DialogHeadline,
   setAppElement,
+  Draggable,
   Dropdown,
   ErrorMessage,
   Hamburger,
