@@ -9,8 +9,8 @@ import Kind from '../kit/Kind';
 
 import Playground from './Playground/Playground';
 
-import readme from './docs/Readme.md';
-import validation from './docs/Validation.md';
+import readme from './Readme.md';
+import validation from './Validation.md';
 
 const trivia = {
   modules: [

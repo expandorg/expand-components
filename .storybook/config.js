@@ -21,40 +21,37 @@ setOptions({
 });
 
 const componentStories = [
-  'index',
-  'Button',
-  'Input',
-  'Textarea',
   'Autocomplete',
+  'Button',
   'Checkbox',
   'Dialog',
+  'Input',
+  'Textarea',
   'Toast',
   'Tooltip',
 ];
 
 
 const moduleStories = [
-  'index',
-
-  'Input',
-  'Select',
-  'Multiselect',
-  'Dropdown',
-  'Checkbox',
-  'Article',
-  'Title',
-  'Paragraph',
-  'Description',
-  'Question',
-  'Instructions',
   'Agreement',
-  'Image',
-  'Video',
-  'RegionSelect',
-  'RegionMultiselect',
+  'Article',
+  'Checkbox',
   'Collapsable',
+  'Description',
+  'Dropdown',
+  'Image',
+  'Input',
+  'Instructions',
+  'Multiselect',
+  'Paragraph',
   'Progress',
+  'Question',
+  'RegionMultiselect',
+  'RegionSelect',
+  'Select',
   'Submit',
+  'Title',
+  'Video',
 ];
 
 const examplesStories = [
@@ -66,16 +63,20 @@ const examplesStories = [
 configure(() => {
   require('../stories/general/index.stories');
 
+  require(`../stories/modules/index.stories`);
+
   moduleStories.forEach(story => {
-    require(`../stories/modules/${story}.stories`);
+    require(`../stories/modules/${story}/index.stories`);
   })
 
   examplesStories.forEach(story => {
     require(`../stories/examples/${story}.stories`);
   })
 
+  require(`../stories/components/index.stories`);
 
   componentStories.forEach(story => {
-    require(`../stories/components/${story}.stories`);
+    require(`../stories/components/${story}/index.stories`);
   })
+
 }, module);

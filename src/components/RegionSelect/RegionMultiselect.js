@@ -38,12 +38,6 @@ export default class RegionMultiselect extends Component {
     const { onChange, values } = this.props;
     onChange(replaceAtIndex(values, index, value));
   };
-  //
-  // handleClear = evt => {
-  //   evt.preventDefault();
-  //   const { onChange } = this.props;
-  //   onChange([]);
-  // };
 
   render() {
     const { children, values, className } = this.props;
@@ -64,14 +58,6 @@ export default class RegionMultiselect extends Component {
               />
             ))}
             <Selection selection={selection} />
-            {/* {values.length !== 0 && (
-              <button
-                className="gem-selectregion-clear"
-                onClick={this.handleClear}
-              >
-                Clear
-              </button>
-            )} */}
           </Fragment>
         )}
       </SelectRegionBase>

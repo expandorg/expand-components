@@ -32,13 +32,15 @@ export default class RegionSelect extends Component {
     const { image, name, value } = this.props;
     return (
       <Alignment padding="small" justify="center">
-        <UIRegionSelect
-          className={styles.region}
-          value={value}
-          onChange={this.handleChange}
-        >
-          <img className={styles.image} src={image} alt={name} />
-        </UIRegionSelect>
+        <div className={styles.inner}>
+          <UIRegionSelect
+            className={styles.region}
+            value={value}
+            onChange={this.handleChange}
+          >
+            <img className={styles.image} src={image} alt={name} />
+          </UIRegionSelect>
+        </div>
       </Alignment>
     );
   }

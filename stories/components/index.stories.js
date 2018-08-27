@@ -7,7 +7,7 @@ import panelDecorator from '../kit/panelDecorator';
 import Kind from '../kit/Kind';
 import Markdown from '../kit/Markdown';
 
-import readme from './docs/Readme.md';
+import readme from './Readme.md';
 
 import styles from '../general/styles.module.styl';
 
