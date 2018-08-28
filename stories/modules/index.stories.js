@@ -71,7 +71,7 @@ storiesOf('Form Builder', module)
   .add('Playground', () => (
     <Panel>
       <Kind title="Here you can build your own form">
-        <Playground form={trivia} fullscreen />
+        <Playground form={trivia} fullscreen vertical />
       </Kind>
     </Panel>
   ));

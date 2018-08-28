@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 
-import { replaceAtIndex } from '../../common/immutable';
+import { replaceAtIndex, removeAtIndex } from '../../common/immutable';
 
 import SelectRegionBase from './SelectRegionBase';
 import Selection from './Selection';
@@ -34,6 +34,11 @@ export default class RegionMultiselect extends Component {
     }
   };
 
+  handleDelete = index => {
+    const { onChange, values } = this.props;
+    onChange(removeAtIndex(values, index));
+  };
+
   handleResize = (value, index) => {
     const { onChange, values } = this.props;
     onChange(replaceAtIndex(values, index, value));
@@ -46,18 +51,21 @@ export default class RegionMultiselect extends Component {
         className={className}
         onSelectionEnd={this.handleSelectionEnd}
       >
-        {({ selection }) => (
+        {({ selection, width, height }) => (
           <Fragment>
             {children}
             {values.map((value, index) => (
               <Selection
                 selection={value}
+                cWidth={width}
+                cHeight={height}
                 key={getKey(value)}
-                resize
+                editable
+                onDelete={() => this.handleDelete(index)}
                 onResize={resized => this.handleResize(resized, index)}
               />
             ))}
-            <Selection selection={selection} />
+            <Selection selection={selection} cWidth={width} cHeight={height} />
           </Fragment>
         )}
       </SelectRegionBase>

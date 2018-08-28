@@ -38,15 +38,21 @@ export default class RegionSelect extends Component {
         className={className}
         onSelectionEnd={this.handleSelectionEnd}
       >
-        {({ selection }) => (
+        {({ selection, width, height }) => (
           <Fragment>
             {children}
             {selection ? (
-              <Selection selection={selection} />
+              <Selection
+                selection={selection}
+                cWidth={width}
+                cHeight={height}
+              />
             ) : (
               <Selection
                 selection={value}
-                resize
+                cWidth={width}
+                cHeight={height}
+                editable
                 onResize={this.handleResize}
               />
             )}

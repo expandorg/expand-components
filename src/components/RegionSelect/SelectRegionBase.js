@@ -1,10 +1,16 @@
 import React, { Component, createRef } from 'react';
 import PropTypes from 'prop-types';
+import debounce from 'debounce';
+
 import cn from 'classnames';
 
 import { stopEvt, getElementOffset, getMousePosition } from '../../common/dom';
 
+import normalizeSelection from './normalizeSelection';
+
 import './styles.styl';
+
+const RESIZE_DEBOUNCE = 300;
 
 export default class SelectRegionBase extends Component {
   static propTypes = {
@@ -25,15 +31,28 @@ export default class SelectRegionBase extends Component {
     super(props);
     this.container = createRef();
 
+    this.handleResize = debounce(this.handleResize, RESIZE_DEBOUNCE);
+
     this.state = {
       pressed: false,
       left: 0,
       top: 0,
+      width: 0,
+      height: 0,
       selection: null,
+      normalized: null,
     };
   }
 
+  componentDidMount() {
+    window.addEventListener('resize', this.handleResize);
+    this.handleResize();
+  }
+
   componentWillUnmount() {
+    this.handleResize.clear();
+
+    window.removeEventListener('resize', this.handleResize);
     document.removeEventListener('mousemove', this.handleMouseMove);
     document.removeEventListener('mouseup', this.handleMouseUp);
   }
@@ -67,13 +86,25 @@ export default class SelectRegionBase extends Component {
       top,
       left,
       selection: { x1, y1 },
+      width,
+      height,
     } = this.state;
 
     if (pressed) {
       stopEvt(evt);
       const { x, y } = getMousePosition(evt);
       const selection = { x1, y1, x2: x - left, y2: y - top };
-      this.setState({ selection }, () => onSelection(selection));
+      const normalized = normalizeSelection(selection, width, height);
+      this.setState({ selection, normalized }, () =>
+        onSelection(normalized, width, height)
+      );
+    }
+  };
+
+  handleResize = () => {
+    if (this.container.current) {
+      const { width, height } = this.container.current.getBoundingClientRect();
+      this.setState({ width, height });
     }
   };
 
@@ -82,14 +113,14 @@ export default class SelectRegionBase extends Component {
     document.removeEventListener('mouseup', this.handleMouseUp);
 
     const { onSelectionEnd } = this.props;
-    const { selection } = this.state;
-    this.setState({ pressed: false, selection: null });
-    onSelectionEnd(selection.x2 ? selection : null);
+    const { width, height, normalized } = this.state;
+    this.setState({ pressed: false, selection: null, normalized: null });
+    onSelectionEnd(normalized, width, height);
   };
 
   render() {
     const { children, className } = this.props;
-    const { selection } = this.state;
+    const { normalized, width, height } = this.state;
 
     return (
       <div
@@ -97,7 +128,11 @@ export default class SelectRegionBase extends Component {
         className={cn('gem-selectregion', className)}
         onMouseDown={this.handleMouseDown}
       >
-        {children({ selection: selection && selection.x2 ? selection : null })}
+        {children({
+          width,
+          height,
+          selection: normalized,
+        })}
       </div>
     );
   }

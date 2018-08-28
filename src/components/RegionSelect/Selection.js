@@ -3,24 +3,14 @@ import PropTypes from 'prop-types';
 
 import DragHandler from './DragHandler';
 
+import normalizeSelection from './normalizeSelection';
+
 const createRect = ({ x1, x2, y1, y2 }) => ({
   left: Math.min(x1, x2),
   top: Math.min(y1, y2),
   width: Math.abs(x1 - x2),
   height: Math.abs(y1 - y2),
 });
-
-const normalizeSelection = selection => {
-  if (!selection) {
-    return selection;
-  }
-  return {
-    x1: Math.min(selection.x1, selection.x2),
-    y1: Math.min(selection.y1, selection.y2),
-    x2: Math.max(selection.x1, selection.x2),
-    y2: Math.max(selection.y1, selection.y2),
-  };
-};
 
 export default class Selection extends Component {
   static propTypes = {
@@ -30,59 +20,85 @@ export default class Selection extends Component {
       x2: PropTypes.number,
       y2: PropTypes.number,
     }),
-    resize: PropTypes.bool,
+    cWidth: PropTypes.number,
+    cHeight: PropTypes.number,
+    editable: PropTypes.bool,
+    onDelete: PropTypes.func,
     onResize: PropTypes.func,
   };
 
   static defaultProps = {
     selection: null,
-    resize: false,
+    cWidth: 0,
+    cHeight: 0,
+    editable: false,
     onResize: Function.prototype,
+    onDelete: Function.prototype,
   };
 
   constructor(props) {
     super(props);
 
     this.state = {
-      selection: normalizeSelection(props.selection),
+      selection: props.selection,
+      rect: normalizeSelection(props.selection, props.cWidth, props.cHeight),
     };
   }
 
-  componentWillReceiveProps({ selection: nextSelection }) {
+  componentWillReceiveProps({ selection: nextSelection, cWidth, cHeight }) {
     const { selection } = this.props;
     if (nextSelection !== selection) {
-      this.setState({ selection: normalizeSelection(nextSelection) });
+      this.setState({
+        selection: nextSelection,
+        rect: normalizeSelection(nextSelection, cWidth, cHeight),
+      });
     }
   }
 
+  handleDelete = evt => {
+    evt.preventDefault();
+    const { onDelete } = this.props;
+    onDelete();
+  };
+
   handleDrag = (dx, dy, xCord, yCord) => {
+    const { cWidth, cHeight } = this.props;
     const { selection } = this.state;
+    const resized = {
+      ...selection,
+      [xCord]: selection[xCord] + dx,
+      [yCord]: selection[yCord] + dy,
+    };
+
     this.setState({
-      selection: {
-        ...selection,
-        [xCord]: selection[xCord] + dx,
-        [yCord]: selection[yCord] + dy,
-      },
+      selection: resized,
+      rect: normalizeSelection(resized, cWidth, cHeight),
     });
   };
 
   handleDragEnd = () => {
     const { onResize } = this.props;
-    const { selection } = this.state;
-    onResize(selection);
+    const { rect } = this.state;
+    onResize(rect);
   };
 
   render() {
-    const { resize } = this.props;
-    const { selection } = this.state;
-    if (!selection) {
+    const { editable } = this.props;
+    const { rect } = this.state;
+    if (!rect) {
       return null;
     }
-    const style = createRect(selection);
+    const style = createRect(rect);
     return (
       <div className="gem-selectregion-selection" style={style}>
-        {resize && (
+        {editable && (
           <Fragment>
+            <button
+              className="gem-selectregion-delete"
+              onClick={this.handleDelete}
+            >
+              ✕
+            </button>
             <DragHandler
               x={0}
               y={0}

@@ -30,29 +30,17 @@ export default class RegionMultiselect extends Component {
     onChange(name, value);
   };
 
-  handleClear = evt => {
-    evt.preventDefault();
-    this.handleChange([]);
-  };
-
   render() {
     const { image, name, value } = this.props;
     return (
       <Alignment padding="small" justify="center">
-        <div className={styles.inner}>
-          <UIRegionMultiselect
-            className={styles.region}
-            values={value}
-            onChange={this.handleChange}
-          >
-            <img className={styles.image} src={image} alt={name} />
-          </UIRegionMultiselect>
-          {value.length !== 0 && (
-            <button className={styles.clear} onClick={this.handleClear}>
-              Clear
-            </button>
-          )}
-        </div>
+        <UIRegionMultiselect
+          className={styles.region}
+          values={value}
+          onChange={this.handleChange}
+        >
+          <img className={styles.image} src={image} alt={name} />
+        </UIRegionMultiselect>
       </Alignment>
     );
   }

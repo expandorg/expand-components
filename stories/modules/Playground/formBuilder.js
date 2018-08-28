@@ -154,7 +154,8 @@ const moduleFactories = {
   }),
   [ModuleType.dropdown]: (params: Object) => ({
     ...params,
-    options: ['Option 1', 'Option 2', 'Option 2', 'Option 4'],
+    placeholder: 'Select one',
+    options: ['Option 1', 'Option 2', 'Option 3', 'Option 4'],
   }),
   [ModuleType.regionSelect]: (params: Object) => ({
     ...params,
