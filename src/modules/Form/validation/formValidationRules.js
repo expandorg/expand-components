@@ -1,7 +1,7 @@
 // @flow
-import { rules } from '../../common/validation';
+import { rules } from '../../../common/validation';
 
-import ModuleType from '../Module/ModuleType';
+import ModuleType from '../../Module/ModuleType';
 
 const supportedRules = new Set([
   'isRequired',

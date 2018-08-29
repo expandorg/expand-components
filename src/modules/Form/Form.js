@@ -8,24 +8,13 @@ import { validateForm } from '../../common/validation';
 import Validation from '../Validation';
 import ErrorMessage from '../../components/ErrorMessage';
 
-import formProps from './formProps';
-import formValidationRules from './formValidationRules';
+import overrideFormVars from './variables/overrideFormVars';
 
-import makeVariables from './variables/makeVariables';
-import applyVariables from './variables/applyVariables';
+import formProps from './formProps';
+
+import formValidationRules from './validation/formValidationRules';
 
 import styles from './Form.module.styl';
-
-const overrideFormVars = (form, variables) => {
-  if (!variables) {
-    return form;
-  }
-  const vars = makeVariables(variables);
-  return {
-    ...form,
-    modules: form.modules.map(module => applyVariables(module, vars)),
-  };
-};
 
 export default class Form extends Component {
   static propTypes = {

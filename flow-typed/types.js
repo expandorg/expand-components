@@ -4,3 +4,7 @@ declare type Module = {
   modules?: Array<Module>,
   [key: string]: Module | Array<Module> | string | Object | number | boolean,
 };
+
+declare type Form = {
+  modules: Array<Module>
+}
