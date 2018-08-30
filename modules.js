@@ -24,6 +24,7 @@ import applyVariables from './src/modules/Form/variables/applyVariables';
 import makeVariables from './src/modules/Form/variables/makeVariables';
 
 import Image from './src/modules/Image';
+import ImageTiles from './src/modules/ImageTiles';
 
 import Input from './src/modules/Input';
 
@@ -79,6 +80,7 @@ export {
   applyVariables,
   makeVariables,
   Image,
+  ImageTiles,
   Input,
   Instructions,
   InstructionsItem,

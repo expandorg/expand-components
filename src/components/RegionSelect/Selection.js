@@ -93,6 +93,7 @@ export default class Selection extends Component {
       <div className="gem-selectregion-selection" style={style}>
         {editable && (
           <Fragment>
+            <div className="gem-selectregion-selection-cliparea" />
             <button
               className="gem-selectregion-delete"
               onClick={this.handleDelete}

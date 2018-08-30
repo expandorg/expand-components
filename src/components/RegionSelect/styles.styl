@@ -7,7 +7,16 @@
   &-selection
     position: absolute;
     border: 2px dashed color-pink
-    background: transparent;
+    background-color: alpha(color-pink, 0.1);
+
+
+    &-cliparea
+      position: absolute;
+      top: -4px
+      left: 0
+      right: -24px
+      bottom: 0
+      clip-path: polygon(0 0, 100% 0, 90% 100%, 0 100%)
 
   &-drag
     box-sizing: border-box;

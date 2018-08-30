@@ -17,5 +17,6 @@
 | *type*   | `regionSelect` | true     | -       | module type |
 | *name*   | string         | true     | -       | module name |
 | *image*  | string         | true     | -       | image url   |
+| *[validation](https://gemsorg.github.io/gems-components/?selectedKind=Form%20Builder&selectedStory=Validation)*  | validtion | - | - | validation rules |
 
 ## Playground

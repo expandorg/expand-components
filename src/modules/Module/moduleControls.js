@@ -18,6 +18,7 @@ import Agreement from '../Agreement';
 import Collapsable from '../Collapsable';
 import Progress from '../Progress';
 import Dropdown from '../Dropdown';
+import ImageTiles from '../ImageTiles';
 
 import { RegionSelect, RegionMultiselect } from '../RegionSelect';
 
@@ -45,6 +46,7 @@ const moduleControls = {
   [ModuleType.dropdown]: Dropdown,
   [ModuleType.regionSelect]: RegionSelect,
   [ModuleType.regionMultiselect]: RegionMultiselect,
+  [ModuleType.imageTiles]: ImageTiles,
 };
 
 export default moduleControls;

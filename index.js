@@ -18,6 +18,7 @@ import ErrorMessage from './src/components/ErrorMessage';
 import Hamburger from './src/components/Hamburger';
 
 import Input from './src/components/Input';
+import { ImageTile, ImageTiles } from './src/components/ImageTiles';
 
 import JsScript from './src/components/JsScript';
 
@@ -61,6 +62,8 @@ export {
   ErrorMessage,
   Hamburger,
   Input,
+  ImageTile,
+  ImageTiles,
   JsScript,
   Panel,
   RegionSelect,

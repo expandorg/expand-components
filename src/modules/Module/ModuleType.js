@@ -27,6 +27,7 @@ const ModuleType = {
   dropdown: 'dropdown',
   regionSelect: 'regionSelect',
   regionMultiselect: 'regionMultiselect',
+  imageTiles: 'imageTiles',
 };
 
 export default ModuleType;

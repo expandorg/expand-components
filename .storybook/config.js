@@ -48,6 +48,7 @@ const moduleStories = [
   'Question',
   'RegionMultiselect',
   'RegionSelect',
+  'ImageTiles',
   'Select',
   'Submit',
   'Title',
