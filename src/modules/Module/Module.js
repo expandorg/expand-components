@@ -10,6 +10,7 @@ export default class Module extends Component {
     value: PropTypes.any, // eslint-disable-line
     isSubmitting: PropTypes.bool.isRequired,
     onChange: PropTypes.func,
+    onReport: PropTypes.func,
     onSubmit: PropTypes.func,
     controls: PropTypes.object, // eslint-disable-line
   };
@@ -18,6 +19,7 @@ export default class Module extends Component {
     value: undefined,
     controls: moduleControls,
     onChange: Function.prototype,
+    onReport: Function.prototype,
     onSubmit: Function.prototype,
   };
 
@@ -49,6 +51,7 @@ export default class Module extends Component {
       onChange,
       isSubmitting,
       onSubmit,
+      onReport,
       controls,
     } = this.props;
 
@@ -62,6 +65,7 @@ export default class Module extends Component {
         <Control
           renderModules={this.renderModules}
           value={value}
+          onReport={onReport}
           onChange={onChange}
           {...rest}
         >
@@ -75,6 +79,7 @@ export default class Module extends Component {
         value={value}
         onChange={onChange}
         onSubmit={onSubmit}
+        onReport={onReport}
         isSubmitting={isSubmitting}
         renderModules={this.renderModules}
       />

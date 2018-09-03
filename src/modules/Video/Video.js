@@ -8,6 +8,7 @@ import styles from './Video.module.styl';
 
 export default class Video extends Component {
   static propTypes = {
+    name: PropTypes.string.isRequired,
     className: PropTypes.string,
     subtitles: PropTypes.string,
     playerControls: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
@@ -18,6 +19,7 @@ export default class Video extends Component {
     height: PropTypes.number,
     width: PropTypes.number,
     src: PropTypes.string.isRequired,
+    onReport: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
@@ -42,7 +44,9 @@ export default class Video extends Component {
   }
 
   handleError = () => {
+    const { onReport, name, src } = this.props;
     this.setState({ loadError: true });
+    onReport(name, `Error while loading video ${src}`);
   };
 
   render() {
