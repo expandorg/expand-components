@@ -19,7 +19,7 @@ export default class Video extends Component {
     height: PropTypes.number,
     width: PropTypes.number,
     src: PropTypes.string.isRequired,
-    onReport: PropTypes.func.isRequired,
+    onModuleError: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
@@ -44,9 +44,9 @@ export default class Video extends Component {
   }
 
   handleError = () => {
-    const { onReport, name, src } = this.props;
+    const { onModuleError, name, src } = this.props;
     this.setState({ loadError: true });
-    onReport(name, `Error while loading video ${src}`);
+    onModuleError(`${name}: Error while loading video ${src}`);
   };
 
   render() {

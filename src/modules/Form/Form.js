@@ -5,7 +5,6 @@ import cn from 'classnames';
 
 import { validateForm } from '../../common/validation';
 
-import Report from './report/Report';
 import Validation from '../Validation';
 import ErrorMessage from '../../components/ErrorMessage';
 
@@ -24,19 +23,17 @@ export default class Form extends Component {
     errors: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
     isSubmitting: PropTypes.bool,
     validation: PropTypes.bool,
-    report: PropTypes.bool,
     variables: PropTypes.object, // eslint-disable-line
     onSubmit: PropTypes.func.isRequired,
-    onReport: PropTypes.func,
+    onModuleError: PropTypes.func,
   };
 
   static defaultProps = {
     className: null,
     isSubmitting: false,
     validation: true,
-    report: false,
     errors: null,
-    onReport: Function.prototype,
+    onModuleError: Function.prototype,
   };
 
   constructor(props) {
@@ -45,7 +42,6 @@ export default class Form extends Component {
       values: null,
       form: overrideFormVars(props.form, props.variables),
       errors: null,
-      reports: {},
     };
   }
 
@@ -55,7 +51,6 @@ export default class Form extends Component {
       this.setState({
         values: null,
         form: overrideFormVars(nextForm, variables),
-        reports: {},
       });
     }
     if (nextErrors && nextErrors !== errors) {
@@ -98,39 +93,22 @@ export default class Form extends Component {
     }
   };
 
-  handleReport = (module, report) => {
-    this.setState(({ reports }) => ({
-      reports: {
-        ...reports,
-        [module]: report,
-      },
-    }));
-  };
-
   render() {
-    const { className, isSubmitting, children, report, onReport } = this.props;
-    const { values, errors, form, reports } = this.state;
+    const { className, isSubmitting, onModuleError, children } = this.props;
+    const { values, errors, form } = this.state;
 
     const props = {
       isSubmitting,
       onChange: this.handleChange,
       onSubmit: this.handleSubmit,
-      onReport: this.handleReport,
+      onModuleError,
     };
+
     return (
       <form
         className={cn(styles.container, className)}
         onSubmit={this.handleSubmit}
       >
-        {report && (
-          <div className={styles.report}>
-            <Report
-              reports={reports}
-              modules={form.modules}
-              onReport={onReport}
-            />
-          </div>
-        )}
         {form.modules.map(module => (
           <Validation key={module.name} name={module.name} error={errors}>
             {children({

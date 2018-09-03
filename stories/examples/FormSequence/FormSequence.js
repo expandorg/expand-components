@@ -7,20 +7,26 @@ import SourcesDialog from './SourcesDialog';
 import { Form, formProps, FormDataProvider } from '../../../src/modules/Form';
 import { Module } from '../../../src/modules/Module';
 
+import { ReportToggle } from '../../../src/modules/Report';
+
 import styles from './FormSequence.module.styl';
 
 export default class FormSequence extends Component {
   static propTypes = {
     forms: PropTypes.arrayOf(formProps).isRequired,
+    title: PropTypes.string.isRequired,
     showSource: PropTypes.bool,
+    showReport: PropTypes.bool,
   };
 
   static defaultProps = {
     showSource: true,
+    showReport: true,
   };
 
   state = {
     index: 0,
+    report: null,
     sources: false,
     formData: { allowedRetries: 3, currentTry: 1 },
   };
@@ -33,34 +39,49 @@ export default class FormSequence extends Component {
     const { forms } = this.props;
     const { index } = this.state;
     if (index < forms.length - 1) {
-      this.setState({ index: index + 1 });
+      this.setState({ index: index + 1, report: null });
     }
   };
 
+  handleReport = (reason, value) => {
+    alert(JSON.stringify({ reason, value }, undefined, 2));
+  };
+
+  handleError = report => {
+    this.setState({ report });
+  };
+
   render() {
-    const { forms, showSource } = this.props;
-    const { index, sources, formData } = this.state;
+    const { forms, showSource, title, showReport } = this.props;
+    const { index, sources, formData, report } = this.state;
 
     const form = forms[index];
     return (
       <div className={styles.container}>
-        {showSource && (
+        <div className={styles.header}>
+          <div className={styles.title}>{title}</div>
           <div className={styles.actions}>
-            <Button
-              size="small"
-              onClick={this.handleToggle}
-              theme="link"
-              className={styles.button}
-            >
-              Form source
-            </Button>
+            {showSource && (
+              <Button
+                size="small"
+                onClick={this.handleToggle}
+                theme="link"
+                className={styles.button}
+              >
+                Form source
+              </Button>
+            )}
+            {showReport && (
+              <ReportToggle report={report} onReport={this.handleReport} />
+            )}
           </div>
-        )}
+        </div>
         <FormDataProvider formData={formData}>
           <Form
+            className={styles.form}
             form={form}
             onSubmit={this.handleSubmit}
-            className={styles.form}
+            onModuleError={this.handleError}
           >
             {moduleProps => <Module {...moduleProps} />}
           </Form>

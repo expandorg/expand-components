@@ -44,6 +44,7 @@ import Paragraph from './src/modules/Paragraph';
 import Progress from './src/modules/Progress';
 
 import { RegionSelect, RegionMultiselect } from './src/modules/RegionSelect';
+import { ReportForm, ReportToggle } from './src/modules/Report';
 
 import {
   Select,
@@ -93,6 +94,8 @@ export {
   Progress,
   RegionSelect,
   RegionMultiselect,
+  ReportForm,
+  ReportToggle,
   Question,
   Select,
   Choice,

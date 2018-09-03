@@ -70,10 +70,6 @@ export default class Playground extends Component {
     alert(JSON.stringify(values, undefined, 2));
   };
 
-  handleReport = (module, value) => {
-    alert(JSON.stringify({ module, value }, undefined, 2));
-  };
-
   render() {
     const { editMode, fullscreen, vertical } = this.props;
     const { source, form, formData, error } = this.state;
@@ -96,10 +92,8 @@ export default class Playground extends Component {
             <FormDataProvider formData={formData}>
               <Form
                 form={form}
-                report
                 className={styles.form}
                 onSubmit={this.handleSubmit}
-                onReport={this.handleReport}
               >
                 {moduleProps => <Module {...moduleProps} />}
               </Form>

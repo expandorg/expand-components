@@ -6,20 +6,17 @@ import Button from '../../components/Button';
 
 import ReportForm from './ReportForm';
 
-import moduleProps from '../Module/moduleProps';
+import styles from './ReportToggle.module.styl';
 
-import styles from './Report.module.styl';
-
-export default class Report extends Component {
+export default class ReportToggle extends Component {
   static propTypes = {
-    modules: PropTypes.arrayOf(moduleProps).isRequired,
     className: PropTypes.string,
-    reports: PropTypes.object, // eslint-disable-line
+    report: PropTypes.string,
     onReport: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
-    reports: null,
+    report: null,
     className: null,
   };
 
@@ -32,7 +29,7 @@ export default class Report extends Component {
   };
 
   render() {
-    const { modules, reports, onReport, className } = this.props;
+    const { report, onReport, className } = this.props;
     const { visible } = this.state;
     return (
       <Fragment>
@@ -42,12 +39,11 @@ export default class Report extends Component {
           size="small"
           className={cn(styles.toggle, className)}
         >
-          Report
+          report
         </Button>
         {visible && (
           <ReportForm
-            modules={modules}
-            reports={reports}
+            report={report}
             onReport={onReport}
             onHide={this.handleToggle}
           />

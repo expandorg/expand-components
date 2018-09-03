@@ -6,34 +6,32 @@ import Button from '../../components/Button';
 import Textarea from '../../components/Textarea';
 import Dropdown from '../../components/Dropdown';
 
-import moduleProps from '../Module/moduleProps';
+import DropdownContent from '../Dropdown/DropdownContent';
 
 import styles from './ReportForm.module.styl';
 
-const getReportModule = (reports, modules) => {
-  const withError = Reflect.ownKeys(reports || {});
-  return withError.length ? withError[0] : modules[0].name;
-};
+const reasons = [
+  'Content is not loaded',
+  'Task is unclear',
+  'Incorrect answer',
+];
 
 export default class ReportForm extends Component {
   static propTypes = {
-    modules: PropTypes.arrayOf(moduleProps).isRequired,
-    reports: PropTypes.object, // eslint-disable-line
+    report: PropTypes.string,
     onHide: PropTypes.func.isRequired,
     onReport: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
-    reports: {},
+    report: null,
   };
 
   constructor(props) {
     super(props);
-
-    const module = getReportModule(props.reports, props.modules);
     this.state = {
-      module,
-      value: props.reports[module] || '',
+      value: props.report || '',
+      reason: '',
     };
   }
 
@@ -41,40 +39,55 @@ export default class ReportForm extends Component {
     this.setState({ value: target.value });
   };
 
-  handleSelect = module => {
-    this.setState({ module });
+  handleSelectReason = reason => {
+    this.setState({ reason });
   };
 
   handleSubmit = evt => {
     evt.preventDefault();
-    const { value, module } = this.state;
+    evt.stopPropagation();
+
     const { onReport } = this.props;
-    onReport(module, value);
+    const { value, reason } = this.state;
+
+    onReport(reason, value);
   };
 
   render() {
-    const { modules, onHide } = this.props;
-    const { value, module } = this.state;
+    const { onHide } = this.props;
+    const { value, reason } = this.state;
     return (
       <Dialog visible onHide={onHide} contentLabel="report">
         <DialogHeadline>Report</DialogHeadline>
-        <form className={styles.form} onSubmit={this.handleSubmit}>
+        <form className={styles.container} onSubmit={this.handleSubmit}>
           <div className={styles.content}>
-            <Dropdown
-              value={module}
-              onChange={this.handleSelect}
-              options={modules.map(m => m.name)}
-            >
-              {({ formatted }) => formatted}
-            </Dropdown>
-            <Textarea
-              value={value}
-              className={styles.input}
-              onChange={this.handleChange}
-            />
+            <div className={styles.field}>
+              <div className={styles.label}>Error</div>
+              <Dropdown
+                value={reason}
+                className={styles.dropdown}
+                onChange={this.handleSelectReason}
+                options={reasons}
+              >
+                {({ formatted }) => (
+                  <DropdownContent
+                    value={formatted}
+                    placeholder="Select reason"
+                  />
+                )}
+              </Dropdown>
+            </div>
+            <div className={styles.field}>
+              <div className={styles.label}>Provide some details</div>
+              <Textarea
+                value={value}
+                className={styles.input}
+                onChange={this.handleChange}
+              />
+            </div>
           </div>
           <div className={styles.actions}>
-            <Button onClick={onHide} className={styles.cancel}>
+            <Button onClick={onHide} className={styles.cancel} theme="white">
               Cancel
             </Button>
             <Button type="submit" className={styles.report}>

@@ -81,8 +81,6 @@ const forms = [
 
 storiesOf('Form Builder/Examples', module).add('Trivia', () => (
   <Panel>
-    <Kind title="Simple trivia task">
-      <FormSequence forms={forms} />
-    </Kind>
+    <FormSequence title="Simple trivia task" forms={forms} />
   </Panel>
 ));

@@ -1,0 +1,34 @@
+@import '../../uikit/consts'
+@import '../../uikit/colors'
+
+.container
+  box-sizing: border-box;
+  padding: 0 s-padding-big s-padding-big
+  min-width: 500px
+  max-width: 800px;
+
+  @media(max-width: 660px)
+    width: 100%;
+    min-width: 100%
+    padding: 10px 20px
+
+.actions
+  display: flex;
+  justify-content: flex-end;
+
+  box-sizing: border-box;
+  padding: 15px 0;
+
+.cancel
+  border: 0;
+
+.dropdown
+  box-sizing: border-box;
+
+  width: 100%;
+  border-radius: 2px;
+  padding: 0 12px
+  border: 1px solid color-border-grey;
+
+.field
+  margin-top: 15px
