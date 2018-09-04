@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import UIDropdown from '../../components/Dropdown';
-import { ArrowDown } from '../../components/SvgIcons';
+import DropdownContent from './DropdownContent';
 
 import Alignment from '../Alignment';
 
@@ -36,20 +36,12 @@ export default class Dropdown extends Component {
         <UIDropdown
           className={styles.dropdown}
           value={value}
+          nullValue={placeholder}
           options={options}
           onChange={this.handleChange}
         >
           {({ formatted }) => (
-            <div className={styles.content}>
-              {formatted ? (
-                <div className={styles.value}>{formatted}</div>
-              ) : (
-                <div className={styles.placeholder}>{placeholder}</div>
-              )}
-              <div className={styles.shevron}>
-                <ArrowDown />
-              </div>
-            </div>
+            <DropdownContent value={formatted} placeholder={placeholder} />
           )}
         </UIDropdown>
       </Alignment>

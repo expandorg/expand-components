@@ -283,8 +283,6 @@ const forms = [
 
 storiesOf('Form Builder/Examples', module).add('Video Onboarding', () => (
   <Panel>
-    <Kind title="Video Onboarding example">
-      <FormSequence forms={forms} />
-    </Kind>
+    <FormSequence title="Video Onboarding example" forms={forms} />
   </Panel>
 ));

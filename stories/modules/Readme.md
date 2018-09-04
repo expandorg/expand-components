@@ -37,9 +37,11 @@ class CustomForm extends Component {
 | *form*       | `{ modules: []}`           | true     | null          |              |
 | *className*  | string                     | -        | null          |              |
 | *validation* | boolean                    | -        | true          | frontend validation |
+| *report*     | boolean                    | -        | false         | display report bug  |
 | *variables*  |  Object                    | -        | null          | form variables map |
 | *isSubmitting*   | boolean                | -        | false         | form is sumbitting |
 | *onSubmit*   | func                       | -        | -             | form submit handlrer  |
+| *onModuleError* | func                    | -        | -             | form report  |
 
 
 
@@ -52,6 +54,7 @@ class CustomForm extends Component {
 | *isSubmitting* | boolean             | -        | false         |
 | *onChange*     | func                | true     | -             |
 | *onSubmit*     | func                | true     | -             |
+| *onModuleError* | func                | -        | report module error |
 | *controls*     | Object              | -        | `moduleControls` |
 | *renderModules*| func                | -        | inner module render  |
 
@@ -76,7 +79,7 @@ declare type Form = {
 
 ## Using your own module
 
-Most simple way to add custom module to form bulder is overriding `controls` property of `Module`
+Most simple way to add custom module to form builder is overriding `controls` property of `Module`
 
 ```jsx
 import React from 'react';

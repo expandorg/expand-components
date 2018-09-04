@@ -25,6 +25,7 @@ export default class Form extends Component {
     validation: PropTypes.bool,
     variables: PropTypes.object, // eslint-disable-line
     onSubmit: PropTypes.func.isRequired,
+    onModuleError: PropTypes.func,
   };
 
   static defaultProps = {
@@ -32,6 +33,7 @@ export default class Form extends Component {
     isSubmitting: false,
     validation: true,
     errors: null,
+    onModuleError: Function.prototype,
   };
 
   constructor(props) {
@@ -92,14 +94,16 @@ export default class Form extends Component {
   };
 
   render() {
-    const { className, isSubmitting, children } = this.props;
+    const { className, isSubmitting, onModuleError, children } = this.props;
     const { values, errors, form } = this.state;
 
     const props = {
       isSubmitting,
       onChange: this.handleChange,
       onSubmit: this.handleSubmit,
+      onModuleError,
     };
+
     return (
       <form
         className={cn(styles.container, className)}
