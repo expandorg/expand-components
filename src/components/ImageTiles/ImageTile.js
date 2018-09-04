@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 
 import cn from 'classnames';
 
+import { Checkmark } from '../SvgIcons';
+
 import { getTileIndex, getTileStyle } from './tile';
 
 export default class Tile extends Component {
@@ -30,7 +32,11 @@ export default class Tile extends Component {
         className={classes}
         style={getTileStyle(row, column, rows, columns)}
         onClick={this.handleSelect}
-      />
+      >
+        <div className="gem-imagetiles-tile-checkmark">
+          <Checkmark />
+        </div>
+      </div>
     );
   }
 }
