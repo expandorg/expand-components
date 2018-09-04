@@ -27,7 +27,7 @@ const getMessage = (rule: string, message: ?string, name: string): string => {
   return factory ? factory(name) : `${name} failed ${rule}`;
 };
 
-const ruleFactory = (module: Object, ruleName: string, message: ?string) => {
+const ruleFactory = (module: Module, ruleName: string, message: ?string) => {
   let rule = null;
   switch (ruleName) {
     case 'isTrue':
@@ -73,7 +73,7 @@ const normalizeRules = (validation: Object | Array<string>) => {
   return rulesArray.filter(def => supportedRules.has(def[0]));
 };
 
-const formValidationRules = (modules: Array<Object>) =>
+const formValidationRules = (modules: Array<Module>) =>
   modules.reduce((formRules, module) => {
     if (!module.validation) {
       return formRules;

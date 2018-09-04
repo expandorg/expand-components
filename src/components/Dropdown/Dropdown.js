@@ -15,6 +15,7 @@ export default class Dropdown extends Component {
   static propTypes = {
     className: PropTypes.string,
     value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    nullValue: PropTypes.string,
     options: PropTypes.arrayOf(PropTypes.any).isRequired,
     disabled: PropTypes.bool,
     onChange: PropTypes.func.isRequired,
@@ -23,6 +24,7 @@ export default class Dropdown extends Component {
 
   static defaultProps = {
     className: null,
+    nullValue: false,
     value: '',
     disabled: false,
     formatter: value => value,
@@ -40,6 +42,7 @@ export default class Dropdown extends Component {
       className,
       children,
       disabled,
+      nullValue,
       formatter,
     } = this.props;
 
@@ -68,6 +71,11 @@ export default class Dropdown extends Component {
           value={value}
           onChange={this.handleChange}
         >
+          {nullValue && (
+            <option disabled value="">
+              {nullValue}
+            </option>
+          )}
           {items.map(option => (
             <option key={option.value} value={option.value}>
               {formatter(option.label)}

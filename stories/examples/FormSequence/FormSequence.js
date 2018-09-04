@@ -72,7 +72,11 @@ export default class FormSequence extends Component {
               </Button>
             )}
             {showReport && (
-              <ReportToggle report={report} onReport={this.handleReport} />
+              <ReportToggle
+                form={form}
+                report={report}
+                onReport={this.handleReport}
+              />
             )}
           </div>
         </div>

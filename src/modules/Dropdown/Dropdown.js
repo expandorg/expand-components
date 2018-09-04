@@ -36,6 +36,7 @@ export default class Dropdown extends Component {
         <UIDropdown
           className={styles.dropdown}
           value={value}
+          nullValue={placeholder}
           options={options}
           onChange={this.handleChange}
         >

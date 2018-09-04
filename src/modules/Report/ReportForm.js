@@ -10,15 +10,10 @@ import DropdownContent from '../Dropdown/DropdownContent';
 
 import styles from './ReportForm.module.styl';
 
-const reasons = [
-  'Content is not loaded',
-  'Task is unclear',
-  'Incorrect answer',
-];
-
 export default class ReportForm extends Component {
   static propTypes = {
     report: PropTypes.string,
+    reasons: PropTypes.arrayOf(PropTypes.string),
     onHide: PropTypes.func.isRequired,
     onReport: PropTypes.func.isRequired,
   };
@@ -54,7 +49,7 @@ export default class ReportForm extends Component {
   };
 
   render() {
-    const { onHide } = this.props;
+    const { onHide, reasons } = this.props;
     const { value, reason } = this.state;
     return (
       <Dialog visible onHide={onHide} contentLabel="report">
@@ -66,6 +61,7 @@ export default class ReportForm extends Component {
               <Dropdown
                 value={reason}
                 className={styles.dropdown}
+                nullValue="Select reason"
                 onChange={this.handleSelectReason}
                 options={reasons}
               >
