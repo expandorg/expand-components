@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 import cn from 'classnames';
 
 import Button from '../../components/Button';
-
-import ReportForm from './ReportForm';
 import formProps from '../Form/formProps';
 
 import { getReasons } from './reportReasons';
@@ -15,13 +13,10 @@ export default class ReportToggle extends Component {
   static propTypes = {
     className: PropTypes.string,
     form: formProps,
-    report: PropTypes.string,
-    onReport: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
     form: null,
-    report: null,
     className: null,
   };
 
@@ -34,8 +29,8 @@ export default class ReportToggle extends Component {
   };
 
   render() {
-    const { report, form, onReport, className } = this.props;
-    if (!form && form.report === false) {
+    const { children, form, className } = this.props;
+    if (!form || form.report === false) {
       return null;
     }
 
@@ -55,14 +50,7 @@ export default class ReportToggle extends Component {
         >
           report
         </Button>
-        {visible && (
-          <ReportForm
-            reasons={reasons}
-            report={report}
-            onReport={onReport}
-            onHide={this.handleToggle}
-          />
-        )}
+        {visible && children({ reasons, onHide: this.handleToggle })}
       </Fragment>
     );
   }

@@ -7,7 +7,7 @@ import SourcesDialog from './SourcesDialog';
 import { Form, formProps, FormDataProvider } from '../../../src/modules/Form';
 import { Module } from '../../../src/modules/Module';
 
-import { ReportToggle } from '../../../src/modules/Report';
+import { ReportToggle, ReportForm } from '../../../src/modules/Report';
 
 import styles from './FormSequence.module.styl';
 
@@ -72,11 +72,16 @@ export default class FormSequence extends Component {
               </Button>
             )}
             {showReport && (
-              <ReportToggle
-                form={form}
-                report={report}
-                onReport={this.handleReport}
-              />
+              <ReportToggle form={form}>
+                {({ onHide, reasons }) => (
+                  <ReportForm
+                    onHide={onHide}
+                    reasons={reasons}
+                    report={report}
+                    onReport={this.handleReport}
+                  />
+                )}
+              </ReportToggle>
             )}
           </div>
         </div>

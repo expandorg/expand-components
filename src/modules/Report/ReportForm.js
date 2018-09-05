@@ -7,19 +7,25 @@ import Textarea from '../../components/Textarea';
 import Dropdown from '../../components/Dropdown';
 
 import DropdownContent from '../Dropdown/DropdownContent';
+import ErrorMessage from '../../components/ErrorMessage';
 
 import styles from './ReportForm.module.styl';
 
 export default class ReportForm extends Component {
   static propTypes = {
     report: PropTypes.string,
+    error: PropTypes.shape({}),
     reasons: PropTypes.arrayOf(PropTypes.string),
     onHide: PropTypes.func.isRequired,
+    isReporting: PropTypes.bool,
     onReport: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
     report: null,
+    error: null,
+    isReporting: false,
+    reasons: [],
   };
 
   constructor(props) {
@@ -38,21 +44,29 @@ export default class ReportForm extends Component {
     this.setState({ reason });
   };
 
+  handleHide = () => {
+    const { isReporting, onHide } = this.props;
+    if (!isReporting) {
+      onHide();
+    }
+  };
+
   handleSubmit = evt => {
     evt.preventDefault();
     evt.stopPropagation();
 
-    const { onReport } = this.props;
-    const { value, reason } = this.state;
-
-    onReport(reason, value);
+    const { onReport, isReporting } = this.props;
+    if (!isReporting) {
+      const { value, reason } = this.state;
+      onReport(reason, value);
+    }
   };
 
   render() {
-    const { onHide, reasons } = this.props;
+    const { reasons, isReporting, error } = this.props;
     const { value, reason } = this.state;
     return (
-      <Dialog visible onHide={onHide} contentLabel="report">
+      <Dialog visible onHide={this.handleHide} contentLabel="report">
         <DialogHeadline>Report</DialogHeadline>
         <form className={styles.container} onSubmit={this.handleSubmit}>
           <div className={styles.content}>
@@ -82,11 +96,20 @@ export default class ReportForm extends Component {
               />
             </div>
           </div>
+          <ErrorMessage error={error} className={styles.error} />
           <div className={styles.actions}>
-            <Button onClick={onHide} className={styles.cancel} theme="white">
+            <Button
+              onClick={this.handleHide}
+              className={styles.cancel}
+              theme="white"
+            >
               Cancel
             </Button>
-            <Button type="submit" className={styles.report}>
+            <Button
+              type="submit"
+              className={styles.report}
+              disabled={isReporting}
+            >
               Report
             </Button>
           </div>
