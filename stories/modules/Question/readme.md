@@ -19,6 +19,7 @@
 | *name*       | string         | true     | -       | module name |
 | *title*      | string         | -        | -       | question title |
 | *content*    | string         | -        | -       | question content |
-| *padding*   | `small` `medium` | -        | `medium`  | padding |
+| *padding*    | `small` `medium` | -        | `medium`  | padding |
+| *order*      | boolean        | false    | -       | consider the order of answers  |
 
 ## Playground
