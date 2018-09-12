@@ -12,16 +12,21 @@ import './styles.styl';
 
 const RESIZE_DEBOUNCE = 300;
 
+const validate = (r, size) =>
+  !r || (Math.abs(r.x2 - r.x1) >= size && Math.abs(r.y2 - r.y1) >= size);
+
 export default class SelectRegionBase extends Component {
   static propTypes = {
     className: PropTypes.string,
     onSelectionBegin: PropTypes.func,
+    minSize: PropTypes.number,
     onSelection: PropTypes.func,
     onSelectionEnd: PropTypes.func,
   };
 
   static defaultProps = {
     className: null,
+    minSize: 10,
     onSelectionBegin: Function.prototype,
     onSelection: Function.prototype,
     onSelectionEnd: Function.prototype,
@@ -112,10 +117,12 @@ export default class SelectRegionBase extends Component {
     document.removeEventListener('mousemove', this.handleMouseMove);
     document.removeEventListener('mouseup', this.handleMouseUp);
 
-    const { onSelectionEnd } = this.props;
+    const { onSelectionEnd, minSize } = this.props;
     const { width, height, normalized } = this.state;
     this.setState({ pressed: false, selection: null, normalized: null });
-    onSelectionEnd(normalized, width, height);
+    if (validate(normalized, minSize)) {
+      onSelectionEnd(normalized, width, height);
+    }
   };
 
   render() {
