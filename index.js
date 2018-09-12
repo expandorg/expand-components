@@ -43,6 +43,8 @@ import {
   ServiceLocator,
 } from './src/components/ServiceProvider';
 
+import Textarea from './src/components/Textarea';
+
 import { Toast, ToastAnimated } from './src/components/Toast';
 import Tooltip from './src/components/Tooltip';
 
@@ -77,6 +79,7 @@ export {
   SvgIcon,
   ShevronUp,
   ShevronDown,
+  Textarea,
   Toast,
   ToastAnimated,
   Tooltip,

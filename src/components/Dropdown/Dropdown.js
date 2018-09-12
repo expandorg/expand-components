@@ -24,7 +24,7 @@ export default class Dropdown extends Component {
 
   static defaultProps = {
     className: null,
-    nullValue: false,
+    nullValue: null,
     value: '',
     disabled: false,
     formatter: value => value,
