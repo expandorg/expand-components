@@ -23,8 +23,8 @@ import { ImageTile, ImageTiles } from './src/components/ImageTiles';
 import JsScript from './src/components/JsScript';
 
 import {
-  RegionSelect,
-  RegionMultiselect,
+  ImageRegionSelect,
+  ImageRegionMultiselect,
   RegionSelection,
   SelectRegionBase,
 } from './src/components/RegionSelect';
@@ -68,8 +68,8 @@ export {
   ImageTiles,
   JsScript,
   Panel,
-  RegionSelect,
-  RegionMultiselect,
+  ImageRegionSelect,
+  ImageRegionMultiselect,
   RegionSelection,
   SelectRegionBase,
   ServiceProvider,
