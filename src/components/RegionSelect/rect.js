@@ -1,6 +1,6 @@
 // @flow
 
-const normalizeSelection = (
+export const normalizeRect = (
   selection: Object,
   width: number,
   height: number
@@ -17,4 +17,15 @@ const normalizeSelection = (
   };
 };
 
-export default normalizeSelection;
+export const fixRatio = (rect: Object, d1: number, d2: number) => {
+  if (!rect) {
+    return rect;
+  }
+  const factor = d1 / d2;
+  return {
+    x1: rect.x1 * factor,
+    y1: rect.y1 * factor,
+    x2: rect.x2 * factor,
+    y2: rect.y2 * factor,
+  };
+};

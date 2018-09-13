@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import DragHandler from './DragHandler';
 
-import normalizeSelection from './normalizeSelection';
+import { normalizeRect } from './rect';
 
 const createRect = ({ x1, x2, y1, y2 }) => ({
   left: Math.min(x1, x2),
@@ -41,7 +41,7 @@ export default class Selection extends Component {
 
     this.state = {
       selection: props.selection,
-      rect: normalizeSelection(props.selection, props.cWidth, props.cHeight),
+      rect: normalizeRect(props.selection, props.cWidth, props.cHeight),
     };
   }
 
@@ -50,7 +50,7 @@ export default class Selection extends Component {
     if (nextSelection !== selection) {
       this.setState({
         selection: nextSelection,
-        rect: normalizeSelection(nextSelection, cWidth, cHeight),
+        rect: normalizeRect(nextSelection, cWidth, cHeight),
       });
     }
   }
@@ -72,7 +72,7 @@ export default class Selection extends Component {
 
     this.setState({
       selection: resized,
-      rect: normalizeSelection(resized, cWidth, cHeight),
+      rect: normalizeRect(resized, cWidth, cHeight),
     });
   };
 

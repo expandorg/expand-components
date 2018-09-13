@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import Alignment from '../Alignment';
-import { RegionSelect as UIRegionSelect } from '../../components/RegionSelect';
+import { ImageRegionSelect } from '../../components/RegionSelect';
 
 import styles from './styles.module.styl';
 
@@ -29,16 +29,15 @@ export default class RegionSelect extends Component {
   };
 
   render() {
-    const { image, name, value } = this.props;
+    const { image, value } = this.props;
     return (
       <Alignment padding="small" justify="center">
-        <UIRegionSelect
+        <ImageRegionSelect
           className={styles.region}
+          src={image}
           value={value}
           onChange={this.handleChange}
-        >
-          <img className={styles.image} src={image} alt={name} />
-        </UIRegionSelect>
+        />
       </Alignment>
     );
   }

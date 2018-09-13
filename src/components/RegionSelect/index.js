@@ -2,7 +2,12 @@
 import RegionSelection from './Selection';
 import SelectRegionBase from './SelectRegionBase';
 
-import RegionSelect from './RegionSelect';
-import RegionMultiselect from './RegionMultiselect';
+import ImageRegionSelect from './ImageRegionSelect';
+import ImageRegionMultiselect from './ImageRegionMultiselect';
 
-export { RegionSelect, RegionMultiselect, RegionSelection, SelectRegionBase };
+export {
+  ImageRegionSelect,
+  ImageRegionMultiselect,
+  RegionSelection,
+  SelectRegionBase,
+};

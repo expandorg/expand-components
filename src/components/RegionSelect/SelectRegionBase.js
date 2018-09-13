@@ -6,11 +6,11 @@ import cn from 'classnames';
 
 import { stopEvt, getElementOffset, getMousePosition } from '../../common/dom';
 
-import normalizeSelection from './normalizeSelection';
+import { normalizeRect } from './rect';
 
 import './styles.styl';
 
-const RESIZE_DEBOUNCE = 300;
+const RESIZE_DEBOUNCE = 250;
 
 const validate = (r, size) =>
   !r || (Math.abs(r.x2 - r.x1) >= size && Math.abs(r.y2 - r.y1) >= size);
@@ -18,8 +18,8 @@ const validate = (r, size) =>
 export default class SelectRegionBase extends Component {
   static propTypes = {
     className: PropTypes.string,
-    onSelectionBegin: PropTypes.func,
     minSize: PropTypes.number,
+    onSelectionBegin: PropTypes.func,
     onSelection: PropTypes.func,
     onSelectionEnd: PropTypes.func,
   };
@@ -99,7 +99,7 @@ export default class SelectRegionBase extends Component {
       stopEvt(evt);
       const { x, y } = getMousePosition(evt);
       const selection = { x1, y1, x2: x - left, y2: y - top };
-      const normalized = normalizeSelection(selection, width, height);
+      const normalized = normalizeRect(selection, width, height);
       this.setState({ selection, normalized }, () =>
         onSelection(normalized, width, height)
       );
