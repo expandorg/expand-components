@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 
 import UIInput from '../../components/Input';
 
+import Label from '../Label';
+
 import ModuleType from '../Module/ModuleType';
 
 import styles from './Input.module.styl';
@@ -19,12 +21,14 @@ export default class Input extends Component {
     name: PropTypes.string.isRequired,
     type: PropTypes.string.isRequired,
     placeholder: PropTypes.string,
+    label: PropTypes.string,
     value: PropTypes.string,
     onChange: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
     value: '',
+    label: null,
     placeholder: '',
   };
 
@@ -34,17 +38,19 @@ export default class Input extends Component {
   };
 
   render() {
-    const { type, placeholder, value } = this.props;
+    const { type, placeholder, label, value } = this.props;
     const inputType = inputTypes[type];
     return (
-      <UIInput
-        type={inputType}
-        className={styles.input}
-        onChange={this.handleChange}
-        value={value}
-        autoComplete="off"
-        placeholder={placeholder}
-      />
+      <Label className={styles.label} label={label}>
+        <UIInput
+          type={inputType}
+          className={styles.input}
+          onChange={this.handleChange}
+          value={value}
+          autoComplete="off"
+          placeholder={placeholder}
+        />
+      </Label>
     );
   }
 }

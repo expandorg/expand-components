@@ -30,6 +30,7 @@ import Input from './src/modules/Input';
 
 import { Instructions, InstructionsItem } from './src/modules/Instructions';
 
+import Label from './src/modules/Label';
 import Modal from './src/modules/Modal';
 
 import {
@@ -85,6 +86,7 @@ export {
   Input,
   Instructions,
   InstructionsItem,
+  Label,
   Modal,
   Module,
   ModuleType,

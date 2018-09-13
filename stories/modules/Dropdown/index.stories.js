@@ -14,6 +14,7 @@ const form = {
       name: 'dropdown',
       type: 'dropdown',
       placeholder: 'Select...',
+      label: 'Select one',
       options: [
         { value: 1, label: 'Option 1' },
         { value: 2, label: 'Option 2' },

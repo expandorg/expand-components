@@ -5,7 +5,8 @@
 ```jsx
 {
   name: 'dropdown',
-  type: 'dropdown'
+  type: 'dropdown',
+  label: 'Select one',
   placeholder: 'Select one...',
   options: [
     { value: 1, label: 'Option 1' },
@@ -23,6 +24,7 @@
 | *type*         | `dropdown`     | true     | -       | module type  |
 | *name*         | string         | true     | -       | module name  |
 | *placeholder*  | string         | -        | -       | placeholder  |
+| *label*        | string         | -        | -       | text label  |
 | *justify* | `left`, `right`, `center`, `between`  | -        | `center`       | horizontal alignment |
 | *options*      | Array<string>  | true   | -     | array of options   |
 | *[validation](https://gemsorg.github.io/gems-components/?selectedKind=Form%20Builder&selectedStory=Validation)*  | validtion | - | - | validation rules |

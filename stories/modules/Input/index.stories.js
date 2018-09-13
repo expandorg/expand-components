@@ -13,11 +13,13 @@ const form = {
     {
       name: 'text',
       type: 'text',
+      label: 'Label',
       placeholder: 'Simple text',
     },
     {
       name: 'password',
       type: 'password',
+      label: 'Password',
       placeholder: 'Password',
     },
     {
