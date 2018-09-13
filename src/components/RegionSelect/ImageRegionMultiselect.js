@@ -56,15 +56,15 @@ export default class ImageRegionMultiselect extends Component {
     const { src, values, className } = this.props;
     return (
       <ImageContainer className={className} src={src}>
-        {({ imageWidth }) => (
+        {({ imageWidth, width, height }) => (
           <SelectRegionBase
             className={styles.region}
             key={src}
-            onSelectionEnd={(rect, width) =>
-              this.handleSelect(rect, width, imageWidth)
-            }
+            width={width}
+            height={height}
+            onSelectionEnd={rect => this.handleSelect(rect, width, imageWidth)}
           >
-            {({ selection, width, height }) => (
+            {({ selection }) => (
               <Fragment>
                 {values.map((value, index) => (
                   <Selection

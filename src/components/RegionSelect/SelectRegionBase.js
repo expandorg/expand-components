@@ -1,6 +1,5 @@
 import React, { Component, createRef } from 'react';
 import PropTypes from 'prop-types';
-import debounce from 'debounce';
 
 import cn from 'classnames';
 
@@ -10,14 +9,14 @@ import { normalizeRect } from './rect';
 
 import './styles.styl';
 
-const RESIZE_DEBOUNCE = 250;
-
 const validate = (r, size) =>
   !r || (Math.abs(r.x2 - r.x1) >= size && Math.abs(r.y2 - r.y1) >= size);
 
 export default class SelectRegionBase extends Component {
   static propTypes = {
     className: PropTypes.string,
+    width: PropTypes.number,
+    height: PropTypes.number,
     minSize: PropTypes.number,
     onSelectionBegin: PropTypes.func,
     onSelection: PropTypes.func,
@@ -26,6 +25,8 @@ export default class SelectRegionBase extends Component {
 
   static defaultProps = {
     className: null,
+    width: 10,
+    height: 10,
     minSize: 10,
     onSelectionBegin: Function.prototype,
     onSelection: Function.prototype,
@@ -36,28 +37,16 @@ export default class SelectRegionBase extends Component {
     super(props);
     this.container = createRef();
 
-    this.handleResize = debounce(this.handleResize, RESIZE_DEBOUNCE);
-
     this.state = {
       pressed: false,
       left: 0,
       top: 0,
-      width: 0,
-      height: 0,
       selection: null,
       normalized: null,
     };
   }
 
-  componentDidMount() {
-    window.addEventListener('resize', this.handleResize);
-    this.handleResize();
-  }
-
   componentWillUnmount() {
-    this.handleResize.clear();
-
-    window.removeEventListener('resize', this.handleResize);
     document.removeEventListener('mousemove', this.handleMouseMove);
     document.removeEventListener('mouseup', this.handleMouseUp);
   }
@@ -85,14 +74,12 @@ export default class SelectRegionBase extends Component {
   };
 
   handleMouseMove = evt => {
-    const { onSelection } = this.props;
+    const { onSelection, width, height } = this.props;
     const {
       pressed,
       top,
       left,
       selection: { x1, y1 },
-      width,
-      height,
     } = this.state;
 
     if (pressed) {
@@ -100,16 +87,7 @@ export default class SelectRegionBase extends Component {
       const { x, y } = getMousePosition(evt);
       const selection = { x1, y1, x2: x - left, y2: y - top };
       const normalized = normalizeRect(selection, width, height);
-      this.setState({ selection, normalized }, () =>
-        onSelection(normalized, width, height)
-      );
-    }
-  };
-
-  handleResize = () => {
-    if (this.container.current) {
-      const { width, height } = this.container.current.getBoundingClientRect();
-      this.setState({ width, height });
+      this.setState({ selection, normalized }, () => onSelection(normalized));
     }
   };
 
@@ -118,28 +96,28 @@ export default class SelectRegionBase extends Component {
     document.removeEventListener('mouseup', this.handleMouseUp);
 
     const { onSelectionEnd, minSize } = this.props;
-    const { width, height, normalized } = this.state;
+    const { normalized } = this.state;
     this.setState({ pressed: false, selection: null, normalized: null });
     if (validate(normalized, minSize)) {
-      onSelectionEnd(normalized, width, height);
+      onSelectionEnd(normalized);
     }
   };
 
   render() {
-    const { children, className } = this.props;
-    const { normalized, width, height } = this.state;
+    const { children, className, width, height } = this.props;
+    const { normalized: selection } = this.state;
 
     return (
       <div
         ref={this.container}
         className={cn('gem-selectregion', className)}
+        style={{
+          width: `${width}px`,
+          height: `${height}px`,
+        }}
         onMouseDown={this.handleMouseDown}
       >
-        {children({
-          width,
-          height,
-          selection: normalized,
-        })}
+        {children({ selection })}
       </div>
     );
   }

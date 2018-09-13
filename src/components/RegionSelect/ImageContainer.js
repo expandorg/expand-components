@@ -1,9 +1,13 @@
 import React, { Component, createRef } from 'react';
 import PropTypes from 'prop-types';
 
+import debounce from 'debounce';
+
 import cn from 'classnames';
 
 import styles from './ImageContainer.module.styl';
+
+const RESIZE_DEBOUNCE = 250;
 
 export default class ImageContainer extends Component {
   static propTypes = {
@@ -21,6 +25,9 @@ export default class ImageContainer extends Component {
 
   constructor(props) {
     super(props);
+
+    this.getImageSize = debounce(this.getImageSize, RESIZE_DEBOUNCE);
+
     this.state = {
       imageWidth: 0,
       imageHeight: 0,
@@ -31,6 +38,8 @@ export default class ImageContainer extends Component {
   static getDerivedStateFromProps({ src }, state) {
     if (src !== state.src) {
       return {
+        width: 0,
+        height: 0,
         imageWidth: 0,
         imageHeight: 0,
         src,
@@ -41,6 +50,12 @@ export default class ImageContainer extends Component {
 
   componentDidMount() {
     this.getImageSize();
+    window.addEventListener('resize', this.getImageSize);
+  }
+
+  componentWillUnmount() {
+    this.getImageSize.clear();
+    window.removeEventListener('resize', this.getImageSize);
   }
 
   handleLoad = () => {
@@ -48,20 +63,27 @@ export default class ImageContainer extends Component {
   };
 
   getImageSize = () => {
-    const { onImageLoaded } = this.props;
-    const { imageWidth, imageHeight } = this.state;
-    if (!imageWidth || !imageHeight) {
+    if (this.imageRef.current) {
       const { naturalWidth, naturalHeight } = this.imageRef.current;
+
       if (naturalWidth && naturalHeight) {
-        this.setState({ imageWidth: naturalWidth, imageHeight: naturalHeight });
-        onImageLoaded(naturalWidth, naturalHeight);
+        const { width, height } = this.imageRef.current.getBoundingClientRect();
+        const { onImageLoaded } = this.props;
+
+        this.setState({
+          width,
+          height,
+          imageWidth: naturalWidth,
+          imageHeight: naturalHeight,
+        });
+        onImageLoaded(naturalWidth, naturalHeight, width, height);
       }
     }
   };
 
   render() {
     const { children, className } = this.props;
-    const { imageWidth, imageHeight, src } = this.state;
+    const { imageWidth, imageHeight, width, height, src } = this.state;
     return (
       <div className={cn(styles.container, className)}>
         <img
@@ -71,7 +93,7 @@ export default class ImageContainer extends Component {
           alt="content"
           onLoad={this.handleLoad}
         />
-        {children({ imageWidth, imageHeight })}
+        {children({ imageWidth, imageHeight, width, height })}
       </div>
     );
   }

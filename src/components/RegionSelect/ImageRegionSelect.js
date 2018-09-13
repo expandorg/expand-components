@@ -41,15 +41,15 @@ export default class ImageRegionSelect extends Component {
     const { src, className, value } = this.props;
     return (
       <ImageContainer className={className} src={src}>
-        {({ imageWidth }) => (
+        {({ imageWidth, width, height }) => (
           <SelectRegionBase
             key={src}
+            width={width}
+            height={height}
             className={styles.region}
-            onSelectionEnd={(rect, width) =>
-              this.handleSelect(rect, width, imageWidth)
-            }
+            onSelectionEnd={rect => this.handleSelect(rect, width, imageWidth)}
           >
-            {({ selection, width, height }) => (
+            {({ selection }) => (
               <Fragment>
                 {selection ? (
                   <Selection
