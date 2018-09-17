@@ -25,12 +25,14 @@ export default class ImageRegionMultiselect extends Component {
         y2: PropTypes.number,
       })
     ),
+    readOnly: PropTypes.bool,
     onChange: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
     className: null,
     values: [],
+    readOnly: false,
   };
 
   handleSelect = (selection, width, imageWidth) => {
@@ -53,11 +55,12 @@ export default class ImageRegionMultiselect extends Component {
   };
 
   render() {
-    const { src, values, className } = this.props;
+    const { src, values, className, readOnly } = this.props;
     return (
       <ImageContainer className={className} src={src}>
         {({ imageWidth, width, height }) => (
           <SelectRegionBase
+            readOnly={readOnly}
             className={styles.region}
             key={src}
             width={width}
@@ -72,7 +75,7 @@ export default class ImageRegionMultiselect extends Component {
                     cWidth={width}
                     cHeight={height}
                     key={getKey(value)}
-                    editable
+                    editable={!readOnly}
                     onDelete={() => this.handleDelete(index)}
                     onResize={resized =>
                       this.handleResize(resized, width, imageWidth, index)

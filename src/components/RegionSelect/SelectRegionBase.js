@@ -18,6 +18,7 @@ export default class SelectRegionBase extends Component {
     width: PropTypes.number,
     height: PropTypes.number,
     minSize: PropTypes.number,
+    readOnly: PropTypes.bool,
     onSelectionBegin: PropTypes.func,
     onSelection: PropTypes.func,
     onSelectionEnd: PropTypes.func,
@@ -25,6 +26,7 @@ export default class SelectRegionBase extends Component {
 
   static defaultProps = {
     className: null,
+    readOnly: false,
     width: 10,
     height: 10,
     minSize: 10,
@@ -52,10 +54,13 @@ export default class SelectRegionBase extends Component {
   }
 
   handleMouseDown = evt => {
+    const { onSelectionBegin, readOnly } = this.props;
+    if (readOnly) {
+      return;
+    }
+
     document.addEventListener('mousemove', this.handleMouseMove);
     document.addEventListener('mouseup', this.handleMouseUp);
-
-    const { onSelectionBegin } = this.props;
 
     const { top, left } = getElementOffset(this.container.current);
     const { x, y } = getMousePosition(evt);
@@ -74,7 +79,10 @@ export default class SelectRegionBase extends Component {
   };
 
   handleMouseMove = evt => {
-    const { onSelection, width, height } = this.props;
+    const { onSelection, width, height, readOnly } = this.props;
+    if (readOnly) {
+      return;
+    }
     const {
       pressed,
       top,
@@ -92,10 +100,14 @@ export default class SelectRegionBase extends Component {
   };
 
   handleMouseUp = () => {
+    const { onSelectionEnd, minSize, readOnly } = this.props;
+    if (readOnly) {
+      return;
+    }
+
     document.removeEventListener('mousemove', this.handleMouseMove);
     document.removeEventListener('mouseup', this.handleMouseUp);
 
-    const { onSelectionEnd, minSize } = this.props;
     const { normalized } = this.state;
     this.setState({ pressed: false, selection: null, normalized: null });
     if (validate(normalized, minSize)) {

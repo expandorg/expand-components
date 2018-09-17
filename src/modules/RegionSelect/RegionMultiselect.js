@@ -16,6 +16,15 @@ export default class RegionMultiselect extends Component {
         y2: PropTypes.number,
       })
     ),
+    readOnly: PropTypes.bool,
+    initial: PropTypes.arrayOf(
+      PropTypes.shape({
+        x1: PropTypes.number,
+        y1: PropTypes.number,
+        x2: PropTypes.number,
+        y2: PropTypes.number,
+      })
+    ),
     name: PropTypes.string.isRequired,
     image: PropTypes.string.isRequired,
     onChange: PropTypes.func.isRequired,
@@ -23,6 +32,8 @@ export default class RegionMultiselect extends Component {
 
   static defaultProps = {
     value: [],
+    readOnly: false,
+    initial: [],
   };
 
   handleChange = value => {
@@ -31,13 +42,15 @@ export default class RegionMultiselect extends Component {
   };
 
   render() {
-    const { image, value } = this.props;
+    const { image, value, readOnly, initial } = this.props;
+    const values = readOnly ? initial : value;
     return (
       <Alignment padding="small" justify="center">
         <ImageRegionMultiselect
           className={styles.region}
           src={image}
-          values={value}
+          readOnly={readOnly}
+          values={values}
           onChange={this.handleChange}
         />
       </Alignment>

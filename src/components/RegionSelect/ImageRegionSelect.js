@@ -19,12 +19,14 @@ export default class ImageRegionSelect extends Component {
       x2: PropTypes.number,
       y2: PropTypes.number,
     }),
+    readOnly: PropTypes.bool,
     onChange: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
     value: null,
     className: null,
+    readOnly: false,
   };
 
   handleSelect = (selection, width, imageWidth) => {
@@ -38,12 +40,13 @@ export default class ImageRegionSelect extends Component {
   };
 
   render() {
-    const { src, className, value } = this.props;
+    const { src, className, value, readOnly } = this.props;
     return (
       <ImageContainer className={className} src={src}>
         {({ imageWidth, width, height }) => (
           <SelectRegionBase
             key={src}
+            readOnly={readOnly}
             width={width}
             height={height}
             className={styles.region}
@@ -62,7 +65,7 @@ export default class ImageRegionSelect extends Component {
                     selection={fixRatio(value, width, imageWidth)}
                     cWidth={width}
                     cHeight={height}
-                    editable
+                    editable={!readOnly}
                     onResize={resized =>
                       this.handleResize(resized, width, imageWidth)
                     }
