@@ -22,6 +22,20 @@ import ImageTiles from '../ImageTiles';
 
 import { RegionSelect, RegionMultiselect } from '../RegionSelect';
 
+export const getModuleControlsMap = (controls: Array<Object>) =>
+  controls.reduce((map, Control) => {
+    if (Control.module) {
+      if (Array.isArray(Control.module.name)) {
+        Control.module.name.forEach(name => {
+          map[name] = Control; // eslint-disable-line no-param-reassign
+        });
+      } else {
+        map[Control.module.name] = Control; // eslint-disable-line no-param-reassign
+      }
+    }
+    return map;
+  }, {});
+
 const moduleControls = {
   [ModuleType.text]: Input,
   [ModuleType.number]: Input,

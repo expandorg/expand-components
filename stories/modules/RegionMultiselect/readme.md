@@ -19,7 +19,7 @@
 | *image*  | string         | true     | -       | image url   |
 | *order*  | boolean        | false    | -       | consider the order of answers  |
 | *readOnly* | boolean        | false    | -       | read only    |
-| *initial* | `Array<{x1,y1, x2,y2}>` | false    | []       | initial value (when readOnly used) |
+| *initial* | `Array<{x1: 0,y1: 0, x2: 10, y2: 10}>` | false    | []       | initial value (when readOnly used) |
 | *[validation](https://gemsorg.github.io/gems-components/?selectedKind=Form%20Builder&selectedStory=Validation)*  | validtion | - | - | validation rules |
 
 ## Playground
