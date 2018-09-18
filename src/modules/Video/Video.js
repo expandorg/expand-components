@@ -34,6 +34,16 @@ export default class Video extends Component {
     justify: 'center',
   };
 
+  static module = {
+    type: 'video',
+    report: ['video is not loading'],
+    editor: {
+      defaults: {
+        src: 'http://media.gettyimages.com/videos/cap-video-id896606100',
+      },
+    },
+  };
+
   constructor(props) {
     super(props);
     this.player = createRef();

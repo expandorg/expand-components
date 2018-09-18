@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import moduleProps from './moduleProps';
-import moduleControls from './moduleControls';
 
 export default class Module extends Component {
   static propTypes = {
@@ -12,12 +11,11 @@ export default class Module extends Component {
     onChange: PropTypes.func,
     onSubmit: PropTypes.func,
     onModuleError: PropTypes.func,
-    controls: PropTypes.object, // eslint-disable-line
+    controls: PropTypes.object.isRequired, // eslint-disable-line
   };
 
   static defaultProps = {
     value: undefined,
-    controls: moduleControls,
     onChange: Function.prototype,
     onSubmit: Function.prototype,
     onModuleError: Function.prototype,

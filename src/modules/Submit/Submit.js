@@ -19,6 +19,15 @@ export default class Submit extends Component {
     justify: 'left',
   };
 
+  static module = {
+    type: 'submit',
+    editor: {
+      defaults: {
+        caption: 'Submit',
+      },
+    },
+  };
+
   render() {
     const { caption, isSubmitting, onSubmit, justify } = this.props;
     return (

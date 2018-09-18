@@ -18,6 +18,15 @@ export default class Title extends Component {
     centered: false,
   };
 
+  static module = {
+    type: 'title',
+    editor: {
+      defaults: {
+        title: 'some title',
+      },
+    },
+  };
+
   render() {
     const { title, centered, className } = this.props;
     const classes = cn(

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import { rules } from '../../common/validation';
+
 import Alignment from '../Alignment';
 
 import Choice from './Choice';
@@ -28,6 +30,24 @@ export default class MultiSelectModule extends Component {
     answers: [],
     columns: 2,
     readOnly: false,
+  };
+
+  static module = {
+    type: 'multiselect',
+    validation: {
+      isRequired: rules.isRequiredArray,
+      isNotEmpty: rules.isRequiredArray,
+    },
+    editor: {
+      defaults: {
+        options: [
+          { id: 1, caption: 'Option 1' },
+          { id: 2, caption: 'Option 2' },
+          { id: 3, caption: 'Option 2' },
+          { id: 4, caption: 'Option 4' },
+        ],
+      },
+    },
   };
 
   handleChange = answerId => {

@@ -24,6 +24,17 @@ export default class Article extends Component {
     wide: false,
   };
 
+  static module = {
+    type: 'article',
+    editor: {
+      defaults: {
+        title: 'article title',
+        content:
+          'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ',
+      },
+    },
+  };
+
   render() {
     const { title, image, content, wide } = this.props;
     return (

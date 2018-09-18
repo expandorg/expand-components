@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import { rules } from '../../common/validation';
+
 import Alignment from '../Alignment';
 
 import styles from './Question.module.styl';
@@ -16,6 +18,20 @@ export default class Question extends Component {
     title: '',
     content: '',
     padding: 'medium',
+  };
+
+  static module = {
+    type: 'question',
+    validation: {
+      isRequired: rules.isRequired,
+      isNotEmpty: rules.isNotEmpty,
+    },
+    editor: {
+      defaults: {
+        title: 'question title',
+        content: 'Lorem ipsum dolor sit amet, consectetur',
+      },
+    },
   };
 
   render() {

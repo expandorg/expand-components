@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-
+import { rules } from '../../common/validation';
 import Alignment from '../Alignment';
 import { ImageTiles as UIImageTiles } from '../../components/ImageTiles';
 
@@ -20,6 +20,19 @@ export default class ImageTiles extends Component {
     columns: 4,
     rows: 4,
     value: [],
+  };
+
+  static module = {
+    type: 'imageTiles',
+    validation: {
+      isRequired: rules.isRequiredArray,
+      isNotEmpty: rules.isRequiredArray,
+    },
+    editor: {
+      defaults: {
+        image: 'https://portal.gems.org/images/complete-tasks.png',
+      },
+    },
   };
 
   handleChange = value => {

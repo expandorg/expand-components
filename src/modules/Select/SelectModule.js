@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import { rules } from '../../common/validation';
+
 import Alignment from '../Alignment';
 
 import Choice from './Choice';
@@ -24,6 +26,24 @@ export default class SelectModule extends Component {
     answer: null,
     readOnly: false,
     columns: 2,
+  };
+
+  static module = {
+    type: 'select',
+    validation: {
+      isRequired: rules.isRequired,
+      isNotEmpty: rules.isNotEmpty,
+    },
+    editor: {
+      defaults: {
+        options: [
+          { id: 1, caption: 'Option 1' },
+          { id: 2, caption: 'Option 2' },
+          { id: 3, caption: 'Option 2' },
+          { id: 4, caption: 'Option 4' },
+        ],
+      },
+    },
   };
 
   handleChange = answerId => {

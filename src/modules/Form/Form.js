@@ -12,6 +12,8 @@ import overrideFormVars from './variables/overrideFormVars';
 
 import formProps from './formProps';
 
+import moduleControls, { getModuleControlsMap } from './moduleControls';
+
 import formValidationRules from './validation/formValidationRules';
 
 import styles from './Form.module.styl';
@@ -22,6 +24,7 @@ export default class Form extends Component {
     form: formProps.isRequired,
     errors: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
     isSubmitting: PropTypes.bool,
+    controls: PropTypes.arrayOf(PropTypes.func), // eslint-disable-line
     validation: PropTypes.bool,
     variables: PropTypes.object, // eslint-disable-line
     onSubmit: PropTypes.func.isRequired,
@@ -30,6 +33,7 @@ export default class Form extends Component {
 
   static defaultProps = {
     className: null,
+    controls: moduleControls,
     isSubmitting: false,
     validation: true,
     errors: null,
@@ -39,6 +43,7 @@ export default class Form extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      controls: getModuleControlsMap(props.controls),
       values: null,
       form: overrideFormVars(props.form, props.variables),
       errors: null,
@@ -77,10 +82,10 @@ export default class Form extends Component {
   handleSubmit = evt => {
     evt.preventDefault();
     const { onSubmit, validation } = this.props;
-    const { values, form } = this.state;
+    const { values, form, controls } = this.state;
 
     if (validation) {
-      const rules = formValidationRules(form.modules);
+      const rules = formValidationRules(form.modules, controls);
       const errors = validateForm(values || {}, rules);
 
       if (errors) {
@@ -95,9 +100,10 @@ export default class Form extends Component {
 
   render() {
     const { className, isSubmitting, onModuleError, children } = this.props;
-    const { values, errors, form } = this.state;
+    const { values, errors, form, controls } = this.state;
 
     const props = {
+      controls,
       isSubmitting,
       onChange: this.handleChange,
       onSubmit: this.handleSubmit,

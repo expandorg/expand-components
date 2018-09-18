@@ -19,6 +19,16 @@ export default class Paragraph extends Component {
     centered: false,
   };
 
+  static module = {
+    type: 'paragraph',
+    editor: {
+      defaults: {
+        content:
+          'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor',
+      },
+    },
+  };
+
   render() {
     const { content, className, fontSize, centered } = this.props;
     const classes = cn(

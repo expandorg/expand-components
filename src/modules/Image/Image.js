@@ -14,6 +14,16 @@ export default class Image extends Component {
     className: null,
   };
 
+  static module = {
+    type: 'image',
+    report: ['Image is not loading'],
+    editor: {
+      defaults: {
+        src: 'https://portal.gems.org/images/complete-tasks.png',
+      },
+    },
+  };
+
   render() {
     const { src, className } = this.props;
     return (

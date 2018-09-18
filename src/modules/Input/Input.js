@@ -1,20 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import { rules } from '../../common/validation';
+
 import UIInput from '../../components/Input';
 
 import Label from '../Label';
 
-import ModuleType from '../Module/ModuleType';
-
 import styles from './Input.module.styl';
-
-const inputTypes = {
-  [ModuleType.text]: 'text',
-  [ModuleType.number]: 'number',
-  [ModuleType.email]: 'email',
-  [ModuleType.password]: 'password',
-};
 
 export default class Input extends Component {
   static propTypes = {
@@ -32,6 +25,22 @@ export default class Input extends Component {
     placeholder: '',
   };
 
+  static module = {
+    type: ['text', 'number', 'email', 'password'],
+    report: ['Unable to fill field'],
+    validation: {
+      isRequired: rules.isRequired,
+      isNotEmpty: rules.isNotEmpty,
+      isEmail: rules.isEmail,
+      isNumber: rules.isNumber,
+    },
+    editor: {
+      defaults: {
+        placeholder: 'some text...',
+      },
+    },
+  };
+
   handleChange = ({ target }) => {
     const { name, onChange } = this.props;
     onChange(name, target.value);
@@ -39,11 +48,10 @@ export default class Input extends Component {
 
   render() {
     const { type, placeholder, label, value } = this.props;
-    const inputType = inputTypes[type];
     return (
       <Label className={styles.label} label={label}>
         <UIInput
-          type={inputType}
+          type={type}
           className={styles.input}
           onChange={this.handleChange}
           value={value}

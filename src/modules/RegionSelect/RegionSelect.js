@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import { rules } from '../../common/validation';
+
 import Alignment from '../Alignment';
 import { ImageRegionSelect } from '../../components/RegionSelect';
 
@@ -30,6 +32,20 @@ export default class RegionSelect extends Component {
     value: null,
     readOnly: false,
     initial: null,
+  };
+
+  static module = {
+    type: 'regionSelect',
+    validation: {
+      isRequired: rules.isRequired,
+      isNotEmpty: rules.isNotEmpty,
+    },
+    report: ['Image is not loading'],
+    editor: {
+      defaults: {
+        image: 'https://portal.gems.org/images/complete-tasks.png',
+      },
+    },
   };
 
   handleChange = value => {

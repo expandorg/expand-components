@@ -19,6 +19,17 @@ export default class Description extends Component {
     fontSize: 'medium',
   };
 
+  static module = {
+    type: 'description',
+    editor: {
+      defaults: {
+        content: `Write a trivia question with three multiple-choice answers. One answer
+          should be correct and fact-checked, and two answers should be incorrect
+        `,
+      },
+    },
+  };
+
   render() {
     const { content, className, fontSize } = this.props;
     const classes = cn(styles.content, styles[`${fontSize}Font`], className);

@@ -92,6 +92,10 @@ class MyInputModule extends Component {
     onChange: PropTypes.func.isRequired,
   };
 
+  static module = {
+    type: 'input'
+  }
+
   handleChange = ({ target }) => {
     const { name, onChange } = this.props;
     onChange(name, target.value);
@@ -104,14 +108,14 @@ class MyInputModule extends Component {
 }
 
 // override input module type with MyInputModule
-const controls = {
+const controls = [
   ...moduleControls,
-  input: MyInputModule,
-}
+  MyInputModule,
+]
 
 const CustomForm = ({ onSubmit }) => (
-  <Form form={form} onSubmit={this.handleSubmit}>
-    {moduleProps => <Module controls={controls} {...moduleProps} />}
+  <Form form={form} onSubmit={this.handleSubmit} controls={controls}>
+    {moduleProps => <Module  {...moduleProps} />}
   </Form>  
 )
 

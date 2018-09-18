@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import { rules } from '../../common/validation';
+
 import Button from '../../components/Button';
 import Checkbox from '../../components/Checkbox';
 
@@ -21,6 +23,25 @@ export default class Agreement extends Component {
     value: false,
     button: null,
     headline: null,
+  };
+
+  static module = {
+    type: 'agreement',
+    validation: {
+      isTrue: rules.isTrue,
+    },
+    editor: {
+      defaults: {
+        button: 'Rules',
+        label: 'You must agree with rules',
+        headline: 'question title',
+        modules: {
+          name: 'p',
+          type: 'paragraph',
+          content: 'Lorem ipsum dolor sit amet, consectetur',
+        },
+      },
+    },
   };
 
   state = {

@@ -5,13 +5,15 @@ import formValidationRules from './validation/formValidationRules';
 
 import FormContext from './data/FormContext';
 import FormDataProvider from './data/FormDataProvider';
-import withFormData from './data/withFormData';
+import FormData from './data/FormData';
+import moduleControls from './moduleControls';
 
 export {
   Form,
   formProps,
   formValidationRules,
   FormContext,
-  withFormData,
+  FormData,
   FormDataProvider,
+  moduleControls,
 };

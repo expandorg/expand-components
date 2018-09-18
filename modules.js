@@ -17,7 +17,8 @@ import {
   formValidationRules,
   FormContext,
   FormDataProvider,
-  withFormData,
+  FormData,
+  moduleControls,
 } from './src/modules/Form';
 
 import applyVariables from './src/modules/Form/variables/applyVariables';
@@ -33,12 +34,7 @@ import { Instructions, InstructionsItem } from './src/modules/Instructions';
 import Label from './src/modules/Label';
 import Modal from './src/modules/Modal';
 
-import {
-  Module,
-  ModuleType,
-  moduleProps,
-  moduleControls,
-} from './src/modules/Module';
+import { Module, moduleProps } from './src/modules/Module';
 
 import Paragraph from './src/modules/Paragraph';
 
@@ -78,7 +74,7 @@ export {
   formValidationRules,
   FormContext,
   FormDataProvider,
-  withFormData,
+  FormData,
   applyVariables,
   makeVariables,
   Image,
@@ -89,7 +85,6 @@ export {
   Label,
   Modal,
   Module,
-  ModuleType,
   moduleProps,
   moduleControls,
   Paragraph,

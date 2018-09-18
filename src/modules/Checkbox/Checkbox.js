@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import { rules } from '../../common/validation';
 import UICheckbox from '../../components/Checkbox';
 
 import styles from './Checkbox.module.styl';
@@ -16,6 +17,18 @@ export default class Checkbox extends Component {
   static defaultProps = {
     label: '',
     value: undefined,
+  };
+
+  static module = {
+    type: 'checkbox',
+    validation: {
+      isTrue: rules.isTrue,
+    },
+    editor: {
+      defaults: {
+        label: 'Checkbox label',
+      },
+    },
   };
 
   handleChange = value => {

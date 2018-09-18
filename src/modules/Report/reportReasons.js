@@ -1,16 +1,8 @@
 // @flow
-import ModuleType from '../Module/ModuleType';
 
-export const reportReasons = {
-  [ModuleType.video]: ['video is not loading'],
-  [ModuleType.image]: ['Image is not loading'],
-  [ModuleType.text]: ['Unable to fill text field'],
-  [ModuleType.number]: ['Unable to fill number field'],
-  [ModuleType.email]: ['Unable to fill email field'],
-  [ModuleType.password]: ['Unable to fill password field'],
-};
-
-const getModuleTypes = (modules?: Array<Module> | Module) => {
+export const getModuleTypes = (
+  modules?: Array<Module> | Module
+): Array<string> => {
   if (!modules) {
     return [];
   }
@@ -23,13 +15,16 @@ const getModuleTypes = (modules?: Array<Module> | Module) => {
   return [modules.type, ...getModuleTypes(modules.modules)];
 };
 
-export const getReasons = (modules: Array<Module>): Array<string> => {
+export const getReasons = (
+  modules: Array<Module>,
+  modulesMap: Object
+): Array<string> => {
   const formReasons = getModuleTypes(modules).reduce((all, type) => {
-    const reasons = reportReasons[type];
-    if (!reasons) {
+    const moduleControl = modulesMap[type];
+    if (!moduleControl.module.report) {
       return all;
     }
-    return all.concat(reasons);
+    return all.concat(moduleControl.module.report);
   }, []);
   return Array.from(new Set(formReasons));
 };

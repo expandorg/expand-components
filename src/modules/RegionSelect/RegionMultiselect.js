@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import { rules } from '../../common/validation';
+
 import Alignment from '../Alignment';
 import { ImageRegionMultiselect } from '../../components/RegionSelect';
 
@@ -34,6 +36,20 @@ export default class RegionMultiselect extends Component {
     value: [],
     readOnly: false,
     initial: [],
+  };
+
+  static module = {
+    type: 'regionMultiselect',
+    report: ['Image is not loading'],
+    validation: {
+      isRequired: rules.isRequiredArray,
+      isNotEmpty: rules.isRequiredArray,
+    },
+    editor: {
+      defaults: {
+        image: 'https://portal.gems.org/images/complete-tasks.png',
+      },
+    },
   };
 
   handleChange = value => {

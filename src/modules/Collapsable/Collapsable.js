@@ -18,6 +18,21 @@ export default class Collapsable extends Component {
     expanded: false,
   };
 
+  static module = {
+    type: 'collapsable',
+    editor: {
+      defaults: {
+        header: 'Click to Expand/Collapse',
+        modules: {
+          type: 'article',
+          name: 'article',
+          content:
+            'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco ',
+        },
+      },
+    },
+  };
+
   constructor(props) {
     super(props);
 

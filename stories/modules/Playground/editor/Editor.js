@@ -6,13 +6,17 @@ import CodeEditor from './CodeEditor';
 import ErrorMessage from '../../../../src/components/ErrorMessage';
 import Tooltip from '../../../../src/components/Tooltip';
 
-import ModuleType from '../../../../src/modules/Module/ModuleType';
+import moduleControls, {
+  getModuleControlsMap,
+} from '../../../../src/modules/Form/moduleControls';
 
 import Menu from './Menu';
 
 import styles from './Editor.module.styl';
 
-export const modules = Reflect.ownKeys(ModuleType);
+const modulesMap = getModuleControlsMap(moduleControls);
+
+const moduleNames = Reflect.ownKeys(modulesMap);
 
 const Add = Tooltip(({ children, ...rest }) => (
   <button {...rest}>{children}</button>
@@ -40,8 +44,13 @@ export default class Editor extends Component {
     this.setState(({ menu }) => ({ menu: !menu }));
   };
 
+  handleAddModule = type => {
+    const { onAddModule } = this.props;
+    onAddModule(modulesMap[type]);
+  };
+
   render() {
-    const { source, error, onChange, onAddModule, editMode } = this.props;
+    const { source, error, onChange, editMode } = this.props;
     const { menu } = this.state;
     return (
       <div className={styles.container}>
@@ -62,9 +71,9 @@ export default class Editor extends Component {
               />
               {menu && (
                 <Menu
-                  items={modules}
+                  items={moduleNames}
                   onHide={this.handleToggleMenu}
-                  onSelect={onAddModule}
+                  onSelect={this.handleAddModule}
                 />
               )}
             </div>

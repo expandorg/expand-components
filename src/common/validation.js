@@ -9,6 +9,7 @@ export const rules = {
   isTrue: (value: any) => value === true,
   isNumber: (value: any) =>
     typeof value !== 'undefined' && isNumeric(value.toString()),
+  isRequiredArray: (value: any) => !!value && value.length > 0,
 };
 
 export const validateField = (

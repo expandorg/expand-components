@@ -16,6 +16,10 @@ export default class InstructionsItem extends Component {
     title: null,
   };
 
+  static module = {
+    type: 'instructionsItem',
+  };
+
   state = {
     visible: false,
   };

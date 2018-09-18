@@ -55,11 +55,11 @@ export default class Playground extends Component {
     this.setState({ source }, this.compileFormDebounced);
   };
 
-  handleAddModule = moduleName => {
+  handleAddModule = moduleControl => {
     const { error, form } = this.state;
     if (!error) {
       try {
-        this.setState({ ...appendModule(form, moduleName) });
+        this.setState({ ...appendModule(form, moduleControl) });
       } catch (err) {
         this.setState({ error: err });
       }

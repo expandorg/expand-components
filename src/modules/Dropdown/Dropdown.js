@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import { rules } from '../../common/validation';
+
 import UIDropdown from '../../components/Dropdown';
 import DropdownContent from './DropdownContent';
 
@@ -25,6 +27,20 @@ export default class Dropdown extends Component {
     value: '',
     label: '',
     justify: 'center',
+  };
+
+  static module = {
+    type: 'dropdown',
+    validation: {
+      isRequired: rules.isRequired,
+      isNotEmpty: rules.isNotEmpty,
+    },
+    editor: {
+      defaults: {
+        placeholder: 'Select one',
+        options: ['Option 1', 'Option 2', 'Option 3', 'Option 4'],
+      },
+    },
   };
 
   handleChange = value => {
