@@ -1,3 +1,3 @@
-import ClipbaordText from './ClipbaordText';
+import ClipboardText from './ClipboardText';
 
-export default ClipbaordText;
+export default ClipboardText;

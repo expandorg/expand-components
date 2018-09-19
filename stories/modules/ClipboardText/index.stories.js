@@ -11,8 +11,8 @@ import readme from './readme.md';
 const form = {
   modules: [
     {
-      name: 'clipbaordText',
-      type: 'clipbaordText',
+      name: 'clipboardText',
+      type: 'clipboardText',
       text: 'copy me',
     },
     {

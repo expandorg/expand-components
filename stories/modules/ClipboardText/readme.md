@@ -1,5 +1,5 @@
 
-# ClipbaordText Module
+# ClipboardText Module
 
 ## Example
 ```jsx
@@ -10,7 +10,7 @@
 }
 ```
 
-## ClipbaordText properties
+## ClipboardText properties
 
 | Property     | type           | Required | Default | description |
 | ------------ | -------------- | -------- | ------- | ----------- |

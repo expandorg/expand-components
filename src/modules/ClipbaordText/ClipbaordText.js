@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 import Label from '../Label';
 import ClipboardButton from '../../components/ClipboardButton';
 
-import styles from './ClipbaordText.module.styl';
+import styles from './ClipboardText.module.styl';
 
-export default class ClipbaordText extends Component {
+export default class ClipboardText extends Component {
   static propTypes = {
     text: PropTypes.string,
     label: PropTypes.string,
@@ -18,7 +18,7 @@ export default class ClipbaordText extends Component {
   };
 
   static module = {
-    type: 'clipbaordText',
+    type: 'clipboardText',
     editor: {
       defaults: {
         text: 'Click to copy text',

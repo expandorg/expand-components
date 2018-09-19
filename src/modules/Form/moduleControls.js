@@ -8,7 +8,7 @@ import Title from '../Title';
 import Paragraph from '../Paragraph';
 import { SelectModule, MultiSelectModule } from '../Select';
 import Checkbox from '../Checkbox';
-import ClipbaordText from '../ClipbaordText';
+import ClipboardText from '../ClipboardText';
 import Video from '../Video';
 import TagVideo from '../TagVideo';
 import Image from '../Image';
@@ -44,7 +44,7 @@ const moduleControls = [
   SelectModule,
   MultiSelectModule,
   Checkbox,
-  ClipbaordText,
+  ClipboardText,
   Submit,
   Video,
   Image,
