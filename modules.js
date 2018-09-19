@@ -8,6 +8,7 @@ import Article from './src/modules/Article';
 
 import Checkbox from './src/modules/Checkbox';
 import Collapsable from './src/modules/Collapsable';
+import ClipbaordText from './src/modules/ClipbaordText';
 
 import Description from './src/modules/Description';
 
@@ -67,6 +68,7 @@ export {
   Alignment,
   Article,
   Checkbox,
+  ClipbaordText,
   Collapsable,
   Description,
   Form,

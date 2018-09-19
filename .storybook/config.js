@@ -36,6 +36,7 @@ const moduleStories = [
   'Agreement',
   'Article',
   'Checkbox',
+  'ClipboardText',
   'Collapsable',
   'Description',
   'Dropdown',

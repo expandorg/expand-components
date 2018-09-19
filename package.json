@@ -1,6 +1,6 @@
 {
   "name": "@gemsorg/components",
-  "version": "0.0.59",
+  "version": "0.0.60",
   "description": "Gems UI components library",
   "license": "MPL-2.0",
   "author": "gems.org",
@@ -44,6 +44,7 @@
   },
   "dependencies": {
     "classnames": "^2.2.6",
+    "clipboard": "^2.0.1",
     "date-fns": "^1.29.0",
     "prop-types": "^15.6.2"
   },
