@@ -52,6 +52,7 @@ const moduleStories = [
   'Select',
   'Submit',
   'Title',
+  'TagVideo',
   'Video',
 ];
 

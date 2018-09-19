@@ -9,6 +9,7 @@ import Paragraph from '../Paragraph';
 import { SelectModule, MultiSelectModule } from '../Select';
 import Checkbox from '../Checkbox';
 import Video from '../Video';
+import TagVideo from '../TagVideo';
 import Image from '../Image';
 import Description from '../Description';
 import Question from '../Question';
@@ -56,6 +57,7 @@ const moduleControls = [
   RegionSelect,
   RegionMultiselect,
   ImageTiles,
+  TagVideo,
 ];
 
 export default moduleControls;
