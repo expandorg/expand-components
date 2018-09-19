@@ -12,7 +12,10 @@ describe('form variables', () => {
       const result = makeVariables(vars);
       expect(result).toBeInstanceOf(Map);
 
+      expect(result.size).toEqual(4);
+      expect(result.get('foo')).toEqual(1);
       expect(result.get('$(foo)')).toEqual(1);
+      expect(result.get('foo2')).toEqual('bar');
       expect(result.get('$(foo2)')).toEqual('bar');
     });
   });
@@ -32,6 +35,26 @@ describe('form variables', () => {
         name: 'paragraph',
         type: 'paragraph',
         content: 'bar',
+      });
+    });
+
+    it('should replace vars within text content', () => {
+      const module = {
+        name: 'paragraph',
+        type: 'paragraph',
+        test: '$(baz)',
+        content: '$(foo) bar',
+      };
+      const vars = makeVariables({
+        foo: 'bar',
+        baz: 1,
+      });
+      const result = applyVariables(module, vars);
+      expect(result).toEqual({
+        name: 'paragraph',
+        type: 'paragraph',
+        test: 1,
+        content: 'bar bar',
       });
     });
 

@@ -1,4 +1,5 @@
 // @flow
+import template from '../../../common/template';
 
 const applyPropVariables = (
   property: any,
@@ -17,7 +18,7 @@ const applyPropVariables = (
       if (variables.has(property)) {
         return variables.get(property);
       }
-      break;
+      return template(property, variables);
     }
     default:
       break;
