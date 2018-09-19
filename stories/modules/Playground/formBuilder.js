@@ -29,6 +29,7 @@ export const compileForm = (source: string) => {
 export const appendModule = (
   originalForm: Object,
   moduleControl: Object,
+  type: string,
   params: Object = {}
 ) => {
   if (!originalForm && !originalForm.modules) {
@@ -38,7 +39,7 @@ export const appendModule = (
   const module = {
     ...moduleControl.module.editor.defaults,
     ...params,
-    type: moduleControl.module.type,
+    type,
     name: `${moduleControl.module.type}${originalForm.modules.length}`,
   };
 

@@ -46,7 +46,7 @@ export default class Editor extends Component {
 
   handleAddModule = type => {
     const { onAddModule } = this.props;
-    onAddModule(modulesMap[type]);
+    onAddModule(modulesMap[type], type);
   };
 
   render() {
