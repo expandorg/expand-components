@@ -1,11 +1,11 @@
 
-# RegionSelect Module
+# RegionMultiselect Module
 
 ## Example
 ```jsx
 {
-  name: 'regionSelect',
-  type: 'regionSelect',
+  name: 'regionMultiselect',
+  type: 'regionMultiselect',
   image: "https://pascal3.digipro.ru/images/.logo_detection/1591833.jpg",
 }
 ```
@@ -14,7 +14,7 @@
 
 | Property | type           | Required | Default | description |
 | ---------| -------------- | -------- | ------- | ----------- |
-| *type*   | `regionSelect` | true     | -       | module type |
+| *type*   | `regionMultiselect` | true     | -       | module type |
 | *name*   | string         | true     | -       | module name |
 | *image*  | string         | true     | -       | image url   |
 | *order*  | boolean        | false    | -       | consider the order of answers  |

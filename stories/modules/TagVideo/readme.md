@@ -14,7 +14,7 @@
 
 | Property    | type    | Required | Default | description    |
 | ----------- | ------- | -------- | ------- | -------------- |
-| *type*      | `video` | true     | -       | module type    |
+| *type*      | `tagVideo` | true     | -       | module type    |
 | *name*      | string  | true     | -       | module name    |
 | *src*       | string  | true     | -       | video url      |
 
