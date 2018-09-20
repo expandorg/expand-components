@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import Player from 'react-player';
 
-export const intervalMs = 50;
+export const intervalMs = 40;
 
 export default class VideoPreview extends Component {
   static propTypes = {

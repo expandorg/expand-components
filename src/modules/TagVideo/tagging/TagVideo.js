@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 
 import cn from 'classnames';
 
-import VideoPreview from './VideoPreview';
-import Timeline from './Timeline';
-import Tags from './Tags';
+import VideoPreview from './player/VideoPreview';
+import Timeline from './timeline/Timeline';
+import Tags from './tags/Tags';
 
 import styles from './TagVideo.module.styl';
 
@@ -31,7 +31,7 @@ export default class TagVideo extends Component {
   state = {
     duration: 0,
     seek: 0,
-    tag: null,
+    tag: { start: 10, end: 20 },
   };
 
   handleVideoReady = duration => {
@@ -42,9 +42,13 @@ export default class TagVideo extends Component {
     this.setState({ seek });
   };
 
+  handleChangeTag = tag => {
+    this.setState({ tag });
+  };
+
   render() {
     const { video, className } = this.props;
-    const { duration, seek } = this.state;
+    const { duration, seek, tag } = this.state;
 
     return (
       <div className={cn(styles.container, className)}>
@@ -52,13 +56,20 @@ export default class TagVideo extends Component {
           <div className={styles.video}>
             <VideoPreview
               src={video}
+              start={tag && tag.start}
+              stop={tag && tag.end}
               duration={duration}
               onVideoReady={this.handleVideoReady}
               onVideoProgress={this.handleVideoProgress}
             />
           </div>
           <div className={styles.timeline}>
-            <Timeline duration={duration} seek={seek} />
+            <Timeline
+              duration={duration}
+              tag={tag}
+              seek={seek}
+              onChangeTag={this.handleChangeTag}
+            />
           </div>
         </div>
         <div className={styles.tags}>
