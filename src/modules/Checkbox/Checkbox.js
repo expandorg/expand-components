@@ -24,6 +24,7 @@ export default class Checkbox extends Component {
     validation: {
       isTrue: rules.isTrue,
     },
+    verificationScore: value => (value ? 1 : 0),
     editor: {
       defaults: {
         label: 'Checkbox label',

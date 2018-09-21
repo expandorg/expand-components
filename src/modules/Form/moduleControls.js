@@ -22,7 +22,9 @@ import ImageTiles from '../ImageTiles';
 
 import { RegionSelect, RegionMultiselect } from '../RegionSelect';
 
-export const getModuleControlsMap = (controls: Array<Object>) =>
+export const getModuleControlsMap = (
+  controls: Array<Object>
+): ModuleControlsMap =>
   controls.reduce((map, Control) => {
     if (Control.module) {
       if (Array.isArray(Control.module.type)) {
