@@ -1,21 +1,33 @@
-import makeVariables from '../makeVariables';
+import getVariablesMap from '../getVariablesMap';
 import applyVariables from '../applyVariables';
 
 describe('form variables', () => {
-  describe('makeVariables()', () => {
-    it('should return map: $(key) => value', () => {
+  describe('getVariablesMap()', () => {
+    it('should return map: key => value', () => {
       const vars = {
         foo: 1,
         foo2: 'bar',
       };
 
-      const result = makeVariables(vars);
+      const result = getVariablesMap(vars);
       expect(result).toBeInstanceOf(Map);
 
-      expect(result.size).toEqual(4);
+      expect(result.size).toEqual(2);
       expect(result.get('foo')).toEqual(1);
-      expect(result.get('$(foo)')).toEqual(1);
       expect(result.get('foo2')).toEqual('bar');
+    });
+
+    it('should apply key transformation', () => {
+      const vars = {
+        foo: 1,
+        foo2: 'bar',
+      };
+
+      const result = getVariablesMap(vars, k => `$(${k})`);
+      expect(result).toBeInstanceOf(Map);
+
+      expect(result.size).toEqual(2);
+      expect(result.get('$(foo)')).toEqual(1);
       expect(result.get('$(foo2)')).toEqual('bar');
     });
   });
@@ -27,9 +39,9 @@ describe('form variables', () => {
         type: 'paragraph',
         content: '$(foo)',
       };
-      const vars = makeVariables({
+      const vars = {
         foo: 'bar',
-      });
+      };
       const result = applyVariables(module, vars);
       expect(result).toEqual({
         name: 'paragraph',
@@ -45,10 +57,10 @@ describe('form variables', () => {
         test: '$(baz)',
         content: '$(foo) bar',
       };
-      const vars = makeVariables({
+      const vars = {
         foo: 'bar',
         baz: 1,
-      });
+      };
       const result = applyVariables(module, vars);
       expect(result).toEqual({
         name: 'paragraph',
@@ -75,10 +87,10 @@ describe('form variables', () => {
           },
         ],
       };
-      const vars = makeVariables({
+      const vars = {
         foo: 'bar',
         foo2: 'bar2',
-      });
+      };
       const result = applyVariables(module, vars);
       expect(result).toEqual({
         name: 'dialog',
@@ -95,6 +107,23 @@ describe('form variables', () => {
             content: 'bar2',
           },
         ],
+      });
+    });
+
+    it('should not replace vars witout $()', () => {
+      const module = {
+        name: 'paragraph',
+        type: 'paragraph',
+        content: 'foo',
+      };
+      const vars = {
+        foo: 'bar',
+      };
+      const result = applyVariables(module, vars);
+      expect(result).toEqual({
+        name: 'paragraph',
+        type: 'paragraph',
+        content: 'foo',
       });
     });
   });

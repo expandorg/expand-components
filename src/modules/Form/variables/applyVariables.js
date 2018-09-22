@@ -1,39 +1,41 @@
 // @flow
 import template from '../../../common/template';
+import getVariablesMap from './getVariablesMap';
 
-const applyPropVariables = (
-  property: any,
-  variables: Map<string, any>
+const overrideProperty = (
+  value: any,
+  raw: Map<string, any>,
+  substitutions: Map<string, any>
 ): any => {
-  if (Array.isArray(property)) {
-    return property.map(item => applyPropVariables(item, variables));
+  if (Array.isArray(value)) {
+    return value.map(item => overrideProperty(item, raw, substitutions));
   }
-  switch (typeof property) {
+  switch (typeof value) {
     case 'object':
-      return Reflect.ownKeys(property).reduce((result, fieldName) => {
-        result[fieldName] = applyPropVariables(property[fieldName], variables); // eslint-disable-line
+      return Reflect.ownKeys(value).reduce((result, fieldName) => {
+        result[fieldName] = overrideProperty(value[fieldName], raw, substitutions); // eslint-disable-line
         return result;
       }, {});
     case 'string': {
-      if (variables.has(property)) {
-        return variables.get(property);
+      if (substitutions.has(value)) {
+        return substitutions.get(value);
       }
-      return template(property, variables);
+      return template(value, raw);
     }
     default:
       break;
   }
-  return property;
+  return value;
 };
 
-const applyVariables = (
-  module: Module,
-  variables: Map<string, any>
-): Module => {
-  const { name, type } = module;
-  return Reflect.ownKeys(module).reduce(
+const applyVariables = (module: Module, variables: Object): Module => {
+  const raw = getVariablesMap(variables);
+  const subst = getVariablesMap(variables, k => `$(${k})`);
+
+  const { name, type, ...rest } = module;
+  return Reflect.ownKeys(rest).reduce(
     (mod, fieldName) => {
-      mod[fieldName] = applyPropVariables(module[fieldName], variables); // eslint-disable-line
+      mod[fieldName] = overrideProperty(module[fieldName], raw, subst); // eslint-disable-line
       return mod;
     },
     { name, type }
