@@ -34,6 +34,13 @@ export default class SelectModule extends Component {
       isRequired: rules.isRequired,
       isNotEmpty: rules.isNotEmpty,
     },
+    verificationScore: value => {
+      const numeric = +value;
+      if (Number.isNaN(numeric)) {
+        return 0;
+      }
+      return Math.min(Math.max(numeric, 0), 1);
+    },
     editor: {
       defaults: {
         options: [
