@@ -46,6 +46,7 @@ export default class Timeline extends Component {
       <TimelineContainer className={styles.slider}>
         {({ width, isHovered, mouseX }) => (
           <Fragment>
+            <Progress duration={duration} seek={seek} />
             {!tag &&
               isHovered && (
                 <Cursor
@@ -62,7 +63,6 @@ export default class Timeline extends Component {
                 onChange={this.handleRangeChange}
               />
             )}
-            <Progress duration={duration} seek={seek} />
           </Fragment>
         )}
       </TimelineContainer>

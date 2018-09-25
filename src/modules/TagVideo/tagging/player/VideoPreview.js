@@ -17,6 +17,7 @@ export default class VideoPreview extends Component {
 
   state = {
     canPlay: false,
+    playedSeconds: 0,
   };
 
   static defaultProps = {
@@ -34,6 +35,16 @@ export default class VideoPreview extends Component {
     }
   }
 
+  componentDidUpdate({ start: prevStart, stop: prevStop }) {
+    const { stop, start } = this.props;
+    const { playedSeconds } = this.state;
+    if (start !== prevStart || stop !== prevStop) {
+      if (playedSeconds > stop || playedSeconds < start) {
+        this.playerRef.current.seekTo(start);
+      }
+    }
+  }
+
   handleReady = () => {
     this.setState({ canPlay: true });
   };
@@ -45,6 +56,7 @@ export default class VideoPreview extends Component {
 
   handleProgress = ({ playedSeconds }) => {
     const { stop, start, onVideoProgress } = this.props;
+    this.setState({ playedSeconds });
     if (start !== null && stop !== null) {
       if (playedSeconds > stop) {
         this.playerRef.current.seekTo(start);
