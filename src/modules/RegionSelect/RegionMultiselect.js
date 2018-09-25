@@ -59,7 +59,7 @@ export default class RegionMultiselect extends Component {
 
   render() {
     const { image, value, readOnly, initial } = this.props;
-    const values = readOnly ? initial : value;
+    const values = readOnly ? initial || [] : value;
     return (
       <Alignment padding="small" justify="center">
         <ImageRegionMultiselect
