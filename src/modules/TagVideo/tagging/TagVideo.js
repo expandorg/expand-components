@@ -31,7 +31,7 @@ export default class TagVideo extends Component {
   state = {
     duration: 0,
     seek: 0,
-    tag: { start: 10, end: 20 },
+    tag: null,
   };
 
   handleVideoReady = duration => {

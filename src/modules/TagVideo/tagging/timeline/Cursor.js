@@ -2,31 +2,31 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import styles from './Cursor.module.styl';
-import Tooltip from '../../../../components/Tooltip';
 
-class Cursor extends Component {
+export default class Cursor extends Component {
   static propTypes = {
-    duration: PropTypes.number,
-    seek: PropTypes.number,
+    left: PropTypes.number,
+    onClick: PropTypes.func,
   };
 
   static defaultProps = {
-    duration: 0,
-    seek: 0,
+    left: 0,
+    onClick: Function.prototype,
+  };
+
+  handleClick = evt => {
+    const { left, onClick } = this.props;
+    onClick(evt, left);
   };
 
   render() {
-    const { duration, seek, children, ...rest } = this.props;
-    if (!duration) {
-      return null;
-    }
-    const left = `${(seek / duration) * 100}%`;
+    const { left } = this.props;
     return (
-      <div style={{ left }} className={styles.seek} {...rest}>
-        {children}
-      </div>
+      <ins
+        onClick={this.handleClick}
+        style={{ left }}
+        className={styles.cursor}
+      />
     );
   }
 }
-
-export default Tooltip(Cursor);
