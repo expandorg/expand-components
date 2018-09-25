@@ -4,12 +4,11 @@ import PropTypes from 'prop-types';
 import Draggable from '../../../../components/Draggable';
 import Tooltip from '../../../../components/Tooltip';
 
+import { pxToTime, timeToPx } from './clip';
+
 import styles from './TimelineRange.module.styl';
 
 const DraggableTooltip = Tooltip(Draggable);
-
-const timeToPx = (span, timeline, width) => (span / timeline) * width;
-const pxToTime = (px, timeline, width) => (px / width) * timeline;
 
 export default class TimelineRange extends Component {
   static propTypes = {

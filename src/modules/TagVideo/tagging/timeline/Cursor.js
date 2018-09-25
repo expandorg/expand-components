@@ -16,7 +16,7 @@ export default class Cursor extends Component {
 
   handleClick = evt => {
     const { left, onClick } = this.props;
-    onClick(evt, left);
+    onClick(left, evt);
   };
 
   render() {
