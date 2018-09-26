@@ -10,20 +10,11 @@ import Hint from './Hint';
 
 import styles from './Choice.module.styl';
 
-const formatItem = option => {
-  if (typeof option === 'string') {
-    return { id: null, caption: option, hint: null };
-  }
-  return option;
-};
-
 export default class Choice extends Component {
   static propTypes = {
-    option: PropTypes.oneOfType([PropTypes.string, PropTypes.object])
-      .isRequired,
+    option: PropTypes.object.isRequired, // eslint-disable-line
     className: PropTypes.string,
     selected: PropTypes.bool,
-    hideIds: PropTypes.bool,
     checkMark: PropTypes.bool,
     readOnly: PropTypes.bool,
     onSelect: PropTypes.func.isRequired,
@@ -31,7 +22,6 @@ export default class Choice extends Component {
 
   static defaultProps = {
     className: null,
-    hideIds: false,
     checkMark: false,
     readOnly: false,
     selected: false,
@@ -41,19 +31,12 @@ export default class Choice extends Component {
     evt.preventDefault();
     const { onSelect, option, readOnly } = this.props;
     if (!readOnly) {
-      onSelect(option);
+      onSelect(option.value);
     }
   };
 
   render() {
-    const {
-      className,
-      option,
-      selected,
-      readOnly,
-      checkMark,
-      hideIds,
-    } = this.props;
+    const { className, option, selected, readOnly, checkMark } = this.props;
     const classes = cn(
       styles.container,
       {
@@ -63,12 +46,10 @@ export default class Choice extends Component {
       className
     );
 
-    const { id, caption, hint } = formatItem(option);
+    const { id, caption, hint } = option;
     return (
       <button type="button" className={classes} onClick={this.handleSelect}>
-        {id &&
-          !checkMark &&
-          !hideIds && <span className={styles.id}>{id}</span>}
+        {id && !checkMark && <span className={styles.id}>{id}</span>}
         {checkMark && (
           <div className={styles.mark}>
             <Checkmark className={styles.icon} />

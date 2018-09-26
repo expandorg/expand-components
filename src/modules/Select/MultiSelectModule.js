@@ -41,10 +41,10 @@ export default class MultiSelectModule extends Component {
     editor: {
       defaults: {
         options: [
-          { id: 1, caption: 'Option 1' },
-          { id: 2, caption: 'Option 2' },
-          { id: 3, caption: 'Option 2' },
-          { id: 4, caption: 'Option 4' },
+          { value: 1, id: 1, caption: 'Option 1' },
+          { value: 2, id: 2, caption: 'Option 2' },
+          { value: 3, id: 3, caption: 'Option 2' },
+          { value: 4, id: 4, caption: 'Option 4' },
         ],
       },
     },
@@ -72,11 +72,11 @@ export default class MultiSelectModule extends Component {
           onSelect={this.handleChange}
           columns={columns}
         >
-          {({ id, onSelect, option }) => (
+          {({ onSelect, option }) => (
             <Choice
-              key={id}
+              key={option.value}
               checkMark
-              selected={selection.includes(id)}
+              selected={selection.includes(option.value)}
               readOnly={readOnly}
               onSelect={onSelect}
               option={option}

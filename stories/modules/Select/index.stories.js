@@ -19,10 +19,10 @@ const form = {
       name: 'select',
       type: 'select',
       options: [
-        { id: 'A', caption: 'Option 1' },
-        { id: 'b', caption: 'Option 2' },
-        { id: '3', caption: 'Option 2' },
-        { id: 'IV', caption: 'Option 4', hint: 'Hint tooltip' },
+        { value: 'A', id: 'A', caption: 'Option 1' },
+        { value: 'b', id: 'b', caption: 'Option 2' },
+        { value: '3', id: '3', caption: 'Option 2' },
+        { value: 'IV', id: 'IV', caption: 'Option 4', hint: 'Hint tooltip' },
       ],
     },
     {

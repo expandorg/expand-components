@@ -16,7 +16,6 @@ export default class SelectModule extends Component {
     ).isRequired,
     value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     answer: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    hideIds: PropTypes.bool,
     columns: PropTypes.oneOf([2, 3]),
     readOnly: PropTypes.bool,
     onChange: PropTypes.func.isRequired,
@@ -24,7 +23,6 @@ export default class SelectModule extends Component {
 
   static defaultProps = {
     value: null,
-    hideIds: false,
     answer: null,
     readOnly: false,
     columns: 2,
@@ -46,22 +44,22 @@ export default class SelectModule extends Component {
     editor: {
       defaults: {
         options: [
-          { id: 1, caption: 'Option 1' },
-          { id: 2, caption: 'Option 2' },
-          { id: 3, caption: 'Option 2' },
-          { id: 4, caption: 'Option 4' },
+          { value: 1, id: 1, caption: 'Option 1' },
+          { value: 2, id: 2, caption: 'Option 2' },
+          { value: 3, id: 3, caption: 'Option 2' },
+          { value: 4, id: 4, caption: 'Option 4' },
         ],
       },
     },
   };
 
-  handleChange = answerId => {
+  handleChange = value => {
     const { name, onChange } = this.props;
-    onChange(name, answerId);
+    onChange(name, value);
   };
 
   render() {
-    const { value, options, columns, readOnly, answer, hideIds } = this.props;
+    const { value, options, columns, readOnly, answer } = this.props;
     const selected = readOnly ? answer : value;
     return (
       <Alignment padding="small">
@@ -70,13 +68,12 @@ export default class SelectModule extends Component {
           onSelect={this.handleChange}
           columns={columns}
         >
-          {({ id, onSelect, option }) => (
+          {({ onSelect, option }) => (
             <Choice
-              key={id}
-              hideIds={hideIds}
+              key={option.value}
               option={option}
               readOnly={readOnly}
-              selected={selected === id}
+              selected={selected === option.value}
               onSelect={onSelect}
             />
           )}

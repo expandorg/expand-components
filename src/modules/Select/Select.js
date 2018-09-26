@@ -2,14 +2,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import cn from 'classnames';
 
-import styles from './styles.module.styl';
+import formatItem from './formatItem';
 
-const getAnswrId = option => {
-  if (typeof option === 'string') {
-    return option;
-  }
-  return option.id || option.caption;
-};
+import styles from './styles.module.styl';
 
 export default class Select extends Component {
   static propTypes = {
@@ -26,9 +21,9 @@ export default class Select extends Component {
     columns: 2,
   };
 
-  handleSelect = answer => {
+  handleSelect = value => {
     const { onSelect } = this.props;
-    onSelect(getAnswrId(answer));
+    onSelect(value);
   };
 
   render() {
@@ -36,14 +31,12 @@ export default class Select extends Component {
     const classes = cn(styles.container, styles[`cols${columns}`], className);
     return (
       <div className={classes}>
-        {options.map(option => {
-          const id = getAnswrId(option);
-          return children({
-            id,
-            option,
+        {options.map(option =>
+          children({
+            option: formatItem(option),
             onSelect: this.handleSelect,
-          });
-        })}
+          })
+        )}
       </div>
     );
   }

@@ -20,10 +20,11 @@ const form = {
       type: 'multiselect',
       columns: 3,
       options: [
-        { id: 'A', caption: 'Option 1', hint: 'Option 1' },
-        { id: 'b', caption: 'Option 2', hint: 'Option 1' },
-        { id: '3', caption: 'Option 2', hint: 'Option 1' },
+        { value: 'A', id: 'A', caption: 'Option 1', hint: 'Option 1' },
+        { value: 'b', id: 'b', caption: 'Option 2', hint: 'Option 1' },
+        { value: '3', id: '3', caption: 'Option 2', hint: 'Option 1' },
         {
+          value: 'IV',
           id: 'IV',
           caption: 'Option 4 with long text',
           hint: 'Option 4 with long text',
