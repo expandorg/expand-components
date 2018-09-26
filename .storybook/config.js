@@ -29,6 +29,7 @@ const componentStories = [
   'Textarea',
   'Toast',
   'Tooltip',
+  'Switch',
 ];
 
 

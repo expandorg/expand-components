@@ -20,6 +20,7 @@ const components = [
   'Dialog',
   'Toast',
   'Tooltip',
+  'Switch',
 ];
 
 storiesOf('UI Components', module)

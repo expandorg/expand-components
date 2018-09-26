@@ -18,7 +18,7 @@ export const normalizeRect = (
 };
 
 export const fixRatio = (rect: Object, d1: number, d2: number) => {
-  if (!rect) {
+  if (!rect || !d1 || !d2) {
     return rect;
   }
   const factor = d1 / d2;

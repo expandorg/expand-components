@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import SelectRegionBase from './SelectRegionBase';
 import Selection from './Selection';
 import ImageContainer from './ImageContainer';
+import ValuesToggle from './ValuesToggle';
 
 import { fixRatio } from './rect';
 
@@ -20,6 +21,7 @@ export default class ImageRegionSelect extends Component {
       y2: PropTypes.number,
     }),
     readOnly: PropTypes.bool,
+    displayToggle: PropTypes.bool,
     onChange: PropTypes.func.isRequired,
   };
 
@@ -27,6 +29,11 @@ export default class ImageRegionSelect extends Component {
     value: null,
     className: null,
     readOnly: false,
+    displayToggle: false,
+  };
+
+  state = {
+    showValue: true,
   };
 
   handleSelect = (selection, width, imageWidth) => {
@@ -39,8 +46,13 @@ export default class ImageRegionSelect extends Component {
     onChange(fixRatio(selection, imageWidth, width));
   };
 
+  handleToggle = () => {
+    this.setState(({ showValue }) => ({ showValue: !showValue }));
+  };
+
   render() {
-    const { src, className, value, readOnly } = this.props;
+    const { src, className, value, readOnly, displayToggle } = this.props;
+    const { showValue } = this.state;
     return (
       <ImageContainer className={className} src={src}>
         {({ imageWidth, width, height }) => (
@@ -54,21 +66,28 @@ export default class ImageRegionSelect extends Component {
           >
             {({ selection }) => (
               <Fragment>
-                {selection ? (
-                  <Selection
-                    selection={selection}
-                    cWidth={width}
-                    cHeight={height}
-                  />
-                ) : (
-                  <Selection
-                    selection={fixRatio(value, width, imageWidth)}
-                    cWidth={width}
-                    cHeight={height}
-                    editable={!readOnly}
-                    onResize={resized =>
-                      this.handleResize(resized, width, imageWidth)
-                    }
+                {showValue &&
+                  (selection ? (
+                    <Selection
+                      selection={selection}
+                      cWidth={width}
+                      cHeight={height}
+                    />
+                  ) : (
+                    <Selection
+                      selection={fixRatio(value, width, imageWidth)}
+                      cWidth={width}
+                      cHeight={height}
+                      editable={!readOnly}
+                      onResize={resized =>
+                        this.handleResize(resized, width, imageWidth)
+                      }
+                    />
+                  ))}
+                {displayToggle && (
+                  <ValuesToggle
+                    onToggle={this.handleToggle}
+                    value={showValue}
                   />
                 )}
               </Fragment>

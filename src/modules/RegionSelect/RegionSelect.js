@@ -63,6 +63,7 @@ export default class RegionSelect extends Component {
           src={image}
           value={rect}
           readOnly={readOnly}
+          displayToggle={readOnly}
           onChange={this.handleChange}
         />
       </Alignment>

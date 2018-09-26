@@ -44,6 +44,7 @@ import {
   ServiceLocator,
 } from './src/components/ServiceProvider';
 
+import Switch from './src/components/Switch';
 import Textarea from './src/components/Textarea';
 
 import { Toast, ToastAnimated } from './src/components/Toast';
@@ -69,6 +70,7 @@ export {
   ImageTile,
   ImageTiles,
   JsScript,
+  Switch,
   Panel,
   ImageRegionSelect,
   ImageRegionMultiselect,

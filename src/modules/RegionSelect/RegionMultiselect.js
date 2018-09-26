@@ -72,6 +72,7 @@ export default class RegionMultiselect extends Component {
         <ImageRegionMultiselect
           className={styles.region}
           src={image}
+          displayToggle={readOnly}
           readOnly={readOnly}
           values={values}
           onChange={this.handleChange}

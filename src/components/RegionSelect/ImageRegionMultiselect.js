@@ -6,6 +6,7 @@ import { replaceAtIndex, removeAtIndex } from '../../common/immutable';
 import SelectRegionBase from './SelectRegionBase';
 import Selection from './Selection';
 import ImageContainer from './ImageContainer';
+import ValuesToggle from './ValuesToggle';
 
 import { fixRatio } from './rect';
 
@@ -26,6 +27,7 @@ export default class ImageRegionMultiselect extends Component {
       })
     ),
     readOnly: PropTypes.bool,
+    displayToggle: PropTypes.bool,
     onChange: PropTypes.func.isRequired,
   };
 
@@ -33,6 +35,11 @@ export default class ImageRegionMultiselect extends Component {
     className: null,
     values: [],
     readOnly: false,
+    displayToggle: false,
+  };
+
+  state = {
+    showValues: true,
   };
 
   handleSelect = (selection, width, imageWidth) => {
@@ -54,8 +61,13 @@ export default class ImageRegionMultiselect extends Component {
     );
   };
 
+  handleToggle = () => {
+    this.setState(({ showValues }) => ({ showValues: !showValues }));
+  };
+
   render() {
-    const { src, values, className, readOnly } = this.props;
+    const { src, values, className, readOnly, displayToggle } = this.props;
+    const { showValues } = this.state;
     return (
       <ImageContainer className={className} src={src}>
         {({ imageWidth, width, height }) => (
@@ -69,24 +81,31 @@ export default class ImageRegionMultiselect extends Component {
           >
             {({ selection }) => (
               <Fragment>
-                {values.map((value, index) => (
-                  <Selection
-                    selection={fixRatio(value, width, imageWidth)}
-                    cWidth={width}
-                    cHeight={height}
-                    key={getKey(value)}
-                    editable={!readOnly}
-                    onDelete={() => this.handleDelete(index)}
-                    onResize={resized =>
-                      this.handleResize(resized, width, imageWidth, index)
-                    }
-                  />
-                ))}
+                {showValues &&
+                  values.map((value, index) => (
+                    <Selection
+                      selection={fixRatio(value, width, imageWidth)}
+                      cWidth={width}
+                      cHeight={height}
+                      key={getKey(value)}
+                      editable={!readOnly}
+                      onDelete={() => this.handleDelete(index)}
+                      onResize={resized =>
+                        this.handleResize(resized, width, imageWidth, index)
+                      }
+                    />
+                  ))}
                 <Selection
                   selection={selection}
                   cWidth={width}
                   cHeight={height}
                 />
+                {displayToggle && (
+                  <ValuesToggle
+                    onToggle={this.handleToggle}
+                    value={showValues}
+                  />
+                )}
               </Fragment>
             )}
           </SelectRegionBase>
