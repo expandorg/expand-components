@@ -6,6 +6,35 @@
   top: 0
   height: 40px;
   width: 2px
-  transform: translateX(-1px);
 
-  background-color: alpha(color-blue, 50%)
+  background-color: color-pink
+
+.label
+  box-sizing: border-box;
+  position: absolute;
+
+  bottom: 50px
+  left: calc(50% -1px)
+  transform: translateX(-50%)
+
+  padding: 3px 12px;
+
+  background: color-pink
+  box-shadow 0 1px 1px 0 rgba(0, 0, 0, 0.24), 0 0 1px 0 rgba(0, 0, 0, 0.12)
+
+  color: color-white
+  font(font-preset[body])
+
+  border-radius: 12px
+
+  white-space: nowrap;
+
+  &:after
+    transform: translateX(1px);
+    left: calc(50% - 8px)
+    position: absolute
+    content: ''
+
+    bottom: -12px
+    border: 8px solid transparent
+    border-top: 8px solid color-pink

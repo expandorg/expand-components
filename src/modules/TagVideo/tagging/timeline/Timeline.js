@@ -6,7 +6,7 @@ import TimelineRange from './TimelineRange';
 import Progress from './Progress';
 import Cursor from './Cursor';
 
-import { pxToTime, DEFAULT_SPAN_SEC } from './clip';
+import { pxToTime, formatTime, DEFAULT_SPAN_SEC } from './clip';
 
 import styles from './Timeline.module.styl';
 
@@ -43,7 +43,7 @@ export default class Timeline extends Component {
   render() {
     const { duration, seek, tag } = this.props;
     return (
-      <TimelineContainer className={styles.slider}>
+      <TimelineContainer className={styles.container}>
         {({ width, isHovered, mouseX }) => (
           <Fragment>
             <Progress duration={duration} seek={seek} />
@@ -51,6 +51,9 @@ export default class Timeline extends Component {
               isHovered && (
                 <Cursor
                   left={mouseX}
+                  label={`start time: ${formatTime(
+                    pxToTime(mouseX, duration, width)
+                  )}`}
                   onClick={() => this.handleCursorClick(mouseX, width)}
                 />
               )}

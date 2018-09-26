@@ -6,11 +6,13 @@ import styles from './Cursor.module.styl';
 export default class Cursor extends Component {
   static propTypes = {
     left: PropTypes.number,
+    label: PropTypes.string,
     onClick: PropTypes.func,
   };
 
   static defaultProps = {
     left: 0,
+    label: null,
     onClick: Function.prototype,
   };
 
@@ -20,13 +22,15 @@ export default class Cursor extends Component {
   };
 
   render() {
-    const { left } = this.props;
+    const { left, label } = this.props;
     return (
-      <ins
+      <span
         onClick={this.handleClick}
         style={{ left }}
         className={styles.cursor}
-      />
+      >
+        {label && <span className={styles.label}>{label}</span>}
+      </span>
     );
   }
 }

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Draggable from '../../../../components/Draggable';
 import Tooltip from '../../../../components/Tooltip';
 
-import { pxToTime, timeToPx } from './clip';
+import { pxToTime, timeToPx, formatTime } from './clip';
 
 import styles from './TimelineRange.module.styl';
 
@@ -52,13 +52,13 @@ export default class TimelineRange extends Component {
     return (
       <div className={styles.container} style={{ left, width }}>
         <DraggableTooltip
-          tooltip={`start: ${start}`}
+          tooltip={`start: ${formatTime(start)}`}
           className={styles.start}
           onDrag={this.handleChangeStart}
         />
         <Draggable className={styles.range} onDrag={this.handleMove} />
         <DraggableTooltip
-          tooltip={`end: ${end}`}
+          tooltip={`end: ${formatTime(end)}`}
           className={styles.end}
           onDrag={this.handleChangeEnd}
         />
