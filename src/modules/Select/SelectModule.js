@@ -16,6 +16,7 @@ export default class SelectModule extends Component {
     ).isRequired,
     value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     answer: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    hideIds: PropTypes.bool,
     columns: PropTypes.oneOf([2, 3]),
     readOnly: PropTypes.bool,
     onChange: PropTypes.func.isRequired,
@@ -23,6 +24,7 @@ export default class SelectModule extends Component {
 
   static defaultProps = {
     value: null,
+    hideIds: false,
     answer: null,
     readOnly: false,
     columns: 2,
@@ -59,7 +61,7 @@ export default class SelectModule extends Component {
   };
 
   render() {
-    const { value, options, columns, readOnly, answer } = this.props;
+    const { value, options, columns, readOnly, answer, hideIds } = this.props;
     const selected = readOnly ? answer : value;
     return (
       <Alignment padding="small">
@@ -71,6 +73,7 @@ export default class SelectModule extends Component {
           {({ id, onSelect, option }) => (
             <Choice
               key={id}
+              hideIds={hideIds}
               option={option}
               readOnly={readOnly}
               selected={selected === id}

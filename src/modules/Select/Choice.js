@@ -23,6 +23,7 @@ export default class Choice extends Component {
       .isRequired,
     className: PropTypes.string,
     selected: PropTypes.bool,
+    hideIds: PropTypes.bool,
     checkMark: PropTypes.bool,
     readOnly: PropTypes.bool,
     onSelect: PropTypes.func.isRequired,
@@ -30,6 +31,7 @@ export default class Choice extends Component {
 
   static defaultProps = {
     className: null,
+    hideIds: false,
     checkMark: false,
     readOnly: false,
     selected: false,
@@ -44,7 +46,14 @@ export default class Choice extends Component {
   };
 
   render() {
-    const { className, option, selected, readOnly, checkMark } = this.props;
+    const {
+      className,
+      option,
+      selected,
+      readOnly,
+      checkMark,
+      hideIds,
+    } = this.props;
     const classes = cn(
       styles.container,
       {
@@ -57,7 +66,9 @@ export default class Choice extends Component {
     const { id, caption, hint } = formatItem(option);
     return (
       <button type="button" className={classes} onClick={this.handleSelect}>
-        {id && !checkMark && <span className={styles.id}>{id}</span>}
+        {id &&
+          !checkMark &&
+          !hideIds && <span className={styles.id}>{id}</span>}
         {checkMark && (
           <div className={styles.mark}>
             <Checkmark className={styles.icon} />
