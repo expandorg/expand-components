@@ -20,6 +20,7 @@ export default class Timeline extends Component {
     duration: PropTypes.number,
     seek: PropTypes.number,
     onChangeTag: PropTypes.func.isRequired,
+    onRangeDragging: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
@@ -41,7 +42,7 @@ export default class Timeline extends Component {
   };
 
   render() {
-    const { duration, seek, tag } = this.props;
+    const { duration, seek, tag, onRangeDragging } = this.props;
     return (
       <TimelineContainer className={styles.container}>
         {({ width, isHovered, mouseX }) => (
@@ -64,6 +65,7 @@ export default class Timeline extends Component {
                 end={tag.end}
                 duration={duration}
                 onChange={this.handleRangeChange}
+                onDragging={onRangeDragging}
               />
             )}
           </Fragment>

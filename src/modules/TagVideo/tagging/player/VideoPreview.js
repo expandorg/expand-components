@@ -9,21 +9,22 @@ export default class VideoPreview extends Component {
   static propTypes = {
     src: PropTypes.string.isRequired,
     className: PropTypes.string,
+    playing: PropTypes.bool,
     start: PropTypes.number,
     stop: PropTypes.number,
     onVideoReady: PropTypes.func.isRequired,
     onVideoProgress: PropTypes.func.isRequired,
   };
 
-  state = {
-    canPlay: false,
-    playedSeconds: 0,
-  };
-
   static defaultProps = {
     className: null,
+    playing: true,
     start: 0,
     stop: null,
+  };
+
+  state = {
+    canPlay: false,
   };
 
   playerRef = createRef();
@@ -37,10 +38,11 @@ export default class VideoPreview extends Component {
 
   componentDidUpdate({ start: prevStart, stop: prevStop }) {
     const { stop, start } = this.props;
-    const { playedSeconds } = this.state;
     if (start !== prevStart || stop !== prevStop) {
-      if (playedSeconds > stop || playedSeconds < start) {
+      if (start !== prevStart) {
         this.playerRef.current.seekTo(start);
+      } else if (stop !== prevStop) {
+        this.playerRef.current.seekTo(stop);
       }
     }
   }
@@ -56,7 +58,6 @@ export default class VideoPreview extends Component {
 
   handleProgress = ({ playedSeconds }) => {
     const { stop, start, onVideoProgress } = this.props;
-    this.setState({ playedSeconds });
     if (start !== null && stop !== null) {
       if (playedSeconds > stop) {
         this.playerRef.current.seekTo(start);
@@ -66,7 +67,7 @@ export default class VideoPreview extends Component {
   };
 
   render() {
-    const { src, className } = this.props;
+    const { src, playing, className } = this.props;
     const { canPlay } = this.state;
 
     return (
@@ -75,7 +76,7 @@ export default class VideoPreview extends Component {
           ref={this.playerRef}
           url={src}
           loop
-          playing={canPlay}
+          playing={canPlay && playing}
           width="100%"
           playsinline
           playbackRate={1}

@@ -17,6 +17,7 @@ export default class TimelineRange extends Component {
     start: PropTypes.number.isRequired,
     end: PropTypes.number.isRequired,
     onChange: PropTypes.func.isRequired,
+    onDragging: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
@@ -41,6 +42,16 @@ export default class TimelineRange extends Component {
     onChange(start + delta, end + delta);
   };
 
+  handleDragStart = () => {
+    const { onDragging } = this.props;
+    onDragging(true);
+  };
+
+  handleDragEnd = () => {
+    const { onDragging } = this.props;
+    onDragging(false);
+  };
+
   render() {
     const { duration, start, end, timelineWidth } = this.props;
     if (!duration) {
@@ -55,12 +66,21 @@ export default class TimelineRange extends Component {
           tooltip={`start: ${formatTime(start)}`}
           className={styles.start}
           onDrag={this.handleChangeStart}
+          onDragStart={this.handleDragStart}
+          onDragEnd={this.handleDragEnd}
         />
-        <Draggable className={styles.range} onDrag={this.handleMove} />
+        <Draggable
+          className={styles.range}
+          onDrag={this.handleMove}
+          onDragStart={this.handleDragStart}
+          onDragEnd={this.handleDragEnd}
+        />
         <DraggableTooltip
           tooltip={`end: ${formatTime(end)}`}
           className={styles.end}
           onDrag={this.handleChangeEnd}
+          onDragStart={this.handleDragStart}
+          onDragEnd={this.handleDragEnd}
         />
       </div>
     );

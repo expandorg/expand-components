@@ -7,11 +7,13 @@ export default class Draggable extends Component {
   static propTypes = {
     className: PropTypes.string,
     onDrag: PropTypes.func.isRequired,
+    onDragStart: PropTypes.func,
     onDragEnd: PropTypes.func,
   };
 
   static defaultProps = {
     className: null,
+    onDragStart: Function.prototype,
     onDragEnd: Function.prototype,
   };
 
@@ -26,8 +28,12 @@ export default class Draggable extends Component {
     document.addEventListener('mousemove', this.handleMouseMove);
     document.addEventListener('mouseup', this.handleMouseUp);
 
+    const { onDragStart } = this.props;
+
     const { x, y } = getMousePosition(event);
     this.setState({ pressed: true, x, y });
+    onDragStart();
+
     stopEvt(event);
   };
 

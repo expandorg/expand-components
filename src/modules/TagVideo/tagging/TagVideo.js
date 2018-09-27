@@ -32,6 +32,7 @@ export default class TagVideo extends Component {
     duration: 0,
     seek: 0,
     tag: null,
+    playing: true,
   };
 
   handleVideoReady = duration => {
@@ -46,9 +47,13 @@ export default class TagVideo extends Component {
     this.setState({ tag });
   };
 
+  handleRangeDragging = dragging => {
+    this.setState({ playing: !dragging });
+  };
+
   render() {
     const { video, className } = this.props;
-    const { duration, seek, tag } = this.state;
+    const { duration, seek, tag, playing } = this.state;
 
     return (
       <div className={cn(styles.container, className)}>
@@ -57,6 +62,7 @@ export default class TagVideo extends Component {
             <VideoPreview
               src={video}
               start={tag && tag.start}
+              playing={playing}
               stop={tag && tag.end}
               duration={duration}
               onVideoReady={this.handleVideoReady}
@@ -69,6 +75,7 @@ export default class TagVideo extends Component {
               tag={tag}
               seek={seek}
               onChangeTag={this.handleChangeTag}
+              onRangeDragging={this.handleRangeDragging}
             />
           </div>
         </div>
