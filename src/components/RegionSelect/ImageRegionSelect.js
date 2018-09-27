@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
+import cn from 'classnames';
 
 import SelectRegionBase from './SelectRegionBase';
 import Selection from './Selection';
@@ -61,7 +62,7 @@ export default class ImageRegionSelect extends Component {
             readOnly={readOnly}
             width={width}
             height={height}
-            className={styles.region}
+            className={cn(styles.region, { [styles.readOnly]: readOnly })}
             onSelectionEnd={rect => this.handleSelect(rect, width, imageWidth)}
           >
             {({ selection }) => (

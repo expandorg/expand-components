@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
+import cn from 'classnames';
 
 import { replaceAtIndex, removeAtIndex } from '../../common/immutable';
 
@@ -73,7 +74,7 @@ export default class ImageRegionMultiselect extends Component {
         {({ imageWidth, width, height }) => (
           <SelectRegionBase
             readOnly={readOnly}
-            className={styles.region}
+            className={cn(styles.region, { [styles.readOnly]: readOnly })}
             key={src}
             width={width}
             height={height}
