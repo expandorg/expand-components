@@ -51,6 +51,10 @@ export default class TagVideo extends Component {
     this.setState({ playing: !dragging });
   };
 
+  handleTogglePlay = playing => {
+    this.setState({ playing });
+  };
+
   render() {
     const { video, className } = this.props;
     const { duration, seek, tag, playing } = this.state;
@@ -66,6 +70,7 @@ export default class TagVideo extends Component {
               stop={tag && tag.end}
               duration={duration}
               onVideoReady={this.handleVideoReady}
+              onTogglePlay={this.handleTogglePlay}
               onVideoProgress={this.handleVideoProgress}
             />
           </div>
@@ -74,6 +79,8 @@ export default class TagVideo extends Component {
               duration={duration}
               tag={tag}
               seek={seek}
+              playing={playing}
+              onTogglePlay={this.handleTogglePlay}
               onChangeTag={this.handleChangeTag}
               onRangeDragging={this.handleRangeDragging}
             />

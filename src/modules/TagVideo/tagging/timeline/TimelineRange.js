@@ -63,7 +63,7 @@ export default class TimelineRange extends Component {
     return (
       <div className={styles.container} style={{ left, width }}>
         <DraggableTooltip
-          tooltip={`start: ${formatTime(start)}`}
+          tooltip={`start time: ${formatTime(start)}`}
           className={styles.start}
           onDrag={this.handleChangeStart}
           onDragStart={this.handleDragStart}
@@ -76,7 +76,7 @@ export default class TimelineRange extends Component {
           onDragEnd={this.handleDragEnd}
         />
         <DraggableTooltip
-          tooltip={`end: ${formatTime(end)}`}
+          tooltip={`end time: ${formatTime(end)}`}
           className={styles.end}
           onDrag={this.handleChangeEnd}
           onDragStart={this.handleDragStart}

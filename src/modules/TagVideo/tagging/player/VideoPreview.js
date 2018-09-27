@@ -12,6 +12,7 @@ export default class VideoPreview extends Component {
     playing: PropTypes.bool,
     start: PropTypes.number,
     stop: PropTypes.number,
+    onTogglePlay: PropTypes.func.isRequired,
     onVideoReady: PropTypes.func.isRequired,
     onVideoProgress: PropTypes.func.isRequired,
   };
@@ -66,6 +67,16 @@ export default class VideoPreview extends Component {
     onVideoProgress(playedSeconds);
   };
 
+  handlePause = () => {
+    const { onTogglePlay } = this.props;
+    onTogglePlay(false);
+  };
+
+  handlePlay = () => {
+    const { onTogglePlay } = this.props;
+    onTogglePlay(true);
+  };
+
   render() {
     const { src, playing, className } = this.props;
     const { canPlay } = this.state;
@@ -83,6 +94,8 @@ export default class VideoPreview extends Component {
           progressInterval={intervalMs}
           volume={0}
           onReady={this.handleReady}
+          onPause={this.handlePause}
+          onPlay={this.handlePlay}
           onDuration={this.handleDuration}
           onProgress={this.handleProgress}
         />

@@ -5,6 +5,7 @@ import TimelineContainer from './TimelineContainer';
 import TimelineRange from './TimelineRange';
 import Progress from './Progress';
 import Cursor from './Cursor';
+import PlayButton from './PlayButton';
 
 import { pxToTime, formatTime, DEFAULT_SPAN_SEC } from './clip';
 
@@ -18,7 +19,9 @@ export default class Timeline extends Component {
       tag: PropTypes.string,
     }),
     duration: PropTypes.number,
+    playing: PropTypes.bool.isRequired,
     seek: PropTypes.number,
+    onTogglePlay: PropTypes.func.isRequired,
     onChangeTag: PropTypes.func.isRequired,
     onRangeDragging: PropTypes.func.isRequired,
   };
@@ -42,35 +45,51 @@ export default class Timeline extends Component {
   };
 
   render() {
-    const { duration, seek, tag, onRangeDragging } = this.props;
+    const {
+      duration,
+      seek,
+      tag,
+      playing,
+      onTogglePlay,
+      onRangeDragging,
+    } = this.props;
     return (
-      <TimelineContainer className={styles.container}>
-        {({ width, isHovered, mouseX }) => (
-          <Fragment>
-            <Progress duration={duration} seek={seek} />
-            {!tag &&
-              isHovered && (
-                <Cursor
-                  left={mouseX}
-                  label={`start time: ${formatTime(
-                    pxToTime(mouseX, duration, width)
-                  )}`}
-                  onClick={() => this.handleCursorClick(mouseX, width)}
+      <div className={styles.container}>
+        <div className={styles.play}>
+          <PlayButton
+            playing={playing}
+            tooltip={playing ? 'Pause' : 'Play'}
+            onToggle={onTogglePlay}
+          />
+        </div>
+        <TimelineContainer className={styles.timeline}>
+          {({ width, isHovered, mouseX }) => (
+            <Fragment>
+              <Progress duration={duration} seek={seek} />
+              {!tag &&
+                isHovered && (
+                  <Cursor
+                    left={mouseX}
+                    label={`start time: ${formatTime(
+                      pxToTime(mouseX, duration, width)
+                    )}`}
+                    onClick={() => this.handleCursorClick(mouseX, width)}
+                  />
+                )}
+              {tag && (
+                <TimelineRange
+                  timelineWidth={width}
+                  start={tag.start}
+                  end={tag.end}
+                  duration={duration}
+                  onChange={this.handleRangeChange}
+                  onDragging={onRangeDragging}
                 />
               )}
-            {tag && (
-              <TimelineRange
-                timelineWidth={width}
-                start={tag.start}
-                end={tag.end}
-                duration={duration}
-                onChange={this.handleRangeChange}
-                onDragging={onRangeDragging}
-              />
-            )}
-          </Fragment>
-        )}
-      </TimelineContainer>
+            </Fragment>
+          )}
+        </TimelineContainer>
+      </div>
     );
   }
 }
