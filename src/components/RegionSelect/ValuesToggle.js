@@ -16,7 +16,7 @@ export default class ValuesToggle extends Component {
     const { value, onToggle } = this.props;
     return (
       <div className="gem-selectregion-toggle">
-        <Switch tooltip="Toggle value" value={value} onChange={onToggle} />
+        <Switch tooltip="Toggle boxes" value={value} onChange={onToggle} />
       </div>
     );
   }
