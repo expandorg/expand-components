@@ -14,6 +14,9 @@ export const getModuleTypes = (
       return all.concat(module.type, getModuleTypes(module.modules));
     }, []);
   }
+  if (!modules.type) {
+    return [];
+  }
   return [modules.type, ...getModuleTypes(modules.modules)];
 };
 
