@@ -7,25 +7,27 @@
   height: 40px;
   width: 2px
 
-  background-color: color-pink
+  background-color: color-blue
 
 .label
   box-sizing: border-box;
-  position: absolute;
 
+  position: absolute;
   bottom: 50px
   left: calc(50% -1px)
+
   transform: translateX(-50%)
 
-  padding: 3px 12px;
+  padding: 0 18px;
 
-  background: color-pink
-  box-shadow 0 1px 1px 0 rgba(0, 0, 0, 0.24), 0 0 1px 0 rgba(0, 0, 0, 0.12)
+  background-color: color-blue
+  box-shadow 0 2px 2px 0 rgba(0, 0, 0, 0.24), 0 0 2px 0 rgba(0, 0, 0, 0.12)
 
   color: color-white
-  font(font-preset[body])
+  font(font-preset[body], false, false, 30px)
+  height: 30px
 
-  border-radius: 12px
+  border-radius: 15px
 
   white-space: nowrap;
 
@@ -37,4 +39,4 @@
 
     bottom: -12px
     border: 8px solid transparent
-    border-top: 8px solid color-pink
+    border-top: 8px solid color-blue

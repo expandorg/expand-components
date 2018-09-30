@@ -9,6 +9,7 @@ import styles from './PlayButton.module.styl';
 class PlayButton extends Component {
   static propTypes = {
     playing: PropTypes.bool.isRequired,
+    disabled: PropTypes.bool.isRequired,
     onToggle: PropTypes.func.isRequired,
   };
 
@@ -19,11 +20,16 @@ class PlayButton extends Component {
   };
 
   render() {
-    const { playing, onToggle: _, children, ...rest } = this.props;
+    const { playing, disabled, onToggle: _, children, ...rest } = this.props;
     const classes = cn(styles.button, { [styles.playing]: playing });
     return (
-      <button className={classes} onClick={this.handleClick} {...rest}>
-        {playing ? '||' : '>'}
+      <button
+        className={classes}
+        onClick={this.handleClick}
+        disabled={disabled}
+        {...rest}
+      >
+        <span className={cn(styles.icon, { [styles.pause]: playing })} />
         {children}
       </button>
     );

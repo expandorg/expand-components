@@ -6,8 +6,9 @@ import TimelineRange from './TimelineRange';
 import Progress from './Progress';
 import Cursor from './Cursor';
 import PlayButton from './PlayButton';
+// import Scales from './Scales';
 
-import { pxToTime, formatTime, DEFAULT_SPAN_SEC } from './clip';
+import { pxToTime, formatTime, DEFAULT_SPAN_SEC } from '../clip';
 
 import styles from './Timeline.module.styl';
 
@@ -19,6 +20,7 @@ export default class Timeline extends Component {
       tag: PropTypes.string,
     }),
     duration: PropTypes.number,
+    ready: PropTypes.bool,
     playing: PropTypes.bool.isRequired,
     seek: PropTypes.number,
     onTogglePlay: PropTypes.func.isRequired,
@@ -28,6 +30,7 @@ export default class Timeline extends Component {
 
   static defaultProps = {
     duration: 0,
+    ready: false,
     tag: null,
     seek: 0,
   };
@@ -38,10 +41,12 @@ export default class Timeline extends Component {
   };
 
   handleCursorClick = (cursorX, width) => {
-    const { duration, onChangeTag } = this.props;
-    const start = pxToTime(cursorX, duration, width);
-    const end = Math.min(start + DEFAULT_SPAN_SEC, duration);
-    onChangeTag({ start, end });
+    const { duration, onChangeTag, ready } = this.props;
+    if (ready) {
+      const start = pxToTime(cursorX, duration, width);
+      const end = Math.min(start + DEFAULT_SPAN_SEC, duration);
+      onChangeTag({ start, end, tag: '' });
+    }
   };
 
   render() {
@@ -50,6 +55,8 @@ export default class Timeline extends Component {
       seek,
       tag,
       playing,
+      ready,
+
       onTogglePlay,
       onRangeDragging,
     } = this.props;
@@ -57,6 +64,7 @@ export default class Timeline extends Component {
       <div className={styles.container}>
         <div className={styles.play}>
           <PlayButton
+            disabled={!ready}
             playing={playing}
             tooltip={playing ? 'Pause' : 'Play'}
             onToggle={onTogglePlay}
@@ -65,6 +73,7 @@ export default class Timeline extends Component {
         <TimelineContainer className={styles.timeline}>
           {({ width, isHovered, mouseX }) => (
             <Fragment>
+              {/* <Scales width={width} ready={ready} duration={duration} /> */}
               <Progress duration={duration} seek={seek} />
               {!tag &&
                 isHovered && (

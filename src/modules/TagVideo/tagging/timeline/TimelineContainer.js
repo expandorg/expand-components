@@ -50,9 +50,11 @@ export default class TimelineContainer extends Component {
   };
 
   handleMove = evt => {
-    const { left } = this.state;
-    const { x } = getMousePosition(evt);
-    this.setState({ mouseX: x - left });
+    const { left, isHovered } = this.state;
+    if (isHovered) {
+      const { x } = getMousePosition(evt);
+      this.setState({ mouseX: x - left });
+    }
   };
 
   handleEnter = () => {
