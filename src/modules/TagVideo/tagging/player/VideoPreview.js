@@ -40,9 +40,9 @@ export default class VideoPreview extends Component {
   componentDidUpdate({ start: prevStart, stop: prevStop }) {
     const { stop, start } = this.props;
     if (start !== prevStart || stop !== prevStop) {
-      if (start !== prevStart) {
+      if (start !== prevStart && start !== null && start !== undefined) {
         this.playerRef.current.seekTo(start);
-      } else if (stop !== prevStop) {
+      } else if (stop !== prevStop && stop !== null && stop !== undefined) {
         this.playerRef.current.seekTo(stop);
       }
     }

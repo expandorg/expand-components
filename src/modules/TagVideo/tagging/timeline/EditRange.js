@@ -4,13 +4,13 @@ import PropTypes from 'prop-types';
 import Draggable from '../../../../components/Draggable';
 import Tooltip from '../../../../components/Tooltip';
 
-import { pxToTime, timeToPx, formatTime } from './clip';
+import { pxToTime, timeToPx, formatTime, RangeBoundaries } from '../clip';
 
-import styles from './TimelineRange.module.styl';
+import styles from './EditRange.module.styl';
 
 const DraggableTooltip = Tooltip(Draggable);
 
-export default class TimelineRange extends Component {
+export default class EditRange extends Component {
   static propTypes = {
     timelineWidth: PropTypes.number.isRequired,
     duration: PropTypes.number,
@@ -25,15 +25,40 @@ export default class TimelineRange extends Component {
   };
 
   handleChangeStart = dx => {
-    const { duration, start, end, timelineWidth, onChange } = this.props;
+    const {
+      duration,
+      start: startTime,
+      end: endTime,
+      timelineWidth,
+      onChange,
+    } = this.props;
     const delta = pxToTime(dx, duration, timelineWidth);
-    onChange(start + delta, end);
+
+    const { start, end } = RangeBoundaries.start(
+      startTime + delta,
+      startTime,
+      endTime,
+      duration
+    );
+    onChange(start, end);
   };
 
   handleChangeEnd = dx => {
-    const { duration, start, end, timelineWidth, onChange } = this.props;
+    const {
+      duration,
+      start: startTime,
+      end: endTime,
+      timelineWidth,
+      onChange,
+    } = this.props;
     const delta = pxToTime(dx, duration, timelineWidth);
-    onChange(start, end + delta);
+    const { start, end } = RangeBoundaries.end(
+      endTime + delta,
+      startTime,
+      endTime,
+      duration
+    );
+    onChange(start, end);
   };
 
   handleMove = dx => {
