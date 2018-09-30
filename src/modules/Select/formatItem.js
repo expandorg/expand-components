@@ -12,7 +12,7 @@ const formatItem = (option: string | Object): OptionType => {
   }
   const { value, caption, hint, id } = option;
   let val = value;
-  if (val === 'undefined') {
+  if (typeof val === 'undefined') {
     val = typeof id !== 'undefined' ? id : caption;
   }
   return {
