@@ -108,6 +108,25 @@ export class RangeBoundaries {
     return { start, end };
   }
 
+  static move(
+    delta: number,
+    startTime: number,
+    endTime: number,
+    duration: number
+  ) {
+    let start = startTime + delta;
+    let end = endTime + delta;
+    if (start < 0) {
+      start = 0;
+      end = endTime - startTime;
+    }
+    if (end > duration) {
+      start = duration - (endTime - startTime);
+      end = duration;
+    }
+    return { start, end };
+  }
+
   static end(
     value: number,
     startTime: number,

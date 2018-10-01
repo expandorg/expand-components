@@ -62,9 +62,21 @@ export default class EditRange extends Component {
   };
 
   handleMove = dx => {
-    const { duration, start, end, timelineWidth, onChange } = this.props;
+    const {
+      duration,
+      start: startTime,
+      end: endTime,
+      timelineWidth,
+      onChange,
+    } = this.props;
     const delta = pxToTime(dx, duration, timelineWidth);
-    onChange(start + delta, end + delta);
+    const { start, end } = RangeBoundaries.move(
+      delta,
+      startTime,
+      endTime,
+      duration
+    );
+    onChange(start, end);
   };
 
   handleDragStart = () => {
