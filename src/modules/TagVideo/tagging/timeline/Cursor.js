@@ -24,13 +24,13 @@ export default class Cursor extends Component {
   render() {
     const { left, label } = this.props;
     return (
-      <span
+      <div
         onClick={this.handleClick}
-        style={{ left }}
+        style={{ left: left - 1 }}
         className={styles.cursor}
       >
         {label && <span className={styles.label}>{label}</span>}
-      </span>
+      </div>
     );
   }
 }
