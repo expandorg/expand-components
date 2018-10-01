@@ -22,8 +22,8 @@ export const formatTime = (time: number, options?: Object): string => {
     s = `:${pad(seconds)}`;
 
     if (opts.ms) {
-      const ms = Math.floor((time - secondsTotal) * 100);
-      milliseconds = `.${ms < 10 ? `${ms}`.padEnd(2, '0') : pad(ms)}`;
+      const ms = Math.round((time - secondsTotal) * 100);
+      milliseconds = `.${ms > 10 ? `${ms}`.padEnd(2, '0') : pad(ms)}`;
     }
   }
   const hstr = hours ? `${pad(hours)}:` : '';

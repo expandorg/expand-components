@@ -1,4 +1,4 @@
-import React, { Component, createRef } from 'react';
+import React, { PureComponent, createRef } from 'react';
 import PropTypes from 'prop-types';
 
 import Input from '../../../../components/Input';
@@ -10,7 +10,7 @@ import TimeInput from './TimeInput';
 
 import styles from './EditTag.module.styl';
 
-export default class EditTag extends Component {
+export default class EditTag extends PureComponent {
   static propTypes = {
     duration: PropTypes.number.isRequired,
     tag: PropTypes.shape({

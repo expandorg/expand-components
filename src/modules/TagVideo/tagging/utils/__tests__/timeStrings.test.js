@@ -9,6 +9,7 @@ describe('clip helpers', () => {
     it('should format fraction seconds ', () => {
       expect(formatTime(610.1)).toEqual('10:10.10');
       expect(formatTime(10.9)).toEqual('00:10.90');
+      expect(formatTime(10.09)).toEqual('00:10.09');
     });
 
     it('should add hours ', () => {

@@ -87,7 +87,7 @@ export default class Timeline extends Component {
           {({ width, isHovered, mouseX }) => (
             <Fragment>
               <Scale width={width} ready={ready} duration={duration} />
-              <Progress duration={duration} seek={seek} />
+              {playing && ready && <Progress duration={duration} seek={seek} />}
               {!tag &&
                 ready &&
                 tags.map(t => (

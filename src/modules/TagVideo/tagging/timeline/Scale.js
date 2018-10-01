@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
 import { getTicks } from '../utils/scales';
@@ -17,7 +17,7 @@ Tick.propTypes = {
   tick: PropTypes.object.isRequired, // eslint-disable-line
 };
 
-export default class Scale extends Component {
+export default class Scale extends PureComponent {
   static propTypes = {
     width: PropTypes.number,
     duration: PropTypes.number,

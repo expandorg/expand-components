@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import cn from 'classnames';
 
@@ -6,7 +6,7 @@ import Tooltip from '../../../../components/Tooltip';
 
 import styles from './PlayButton.module.styl';
 
-class PlayButton extends Component {
+class PlayButton extends PureComponent {
   static propTypes = {
     playing: PropTypes.bool.isRequired,
     disabled: PropTypes.bool.isRequired,
