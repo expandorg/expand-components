@@ -1,0 +1,29 @@
+@import '../../../../uikit/colors'
+@import '../../../../uikit/font'
+
+.container
+  width: 100%;
+  overflow-x: hidden;
+
+.tick
+  position: absolute;
+  bottom: 0
+  top: 0
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font(font-preset[subheader])
+  transform: translateX(-50%);
+  color: color-text-gray-1
+
+  &:after
+    position: absolute;
+    bottom: 0
+    left: 50%
+
+    content: ' '
+    width: 1px
+    height: 3px
+    background-color: color-text-gray-1

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { timeToPx } from '../clip';
+import { timeToPx } from '../utils/timeline';
 
 import styles from './Range.module.styl';
 

@@ -8,9 +8,11 @@ import Range from './Range';
 import Progress from './Progress';
 import Cursor from './Cursor';
 import PlayButton from './PlayButton';
-// import Scales from './Scales';
+import Scale from './Scale';
 
-import { pxToTime, formatTime, DEFAULT_SPAN_SEC } from '../clip';
+import { pxToTime } from '../utils/timeline';
+import { formatTime } from '../utils/timeStrings';
+import { DEFAULT_SPAN_SEC } from '../utils/RangeBoundaries';
 
 import styles from './Timeline.module.styl';
 
@@ -84,7 +86,7 @@ export default class Timeline extends Component {
         <TimelineContainer className={styles.timeline}>
           {({ width, isHovered, mouseX }) => (
             <Fragment>
-              {/* <Scales width={width} ready={ready} duration={duration} /> */}
+              <Scale width={width} ready={ready} duration={duration} />
               <Progress duration={duration} seek={seek} />
               {!tag &&
                 ready &&

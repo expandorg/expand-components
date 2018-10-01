@@ -4,7 +4,9 @@ import PropTypes from 'prop-types';
 import Draggable from '../../../../components/Draggable';
 import Tooltip from '../../../../components/Tooltip';
 
-import { pxToTime, timeToPx, formatTime, RangeBoundaries } from '../clip';
+import { formatTime } from '../utils/timeStrings';
+import { pxToTime, timeToPx } from '../utils/timeline';
+import RangeBoundaries from '../utils/RangeBoundaries';
 
 import styles from './EditRange.module.styl';
 

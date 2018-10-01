@@ -4,13 +4,15 @@ import PropTypes from 'prop-types';
 import cn from 'classnames';
 
 import { removeAtIndex, replaceAtIndex } from '../../../common/immutable';
-import { tagId } from './clip';
+
 import VideoPreview from './player/VideoPreview';
 import Timeline from './timeline/Timeline';
 import Tags from './tags/Tags';
 import EditTag from './tags/EditTag';
 
 import styles from './TagVideo.module.styl';
+
+const tagId = tag => `${tag.start}-${tag.end}`;
 
 export default class TagVideo extends Component {
   static propTypes = {

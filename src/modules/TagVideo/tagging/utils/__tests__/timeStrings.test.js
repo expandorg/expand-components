@@ -1,4 +1,4 @@
-import { formatTime, parseTime } from '../clip';
+import { formatTime, parseTime } from '../timeStrings';
 
 describe('clip helpers', () => {
   describe('formatTime()', () => {
@@ -7,6 +7,7 @@ describe('clip helpers', () => {
     });
 
     it('should format fraction seconds ', () => {
+      expect(formatTime(610.1)).toEqual('10:10.10');
       expect(formatTime(10.9)).toEqual('00:10.90');
     });
 
