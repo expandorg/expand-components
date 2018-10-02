@@ -25,10 +25,12 @@ export default class TagVideo extends Component {
         tag: PropTypes.string,
       })
     ),
+    startTime: PropTypes.number,
     onChange: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
+    startTime: undefined,
     className: null,
     tags: [],
   };
@@ -89,7 +91,7 @@ export default class TagVideo extends Component {
   };
 
   render() {
-    const { video, className, tags } = this.props;
+    const { video, className, tags, startTime } = this.props;
     const { duration, seek, selected, playing, ready } = this.state;
 
     return (
@@ -98,7 +100,7 @@ export default class TagVideo extends Component {
           <div className={styles.video}>
             <VideoPreview
               src={video}
-              start={selected && selected.start}
+              start={(selected && selected.start) || startTime}
               stop={selected && selected.end}
               playing={playing}
               onVideoReady={this.handleVideoReady}
@@ -113,6 +115,7 @@ export default class TagVideo extends Component {
               tag={selected}
               tags={tags}
               seek={seek}
+              limitFrom={startTime}
               playing={playing}
               onTogglePlay={this.handleTogglePlay}
               onChangeTag={this.handleChangeTag}
@@ -125,6 +128,7 @@ export default class TagVideo extends Component {
             <EditTag
               duration={duration}
               tag={selected}
+              limitFrom={startTime}
               onChange={this.handleChangeTag}
               onSave={this.handleSaveTag}
             />

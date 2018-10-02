@@ -18,12 +18,18 @@ export default class EditTag extends PureComponent {
       end: PropTypes.number,
       tag: PropTypes.string,
     }).isRequired,
+
+    limitFrom: PropTypes.number,
+    limitTo: PropTypes.number,
+
     onChange: PropTypes.func.isRequired,
     onSave: PropTypes.func,
   };
 
   static defaultProps = {
     onSave: null,
+    limitFrom: undefined,
+    limitTo: undefined,
   };
 
   labelRef = createRef();
@@ -45,23 +51,27 @@ export default class EditTag extends PureComponent {
   };
 
   handleChangeStart = value => {
-    const { tag, duration, onChange } = this.props;
+    const { tag, duration, onChange, limitFrom, limitTo } = this.props;
     const { start, end } = RangeBoundaries.start(
       value,
       tag.start,
       tag.end,
-      duration
+      duration,
+      limitFrom,
+      limitTo
     );
     onChange({ ...tag, start, end });
   };
 
   handleChangeEnd = value => {
-    const { tag, onChange, duration } = this.props;
+    const { tag, onChange, duration, limitFrom, limitTo } = this.props;
     const { start, end } = RangeBoundaries.end(
       value,
       tag.start,
       tag.end,
-      duration
+      duration,
+      limitFrom,
+      limitTo
     );
     onChange({ ...tag, start, end });
   };

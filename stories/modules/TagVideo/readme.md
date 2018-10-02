@@ -14,9 +14,10 @@
 
 | Property    | type    | Required | Default | description    |
 | ----------- | ------- | -------- | ------- | -------------- |
-| *type*      | `tagVideo` | true     | -       | module type    |
+| *type*      | `tagVideo` | true  | -       | module type    |
 | *name*      | string  | true     | -       | module name    |
 | *src*       | string  | true     | -       | video url      |
+| *startTime* | number  | -        | -       | start video from  |
 | *[validation](https://gemsorg.github.io/gems-components/?selectedKind=Form%20Builder&selectedStory=Validation)*  | validtion | - | - | validation rules |
 
 

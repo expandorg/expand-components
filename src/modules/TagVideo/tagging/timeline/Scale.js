@@ -21,7 +21,6 @@ export default class Scale extends PureComponent {
   static propTypes = {
     width: PropTypes.number,
     duration: PropTypes.number,
-    ready: PropTypes.bool.isRequired,
   };
 
   static defaultProps = {
@@ -30,8 +29,8 @@ export default class Scale extends PureComponent {
   };
 
   render() {
-    const { ready, width, duration } = this.props;
-    if (!ready || !duration || !width) {
+    const { width, duration } = this.props;
+    if (!duration || !width) {
       return null;
     }
     const ticks = getTicks(0, duration, width, 50);

@@ -18,11 +18,15 @@ export default class EditRange extends Component {
     duration: PropTypes.number,
     start: PropTypes.number.isRequired,
     end: PropTypes.number.isRequired,
+    limitFrom: PropTypes.number,
+    limitTo: PropTypes.number,
     onChange: PropTypes.func.isRequired,
     onDragging: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
+    limitFrom: undefined,
+    limitTo: undefined,
     duration: 0,
   };
 
@@ -33,6 +37,8 @@ export default class EditRange extends Component {
       end: endTime,
       timelineWidth,
       onChange,
+      limitFrom,
+      limitTo,
     } = this.props;
     const delta = pxToTime(dx, duration, timelineWidth);
 
@@ -40,25 +46,9 @@ export default class EditRange extends Component {
       startTime + delta,
       startTime,
       endTime,
-      duration
-    );
-    onChange(start, end);
-  };
-
-  handleChangeEnd = dx => {
-    const {
       duration,
-      start: startTime,
-      end: endTime,
-      timelineWidth,
-      onChange,
-    } = this.props;
-    const delta = pxToTime(dx, duration, timelineWidth);
-    const { start, end } = RangeBoundaries.end(
-      endTime + delta,
-      startTime,
-      endTime,
-      duration
+      limitFrom,
+      limitTo
     );
     onChange(start, end);
   };
@@ -70,13 +60,39 @@ export default class EditRange extends Component {
       end: endTime,
       timelineWidth,
       onChange,
+      limitFrom,
+      limitTo,
     } = this.props;
     const delta = pxToTime(dx, duration, timelineWidth);
     const { start, end } = RangeBoundaries.move(
       delta,
       startTime,
       endTime,
-      duration
+      duration,
+      limitFrom,
+      limitTo
+    );
+    onChange(start, end);
+  };
+
+  handleChangeEnd = dx => {
+    const {
+      duration,
+      start: startTime,
+      end: endTime,
+      timelineWidth,
+      onChange,
+      limitFrom,
+      limitTo,
+    } = this.props;
+    const delta = pxToTime(dx, duration, timelineWidth);
+    const { start, end } = RangeBoundaries.end(
+      endTime + delta,
+      startTime,
+      endTime,
+      duration,
+      limitFrom,
+      limitTo
     );
     onChange(start, end);
   };

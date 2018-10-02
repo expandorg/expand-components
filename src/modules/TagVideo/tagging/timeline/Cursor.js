@@ -1,35 +1,48 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import { formatTime } from '../utils/timeStrings';
+import RangeBoundaries from '../utils/RangeBoundaries';
+
 import styles from './Cursor.module.styl';
 
 export default class Cursor extends Component {
   static propTypes = {
-    left: PropTypes.number,
-    label: PropTypes.string,
+    position: PropTypes.number.isRequired,
+    time: PropTypes.number.isRequired,
+
+    limitFrom: PropTypes.number,
+    limitTo: PropTypes.number,
+
     onClick: PropTypes.func,
   };
 
   static defaultProps = {
-    left: 0,
-    label: null,
+    limitFrom: undefined,
+    limitTo: undefined,
     onClick: Function.prototype,
   };
 
   handleClick = evt => {
-    const { left, onClick } = this.props;
-    onClick(left, evt);
+    const { position, time, onClick } = this.props;
+    onClick(time, position, evt);
   };
 
   render() {
-    const { left, label } = this.props;
+    const { position, time, limitFrom, limitTo } = this.props;
+
+    const { from, to } = RangeBoundaries.hasBoundaries(limitFrom, limitTo);
+    if ((from && time <= limitFrom) || (to && time >= limitTo)) {
+      return null;
+    }
+
     return (
       <div
         onClick={this.handleClick}
-        style={{ left: left - 1 }}
+        style={{ left: position - 1 }}
         className={styles.cursor}
       >
-        {label && <span className={styles.label}>{label}</span>}
+        <span className={styles.label}>start time: {formatTime(time)}</span>
       </div>
     );
   }

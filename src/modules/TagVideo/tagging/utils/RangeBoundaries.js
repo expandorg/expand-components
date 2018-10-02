@@ -5,21 +5,29 @@ export const MIN_SPAN_SEC = 0.1;
 export const DEFAULT_SPAN_SEC = 3;
 
 export default class RangeBoundaries {
+  static hasBoundaries = (limitFrom: ?number, limitTo: ?number) => {
+    const from = typeof limitFrom !== 'undefined';
+    const to = typeof limitTo !== 'undefined';
+    return { from, to };
+  };
+
   static start(
     value: number,
     startTime: number,
     endTime: number,
     duration: number,
+    limitFrom: ?number,
+    limitTo: ?number,
     minInterval?: number = MIN_SPAN_SEC
   ) {
     let start = value;
     let end = endTime;
-    if (start < 0) {
-      start = 0;
+    if (start < (limitFrom || 0)) {
+      start = limitFrom || 0;
     } else if (start > endTime) {
-      end = Math.min(duration, start + (endTime - startTime));
+      end = Math.min(limitTo || duration, start + (endTime - startTime));
     } else if (endTime - start < MIN_SPAN_SEC) {
-      end = Math.min(duration, start + minInterval);
+      end = Math.min(limitTo || duration, start + minInterval);
     }
     return { start, end };
   }
@@ -28,17 +36,21 @@ export default class RangeBoundaries {
     delta: number,
     startTime: number,
     endTime: number,
-    duration: number
+    duration: number,
+    limitFrom: ?number,
+    limitTo: ?number
   ) {
     let start = startTime + delta;
     let end = endTime + delta;
-    if (start < 0) {
-      start = 0;
-      end = endTime - startTime;
+
+    if (start < (limitFrom || 0)) {
+      start = limitFrom || 0;
+      end = (limitFrom || 0) + (endTime - startTime);
     }
-    if (end > duration) {
-      start = duration - (endTime - startTime);
-      end = duration;
+
+    if (end > (limitTo || duration)) {
+      start = (limitTo || duration) - (endTime - startTime);
+      end = limitTo || duration;
     }
     return { start, end };
   }
@@ -47,11 +59,13 @@ export default class RangeBoundaries {
     value: number,
     startTime: number,
     endTime: number,
-    duration: number
+    duration: number,
+    limitFrom: ?number,
+    limitTo: ?number
   ) {
     let end = value;
-    if (end > duration) {
-      end = duration;
+    if (end > (limitTo || duration)) {
+      end = limitTo || duration;
     } else if (end < startTime || end - startTime < MIN_SPAN_SEC) {
       end = startTime + MIN_SPAN_SEC;
     }

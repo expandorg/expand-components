@@ -18,10 +18,12 @@ export default class SignleTagVideo extends Component {
       end: PropTypes.number.isRequired,
       tag: PropTypes.string,
     }),
+    startTime: PropTypes.number,
     onChange: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
+    startTime: undefined,
     className: null,
     tag: null,
   };
@@ -50,7 +52,7 @@ export default class SignleTagVideo extends Component {
   };
 
   render() {
-    const { video, className, tag, onChange } = this.props;
+    const { video, className, tag, onChange, startTime } = this.props;
     const { duration, seek, playing, ready } = this.state;
 
     return (
@@ -59,7 +61,7 @@ export default class SignleTagVideo extends Component {
           <div className={styles.video}>
             <VideoPreview
               src={video}
-              start={tag && tag.start}
+              start={(tag && tag.start) || startTime}
               stop={tag && tag.end}
               playing={playing}
               onVideoReady={this.handleVideoReady}
@@ -73,6 +75,7 @@ export default class SignleTagVideo extends Component {
               duration={duration}
               tag={tag}
               seek={seek}
+              limitFrom={startTime}
               playing={playing}
               onTogglePlay={this.handleTogglePlay}
               onChangeTag={onChange}
@@ -81,7 +84,14 @@ export default class SignleTagVideo extends Component {
           </div>
         </div>
         <div className={styles.tag}>
-          {tag && <EditTag duration={duration} tag={tag} onChange={onChange} />}
+          {tag && (
+            <EditTag
+              duration={duration}
+              tag={tag}
+              onChange={onChange}
+              limitFrom={startTime}
+            />
+          )}
           {!tag &&
             ready && <div className={styles.placeholder}>Pick start time</div>}
         </div>

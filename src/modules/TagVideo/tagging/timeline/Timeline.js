@@ -9,9 +9,10 @@ import Progress from './Progress';
 import Cursor from './Cursor';
 import PlayButton from './PlayButton';
 import Scale from './Scale';
+import Boundaries from './Boundaries';
 
 import { pxToTime } from '../utils/timeline';
-import { formatTime } from '../utils/timeStrings';
+
 import { DEFAULT_SPAN_SEC } from '../utils/RangeBoundaries';
 
 import styles from './Timeline.module.styl';
@@ -31,6 +32,8 @@ export default class Timeline extends Component {
         tag: PropTypes.string,
       })
     ),
+    limitFrom: PropTypes.number,
+    limitTo: PropTypes.number,
     duration: PropTypes.number,
     ready: PropTypes.bool,
     playing: PropTypes.bool.isRequired,
@@ -44,6 +47,8 @@ export default class Timeline extends Component {
     duration: 0,
     ready: false,
     tag: null,
+    limitFrom: undefined,
+    limitTo: undefined,
     tags: [],
     seek: 0,
   };
@@ -53,10 +58,10 @@ export default class Timeline extends Component {
     onChangeTag({ ...tag, start, end });
   };
 
-  handleCursorClick = (cursorX, width) => {
+  handleCursorClick = (start, pos, evt) => {
+    evt.preventDefault();
     const { duration, onChangeTag, ready } = this.props;
     if (ready) {
-      const start = pxToTime(cursorX, duration, width);
       const end = Math.min(start + DEFAULT_SPAN_SEC, duration);
       onChangeTag({ start, end, tag: '' });
     }
@@ -66,6 +71,8 @@ export default class Timeline extends Component {
     const {
       duration,
       seek,
+      limitFrom,
+      limitTo,
       tag,
       tags,
       playing,
@@ -86,7 +93,13 @@ export default class Timeline extends Component {
         <TimelineContainer className={styles.timeline}>
           {({ width, isHovered, mouseX }) => (
             <Fragment>
-              <Scale width={width} ready={ready} duration={duration} />
+              <Scale width={width} duration={duration} />
+              <Boundaries
+                width={width}
+                duration={duration}
+                limitFrom={limitFrom}
+                limitTo={limitTo}
+              />
               {playing && ready && <Progress duration={duration} seek={seek} />}
               {!tag &&
                 ready &&
@@ -101,11 +114,11 @@ export default class Timeline extends Component {
               {!tag &&
                 isHovered && (
                   <Cursor
-                    left={mouseX}
-                    label={`start time: ${formatTime(
-                      pxToTime(mouseX, duration, width)
-                    )}`}
-                    onClick={() => this.handleCursorClick(mouseX, width)}
+                    position={mouseX}
+                    time={pxToTime(mouseX, duration, width)}
+                    limitFrom={limitFrom}
+                    limitTo={limitTo}
+                    onClick={this.handleCursorClick}
                   />
                 )}
               {tag && (
@@ -114,6 +127,8 @@ export default class Timeline extends Component {
                   start={tag.start}
                   end={tag.end}
                   duration={duration}
+                  limitFrom={limitFrom}
+                  limitTo={limitTo}
                   onChange={this.handleRangeChange}
                   onDragging={onRangeDragging}
                 />

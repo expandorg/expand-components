@@ -14,11 +14,13 @@ export default class TagVideo extends Component {
       end: PropTypes.number.isRequired,
       tag: PropTypes.string,
     }),
+    startTime: PropTypes.number,
     onChange: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
     value: null,
+    startTime: undefined,
   };
 
   static module = {
@@ -48,12 +50,13 @@ export default class TagVideo extends Component {
   };
 
   render() {
-    const { src, value } = this.props;
+    const { src, value, startTime } = this.props;
 
     return (
       <div className={styles.container}>
         <SignleTagVideo
           key={src}
+          startTime={startTime}
           video={src}
           tag={value}
           className={styles.video}

@@ -28,6 +28,6 @@ const form = {
 storiesOf('Form Builder/Modules', module).add('TagVideo', () => (
   <Panel>
     <Markdown doc={readme} />
-    <Playground form={form} editMode="hidden" vertical />
+    <Playground form={form} editMode="vertical" vertical />
   </Panel>
 ));
