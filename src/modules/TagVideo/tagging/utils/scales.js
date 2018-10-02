@@ -2,7 +2,8 @@
 import { formatTime } from './timeStrings';
 
 const mmss = (t: number): string => formatTime(t, { ms: false });
-const hhmm = (t: number): string => formatTime(t, { seconds: false });
+const hhmm = (t: number): string =>
+  formatTime(t, { seconds: false, hours: true });
 
 const scales = [
   [mmss, 1],

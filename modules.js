@@ -55,6 +55,7 @@ import {
 import Submit from './src/modules/Submit';
 
 import Title from './src/modules/Title';
+import TagVideo from './src/modules/TagVideo';
 
 import Question from './src/modules/Question';
 
@@ -106,6 +107,7 @@ export {
   SelectModule,
   Submit,
   Title,
+  TagVideo,
   Validation,
   Video,
 };

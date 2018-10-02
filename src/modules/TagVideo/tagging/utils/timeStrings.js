@@ -6,7 +6,7 @@ export const formatTime = (time: number, options?: Object): string => {
   if (!time) {
     return '00:00:00';
   }
-  const opts = { ...{ seconds: true, ms: true }, ...options };
+  const opts = { ...{ seconds: true, ms: true, hours: false }, ...options };
 
   const secondsTotal = Math.floor(time);
   const hours = Math.floor(secondsTotal / 3600);
@@ -26,7 +26,7 @@ export const formatTime = (time: number, options?: Object): string => {
       milliseconds = `.${ms > 10 ? `${ms}`.padEnd(2, '0') : pad(ms)}`;
     }
   }
-  const hstr = hours ? `${pad(hours)}:` : '';
+  const hstr = opts.hours || hours ? `${pad(hours)}:` : '';
   return `${hstr}${pad(minutes)}${s}${milliseconds}`;
 };
 
