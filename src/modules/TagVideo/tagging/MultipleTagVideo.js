@@ -10,7 +10,7 @@ import Timeline from './timeline/Timeline';
 import Tags from './tags/Tags';
 import EditTag from './tags/EditTag';
 
-import styles from './TagVideo.module.styl';
+import styles from './styles.module.styl';
 
 const tagId = tag => `${tag.start}-${tag.end}`;
 

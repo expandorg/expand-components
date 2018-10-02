@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { rules } from '../../common/validation';
-
-import UITagVideo from './tagging/TagVideo';
+import SignleTagVideo from './tagging/SignleTagVideo';
 
 import styles from './TagVideo.module.styl';
 
@@ -11,25 +9,30 @@ export default class TagVideo extends Component {
   static propTypes = {
     src: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
-    value: PropTypes.arrayOf(
-      PropTypes.shape({
-        start: PropTypes.number.isRequired,
-        end: PropTypes.number.isRequired,
-        tag: PropTypes.string,
-      })
-    ),
+    value: PropTypes.shape({
+      start: PropTypes.number.isRequired,
+      end: PropTypes.number.isRequired,
+      tag: PropTypes.string,
+    }),
     onChange: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
-    value: [],
+    value: null,
   };
 
   static module = {
     type: 'tagVideo',
     validation: {
-      isRequired: rules.isRequiredArray,
-      isNotEmpty: rules.isRequiredArray,
+      isRequired: value => {
+        if (!value) {
+          return false;
+        }
+        if (!value.tag) {
+          return false;
+        }
+        return true;
+      },
     },
     report: ['video is not loading'],
     editor: {
@@ -39,9 +42,9 @@ export default class TagVideo extends Component {
     },
   };
 
-  handleChange = tags => {
+  handleChange = tag => {
     const { name, onChange } = this.props;
-    onChange(name, tags);
+    onChange(name, tag);
   };
 
   render() {
@@ -49,10 +52,10 @@ export default class TagVideo extends Component {
 
     return (
       <div className={styles.container}>
-        <UITagVideo
+        <SignleTagVideo
           key={src}
           video={src}
-          tags={value}
+          tag={value}
           className={styles.video}
           onChange={this.handleChange}
         />

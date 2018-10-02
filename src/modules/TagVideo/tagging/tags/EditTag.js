@@ -19,7 +19,11 @@ export default class EditTag extends PureComponent {
       tag: PropTypes.string,
     }).isRequired,
     onChange: PropTypes.func.isRequired,
-    onSave: PropTypes.func.isRequired,
+    onSave: PropTypes.func,
+  };
+
+  static defaultProps = {
+    onSave: null,
   };
 
   labelRef = createRef();
@@ -68,7 +72,7 @@ export default class EditTag extends PureComponent {
   };
 
   render() {
-    const { tag } = this.props;
+    const { tag, onSave } = this.props;
     return (
       <div className={styles.container}>
         <div className={styles.field}>
@@ -103,22 +107,24 @@ export default class EditTag extends PureComponent {
             />
           </div>
         </div>
-        <div className={styles.field}>
-          <div className={styles.label}>&nbsp;</div>
-          <div className={styles.actions}>
-            <Button
-              className={styles.button}
-              theme="white"
-              size="small"
-              onClick={this.handleSave}
-            >
-              {tag.id ? 'Save' : 'Add'}
-            </Button>
-            <button className={styles.delete} onClick={this.handleClear}>
-              ✕
-            </button>
+        {onSave && (
+          <div className={styles.field}>
+            <div className={styles.label}>&nbsp;</div>
+            <div className={styles.actions}>
+              <Button
+                className={styles.button}
+                theme="white"
+                size="small"
+                onClick={this.handleSave}
+              >
+                {tag.id ? 'Save' : 'Add'}
+              </Button>
+              <button className={styles.delete} onClick={this.handleClear}>
+                ✕
+              </button>
+            </div>
           </div>
-        </div>
+        )}
       </div>
     );
   }
