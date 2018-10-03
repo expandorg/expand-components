@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import Draggable from '../../../../components/Draggable';
-import Tooltip from '../../../../components/Tooltip';
+import Draggable from '../../Draggable';
+import Tooltip from '../../Tooltip';
 
 import { formatTime } from '../utils/timeStrings';
 import { pxToTime, timeToPx } from '../utils/timeline';
 import RangeBoundaries from '../utils/RangeBoundaries';
 
-import styles from './EditRange.module.styl';
+import styles from './TimelineRangeEdit.module.styl';
 
 const DraggableTooltip = Tooltip(Draggable);
 
-export default class EditRange extends Component {
+export default class TimelineRangeEdit extends Component {
   static propTypes = {
     timelineWidth: PropTypes.number.isRequired,
     duration: PropTypes.number,

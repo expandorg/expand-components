@@ -13,7 +13,7 @@ const form = {
   modules: [
     {
       name: 'tag',
-      type: 'tagVideo',
+      type: 'multipleTagVideo',
       src: ' https://www.youtube.com/watch?v=PXi3Mv6KMzY',
     },
     {
@@ -25,7 +25,7 @@ const form = {
   ],
 };
 
-storiesOf('Form Builder/Modules', module).add('TagVideo', () => (
+storiesOf('Form Builder/Modules', module).add('MultipleTagVideo', () => (
   <Panel>
     <Markdown doc={readme} />
     <Playground form={form} editMode="edit" vertical />

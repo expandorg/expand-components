@@ -3,17 +3,14 @@ import PropTypes from 'prop-types';
 
 import { timeToPx } from '../utils/timeline';
 
-import styles from './Range.module.styl';
+import styles from './TimelineRange.module.styl';
 
-export default class Range extends Component {
+export default class TimelineRange extends Component {
   static propTypes = {
     timelineWidth: PropTypes.number.isRequired,
     duration: PropTypes.number,
-    tag: PropTypes.shape({
-      start: PropTypes.number.isRequired,
-      end: PropTypes.number,
-      tag: PropTypes.string,
-    }).isRequired,
+    start: PropTypes.number.isRequired,
+    end: PropTypes.number.isRequired,
   };
 
   static defaultProps = {
@@ -21,13 +18,13 @@ export default class Range extends Component {
   };
 
   render() {
-    const { duration, tag, timelineWidth } = this.props;
-    if (!duration) {
+    const { duration, start, end, timelineWidth } = this.props;
+    if (!duration || !timelineWidth) {
       return null;
     }
 
-    const left = `${timeToPx(tag.start, duration, timelineWidth)}px`;
-    const width = `${timeToPx(tag.end - tag.start, duration, timelineWidth)}px`;
+    const left = `${timeToPx(start, duration, timelineWidth)}px`;
+    const width = `${timeToPx(end - start, duration, timelineWidth)}px`;
 
     return (
       <div className={styles.container} style={{ left, width }}>

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Input from '../../../../components/Input';
 import Button from '../../../../components/Button';
 
-import RangeBoundaries from '../utils/RangeBoundaries';
+import RangeBoundaries from '../../../../components/VideoPlayer/utils/RangeBoundaries';
 
 import TimeInput from './TimeInput';
 

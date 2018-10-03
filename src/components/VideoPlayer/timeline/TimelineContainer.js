@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import debounce from 'debounce';
 
-import { getMousePosition } from '../../../../common/dom';
+import { getMousePosition } from '../../../common/dom';
 
 const RESIZE_DEBOUNCE = 200;
 

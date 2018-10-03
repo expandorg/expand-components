@@ -1,38 +1,35 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import SignleTagVideo from './tagging/SignleTagVideo';
+import { rules } from '../../common/validation';
 
-export default class TagVideo extends Component {
+import UIMultipleTagVideo from './tagging/MultipleTagVideo';
+
+export default class MultipleTagVideo extends Component {
   static propTypes = {
     src: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
-    value: PropTypes.shape({
-      start: PropTypes.number.isRequired,
-      end: PropTypes.number.isRequired,
-      tag: PropTypes.string,
-    }),
+    value: PropTypes.arrayOf(
+      PropTypes.shape({
+        start: PropTypes.number.isRequired,
+        end: PropTypes.number.isRequired,
+        tag: PropTypes.string,
+      })
+    ),
     startTime: PropTypes.number,
     onChange: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
-    value: null,
+    value: [],
     startTime: undefined,
   };
 
   static module = {
-    type: 'tagVideo',
+    type: 'multipleTagVideo',
     validation: {
-      isRequired: value => {
-        if (!value) {
-          return false;
-        }
-        if (!value.tag) {
-          return false;
-        }
-        return true;
-      },
+      isRequired: rules.isRequiredArray,
+      isNotEmpty: rules.isRequiredArray,
     },
     report: ['video is not loading'],
     editor: {
@@ -42,20 +39,20 @@ export default class TagVideo extends Component {
     },
   };
 
-  handleChange = tag => {
+  handleChange = tags => {
     const { name, onChange } = this.props;
-    onChange(name, tag);
+    onChange(name, tags);
   };
 
   render() {
     const { src, value, startTime } = this.props;
 
     return (
-      <SignleTagVideo
+      <UIMultipleTagVideo
         key={src}
         startTime={startTime}
         video={src}
-        tag={value}
+        tags={value}
         onChange={this.handleChange}
       />
     );

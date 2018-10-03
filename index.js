@@ -49,6 +49,11 @@ import Textarea from './src/components/Textarea';
 
 import { Toast, ToastAnimated } from './src/components/Toast';
 import Tooltip from './src/components/Tooltip';
+import {
+  VideoPlayer,
+  TimelineRange,
+  TimelineRangeEdit,
+} from './src/components/VideoPlayer';
 
 export {
   AutocompleteInput,
@@ -87,4 +92,7 @@ export {
   Toast,
   ToastAnimated,
   Tooltip,
+  VideoPlayer,
+  TimelineRange,
+  TimelineRangeEdit,
 };

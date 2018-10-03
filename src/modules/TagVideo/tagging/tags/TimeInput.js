@@ -3,7 +3,10 @@ import PropTypes from 'prop-types';
 
 import Input from '../../../../components/Input';
 
-import { formatTime, parseTime } from '../utils/timeStrings';
+import {
+  formatTime,
+  parseTime,
+} from '../../../../components/VideoPlayer/utils/timeStrings';
 
 export default class TimeInput extends Component {
   static propTypes = {

@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-
 import cn from 'classnames';
 
-import VideoPreview from './player/VideoPreview';
-import Timeline from './timeline/Timeline';
+import {
+  VideoPlayer,
+  TimelineRangeEdit,
+} from '../../../components/VideoPlayer';
 import EditTag from './tags/EditTag';
 
 import styles from './styles.module.styl';
+
+const DEFAULT_SPAN_SEC = 2;
 
 export default class SignleTagVideo extends Component {
   static propTypes = {
@@ -30,17 +33,25 @@ export default class SignleTagVideo extends Component {
 
   state = {
     duration: 0,
-    seek: 0,
     playing: true,
-    ready: false,
   };
 
   handleVideoReady = duration => {
-    this.setState({ duration, ready: true });
+    this.setState({ duration });
   };
 
-  handleVideoProgress = seek => {
-    this.setState({ seek });
+  handleRangeChange = (start, end) => {
+    const { onChange, tag } = this.props;
+    onChange({ ...tag, start, end });
+  };
+
+  handleCursorClick = start => {
+    const { onChange } = this.props;
+    const { duration } = this.state;
+    if (duration) {
+      const end = Math.min(start + DEFAULT_SPAN_SEC, duration);
+      onChange({ start, end, tag: '' });
+    }
   };
 
   handleRangeDragging = dragging => {
@@ -53,36 +64,37 @@ export default class SignleTagVideo extends Component {
 
   render() {
     const { video, className, tag, onChange, startTime } = this.props;
-    const { duration, seek, playing, ready } = this.state;
+    const { duration, playing } = this.state;
+
+    const editor = tag && !!duration;
 
     return (
       <div className={cn(styles.container, className)}>
-        <div className={styles.content}>
-          <div className={styles.video}>
-            <VideoPreview
-              src={video}
-              start={(tag && tag.start) || startTime}
-              stop={tag && tag.end}
-              playing={playing}
-              onVideoReady={this.handleVideoReady}
-              onTogglePlay={this.handleTogglePlay}
-              onVideoProgress={this.handleVideoProgress}
-            />
-          </div>
-          <div className={styles.timeline}>
-            <Timeline
-              ready={ready}
-              duration={duration}
-              tag={tag}
-              seek={seek}
-              limitFrom={startTime}
-              playing={playing}
-              onTogglePlay={this.handleTogglePlay}
-              onChangeTag={onChange}
-              onRangeDragging={this.handleRangeDragging}
-            />
-          </div>
-        </div>
+        <VideoPlayer
+          video={video}
+          playing={playing}
+          limitFrom={startTime}
+          start={tag && tag.start}
+          stop={tag && tag.end}
+          cursor={!tag}
+          onReady={this.handleVideoReady}
+          onTogglePlay={this.handleTogglePlay}
+          onCursorClick={this.handleCursorClick}
+        >
+          {({ width }) =>
+            editor && (
+              <TimelineRangeEdit
+                timelineWidth={width}
+                start={tag.start}
+                end={tag.end}
+                duration={duration}
+                limitFrom={startTime}
+                onChange={this.handleRangeChange}
+                onDragging={this.handleRangeDragging}
+              />
+            )
+          }
+        </VideoPlayer>
         <div className={styles.tag}>
           {tag && (
             <EditTag
@@ -93,7 +105,9 @@ export default class SignleTagVideo extends Component {
             />
           )}
           {!tag &&
-            ready && <div className={styles.placeholder}>Pick start time</div>}
+            !!duration && (
+              <div className={styles.placeholder}>Pick start time</div>
+            )}
         </div>
       </div>
     );

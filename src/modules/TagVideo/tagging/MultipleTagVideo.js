@@ -1,16 +1,22 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 
 import cn from 'classnames';
 
 import { removeAtIndex, replaceAtIndex } from '../../../common/immutable';
 
-import VideoPreview from './player/VideoPreview';
-import Timeline from './timeline/Timeline';
+import {
+  VideoPlayer,
+  TimelineRangeEdit,
+  TimelineRange,
+} from '../../../components/VideoPlayer';
+
 import Tags from './tags/Tags';
 import EditTag from './tags/EditTag';
 
 import styles from './styles.module.styl';
+
+const DEFAULT_SPAN_SEC = 2;
 
 const tagId = tag => `${tag.start}-${tag.end}`;
 
@@ -37,22 +43,29 @@ export default class TagVideo extends Component {
 
   state = {
     duration: 0,
-    seek: 0,
-    selected: null,
     playing: true,
-    ready: false,
+    selected: null,
   };
 
   handleVideoReady = duration => {
-    this.setState({ duration, ready: true });
+    this.setState({ duration });
   };
 
-  handleVideoProgress = seek => {
-    this.setState({ seek });
+  handleChangeTag = selected => {
+    this.setState({ selected });
   };
 
-  handleChangeTag = tag => {
-    this.setState({ selected: tag });
+  handleRangeChange = (start, end) => {
+    const { selected } = this.state;
+    this.setState({ selected: { ...selected, start, end } });
+  };
+
+  handleCursorClick = start => {
+    const { duration } = this.state;
+    if (duration) {
+      const end = Math.min(start + DEFAULT_SPAN_SEC, duration);
+      this.setState({ selected: { start, end, tag: '' } });
+    }
   };
 
   handleRangeDragging = dragging => {
@@ -92,37 +105,49 @@ export default class TagVideo extends Component {
 
   render() {
     const { video, className, tags, startTime } = this.props;
-    const { duration, seek, selected, playing, ready } = this.state;
+    const { duration, selected, playing } = this.state;
+
+    const editor = selected && !!duration;
 
     return (
       <div className={cn(styles.container, className)}>
-        <div className={styles.content}>
-          <div className={styles.video}>
-            <VideoPreview
-              src={video}
-              start={(selected && selected.start) || startTime}
-              stop={selected && selected.end}
-              playing={playing}
-              onVideoReady={this.handleVideoReady}
-              onTogglePlay={this.handleTogglePlay}
-              onVideoProgress={this.handleVideoProgress}
-            />
-          </div>
-          <div className={styles.timeline}>
-            <Timeline
-              ready={ready}
-              duration={duration}
-              tag={selected}
-              tags={tags}
-              seek={seek}
-              limitFrom={startTime}
-              playing={playing}
-              onTogglePlay={this.handleTogglePlay}
-              onChangeTag={this.handleChangeTag}
-              onRangeDragging={this.handleRangeDragging}
-            />
-          </div>
-        </div>
+        <VideoPlayer
+          video={video}
+          playing={playing}
+          limitFrom={startTime}
+          start={selected && selected.start}
+          stop={selected && selected.end}
+          cursor={!selected}
+          onReady={this.handleVideoReady}
+          onTogglePlay={this.handleTogglePlay}
+          onCursorClick={this.handleCursorClick}
+        >
+          {({ width }) => (
+            <Fragment>
+              {!editor &&
+                tags.map(tag => (
+                  <TimelineRange
+                    key={tag.id}
+                    start={tag.start}
+                    end={tag.end}
+                    timelineWidth={width}
+                    duration={duration}
+                  />
+                ))}
+              {editor && (
+                <TimelineRangeEdit
+                  timelineWidth={width}
+                  start={selected.start}
+                  end={selected.end}
+                  duration={duration}
+                  limitFrom={startTime}
+                  onChange={this.handleRangeChange}
+                  onDragging={this.handleRangeDragging}
+                />
+              )}
+            </Fragment>
+          )}
+        </VideoPlayer>
         <div className={styles.tag}>
           {selected && (
             <EditTag
@@ -134,7 +159,9 @@ export default class TagVideo extends Component {
             />
           )}
           {!selected &&
-            ready && <div className={styles.placeholder}>Pick start time</div>}
+            !!duration && (
+              <div className={styles.placeholder}>Pick start time</div>
+            )}
         </div>
         <div className={styles.tags}>
           <Tags

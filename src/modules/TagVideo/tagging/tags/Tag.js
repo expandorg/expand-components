@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { formatTime } from '../utils/timeStrings';
+import { formatTime } from '../../../../components/VideoPlayer/utils/timeStrings';
 
 import styles from './Tag.module.styl';
 

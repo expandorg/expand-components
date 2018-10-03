@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { getTicks } from '../utils/scales';
 import { timeToPx } from '../utils/timeline';
 
-import styles from './Scale.module.styl';
+import styles from './Ticks.module.styl';
 
 const Tick = ({ tick, left }) => (
   <div className={styles.tick} style={{ left }}>
@@ -17,7 +17,7 @@ Tick.propTypes = {
   tick: PropTypes.object.isRequired, // eslint-disable-line
 };
 
-export default class Scale extends PureComponent {
+export default class Ticks extends PureComponent {
   static propTypes = {
     width: PropTypes.number,
     duration: PropTypes.number,

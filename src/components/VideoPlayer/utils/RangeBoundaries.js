@@ -2,8 +2,6 @@
 
 export const MIN_SPAN_SEC = 0.1;
 
-export const DEFAULT_SPAN_SEC = 3;
-
 export default class RangeBoundaries {
   static hasBoundaries = (limitFrom: ?number, limitTo: ?number) => {
     const from = typeof limitFrom !== 'undefined';

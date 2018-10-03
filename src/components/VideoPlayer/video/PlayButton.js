@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import cn from 'classnames';
 
-import Tooltip from '../../../../components/Tooltip';
+import Tooltip from '../../Tooltip';
 
 import styles from './PlayButton.module.styl';
 

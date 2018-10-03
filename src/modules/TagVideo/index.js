@@ -1,4 +1,5 @@
 // @flow
 import TagVideo from './TagVideo';
+import MultipleTagVideo from './MultipleTagVideo';
 
-export default TagVideo;
+export { TagVideo, MultipleTagVideo };
