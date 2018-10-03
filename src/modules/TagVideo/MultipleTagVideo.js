@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { rules } from '../../common/validation';
 
-import UIMultipleTagVideo from './tagging/MultipleTagVideo';
+import UIMultipleTagVideo from './components/MultipleTagVideo';
 
 export default class MultipleTagVideo extends Component {
   static propTypes = {
@@ -16,12 +16,14 @@ export default class MultipleTagVideo extends Component {
         tag: PropTypes.string,
       })
     ),
+    options: PropTypes.arrayOf(PropTypes.string),
     startTime: PropTypes.number,
     onChange: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
     value: [],
+    options: [],
     startTime: undefined,
   };
 
@@ -45,11 +47,12 @@ export default class MultipleTagVideo extends Component {
   };
 
   render() {
-    const { src, value, startTime } = this.props;
+    const { src, value, startTime, options } = this.props;
 
     return (
       <UIMultipleTagVideo
         key={src}
+        options={options}
         startTime={startTime}
         video={src}
         tags={value}

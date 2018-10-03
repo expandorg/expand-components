@@ -6,6 +6,7 @@ import {
   VideoPlayer,
   TimelineRangeEdit,
 } from '../../../components/VideoPlayer';
+
 import EditTag from './tags/EditTag';
 
 import styles from './styles.module.styl';
@@ -21,6 +22,7 @@ export default class SignleTagVideo extends Component {
       end: PropTypes.number.isRequired,
       tag: PropTypes.string,
     }),
+    options: PropTypes.arrayOf(PropTypes.string),
     startTime: PropTypes.number,
     onChange: PropTypes.func.isRequired,
   };
@@ -29,6 +31,7 @@ export default class SignleTagVideo extends Component {
     startTime: undefined,
     className: null,
     tag: null,
+    options: [],
   };
 
   state = {
@@ -63,7 +66,7 @@ export default class SignleTagVideo extends Component {
   };
 
   render() {
-    const { video, className, tag, onChange, startTime } = this.props;
+    const { video, className, tag, onChange, startTime, options } = this.props;
     const { duration, playing } = this.state;
 
     const editor = tag && !!duration;
@@ -98,10 +101,11 @@ export default class SignleTagVideo extends Component {
         <div className={styles.tag}>
           {tag && (
             <EditTag
+              options={options}
               duration={duration}
               tag={tag}
-              onChange={onChange}
               limitFrom={startTime}
+              onChange={onChange}
             />
           )}
           {!tag &&

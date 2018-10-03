@@ -31,6 +31,7 @@ export default class TagVideo extends Component {
         tag: PropTypes.string,
       })
     ),
+    options: PropTypes.arrayOf(PropTypes.string),
     startTime: PropTypes.number,
     onChange: PropTypes.func.isRequired,
   };
@@ -39,6 +40,7 @@ export default class TagVideo extends Component {
     startTime: undefined,
     className: null,
     tags: [],
+    options: [],
   };
 
   state = {
@@ -104,7 +106,7 @@ export default class TagVideo extends Component {
   };
 
   render() {
-    const { video, className, tags, startTime } = this.props;
+    const { video, className, tags, startTime, options } = this.props;
     const { duration, selected, playing } = this.state;
 
     const editor = selected && !!duration;
@@ -151,6 +153,7 @@ export default class TagVideo extends Component {
         <div className={styles.tag}>
           {selected && (
             <EditTag
+              options={options}
               duration={duration}
               tag={selected}
               limitFrom={startTime}

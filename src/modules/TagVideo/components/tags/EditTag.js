@@ -1,12 +1,12 @@
-import React, { PureComponent, createRef } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
-import Input from '../../../../components/Input';
 import Button from '../../../../components/Button';
 
 import RangeBoundaries from '../../../../components/VideoPlayer/utils/RangeBoundaries';
 
 import TimeInput from './TimeInput';
+import LabelInput from './LabelInput';
 
 import styles from './EditTag.module.styl';
 
@@ -22,6 +22,8 @@ export default class EditTag extends PureComponent {
     limitFrom: PropTypes.number,
     limitTo: PropTypes.number,
 
+    options: PropTypes.arrayOf(PropTypes.string),
+
     onChange: PropTypes.func.isRequired,
     onSave: PropTypes.func,
   };
@@ -30,16 +32,13 @@ export default class EditTag extends PureComponent {
     onSave: null,
     limitFrom: undefined,
     limitTo: undefined,
+    options: [],
   };
-
-  labelRef = createRef();
 
   handleSave = evt => {
     evt.preventDefault();
     const { onSave, tag } = this.props;
-    if (!tag.tag) {
-      this.labelRef.current.focus();
-    } else {
+    if (tag.tag) {
       onSave(tag);
     }
   };
@@ -76,13 +75,13 @@ export default class EditTag extends PureComponent {
     onChange({ ...tag, start, end });
   };
 
-  handleChangeLabel = ({ target }) => {
+  handleChangeLabel = value => {
     const { tag, onChange } = this.props;
-    onChange({ ...tag, tag: target.value });
+    onChange({ ...tag, tag: value });
   };
 
   render() {
-    const { tag, onSave } = this.props;
+    const { tag, onSave, options } = this.props;
     return (
       <div className={styles.container}>
         <div className={styles.field}>
@@ -108,11 +107,9 @@ export default class EditTag extends PureComponent {
         <div className={styles.field}>
           <div className={styles.label}>Tag</div>
           <div className={styles.control}>
-            <Input
-              className={styles.input}
-              ref={this.labelRef}
-              placeholder="Label"
+            <LabelInput
               value={tag.tag}
+              options={options}
               onChange={this.handleChangeLabel}
             />
           </div>

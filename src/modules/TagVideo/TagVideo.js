@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import SignleTagVideo from './tagging/SignleTagVideo';
+import SignleTagVideo from './components/SignleTagVideo';
 
 export default class TagVideo extends Component {
   static propTypes = {
@@ -12,12 +12,14 @@ export default class TagVideo extends Component {
       end: PropTypes.number.isRequired,
       tag: PropTypes.string,
     }),
+    options: PropTypes.arrayOf(PropTypes.string),
     startTime: PropTypes.number,
     onChange: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
     value: null,
+    options: [],
     startTime: undefined,
   };
 
@@ -48,7 +50,7 @@ export default class TagVideo extends Component {
   };
 
   render() {
-    const { src, value, startTime } = this.props;
+    const { src, value, options, startTime } = this.props;
 
     return (
       <SignleTagVideo
@@ -56,6 +58,7 @@ export default class TagVideo extends Component {
         startTime={startTime}
         video={src}
         tag={value}
+        options={options}
         onChange={this.handleChange}
       />
     );

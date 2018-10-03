@@ -14,6 +14,16 @@ const form = {
     {
       name: 'tag',
       type: 'tagVideo',
+      options: [
+        'Movement1',
+        'Movement2',
+        'Movement3',
+        'Movement4',
+        'Movement5',
+        'Movement7',
+        'Movement8',
+        'Movement9',
+      ],
       src: ' https://www.youtube.com/watch?v=PXi3Mv6KMzY',
     },
     {

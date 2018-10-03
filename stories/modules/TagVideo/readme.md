@@ -6,6 +6,16 @@
 {
   name: 'tagVideo',
   type: 'tagVideo',
+  options: [
+    'Movement1',
+    'Movement2',
+    'Movement3',
+    'Movement4',
+    'Movement5',
+    'Movement7',
+    'Movement8',
+    'Movement9',
+  ],
   src: "https://www.youtube.com/watch?v=PXi3Mv6KMzY",
 }
 ```
@@ -18,6 +28,7 @@
 | *name*      | string  | true     | -       | module name    |
 | *src*       | string  | true     | -       | video url      |
 | *startTime* | number  | -        | -       | start video from  |
+| *options*   | `['tag1', 'tag2'...]`  | -        | -       | available tags (tag should be picked with dropdown control)  |
 | *[validation](https://gemsorg.github.io/gems-components/?selectedKind=Form%20Builder&selectedStory=Validation)*  | validtion | - | - | validation rules |
 
 

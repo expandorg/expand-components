@@ -1,0 +1,40 @@
+@import '../../../../uikit/colors'
+@import '../../../../uikit/font'
+
+.dropdown
+  display: inline-block
+
+.content
+  min-width: 180px
+  box-sizing: border-box
+
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+
+  font(font-preset[normal], false, false, normal)
+
+  height: 40px;
+  width: 100%
+
+  padding-left: 17px
+
+  color: color-text-1
+  border-radius: 2px
+  border: solid 1px color-border-grey
+
+.value
+  max-width: 200px
+  white-space: nowrap
+  overflow: hidden
+  text-overflow: ellipsis
+
+.placeholder
+  color: color-text-gray-1
+
+
+.shevron
+  padding: 0 8px 0;
+  path
+    fill: color-text-gray-1
