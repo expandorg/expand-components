@@ -20,9 +20,9 @@
     "react/jsx-filename-extension": [1, { "extensions": [".js"] }],
     "react/button-has-type": ["off"],
     "react/prefer-stateless-function": ["off"],
-    "react/prop-types": [2, { "ignore": ['children'] }]
+    "react/prop-types": [2, { "ignore": ["children"] }]
   },
-  plugins: [
+  "plugins": [
     "react",
     "prettier",
     "flowtype"
