@@ -24,7 +24,7 @@ export default class TimeInput extends Component {
     super(props);
 
     this.state = {
-      value: formatTime(props.value),
+      value: formatTime(props.value, { hours: true }),
       originalDate: props.value, // eslint-disable-line
     };
   }
@@ -32,7 +32,7 @@ export default class TimeInput extends Component {
   static getDerivedStateFromProps({ value }, state) {
     if (value !== state.originalDate) {
       return {
-        value: formatTime(value),
+        value: formatTime(value, { hours: true }),
         originalDate: value,
       };
     }

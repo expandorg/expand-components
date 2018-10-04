@@ -42,7 +42,9 @@ export default class Cursor extends Component {
         style={{ left: position - 1 }}
         className={styles.cursor}
       >
-        <span className={styles.label}>start time: {formatTime(time)}</span>
+        <span className={styles.label}>
+          start time: {formatTime(time, { hours: true })}
+        </span>
       </div>
     );
   }

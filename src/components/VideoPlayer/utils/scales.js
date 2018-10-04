@@ -12,6 +12,7 @@ const scales = [
   [mmss, 15],
   [mmss, 30],
   [hhmm, 60],
+  [hhmm, 2 * 60],
   [hhmm, 5 * 60],
   [hhmm, 10 * 60],
   [hhmm, 15 * 60],
