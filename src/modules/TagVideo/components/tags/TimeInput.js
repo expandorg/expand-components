@@ -12,11 +12,13 @@ export default class TimeInput extends Component {
   static propTypes = {
     className: PropTypes.string,
     value: PropTypes.number,
+    readOnly: PropTypes.bool,
     onChange: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
     value: null,
+    readOnly: false,
     className: null,
   };
 
@@ -53,10 +55,11 @@ export default class TimeInput extends Component {
   };
 
   render() {
-    const { className } = this.props;
+    const { className, readOnly } = this.props;
     const { value } = this.state;
     return (
       <Input
+        readOnly={readOnly}
         className={className}
         value={value}
         onChange={this.handleChange}

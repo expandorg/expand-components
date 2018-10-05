@@ -20,6 +20,7 @@ export default class TimelineRangeEdit extends Component {
     end: PropTypes.number.isRequired,
     limitFrom: PropTypes.number,
     limitTo: PropTypes.number,
+    readOnly: PropTypes.bool,
     onChange: PropTypes.func.isRequired,
     onDragging: PropTypes.func.isRequired,
   };
@@ -27,6 +28,7 @@ export default class TimelineRangeEdit extends Component {
   static defaultProps = {
     limitFrom: undefined,
     limitTo: undefined,
+    readOnly: false,
     duration: 0,
   };
 
@@ -39,7 +41,11 @@ export default class TimelineRangeEdit extends Component {
       onChange,
       limitFrom,
       limitTo,
+      readOnly,
     } = this.props;
+    if (readOnly) {
+      return;
+    }
     const delta = pxToTime(dx, duration, timelineWidth);
 
     const { start, end } = RangeBoundaries.start(
@@ -56,6 +62,7 @@ export default class TimelineRangeEdit extends Component {
   handleMove = dx => {
     const {
       duration,
+      readOnly,
       start: startTime,
       end: endTime,
       timelineWidth,
@@ -63,6 +70,9 @@ export default class TimelineRangeEdit extends Component {
       limitFrom,
       limitTo,
     } = this.props;
+    if (readOnly) {
+      return;
+    }
     const delta = pxToTime(dx, duration, timelineWidth);
     const { start, end } = RangeBoundaries.move(
       delta,
@@ -84,7 +94,12 @@ export default class TimelineRangeEdit extends Component {
       onChange,
       limitFrom,
       limitTo,
+      readOnly,
     } = this.props;
+
+    if (readOnly) {
+      return;
+    }
     const delta = pxToTime(dx, duration, timelineWidth);
     const { start, end } = RangeBoundaries.end(
       endTime + delta,
@@ -98,13 +113,17 @@ export default class TimelineRangeEdit extends Component {
   };
 
   handleDragStart = () => {
-    const { onDragging } = this.props;
-    onDragging(true);
+    const { onDragging, readOnly } = this.props;
+    if (!readOnly) {
+      onDragging(true);
+    }
   };
 
   handleDragEnd = () => {
-    const { onDragging } = this.props;
-    onDragging(false);
+    const { onDragging, readOnly } = this.props;
+    if (!readOnly) {
+      onDragging(false);
+    }
   };
 
   render() {

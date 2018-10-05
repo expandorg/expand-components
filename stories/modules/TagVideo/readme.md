@@ -28,6 +28,8 @@
 | *name*      | string  | true     | -       | module name    |
 | *src*       | string  | true     | -       | video url      |
 | *startTime* | number  | -        | -       | start video from  |
+| *readOnly*  | boolean | -        | -       | read only    |
+| *initial*   | `{start: 0, end: 10, tag: 'tag name'}` | fal e    | null       | initial value (when readOnly used) |
 | *options*   | `['tag1', 'tag2'...]`  | -        | -       | available tags (tag should be picked with dropdown control)  |
 | *[validation](https://gemsorg.github.io/gems-components/?selectedKind=Form%20Builder&selectedStory=Validation)*  | validtion | - | - | validation rules |
 

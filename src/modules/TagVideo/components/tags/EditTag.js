@@ -23,6 +23,7 @@ export default class EditTag extends PureComponent {
     limitTo: PropTypes.number,
 
     options: PropTypes.arrayOf(PropTypes.string),
+    readOnly: PropTypes.bool,
 
     onChange: PropTypes.func.isRequired,
     onSave: PropTypes.func,
@@ -32,25 +33,38 @@ export default class EditTag extends PureComponent {
     onSave: null,
     limitFrom: undefined,
     limitTo: undefined,
+    readOnly: false,
     options: [],
   };
 
   handleSave = evt => {
     evt.preventDefault();
-    const { onSave, tag } = this.props;
-    if (tag.tag) {
+    const { onSave, tag, readOnly } = this.props;
+    if (tag.tag && !readOnly) {
       onSave(tag);
     }
   };
 
   handleClear = evt => {
     evt.preventDefault();
-    const { onSave } = this.props;
-    onSave(null);
+    const { onSave, readOnly } = this.props;
+    if (!readOnly) {
+      onSave(null);
+    }
   };
 
   handleChangeStart = value => {
-    const { tag, duration, onChange, limitFrom, limitTo } = this.props;
+    const {
+      tag,
+      duration,
+      readOnly,
+      onChange,
+      limitFrom,
+      limitTo,
+    } = this.props;
+    if (readOnly) {
+      return;
+    }
     const { start, end } = RangeBoundaries.start(
       value,
       tag.start,
@@ -63,7 +77,18 @@ export default class EditTag extends PureComponent {
   };
 
   handleChangeEnd = value => {
-    const { tag, onChange, duration, limitFrom, limitTo } = this.props;
+    const {
+      tag,
+      onChange,
+      duration,
+      limitFrom,
+      limitTo,
+      readOnly,
+    } = this.props;
+    if (readOnly) {
+      return;
+    }
+
     const { start, end } = RangeBoundaries.end(
       value,
       tag.start,
@@ -76,18 +101,21 @@ export default class EditTag extends PureComponent {
   };
 
   handleChangeLabel = value => {
-    const { tag, onChange } = this.props;
-    onChange({ ...tag, tag: value });
+    const { tag, onChange, readOnly } = this.props;
+    if (!readOnly) {
+      onChange({ ...tag, tag: value });
+    }
   };
 
   render() {
-    const { tag, onSave, options } = this.props;
+    const { tag, onSave, options, readOnly } = this.props;
     return (
       <div className={styles.container}>
         <div className={styles.field}>
           <div className={styles.label}>Start time</div>
           <div className={styles.control}>
             <TimeInput
+              readOnly={readOnly}
               className={styles.input}
               value={tag.start}
               onChange={this.handleChangeStart}
@@ -98,6 +126,7 @@ export default class EditTag extends PureComponent {
           <div className={styles.label}>End Time</div>
           <div className={styles.control}>
             <TimeInput
+              readOnly={readOnly}
               className={styles.input}
               value={tag.end}
               onChange={this.handleChangeEnd}
@@ -108,6 +137,7 @@ export default class EditTag extends PureComponent {
           <div className={styles.label}>Tag</div>
           <div className={styles.control}>
             <LabelInput
+              readOnly={readOnly}
               value={tag.tag}
               options={options}
               onChange={this.handleChangeLabel}
@@ -120,13 +150,18 @@ export default class EditTag extends PureComponent {
             <div className={styles.actions}>
               <Button
                 className={styles.button}
+                disabled={readOnly}
                 theme="white"
                 size="small"
                 onClick={this.handleSave}
               >
                 {tag.id ? 'Save' : 'Add'}
               </Button>
-              <button className={styles.delete} onClick={this.handleClear}>
+              <button
+                className={styles.delete}
+                disabled={readOnly}
+                onClick={this.handleClear}
+              >
                 ✕
               </button>
             </div>

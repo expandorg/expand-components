@@ -12,6 +12,12 @@ export default class TagVideo extends Component {
       end: PropTypes.number.isRequired,
       tag: PropTypes.string,
     }),
+    readOnly: PropTypes.bool,
+    initial: PropTypes.shape({
+      start: PropTypes.number.isRequired,
+      end: PropTypes.number.isRequired,
+      tag: PropTypes.string,
+    }),
     options: PropTypes.arrayOf(PropTypes.string),
     startTime: PropTypes.number,
     onChange: PropTypes.func.isRequired,
@@ -19,6 +25,8 @@ export default class TagVideo extends Component {
 
   static defaultProps = {
     value: null,
+    initial: null,
+    readOnly: false,
     options: [],
     startTime: undefined,
   };
@@ -50,14 +58,16 @@ export default class TagVideo extends Component {
   };
 
   render() {
-    const { src, value, options, startTime } = this.props;
+    const { src, value, options, initial, readOnly, startTime } = this.props;
+    const tag = readOnly ? initial : value;
 
     return (
       <SignleTagVideo
         key={src}
         startTime={startTime}
         video={src}
-        tag={value}
+        readOnly={readOnly}
+        tag={tag}
         options={options}
         onChange={this.handleChange}
       />
