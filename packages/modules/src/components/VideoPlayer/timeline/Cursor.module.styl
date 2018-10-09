@@ -1,0 +1,45 @@
+@import '~@gemsorg/uikit/colors'
+@import '~@gemsorg/uikit/font'
+
+.cursor
+  position: absolute;
+  box-sizing: border-box;
+
+  top: -5px
+  bottom: -5px
+  width: 2px
+
+
+  background-color: color-blue
+
+.label
+  box-sizing: border-box;
+
+  position: absolute;
+  bottom: 70px
+  left: calc(50% -1px)
+
+  transform: translateX(-50%)
+
+  padding: 0 20px;
+
+  background-color: color-blue
+  box-shadow 0 2px 2px 0 rgba(0, 0, 0, 0.24), 0 0 2px 0 rgba(0, 0, 0, 0.12)
+
+  color: color-white
+  font(font-preset[normal], false, false, 36px)
+  height: 36px
+
+  border-radius: 18px
+
+  white-space: nowrap;
+
+  &:after
+    transform: translateX(1px);
+    left: calc(50% - 8px)
+    position: absolute
+    content: ''
+
+    bottom: -12px
+    border: 8px solid transparent
+    border-top: 8px solid color-blue

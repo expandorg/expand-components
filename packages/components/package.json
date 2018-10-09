@@ -1,0 +1,33 @@
+{
+  "name": "@gemsorg/components",
+  "version": "0.1.0",
+  "description": "Gems UI components library",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gemsorg/gems-components.git"
+  },
+  "bugs": {
+    "url": "https://github.com/gemsorg/gems-components/issues"
+  },
+  "homepage": "https://github.com/gemsorg/gems-components#readme",
+  "keywords": [
+    "react",
+    "ui-kit"
+  ],
+  "license": "MPL-2.0",
+  "author": "gems.org",
+  "peerDependencies": {
+    "classnames": "^2.0.0",
+    "prop-types": "^15.0.0",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0"
+  },
+  "dependencies": {
+    "@gemsorg/uikit": "^0.1.0",
+    "clipboard": "^2.0.1",
+    "date-fns": "^1.29.0",
+    "react-modal": "^3.6.1",
+    "react-spring": "^5.9.2"
+  }
+}

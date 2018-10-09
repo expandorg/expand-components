@@ -1,0 +1,63 @@
+@import '~@gemsorg/uikit/colors';
+
+.gem-checkbox
+  display: inline-flex;
+  position: relative
+
+  align-items:center
+
+  font-size: 12px
+  font-weight: 400
+
+  cursor: pointer
+  user-select: none
+
+  @media(min-width: 768px)
+    font-size:14px
+
+  &-input
+    position: absolute
+    opacity: 0
+    cursor: pointer
+
+
+    &:checked~.gem-checkbox-mark
+      background-color: color-pink
+      border: 2px solid color-pink
+
+    &:checked~.gem-checkbox-mark:after
+      display: block
+
+  &-mark
+    position: relative
+
+    height: 16px
+    width: 16px
+
+    min-width: 16px
+    min-height: 16px
+
+    margin-right: 6px
+
+    border: 2px solid color-text-gray-1
+    border-radius: 50%
+    background-color: color-text-1
+
+
+    &:after
+      position: absolute
+      display: none
+      content: ""
+
+      left: 5px
+      top: 2px
+
+      width: 4px
+      height: 8px
+
+      border: solid color-white
+      border-width: 0 2px 2px 0
+
+      -webkit-transform: rotate(45deg)
+      -ms-transform: rotate(45deg)
+      transform: rotate(45deg)

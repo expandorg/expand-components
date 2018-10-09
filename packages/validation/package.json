@@ -1,0 +1,19 @@
+{
+  "name": "@gemsorg/validation",
+  "version": "0.1.0",
+  "description": "Gems UI validation library",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gemsorg/gems-components.git"
+  },
+  "bugs": {
+    "url": "https://github.com/gemsorg/gems-components/issues"
+  },
+  "homepage": "https://github.com/gemsorg/gems-components#readme",
+  "license": "MPL-2.0",
+  "author": "gems.org",
+  "dependencies": {
+    "validator": "^10.8.0"
+  }
+}

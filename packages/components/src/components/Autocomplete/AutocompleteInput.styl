@@ -1,0 +1,60 @@
+@import '~@gemsorg/uikit/font'
+@import '~@gemsorg/uikit/colors'
+
+.gem-autocomplete
+  position: relative;
+
+  &-input
+    width: 100%;
+
+  &-clear
+    position: absolute;
+    right: 8px;
+    top: calc(50% - 7px);
+
+    height: 10px;
+    line-height: 14px
+
+    color: color-text-1
+
+    outline: 0
+    cursor: pointer;
+
+    &:hover
+      color: lighten(color-text-1, 20%);
+
+
+  &-suggestions
+    position: absolute;
+    left: 0
+    right: 0
+    top: 40px;
+
+    box-sizing: border-box;
+    padding: 5px 0;
+
+    z-index: 2
+    overflow-y: scroll;
+
+    background-color: color-white
+    box-shadow: 0 0 4px 0 color-text-gray-1;
+
+
+  &-suggestion
+    display: block;
+    box-sizing: border-box;
+    font(font-preset[subheader], false, false, 30px)
+    height: 30px;
+    color: color-text-1
+    padding: 0 0 0 20px;
+
+    width: 100%;
+    text-align: left;
+
+    cursor: pointer;
+    background-color: color-white
+    outline: 0;
+
+    white-space: nowrap
+    overflow: hidden
+    text-overflow: ellipsis

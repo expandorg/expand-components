@@ -1,0 +1,29 @@
+{
+  "name": "@gemsorg/modules",
+  "version": "0.1.0",
+  "description": "gems modules",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gemsorg/gems-components.git"
+  },
+  "bugs": {
+    "url": "https://github.com/gemsorg/gems-components/issues"
+  },
+  "homepage": "https://github.com/gemsorg/gems-components#readme",
+  "license": "MPL-2.0",
+  "author": "gems.org",
+  "peerDependencies": {
+    "classnames": "^2.0.0",
+    "prop-types": "^15.0.0",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0"
+  },
+  "dependencies": {
+    "@gemsorg/components": "^0.1.0",
+    "@gemsorg/uikit": "^0.1.0",
+    "@gemsorg/validation": "^0.1.0",
+    "debounce": "^1.2.0",
+    "react-player": "^1.6.6"
+  }
+}

@@ -1,0 +1,118 @@
+@import '../colors'
+@import '../font'
+
+.header
+  font-size: 32px
+  font-weight: 400
+  color: color-text-1
+  margin-bottom: 32px
+
+.p
+  font-size: 16px
+  color: color-text-1
+  margin-bottom: 15px
+
+.frame
+  box-sizing: border-box;
+  padding: 30px 25px
+
+  border-radius: 4px
+  border: 1px solid color-border-grey
+
+.colors
+  display: flex;
+  flex-wrap: wrap;
+
+.color
+  box-sizing: border-box;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 250px;
+  height: 100px
+  margin-right: 20px
+  margin-bottom: 20px
+
+  border-radius: 5px
+  font-size: 20px
+  font-weight: 300
+
+  color: color-white
+
+
+.blue
+  background-color: color-blue
+
+.pink
+  background-color: color-pink
+
+.pinkLight
+  background-color: color-pink-light
+
+.aqua
+  background-color: color-aqua
+  color: color-text-1
+
+.aquaLight
+  background-color: color-aqua-light
+  color: color-text-1
+
+.text1
+  background-color: color-text-1
+
+.textGray1
+  background-color: color-text-gray-1
+
+.white
+  background-color: color-white
+  color: color-text-1
+  border: 1px solid color-border-grey
+
+.gray
+  background-color: color-grey
+  color: color-text-1
+
+.borderGray
+  background-color: color-border-grey
+  color: color-text-1
+
+
+.black
+  background-color: color-black
+
+
+.font
+  color: color-text-1
+  margin-bottom: 30px
+
+.headline
+  font(font-preset[headline])
+
+.title
+  font(font-preset[title])
+
+.menu
+  font(font-preset[menu])
+
+.subheader
+  font(font-preset[subheader])
+
+.normal
+  font(font-preset[normal])
+
+.body
+  font(font-preset[body])
+
+.caption
+  font(font-preset[caption])
+
+.link
+  font(font-preset[subheader], 400, false, 25px)
+  display: block;
+  text-decoration: none;
+  color: #4183C4;
+
+  &:hover
+    color: lighten(#4183C4, 20%)

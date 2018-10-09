@@ -1,0 +1,32 @@
+@import '~@gemsorg/uikit/font';
+@import '~@gemsorg/uikit/colors';
+
+.gem-input
+  box-sizing: border-box
+  display: inline-block
+
+  font(font-preset[normal], false, false, normal)
+
+  height: 40px;
+  width: 100%
+
+  padding: 0 10px 0 17px
+
+  background-color: color-white
+  color: color-text-1
+
+  border-radius: 2px
+  border: solid 1px color-border-grey
+
+  outline: 0
+
+  &:focus
+    box-shadow: 0 0 4px 0 color-text-gray-1;
+    border: solid 1px color-text-gray-1;
+
+  &-pink.gem-input
+    border: solid 1px color-pink
+
+    &:focus
+      box-shadow: 0 0 4px 0 color-pink-light;
+      border: solid 1px color-pink-light;

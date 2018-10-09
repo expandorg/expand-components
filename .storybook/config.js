@@ -2,9 +2,9 @@ import React from 'react';
 import { configure, addDecorator } from '@storybook/react';
 import { setOptions } from '@storybook/addon-options';
 
-import '../stories/kit/layout.styl'
+import '../packages/uikit/layout.styl'
 
-import Container from '../stories/kit/Container'
+import Container from '../packages/uikit/stories/kit/Container'
 
 addDecorator((story) => (
   <Container>
@@ -20,68 +20,51 @@ setOptions({
   showAddonPanel: false,
 });
 
-const componentStories = [
-  'Autocomplete',
-  'Button',
-  'Checkbox',
-  'Dialog',
-  'Input',
-  'Textarea',
-  'Toast',
-  'Tooltip',
-  'Switch',
-];
 
-
-const moduleStories = [
-  'Agreement',
-  'Article',
-  'Checkbox',
-  'ClipboardText',
-  'Collapsable',
-  'Description',
-  'Dropdown',
-  'Image',
-  'Input',
-  'Instructions',
-  'Multiselect',
-  'Paragraph',
-  'Progress',
-  'Question',
-  'RegionMultiselect',
-  'RegionSelect',
-  'ImageTiles',
-  'Select',
-  'Submit',
-  'Title',
-  'TagVideo',
-  'MultipleTagVideo',
-  'Video',
-];
-
-const examplesStories = [
-  'Video',
-  'Trivia',
-]
-
-/* eslint-disable global-require */
 configure(() => {
-  require('../stories/general/index.stories');
+  require('../packages/uikit/stories/index.stories');
 
-  require(`../stories/modules/index.stories`);
+  require(`../packages/modules/src/form/stories/index.stories`);
 
-  moduleStories.forEach(story => {
-    require(`../stories/modules/${story}/index.stories`);
-  })
+  require('../packages/modules/src/modules/Agreement/stories/index.stories');
+  require('../packages/modules/src/modules/Article/stories/index.stories');
+  require('../packages/modules/src/modules/Checkbox/stories/index.stories');
+  require('../packages/modules/src/modules/ClipboardText/stories/index.stories');
+  require('../packages/modules/src/modules/Collapsable/stories/index.stories');
+  require('../packages/modules/src/modules/Description/stories/index.stories');
+  require('../packages/modules/src/modules/Dropdown/stories/index.stories');
+  require('../packages/modules/src/modules/Image/stories/index.stories');
+  require('../packages/modules/src/modules/Input/stories/index.stories');
+  require('../packages/modules/src/modules/Instructions/stories/index.stories');
+  require('../packages/modules/src/modules/Select/stories/Multiselect.stories');
+  require('../packages/modules/src/modules/Paragraph/stories/index.stories');
+  require('../packages/modules/src/modules/Progress/stories/index.stories');
+  require('../packages/modules/src/modules/Question/stories/index.stories');
+  require('../packages/modules/src/modules/RegionSelect/stories/RegionMultiselect.stories');
+  require('../packages/modules/src/modules/RegionSelect/stories/RegionSelect.stories');
+  require('../packages/modules/src/modules/ImageTiles/stories/index.stories');
+  require('../packages/modules/src/modules/Select/stories/Select.stories');
+  require('../packages/modules/src/modules/Submit/stories/index.stories');
+  require('../packages/modules/src/modules/Title/stories/index.stories');
+  require('../packages/modules/src/modules/TagVideo/stories/TagVideo.stories');
+  require('../packages/modules/src/modules/TagVideo/stories/MultipleTagVideo.stories');
+  require('../packages/modules/src/modules/Video/stories/index.stories');
 
-  examplesStories.forEach(story => {
-    require(`../stories/examples/${story}.stories`);
-  })
+  require('../packages/modules/src/form/stories/examples/Video.stories');
+  require('../packages/modules/src/form/stories/examples/Trivia.stories');
 
-  require(`../stories/components/index.stories`);
 
-  componentStories.forEach(story => {
-    require(`../stories/components/${story}/index.stories`);
-  })
+  require(`../packages/components/stories/index.stories`);
+
+  require(`../packages/components/src/components/Autocomplete/stories/index.stories`);
+  require(`../packages/components/src/components/Button/stories/index.stories`);
+  require(`../packages/components/src/components/Checkbox/stories/index.stories`);
+  require(`../packages/components/src/components/Dialog/stories/index.stories`);
+  require(`../packages/components/src/components/Input/stories/index.stories`);
+  require(`../packages/components/src/components/Textarea/stories/index.stories`);
+  require(`../packages/components/src/components/Toast/stories/index.stories`);
+  require(`../packages/components/src/components/Tooltip/stories/index.stories`);
+  require(`../packages/components/src/components/Switch/stories/index.stories`);
+
 
 }, module);
