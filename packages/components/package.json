@@ -1,6 +1,6 @@
 {
   "name": "@gemsorg/components",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Gems UI components library",
   "main": "index.js",
   "repository": {
@@ -24,7 +24,7 @@
     "react-dom": "^16.0.0"
   },
   "dependencies": {
-    "@gemsorg/uikit": "^0.1.0",
+    "@gemsorg/uikit": "^0.1.1",
     "clipboard": "^2.0.1",
     "date-fns": "^1.29.0",
     "react-modal": "^3.6.1",

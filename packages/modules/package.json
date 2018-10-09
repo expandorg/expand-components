@@ -1,6 +1,6 @@
 {
   "name": "@gemsorg/modules",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "gems modules",
   "main": "index.js",
   "repository": {
@@ -20,9 +20,9 @@
     "react-dom": "^16.0.0"
   },
   "dependencies": {
-    "@gemsorg/components": "^0.1.0",
-    "@gemsorg/uikit": "^0.1.0",
-    "@gemsorg/validation": "^0.1.0",
+    "@gemsorg/components": "^0.1.1",
+    "@gemsorg/uikit": "^0.1.1",
+    "@gemsorg/validation": "^0.1.1",
     "debounce": "^1.2.0",
     "react-player": "^1.6.6"
   }
