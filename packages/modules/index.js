@@ -36,7 +36,7 @@ import { Instructions, InstructionsItem } from './src/modules/Instructions';
 import Label from './src/components/Label';
 import Modal from './src/components/Modal';
 
-import { Module, moduleProps } from './src/modules/Module';
+import { Module, moduleProps } from './src/form/Module';
 
 import Paragraph from './src/modules/Paragraph';
 
