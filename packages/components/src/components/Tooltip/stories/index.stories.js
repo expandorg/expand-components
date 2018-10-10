@@ -41,6 +41,17 @@ storiesOf('UI Components/Tooltip', module)
             Hover to see tooltip
           </Button>
         </Kind>
+        <Kind title="Tooltip right">
+          <Button
+            className={styles.relative}
+            tooltip="This is a tooltip"
+            tooltipOrientation="right"
+            theme="white"
+            onClick={clicked}
+          >
+            Hover to see tooltip
+          </Button>
+        </Kind>
         <Markdown doc={readme} />
       </div>
     );
