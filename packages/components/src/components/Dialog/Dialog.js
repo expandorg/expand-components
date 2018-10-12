@@ -13,6 +13,7 @@ export default class Dialog extends Component {
     overlayClass: PropTypes.string,
     contentLabel: PropTypes.string.isRequired,
     hideButton: PropTypes.bool,
+    shouldCloseOnEsc: PropTypes.bool,
     onHide: PropTypes.func,
   };
 
@@ -21,6 +22,7 @@ export default class Dialog extends Component {
     modalClass: null,
     overlayClass: null,
     hideButton: false,
+    shouldCloseOnEsc: true,
     onHide: Function.prototype,
   };
 
@@ -33,6 +35,7 @@ export default class Dialog extends Component {
       overlayClass,
       contentLabel,
       hideButton,
+      shouldCloseOnEsc,
     } = this.props;
     return (
       <Modal
@@ -41,6 +44,7 @@ export default class Dialog extends Component {
         className={cn('gem-dialog-modal', modalClass)}
         overlayClassName={cn('gem-dialog-overlay', overlayClass)}
         contentLabel={contentLabel}
+        shouldCloseOnEsc={shouldCloseOnEsc}
       >
         {!hideButton && (
           <button className="gem-dialog-close" onClick={onHide}>
