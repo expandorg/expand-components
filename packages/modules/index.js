@@ -24,7 +24,7 @@ import {
   calculateVerificationScore,
   applyVariables,
   getVariablesMap,
-  PropControlType,
+  PropControlTypes,
 } from './src/form/Form';
 
 import Image from './src/modules/Image';
@@ -84,7 +84,7 @@ export {
   formProps,
   formValidationRules,
   getModuleControlsMap,
-  PropControlType,
+  PropControlTypes,
   Image,
   ImageTiles,
   Input,
