@@ -22,6 +22,7 @@ export default class Collapsable extends Component {
 
   static module = {
     type: 'collapsable',
+    name: 'Collapsable',
     editor: {
       properties: {
         header: {

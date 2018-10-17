@@ -19,6 +19,7 @@ export default class InstructionsItem extends Component {
 
   static module = {
     type: 'instructionsItem',
+    name: 'Instructions Item',
   };
 
   state = {
