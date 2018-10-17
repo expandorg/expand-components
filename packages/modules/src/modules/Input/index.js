@@ -1,3 +1,6 @@
-import Input from './Input';
+import NumberInput from './NumberInput';
+import TextInput from './TextInput';
+import PasswordInput from './PasswordInput';
+import EmailInput from './EmailInput';
 
-export default Input;
+export { NumberInput, TextInput, EmailInput, PasswordInput };

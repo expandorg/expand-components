@@ -1,5 +1,6 @@
+import { validateForm } from '@gemsorg/validation';
+
 import formValidationRules from '../formValidationRules';
-import { validateForm } from '../../../../common/validation';
 
 describe('form validation', () => {
   const form = {

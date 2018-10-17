@@ -30,7 +30,12 @@ import {
 import Image from './src/modules/Image';
 import ImageTiles from './src/modules/ImageTiles';
 
-import Input from './src/modules/Input';
+import {
+  NumberInput,
+  TextInput,
+  EmailInput,
+  PasswordInput,
+} from './src/modules/Input';
 
 import { Instructions, InstructionsItem } from './src/modules/Instructions';
 
@@ -87,7 +92,10 @@ export {
   PropControlTypes,
   Image,
   ImageTiles,
-  Input,
+  NumberInput,
+  TextInput,
+  EmailInput,
+  PasswordInput,
   Instructions,
   InstructionsItem,
   Label,

@@ -1,6 +1,11 @@
 // @flow
 
-import Input from '../../modules/Input';
+import {
+  NumberInput,
+  TextInput,
+  EmailInput,
+  PasswordInput,
+} from '../../modules/Input';
 import { Instructions, InstructionsItem } from '../../modules/Instructions';
 import Submit from '../../modules/Submit';
 import Article from '../../modules/Article';
@@ -25,21 +30,19 @@ import { RegionSelect, RegionMultiselect } from '../../modules/RegionSelect';
 export const getModuleControlsMap = (
   controls: Array<Object>
 ): ModuleControlsMap =>
-  controls.reduce((map, Control) => {
-    if (Control.module) {
-      if (Array.isArray(Control.module.type)) {
-        Control.module.type.forEach(type => {
-          map[type] = Control; // eslint-disable-line no-param-reassign
-        });
-      } else {
-        map[Control.module.type] = Control; // eslint-disable-line no-param-reassign
-      }
-    }
-    return map;
-  }, {});
+  controls.reduce(
+    (map, Control) => ({
+      ...map,
+      [Control.module.type]: Control,
+    }),
+    {}
+  );
 
 const moduleControls = [
-  Input,
+  NumberInput,
+  TextInput,
+  EmailInput,
+  PasswordInput,
   Title,
   Article,
   Paragraph,
