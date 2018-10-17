@@ -7,6 +7,8 @@ import { Input as UIInput } from '@gemsorg/components';
 
 import Label from '../../components/Label';
 
+import PropControlTypes from '../../form/Form/PropControlTypes';
+
 import styles from './Input.module.styl';
 
 export default class Input extends Component {
@@ -27,6 +29,7 @@ export default class Input extends Component {
 
   static module = {
     type: ['text', 'number', 'email', 'password'],
+    name: 'Input',
     report: ['Unable to fill field'],
     validation: {
       isRequired: rules.isRequired,
@@ -42,6 +45,16 @@ export default class Input extends Component {
       return Math.min(Math.max(numeric, 0), 1);
     },
     editor: {
+      propreties: {
+        placeholder: {
+          type: PropControlTypes.string,
+          placeholder: 'Placeholder',
+        },
+        label: {
+          type: PropControlTypes.string,
+          placeholder: 'Label',
+        },
+      },
       defaults: {
         placeholder: 'some text...',
       },

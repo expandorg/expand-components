@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import { rules } from '@gemsorg/validation';
 import { Checkbox as UICheckbox } from '@gemsorg/components';
 
+import PropControlTypes from '../../form/Form/PropControlTypes';
+
 import styles from './Checkbox.module.styl';
 
 export default class Checkbox extends Component {
@@ -21,11 +23,18 @@ export default class Checkbox extends Component {
 
   static module = {
     type: 'checkbox',
+    name: 'Checkbox',
     validation: {
       isTrue: rules.isTrue,
     },
     verificationScore: value => (value ? 1 : 0),
     editor: {
+      properties: {
+        label: {
+          type: PropControlTypes.string,
+          placeholder: 'Checkbox label',
+        },
+      },
       defaults: {
         label: 'Checkbox label',
       },

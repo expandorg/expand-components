@@ -7,6 +7,7 @@ import styles from './Instructions.module.styl';
 export default class Instructions extends Component {
   static module = {
     type: 'instructions',
+    name: 'Instructions',
     editor: {
       defaults: {
         modules: [

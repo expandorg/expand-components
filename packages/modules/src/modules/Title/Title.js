@@ -5,6 +5,8 @@ import cn from 'classnames';
 
 import styles from './Title.module.styl';
 
+import PropControlTypes from '../../form/Form/PropControlTypes';
+
 export default class Title extends Component {
   static propTypes = {
     className: PropTypes.string,
@@ -20,7 +22,18 @@ export default class Title extends Component {
 
   static module = {
     type: 'title',
+    name: 'Title',
     editor: {
+      properties: {
+        title: {
+          type: PropControlTypes.string,
+          placeholder: 'Title text',
+        },
+        centered: {
+          type: PropControlTypes.boolean,
+          label: 'Text align: center',
+        },
+      },
       defaults: {
         title: 'some title',
       },

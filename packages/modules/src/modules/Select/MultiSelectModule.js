@@ -8,6 +8,8 @@ import Alignment from '../../components/Alignment';
 import Choice from './Choice';
 import Select from './Select';
 
+import PropControlTypes from '../../form/Form/PropControlTypes';
+
 export default class MultiSelectModule extends Component {
   static propTypes = {
     name: PropTypes.string.isRequired,
@@ -39,6 +41,17 @@ export default class MultiSelectModule extends Component {
       isNotEmpty: rules.isRequiredArray,
     },
     editor: {
+      properties: {
+        columns: {
+          type: PropControlTypes.enum,
+          options: [2, 3],
+          default: 2,
+        },
+        readOnly: {
+          type: PropControlTypes.boolean,
+          placeholder: 'Read only',
+        },
+      },
       defaults: {
         options: [
           { value: 1, id: 1, caption: 'Option 1' },

@@ -8,6 +8,8 @@ import Alignment from '../../components/Alignment';
 import Choice from './Choice';
 import Select from './Select';
 
+import PropControlTypes from '../../form/Form/PropControlTypes';
+
 export default class SelectModule extends Component {
   static propTypes = {
     name: PropTypes.string.isRequired,
@@ -30,6 +32,7 @@ export default class SelectModule extends Component {
 
   static module = {
     type: 'select',
+    name: 'Select',
     validation: {
       isRequired: rules.isRequired,
       isNotEmpty: rules.isNotEmpty,
@@ -42,6 +45,22 @@ export default class SelectModule extends Component {
       return Math.min(Math.max(numeric, 0), 1);
     },
     editor: {
+      properties: {
+        columns: {
+          type: PropControlTypes.enum,
+          label: 'Columns number',
+          options: [2, 3],
+          default: 2,
+        },
+        answer: {
+          type: PropControlTypes.string,
+          placeholder: 'Answer',
+        },
+        readOnly: {
+          type: PropControlTypes.boolean,
+          placeholder: 'Read only',
+        },
+      },
       defaults: {
         options: [
           { value: 1, id: 1, caption: 'Option 1' },

@@ -8,6 +8,8 @@ import { Button, Checkbox } from '@gemsorg/components';
 import Alignment from '../../components/Alignment';
 import Modal from '../../components/Modal';
 
+import PropControlTypes from '../../form/Form/PropControlTypes';
+
 export default class Agreement extends Component {
   static propTypes = {
     name: PropTypes.string.isRequired,
@@ -26,10 +28,29 @@ export default class Agreement extends Component {
 
   static module = {
     type: 'agreement',
+    name: 'License Agreement',
     validation: {
       isTrue: rules.isTrue,
     },
     editor: {
+      properties: {
+        button: {
+          type: PropControlTypes.string,
+          placeholder: 'button caption',
+        },
+        label: {
+          type: PropControlTypes.string,
+          placeholder: 'Checkbox label',
+          required: true,
+        },
+        headline: {
+          type: PropControlTypes.string,
+          placeholder: 'Modal headline',
+        },
+        modules: {
+          type: PropControlTypes.modules,
+        },
+      },
       defaults: {
         button: 'Rules',
         label: 'You must agree with rules',

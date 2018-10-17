@@ -5,6 +5,8 @@ import { rules } from '@gemsorg/validation';
 
 import UIMultipleTagVideo from './components/MultipleTagVideo';
 
+import PropControlTypes from '../../form/Form/PropControlTypes';
+
 export default class MultipleTagVideo extends Component {
   static propTypes = {
     src: PropTypes.string.isRequired,
@@ -29,12 +31,24 @@ export default class MultipleTagVideo extends Component {
 
   static module = {
     type: 'multipleTagVideo',
+    name: 'Video Tagging (multiple)',
     validation: {
       isRequired: rules.isRequiredArray,
       isNotEmpty: rules.isRequiredArray,
     },
     report: ['video is not loading'],
     editor: {
+      properties: {
+        src: {
+          type: PropControlTypes.string,
+          placeholder: 'Video url',
+          required: true,
+        },
+        startTime: {
+          type: PropControlTypes.number,
+          placeholder: 'Start playback from',
+        },
+      },
       defaults: {
         src: 'https://www.youtube.com/watch?v=PXi3Mv6KMzY',
       },

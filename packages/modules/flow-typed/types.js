@@ -18,17 +18,30 @@ type totalScoreFn = (scores: Array<?number>) => number;
 
 type verificationScoreFn = (value: any) => number;
 
+type FormBuilderFactory = {
+  type: string,
+  [prop: string]: string | bool | Array<string>
+}
+
+type ModuleEditorMeta = {
+  propreties?: {
+    [key: string]: FormBuilderFactory
+  },
+  defaults?: {
+    [key: string]: any
+  }
+}
+
 declare type ModuleControlMeta = {
   type: string,
+  title?: string,
+  description?: string,
+  previewUrl?: string,
   report?: Array<string>,
   validation?:  {
     [validatorName: string]: (value: any) => bool
   },
-  editor?: {
-    defaults?: {
-      [key: string]: any
-    }
-  },
+  editor?: ModuleEditorMeta,
   verificationScore?: verificationScoreFn
 }
 

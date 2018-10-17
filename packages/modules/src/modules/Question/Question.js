@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 
 import Alignment from '../../components/Alignment';
 
+import PropControlTypes from '../../form/Form/PropControlTypes';
+
 import styles from './Question.module.styl';
 
 export default class Question extends Component {
@@ -20,7 +22,24 @@ export default class Question extends Component {
 
   static module = {
     type: 'question',
+    name: 'Question',
     editor: {
+      properties: {
+        title: {
+          type: PropControlTypes.string,
+          placeholder: 'Title',
+        },
+        content: {
+          type: PropControlTypes.richText,
+          placeholder: 'Article content',
+        },
+        padding: {
+          type: PropControlTypes.enum,
+          label: 'Padding',
+          options: ['small', 'medium', 'none'],
+          default: 'medium',
+        },
+      },
       defaults: {
         title: 'question title',
         content: 'Lorem ipsum dolor sit amet, consectetur',

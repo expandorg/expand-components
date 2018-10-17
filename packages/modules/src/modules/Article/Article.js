@@ -7,6 +7,8 @@ import Paragraph from '../Paragraph';
 import Alignment from '../../components/Alignment';
 import Image from '../Image';
 
+import PropControlTypes from '../../form/Form/PropControlTypes';
+
 import styles from './Article.module.styl';
 
 export default class Article extends Component {
@@ -26,7 +28,22 @@ export default class Article extends Component {
 
   static module = {
     type: 'article',
+    name: 'Article',
     editor: {
+      properties: {
+        title: {
+          type: PropControlTypes.string,
+          placeholder: 'Article title',
+        },
+        content: {
+          type: PropControlTypes.richText,
+          placeholder: 'Article content',
+        },
+        image: {
+          type: PropControlTypes.string,
+          placeholder: 'Image Url',
+        },
+      },
       defaults: {
         title: 'article title',
         content:

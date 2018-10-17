@@ -5,6 +5,8 @@ import { Collapsable as UICollapsable } from '@gemsorg/components';
 
 import Alignment from '../../components/Alignment';
 
+import PropControlTypes from '../../form/Form/PropControlTypes';
+
 import styles from './Collapsable.module.styl';
 
 export default class Collapsable extends Component {
@@ -21,6 +23,20 @@ export default class Collapsable extends Component {
   static module = {
     type: 'collapsable',
     editor: {
+      properties: {
+        header: {
+          type: PropControlTypes.string,
+          placeholder: 'Title text',
+          required: true,
+        },
+        expanded: {
+          type: PropControlTypes.boolean,
+          label: 'Expanded by default',
+        },
+        modules: {
+          type: PropControlTypes.modules,
+        },
+      },
       defaults: {
         header: 'Click to Expand/Collapse',
         modules: {

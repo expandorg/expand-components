@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 
 import SignleTagVideo from './components/SignleTagVideo';
 
+import PropControlTypes from '../../form/Form/PropControlTypes';
+
 export default class TagVideo extends Component {
   static propTypes = {
     src: PropTypes.string.isRequired,
@@ -33,6 +35,7 @@ export default class TagVideo extends Component {
 
   static module = {
     type: 'tagVideo',
+    name: 'Video Tagging',
     validation: {
       isRequired: value => {
         if (!value) {
@@ -46,6 +49,21 @@ export default class TagVideo extends Component {
     },
     report: ['video is not loading'],
     editor: {
+      properties: {
+        src: {
+          type: PropControlTypes.string,
+          placeholder: 'Video url',
+          required: true,
+        },
+        readOnly: {
+          type: PropControlTypes.boolean,
+          placeholder: 'Read only',
+        },
+        startTime: {
+          type: PropControlTypes.number,
+          placeholder: 'Start playback from',
+        },
+      },
       defaults: {
         src: 'https://www.youtube.com/watch?v=PXi3Mv6KMzY',
       },

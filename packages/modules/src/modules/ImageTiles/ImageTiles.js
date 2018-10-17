@@ -5,6 +5,8 @@ import Alignment from '../../components/Alignment';
 
 import { ImageTiles as UIImageTiles } from '../../components/ImageTiles';
 
+import PropControlTypes from '../../form/Form/PropControlTypes';
+
 import styles from './ImageTiles.module.styl';
 
 export default class ImageTiles extends Component {
@@ -25,11 +27,29 @@ export default class ImageTiles extends Component {
 
   static module = {
     type: 'imageTiles',
+    name: 'Image Tiles',
     validation: {
       isRequired: rules.isRequiredArray,
       isNotEmpty: rules.isRequiredArray,
     },
     editor: {
+      properties: {
+        image: {
+          type: PropControlTypes.string,
+          placeholder: 'Image Url',
+          required: true,
+        },
+        columns: {
+          columns: PropControlTypes.number,
+          placeholder: 'Number of columns',
+          default: 4,
+        },
+        rows: {
+          columns: PropControlTypes.number,
+          placeholder: 'Number of rows',
+          default: 4,
+        },
+      },
       defaults: {
         image: 'https://portal.gems.org/images/complete-tasks.png',
       },

@@ -8,8 +8,11 @@ import FormContext from './data/FormContext';
 import FormDataProvider from './data/FormDataProvider';
 import FormData from './data/FormData';
 import moduleControls, { getModuleControlsMap } from './moduleControls';
+
 import applyVariables from './variables/applyVariables';
 import getVariablesMap from './variables/getVariablesMap';
+
+import PropControlTypes from './PropControlTypes';
 
 export {
   Form,
@@ -23,4 +26,5 @@ export {
   calculateVerificationScore,
   applyVariables,
   getVariablesMap,
+  PropControlTypes,
 };

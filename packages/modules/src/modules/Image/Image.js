@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import cn from 'classnames';
 
+import PropControlTypes from '../../form/Form/PropControlTypes';
+
 import styles from './Image.module.styl';
 
 export default class Image extends Component {
@@ -16,8 +18,16 @@ export default class Image extends Component {
 
   static module = {
     type: 'image',
+    name: 'Image',
     report: ['Image is not loading'],
     editor: {
+      properties: {
+        src: {
+          type: PropControlTypes.string,
+          placeholder: 'Image Url',
+          required: true,
+        },
+      },
       defaults: {
         src: 'https://portal.gems.org/images/complete-tasks.png',
       },

@@ -6,6 +6,8 @@ import { rules } from '@gemsorg/validation';
 import Alignment from '../../components/Alignment';
 import { ImageRegionMultiselect } from '../../components/RegionSelect';
 
+import PropControlTypes from '../../form/Form/PropControlTypes';
+
 import styles from './styles.module.styl';
 
 const getInitialValue = initial => {
@@ -47,12 +49,24 @@ export default class RegionMultiselect extends Component {
 
   static module = {
     type: 'regionMultiselect',
+    name: 'Image Region Multiselect',
     report: ['Image is not loading'],
     validation: {
       isRequired: rules.isRequiredArray,
       isNotEmpty: rules.isRequiredArray,
     },
     editor: {
+      properties: {
+        image: {
+          type: PropControlTypes.string,
+          placeholder: 'Image Url',
+          required: true,
+        },
+        readOnly: {
+          type: PropControlTypes.boolean,
+          placeholder: 'Read only',
+        },
+      },
       defaults: {
         image: 'https://portal.gems.org/images/complete-tasks.png',
       },

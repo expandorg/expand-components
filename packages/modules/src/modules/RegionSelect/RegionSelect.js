@@ -6,6 +6,8 @@ import { rules } from '@gemsorg/validation';
 import Alignment from '../../components/Alignment';
 import { ImageRegionSelect } from '../../components/RegionSelect';
 
+import PropControlTypes from '../../form/Form/PropControlTypes';
+
 import styles from './styles.module.styl';
 
 export default class RegionSelect extends Component {
@@ -36,12 +38,24 @@ export default class RegionSelect extends Component {
 
   static module = {
     type: 'regionSelect',
+    name: 'Image Region Select',
     validation: {
       isRequired: rules.isRequired,
       isNotEmpty: rules.isNotEmpty,
     },
     report: ['Image is not loading'],
     editor: {
+      properties: {
+        image: {
+          type: PropControlTypes.string,
+          placeholder: 'Image Url',
+          required: true,
+        },
+        readOnly: {
+          type: PropControlTypes.boolean,
+          placeholder: 'Read only',
+        },
+      },
       defaults: {
         image: 'https://portal.gems.org/images/complete-tasks.png',
       },

@@ -4,6 +4,8 @@ import cn from 'classnames';
 
 import Alignment from '../../components/Alignment';
 
+import PropControlTypes from '../../form/Form/PropControlTypes';
+
 import styles from './Video.module.styl';
 
 export default class Video extends Component {
@@ -36,8 +38,43 @@ export default class Video extends Component {
 
   static module = {
     type: 'video',
+    name: 'Video',
     report: ['video is not loading'],
     editor: {
+      properties: {
+        src: {
+          type: PropControlTypes.string,
+          placeholder: 'Video src',
+          required: true,
+        },
+        subtitles: {
+          type: PropControlTypes.string,
+          placeholder: 'Subtitles src',
+        },
+        playerControls: {
+          type: PropControlTypes.boolean,
+          label: 'Show player controls',
+          default: true,
+        },
+        autoPlay: {
+          type: PropControlTypes.boolean,
+          label: 'Show player controls',
+        },
+        loop: {
+          type: PropControlTypes.boolean,
+          label: 'Loop video',
+        },
+        muted: {
+          type: PropControlTypes.string,
+          label: 'Muted',
+        },
+        justify: {
+          type: PropControlTypes.enum,
+          label: 'justify video',
+          options: ['left', 'right', 'center', 'between'],
+          default: 'center',
+        },
+      },
       defaults: {
         src: 'http://media.gettyimages.com/videos/cap-video-id896606100',
       },

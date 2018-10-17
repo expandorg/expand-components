@@ -4,6 +4,8 @@ import cn from 'classnames';
 
 import Paragraph from '../Paragraph';
 
+import PropControlTypes from '../../form/Form/PropControlTypes';
+
 import styles from './Description.module.styl';
 
 export default class Description extends Component {
@@ -21,7 +23,21 @@ export default class Description extends Component {
 
   static module = {
     type: 'description',
+    name: 'Description',
     editor: {
+      properties: {
+        content: {
+          type: PropControlTypes.richText,
+          placeholder: 'Article content',
+          required: true,
+        },
+        fontSize: {
+          type: PropControlTypes.enum,
+          label: 'Font size',
+          options: ['small', 'medium', 'large'],
+          default: 'medium',
+        },
+      },
       defaults: {
         content: `Write a trivia question with three multiple-choice answers. One answer
           should be correct and fact-checked, and two answers should be incorrect

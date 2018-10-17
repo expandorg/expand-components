@@ -5,6 +5,8 @@ import { Button } from '@gemsorg/components';
 
 import Alignment from '../../components/Alignment';
 
+import PropControlTypes from '../../form/Form/PropControlTypes';
+
 import styles from './Submit.module.styl';
 
 export default class Submit extends Component {
@@ -21,7 +23,21 @@ export default class Submit extends Component {
 
   static module = {
     type: 'submit',
+    name: 'Submit buttom',
     editor: {
+      properties: {
+        caption: {
+          type: PropControlTypes.string,
+          placeholder: 'Button caption',
+          required: true,
+        },
+        justify: {
+          type: PropControlTypes.enum,
+          label: 'justify button',
+          options: ['left', 'right', 'center'],
+          default: 'left',
+        },
+      },
       defaults: {
         caption: 'Submit',
       },

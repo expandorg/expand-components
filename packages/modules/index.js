@@ -17,13 +17,14 @@ import {
   formProps,
   formValidationRules,
   FormContext,
-  FormDataProvider,
   FormData,
+  FormDataProvider,
   moduleControls,
   getModuleControlsMap,
   calculateVerificationScore,
   applyVariables,
   getVariablesMap,
+  PropControlType,
 } from './src/form/Form';
 
 import Image from './src/modules/Image';
@@ -83,6 +84,7 @@ export {
   formProps,
   formValidationRules,
   getModuleControlsMap,
+  PropControlType,
   Image,
   ImageTiles,
   Input,

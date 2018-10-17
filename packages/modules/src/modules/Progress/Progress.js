@@ -13,6 +13,7 @@ export default class Progress extends Component {
 
   static module = {
     type: 'progress',
+    name: 'QA Progress',
     editor: {
       defaults: {
         number: 1,

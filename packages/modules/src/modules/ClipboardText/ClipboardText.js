@@ -5,6 +5,8 @@ import { ClipboardButton } from '@gemsorg/components';
 
 import Label from '../../components/Label';
 
+import PropControlTypes from '../../form/Form/PropControlTypes';
+
 import styles from './ClipboardText.module.styl';
 
 export default class ClipboardText extends Component {
@@ -20,7 +22,14 @@ export default class ClipboardText extends Component {
 
   static module = {
     type: 'clipboardText',
+    name: 'Copy to clipboard',
     editor: {
+      properties: {
+        text: {
+          type: PropControlTypes.string,
+          placeholder: 'Text',
+        },
+      },
       defaults: {
         text: 'Click to copy text',
       },
