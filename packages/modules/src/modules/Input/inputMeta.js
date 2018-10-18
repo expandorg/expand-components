@@ -20,7 +20,7 @@ const inputMeta: ModuleControlMeta = {
     return Math.min(Math.max(numeric, 0), 1);
   },
   editor: {
-    propreties: {
+    properties: {
       placeholder: {
         type: PropControlTypes.string,
         placeholder: 'Placeholder',

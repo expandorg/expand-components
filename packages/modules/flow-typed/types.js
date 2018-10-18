@@ -24,7 +24,7 @@ type FormBuilderFactory = {
 }
 
 type ModuleEditorMeta = {
-  propreties?: {
+  properties?: {
     [key: string]: FormBuilderFactory
   },
   defaults?: {
