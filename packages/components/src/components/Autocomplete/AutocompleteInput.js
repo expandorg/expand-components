@@ -42,6 +42,7 @@ export default class AutocompleteInput extends Component {
 
     this.state = {
       focus: false,
+      options: props.options, // eslint-disable-line react/no-unused-state
       value: props.value,
       filtered: props.filterFn(props.options, props.value),
     };
@@ -65,9 +66,10 @@ export default class AutocompleteInput extends Component {
   }
 
   static getDerivedStateFromProps({ value, options, filterFn }, prevState) {
-    if (value !== prevState.value) {
+    if (value !== prevState.value || options !== prevState.options) {
       return {
         value,
+        options,
         filtered: filterFn(options, value),
       };
     }
