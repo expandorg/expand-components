@@ -50,7 +50,7 @@ export default class MultiSelectModule extends Component {
         },
         readOnly: {
           type: PropControlTypes.boolean,
-          placeholder: 'Read only',
+          label: 'Read only',
         },
       },
       defaults: {

@@ -57,7 +57,7 @@ export default class TagVideo extends Component {
         },
         readOnly: {
           type: PropControlTypes.boolean,
-          placeholder: 'Read only',
+          label: 'Read only',
         },
         startTime: {
           type: PropControlTypes.number,

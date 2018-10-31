@@ -64,7 +64,7 @@ export default class RegionMultiselect extends Component {
         },
         readOnly: {
           type: PropControlTypes.boolean,
-          placeholder: 'Read only',
+          label: 'Read only',
         },
       },
       defaults: {
