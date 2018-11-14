@@ -14,6 +14,6 @@
   "license": "MPL-2.0",
   "author": "gems.org",
   "dependencies": {
-    "validator": "^10.8.0"
+    "validator": "^10.9.0"
   }
 }

@@ -1,5 +1,5 @@
 {
   "extends": [
-    "@gemsorg/eslint-config"
+    "@gemsorg/eslint-config/react"
   ]
 }
