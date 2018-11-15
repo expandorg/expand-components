@@ -1,6 +1,6 @@
 {
   "name": "@gemsorg/validation",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Gems UI validation library",
   "main": "index.js",
   "repository": {
