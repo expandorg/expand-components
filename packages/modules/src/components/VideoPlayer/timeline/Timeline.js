@@ -57,16 +57,15 @@ export default class Timeline extends Component {
               limitTo={limitTo}
             />
             {showProgress && <Progress duration={duration} seek={seek} />}
-            {showCursor &&
-              isHovered && (
-                <Cursor
-                  position={mouseX}
-                  time={pxToTime(mouseX, duration, width)}
-                  limitFrom={limitFrom}
-                  limitTo={limitTo}
-                  onClick={onCursorClick}
-                />
-              )}
+            {showCursor && isHovered && (
+              <Cursor
+                position={mouseX}
+                time={pxToTime(mouseX, duration, width)}
+                limitFrom={limitFrom}
+                limitTo={limitTo}
+                onClick={onCursorClick}
+              />
+            )}
             {children({ width })}
           </Fragment>
         )}

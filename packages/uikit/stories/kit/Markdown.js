@@ -1,5 +1,6 @@
 import React, { Component, createRef } from 'react';
 import PropTypes from 'prop-types';
+import marked from 'marked';
 
 import highlight from './highlight';
 
@@ -13,6 +14,10 @@ export default class Markdown extends Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      md: marked(props.doc, { ...marked.defaults }),
+    };
+
     this.containerRef = createRef();
   }
 
@@ -25,12 +30,12 @@ export default class Markdown extends Component {
   }
 
   render() {
-    const { doc } = this.props;
+    const { md } = this.state;
     return (
       <div
         ref={this.containerRef}
         className="gem-gh-markdown"
-        dangerouslySetInnerHTML={{ __html: doc }} // eslint-disable-line react/no-danger
+        dangerouslySetInnerHTML={{ __html: md }} // eslint-disable-line react/no-danger
       />
     );
   }

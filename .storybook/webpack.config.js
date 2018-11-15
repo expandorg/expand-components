@@ -1,6 +1,8 @@
 
 module.exports = (storybookBaseConfig, configType) => {
   const dev = configType === 'DEVELOPMENT';
+  const jsRules = storybookBaseConfig.module.rules[0]
+  jsRules.exclude = /node_modules\/(?!(@gemsorg)\/).*/;
   storybookBaseConfig.module.rules.push({
     test: /\.css$/,
     use: [
