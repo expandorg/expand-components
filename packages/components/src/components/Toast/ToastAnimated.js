@@ -27,16 +27,19 @@ export default class ToastAnimated extends Component {
     const { children, visible, className } = this.props;
     return (
       <Transition
+        items={visible}
         from={transitions.from}
         enter={transitions.enter}
         leave={transitions.leave}
       >
-        {visible &&
+        {v =>
+          v &&
           (styles => (
             <AnimatedToast style={styles} className={className}>
               {children}
             </AnimatedToast>
-          ))}
+          ))
+        }
       </Transition>
     );
   }
