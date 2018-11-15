@@ -13,6 +13,7 @@ const transitions = {
   enter: { maxHeight: 10000, height: '100%' },
   leave: { maxHeight: 0, pointerEvents: 'none', height: '0%' },
 };
+const noop = () => null;
 
 export default class Collapsable extends Component {
   static propTypes = {
@@ -43,17 +44,19 @@ export default class Collapsable extends Component {
         </div>
         <Transition
           native
-          config={config.gentle}
+          items={expanded}
           from={transitions.from}
           enter={transitions.enter}
           leave={transitions.leave}
         >
-          {expanded &&
+          {ex =>
+            ex &&
             (styles => (
               <animated.div style={styles} className="gem-collapsable-content">
                 {children}
               </animated.div>
-            ))}
+            ))
+          }
         </Transition>
       </div>
     );
