@@ -6,6 +6,7 @@ const ModuleCategories = {
   Input: 'Input',
   Image: 'Image',
   Video: 'Video',
+  Onboarding: 'Onboarding',
 };
 
 export default ModuleCategories;
