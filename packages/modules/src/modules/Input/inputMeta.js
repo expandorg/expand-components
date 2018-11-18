@@ -3,6 +3,7 @@
 import { rules } from '@gemsorg/validation';
 
 import PropControlTypes from '../../form/Form/PropControlTypes';
+import ModuleCategories from '../../form/Form/ModuleCategories';
 
 const inputMeta: ModuleControlMeta = {
   report: ['Unable to fill field'],
@@ -20,6 +21,7 @@ const inputMeta: ModuleControlMeta = {
     return Math.min(Math.max(numeric, 0), 1);
   },
   editor: {
+    catogory: ModuleCategories.Input,
     properties: {
       placeholder: {
         type: PropControlTypes.string,

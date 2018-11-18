@@ -24,6 +24,7 @@ type FormBuilderFactory = {
 }
 
 type ModuleEditorMeta = {
+  category: string,
   properties?: {
     [key: string]: FormBuilderFactory
   },

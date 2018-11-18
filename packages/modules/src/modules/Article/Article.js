@@ -8,6 +8,7 @@ import Alignment from '../../components/Alignment';
 import Image from '../Image';
 
 import PropControlTypes from '../../form/Form/PropControlTypes';
+import ModuleCategories from '../../form/Form/ModuleCategories';
 
 import styles from './Article.module.styl';
 
@@ -30,6 +31,7 @@ export default class Article extends Component {
     type: 'article',
     name: 'Article',
     editor: {
+      category: ModuleCategories.Text,
       properties: {
         title: {
           type: PropControlTypes.string,

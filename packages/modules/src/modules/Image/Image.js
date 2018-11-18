@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import cn from 'classnames';
 
 import PropControlTypes from '../../form/Form/PropControlTypes';
+import ModuleCategories from '../../form/Form/ModuleCategories';
 
 import styles from './Image.module.styl';
 
@@ -21,6 +22,7 @@ export default class Image extends Component {
     name: 'Image',
     report: ['Image is not loading'],
     editor: {
+      catogory: ModuleCategories.Image,
       properties: {
         src: {
           type: PropControlTypes.string,

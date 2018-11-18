@@ -6,6 +6,7 @@ import { rules } from '@gemsorg/validation';
 import UIMultipleTagVideo from './components/MultipleTagVideo';
 
 import PropControlTypes from '../../form/Form/PropControlTypes';
+import ModuleCategories from '../../form/Form/ModuleCategories';
 
 export default class MultipleTagVideo extends Component {
   static propTypes = {
@@ -38,6 +39,7 @@ export default class MultipleTagVideo extends Component {
     },
     report: ['video is not loading'],
     editor: {
+      category: ModuleCategories.Video,
       properties: {
         src: {
           type: PropControlTypes.string,

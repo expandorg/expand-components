@@ -6,6 +6,7 @@ import Alignment from '../../components/Alignment';
 import { ImageTiles as UIImageTiles } from '../../components/ImageTiles';
 
 import PropControlTypes from '../../form/Form/PropControlTypes';
+import ModuleCategories from '../../form/Form/ModuleCategories';
 
 import styles from './ImageTiles.module.styl';
 
@@ -33,6 +34,7 @@ export default class ImageTiles extends Component {
       isNotEmpty: rules.isRequiredArray,
     },
     editor: {
+      catogory: ModuleCategories.Image,
       properties: {
         image: {
           type: PropControlTypes.string,

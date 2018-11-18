@@ -9,6 +9,7 @@ import Alignment from '../../components/Alignment';
 import Modal from '../../components/Modal';
 
 import PropControlTypes from '../../form/Form/PropControlTypes';
+import ModuleCategories from '../../form/Form/ModuleCategories';
 
 export default class Agreement extends Component {
   static propTypes = {
@@ -33,6 +34,7 @@ export default class Agreement extends Component {
       isTrue: rules.isTrue,
     },
     editor: {
+      category: ModuleCategories.Display,
       properties: {
         button: {
           type: PropControlTypes.string,

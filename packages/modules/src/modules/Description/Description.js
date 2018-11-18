@@ -5,6 +5,7 @@ import cn from 'classnames';
 import Paragraph from '../Paragraph';
 
 import PropControlTypes from '../../form/Form/PropControlTypes';
+import ModuleCategories from '../../form/Form/ModuleCategories';
 
 import styles from './Description.module.styl';
 
@@ -25,6 +26,7 @@ export default class Description extends Component {
     type: 'description',
     name: 'Description',
     editor: {
+      catogory: ModuleCategories.Text,
       properties: {
         content: {
           type: PropControlTypes.richText,

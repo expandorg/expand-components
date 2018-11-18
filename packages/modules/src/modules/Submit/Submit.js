@@ -6,6 +6,7 @@ import { Button } from '@gemsorg/components';
 import Alignment from '../../components/Alignment';
 
 import PropControlTypes from '../../form/Form/PropControlTypes';
+import ModuleCategories from '../../form/Form/ModuleCategories';
 
 import styles from './Submit.module.styl';
 
@@ -25,6 +26,7 @@ export default class Submit extends Component {
     type: 'submit',
     name: 'Submit buttom',
     editor: {
+      category: ModuleCategories.Input,
       properties: {
         caption: {
           type: PropControlTypes.string,

@@ -5,6 +5,7 @@ import cn from 'classnames';
 import Alignment from '../../components/Alignment';
 
 import PropControlTypes from '../../form/Form/PropControlTypes';
+import ModuleCategories from '../../form/Form/ModuleCategories';
 
 import styles from './Video.module.styl';
 
@@ -41,6 +42,7 @@ export default class Video extends Component {
     name: 'Video',
     report: ['video is not loading'],
     editor: {
+      category: ModuleCategories.Video,
       properties: {
         src: {
           type: PropControlTypes.string,

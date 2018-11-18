@@ -9,6 +9,7 @@ import Choice from './Choice';
 import Select from './Select';
 
 import PropControlTypes from '../../form/Form/PropControlTypes';
+import ModuleCategories from '../../form/Form/ModuleCategories';
 
 export default class SelectModule extends Component {
   static propTypes = {
@@ -45,6 +46,7 @@ export default class SelectModule extends Component {
       return Math.min(Math.max(numeric, 0), 1);
     },
     editor: {
+      category: ModuleCategories.Input,
       properties: {
         columns: {
           type: PropControlTypes.enum,

@@ -6,6 +6,7 @@ import { Collapsable as UICollapsable } from '@gemsorg/components';
 import Alignment from '../../components/Alignment';
 
 import PropControlTypes from '../../form/Form/PropControlTypes';
+import ModuleCategories from '../../form/Form/ModuleCategories';
 
 import styles from './Collapsable.module.styl';
 
@@ -24,6 +25,7 @@ export default class Collapsable extends Component {
     type: 'collapsable',
     name: 'Collapsable',
     editor: {
+      catogory: ModuleCategories.Display,
       properties: {
         header: {
           type: PropControlTypes.string,

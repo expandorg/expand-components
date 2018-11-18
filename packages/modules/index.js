@@ -24,7 +24,9 @@ import {
   calculateVerificationScore,
   applyVariables,
   getVariablesMap,
+  groupModulesByCategory,
   PropControlTypes,
+  ModuleCategories,
 } from './src/form/Form';
 
 import Image from './src/modules/Image';
@@ -90,6 +92,7 @@ export {
   formValidationRules,
   getModuleControlsMap,
   PropControlTypes,
+  ModuleCategories,
   Image,
   ImageTiles,
   NumberInput,
@@ -100,6 +103,7 @@ export {
   InstructionsItem,
   Label,
   getVariablesMap,
+  groupModulesByCategory,
   MediaTooltip,
   Modal,
   Module,

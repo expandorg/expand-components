@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import SignleTagVideo from './components/SignleTagVideo';
 
 import PropControlTypes from '../../form/Form/PropControlTypes';
+import ModuleCategories from '../../form/Form/ModuleCategories';
 
 export default class TagVideo extends Component {
   static propTypes = {
@@ -49,6 +50,7 @@ export default class TagVideo extends Component {
     },
     report: ['video is not loading'],
     editor: {
+      category: ModuleCategories.Video,
       properties: {
         src: {
           type: PropControlTypes.string,

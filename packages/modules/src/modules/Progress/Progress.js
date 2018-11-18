@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 
 import { FormData } from '../../form/Form';
 
+import ModuleCategories from '../../form/Form/ModuleCategories';
+
 import styles from './Progress.module.styl';
 
 export default class Progress extends Component {
@@ -15,6 +17,7 @@ export default class Progress extends Component {
     type: 'progress',
     name: 'QA Progress',
     editor: {
+      catogory: ModuleCategories.Onboarding,
       defaults: {
         number: 1,
         total: 2,

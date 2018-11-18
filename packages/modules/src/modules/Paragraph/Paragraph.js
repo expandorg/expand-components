@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import cn from 'classnames';
 
 import PropControlTypes from '../../form/Form/PropControlTypes';
+import ModuleCategories from '../../form/Form/ModuleCategories';
 
 import styles from './Paragraph.module.styl';
 
@@ -25,6 +26,7 @@ export default class Paragraph extends Component {
     type: 'paragraph',
     name: 'Text paragraph',
     editor: {
+      catogory: ModuleCategories.Text,
       properties: {
         content: {
           type: PropControlTypes.richText,

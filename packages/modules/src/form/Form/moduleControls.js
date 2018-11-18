@@ -38,6 +38,21 @@ export const getModuleControlsMap = (
     {}
   );
 
+export const groupModulesByCategory = (controls: Array<Object>) => {
+  const grouped = controls.reduce((map, Control) => {
+    if (Control.module.editor && Control.module.editor.category) {
+      let category = map[Control.module.editor.category];
+      if (!category) {
+        map[Control.module.editor.category] = [];
+        category = map[Control.module.editor.category];
+      }
+      category.push(Control);
+    }
+    return map;
+  }, {});
+  return grouped;
+};
+
 const moduleControls = [
   NumberInput,
   TextInput,

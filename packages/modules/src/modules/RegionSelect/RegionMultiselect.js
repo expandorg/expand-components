@@ -7,6 +7,7 @@ import Alignment from '../../components/Alignment';
 import { ImageRegionMultiselect } from '../../components/RegionSelect';
 
 import PropControlTypes from '../../form/Form/PropControlTypes';
+import ModuleCategories from '../../form/Form/ModuleCategories';
 
 import styles from './styles.module.styl';
 
@@ -56,6 +57,7 @@ export default class RegionMultiselect extends Component {
       isNotEmpty: rules.isRequiredArray,
     },
     editor: {
+      category: ModuleCategories.Image,
       properties: {
         image: {
           type: PropControlTypes.string,

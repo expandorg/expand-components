@@ -6,6 +6,7 @@ import cn from 'classnames';
 import styles from './Title.module.styl';
 
 import PropControlTypes from '../../form/Form/PropControlTypes';
+import ModuleCategories from '../../form/Form/ModuleCategories';
 
 export default class Title extends Component {
   static propTypes = {
@@ -24,6 +25,7 @@ export default class Title extends Component {
     type: 'title',
     name: 'Title',
     editor: {
+      category: ModuleCategories.Text,
       properties: {
         title: {
           type: PropControlTypes.string,

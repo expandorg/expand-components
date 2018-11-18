@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 
 import Alignment from '../../components/Alignment';
 
+import ModuleCategories from '../../form/Form/ModuleCategories';
+
 import styles from './Instructions.module.styl';
 
 export default class Instructions extends Component {
@@ -9,6 +11,7 @@ export default class Instructions extends Component {
     type: 'instructions',
     name: 'Instructions',
     editor: {
+      catogory: ModuleCategories.Display,
       defaults: {
         modules: [
           {

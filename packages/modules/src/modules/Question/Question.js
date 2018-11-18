@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import Alignment from '../../components/Alignment';
 
 import PropControlTypes from '../../form/Form/PropControlTypes';
+import ModuleCategories from '../../form/Form/ModuleCategories';
 
 import styles from './Question.module.styl';
 
@@ -24,6 +25,7 @@ export default class Question extends Component {
     type: 'question',
     name: 'Question',
     editor: {
+      category: ModuleCategories.Text,
       properties: {
         title: {
           type: PropControlTypes.string,

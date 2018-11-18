@@ -7,6 +7,7 @@ import Alignment from '../../components/Alignment';
 import { ImageRegionSelect } from '../../components/RegionSelect';
 
 import PropControlTypes from '../../form/Form/PropControlTypes';
+import ModuleCategories from '../../form/Form/ModuleCategories';
 
 import styles from './styles.module.styl';
 
@@ -45,6 +46,7 @@ export default class RegionSelect extends Component {
     },
     report: ['Image is not loading'],
     editor: {
+      category: ModuleCategories.Image,
       properties: {
         image: {
           type: PropControlTypes.string,
