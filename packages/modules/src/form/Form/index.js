@@ -2,6 +2,7 @@
 import Form from './Form';
 import formProps from './formProps';
 import formValidationRules from './validation/formValidationRules';
+import getDefaultRuleMessage from './validation/getDefaultRuleMessage';
 import { calculateVerificationScore } from './verification/verification';
 
 import FormContext from './data/FormContext';
@@ -22,6 +23,7 @@ export {
   Form,
   formProps,
   formValidationRules,
+  getDefaultRuleMessage,
   FormContext,
   FormData,
   FormDataProvider,

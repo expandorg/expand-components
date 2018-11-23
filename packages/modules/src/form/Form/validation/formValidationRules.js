@@ -1,9 +1,17 @@
 // @flow
+import getDefaultRuleMessage from './getDefaultRuleMessage';
 
 const getFieldRules = (validation: Object, rules: Object) =>
   Reflect.ownKeys(validation)
     .filter(ruleName => !!rules[ruleName])
-    .map(ruleName => [rules[ruleName], validation[ruleName]]);
+    .map(ruleName => {
+      const message =
+        typeof validation[ruleName] === 'string'
+          ? validation[ruleName]
+          : getDefaultRuleMessage(ruleName);
+
+      return [rules[ruleName], message];
+    });
 
 const formValidationRules = (modules: Array<Module>, controlsMap: Object) =>
   modules.reduce((formRules, module) => {

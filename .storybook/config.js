@@ -18,6 +18,8 @@ setOptions({
   // addonPanelInRight: true,
   sidebarAnimations: true,
   showAddonPanel: false,
+  hierarchySeparator: /\//,
+  hierarchyRootSeparator: /\|/,
 });
 
 

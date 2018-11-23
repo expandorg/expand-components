@@ -5,7 +5,7 @@ declare type Module = {
   type: string,
   modules?: Array<Module>,
   validation?: {
-    [key: string]: string
+    [key: string]: string | bool
   },
   [key: string]: Module | Array<Module> | string | Object | number | boolean,
 };
