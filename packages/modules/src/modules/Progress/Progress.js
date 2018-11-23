@@ -17,7 +17,7 @@ export default class Progress extends Component {
     type: 'progress',
     name: 'QA Progress',
     editor: {
-      catogory: ModuleCategories.Onboarding,
+      category: ModuleCategories.Onboarding,
       defaults: {
         number: 1,
         total: 2,

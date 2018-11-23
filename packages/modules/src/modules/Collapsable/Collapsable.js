@@ -25,7 +25,7 @@ export default class Collapsable extends Component {
     type: 'collapsable',
     name: 'Collapsable',
     editor: {
-      catogory: ModuleCategories.Display,
+      category: ModuleCategories.Display,
       properties: {
         header: {
           type: PropControlTypes.string,

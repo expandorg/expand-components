@@ -30,7 +30,7 @@ export default class Checkbox extends Component {
     },
     verificationScore: value => (value ? 1 : 0),
     editor: {
-      catogory: ModuleCategories.Input,
+      category: ModuleCategories.Input,
       properties: {
         label: {
           type: PropControlTypes.string,

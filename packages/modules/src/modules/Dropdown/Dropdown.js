@@ -40,7 +40,7 @@ export default class Dropdown extends Component {
       isNotEmpty: rules.isNotEmpty,
     },
     editor: {
-      catogory: ModuleCategories.Input,
+      category: ModuleCategories.Input,
       defaults: {
         placeholder: 'Select one',
         options: ['Option 1', 'Option 2', 'Option 3', 'Option 4'],

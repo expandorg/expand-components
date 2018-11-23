@@ -34,7 +34,7 @@ export default class ImageTiles extends Component {
       isNotEmpty: rules.isRequiredArray,
     },
     editor: {
-      catogory: ModuleCategories.Image,
+      category: ModuleCategories.Image,
       properties: {
         image: {
           type: PropControlTypes.string,

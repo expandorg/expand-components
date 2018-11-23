@@ -26,7 +26,7 @@ export default class Paragraph extends Component {
     type: 'paragraph',
     name: 'Text paragraph',
     editor: {
-      catogory: ModuleCategories.Text,
+      category: ModuleCategories.Text,
       properties: {
         content: {
           type: PropControlTypes.richText,

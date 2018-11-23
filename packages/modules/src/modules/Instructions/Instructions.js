@@ -11,7 +11,7 @@ export default class Instructions extends Component {
     type: 'instructions',
     name: 'Instructions',
     editor: {
-      catogory: ModuleCategories.Display,
+      category: ModuleCategories.Display,
       defaults: {
         modules: [
           {

@@ -26,7 +26,7 @@ export default class Description extends Component {
     type: 'description',
     name: 'Description',
     editor: {
-      catogory: ModuleCategories.Text,
+      category: ModuleCategories.Text,
       properties: {
         content: {
           type: PropControlTypes.richText,

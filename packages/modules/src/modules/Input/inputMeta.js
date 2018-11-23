@@ -21,7 +21,7 @@ const inputMeta: ModuleControlMeta = {
     return Math.min(Math.max(numeric, 0), 1);
   },
   editor: {
-    catogory: ModuleCategories.Input,
+    category: ModuleCategories.Input,
     properties: {
       placeholder: {
         type: PropControlTypes.string,
