@@ -82,7 +82,6 @@ export default class VideoPreview extends Component {
   render() {
     const { src, playing, className, playbackRate } = this.props;
     const { canPlay } = this.state;
-
     return (
       <div className={className}>
         <Player

@@ -81,6 +81,7 @@ export default class VideoPlayer extends Component {
             start={start || limitFrom}
             stop={stop}
             playing={playing}
+            playbackRate={rate}
             onVideoReady={this.handleVideoReady}
             onTogglePlay={onTogglePlay}
             onVideoProgress={this.handleVideoProgress}
@@ -103,7 +104,6 @@ export default class VideoPlayer extends Component {
             limitTo={limitTo}
             cursor={cursor}
             playing={playing}
-            playbackRate={rate}
             onCursorClick={onCursorClick}
           >
             {children}
