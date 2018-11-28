@@ -12,6 +12,7 @@ export default class VideoPreview extends Component {
     playing: PropTypes.bool,
     start: PropTypes.number,
     stop: PropTypes.number,
+    playbackRate: PropTypes.number,
     onTogglePlay: PropTypes.func.isRequired,
     onVideoReady: PropTypes.func.isRequired,
     onVideoProgress: PropTypes.func.isRequired,
@@ -21,6 +22,7 @@ export default class VideoPreview extends Component {
     className: null,
     playing: true,
     start: 0,
+    playbackRate: 1,
     stop: null,
   };
 
@@ -78,7 +80,7 @@ export default class VideoPreview extends Component {
   };
 
   render() {
-    const { src, playing, className } = this.props;
+    const { src, playing, className, playbackRate } = this.props;
     const { canPlay } = this.state;
 
     return (
@@ -90,7 +92,7 @@ export default class VideoPreview extends Component {
           playing={canPlay && playing}
           width="100%"
           playsinline
-          playbackRate={1}
+          playbackRate={playbackRate}
           progressInterval={intervalMs}
           volume={0}
           onReady={this.handleReady}

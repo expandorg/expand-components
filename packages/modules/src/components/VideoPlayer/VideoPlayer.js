@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import Video from './video/Video';
 import PlayButton from './video/PlayButton';
+import PlaybackRate from './video/PlaybackRate';
 import Timeline from './timeline/Timeline';
 
 import styles from './VideoPlayer.module.styl';
@@ -38,6 +39,7 @@ export default class VideoPlayer extends Component {
 
   state = {
     duration: 0,
+    rate: 1,
     seek: 0,
   };
 
@@ -49,6 +51,10 @@ export default class VideoPlayer extends Component {
 
   handleVideoProgress = seek => {
     this.setState({ seek });
+  };
+
+  handleChangeRate = rate => {
+    this.setState({ rate });
   };
 
   render() {
@@ -65,7 +71,7 @@ export default class VideoPlayer extends Component {
       cursor,
     } = this.props;
 
-    const { duration, seek } = this.state;
+    const { duration, seek, rate } = this.state;
 
     return (
       <div className={styles.content}>
@@ -81,13 +87,14 @@ export default class VideoPlayer extends Component {
           />
         </div>
         <div className={styles.timeline}>
-          <div className={styles.play}>
+          <div className={styles.actions}>
             <PlayButton
               disabled={!duration}
               playing={playing}
               tooltip={playing ? 'Pause' : 'Play'}
               onToggle={onTogglePlay}
             />
+            <PlaybackRate rate={rate} onChange={this.handleChangeRate} />
           </div>
           <Timeline
             duration={duration}
@@ -96,6 +103,7 @@ export default class VideoPlayer extends Component {
             limitTo={limitTo}
             cursor={cursor}
             playing={playing}
+            playbackRate={rate}
             onCursorClick={onCursorClick}
           >
             {children}
