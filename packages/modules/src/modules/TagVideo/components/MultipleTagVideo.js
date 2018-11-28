@@ -159,15 +159,15 @@ export default class TagVideo extends Component {
               options={options}
               duration={duration}
               tag={selected}
+              save
               limitFrom={startTime}
               onChange={this.handleChangeTag}
               onSave={this.handleSaveTag}
             />
           )}
-          {!selected &&
-            !!duration && (
-              <div className={styles.placeholder}>Pick start time</div>
-            )}
+          {!selected && !!duration && (
+            <div className={styles.placeholder}>Pick start time</div>
+          )}
         </div>
         <div className={styles.tags}>
           <Tags

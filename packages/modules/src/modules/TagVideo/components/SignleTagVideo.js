@@ -120,12 +120,12 @@ export default class SignleTagVideo extends Component {
               tag={tag}
               limitFrom={startTime}
               onChange={onChange}
+              onSave={onChange}
             />
           )}
-          {!tag &&
-            !!duration && (
-              <div className={styles.placeholder}>Pick start time</div>
-            )}
+          {!tag && !!duration && (
+            <div className={styles.placeholder}>Pick start time</div>
+          )}
         </div>
       </div>
     );

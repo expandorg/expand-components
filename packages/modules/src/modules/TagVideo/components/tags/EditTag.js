@@ -24,13 +24,14 @@ export default class EditTag extends PureComponent {
 
     options: PropTypes.arrayOf(PropTypes.string),
     readOnly: PropTypes.bool,
-
+    save: PropTypes.bool,
     onChange: PropTypes.func.isRequired,
     onSave: PropTypes.func,
   };
 
   static defaultProps = {
     onSave: null,
+    save: false,
     limitFrom: undefined,
     limitTo: undefined,
     readOnly: false,
@@ -108,7 +109,7 @@ export default class EditTag extends PureComponent {
   };
 
   render() {
-    const { tag, onSave, options, readOnly } = this.props;
+    const { tag, save, options, readOnly } = this.props;
     return (
       <div className={styles.container}>
         <div className={styles.field}>
@@ -144,10 +145,10 @@ export default class EditTag extends PureComponent {
             />
           </div>
         </div>
-        {onSave && (
-          <div className={styles.field}>
-            <div className={styles.label}>&nbsp;</div>
-            <div className={styles.actions}>
+        <div className={styles.field}>
+          <div className={styles.label}>&nbsp;</div>
+          <div className={styles.actions}>
+            {save && (
               <Button
                 className={styles.button}
                 disabled={readOnly}
@@ -157,16 +158,16 @@ export default class EditTag extends PureComponent {
               >
                 {tag.id ? 'Save' : 'Add'}
               </Button>
-              <button
-                className={styles.delete}
-                disabled={readOnly}
-                onClick={this.handleClear}
-              >
-                ✕
-              </button>
-            </div>
+            )}
+            <button
+              className={styles.delete}
+              disabled={readOnly}
+              onClick={this.handleClear}
+            >
+              ✕
+            </button>
           </div>
-        )}
+        </div>
       </div>
     );
   }

@@ -4,12 +4,13 @@ import PropTypes from 'prop-types';
 import styles from './PlaybackRate.module.styl';
 
 const titles = {
-  1: 'x1',
-  2: 'x2',
-  0.5: 'x1/2',
+  1: '1',
+  2: '2',
+  4: '4',
+  0.5: '0.5',
 };
 
-const rates = [2, 1, 0.5];
+const rates = [4, 2, 1, 0.5];
 
 export default class PlaybackRate extends PureComponent {
   static propTypes = {
@@ -39,6 +40,7 @@ export default class PlaybackRate extends PureComponent {
     return (
       <div className={styles.container}>
         <button className={styles.button} onClick={this.handleToggle} {...rest}>
+          <span className={styles.x}>x</span>
           {titles[rate]}
         </button>
         {menu && (
@@ -48,6 +50,7 @@ export default class PlaybackRate extends PureComponent {
                 className={styles.rate}
                 onClick={evt => this.handleChange(r, evt)}
               >
+                <span className={styles.x}>x</span>
                 {titles[r]}
               </button>
             ))}
