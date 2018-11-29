@@ -21,6 +21,7 @@ export default class TagVideo extends Component {
       end: PropTypes.number.isRequired,
       tag: PropTypes.string,
     }),
+    playbackRate: PropTypes.number,
     options: PropTypes.arrayOf(PropTypes.string),
     startTime: PropTypes.number,
     onChange: PropTypes.func.isRequired,
@@ -30,6 +31,7 @@ export default class TagVideo extends Component {
     value: null,
     initial: null,
     readOnly: false,
+    playbackRate: 1,
     options: [],
     startTime: undefined,
   };
@@ -61,12 +63,17 @@ export default class TagVideo extends Component {
           type: PropControlTypes.boolean,
           label: 'Read only',
         },
+        playbackRate: {
+          type: PropControlTypes.number,
+          placeholder: 'playback rate',
+        },
         startTime: {
           type: PropControlTypes.number,
           placeholder: 'Start playback from',
         },
       },
       defaults: {
+        playbackRate: 1,
         src: 'https://www.youtube.com/watch?v=PXi3Mv6KMzY',
       },
     },
@@ -78,13 +85,22 @@ export default class TagVideo extends Component {
   };
 
   render() {
-    const { src, value, options, initial, readOnly, startTime } = this.props;
+    const {
+      src,
+      value,
+      options,
+      initial,
+      readOnly,
+      startTime,
+      playbackRate,
+    } = this.props;
     const tag = readOnly ? initial : value;
 
     return (
       <SignleTagVideo
         key={src}
         startTime={startTime}
+        playbackRate={playbackRate}
         video={src}
         readOnly={readOnly}
         tag={tag}

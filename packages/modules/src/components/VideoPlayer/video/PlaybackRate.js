@@ -3,13 +3,6 @@ import PropTypes from 'prop-types';
 
 import styles from './PlaybackRate.module.styl';
 
-const titles = {
-  1: '1',
-  2: '2',
-  4: '4',
-  0.5: '0.5',
-};
-
 const rates = [4, 2, 1, 0.5];
 
 export default class PlaybackRate extends PureComponent {
@@ -41,17 +34,18 @@ export default class PlaybackRate extends PureComponent {
       <div className={styles.container}>
         <button className={styles.button} onClick={this.handleToggle} {...rest}>
           <span className={styles.x}>x</span>
-          {titles[rate]}
+          {rate}
         </button>
         {menu && (
           <div className={styles.menu}>
             {rates.map(r => (
               <button
+                key={r}
                 className={styles.rate}
                 onClick={evt => this.handleChange(r, evt)}
               >
                 <span className={styles.x}>x</span>
-                {titles[r]}
+                {r}
               </button>
             ))}
           </div>

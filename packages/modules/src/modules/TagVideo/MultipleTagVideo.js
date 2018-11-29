@@ -19,6 +19,7 @@ export default class MultipleTagVideo extends Component {
         tag: PropTypes.string,
       })
     ),
+    playbackRate: PropTypes.number,
     options: PropTypes.arrayOf(PropTypes.string),
     startTime: PropTypes.number,
     onChange: PropTypes.func.isRequired,
@@ -27,6 +28,7 @@ export default class MultipleTagVideo extends Component {
   static defaultProps = {
     value: [],
     options: [],
+    playbackRate: 1,
     startTime: undefined,
   };
 
@@ -46,12 +48,17 @@ export default class MultipleTagVideo extends Component {
           placeholder: 'Video url',
           required: true,
         },
+        playbackRate: {
+          type: PropControlTypes.number,
+          placeholder: 'playback rate',
+        },
         startTime: {
           type: PropControlTypes.number,
           placeholder: 'Start playback from',
         },
       },
       defaults: {
+        playbackRate: 1,
         src: 'https://www.youtube.com/watch?v=PXi3Mv6KMzY',
       },
     },
@@ -63,11 +70,12 @@ export default class MultipleTagVideo extends Component {
   };
 
   render() {
-    const { src, value, startTime, options } = this.props;
+    const { src, value, startTime, options, playbackRate } = this.props;
 
     return (
       <UIMultipleTagVideo
         key={src}
+        playbackRate={playbackRate}
         options={options}
         startTime={startTime}
         video={src}

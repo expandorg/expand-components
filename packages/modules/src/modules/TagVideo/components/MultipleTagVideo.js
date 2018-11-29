@@ -34,6 +34,7 @@ export default class TagVideo extends Component {
         tag: PropTypes.string,
       })
     ),
+    playbackRate: PropTypes.number,
     options: PropTypes.arrayOf(PropTypes.string),
     startTime: PropTypes.number,
     onChange: PropTypes.func.isRequired,
@@ -42,6 +43,7 @@ export default class TagVideo extends Component {
   static defaultProps = {
     startTime: undefined,
     className: null,
+    playbackRate: 1,
     tags: [],
     options: [],
   };
@@ -109,7 +111,14 @@ export default class TagVideo extends Component {
   };
 
   render() {
-    const { video, className, tags, startTime, options } = this.props;
+    const {
+      video,
+      className,
+      tags,
+      startTime,
+      options,
+      playbackRate,
+    } = this.props;
     const { duration, selected, playing } = this.state;
 
     const editor = selected && !!duration;
@@ -123,6 +132,7 @@ export default class TagVideo extends Component {
           start={selected && selected.start}
           stop={selected && selected.end}
           cursor={!selected}
+          playbackRate={playbackRate}
           onReady={this.handleVideoReady}
           onTogglePlay={this.handleTogglePlay}
           onCursorClick={this.handleCursorClick}

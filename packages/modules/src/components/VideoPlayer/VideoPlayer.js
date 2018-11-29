@@ -17,6 +17,7 @@ export default class VideoPlayer extends Component {
 
     playing: PropTypes.bool,
     cursor: PropTypes.bool,
+    playbackRate: PropTypes.number,
 
     limitFrom: PropTypes.number,
     limitTo: PropTypes.number,
@@ -31,17 +32,33 @@ export default class VideoPlayer extends Component {
     stop: null,
     playing: true,
     cursor: true,
+    playbackRate: 1,
     limitFrom: undefined,
     limitTo: undefined,
     onReady: Function.prototype,
     onCursorClick: Function.prototype,
   };
 
-  state = {
-    duration: 0,
-    rate: 1,
-    seek: 0,
-  };
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      duration: 0,
+      originalRate: props.playbackRate, // eslint-disable-line react/no-unused-state
+      rate: props.playbackRate,
+      seek: 0,
+    };
+  }
+
+  static getDerivedStateFromProps({ playbackRate }, state) {
+    if (playbackRate !== state.originalRate) {
+      return {
+        rate: playbackRate,
+        originalRate: playbackRate,
+      };
+    }
+    return null;
+  }
 
   handleVideoReady = duration => {
     const { onReady } = this.props;

@@ -28,6 +28,7 @@
 | *name*      | string  | true     | -       | module name    |
 | *src*       | string  | true     | -       | video url      |
 | *startTime* | number  | -        | -       | start video from  |
+| *playbackRate* | number [0.5, 1, 2, 4] | -        | 1       | playback rate  |
 | *readOnly*  | boolean | -        | -       | read only    |
 | *initial*   | `{start: 0, end: 10, tag: 'tag name'}` | fal e    | null       | initial value (when readOnly used) |
 | *options*   | `['tag1', 'tag2'...]`  | -        | -       | available tags (tag should be picked with dropdown control)  |

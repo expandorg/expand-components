@@ -22,6 +22,7 @@ export default class SignleTagVideo extends Component {
       end: PropTypes.number.isRequired,
       tag: PropTypes.string,
     }),
+    playbackRate: PropTypes.number,
     readOnly: PropTypes.bool,
     options: PropTypes.arrayOf(PropTypes.string),
     startTime: PropTypes.number,
@@ -31,6 +32,7 @@ export default class SignleTagVideo extends Component {
   static defaultProps = {
     startTime: undefined,
     readOnly: false,
+    playbackRate: 1,
     className: null,
     tag: null,
     options: [],
@@ -77,12 +79,12 @@ export default class SignleTagVideo extends Component {
       readOnly,
       onChange,
       startTime,
+      playbackRate,
       options,
     } = this.props;
     const { duration, playing } = this.state;
 
     const editor = tag && !!duration;
-
     return (
       <div className={cn(styles.container, className)}>
         <VideoPlayer
@@ -90,6 +92,7 @@ export default class SignleTagVideo extends Component {
           playing={playing}
           limitFrom={startTime}
           start={tag && tag.start}
+          playbackRate={playbackRate}
           stop={tag && tag.end}
           cursor={!tag}
           onReady={this.handleVideoReady}
