@@ -18,6 +18,7 @@
 | *name*      | string  | true     | -       | module name    |
 | *src*       | string  | true     | -       | video url      |
 | *startTime* | number  | -        | -       | start video from  |
+| *readOnly*  | boolean | -        | fals    | read only    |
 | *playbackRate* | number [0.5, 1, 2, 4] | -        | 1       | playback rate  |
 | *options*   | `['tag1', 'tag2'...]`  | -        | -       | available tags (tag should be picked with dropdown control)  |
 | *[validation](https://gemsorg.github.io/gems-components/?selectedKind=Form%20Builder&selectedStory=Validation)*  | validtion | - | - | validation rules |

@@ -19,6 +19,7 @@ export default class MultipleTagVideo extends Component {
         tag: PropTypes.string,
       })
     ),
+    readOnly: PropTypes.bool,
     playbackRate: PropTypes.number,
     options: PropTypes.arrayOf(PropTypes.string),
     startTime: PropTypes.number,
@@ -28,6 +29,7 @@ export default class MultipleTagVideo extends Component {
   static defaultProps = {
     value: [],
     options: [],
+    readOnly: false,
     playbackRate: 1,
     startTime: undefined,
   };
@@ -47,6 +49,10 @@ export default class MultipleTagVideo extends Component {
           type: PropControlTypes.string,
           placeholder: 'Video url',
           required: true,
+        },
+        readOnly: {
+          type: PropControlTypes.boolean,
+          label: 'Read only',
         },
         playbackRate: {
           type: PropControlTypes.number,
@@ -70,13 +76,21 @@ export default class MultipleTagVideo extends Component {
   };
 
   render() {
-    const { src, value, startTime, options, playbackRate } = this.props;
+    const {
+      src,
+      value,
+      startTime,
+      options,
+      playbackRate,
+      readOnly,
+    } = this.props;
 
     return (
       <UIMultipleTagVideo
         key={src}
         playbackRate={playbackRate}
         options={options}
+        readOnly={readOnly}
         startTime={startTime}
         video={src}
         tags={value}

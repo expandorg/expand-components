@@ -148,7 +148,7 @@ export default class EditTag extends PureComponent {
         <div className={styles.field}>
           <div className={styles.label}>&nbsp;</div>
           <div className={styles.actions}>
-            {save && (
+            {save && !readOnly && (
               <Button
                 className={styles.button}
                 disabled={readOnly}
@@ -159,13 +159,15 @@ export default class EditTag extends PureComponent {
                 {tag.id ? 'Save' : 'Add'}
               </Button>
             )}
-            <button
-              className={styles.delete}
-              disabled={readOnly}
-              onClick={this.handleClear}
-            >
-              ✕
-            </button>
+            {!readOnly && (
+              <button
+                className={styles.delete}
+                disabled={readOnly}
+                onClick={this.handleClear}
+              >
+                ✕
+              </button>
+            )}
           </div>
         </div>
       </div>

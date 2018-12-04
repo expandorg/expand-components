@@ -35,6 +35,7 @@ export default class TagVideo extends Component {
       })
     ),
     playbackRate: PropTypes.number,
+    readOnly: PropTypes.bool,
     options: PropTypes.arrayOf(PropTypes.string),
     startTime: PropTypes.number,
     onChange: PropTypes.func.isRequired,
@@ -42,6 +43,7 @@ export default class TagVideo extends Component {
 
   static defaultProps = {
     startTime: undefined,
+    readOnly: false,
     className: null,
     playbackRate: 1,
     tags: [],
@@ -63,15 +65,21 @@ export default class TagVideo extends Component {
   };
 
   handleRangeChange = (start, end) => {
-    const { selected } = this.state;
-    this.setState({ selected: { ...selected, start, end } });
+    const { readOnly } = this.props;
+    if (!readOnly) {
+      const { selected } = this.state;
+      this.setState({ selected: { ...selected, start, end } });
+    }
   };
 
   handleCursorClick = start => {
-    const { duration } = this.state;
-    if (duration) {
-      const end = Math.min(start + DEFAULT_SPAN_SEC, duration);
-      this.setState({ selected: { start, end, tag: '' } });
+    const { readOnly } = this.props;
+    if (!readOnly) {
+      const { duration } = this.state;
+      if (duration) {
+        const end = Math.min(start + DEFAULT_SPAN_SEC, duration);
+        this.setState({ selected: { start, end, tag: '' } });
+      }
     }
   };
 
@@ -117,6 +125,7 @@ export default class TagVideo extends Component {
       tags,
       startTime,
       options,
+      readOnly,
       playbackRate,
     } = this.props;
     const { duration, selected, playing } = this.state;
@@ -153,6 +162,7 @@ export default class TagVideo extends Component {
                 <TimelineRangeEdit
                   timelineWidth={width}
                   start={selected.start}
+                  readOnly={readOnly}
                   end={selected.end}
                   duration={duration}
                   limitFrom={startTime}
@@ -170,6 +180,7 @@ export default class TagVideo extends Component {
               duration={duration}
               tag={selected}
               save
+              readOnly={readOnly}
               limitFrom={startTime}
               onChange={this.handleChangeTag}
               onSave={this.handleSaveTag}
