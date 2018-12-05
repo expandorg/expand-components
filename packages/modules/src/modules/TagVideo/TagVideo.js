@@ -23,7 +23,7 @@ export default class TagVideo extends Component {
     }),
     playbackRate: PropTypes.number,
     options: PropTypes.arrayOf(PropTypes.string),
-    startTime: PropTypes.number,
+    startTime: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     onChange: PropTypes.func.isRequired,
   };
 
@@ -99,7 +99,7 @@ export default class TagVideo extends Component {
     return (
       <SignleTagVideo
         key={src}
-        startTime={startTime}
+        startTime={typeof startTime === 'string' ? +startTime : startTime}
         playbackRate={playbackRate}
         video={src}
         readOnly={readOnly}

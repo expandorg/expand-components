@@ -22,7 +22,7 @@ export default class MultipleTagVideo extends Component {
     readOnly: PropTypes.bool,
     playbackRate: PropTypes.number,
     options: PropTypes.arrayOf(PropTypes.string),
-    startTime: PropTypes.number,
+    startTime: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     onChange: PropTypes.func.isRequired,
   };
 
@@ -91,7 +91,7 @@ export default class MultipleTagVideo extends Component {
         playbackRate={playbackRate}
         options={options}
         readOnly={readOnly}
-        startTime={startTime}
+        startTime={typeof startTime === 'string' ? +startTime : startTime}
         video={src}
         tags={value}
         onChange={this.handleChange}
