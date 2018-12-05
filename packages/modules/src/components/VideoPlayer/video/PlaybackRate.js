@@ -7,7 +7,7 @@ const rates = [4, 2, 1, 0.5];
 
 export default class PlaybackRate extends PureComponent {
   static propTypes = {
-    rate: PropTypes.bool.isRequired,
+    rate: PropTypes.number.isRequired,
     onChange: PropTypes.func.isRequired,
   };
 

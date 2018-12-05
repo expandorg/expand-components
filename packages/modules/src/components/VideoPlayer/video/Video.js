@@ -32,12 +32,9 @@ export default class VideoPreview extends Component {
 
   playerRef = createRef();
 
-  componentDidMount() {
-    const { start } = this.props;
-    if (start) {
-      this.playerRef.current.seekTo(start);
-    }
-  }
+  // componentDidMount() {
+  //
+  // }
 
   componentDidUpdate({ start: prevStart, stop: prevStop }) {
     const { stop, start } = this.props;
@@ -51,7 +48,12 @@ export default class VideoPreview extends Component {
   }
 
   handleReady = () => {
+    const { start } = this.props;
+
     this.setState({ canPlay: true });
+    if (start) {
+      this.playerRef.current.seekTo(start);
+    }
   };
 
   handleDuration = duration => {
