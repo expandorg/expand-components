@@ -27,6 +27,10 @@ const inputMeta: ModuleControlMeta = {
         type: PropControlTypes.string,
         placeholder: 'Placeholder',
       },
+      initial: {
+        type: PropControlTypes.string,
+        placeholder: 'Default value',
+      },
       label: {
         type: PropControlTypes.string,
         placeholder: 'Label',

@@ -20,32 +20,41 @@ export default class Input extends Component {
     placeholder: PropTypes.string,
     label: PropTypes.string,
     value: PropTypes.string,
+    initial: PropTypes.string,
     onChange: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
     inputType: 'text',
     value: '',
+    initial: null,
     label: null,
     placeholder: '',
   };
 
   static module = inputMeta;
 
+  state = { touched: false };
+
   handleChange = ({ target }) => {
     const { name, onChange } = this.props;
+    this.setState({ touched: true });
     onChange(name, target.value);
   };
 
   render() {
-    const { inputType, placeholder, label, value } = this.props;
+    const { inputType, placeholder, label, value, initial } = this.props;
+    const { touched } = this.state;
+
+    const val = !value && !touched && initial ? initial : value;
+
     return (
       <Label className={styles.label} label={label}>
         <UIInput
           type={inputType}
           className={styles.input}
           onChange={this.handleChange}
-          value={value}
+          value={val}
           autoComplete="off"
           placeholder={placeholder}
         />
