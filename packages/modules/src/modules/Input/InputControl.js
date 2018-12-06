@@ -26,7 +26,7 @@ export default class Input extends Component {
 
   static defaultProps = {
     inputType: 'text',
-    value: '',
+    value: undefined,
     initial: null,
     label: null,
     placeholder: '',
@@ -35,6 +35,29 @@ export default class Input extends Component {
   static module = inputMeta;
 
   state = { touched: false };
+
+  componentDidMount() {
+    const { name, value, initial, onChange } = this.props;
+
+    if (initial && value === undefined) {
+      onChange(name, initial);
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    const { name, value, initial, onChange } = this.props;
+
+    const { touched } = this.state;
+
+    if (
+      !touched &&
+      value === undefined &&
+      prevProps.initial !== initial &&
+      initial
+    ) {
+      onChange(name, initial);
+    }
+  }
 
   handleChange = ({ target }) => {
     const { name, onChange } = this.props;
