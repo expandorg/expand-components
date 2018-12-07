@@ -1,6 +1,6 @@
 {
   "name": "@gemsorg/modules",
-  "version": "0.1.25",
+  "version": "0.1.26",
   "description": "gems modules",
   "main": "index.js",
   "repository": {
