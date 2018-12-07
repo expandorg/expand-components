@@ -15,8 +15,23 @@ const validateModule = (module: Object) => {
   }
 };
 
+const createCompiler = (source: string) => {
+  /* eslint-disable no-new-func */
+  const fn = new Function(`
+    return function() {
+      var result = ${source}
+      return result;
+    }
+  `);
+  return fn();
+};
+
 export const compileForm = (source: string) => {
-  const { modules } = JSON.parse(source);
+  const compiler = createCompiler(source);
+
+  // $FlowFixMe
+  const { modules } = compiler();
+
   if (!modules || !Array.isArray(modules)) {
     throw new Error('modules (Arra<Module>) is required');
   }

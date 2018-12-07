@@ -20,6 +20,7 @@ export default class MultipleTagVideo extends Component {
       })
     ),
     readOnly: PropTypes.bool,
+    hideControls: PropTypes.bool,
     playbackRate: PropTypes.number,
     options: PropTypes.arrayOf(PropTypes.string),
     startTime: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
@@ -30,6 +31,7 @@ export default class MultipleTagVideo extends Component {
     value: [],
     options: [],
     readOnly: false,
+    hideControls: false,
     playbackRate: 1,
     startTime: undefined,
   };
@@ -53,6 +55,10 @@ export default class MultipleTagVideo extends Component {
         readOnly: {
           type: PropControlTypes.boolean,
           label: 'Read only',
+        },
+        hideControls: {
+          type: PropControlTypes.boolean,
+          label: 'Hide controls',
         },
         playbackRate: {
           type: PropControlTypes.number,
@@ -83,6 +89,7 @@ export default class MultipleTagVideo extends Component {
       options,
       playbackRate,
       readOnly,
+      hideControls,
     } = this.props;
 
     return (
@@ -91,6 +98,7 @@ export default class MultipleTagVideo extends Component {
         playbackRate={playbackRate}
         options={options}
         readOnly={readOnly}
+        hideControls={hideControls}
         startTime={typeof startTime === 'string' ? +startTime : startTime}
         video={src}
         tags={value}

@@ -23,6 +23,7 @@ export default class SignleTagVideo extends Component {
       tag: PropTypes.string,
     }),
     playbackRate: PropTypes.number,
+    hideControls: PropTypes.bool,
     readOnly: PropTypes.bool,
     options: PropTypes.arrayOf(PropTypes.string),
     startTime: PropTypes.number,
@@ -32,6 +33,7 @@ export default class SignleTagVideo extends Component {
   static defaultProps = {
     startTime: undefined,
     readOnly: false,
+    hideControls: false,
     playbackRate: 1,
     className: null,
     tag: null,
@@ -80,6 +82,7 @@ export default class SignleTagVideo extends Component {
       onChange,
       startTime,
       playbackRate,
+      hideControls,
       options,
     } = this.props;
     const { duration, playing } = this.state;
@@ -114,22 +117,24 @@ export default class SignleTagVideo extends Component {
             )
           }
         </VideoPlayer>
-        <div className={styles.tag}>
-          {tag && (
-            <EditTag
-              readOnly={readOnly}
-              options={options}
-              duration={duration}
-              tag={tag}
-              limitFrom={startTime}
-              onChange={onChange}
-              onSave={onChange}
-            />
-          )}
-          {!tag && !!duration && (
-            <div className={styles.placeholder}>Pick start time</div>
-          )}
-        </div>
+        {!(readOnly && hideControls) && (
+          <div className={styles.tag}>
+            {tag && (
+              <EditTag
+                readOnly={readOnly}
+                options={options}
+                duration={duration}
+                tag={tag}
+                limitFrom={startTime}
+                onChange={onChange}
+                onSave={onChange}
+              />
+            )}
+            {!tag && !!duration && (
+              <div className={styles.placeholder}>Pick start time</div>
+            )}
+          </div>
+        )}
       </div>
     );
   }

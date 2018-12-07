@@ -36,6 +36,7 @@ export default class TagVideo extends Component {
     ),
     playbackRate: PropTypes.number,
     readOnly: PropTypes.bool,
+    hideControls: PropTypes.bool,
     options: PropTypes.arrayOf(PropTypes.string),
     startTime: PropTypes.number,
     onChange: PropTypes.func.isRequired,
@@ -44,6 +45,7 @@ export default class TagVideo extends Component {
   static defaultProps = {
     startTime: undefined,
     readOnly: false,
+    hideControls: false,
     className: null,
     playbackRate: 1,
     tags: [],
@@ -126,6 +128,7 @@ export default class TagVideo extends Component {
       startTime,
       options,
       readOnly,
+      hideControls,
       playbackRate,
     } = this.props;
     const { duration, selected, playing } = this.state;
@@ -173,30 +176,34 @@ export default class TagVideo extends Component {
             </Fragment>
           )}
         </VideoPlayer>
-        <div className={styles.tag}>
-          {selected && (
-            <EditTag
-              options={options}
-              duration={duration}
-              tag={selected}
-              save
-              readOnly={readOnly}
-              limitFrom={startTime}
-              onChange={this.handleChangeTag}
-              onSave={this.handleSaveTag}
-            />
-          )}
-          {!selected && !!duration && (
-            <div className={styles.placeholder}>Pick start time</div>
-          )}
-        </div>
-        <div className={styles.tags}>
-          <Tags
-            tags={tags}
-            onDelete={this.handleDeleteTag}
-            onSelect={this.handleSelectTag}
-          />
-        </div>
+        {!(readOnly && hideControls) && (
+          <>
+            <div className={styles.tag}>
+              {selected && (
+                <EditTag
+                  options={options}
+                  duration={duration}
+                  tag={selected}
+                  save
+                  readOnly={readOnly}
+                  limitFrom={startTime}
+                  onChange={this.handleChangeTag}
+                  onSave={this.handleSaveTag}
+                />
+              )}
+              {!selected && !!duration && (
+                <div className={styles.placeholder}>Pick start time</div>
+              )}
+            </div>
+            <div className={styles.tags}>
+              <Tags
+                tags={tags}
+                onDelete={this.handleDeleteTag}
+                onSelect={this.handleSelectTag}
+              />
+            </div>
+          </>
+        )}
       </div>
     );
   }
