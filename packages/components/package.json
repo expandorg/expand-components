@@ -22,12 +22,12 @@
     "prop-types": "^15.0.0",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
-    "react-spring": "^6.0.0"
+    "react-spring": "^7.0.0"
   },
   "dependencies": {
     "@gemsorg/uikit": "^0.1.2",
     "clipboard": "^2.0.4",
-    "date-fns": "^1.29.0",
-    "react-modal": "^3.6.1"
+    "date-fns": "^1.30.1",
+    "react-modal": "^3.7.1"
   }
 }

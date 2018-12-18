@@ -7,14 +7,26 @@ module.exports = (storybookBaseConfig, configType) => {
     test: /\.css$/,
     use: [
       'style-loader',
-      'css-loader?sourceMap&importLoaders=2',
+      {
+        loader: 'css-loader',
+        options: {
+          sourceMap: true,
+          importLoaders: 2,
+        },
+      },
       'postcss-loader?sourceMap'
     ]
   },{
     test: /^((?!\.module).)*\.styl$/,
     use: [
       'style-loader',
-      'css-loader?sourceMap&importLoaders=2',
+      {
+        loader:  'css-loader',
+        options: {
+          sourceMap: true,
+          importLoaders: 2,
+        },
+      },
       'postcss-loader?sourceMap',
       'stylus-loader?paths[]=src',
     ],
@@ -24,7 +36,15 @@ module.exports = (storybookBaseConfig, configType) => {
     test: /\.module\.styl$/,
     use: [
       'style-loader',
-      `css-loader?sourceMap&importLoaders=2&modules&localIdentName=${dev ? '[local]__[path][name]__' : ''}[hash:base64:5]`,
+      {
+        loader: `css-loader`,
+        options: {
+          sourceMap: true,
+          importLoaders: 2,
+          modules: true,
+          localIdentName: `${dev ? '[local]__[path][name]__' : ''}[hash:base64:5]`
+        },
+      },
       'postcss-loader?sourceMap',
       'stylus-loader?paths[]=src',
     ],
