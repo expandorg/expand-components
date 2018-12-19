@@ -39,6 +39,7 @@ export default class MultipleTagVideo extends Component {
   static module = {
     type: 'multipleTagVideo',
     name: 'Video Tagging (multiple)',
+    isInput: true,
     validation: {
       isRequired: rules.isRequiredArray,
       isNotEmpty: rules.isRequiredArray,

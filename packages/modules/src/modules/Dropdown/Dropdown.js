@@ -35,6 +35,7 @@ export default class Dropdown extends Component {
   static module = {
     type: 'dropdown',
     name: 'Dropdown',
+    isInput: true,
     validation: {
       isRequired: rules.isRequired,
       isNotEmpty: rules.isNotEmpty,

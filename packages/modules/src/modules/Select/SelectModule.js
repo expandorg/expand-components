@@ -34,6 +34,7 @@ export default class SelectModule extends Component {
   static module = {
     type: 'select',
     name: 'Select',
+    isInput: true,
     validation: {
       isRequired: rules.isRequired,
       isNotEmpty: rules.isNotEmpty,

@@ -37,6 +37,7 @@ export default class MultiSelectModule extends Component {
   static module = {
     type: 'multiselect',
     name: 'Select (multiple)',
+    isInput: true,
     validation: {
       isRequired: rules.isRequiredArray,
       isNotEmpty: rules.isRequiredArray,

@@ -25,6 +25,7 @@ export default class Checkbox extends Component {
   static module = {
     type: 'checkbox',
     name: 'Checkbox',
+    isInput: true,
     validation: {
       isTrue: rules.isTrue,
     },

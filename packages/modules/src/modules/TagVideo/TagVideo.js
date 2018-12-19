@@ -41,6 +41,7 @@ export default class TagVideo extends Component {
   static module = {
     type: 'tagVideo',
     name: 'Video Tagging',
+    isInput: true,
     validation: {
       isRequired: value => {
         if (!value) {

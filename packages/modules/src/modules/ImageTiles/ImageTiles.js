@@ -29,6 +29,7 @@ export default class ImageTiles extends Component {
   static module = {
     type: 'imageTiles',
     name: 'Image Tiles',
+    isInput: true,
     validation: {
       isRequired: rules.isRequiredArray,
       isNotEmpty: rules.isRequiredArray,

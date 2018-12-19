@@ -40,6 +40,7 @@ export default class RegionSelect extends Component {
   static module = {
     type: 'regionSelect',
     name: 'Image Region Select',
+    isInput: true,
     validation: {
       isRequired: rules.isRequired,
       isNotEmpty: rules.isNotEmpty,

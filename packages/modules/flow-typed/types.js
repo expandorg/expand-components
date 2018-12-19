@@ -39,6 +39,7 @@ declare type ModuleControlMeta = {
   description?: string,
   previewUrl?: string,
   report?: Array<string>,
+  isInput?: boolean,
   validation?:  {
     [validatorName: string]: (value: any) => bool
   },

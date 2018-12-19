@@ -7,6 +7,7 @@ import ModuleCategories from '../../form/Form/ModuleCategories';
 
 const inputMeta: ModuleControlMeta = {
   report: ['Unable to fill field'],
+  isInput: true,
   validation: {
     isRequired: rules.isRequired,
     isNotEmpty: rules.isNotEmpty,

@@ -51,6 +51,7 @@ export default class RegionMultiselect extends Component {
   static module = {
     type: 'regionMultiselect',
     name: 'Image Region Multiselect',
+    isInput: true,
     report: ['Image is not loading'],
     validation: {
       isRequired: rules.isRequiredArray,
