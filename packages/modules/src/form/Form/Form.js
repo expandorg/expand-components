@@ -50,12 +50,16 @@ export default class Form extends Component {
     };
   }
 
-  componentWillReceiveProps({ form: nextForm, variables, errors: nextErrors }) {
-    const { errors, form } = this.props;
-    if (form !== nextForm) {
+  componentWillReceiveProps({
+    form: nextForm,
+    variables: nextVars,
+    errors: nextErrors,
+  }) {
+    const { errors, form, variables } = this.props;
+    if (form !== nextForm || variables !== nextVars) {
       this.setState({
         values: null,
-        form: overrideFormVars(nextForm, variables),
+        form: overrideFormVars(nextForm, nextVars),
       });
     }
     if (nextErrors && nextErrors !== errors) {
