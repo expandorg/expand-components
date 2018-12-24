@@ -3,12 +3,15 @@ import debounce from 'debounce';
 
 const RESIZE_DEBOUNCE = 200;
 
-export default function windowResize(Wrapped) {
+export default function windowResize(
+  Wrapped,
+  debounceInterval = RESIZE_DEBOUNCE
+) {
   return class extends Component {
     constructor(props) {
       super(props);
 
-      this.handleResize = debounce(this.handleResize, RESIZE_DEBOUNCE);
+      this.handleResize = debounce(this.handleResize, debounceInterval);
       this.wrap = createRef();
     }
 
