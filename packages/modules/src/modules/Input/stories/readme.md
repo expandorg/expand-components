@@ -4,7 +4,8 @@
 ## Example
 ```jsx
 {
-  name: 'text',
+  name: 'input',
+  inputType: 'text',
   type: 'text',
   placeholder: 'Simple text module',
 }
@@ -14,7 +15,8 @@
 
 | Property       | type           | Required | Default | description |
 | -------------- | -------------- | -------- | ------- | ----------- |
-| *type*         | `text` `number` `email` `password`     | true     | -       | module type  |
+| *type*         | `input`     | true     | -       | module type  |
+| *inputType*         | `text` `number` `email` `password`     | true     | `text`       | input type  |
 | *name*         | string         | true     | -       | module name  |
 | *placeholder*  | string         | -        | -       | input placeholder  |
 | *label*        | string         | -        | -       | text label  |

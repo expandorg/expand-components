@@ -3,7 +3,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 
 import { Panel, Markdown } from '@gemsorg/uikit/stories/kit';
-import Playground from '../../../form/stories/Playground/Playground'
+import Playground from '../../../form/stories/Playground/Playground';
 
 import readme from './readme.md';
 
@@ -11,24 +11,28 @@ const form = {
   modules: [
     {
       name: 'text',
-      type: 'text',
+      type: 'input',
+      inputType: 'text',
       label: 'Label',
       placeholder: 'Simple text',
     },
     {
       name: 'password',
-      type: 'password',
+      type: 'input',
+      inputType: 'password',
       label: 'Password',
       placeholder: 'Password',
     },
     {
       name: 'number',
-      type: 'number',
+      type: 'input',
+      inputType: 'number',
       placeholder: 'Number',
     },
     {
       name: 'email',
-      type: 'email',
+      type: 'input',
+      inputType: 'email',
       placeholder: 'Email',
     },
     {
@@ -39,7 +43,7 @@ const form = {
   ],
 };
 
-storiesOf('Form Builder/Modules', module).add('Input Modules', () => (
+storiesOf('Form Builder/Modules', module).add('Input', () => (
   <Panel>
     <Markdown doc={readme} />
     <Playground form={form} editMode="edit" />

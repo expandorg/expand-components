@@ -5,13 +5,12 @@ import { rules } from '@gemsorg/validation';
 
 import { Input as UIInput } from '@gemsorg/components';
 
+import PropControlTypes from '../../form/Form/PropControlTypes';
+import ModuleCategories from '../../form/Form/ModuleCategories';
+
 import Label from '../../components/Label';
 
-import inputMeta from './inputMeta';
-
 import styles from './Input.module.styl';
-
-// type: ['text', 'number', 'email', 'password'],
 
 export default class Input extends Component {
   static propTypes = {
@@ -32,7 +31,51 @@ export default class Input extends Component {
     placeholder: '',
   };
 
-  static module = inputMeta;
+  static module = {
+    type: 'input',
+    name: 'Input',
+    report: ['Unable to fill field'],
+    isInput: true,
+    validation: {
+      isRequired: rules.isRequired,
+      isNotEmpty: rules.isNotEmpty,
+      isEmail: rules.isEmail,
+      isNumber: rules.isNumber,
+    },
+    verificationScore: value => {
+      const numeric = +value;
+      if (Number.isNaN(numeric)) {
+        return 0;
+      }
+      return Math.min(Math.max(numeric, 0), 1);
+    },
+    editor: {
+      category: ModuleCategories.Input,
+      properties: {
+        inputType: {
+          type: PropControlTypes.enum,
+          label: 'Input type',
+          options: ['text', 'email', 'password', 'number', 'date'],
+          default: 'text',
+        },
+        placeholder: {
+          type: PropControlTypes.string,
+          placeholder: 'Placeholder',
+        },
+        initial: {
+          type: PropControlTypes.string,
+          placeholder: 'Default value',
+        },
+        label: {
+          type: PropControlTypes.string,
+          placeholder: 'Label',
+        },
+      },
+      defaults: {
+        placeholder: 'some text...',
+      },
+    },
+  };
 
   state = { touched: false };
 

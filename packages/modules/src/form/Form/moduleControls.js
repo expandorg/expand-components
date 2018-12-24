@@ -1,11 +1,6 @@
 // @flow
 
-import {
-  NumberInput,
-  TextInput,
-  EmailInput,
-  PasswordInput,
-} from '../../modules/Input';
+import Input from '../../modules/Input';
 import { Instructions, InstructionsItem } from '../../modules/Instructions';
 import Submit from '../../modules/Submit';
 import Article from '../../modules/Article';
@@ -54,10 +49,7 @@ export const groupModulesByCategory = (controls: Array<Object>) => {
 };
 
 const moduleControls = [
-  NumberInput,
-  TextInput,
-  EmailInput,
-  PasswordInput,
+  Input,
   Title,
   Article,
   Paragraph,
