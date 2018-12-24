@@ -33,12 +33,7 @@ import {
 import Image from './src/modules/Image';
 import ImageTiles from './src/modules/ImageTiles';
 
-import {
-  NumberInput,
-  TextInput,
-  EmailInput,
-  PasswordInput,
-} from './src/modules/Input';
+import Input from './src/modules/Input';
 
 import { Instructions, InstructionsItem } from './src/modules/Instructions';
 
@@ -63,6 +58,7 @@ import {
 
 import Submit from './src/modules/Submit';
 
+import { Text, RichText } from './src/modules/Text';
 import Title from './src/modules/Title';
 import { TagVideo, MultipleTagVideo } from './src/modules/TagVideo';
 
@@ -97,10 +93,7 @@ export {
   ModuleCategories,
   Image,
   ImageTiles,
-  NumberInput,
-  TextInput,
-  EmailInput,
-  PasswordInput,
+  Input,
   Instructions,
   InstructionsItem,
   Label,
@@ -123,6 +116,8 @@ export {
   SelectModule,
   Submit,
   Title,
+  Text,
+  RichText,
   TagVideo,
   MultipleTagVideo,
   Validation,

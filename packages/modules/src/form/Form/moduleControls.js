@@ -5,6 +5,7 @@ import { Instructions, InstructionsItem } from '../../modules/Instructions';
 import Submit from '../../modules/Submit';
 import Article from '../../modules/Article';
 import Title from '../../modules/Title';
+import { Text, RichText } from '../../modules/Text';
 import Paragraph from '../../modules/Paragraph';
 import { SelectModule, MultiSelectModule } from '../../modules/Select';
 import Checkbox from '../../modules/Checkbox';
@@ -51,6 +52,8 @@ export const groupModulesByCategory = (controls: Array<Object>) => {
 const moduleControls = [
   Input,
   Title,
+  Text,
+  RichText,
   Article,
   Paragraph,
   SelectModule,

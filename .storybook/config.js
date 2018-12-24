@@ -47,6 +47,7 @@ configure(() => {
   require('../packages/modules/src/modules/ImageTiles/stories/index.stories');
   require('../packages/modules/src/modules/Select/stories/Select.stories');
   require('../packages/modules/src/modules/Submit/stories/index.stories');
+  require('../packages/modules/src/modules/Text/stories/index.stories');
   require('../packages/modules/src/modules/Title/stories/index.stories');
   require('../packages/modules/src/modules/TagVideo/stories/TagVideo.stories');
   require('../packages/modules/src/modules/TagVideo/stories/MultipleTagVideo.stories');
