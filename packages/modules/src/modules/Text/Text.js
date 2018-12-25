@@ -10,13 +10,25 @@ import styles from './Text.module.styl';
 export default class Text extends Component {
   static propTypes = {
     content: PropTypes.string.isRequired,
-    style: PropTypes.oneOf(['body', 'h1']),
+    style: PropTypes.oneOf([
+      'h1',
+      'h2',
+      'h3',
+      'h4',
+      'pre',
+      'body',
+      'title',
+      'description',
+      'question',
+    ]),
     align: PropTypes.oneOf(['left', 'center', 'right']),
+    color: PropTypes.oneOf(['blue', 'black']),
   };
 
   static defaultProps = {
     style: 'body',
     align: 'left',
+    color: 'black',
   };
 
   static module = {
@@ -28,7 +40,16 @@ export default class Text extends Component {
         style: {
           type: PropControlTypes.enum,
           label: 'Style',
-          options: ['h1', 'h2', 'h3', 'h4', 'pre', 'body'],
+          options: [
+            'h1',
+            'h2',
+            'h3',
+            'h4',
+            'pre',
+            'body',
+            'description',
+            'question',
+          ],
           default: 'body',
           required: true,
         },
@@ -44,10 +65,18 @@ export default class Text extends Component {
           default: 'left',
           required: true,
         },
+        color: {
+          type: PropControlTypes.enum,
+          label: 'Text Color',
+          options: ['black', 'blue'],
+          default: 'black',
+          required: true,
+        },
       },
       defaults: {
         align: 'left',
         style: 'body',
+        color: 'black',
         content:
           'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor',
       },
@@ -55,8 +84,13 @@ export default class Text extends Component {
   };
 
   render() {
-    const { content, align, style } = this.props;
-    const classes = cn(styles.text, styles[style], styles[align]);
+    const { content, align, style, color } = this.props;
+    const classes = cn(
+      styles.text,
+      styles[style],
+      styles[color],
+      styles[align]
+    );
     /* eslint-disable react/no-danger */
     return (
       <div className={classes} dangerouslySetInnerHTML={{ __html: content }} />

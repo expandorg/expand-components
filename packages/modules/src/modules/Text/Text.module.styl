@@ -1,6 +1,10 @@
+@import '~@gemsorg/uikit/colors'
+@import '~@gemsorg/uikit/consts'
+
 .text
   font-size: 16px
   font-weight: 400
+  color: color-text-1
 
   &.center
     text-align: center;
@@ -23,3 +27,28 @@
   &.h4
     font-size: 16px
     font-weight: 500
+
+  &.title
+    font-size: 25px
+    font-weight: 600;
+    line-height: 1.2
+
+  &.description
+    font-size: 20px;
+    line-height: 24px;
+
+    &.center
+      margin: s-margin-big auto;
+      max-width: 800px;
+
+      @media(max-width: 660px)
+        margin: s-margin-medium auto;
+        padding: 0 s-margin-medium
+
+  &.question
+    font-size: 16px
+    font-weight: 600
+    line-height: 24px;
+
+  &.blue
+    color: color-blue

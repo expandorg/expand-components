@@ -58,7 +58,9 @@ import {
 
 import Submit from './src/modules/Submit';
 
-import { Text, RichText } from './src/modules/Text';
+import Text from './src/modules/Text';
+import RichText from './src/modules/RichText';
+
 import Title from './src/modules/Title';
 import { TagVideo, MultipleTagVideo } from './src/modules/TagVideo';
 
