@@ -11,6 +11,7 @@ import Collapsable from './src/modules/Collapsable';
 import ClipboardText from './src/modules/ClipboardText';
 
 import Description from './src/modules/Description';
+import Dropdown from './src/modules/Dropdown';
 
 import {
   Form,
@@ -83,6 +84,7 @@ export {
   ClipboardText,
   Collapsable,
   Description,
+  Dropdown,
   Form,
   FormContext,
   FormData,
