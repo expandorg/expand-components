@@ -24,7 +24,7 @@ export default class Submit extends Component {
 
   static module = {
     type: 'submit',
-    name: 'Submit buttom',
+    name: 'Submit button',
     editor: {
       category: ModuleCategories.Input,
       properties: {
