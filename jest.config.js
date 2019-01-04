@@ -1,6 +1,6 @@
 module.exports = {
   setupFiles: ['<rootDir>/scripts/jest.setup.js'],
-  transformIgnorePatterns: ['/node_modules/(?!(@gemsorg)/).*/'],
+  transformIgnorePatterns: ['/node_modules/(?!(@expandorg)/).*/'],
   moduleDirectories: ['node_modules'],
   transform: {
     '^.+\\.js$': 'babel-jest',

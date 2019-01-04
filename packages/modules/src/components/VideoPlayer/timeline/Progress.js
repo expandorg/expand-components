@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { Tooltip } from '@gemsorg/components';
+import { Tooltip } from '@expandorg/components';
 
 import styles from './Progress.module.styl';
 

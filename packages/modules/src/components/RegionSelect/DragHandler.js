@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { Draggable } from '@gemsorg/components';
+import { Draggable } from '@expandorg/components';
 
 export default class DragHandler extends Component {
   static propTypes = {

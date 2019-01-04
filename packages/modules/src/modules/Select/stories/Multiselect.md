@@ -31,6 +31,6 @@
 | *options*      | `[ { id, caption, valie, hint }, { id, caption, value, hint }... ]`   | true   | -     | array of options   |
 | *readOnly*     | boolean        | false    | -       | read only    |
 | *order*        | boolean        | false    | -       | consider the order of answers  |
-| *[validation](https://gemsorg.github.io/gems-components/?selectedKind=Form%20Builder&selectedStory=Validation)*  | validtion | - | - | validation rules |
+| *[validation](https://expandorg.github.io/expand-components/?selectedKind=Form%20Builder&selectedStory=Validation)*  | validtion | - | - | validation rules |
 
 ## Playground

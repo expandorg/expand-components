@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { rules } from '@gemsorg/validation';
+import { rules } from '@expandorg/validation';
 
 import Alignment from '../../components/Alignment';
 import { ImageRegionSelect } from '../../components/RegionSelect';
@@ -60,7 +60,7 @@ export default class RegionSelect extends Component {
         },
       },
       defaults: {
-        image: 'https://portal.gems.org/images/complete-tasks.png',
+        image: 'https://portal.expand.org/images/complete-tasks.png',
       },
     },
   };

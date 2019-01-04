@@ -5,9 +5,9 @@ import { action } from '@storybook/addon-actions';
 
 import { withKnobs, boolean } from '@storybook/addon-knobs/react';
 
-import { Kind, panelDecorator, Markdown } from '@gemsorg/uikit/stories/kit';
+import { Kind, panelDecorator, Markdown } from '@expandorg/uikit/stories/kit';
 
-import styles from '@gemsorg/uikit/stories/styles.module.styl';
+import styles from '@expandorg/uikit/stories/styles.module.styl';
 
 import Button from '../Button';
 

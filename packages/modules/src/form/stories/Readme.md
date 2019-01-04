@@ -5,7 +5,7 @@ Dynamic extensible JSON powered form library for React.
 ## Basic Usage
 
 ```jsx
-import { Form, Module } from '@gemsorg/components/modules';
+import { Form, Module } from '@expandorg/components/modules';
 
 const form = {
   modules: []
@@ -83,7 +83,7 @@ Most simple way to add custom module to form builder is overriding `controls` pr
 
 ```jsx
 import React from 'react';
-import { Form, Module, moduleControls } from '@gemsorg/components/modules';
+import { Form, Module, moduleControls } from '@expandorg/components/modules';
 
 // your custom component
 class MyInputModule extends Component {

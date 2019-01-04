@@ -2,8 +2,8 @@ import React, { Component, createRef } from 'react';
 import PropTypes from 'prop-types';
 import cn from 'classnames';
 
-import { Textarea } from '@gemsorg/components';
-import { KeyCodes } from '@gemsorg/components/src/common/dom';
+import { Textarea } from '@expandorg/components';
+import { KeyCodes } from '@expandorg/components/src/common/dom';
 
 import styles from './CodeEditor.module.styl';
 

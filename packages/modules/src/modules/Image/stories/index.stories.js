@@ -2,7 +2,7 @@ import React from 'react';
 
 import { storiesOf } from '@storybook/react';
 
-import { Panel, Markdown } from '@gemsorg/uikit/stories/kit';
+import { Panel, Markdown } from '@expandorg/uikit/stories/kit';
 import Playground from '../../../form/stories/Playground/Playground'
 
 import readme from './readme.md';
@@ -12,7 +12,7 @@ const form = {
     {
       name: 'image',
       type: 'image',
-      src: 'https://portal.gems.org/images/complete-tasks.png',
+      src: 'https://portal.expand.org/images/complete-tasks.png',
     },
     {
       name: 'submit',

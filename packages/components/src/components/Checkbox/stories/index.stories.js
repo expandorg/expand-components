@@ -8,7 +8,7 @@ import {
   panelDecorator,
   asUncontrolled,
   Markdown,
-} from '@gemsorg/uikit/stories/kit';
+} from '@expandorg/uikit/stories/kit';
 
 import ControlledCheckbox from '../Checkbox';
 

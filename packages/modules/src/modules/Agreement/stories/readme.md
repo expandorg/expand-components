@@ -27,6 +27,6 @@
 | *button*     | string         | -        | -       | Button title |
 | *headline*   | string         | -        | -       | Dialog headline |
 | *content*    | string         | -        | -       | Dialog content |
-| *[validation](https://gemsorg.github.io/gems-components/?selectedKind=Form%20Builder&selectedStory=Validation)*  | validtion | - | - | validation rules |
+| *[validation](https://expandorg.github.io/expand-components/?selectedKind=Form%20Builder&selectedStory=Validation)*  | validtion | - | - | validation rules |
 
 ## Playground

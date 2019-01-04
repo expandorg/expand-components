@@ -7,9 +7,9 @@ import {
   panelDecorator,
   Toggle,
   Markdown,
-} from '@gemsorg/uikit/stories/kit';
+} from '@expandorg/uikit/stories/kit';
 
-import styles from '@gemsorg/uikit/stories/styles.module.styl';
+import styles from '@expandorg/uikit/stories/styles.module.styl';
 import { ToastAnimated } from '../index';
 
 import readme from './readme.md';

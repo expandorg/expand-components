@@ -3,11 +3,11 @@ import React from 'react';
 import LinkTo from '@storybook/addon-links/react';
 import { storiesOf } from '@storybook/react';
 
-import panelDecorator from '@gemsorg/uikit/stories/kit/panelDecorator';
-import Kind from '@gemsorg/uikit/stories/kit/Kind';
-import Markdown from '@gemsorg/uikit/stories/kit/Markdown';
+import panelDecorator from '@expandorg/uikit/stories/kit/panelDecorator';
+import Kind from '@expandorg/uikit/stories/kit/Kind';
+import Markdown from '@expandorg/uikit/stories/kit/Markdown';
 
-import styles from '@gemsorg/uikit/stories/styles.module.styl';
+import styles from '@expandorg/uikit/stories/styles.module.styl';
 
 import readme from './Readme.md';
 
@@ -27,7 +27,7 @@ storiesOf('UI Components', module)
   .addDecorator(panelDecorator)
   .add('Readme', () => (
     <div>
-      <Kind title="Gems UI components">
+      <Kind title="Expand UI components">
         {components.map(component => (
           <LinkTo
             key={component}

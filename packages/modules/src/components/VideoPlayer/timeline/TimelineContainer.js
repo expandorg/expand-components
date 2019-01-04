@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import debounce from 'debounce';
 
-import { getMousePosition } from '@gemsorg/components/src/common/dom';
+import { getMousePosition } from '@expandorg/components/src/common/dom';
 
 const RESIZE_DEBOUNCE = 200;
 

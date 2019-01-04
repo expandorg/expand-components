@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { ErrorMessage } from '@gemsorg/components';
+import { ErrorMessage } from '@expandorg/components';
 
 import styles from './Validation.module.styl';
 

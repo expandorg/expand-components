@@ -19,6 +19,6 @@
 | *image*  | string         | true     | -       | image url   |
 | *columns* | number        | -        | 4       | number of columns   |
 | *rows*  | number          | -        | 4       | number of rows   |
-| *[validation](https://gemsorg.github.io/gems-components/?selectedKind=Form%20Builder&selectedStory=Validation)*  | validtion | - | - | validation rules |
+| *[validation](https://expandorg.github.io/expand-components/?selectedKind=Form%20Builder&selectedStory=Validation)*  | validtion | - | - | validation rules |
 
 ## Playground

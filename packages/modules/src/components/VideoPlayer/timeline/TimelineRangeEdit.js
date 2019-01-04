@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { Draggable, Tooltip } from '@gemsorg/components';
+import { Draggable, Tooltip } from '@expandorg/components';
 
 import { formatTime } from '../utils/timeStrings';
 import { pxToTime, timeToPx } from '../utils/timeline';

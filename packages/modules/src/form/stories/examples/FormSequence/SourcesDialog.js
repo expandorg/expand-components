@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { Dialog, Button, DialogHeadline } from '@gemsorg/components';
+import { Dialog, Button, DialogHeadline } from '@expandorg/components';
 
 import { formProps } from '../../../Form';
 import CodeEditor from '../../Playground/editor/CodeEditor';

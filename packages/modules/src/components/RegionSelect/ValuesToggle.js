@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { Switch as UISwitch, Tooltip } from '@gemsorg/components';
+import { Switch as UISwitch, Tooltip } from '@expandorg/components';
 
 const Switch = Tooltip(UISwitch);
 

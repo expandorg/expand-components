@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { rules } from '@gemsorg/validation';
+import { rules } from '@expandorg/validation';
 import Alignment from '../../components/Alignment';
 
 import { ImageTiles as UIImageTiles } from '../../components/ImageTiles';
@@ -54,7 +54,7 @@ export default class ImageTiles extends Component {
         },
       },
       defaults: {
-        image: 'https://portal.gems.org/images/complete-tasks.png',
+        image: 'https://portal.expand.org/images/complete-tasks.png',
       },
     },
   };

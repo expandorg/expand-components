@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
-import { Button } from '@gemsorg/components';
+import { Button } from '@expandorg/components';
 
 import RangeBoundaries from '../../../../components/VideoPlayer/utils/RangeBoundaries';
 

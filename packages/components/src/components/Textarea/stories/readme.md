@@ -5,7 +5,7 @@
 
 ```jsx
 import React from 'react';
-import { Textarea } from '@gemsorg/components';
+import { Textarea } from '@expandorg/components';
 
 export default   ({ value, onChange }) => (
   <Textarea

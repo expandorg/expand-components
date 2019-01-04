@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import cn from 'classnames';
 
-import { range, removeAtIndex } from '@gemsorg/components/src/common/immutable';
+import { range, removeAtIndex } from '@expandorg/components/src/common/immutable';
 
 import ImageTile from './ImageTile';
 

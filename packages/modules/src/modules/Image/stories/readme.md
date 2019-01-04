@@ -6,7 +6,7 @@
 {
   name: 'image',
   type: 'image',
-  src: "https://portal.gems.org/images/complete-tasks.png",
+  src: "https://portal.expand.org/images/complete-tasks.png",
 }
 ```
 

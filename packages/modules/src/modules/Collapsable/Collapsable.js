@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { Collapsable as UICollapsable } from '@gemsorg/components';
+import { Collapsable as UICollapsable } from '@expandorg/components';
 
 import Alignment from '../../components/Alignment';
 

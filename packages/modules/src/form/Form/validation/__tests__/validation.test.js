@@ -1,4 +1,4 @@
-import { validateForm, rules } from '@gemsorg/validation';
+import { validateForm, rules } from '@expandorg/validation';
 
 import formValidationRules from '../formValidationRules';
 

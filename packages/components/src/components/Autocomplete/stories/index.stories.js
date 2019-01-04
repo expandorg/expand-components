@@ -8,7 +8,7 @@ import {
   StateProvider,
   panelDecorator,
   Markdown,
-} from '@gemsorg/uikit/stories/kit';
+} from '@expandorg/uikit/stories/kit';
 
 import readme from './readme.md';
 

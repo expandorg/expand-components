@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { rules } from '@gemsorg/validation';
+import { rules } from '@expandorg/validation';
 
-import { Dropdown as UIDropdown } from '@gemsorg/components';
+import { Dropdown as UIDropdown } from '@expandorg/components';
 
 import DropdownContent from './DropdownContent';
 

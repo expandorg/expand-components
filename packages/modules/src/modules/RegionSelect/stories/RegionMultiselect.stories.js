@@ -2,7 +2,7 @@ import React from 'react';
 
 import { storiesOf } from '@storybook/react';
 
-import { Panel, Markdown } from '@gemsorg/uikit/stories/kit';
+import { Panel, Markdown } from '@expandorg/uikit/stories/kit';
 import Playground from '../../../form/stories/Playground/Playground'
 
 import readme from './RegionMultiselect.md';

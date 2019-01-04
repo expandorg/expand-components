@@ -5,7 +5,7 @@
 
 ```jsx
 import React from 'react';
-import { ToastAnimated } from '@gemsorg/components';
+import { ToastAnimated } from '@expandorg/components';
 
 export default   ({ visible }) => (
   <ToastAnimated visible={visible} >

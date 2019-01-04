@@ -31,7 +31,7 @@ export default class Image extends Component {
         },
       },
       defaults: {
-        src: 'https://portal.gems.org/images/complete-tasks.png',
+        src: 'https://portal.expand.org/images/complete-tasks.png',
       },
     },
   };

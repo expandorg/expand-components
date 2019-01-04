@@ -2,7 +2,7 @@ import React from 'react';
 
 import { storiesOf } from '@storybook/react';
 
-import { Kind, panelDecorator, Markdown } from '@gemsorg/uikit/stories/kit';
+import { Kind, panelDecorator, Markdown } from '@expandorg/uikit/stories/kit';
 
 import Textarea from '../Textarea';
 

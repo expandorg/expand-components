@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import cn from 'classnames';
 
-import { Checkmark } from '@gemsorg/components';
+import { Checkmark } from '@expandorg/components';
 
 import { getTileIndex, getTileStyle } from './tile';
 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { ClipboardButton } from '@gemsorg/components';
+import { ClipboardButton } from '@expandorg/components';
 
 import Label from '../../components/Label';
 

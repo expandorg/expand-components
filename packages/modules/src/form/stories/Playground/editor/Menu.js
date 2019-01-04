@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { clickOutside } from '@gemsorg/components/hoc';
+import { clickOutside } from '@expandorg/components/hoc';
 
 import styles from './Menu.module.styl';
 

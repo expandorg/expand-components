@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import cn from 'classnames';
 
-import { Button } from '@gemsorg/components';
+import { Button } from '@expandorg/components';
 import { formProps } from '../Form';
 import moduleControls, { getModuleControlsMap } from '../Form/moduleControls';
 

@@ -3,7 +3,7 @@
 
 ```jsx
 import React from 'react';
-import { Switch } from '@gemsorg/components';
+import { Switch } from '@expandorg/components';
 
 export default ({ onChange, value }) => (
   <Switch

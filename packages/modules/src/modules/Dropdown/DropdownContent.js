@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { ArrowDown } from '@gemsorg/components';
+import { ArrowDown } from '@expandorg/components';
 
 import styles from './DropdownContent.module.styl';
 

@@ -8,7 +8,7 @@ import styles from './styles.module.styl';
 export default () => (
   <div className={styles.container}>
     <h1 className={styles.header}>Typography</h1>
-    <p className={styles.p}>Gems.org font presets:</p>
+    <p className={styles.p}>expand.org font presets:</p>
     <div className={styles.frame}>
       <Kind title="headline — 24px, 1.3, 400">
         <div className={cn(styles.font, styles.headline)}>

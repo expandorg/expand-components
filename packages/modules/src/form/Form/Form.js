@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 
 import cn from 'classnames';
 
-import { validateForm } from '@gemsorg/validation';
-import { ErrorMessage } from '@gemsorg/components';
+import { validateForm } from '@expandorg/validation';
+import { ErrorMessage } from '@expandorg/components';
 
 import Validation from '../Validation';
 

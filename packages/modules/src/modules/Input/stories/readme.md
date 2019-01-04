@@ -21,6 +21,6 @@
 | *placeholder*  | string         | -        | -       | input placeholder  |
 | *label*        | string         | -        | -       | text label  |
 | *initial*      | string         | -        | -       | initial value |
-| *[validation](https://gemsorg.github.io/gems-components/?selectedKind=Form%20Builder&selectedStory=Validation)*  | validtion | - | - | validation rules |
+| *[validation](https://expandorg.github.io/expand-components/?selectedKind=Form%20Builder&selectedStory=Validation)*  | validtion | - | - | validation rules |
 
 ## Playground

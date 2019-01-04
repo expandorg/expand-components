@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { rules } from '@gemsorg/validation';
+import { rules } from '@expandorg/validation';
 
-import { Button, Checkbox } from '@gemsorg/components';
+import { Button, Checkbox } from '@expandorg/components';
 
 import Alignment from '../../components/Alignment';
 import Modal from '../../components/Modal';

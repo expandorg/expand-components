@@ -5,7 +5,7 @@
 
 ```jsx
 import React from 'react';
-import { Button } from '@gemsorg/components';
+import { Button } from '@expandorg/components';
 
 export default   ({ onClick }) => (
   <Button onClick={onClick} theme={theme} disabled={disabled} >

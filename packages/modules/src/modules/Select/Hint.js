@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Tooltip } from '@gemsorg/components';
+import { Tooltip } from '@expandorg/components';
 
 import styles from './Choice.module.styl';
 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { rules } from '@gemsorg/validation';
+import { rules } from '@expandorg/validation';
 
 import Alignment from '../../components/Alignment';
 

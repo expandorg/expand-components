@@ -3,9 +3,9 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
-import { Kind, panelDecorator, Markdown } from '@gemsorg/uikit/stories/kit';
+import { Kind, panelDecorator, Markdown } from '@expandorg/uikit/stories/kit';
 
-import styles from '@gemsorg/uikit/stories/styles.module.styl';
+import styles from '@expandorg/uikit/stories/styles.module.styl';
 
 import SimpleButton from '../../Button';
 import Tooltip from '../Tooltip';

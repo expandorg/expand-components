@@ -7,7 +7,7 @@ import {
   stopEvt,
   getElementOffset,
   getMousePosition,
-} from '@gemsorg/components/src/common/dom';
+} from '@expandorg/components/src/common/dom';
 
 import { normalizeRect } from './rect';
 

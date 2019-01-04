@@ -22,13 +22,13 @@ You can define different validation rules for modules.
 | Module      | Supported rules         |
 | ----------- |------------------------ |
 | *[Input](http://localhost:6006/?selectedKind=Form%20Builder%2FModules&selectedStory=Input)*        | `isRequired` `isNotEmpty` `isEmail` `isNumber` |
-| *[Checkbox](https://gemsorg.github.io/gems-components/?selectedKind=Form%20Builder%2FModules&selectedStory=Checkbox)*     | `isRequired` `isTrue`   |
-| *[Select](https://gemsorg.github.io/gems-components/?selectedKind=Form%20Builder%2FModules&selectedStory=Select)*       | `isRequired`            |
-| *[Multiselect](https://gemsorg.github.io/gems-components/?selectedKind=Form%20Builder%2FModules&selectedStory=Multiselect)*  | `isRequired`            |
-| *[Dropdown](https://gemsorg.github.io/gems-components/?selectedKind=Form%20Builder%2FModules&selectedStory=Dropdown)*  | `isRequired`            |
-| *[RegionSelect](https://gemsorg.github.io/gems-components/?selectedKind=Form%20Builder%2FModules&selectedStory=RegionSelect)*  | `isRequired`            |
-| *[RegionMultiselect](https://gemsorg.github.io/gems-components/?selectedKind=Form%20Builder%2FModules&selectedStory=RegionMultiselect)*  | `isRequired`            |
-| *[ImageTiles](https://gemsorg.github.io/gems-components/?selectedKind=Form%20Builder%2FModules&selectedStory=ImageTiles)*  | `isRequired`            |
+| *[Checkbox](https://expandorg.github.io/expand-components/?selectedKind=Form%20Builder%2FModules&selectedStory=Checkbox)*     | `isRequired` `isTrue`   |
+| *[Select](https://expandorg.github.io/expand-components/?selectedKind=Form%20Builder%2FModules&selectedStory=Select)*       | `isRequired`            |
+| *[Multiselect](https://expandorg.github.io/expand-components/?selectedKind=Form%20Builder%2FModules&selectedStory=Multiselect)*  | `isRequired`            |
+| *[Dropdown](https://expandorg.github.io/expand-components/?selectedKind=Form%20Builder%2FModules&selectedStory=Dropdown)*  | `isRequired`            |
+| *[RegionSelect](https://expandorg.github.io/expand-components/?selectedKind=Form%20Builder%2FModules&selectedStory=RegionSelect)*  | `isRequired`            |
+| *[RegionMultiselect](https://expandorg.github.io/expand-components/?selectedKind=Form%20Builder%2FModules&selectedStory=RegionMultiselect)*  | `isRequired`            |
+| *[ImageTiles](https://expandorg.github.io/expand-components/?selectedKind=Form%20Builder%2FModules&selectedStory=ImageTiles)*  | `isRequired`            |
 
 
 ## Supported rules

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { ErrorMessage, Tooltip } from '@gemsorg/components';
+import { ErrorMessage, Tooltip } from '@expandorg/components';
 
 import CodeEditor from './CodeEditor';
 

@@ -8,7 +8,7 @@ import Introduction from './Introduction';
 import Colors from './Colors';
 import Typography from './Typography';
 
-storiesOf('Gems UI & Modules', module)
+storiesOf('expand UI & Modules', module)
   .addDecorator(panelDecorator)
   .add('Introduction', () => <Introduction />)
   .add('Colors', () => <Colors />)

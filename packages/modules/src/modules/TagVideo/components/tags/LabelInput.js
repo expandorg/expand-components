@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import cn from 'classnames';
 
-import { Input, Dropdown, ArrowDown } from '@gemsorg/components';
+import { Input, Dropdown, ArrowDown } from '@expandorg/components';
 
 import styles from './LabelInput.module.styl';
 

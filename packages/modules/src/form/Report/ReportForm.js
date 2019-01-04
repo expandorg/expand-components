@@ -8,7 +8,7 @@ import {
   Textarea,
   Dropdown,
   ErrorMessage,
-} from '@gemsorg/components';
+} from '@expandorg/components';
 
 import DropdownContent from '../../modules/Dropdown/DropdownContent';
 

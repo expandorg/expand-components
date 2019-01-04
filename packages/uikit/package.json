@@ -1,16 +1,16 @@
 {
-  "name": "@gemsorg/uikit",
+  "name": "@expandorg/uikit",
   "version": "0.1.2",
   "description": "",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gemsorg/gems-components.git"
+    "url": "git+https://github.com/expandorg/expand-components.git"
   },
   "bugs": {
-    "url": "https://github.com/gemsorg/gems-components/issues"
+    "url": "https://github.com/expandorg/expand-components/issues"
   },
-  "homepage": "https://github.com/gemsorg/gems-components#readme",
+  "homepage": "https://github.com/expandorg/expand-components#readme",
   "license": "MPL-2.0",
-  "author": "gems.org"
+  "author": "expand.org"
 }

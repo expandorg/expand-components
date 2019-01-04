@@ -3,7 +3,7 @@
 
 ```jsx
 import React from 'react';
-import { Checkbox } from '@gemsorg/components';
+import { Checkbox } from '@expandorg/components';
 
 export default ({ onChange }) => (
   <Checkbox

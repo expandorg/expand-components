@@ -1,18 +1,18 @@
 {
-  "name": "@gemsorg/validation",
+  "name": "@expandorg/validation",
   "version": "0.1.3",
-  "description": "Gems UI validation library",
+  "description": "Expand UI validation library",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gemsorg/gems-components.git"
+    "url": "git+https://github.com/expandorg/expand-components.git"
   },
   "bugs": {
-    "url": "https://github.com/gemsorg/gems-components/issues"
+    "url": "https://github.com/expandorg/expand-components/issues"
   },
-  "homepage": "https://github.com/gemsorg/gems-components#readme",
+  "homepage": "https://github.com/expandorg/expand-components#readme",
   "license": "MPL-2.0",
-  "author": "gems.org",
+  "author": "expand.org",
   "dependencies": {
     "validator": "^10.9.0"
   }

@@ -2,7 +2,7 @@ import React from 'react';
 
 import { storiesOf } from '@storybook/react';
 
-import { Panel, Markdown, Kind } from '@gemsorg/uikit/stories/kit';
+import { Panel, Markdown, Kind } from '@expandorg/uikit/stories/kit';
 
 import Playground from './Playground/Playground';
 

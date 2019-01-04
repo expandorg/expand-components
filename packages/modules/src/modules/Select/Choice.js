@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import cn from 'classnames';
 
-import { Checkmark } from '@gemsorg/components';
+import { Checkmark } from '@expandorg/components';
 
 import { MediaTooltip } from '../../components/Tooltip';
 

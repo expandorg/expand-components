@@ -6,7 +6,7 @@ import cn from 'classnames';
 import {
   removeAtIndex,
   replaceAtIndex,
-} from '@gemsorg/components/src/common/immutable';
+} from '@expandorg/components/src/common/immutable';
 
 import {
   VideoPlayer,

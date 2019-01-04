@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 
-import { Button } from '@gemsorg/components';
+import { Button } from '@expandorg/components';
 
 import Modal from '../../components/Modal';
 

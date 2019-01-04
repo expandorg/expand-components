@@ -5,7 +5,7 @@ import cn from 'classnames';
 import {
   replaceAtIndex,
   removeAtIndex,
-} from '@gemsorg/components/src/common/immutable';
+} from '@expandorg/components/src/common/immutable';
 
 import SelectRegionBase from './SelectRegionBase';
 import Selection from './Selection';

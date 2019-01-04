@@ -19,6 +19,6 @@
 | *image*  | string         | true     | -       | image url   |
 | *readOnly* | boolean        | false    | -       | read only    |
 | *initial* | `{x1: 0,y1: 0, x2: 10, y2: 10}` | false    | null       | initial value (when readOnly used) |
-| *[validation](https://gemsorg.github.io/gems-components/?selectedKind=Form%20Builder&selectedStory=Validation)*  | validtion | - | - | validation rules |
+| *[validation](https://expandorg.github.io/expand-components/?selectedKind=Form%20Builder&selectedStory=Validation)*  | validtion | - | - | validation rules |
 
 ## Playground

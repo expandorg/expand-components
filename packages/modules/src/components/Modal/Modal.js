@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { Dialog, DialogHeadline, Button } from '@gemsorg/components';
+import { Dialog, DialogHeadline, Button } from '@expandorg/components';
 
 import Alignment from '../../components/Alignment';
 

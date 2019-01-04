@@ -27,6 +27,6 @@
 | *label*        | string         | -        | -       | text label  |
 | *justify* | `left`, `right`, `center`, `between`  | -        | `center`       | horizontal alignment |
 | *options*      | Array<string>  | true   | -     | array of options   |
-| *[validation](https://gemsorg.github.io/gems-components/?selectedKind=Form%20Builder&selectedStory=Validation)*  | validtion | - | - | validation rules |
+| *[validation](https://expandorg.github.io/expand-components/?selectedKind=Form%20Builder&selectedStory=Validation)*  | validtion | - | - | validation rules |
 
 ## Playground

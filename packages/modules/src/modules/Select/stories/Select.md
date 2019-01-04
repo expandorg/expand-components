@@ -24,6 +24,6 @@
 | *columns*      | `2`, `3`       | false    | `2`     | number of columns  |
 | *options*      | [ { value, id, caption, hint }, { id, caption, hint }... ]   | true   | -     | array of options   |
 | *readOnly*     | boolean        | -        | false   | read only    |
-| *[validation](https://gemsorg.github.io/gems-components/?selectedKind=Form%20Builder&selectedStory=Validation)*  | validtion | - | - | validation rules |
+| *[validation](https://expandorg.github.io/expand-components/?selectedKind=Form%20Builder&selectedStory=Validation)*  | validtion | - | - | validation rules |
 
 ## Playground

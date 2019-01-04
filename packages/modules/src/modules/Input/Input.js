@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { rules } from '@gemsorg/validation';
+import { rules } from '@expandorg/validation';
 
-import { Input as UIInput } from '@gemsorg/components';
+import { Input as UIInput } from '@expandorg/components';
 
 import PropControlTypes from '../../form/Form/PropControlTypes';
 import ModuleCategories from '../../form/Form/ModuleCategories';

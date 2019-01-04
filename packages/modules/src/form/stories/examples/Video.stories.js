@@ -2,7 +2,7 @@ import React from 'react';
 
 import { storiesOf } from '@storybook/react';
 
-import { Panel } from '@gemsorg/uikit/stories/kit';
+import { Panel } from '@expandorg/uikit/stories/kit';
 
 import FormSequence from './FormSequence/FormSequence';
 

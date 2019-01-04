@@ -7,9 +7,9 @@ import {
   panelDecorator,
   Markdown,
   Toggle,
-} from '@gemsorg/uikit/stories/kit';
+} from '@expandorg/uikit/stories/kit';
 
-import styles from '@gemsorg/uikit/stories/styles.module.styl';
+import styles from '@expandorg/uikit/stories/styles.module.styl';
 
 import readme from './readme.md';
 

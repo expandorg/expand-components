@@ -2,18 +2,18 @@
 [![npm version](https://img.shields.io/npm/v/@expandorg/components.svg?style=flat-square)](https://www.npmjs.com/package/@expandorg/components)
 [![license](https://img.shields.io/npm/l/@expandorg/components.svg?style=flat-square)](https://www.npmjs.com/package/@expandorg/components)
 
-Expand UI & Modules is a collection of React components, tools and guidelines for creating Gems products.
-* **[Forms](https://expandorg.github.io/gems-components/?selectedKind=Form%20Builder&selectedStory=Readme&full=0&addons=0&stories=1&panelRight=0&addonPanel=storybook%2Factions%2Factions-panel):** Dynamic extensible JSON powered form library for React.
+Expand UI & Modules is a collection of React components, tools and guidelines for creating expand products.
+* **[Forms](https://expandorg.github.io/expand-components/?selectedKind=Form%20Builder&selectedStory=Readme&full=0&addons=0&stories=1&panelRight=0&addonPanel=storybook%2Factions%2Factions-panel):** Dynamic extensible JSON powered form library for React.
 
-* **[UI Components](https://expandorg.github.io/gems-components/?selectedKind=UI%20Components&selectedStory=Readme):** set of components such as Buttons, Panels, Menus, HOC's. General purpose components used to build gems.org web applications.
+* **[UI Components](https://expandorg.github.io/expand-components/?selectedKind=UI%20Components&selectedStory=Readme):** set of components such as Buttons, Panels, Menus, HOC's. General purpose components used to build expand.org web applications.
 
 
-* **UI kit:** [colors](https://expandorg.github.io/gems-components/?selectedKind=Gems%20UI&selectedStory=Colors), and [typography](https://expandorg.github.io/gems-components/?selectedKind=Gems%20UI&selectedStory=Typography) used across [gems.org](https://gems.org) apps
+* **UI kit:** [colors](https://expandorg.github.io/expand-components/?selectedKind=expand%20UI&selectedStory=Colors), and [typography](https://expandorg.github.io/expand-components/?selectedKind=expand%20UI&selectedStory=Typography) used across [expand.org](https://expand.org) apps
 
 ## Documentation and live playground
 Detailed documentation and forms playground is available in storybook
 
-https://expandorg.github.io/gems-components/
+https://expandorg.github.io/expand-components/
 
 ## installation
 
@@ -25,7 +25,7 @@ npm install  @expandorg/components --save
 
 ## Prerequisites
 
-Gems UI & Modules use [stylus](http://stylus-lang.com/) and [css-modules](https://github.com/css-modules/css-modules) by default to import stylesheets.
+expand UI & Modules use [stylus](http://stylus-lang.com/) and [css-modules](https://github.com/css-modules/css-modules) by default to import stylesheets.
 It is necessary to import `.styl` files located in `node_modules`. We recommend using webpack, but other bundlers can be configured.
 
 Here is webpack config example

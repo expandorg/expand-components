@@ -13,8 +13,8 @@ addDecorator((story) => (
 ));
 
 setOptions({
-  name: 'Gems',
-  url: 'https://github.com/gemsorg/gems-components',
+  name: 'Expand',
+  url: 'https://github.com/expandorg/expand-components',
   // addonPanelInRight: true,
   sidebarAnimations: true,
   showAddonPanel: false,
