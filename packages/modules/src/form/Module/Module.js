@@ -61,6 +61,7 @@ export default class Module extends Component {
     }
     if (typeof module.modules !== 'undefined') {
       const { modules, ...rest } = module;
+
       return (
         <Control
           renderModules={this.renderModules}
