@@ -1,6 +1,6 @@
 {
   "name": "@expandorg/modules",
-  "version": "0.1.37",
+  "version": "0.1.38",
   "description": "expand modules",
   "main": "index.js",
   "repository": {
@@ -20,9 +20,9 @@
     "react-dom": "^16.0.0"
   },
   "dependencies": {
-    "@expandorg/components": "^0.1.14",
-    "@expandorg/uikit": "^0.1.2",
-    "@expandorg/validation": "^0.1.3",
+    "@expandorg/components": "^0.1.15",
+    "@expandorg/uikit": "^0.1.3",
+    "@expandorg/validation": "^0.1.4",
     "debounce": "^1.2.0",
     "react-player": "^1.8.0"
   }
