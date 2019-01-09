@@ -5,7 +5,7 @@ import cn from 'classnames';
 import './Dropdown.styl';
 
 const formatItem = option => {
-  if (typeof option === 'string') {
+  if (typeof option === 'string' || typeof option === 'number') {
     return { value: option, label: option };
   }
   return option;
