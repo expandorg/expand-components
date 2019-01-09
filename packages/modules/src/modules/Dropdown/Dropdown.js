@@ -11,6 +11,7 @@ import Alignment from '../../components/Alignment';
 import Label from '../../components/Label';
 
 import ModuleCategories from '../../form/Form/ModuleCategories';
+import PropControlTypes from '../../form/Form/PropControlTypes';
 
 import styles from './Dropdown.module.styl';
 
@@ -42,6 +43,11 @@ export default class Dropdown extends Component {
     },
     editor: {
       category: ModuleCategories.Input,
+      properties: {
+        content: {
+          type: PropControlTypes.options,
+        },
+      },
       defaults: {
         placeholder: 'Select one',
         options: ['Option 1', 'Option 2', 'Option 3', 'Option 4'],

@@ -43,12 +43,12 @@ export default class ImageTiles extends Component {
           required: true,
         },
         columns: {
-          columns: PropControlTypes.number,
+          type: PropControlTypes.number,
           placeholder: 'Number of columns',
           default: 4,
         },
         rows: {
-          columns: PropControlTypes.number,
+          type: PropControlTypes.number,
           placeholder: 'Number of rows',
           default: 4,
         },

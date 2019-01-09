@@ -7,6 +7,7 @@ const PropControlTypes = {
   text: 'text',
   richText: 'richText',
   enum: 'enum',
+  options: 'options',
   modules: 'modules',
 };
 
