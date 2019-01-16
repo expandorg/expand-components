@@ -9,6 +9,7 @@ const PropControlTypes = {
   enum: 'enum',
   options: 'options',
   modules: 'modules',
+  moduleProperyOptions: 'moduleProperyOptions',
 };
 
 export default PropControlTypes;

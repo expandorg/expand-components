@@ -6,14 +6,11 @@
 {
   name: 'select',
   type: 'select',
-  options: [
-    { value: 'A', id: 'A', caption: 'Option 1' },
-    { value: 'b', id: 'b', caption: 'Option 2' },
-    { value: '3', id: '3', caption: 'Option 2' },
-    { value: 'IV', id: 'IV', caption: 'Option 4', hint: 'Hint tooltip' },
-  ]
+  idType: 'small',
+  options: ['Option 1', 'Option 2', 'Option 2', 'Option 4'],
 }
 ```
+
 
 ## Select properties
 
@@ -21,8 +18,9 @@
 | -------------- | -------------- | -------- | --------| ------------ |
 | *type*         | `select`       | true     | -       | module type  |
 | *name*         | string         | true     | -       | module name  |
+| *idType*       | `small`, `capital`, `roman`, `numerals` | false    | numerals       | enumerator type  |
 | *columns*      | `2`, `3`       | false    | `2`     | number of columns  |
-| *options*      | [ { value, id, caption, hint }, { id, caption, hint }... ]   | true   | -     | array of options   |
+| *options*      | [ { value, caption }, { caption }... ]   | true   | -     | array of options   |
 | *readOnly*     | boolean        | -        | false   | read only    |
 | *[validation](https://expandorg.github.io/expand-components/?selectedKind=Form%20Builder&selectedStory=Validation)*  | validtion | - | - | validation rules |
 

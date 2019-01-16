@@ -4,10 +4,6 @@ import cn from 'classnames';
 
 import { Checkmark } from '@expandorg/components';
 
-import { MediaTooltip } from '../../components/Tooltip';
-
-import Hint from './Hint';
-
 import styles from './Choice.module.styl';
 
 export default class Choice extends Component {
@@ -46,7 +42,7 @@ export default class Choice extends Component {
       className
     );
 
-    const { id, caption, hint } = option;
+    const { id, caption } = option;
     return (
       <button type="button" className={classes} onClick={this.handleSelect}>
         {id && !checkMark && <span className={styles.id}>{id}</span>}
@@ -56,7 +52,6 @@ export default class Choice extends Component {
           </div>
         )}
         <span className={styles.caption}>{caption}</span>
-        {hint && <Hint tooltip={<MediaTooltip content={hint} />} />}
       </button>
     );
   }

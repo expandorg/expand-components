@@ -11,12 +11,20 @@ import Select from './Select';
 import PropControlTypes from '../../form/Form/PropControlTypes';
 import ModuleCategories from '../../form/Form/ModuleCategories';
 
+import { formatter, IdType } from './ids';
+
 export default class SelectModule extends Component {
   static propTypes = {
     name: PropTypes.string.isRequired,
     options: PropTypes.arrayOf(
       PropTypes.oneOfType([PropTypes.string, PropTypes.object])
     ).isRequired,
+    idType: PropTypes.oneOf([
+      IdType.small,
+      IdType.capital,
+      IdType.roman,
+      IdType.numerals,
+    ]),
     value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     answer: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     columns: PropTypes.oneOf([2, 3]),
@@ -29,6 +37,7 @@ export default class SelectModule extends Component {
     answer: null,
     readOnly: false,
     columns: 2,
+    idType: IdType.small,
   };
 
   static module = {
@@ -55,9 +64,21 @@ export default class SelectModule extends Component {
           options: [2, 3],
           default: 2,
         },
+        idType: {
+          type: PropControlTypes.enum,
+          label: 'Enumerator type',
+          options: ['numerals', 'small', 'capital', 'roman'],
+          formatter,
+          default: 'small',
+        },
         answer: {
-          type: PropControlTypes.string,
-          placeholder: 'Answer',
+          type: PropControlTypes.moduleProperyOptions,
+          label: 'Answer',
+          dependency: 'options',
+        },
+        options: {
+          type: PropControlTypes.options,
+          placeholder: 'Options',
         },
         readOnly: {
           type: PropControlTypes.boolean,
@@ -65,12 +86,7 @@ export default class SelectModule extends Component {
         },
       },
       defaults: {
-        options: [
-          { value: 1, id: 1, caption: 'Option 1' },
-          { value: 2, id: 2, caption: 'Option 2' },
-          { value: 3, id: 3, caption: 'Option 2' },
-          { value: 4, id: 4, caption: 'Option 4' },
-        ],
+        options: ['Option 1', 'Option 2', 'Option 3', 'Option 4'],
       },
     },
   };
@@ -81,14 +97,17 @@ export default class SelectModule extends Component {
   };
 
   render() {
-    const { value, options, columns, readOnly, answer } = this.props;
+    const { value, options, columns, readOnly, answer, idType } = this.props;
+
     const selected = readOnly ? answer : value;
+
     return (
       <Alignment padding="small">
         <Select
           options={options}
           onSelect={this.handleChange}
           columns={columns}
+          idType={idType}
         >
           {({ onSelect, option }) => (
             <Choice
