@@ -20,7 +20,7 @@
     "react-dom": "^16.0.0"
   },
   "dependencies": {
-    "@expandorg/components": "^0.1.16",
+    "@expandorg/components": "^0.2.3",
     "@expandorg/uikit": "^0.2.2",
     "@expandorg/validation": "^0.2.1",
     "debounce": "^1.2.0",
