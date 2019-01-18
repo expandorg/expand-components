@@ -4,7 +4,7 @@ import cn from 'classnames';
 
 import { Link } from 'react-router-dom';
 
-import { ReactComponent as Logo } from '../../assets/logo.svg';
+import { ReactComponent as Logo } from '@expandorg/uikit/assets/logo.svg';
 
 import './Navbar.styl';
 

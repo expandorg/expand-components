@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import windowResize from '../hoc/windowResize';
+import windowResize from '../../hoc/windowResize';
 
 import WalkthroughContext from './WalkthroughContext';
-import Portal from '../Portal';
+import Portal from '../../Portal';
 
 import { getPositionById } from './positioning';
 

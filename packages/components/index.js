@@ -27,7 +27,6 @@ import ErrorMessage from './src/components/ErrorMessage';
 import Input from './src/components/Input';
 
 import { JsScript, withScript } from './src/components/JsScript';
-import Navbar from './src/components/Navbar';
 import Portal from './src/components/Portal';
 
 import {
@@ -37,15 +36,9 @@ import {
   withServices,
 } from './src/components/ServiceProvider';
 
-import { SidebarLink, Sidebar } from './src/components/Sidebar';
 import Switch from './src/components/Switch';
 
 import Tooltip from './src/components/Tooltip';
-import {
-  WalkthroughProvider,
-  WalkthroughPin,
-  ToggleWalkthrough,
-} from './src/components/Walkthrough';
 
 import clickOutside from './src/components/hoc/clickOutside';
 import deferVisibleRender from './src/components/hoc/deferVisibleRender';
@@ -75,18 +68,12 @@ export {
   ErrorMessage,
   Input,
   JsScript,
-  Navbar,
   Portal,
   ServiceProvider,
   ServicesContext,
   ServiceLocator,
-  SidebarLink,
-  Sidebar,
   Switch,
   Tooltip,
-  WalkthroughProvider,
-  WalkthroughPin,
-  ToggleWalkthrough,
   withScript,
   withServices,
   clickOutside,
