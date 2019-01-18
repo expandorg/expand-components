@@ -1,16 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import {
-  Dialog,
-  DialogHeadline,
-  Button,
-  Textarea,
-  Dropdown,
-  ErrorMessage,
-} from '@expandorg/components';
-
-import DropdownContent from '../../modules/Dropdown/DropdownContent';
+import { Dialog, Button, Dropdown, ErrorMessage } from '@expandorg/components';
 
 import styles from './ReportForm.module.styl';
 
@@ -70,7 +61,7 @@ export default class ReportForm extends Component {
     const { value, reason } = this.state;
     return (
       <Dialog visible onHide={this.handleHide} contentLabel="report">
-        <DialogHeadline>Report</DialogHeadline>
+        <div className={styles.headline}>Report</div>
         <form className={styles.container} onSubmit={this.handleSubmit}>
           <div className={styles.content}>
             <div className={styles.field}>
@@ -79,22 +70,16 @@ export default class ReportForm extends Component {
                 value={reason}
                 className={styles.dropdown}
                 nullValue="Select reason"
+                placeholder="Select reason"
                 onChange={this.handleSelectReason}
                 options={reasons}
-              >
-                {({ formatted }) => (
-                  <DropdownContent
-                    value={formatted}
-                    placeholder="Select reason"
-                  />
-                )}
-              </Dropdown>
+              />
             </div>
             <div className={styles.field}>
               <div className={styles.label}>Provide some details</div>
-              <Textarea
+              <textarea
                 value={value}
-                className={styles.input}
+                className={styles.textarea}
                 onChange={this.handleChange}
               />
             </div>

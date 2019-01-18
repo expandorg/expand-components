@@ -2,10 +2,17 @@
 
 .gem-switch
   position: relative
-  display: inline-block
-  height: auto
-  white-space: nowrap
-  vertical-align: middle
+  box-sizing: border-box;
+  position: relative;
+  display: inline-block;
+  width: 55px
+  height: 30px
+  border-radius: 15px
+
+  border: 1px solid color-heavy-blue
+  background-color: color-light-blue
+
+  cursor: pointer
 
   &-input
     width: 0;
@@ -13,42 +20,27 @@
     overflow: hidden;
     opacity: 0;
 
-  &-container
-    position: relative;
-    display: inline-block;
-    width: 34px
-    height: 14px
-    margin-top: 3px
-    vertical-align: top
-    cursor: pointer
-    border-radius: 14px
-
-    &-on
-      background: color-blue
-
-    &-off
-      background: rgba(34, 31, 31, 0.26)
-
   &-thumb
     box-sizing: border-box
     position: absolute;
-    top: -3px;
+    top: calc(50% - 10px)
+
     width: 20px;
     height: 20px;
 
     cursor: pointer;
     border-radius: 50%;
 
-    transition-property: left, background-color
+    transition-property: left, background-color, border-color
     transition-duration: 0.28s
     transition-timing-function: ease-in-out;
-    box-shadow 0 1px 1px 0 rgba(0, 0, 0, 0.24), 0 0 1px 0 rgba(0, 0, 0, 0.12)
 
-    .gem-switch-container-on &
-      left: 34px - 20px + 3px
-      background-color: color-pink
+    .gem-switch2-container-on &
+      left: calc(100% - 25px)
+      border: 1px solid color-primary-blue
+      background-color: color-primary-blue
 
-
-    .gem-switch-container-off &
-      left: 0 - 3px
-      background-color: #f1f1f1
+    .gem-switch2-container-off &
+      left: 5px
+      border: 1px solid color-heavy-blue
+      background-color: color-medium-blue

@@ -1,32 +1,68 @@
-@import '~@expandorg/uikit/font';
-@import '~@expandorg/uikit/colors';
+@import '~@expandorg/uikit/colors'
+@import '~@expandorg/uikit/font'
 
 .gem-input
-  box-sizing: border-box
-  display: inline-block
+  box-sizing: content-box
 
-  font(font-preset[normal], false, false, normal)
+  font(body, false, false, normal)
 
-  height: 40px;
-  width: 100%
+  height: 22px;
+  width: calc(100% - 10px)
 
-  padding: 0 10px 0 17px
+  padding: 0 15px 8px 0
 
-  background-color: color-white
-  color: color-text-1
+  background-color: transparent
+  color: color-blue-background
+  border: 1px solid transparent
+  border-bottom: 2px solid  color-heavy-blue
 
-  border-radius: 2px
-  border: solid 1px color-border-grey
+  transition: all 0.2s ease-out;
 
-  outline: 0
+  outline: none;
+  resize: none;
 
   &:focus
-    box-shadow: 0 0 4px 0 color-text-gray-1;
-    border: solid 1px color-text-gray-1;
+    border-bottom-color color-primary-blue
 
-  &-pink.gem-input
-    border: solid 1px color-pink
+  .gem-input-error &
+    border-bottom-color: color-yellow
 
     &:focus
-      box-shadow: 0 0 4px 0 color-pink-light;
-      border: solid 1px color-pink-light;
+      border-bottom-color color-yellow
+
+
+  &:-webkit-autofill
+    transition: background-color 5000s ease-in-out 0s
+    &:hover, &:focus, &:active
+      transition: background-color 5000s ease-in-out 0s
+
+  & + .gem-input-label
+    font(body, false, false, 40px)
+    display: block;
+    margin-top: -40px;
+    padding: 0
+    pointer-events: none;
+
+    &:before
+      content: attr(placeholder);
+      display: block;
+      color: color-text-dark
+      white-space: nowrap;
+
+      transition-property: transform font-size font-weight color;
+      transition-duration: 0.2s;
+      transition-timing-function: ease-out;
+      transform-origin: left center;
+
+  &-container
+    display: inline-block;
+    width: 100%
+
+  &:focus,
+  &.active,
+  &.gem-input-filled
+    & + .gem-input-label:before
+      transform: translateY(-22px)
+      font-size: 11px
+      font-weight: 800
+      color: color-primary-blue

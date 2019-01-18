@@ -1,13 +1,11 @@
-@import '~@expandorg/uikit/colors';
+@import '~@expandorg/uikit/colors'
+@import '~@expandorg/uikit/font'
 
 .gem-checkbox
   display: inline-flex;
   position: relative
 
   align-items:center
-
-  font-size: 12px
-  font-weight: 400
 
   cursor: pointer
   user-select: none
@@ -20,44 +18,45 @@
     opacity: 0
     cursor: pointer
 
+    &:checked~.mark
+      background-color: color-medium-blue
 
-    &:checked~.gem-checkbox-mark
-      background-color: color-pink
-      border: 2px solid color-pink
-
-    &:checked~.gem-checkbox-mark:after
-      display: block
+      &:after
+        display: block
 
   &-mark
     position: relative
 
-    height: 16px
-    width: 16px
+    height: 25px
+    width: 25px
 
-    min-width: 16px
-    min-height: 16px
+    min-width: 25px
+    min-height: 25px
 
-    margin-right: 6px
+    margin-right: 15px
 
-    border: 2px solid color-text-gray-1
-    border-radius: 50%
-    background-color: color-text-1
-
+    border: 1px solid color-heavy-blue
+    border-radius: 5px
+    background-color: transparent;
 
     &:after
       position: absolute
       display: none
       content: ""
 
-      left: 5px
-      top: 2px
+      left: 7px
+      top: 4px
 
-      width: 4px
-      height: 8px
+      width: 6px
+      height: 12px
 
-      border: solid color-white
-      border-width: 0 2px 2px 0
+      border: solid color-text-blue
+      border-width: 0 4px 4px 0
 
       -webkit-transform: rotate(45deg)
       -ms-transform: rotate(45deg)
       transform: rotate(45deg)
+
+  &-label
+    color: color-text-dark
+    font(body)

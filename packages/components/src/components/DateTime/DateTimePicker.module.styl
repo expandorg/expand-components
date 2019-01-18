@@ -1,0 +1,54 @@
+@import '~@expandorg/uikit/font'
+@import '~@expandorg/uikit/colors'
+
+.container
+  box-sizing: border-box;
+  background-color: color-white
+
+  box-shadow: heavy-shadow
+
+.content
+  display: flex;
+  align-items: stretch;
+
+.actions
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  padding: 20px 20px
+
+  > *
+    margin-left: 15px
+
+.button
+  box-sizing: border-box;
+
+  height: 40px
+  width: 130px
+
+  font(subtitle, false, false, 38px)
+  text-align: center;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+
+  color: color-text-blue
+  background-color: color-light-blue
+
+  border: 1px solid color-heavy-blue
+  border-radius: 2px
+
+  outline: none;
+  cursor: pointer;
+
+.errorMessage
+  color: color-text-yellow-2
+  font(small-text, 600)
+  padding: 10px 0 0 30px
+
+.cancel
+  background-color: color-white
+
+  &:hover
+    background-color: color-white

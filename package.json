@@ -11,9 +11,7 @@
     "bootstrap": "lerna bootstrap --hoist",
     "test": "jest --config jest.config.js",
     "coverage": "jest --collectCoverage --coverageDirectory ./coverage",
-    "lint": "node_modules/.bin/eslint --ext .js ./src/",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook -c .storybook -o docs"
+    "lint": "node_modules/.bin/eslint --ext .js ./src/"
   },
   "repository": {
     "type": "git",
@@ -46,12 +44,6 @@
     "@babel/preset-react": "^7.0.0",
     "@babel/register": "^7.0.0",
     "@expandorg/eslint-config": "^0.3.0",
-    "@storybook/addon-actions": "^4.1.6",
-    "@storybook/addon-knobs": "^4.1.6",
-    "@storybook/addon-links": "^4.1.6",
-    "@storybook/addon-options": "^4.1.6",
-    "@storybook/addons": "^4.1.6",
-    "@storybook/react": "^4.1.6",
     "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^10.0.1",
     "babel-jest": "^23.6.0",
@@ -66,11 +58,9 @@
     "flow-bin": "^0.89.0",
     "jest": "^23.6.0",
     "lerna": "^3.10.1",
-    "marked": "^0.6.0",
     "postcss-loader": "^3.0.0",
     "postcss-preset-env": "^6.5.0",
     "prettier": "^1.15.3",
-    "prismjs": "^1.15.0",
     "prop-types": "^15.6.2",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
@@ -78,5 +68,6 @@
     "style-loader": "^0.23.1",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2"
-  }
+  },
+  "dependencies": {}
 }

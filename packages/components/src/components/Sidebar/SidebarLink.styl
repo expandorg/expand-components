@@ -1,0 +1,36 @@
+@import '~@expandorg/uikit/colors'
+@import '~@expandorg/uikit/font'
+@import '~@expandorg/uikit/size'
+
+.gem-sidebar-link
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+
+  box-sizing: border-box;
+  height: 100px
+
+  color: color-white;
+
+  font(h4)
+
+  text-decoration: none;
+
+  border-left: 5px solid transparent
+  border-right: 5px solid transparent
+
+  outline: 0
+
+  path
+    fill: color-white
+
+  &:hover
+    border-left-color: color-primary-blue
+
+  &-active
+    background-color: color-primary-blue
+
+
+  &-icon
+    margin-bottom: 17px;

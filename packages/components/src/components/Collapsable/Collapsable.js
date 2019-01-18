@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import cn from 'classnames';
 
-import { Transition, animated, config } from 'react-spring';
-
-import { ShevronUp, ShevronDown } from '../SvgIcons';
+import { Transition, animated } from 'react-spring';
 
 import './Collapsable.styl';
 
@@ -13,7 +11,6 @@ const transitions = {
   enter: { maxHeight: 10000, height: '100%' },
   leave: { maxHeight: 0, pointerEvents: 'none', height: '0%' },
 };
-const noop = () => null;
 
 export default class Collapsable extends Component {
   static propTypes = {
@@ -30,17 +27,17 @@ export default class Collapsable extends Component {
 
   render() {
     const { header, expanded, onToggle, children, className } = this.props;
-    const Shevron = expanded ? ShevronUp : ShevronDown;
+
+    /* eslint-disable jsx-a11y/no-static-element-interactions */
+    /* eslint-disable jsx-a11y/click-events-have-key-events */
+
     return (
       <div className={cn('gem-collapsable', className)}>
         <div
           className="gem-collapsable-header"
           onClick={() => onToggle(!expanded)}
         >
-          <div className="gem-collapsable-header-content">{header}</div>
-          <div className="gem-collapsable-header-toggle">
-            {<Shevron className="gem-collapsable-header-shevron" />}
-          </div>
+          {header}
         </div>
         <Transition
           native

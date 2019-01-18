@@ -1,0 +1,97 @@
+@import '~@expandorg/uikit/font'
+@import '~@expandorg/uikit/colors'
+
+.gem-autocomplete
+  position: relative;
+
+  &:after
+    position: absolute
+    content: ''
+    right: 0
+    top: calc(50% - 8px)
+    width: 12px
+    height: 16px
+    background-color: transparent;
+    background-position: center;
+    background-origin: border-box
+    background-repeat: no-repeat
+    background-image: url(../../assets/arrow-down.svg)
+
+  &-input
+    box-sizing: border-box
+
+    font(body, false, false, normal)
+
+    height: 32px;
+    width: 100%
+    padding: 0 15px 10px 0
+
+    background-color: transparent
+    color: color-text-dark
+
+    box-shadow: none;
+    border: none;
+    border-bottom: 2px solid  color-heavy-blue
+
+    transition: all 0.2s ease-out;
+
+    resize: none;
+
+    &:focus
+      border-bottom-color color-primary-blue
+
+  &-clear
+    position: absolute;
+    right: 8px;
+    top: calc(50% - 7px);
+
+    height: 10px;
+    line-height: 14px
+
+    color: color-text-dark
+
+    outline: 0
+    cursor: pointer;
+
+    &:hover
+      color: lighten(color-text-dark, 20%);
+
+
+  &-suggestions
+    position: absolute;
+    box-sizing: border-box;
+
+    left: 0
+    right: 0
+    top: 33px;
+    padding: 0
+
+    z-index: 2
+    overflow-y: scroll;
+    background-color: color-white
+    box-shadow: heavy-shadow
+
+
+  &-suggestion
+    display: block;
+    box-sizing: border-box;
+
+    width: 100%;
+    height: 50px
+
+    padding: 0 0 0 25px;
+
+    text-align: left;
+    font(body-bold, false, false, 50px)
+
+    white-space: nowrap
+    overflow: hidden
+    text-overflow: ellipsis
+
+    cursor: pointer;
+    color: color-blue-background
+    background-color: color-white
+    outline: 0;
+
+    &:hover
+      background-color: color-medium-blue

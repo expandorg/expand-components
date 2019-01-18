@@ -1,0 +1,63 @@
+@import '~@expandorg/uikit/font'
+@import '~@expandorg/uikit/colors'
+
+.container
+  box-sizing: border-box;
+
+  position: relative;
+
+  height: 185px
+  width: 185px
+
+  border-radius: 50%
+  background-color: color-light-blue
+
+.digit
+  box-sizing: border-box;
+
+  width: 40px
+  height: 40px
+
+  padding: 0
+
+  font(h4, false, false, 40px)
+  border-radius: 50%
+  text-align: center;
+
+  color: color-text-dark
+  background-color: transparent
+
+  outline: 0
+  cursor: pointer;
+
+  position: absolute;
+  left: calc(50% - 20px)
+  top: calc(50% - 20px)
+
+.selected
+  background-color: color-primary-blue
+  color: color-white
+  font-weight: 800
+
+.arrow
+  position: absolute;
+  top: 50%
+  left: 50%
+  height: 1px
+  width: 65px
+
+  background-color: color-primary-blue
+
+  transform-origin: left;
+
+  &:after
+    position: absolute;
+    content: ''
+    left: -2px
+    top: -2px
+
+    width: 5px
+    height: 5px
+    border-radius: 50%
+
+    background-color: color-primary-blue

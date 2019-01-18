@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import withServices from '../../hoc/withServices';
+import { withServices } from '../ServiceProvider';
 
 class JsScript extends Component {
   static propTypes = {

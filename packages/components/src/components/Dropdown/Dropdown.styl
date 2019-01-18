@@ -1,32 +1,50 @@
-@import '~@expandorg/uikit/font'
-@import '~@expandorg/uikit/colors'
+@import '~@expandorg/uikit/colors';
+@import '~@expandorg/uikit/font';
 
-.gem-dropdown
+
+.gem-dropdown-content
   box-sizing: border-box
-  position: relative
-  cursor: pointer
+  position relative
 
-  &-select
-    box-sizing: border-box
+  width: 100%
+  padding-bottom 10px
 
-    width: 99%
-    height: 100%
-    border: none
+  font(body)
+  color: color-text-dark
+  border-bottom: 2px solid color-heavy-blue
 
-    cursor: pointer
-    background-color: transparent
-    z-index: 1
-    outline: none
-    appearance: none
+  transition: all 0.2s ease-out;
 
-  &-disabled
-    .gem-dropdown-select
-      cursor: default
-
-  &-hidden
+  &:after
     position: absolute
-    top: 0
-    left: 0
-    width: 100%
+    content: ''
+    right: 0
+    top: calc(50% - 8px)
+    width: 12px
+    height: 16px
+    background-color: transparent;
+    background-position: center;
+    background-origin: border-box
+    background-repeat: no-repeat
+    background-image: url(../../assets/arrow-down.svg)
 
-    opacity: 0
+  &-label
+    transition-property: transform font-size font-weight;
+    transition-duration: 0.2s;
+    transition-timing-function: ease-out;
+    transform-origin: left center;
+    white-space: nowrap;
+
+  &-val
+    color: color-blue-background
+    font-weight: 800
+    border-bottom-color: color-heavy-blue
+
+    .gem-dropdown-content-label
+      position: absolute;
+      top: -15px
+      padding: 0
+      pointer-events: none;
+      color: color-text-dark
+      font-size: 11px
+      font-weight: 800

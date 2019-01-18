@@ -1,4 +1,5 @@
 // flow
 import JsScript from './JsScript';
+import withScript from './withScript';
 
-export default JsScript;
+export { JsScript, withScript };
