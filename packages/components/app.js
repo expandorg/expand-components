@@ -1,6 +1,6 @@
 // @flow
 import Navbar from './src/components/app/Navbar';
-import { Page, PageDark } from './src/components/app/Page';
+import { Page, PageDark, NotFound } from './src/components/app/Page';
 import { SidebarLink, Sidebar } from './src/components/app/Sidebar';
 
 import {
@@ -13,6 +13,7 @@ export {
   Navbar,
   Page,
   PageDark,
+  NotFound,
   SidebarLink,
   Sidebar,
   WalkthroughProvider,
