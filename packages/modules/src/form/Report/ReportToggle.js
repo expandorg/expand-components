@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import cn from 'classnames';
 
@@ -50,17 +50,16 @@ export default class ReportToggle extends Component {
 
     const { visible } = this.state;
     return (
-      <Fragment>
+      <>
         <Button
           onClick={this.handleToggle}
           theme="link"
-          size="small"
           className={cn(styles.toggle, className)}
         >
           report
         </Button>
         {visible && children({ reasons, onHide: this.handleToggle })}
-      </Fragment>
+      </>
     );
   }
 }
