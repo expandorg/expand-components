@@ -4,6 +4,11 @@ import { Page, PageDark, NotFound } from './src/components/app/Page';
 import { SidebarLink, Sidebar } from './src/components/app/Sidebar';
 
 import {
+  Notification,
+  NotificationAnimated,
+} from './src/components/app/Notifications';
+
+import {
   WalkthroughProvider,
   WalkthroughPin,
   ToggleWalkthrough,
@@ -19,4 +24,6 @@ export {
   WalkthroughProvider,
   WalkthroughPin,
   ToggleWalkthrough,
+  Notification,
+  NotificationAnimated,
 };

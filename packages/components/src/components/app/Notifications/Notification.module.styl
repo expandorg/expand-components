@@ -1,0 +1,53 @@
+@import '~@expandorg/uikit/colors'
+@import '~@expandorg/uikit/font'
+
+.container
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  position: relative;
+  box-sizing: border-box;
+
+  height: 60px
+
+  padding: 0 40px
+
+  border-radius: 5px
+  box-shadow: heavy-shadow
+
+  min-width: 200px
+
+.message
+  font(h4-bold)
+
+.success
+  background-color: color-success
+  color: color-white
+
+  path
+    fill: color-white
+
+
+.error
+  background-color: color-yellow
+  color: color-text-yellow-2
+
+  path
+    fill: color-text-yellow-2
+
+.x
+  background-color: transparent;
+  position: absolute;
+
+  width: 16px
+  height: 16px
+
+  right: 15px
+  top: calc(50% - 8px)
+
+  margin: 0
+  padding: 0
+
+  outline: 0
+  cursor: pointer;
