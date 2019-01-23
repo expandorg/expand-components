@@ -1,33 +1,51 @@
 @import '~@expandorg/uikit/colors'
+@import '~@expandorg/uikit/font'
 
 .container
   box-sizing: border-box;
-  padding: 0 25px 25px
-  min-width: 500px
-  max-width: 800px;
+  padding: 50px 140px
 
-  @media(max-width: 660px)
-    width: 100%;
-    min-width: 100%
-    padding: 10px 20px
+  text-align: center;
+
+  @media(max-width: 720px)
+    padding: 20px
+
+.inner
+  width: 440px
+  max-width: 440px
+  margin: 0 auto;
+
+.title
+  box-sizing: border-box;
+
+  font(h1, false, false, 1)
+  color: color-text-dark
+
+  margin: 0 -45px
+
+
+.field
+  position: relative;
+  margin-top: 32px
+  text-align: left;
+
+.error
+  position: absolute;
+  top: calc(100% + 15px)
+  left: 0
+  right: 0
+  text-align: center;
+
 
 .actions
   display: flex;
-  justify-content: flex-end;
+  align-content: center;
+  justify-content: center;
 
-  box-sizing: border-box;
-  padding: 15px 0;
+  margin-top: 50px
 
-.cancel
-  border: 0;
+  > *
+    margin: 0 7px
 
-.dropdown
-  box-sizing: border-box;
-
-  width: 100%;
-  border-radius: 2px;
-  padding: 0 12px
-  border: 1px solid color-border-grey;
-
-.field
-  margin-top: 15px
+.button
+  width: 200px

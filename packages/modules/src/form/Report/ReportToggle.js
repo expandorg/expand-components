@@ -44,9 +44,6 @@ export default class ReportToggle extends Component {
     }
 
     const reasons = getReasons(form.modules, controls);
-    if (!reasons.length) {
-      return null;
-    }
 
     const { visible } = this.state;
     return (

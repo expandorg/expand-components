@@ -61,9 +61,10 @@ export default class ReportForm extends Component {
     const { value, reason } = this.state;
     return (
       <Dialog visible onHide={this.handleHide} contentLabel="report">
-        <div className={styles.headline}>Report</div>
         <form className={styles.container} onSubmit={this.handleSubmit}>
-          <div className={styles.content}>
+          <div className={styles.inner}>
+            <div className={styles.title}>Report</div>
+
             <div className={styles.field}>
               <div className={styles.label}>Error</div>
               <Dropdown
@@ -84,21 +85,21 @@ export default class ReportForm extends Component {
               />
             </div>
           </div>
-          <ErrorMessage error={error} className={styles.error} />
+          <ErrorMessage errors={error} className={styles.error} />
           <div className={styles.actions}>
             <Button
-              onClick={this.handleHide}
-              className={styles.cancel}
-              theme="white"
-            >
-              Cancel
-            </Button>
-            <Button
               type="submit"
-              className={styles.report}
+              className={styles.button}
               disabled={isReporting}
             >
               Report
+            </Button>
+            <Button
+              className={styles.button}
+              theme="grey"
+              onClick={this.handleHide}
+            >
+              go back
             </Button>
           </div>
         </form>
