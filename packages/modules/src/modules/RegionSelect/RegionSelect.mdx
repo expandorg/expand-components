@@ -1,0 +1,48 @@
+---
+menu: Modules
+name: RegionSelect
+route: /modules-regionSelect
+---
+
+
+# RegionSelect Module
+
+## RegionSelect properties
+
+| Property | type           | Required | Default | description |
+| ---------| -------------- | -------- | ------- | ----------- |
+| *type*   | `regionSelect` | true     | -       | module type |
+| *name*   | string         | true     | -       | module name |
+| *image*  | string         | true     | -       | image url   |
+| *readOnly* | boolean        | false    | -       | read only    |
+| *initial* | `{x1: 0,y1: 0, x2: 10, y2: 10}` | false    | null       | initial value (when readOnly used) |
+
+## Example
+```jsx
+{
+  name: 'regionSelect',
+  type: 'regionSelect',
+  image: "https://expand.org/images/image-annotation.png",
+}
+```
+
+## Playground
+
+import ModulesPlayground from '../../form/ModulesPlayground/ModulesPlayground.js'
+
+<ModulesPlayground
+  form={{
+    modules: [
+      {
+        name: "regionSelect",
+        type: "regionSelect",
+        image: "https://expand.org/images/image-annotation.png"
+      },
+      {
+        name: 'submit',
+        type: 'submit',
+        caption: 'Next',
+      },
+    ],
+  }}
+/>

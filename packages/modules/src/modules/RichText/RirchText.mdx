@@ -1,0 +1,45 @@
+---
+menu: Modules
+name: RichText
+route: /modules-richText
+---
+
+# RichText Module
+
+## RichText properties
+
+| Property     | type           | Required | Default | description |
+| ------------ | -------------- | -------- | ------- | ----------- |
+| *type*       | `richText`    | true     | -       | module type |
+| *name*       | string         | true     | -       | module name |
+| *content*    | string         | -        | -       | html markup        |
+
+
+## Example
+```jsx
+{
+  name: "richText",
+  type: "richText",
+  content: "<h3>Lorem ipsum dolor sit amet</h3>"
+}
+```
+## Playground
+
+import ModulesPlayground from '../../form/ModulesPlayground/ModulesPlayground.js'
+
+<ModulesPlayground
+  form={{
+    modules: [
+      {
+        name: "richText",
+        type: "richText",
+        content: "<h3>Lorem ipsum dolor sit amet</h3>"
+      },
+      {
+        name: 'submit',
+        type: 'submit',
+        caption: 'Next',
+      },
+    ],
+  }}
+/>

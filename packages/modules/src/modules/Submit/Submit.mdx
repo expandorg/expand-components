@@ -1,0 +1,40 @@
+---
+menu: Modules
+name: Submit
+route: /modules-submit
+---
+
+# Submit Module
+
+## Submit properties
+
+| Property  | type     | Required | Default | description |
+| --------- | -------- | -------- | ------- | ----------- |
+| *type*    | `submit` | true     | -       | module type |
+| *name*    | string   | true     | -       | module name |
+| *caption* | string   | true     | -       | button text |
+
+## Example
+```jsx
+{
+  name: 'submit',
+  type: 'submit',
+  caption: 'Next'
+}
+```
+
+## Playground
+
+import ModulesPlayground from '../../form/ModulesPlayground/ModulesPlayground.js'
+
+<ModulesPlayground
+  form={{
+    modules: [
+    {
+        name: 'submit',
+        type: 'submit',
+        caption: 'Next',
+      },
+    ],
+  }}
+/>

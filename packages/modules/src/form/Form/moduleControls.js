@@ -9,14 +9,14 @@ import Checkbox from '../../modules/Checkbox';
 import Collapsable from '../../modules/Collapsable';
 import ClipboardText from '../../modules/ClipboardText';
 import Dropdown from '../../modules/Dropdown';
+import Image from '../../modules/Image';
+import ImageTiles from '../../modules/ImageTiles';
+import Video from '../../modules/Video';
 
 // import { SelectModule, MultiSelectModule } from '../../modules/Select';
-// import Video from '../../modules/Video';
 // import { TagVideo, MultipleTagVideo } from '../../modules/TagVideo';
-// import Image from '../../modules/Image';
 // import Agreement from '../../modules/Agreement';
 // import Progress from '../../modules/Progress';
-// import ImageTiles from '../../modules/ImageTiles';
 
 import { RegionSelect, RegionMultiselect } from '../../modules/RegionSelect';
 
@@ -55,18 +55,18 @@ const moduleControls = [
   ClipboardText,
   Collapsable,
   Dropdown,
+  Image,
+  ImageTiles,
   // SelectModule,
   // MultiSelectModule,
-  // Video,
-  // Image,
   // Instructions,
   // InstructionsItem,
   // Agreement,
   // Progress,
   RegionSelect,
   RegionMultiselect,
-  // ImageTiles,
   // TagVideo,
+  Video,
   // MultipleTagVideo,
 ];
 

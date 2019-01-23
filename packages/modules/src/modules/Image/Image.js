@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import cn from 'classnames';
 
 import PropControlTypes from '../../form/Form/PropControlTypes';
 import ModuleCategories from '../../form/Form/ModuleCategories';
@@ -9,12 +8,8 @@ import styles from './Image.module.styl';
 
 export default class Image extends Component {
   static propTypes = {
+    name: PropTypes.string.isRequired,
     src: PropTypes.string.isRequired,
-    className: PropTypes.string,
-  };
-
-  static defaultProps = {
-    className: null,
   };
 
   static module = {
@@ -31,18 +26,17 @@ export default class Image extends Component {
         },
       },
       defaults: {
-        src: 'https://portal.expand.org/images/complete-tasks.png',
+        src: 'https://expand.org/images/image-annotation.png',
       },
     },
   };
 
   render() {
-    const { src, className } = this.props;
+    const { src, name } = this.props;
     return (
-      <div
-        className={cn(styles.img, className)}
-        style={{ backgroundImage: `url('${src}')` }}
-      />
+      <div className={styles.container}>
+        <img className={styles.img} src={src} alt={name} />
+      </div>
     );
   }
 }

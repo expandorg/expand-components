@@ -2,8 +2,6 @@ import React, { Component, createRef } from 'react';
 import PropTypes from 'prop-types';
 import cn from 'classnames';
 
-import Alignment from '../../components/Alignment';
-
 import PropControlTypes from '../../form/Form/PropControlTypes';
 import ModuleCategories from '../../form/Form/ModuleCategories';
 
@@ -115,7 +113,7 @@ export default class Video extends Component {
     const { loadError } = this.state;
     /* eslint-disable jsx-a11y/media-has-caption */
     return (
-      <Alignment justify={justify} className={styles.container} padding="small">
+      <div className={styles.container}>
         <div className={styles.content}>
           {!loadError && (
             <video
@@ -138,7 +136,7 @@ export default class Video extends Component {
           )}
           {loadError && <div className={styles.error}>Video loading error</div>}
         </div>
-      </Alignment>
+      </div>
     );
   }
 }

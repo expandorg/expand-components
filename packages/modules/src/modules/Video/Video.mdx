@@ -1,14 +1,10 @@
+---
+menu: Modules
+name: Video
+route: /modules-video
+---
 
 # Video Module
-
-## Example
-```jsx
-{
-  name: 'video',
-  type: 'video',
-  src: "http://media.gettyimages.com/videos/cap-video-id896606100",
-}
-```
 
 ## Video properties
 
@@ -26,4 +22,32 @@
 | *width*     | number  | -        | -       | video width  |
 
 
+## Example
+```jsx
+{
+  name: 'video',
+  type: 'video',
+  src: "http://media.gettyimages.com/videos/cap-video-id896606100",
+}
+```
+
 ## Playground
+
+import ModulesPlayground from '../../form/ModulesPlayground/ModulesPlayground.js'
+
+<ModulesPlayground
+  form={{
+    modules: [
+      {
+        name: 'video',
+        type: 'video',
+        src: "http://media.gettyimages.com/videos/cap-video-id896606100",
+      },
+      {
+        name: 'submit',
+        type: 'submit',
+        caption: 'Next',
+      },
+    ],
+  }}
+/>
