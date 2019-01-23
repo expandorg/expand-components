@@ -23,11 +23,33 @@
 
   margin: 0 -45px
 
-
 .field
   position: relative;
   margin-top: 32px
   text-align: left;
+
+.label
+  font(body)
+  color: color-text-grey
+
+.textarea
+  box-sizing: content-box
+
+  font(body, false, false, normal)
+  width: 100%
+
+  padding: 0 15px 8px 0
+
+  background-color: transparent
+  color: color-blue-background
+  border: 1px solid transparent
+  border-bottom: 2px solid  color-heavy-blue
+
+  transition: all 0.2s ease-out;
+
+  outline: none;
+
+
 
 .error
   position: absolute;

@@ -65,17 +65,20 @@ export default class ReportForm extends Component {
           <div className={styles.inner}>
             <div className={styles.title}>Report</div>
 
-            <div className={styles.field}>
-              <div className={styles.label}>Error</div>
-              <Dropdown
-                value={reason}
-                className={styles.dropdown}
-                nullValue="Select reason"
-                placeholder="Select reason"
-                onChange={this.handleSelectReason}
-                options={reasons}
-              />
-            </div>
+            {reasons && reasons.length !== 0 && (
+              <div className={styles.field}>
+                <div className={styles.label}>Error</div>
+                <Dropdown
+                  value={reason}
+                  className={styles.dropdown}
+                  nullValue="Select reason"
+                  placeholder="Select reason"
+                  onChange={this.handleSelectReason}
+                  options={reasons}
+                />
+              </div>
+            )}
+
             <div className={styles.field}>
               <div className={styles.label}>Provide some details</div>
               <textarea
