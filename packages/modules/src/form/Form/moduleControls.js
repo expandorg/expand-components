@@ -2,7 +2,7 @@
 
 // import Input from '../../modules/Input';
 // import { Instructions, InstructionsItem } from '../../modules/Instructions';
-// import Submit from '../../modules/Submit';
+import Submit from '../../modules/Submit';
 // import Article from '../../modules/Article';
 // import Title from '../../modules/Title';
 // import Text from '../../modules/Text';
@@ -60,7 +60,7 @@ const moduleControls = [
   // MultiSelectModule,
   // Checkbox,
   // ClipboardText,
-  // Submit,
+  Submit,
   // Video,
   // Image,
   // Description,
