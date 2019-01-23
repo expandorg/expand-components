@@ -4,7 +4,7 @@ import cn from 'classnames';
 
 import './Button.styl';
 
-class Button extends Component {
+export class Button extends Component {
   static propTypes = {
     className: PropTypes.string,
     type: PropTypes.string,
