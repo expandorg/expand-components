@@ -25,18 +25,19 @@ export default class Collapsable extends Component {
     className: null,
   };
 
+  handleToggle = () => {
+    const { expanded, onToggle } = this.props;
+    onToggle(!expanded);
+  };
+
   render() {
-    const { header, expanded, onToggle, children, className } = this.props;
+    const { header, expanded, children, className } = this.props;
 
     /* eslint-disable jsx-a11y/no-static-element-interactions */
     /* eslint-disable jsx-a11y/click-events-have-key-events */
-
     return (
       <div className={cn('gem-collapsable', className)}>
-        <div
-          className="gem-collapsable-header"
-          onClick={() => onToggle(!expanded)}
-        >
+        <div className="gem-collapsable-header" onClick={this.handleToggle}>
           {header}
         </div>
         <Transition

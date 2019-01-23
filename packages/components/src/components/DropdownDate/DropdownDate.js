@@ -14,7 +14,7 @@ import setYear from 'date-fns/set_year';
 
 import { range, rangeFrom } from '../../common/immutable';
 
-import { Dropdown } from '../Dropdown';
+import { DropdownBase } from '../Dropdown';
 
 import './DropdownDate.styl';
 
@@ -61,7 +61,7 @@ export default class DateInput extends Component {
     const { className, value } = this.props;
     return (
       <div className={cn('gem-dateinput', className)}>
-        <Dropdown
+        <DropdownBase
           value={getMonth(value)}
           options={monthes}
           className="gem-dateinput-dropdown"
@@ -69,8 +69,8 @@ export default class DateInput extends Component {
           formatter={month => format(setMonth(value, month), 'MMM')}
         >
           {({ formatted }) => formatted}
-        </Dropdown>
-        <Dropdown
+        </DropdownBase>
+        <DropdownBase
           value={getDate(value)}
           options={range(getDaysInMonth(value))}
           className="gem-dateinput-dropdown"
@@ -78,15 +78,15 @@ export default class DateInput extends Component {
           formatter={day => day + 1}
         >
           {({ formatted }) => formatted}
-        </Dropdown>
-        <Dropdown
+        </DropdownBase>
+        <DropdownBase
           value={getYear(value)}
           options={dates}
           className="gem-dateinput-dropdown"
           onChange={this.handleChangeYear}
         >
           {({ formatted }) => formatted}
-        </Dropdown>
+        </DropdownBase>
       </div>
     );
   }

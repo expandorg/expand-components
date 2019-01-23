@@ -1,0 +1,26 @@
+@import '~@expandorg/uikit/colors'
+@import '~@expandorg/uikit/font'
+
+.container
+  position: relative
+  margin-top: 35px
+
+.text
+  :global(.gem-input)
+    width: calc(100% - 80px)
+    padding-right: 80px
+
+.copy
+  position: absolute
+  top: 3px
+  right: 0
+  font(subtitle)
+  text-transform: uppercase
+  letter-spacing: 0.15em;
+  color: color-text-blue
+
+  cursor: pointer
+  outline: 0
+
+  &:hover
+    color: lighten(color-text-blue, 20%)

@@ -1,27 +1,24 @@
 // @flow
 
-// import Input from '../../modules/Input';
+import Input from '../../modules/Input';
 // import { Instructions, InstructionsItem } from '../../modules/Instructions';
 import Submit from '../../modules/Submit';
-// import Article from '../../modules/Article';
-// import Title from '../../modules/Title';
-// import Text from '../../modules/Text';
-// import RichText from '../../modules/RichText';
-// import Paragraph from '../../modules/Paragraph';
+import Text from '../../modules/Text';
+import RichText from '../../modules/RichText';
+import Checkbox from '../../modules/Checkbox';
+import Collapsable from '../../modules/Collapsable';
+import ClipboardText from '../../modules/ClipboardText';
+import Dropdown from '../../modules/Dropdown';
+
 // import { SelectModule, MultiSelectModule } from '../../modules/Select';
-// import Checkbox from '../../modules/Checkbox';
-// import ClipboardText from '../../modules/ClipboardText';
 // import Video from '../../modules/Video';
 // import { TagVideo, MultipleTagVideo } from '../../modules/TagVideo';
 // import Image from '../../modules/Image';
-// import Description from '../../modules/Description';
-// import Question from '../../modules/Question';
 // import Agreement from '../../modules/Agreement';
-// import Collapsable from '../../modules/Collapsable';
 // import Progress from '../../modules/Progress';
-// import Dropdown from '../../modules/Dropdown';
 // import ImageTiles from '../../modules/ImageTiles';
-// import { RegionSelect, RegionMultiselect } from '../../modules/RegionSelect';
+
+import { RegionSelect, RegionMultiselect } from '../../modules/RegionSelect';
 
 export const getModuleControlsMap = (
   controls: Array<Object>
@@ -50,29 +47,24 @@ export const groupModulesByCategory = (controls: Array<Object>) => {
 };
 
 const moduleControls = [
-  // Input,
-  // Title,
-  // Text,
-  // RichText,
-  // Article,
-  // Paragraph,
+  Input,
+  Text,
+  RichText,
+  Checkbox,
+  Submit,
+  ClipboardText,
+  Collapsable,
+  Dropdown,
   // SelectModule,
   // MultiSelectModule,
-  // Checkbox,
-  // ClipboardText,
-  Submit,
   // Video,
   // Image,
-  // Description,
-  // Question,
   // Instructions,
   // InstructionsItem,
   // Agreement,
-  // Collapsable,
   // Progress,
-  // Dropdown,
-  // RegionSelect,
-  // RegionMultiselect,
+  RegionSelect,
+  RegionMultiselect,
   // ImageTiles,
   // TagVideo,
   // MultipleTagVideo,

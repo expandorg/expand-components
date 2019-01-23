@@ -11,6 +11,7 @@ export default class Dropdown extends Component {
   static propTypes = {
     className: PropTypes.string,
     value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    nullValue: PropTypes.string,
     options: PropTypes.arrayOf(
       PropTypes.oneOfType([PropTypes.string, PropTypes.object])
     ),
@@ -21,6 +22,7 @@ export default class Dropdown extends Component {
   static defaultProps = {
     value: undefined,
     className: null,
+    nullValue: null,
     options: [],
     label: null,
   };
@@ -31,11 +33,13 @@ export default class Dropdown extends Component {
   };
 
   render() {
-    const { className, options, value, label } = this.props;
+    const { className, options, value, label, nullValue } = this.props;
+
     return (
       <DropdownBase
         options={options}
         value={value}
+        nullValue={nullValue}
         onChange={this.handleChange}
         className={className}
       >

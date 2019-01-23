@@ -11,7 +11,7 @@ const formatItem = option => {
   return option;
 };
 
-export default class Dropdown extends Component {
+export default class DropdownBase extends Component {
   static propTypes = {
     className: PropTypes.string,
     value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
@@ -71,11 +71,7 @@ export default class Dropdown extends Component {
           value={value}
           onChange={this.handleChange}
         >
-          {nullValue && (
-            <option disabled value="">
-              {nullValue}
-            </option>
-          )}
+          {nullValue && <option value="">{nullValue}</option>}
           {items.map(option => (
             <option key={option.value} value={option.value}>
               {formatter(option.label)}

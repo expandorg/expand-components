@@ -120,7 +120,7 @@ export default class Form extends Component {
         onSubmit={this.handleSubmit}
       >
         {form.modules.map(module => (
-          <Validation key={module.name} name={module.name} error={errors}>
+          <Validation key={module.name} name={module.name} errors={errors}>
             {children({
               module,
               value: values ? values[module.name] : undefined,
@@ -128,7 +128,7 @@ export default class Form extends Component {
             })}
           </Validation>
         ))}
-        <ErrorMessage className={styles.error} error={errors} />
+        <ErrorMessage className={styles.error} errors={errors} />
       </form>
     );
   }

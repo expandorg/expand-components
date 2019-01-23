@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import cn from 'classnames';
 
-import { Input, Dropdown, ArrowDown } from '@expandorg/components';
+import { Input, DropdownBase, ArrowDown } from '@expandorg/components';
 
 import styles from './LabelInput.module.styl';
 
@@ -25,7 +25,7 @@ export default class LabelInput extends PureComponent {
     const { value, options, onChange, readOnly } = this.props;
     if (options.length) {
       return (
-        <Dropdown
+        <DropdownBase
           className={styles.dropdown}
           value={value}
           nullValue="Label"
@@ -45,7 +45,7 @@ export default class LabelInput extends PureComponent {
               </div>
             </div>
           )}
-        </Dropdown>
+        </DropdownBase>
       );
     }
     return (

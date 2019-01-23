@@ -59,6 +59,7 @@ export default class ReportForm extends Component {
   render() {
     const { reasons, isReporting, error } = this.props;
     const { value, reason } = this.state;
+
     return (
       <Dialog visible onHide={this.handleHide} contentLabel="report">
         <form className={styles.container} onSubmit={this.handleSubmit}>
@@ -67,12 +68,11 @@ export default class ReportForm extends Component {
 
             {reasons && reasons.length !== 0 && (
               <div className={styles.field}>
-                <div className={styles.label}>Error</div>
                 <Dropdown
                   value={reason}
                   className={styles.dropdown}
                   nullValue="Select reason"
-                  placeholder="Select reason"
+                  label="Select reason"
                   onChange={this.handleSelectReason}
                   options={reasons}
                 />

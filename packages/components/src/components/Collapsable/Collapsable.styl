@@ -1,0 +1,43 @@
+@import '~@expandorg/uikit/colors'
+@import '~@expandorg/uikit/font'
+
+.gem-collapsable
+  box-sizing: border-box;
+
+  padding-bottom: 10px
+  border-bottom: 1px solid color-heavy-blue
+
+  &-header
+    box-sizing: border-box;
+    position: relative
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    user-select: none;
+    cursor: pointer;
+
+    height 40px
+
+    font(h2-title)
+    color: color-text-dark
+
+    &:after
+      position: absolute
+      content: ''
+      right: 0
+      top: calc(50% - 3px)
+      width: 12px
+      height: 16px
+      background-color: transparent;
+      background-position: center;
+      background-origin: border-box
+      background-repeat: no-repeat
+      background-image: url("~@expandorg/uikit/assets/arrow-down.svg")
+
+
+  &-content
+    box-sizing: border-box;
+    overflow hidden
+
