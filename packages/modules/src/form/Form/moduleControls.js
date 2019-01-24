@@ -1,5 +1,6 @@
 // @flow
 
+import Agreement from '../../modules/Agreement';
 import Input from '../../modules/Input';
 // import { Instructions, InstructionsItem } from '../../modules/Instructions';
 import Submit from '../../modules/Submit';
@@ -16,7 +17,6 @@ import { Select, Multiselect } from '../../modules/Select';
 import Video from '../../modules/Video';
 
 // import { TagVideo, MultipleTagVideo } from '../../modules/TagVideo';
-// import Agreement from '../../modules/Agreement';
 // import Progress from '../../modules/Progress';
 
 import { RegionSelect, RegionMultiselect } from '../../modules/RegionSelect';
@@ -48,6 +48,7 @@ export const groupModulesByCategory = (controls: Array<Object>) => {
 };
 
 const moduleControls = [
+  Agreement,
   Input,
   Text,
   RichText,
@@ -60,7 +61,6 @@ const moduleControls = [
   ImageTiles,
   // Instructions,
   // InstructionsItem,
-  // Agreement,
   // Progress,
   RegionSelect,
   RegionMultiselect,
