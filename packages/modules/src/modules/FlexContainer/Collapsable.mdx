@@ -1,0 +1,67 @@
+---
+menu: Modules
+name: Flex Container
+route: /modules-flex
+---
+
+# Flex Container Module
+
+## Flex Container properties
+
+| Property     | type           | Required | Default | description |
+| ------------ | -------------- | -------- | ------- | ----------- |
+| *type*       | `flex`  | true     | -       | module type |
+| *name*       | string         | true     | -       | module name |
+| *justify*    | 'start', 'end', 'center', 'space-between', 'space-around'         | true     | -       | Header text |
+| *modules*   | *modules*  | true     | -       | nested contnet |
+
+## Example
+```jsx
+{
+  name: "collapsable",
+  type: "collapsable",
+  header: 'Click to Expand/Collapse',
+  modules: {
+    name: "p-2",
+    type: "text",
+    style: "description",
+    content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+  },
+}
+```
+
+import ModulesPlayground from '../../form/ModulesPlayground/ModulesPlayground.js'
+
+<ModulesPlayground
+  form={{
+    modules: [
+      {
+        name: "h1",
+        type: "text",
+        style: "h2",
+        content: "With paragrahs"
+      },
+      {
+        name: "flex",
+        type: "flex",
+        modules: [{
+          name: "p-2",
+          type: "text",
+          style: "body",
+          content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+        }, {
+          name: "p-3",
+          type: "text",
+          style: "body",
+          content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+        }],
+      },
+      {
+        name: 'submit',
+        type: 'submit',
+        caption: 'Next',
+      },
+    ],
+  }}
+/>
+

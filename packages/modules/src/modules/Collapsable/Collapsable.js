@@ -36,6 +36,7 @@ export default class Collapsable extends Component {
         },
         modules: {
           type: PropControlTypes.modules,
+          caption: 'Drop content here',
         },
       },
       defaults: {
