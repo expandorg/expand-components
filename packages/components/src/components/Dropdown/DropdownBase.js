@@ -71,7 +71,11 @@ export default class DropdownBase extends Component {
           value={value}
           onChange={this.handleChange}
         >
-          {nullValue && <option value="">{nullValue}</option>}
+          {nullValue && (
+            <option value="" disabled>
+              {nullValue}
+            </option>
+          )}
           {items.map(option => (
             <option key={option.value} value={option.value}>
               {formatter(option.label)}

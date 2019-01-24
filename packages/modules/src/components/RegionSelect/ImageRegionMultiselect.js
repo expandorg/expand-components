@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import cn from 'classnames';
 
@@ -84,7 +84,7 @@ export default class ImageRegionMultiselect extends Component {
             onSelectionEnd={rect => this.handleSelect(rect, width, imageWidth)}
           >
             {({ selection }) => (
-              <Fragment>
+              <>
                 {showValues &&
                   values.map((value, index) => (
                     <Selection
@@ -110,7 +110,7 @@ export default class ImageRegionMultiselect extends Component {
                     value={showValues}
                   />
                 )}
-              </Fragment>
+              </>
             )}
           </SelectRegionBase>
         )}

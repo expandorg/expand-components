@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import { Button } from '@expandorg/components';
@@ -36,7 +36,7 @@ export default class InstructionsItem extends Component {
     const { action, children, title } = this.props;
     const { visible } = this.state;
     return (
-      <Fragment>
+      <>
         <Button
           size="small"
           theme="link"
@@ -54,7 +54,7 @@ export default class InstructionsItem extends Component {
           {children}
         </Modal>
         <div className={styles.spacer} />
-      </Fragment>
+      </>
     );
   }
 }

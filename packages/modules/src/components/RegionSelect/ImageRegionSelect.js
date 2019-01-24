@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import cn from 'classnames';
 
@@ -66,7 +66,7 @@ export default class ImageRegionSelect extends Component {
             onSelectionEnd={rect => this.handleSelect(rect, width, imageWidth)}
           >
             {({ selection }) => (
-              <Fragment>
+              <>
                 {showValue &&
                   (selection ? (
                     <Selection
@@ -91,7 +91,7 @@ export default class ImageRegionSelect extends Component {
                     value={showValue}
                   />
                 )}
-              </Fragment>
+              </>
             )}
           </SelectRegionBase>
         )}

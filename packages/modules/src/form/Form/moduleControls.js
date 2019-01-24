@@ -15,8 +15,7 @@ import ImageTiles from '../../modules/ImageTiles';
 import { Select, Multiselect } from '../../modules/Select';
 
 import Video from '../../modules/Video';
-
-// import { TagVideo, MultipleTagVideo } from '../../modules/TagVideo';
+import { TagVideo, MultipleTagVideo } from '../../modules/TagVideo';
 // import Progress from '../../modules/Progress';
 
 import { RegionSelect, RegionMultiselect } from '../../modules/RegionSelect';
@@ -66,9 +65,9 @@ const moduleControls = [
   RegionMultiselect,
   Select,
   Multiselect,
-  // TagVideo,
   Video,
-  // MultipleTagVideo,
+  TagVideo,
+  MultipleTagVideo,
 ];
 
 export default moduleControls;

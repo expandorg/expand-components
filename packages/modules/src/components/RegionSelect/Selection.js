@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import DragHandler from './DragHandler';
@@ -92,7 +92,7 @@ export default class Selection extends Component {
     return (
       <div className="gem-selectregion-selection" style={style}>
         {editable && (
-          <Fragment>
+          <>
             <div className="gem-selectregion-selection-cliparea" />
             <button
               className="gem-selectregion-delete"
@@ -132,7 +132,7 @@ export default class Selection extends Component {
               onDrag={this.handleDrag}
               onDragEnd={this.handleDragEnd}
             />
-          </Fragment>
+          </>
         )}
       </div>
     );

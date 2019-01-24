@@ -1,0 +1,45 @@
+@import '~@expandorg/uikit/colors'
+@import '~@expandorg/uikit/font'
+
+.cursor
+  position: absolute;
+  box-sizing: border-box;
+
+  top: 0
+  bottom: 0
+  width: 3px
+
+
+  background-color: color-blue-background
+
+.label
+  box-sizing: border-box;
+
+  position: absolute;
+  bottom: 70px
+  left: calc(50% -1px)
+
+  transform: translateX(-50%)
+
+  padding: 0 15px;
+
+  box-shadow: light-shadow
+  color: color-blue-background
+  background-color: white
+
+  font(h4-bold, false, false, 38px)
+  height: 40px
+
+  border-radius: 5px
+
+  white-space: nowrap;
+
+  &:after
+    transform: translateX(1px);
+    left: calc(50% - 8px)
+    position: absolute
+    content: ''
+
+    bottom: -12px
+    border: 8px solid transparent
+    border-top: 8px solid color-blue

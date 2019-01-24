@@ -1,0 +1,46 @@
+@import '~@expandorg/uikit/colors'
+@import '~@expandorg/uikit/font'
+
+.button
+  box-sizing: border-box;
+  position: relative;
+
+  height: 60px
+  width: 60px
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: color-primary-blue
+  border-radius: 5px
+  border: none;
+
+  cursor: pointer;
+  outline: none
+
+  &:hover
+    background-color: lighten(color-primary-blue, 10%)
+
+  :global(.gem-tooltip-orientation-top)
+    bottom: 70px
+
+.icon
+  display: block;
+  content: ' '
+  box-sizing: border-box;
+
+  width: 16px;
+  height: 16px;
+  border-color: transparent transparent transparent color-white;
+
+  transition: 100ms all ease;
+  will-change: border-width;
+
+  border-style: solid;
+  border-width: 8px 0px 8px 16px;
+
+.pause
+  border-style: double;
+  border-width: 0px 0 0px 14px;
+
