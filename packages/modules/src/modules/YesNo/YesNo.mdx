@@ -1,0 +1,56 @@
+---
+menu: Modules
+name: Yes/No Module
+route: /modules-yesno
+---
+
+# Yes/No Module
+
+## Select properties
+
+| Property       | type           | Required | Default | description  |
+| -------------- | -------------- | -------- | --------| ------------ |
+| *type*         | `select`       | true     | -       | module type  |
+| *name*         | string         | true     | -       | module name  |
+| *idType*       | `small`, `capital`, `roman`, `numerals` | false    | numerals       | enumerator type  |
+| *yesCaption*   | string         | true     | -       | yes caption  |
+| *noCaption*    | string         | true     | -       | no caption   |
+
+## Example
+```jsx
+{
+  name: 'yesno',
+  type: 'yesno',
+  idType: 'small',
+  yesCaption: 'Yes',
+  noCaption: 'No',
+}
+```
+
+import ModulesPlayground from '../../form/ModulesPlayground/ModulesPlayground.js'
+
+<ModulesPlayground
+  form={{
+    modules: [
+      {
+        name: 'text',
+        type: 'type',
+        style: 'h3',
+        content: 'Answer is correct?',
+      },
+      {
+        name: 'yesno',
+        type: 'yesno',
+        idType: 'small',
+        yesCaption: 'Yes',
+        noCaption: 'No',
+      },
+      {
+        name: 'submit',
+        type: 'submit',
+        caption: 'Next',
+        justify: 'center',
+      },
+    ],
+  }}
+/>

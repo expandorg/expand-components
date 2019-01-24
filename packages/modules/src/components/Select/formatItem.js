@@ -5,10 +5,16 @@ type OptionType = {
   caption: ?string,
 };
 
-const formatItem = (option: string, id: string): OptionType => ({
-  value: option,
-  id,
-  caption: option,
-});
+const formatItem = (option: string | Object, id: string): OptionType => {
+  if (typeof option === 'object') {
+    return { ...option, id };
+  }
+
+  return {
+    value: option,
+    id,
+    caption: option,
+  };
+};
 
 export default formatItem;

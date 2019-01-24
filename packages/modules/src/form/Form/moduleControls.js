@@ -15,6 +15,7 @@ import { RegionSelect, RegionMultiselect } from '../../modules/RegionSelect';
 import { Select, Multiselect } from '../../modules/Select';
 import Submit from '../../modules/Submit';
 import Text from '../../modules/Text';
+import YesNo from '../../modules/YesNo';
 import { TagVideo, MultipleTagVideo } from '../../modules/TagVideo';
 import Video from '../../modules/Video';
 
@@ -65,6 +66,7 @@ const moduleControls = [
   Submit,
   TagVideo,
   Text,
+  YesNo,
   Video,
 ];
 
