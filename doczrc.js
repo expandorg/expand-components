@@ -2,7 +2,8 @@ export default {
   title: 'Expand Ui',
   description: 'Expand components and modules',
   theme: 'docz-theme-default',
-
+  hashRouter: true,
+  dest: 'docs',
   htmlContext: {
     head: {
       links: [
@@ -25,10 +26,10 @@ export default {
       body: {
         fontFamily: 'Avenir',
       },
-      container: {
-        width: ['100%', '100%', 920],
-        padding: ['20px', '0 40px 40px'],
-      },
+      // container: {
+      //   width: ['100%', '100%', 920],
+      //   padding: ['20px', '0 40px 40px'],
+      // },
     },
   },
   modifyBundlerConfig: config => {
