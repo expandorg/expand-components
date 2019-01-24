@@ -3,24 +3,23 @@ import PropTypes from 'prop-types';
 
 import { rules } from '@expandorg/validation';
 
-import Alignment from '../../components/Alignment';
-
-import Choice from './Choice';
-import Select from './Select';
+import { Select, Choice } from '../../components/Select';
 
 import PropControlTypes from '../../form/Form/PropControlTypes';
 
-export default class MultiSelectModule extends Component {
+import styles from './styles.module.styl';
+
+export default class Multiselect extends Component {
   static propTypes = {
     name: PropTypes.string.isRequired,
     options: PropTypes.arrayOf(
-      PropTypes.oneOfType([PropTypes.string, PropTypes.object])
+      PropTypes.oneOfType([PropTypes.string, PropTypes.number])
     ).isRequired,
     value: PropTypes.arrayOf(
-      PropTypes.oneOfType([PropTypes.string, PropTypes.object])
+      PropTypes.oneOfType([PropTypes.string, PropTypes.number])
     ),
     answers: PropTypes.arrayOf(
-      PropTypes.oneOfType([PropTypes.string, PropTypes.object])
+      PropTypes.oneOfType([PropTypes.string, PropTypes.number])
     ),
     columns: PropTypes.oneOf([2, 3]),
     readOnly: PropTypes.bool,
@@ -55,12 +54,7 @@ export default class MultiSelectModule extends Component {
         },
       },
       defaults: {
-        options: [
-          { value: 1, id: 1, caption: 'Option 1' },
-          { value: 2, id: 2, caption: 'Option 2' },
-          { value: 3, id: 3, caption: 'Option 2' },
-          { value: 4, id: 4, caption: 'Option 4' },
-        ],
+        options: ['Option 1', 'Option 2', 'Option 3', 'Option 4'],
       },
     },
   };
@@ -81,7 +75,7 @@ export default class MultiSelectModule extends Component {
     const { value, options, columns, answers, readOnly } = this.props;
     const selection = readOnly ? answers : value;
     return (
-      <Alignment padding="small">
+      <div className={styles.module}>
         <Select
           options={options}
           onSelect={this.handleChange}
@@ -98,7 +92,7 @@ export default class MultiSelectModule extends Component {
             />
           )}
         </Select>
-      </Alignment>
+      </div>
     );
   }
 }

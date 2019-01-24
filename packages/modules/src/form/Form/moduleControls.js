@@ -11,9 +11,10 @@ import ClipboardText from '../../modules/ClipboardText';
 import Dropdown from '../../modules/Dropdown';
 import Image from '../../modules/Image';
 import ImageTiles from '../../modules/ImageTiles';
+import { Select, Multiselect } from '../../modules/Select';
+
 import Video from '../../modules/Video';
 
-// import { SelectModule, MultiSelectModule } from '../../modules/Select';
 // import { TagVideo, MultipleTagVideo } from '../../modules/TagVideo';
 // import Agreement from '../../modules/Agreement';
 // import Progress from '../../modules/Progress';
@@ -57,14 +58,14 @@ const moduleControls = [
   Dropdown,
   Image,
   ImageTiles,
-  // SelectModule,
-  // MultiSelectModule,
   // Instructions,
   // InstructionsItem,
   // Agreement,
   // Progress,
   RegionSelect,
   RegionMultiselect,
+  Select,
+  Multiselect,
   // TagVideo,
   Video,
   // MultipleTagVideo,

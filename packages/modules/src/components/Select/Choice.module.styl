@@ -1,0 +1,68 @@
+@import '~@expandorg/uikit/colors'
+@import '~@expandorg/uikit/font'
+
+selected()
+  .selected &
+    {block}
+
+.container
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  box-sizing: border-box;
+
+  border-radius: 5px
+  height: 60px
+
+  padding: 0 20px
+  text-align: left;
+
+  color: color-text-blue
+  background-color: color-light-blue
+  border: 1px solid color-blue-transparent
+
+  outline: none;
+  cursor pointer
+
+.selected
+  background-color: color-primary-blue
+  color: color-white
+  border-color: color-primary-blue
+
+.readOnly
+  cursor: default;
+
+.mark
+  width: 25px
+  height: 25px
+  margin-right: 16px;
+  border: 1px solid color-blue-transparent
+  border-radius: 5px
+
+  +selected()
+    background-color: color-white
+    border-color: color-white
+
+.icon
+  position: relative
+  top: 2px
+  left: 2px
+  path
+    fill: none
+
+  +selected()
+    path
+      fill: color-primary-blue
+
+.id
+  box-sizing: border-box;
+  font(body-bold)
+  margin-right: 16px;
+
+.caption
+  font(body)
+  flex-grow: 1
+  margin-right: 5px
+
+

@@ -3,17 +3,16 @@ import PropTypes from 'prop-types';
 
 import { rules } from '@expandorg/validation';
 
-import Alignment from '../../components/Alignment';
-
-import Choice from './Choice';
-import Select from './Select';
+import { Select as UISelect, Choice } from '../../components/Select';
 
 import PropControlTypes from '../../form/Form/PropControlTypes';
 import ModuleCategories from '../../form/Form/ModuleCategories';
 
-import { formatter, IdType } from './ids';
+import { formatter, IdType } from '../../components/Select/ids';
 
-export default class SelectModule extends Component {
+import styles from './styles.module.styl';
+
+export default class Select extends Component {
   static propTypes = {
     name: PropTypes.string.isRequired,
     options: PropTypes.arrayOf(
@@ -102,8 +101,8 @@ export default class SelectModule extends Component {
     const selected = readOnly ? answer : value;
 
     return (
-      <Alignment padding="small">
-        <Select
+      <div className={styles.module}>
+        <UISelect
           options={options}
           onSelect={this.handleChange}
           columns={columns}
@@ -118,8 +117,8 @@ export default class SelectModule extends Component {
               onSelect={onSelect}
             />
           )}
-        </Select>
-      </Alignment>
+        </UISelect>
+      </div>
     );
   }
 }

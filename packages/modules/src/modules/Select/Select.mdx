@@ -1,0 +1,55 @@
+---
+menu: Modules
+name: Select
+route: /modules-select
+---
+
+# Select Module
+
+## Select properties
+
+| Property       | type           | Required | Default | description  |
+| -------------- | -------------- | -------- | --------| ------------ |
+| *type*         | `select`       | true     | -       | module type  |
+| *name*         | string         | true     | -       | module name  |
+| *idType*       | `small`, `capital`, `roman`, `numerals` | false    | numerals       | enumerator type  |
+| *columns*      | `2`, `3`       | false    | `2`     | number of columns  |
+| *options*      | `[ string, string... ]`   | true   | -     | array of options   |
+| *readOnly*     | boolean        | -        | false   | read only    |
+
+## Example
+```jsx
+{
+  name: 'select',
+  type: 'select',
+  idType: 'small',
+  options: ['Option 1', 'Option 2', 'Option 2', 'Option 4'],
+}
+```
+
+import ModulesPlayground from '../../form/ModulesPlayground/ModulesPlayground.js'
+
+<ModulesPlayground
+  form={{
+    modules: [
+      {
+        name: 'text',
+        type: 'type',
+        style: 'h3',
+        content: 'Select one',
+      },
+      {
+        name: 'select',
+        type: 'select',
+        idType: 'small',
+        options: ['Option 1', 'Option 2', 'Option 3', 'Option 4'],
+      },
+      {
+        name: 'submit',
+        type: 'submit',
+        caption: 'Next',
+        justify: 'center',
+      },
+    ],
+  }}
+/>
