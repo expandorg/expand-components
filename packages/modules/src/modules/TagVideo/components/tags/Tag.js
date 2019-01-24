@@ -13,8 +13,13 @@ export default class EditTag extends Component {
       end: PropTypes.number,
       tag: PropTypes.string,
     }).isRequired,
+    index: PropTypes.number,
     onDelete: PropTypes.func.isRequired,
     onSelect: PropTypes.func.isRequired,
+  };
+
+  static defaultProps = {
+    index: null,
   };
 
   handleSelect = evt => {
@@ -31,7 +36,7 @@ export default class EditTag extends Component {
   };
 
   render() {
-    const { tag } = this.props;
+    const { tag, index } = this.props;
 
     /* eslint-disable jsx-a11y/no-static-element-interactions */
     /* eslint-disable jsx-a11y/click-events-have-key-events */
@@ -39,7 +44,12 @@ export default class EditTag extends Component {
 
     return (
       <tr className={styles.row}>
-        <td className={styles.cell} onClick={this.handleSelect}>
+        <td
+          className={cn(styles.cell, styles.first, {
+            [styles[`color-${index}`]]: index !== null,
+          })}
+          onClick={this.handleSelect}
+        >
           {tag.tag}
         </td>
         <td className={styles.cell} onClick={this.handleSelect}>

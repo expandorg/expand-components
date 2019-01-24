@@ -152,8 +152,9 @@ export default class TagVideo extends Component {
           {({ width }) => (
             <>
               {!editor &&
-                tags.map(tag => (
+                tags.map((tag, index) => (
                   <TimelineRange
+                    index={index}
                     key={tag.id}
                     start={tag.start}
                     end={tag.end}

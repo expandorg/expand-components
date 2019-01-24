@@ -16,8 +16,19 @@ export default {
   themeConfig: {
     codemirrorTheme: 'dracula',
     colors: {
-      primary: '#F9005F',
-      sidebarBg: 'white',
+      primary: '#1471EB',
+      sidebarBg: '#1C2541',
+      sidebarText: '#F3F9FF',
+      sidebarBorder: 'transparent',
+    },
+    styles: {
+      body: {
+        fontFamily: 'Avenir',
+      },
+      container: {
+        width: ['100%', '100%', 920],
+        padding: ['20px', '0 40px 40px'],
+      },
     },
   },
   modifyBundlerConfig: config => {

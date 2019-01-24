@@ -38,8 +38,9 @@ export default class Tags extends Component {
           </tr>
         </thead>
         <tbody className={styles.body}>
-          {tags.map(tag => (
+          {tags.map((tag, index) => (
             <Tag
+              index={index}
               tag={tag}
               key={tag.id}
               onSelect={onSelect}
