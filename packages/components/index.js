@@ -28,6 +28,7 @@ import Input from './src/components/Input';
 
 import { JsScript, withScript } from './src/components/JsScript';
 import Portal from './src/components/Portal';
+import Panel from './src/components/Panel';
 
 import {
   ServiceProvider,
@@ -69,6 +70,7 @@ export {
   Input,
   JsScript,
   Portal,
+  Panel,
   ServiceProvider,
   ServicesContext,
   ServiceLocator,

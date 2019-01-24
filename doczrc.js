@@ -2,7 +2,7 @@ export default {
   title: 'Expand Ui',
   description: 'Expand components and modules',
   theme: 'docz-theme-default',
-  // hashRouter: true,
+  hashRouter: true,
   dest: 'docs',
   base: '/expand-components/',
   htmlContext: {

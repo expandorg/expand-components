@@ -4,7 +4,7 @@ import cn from 'classnames';
 
 import './Input.styl';
 
-class Input extends Component {
+export class Input extends Component {
   static propTypes = {
     value: PropTypes.string,
     onChange: PropTypes.func,
