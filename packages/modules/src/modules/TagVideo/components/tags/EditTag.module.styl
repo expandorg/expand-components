@@ -6,23 +6,12 @@
   display: flex;
   justify-content: flex-start;
 
-  @media(max-width: 768px)
-    flex-direction: column;
-
 .field
-  margin-right: 20px
+  margin-right: 30px
   max-width: 200px
 
-
-  @media(max-width: 768px)
-    width: 100%
-    max-width: 100%
-    margin-bottom: 10px
-
-.label
-  font(font-preset[normal])
-  color: color-text-gray-1
-  margin-bottom: 2px
+  &:last-child
+    margin-right: 0
 
 .input
   width: 100%
@@ -34,20 +23,26 @@
   justify-content: flex-start;
 
 .button
-  margin-right: 10px
+  height 40px
+  width: 110px
+  line-height: 38px
+  border-radius: 2px
+
+  margin-right: 30px
 
 .delete
   box-sizing: border-box;
   cursor: pointer;
   outline: none;
+  border: none
 
-  height: 30px
-  width: 30px
+  height: 20px
+  width: 20px
 
   background-color: transparent;
-  font-size: 20px
+  font-size: 15px
   font-weight: 600
-  color: color-pink
+  color: color-text-disabled
 
   &:hover
-    color: color-pink-light
+    color: color-pink

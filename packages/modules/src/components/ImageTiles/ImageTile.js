@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import cn from 'classnames';
 
-import { Checkmark } from '@expandorg/components';
+import { ReactComponent as Checkmark } from '@expandorg/uikit/assets/checkmark-3.svg';
 
 import { getTileIndex, getTileStyle } from './tile';
 
@@ -34,7 +34,7 @@ export default class Tile extends Component {
         onClick={this.handleSelect}
       >
         <div className="gem-imagetiles-tile-checkmark">
-          <Checkmark />
+          <Checkmark width="10" height="15" viewBox="0 0 64 48" />
         </div>
       </div>
     );

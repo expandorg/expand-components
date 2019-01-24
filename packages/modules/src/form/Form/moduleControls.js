@@ -1,28 +1,22 @@
 // @flow
-
-import Input from '../../modules/Input';
-import { Instructions, InstructionsItem } from '../../modules/Instructions';
-import Submit from '../../modules/Submit';
-import Article from '../../modules/Article';
-import Title from '../../modules/Title';
-import Text from '../../modules/Text';
-import RichText from '../../modules/RichText';
-import Paragraph from '../../modules/Paragraph';
-import { SelectModule, MultiSelectModule } from '../../modules/Select';
+import Agreement from '../../modules/Agreement';
 import Checkbox from '../../modules/Checkbox';
 import ClipboardText from '../../modules/ClipboardText';
-import Video from '../../modules/Video';
-import { TagVideo, MultipleTagVideo } from '../../modules/TagVideo';
-import Image from '../../modules/Image';
-import Description from '../../modules/Description';
-import Question from '../../modules/Question';
-import Agreement from '../../modules/Agreement';
 import Collapsable from '../../modules/Collapsable';
-import Progress from '../../modules/Progress';
 import Dropdown from '../../modules/Dropdown';
+import FlexContainer from '../../modules/FlexContainer';
+import Image from '../../modules/Image';
 import ImageTiles from '../../modules/ImageTiles';
-
+import Input from '../../modules/Input';
+import Instructions from '../../modules/Instructions';
+import Progress from '../../modules/Progress';
+import RichText from '../../modules/RichText';
 import { RegionSelect, RegionMultiselect } from '../../modules/RegionSelect';
+import { Select, Multiselect } from '../../modules/Select';
+import Submit from '../../modules/Submit';
+import Text from '../../modules/Text';
+import { TagVideo, MultipleTagVideo } from '../../modules/TagVideo';
+import Video from '../../modules/Video';
 
 export const getModuleControlsMap = (
   controls: Array<Object>
@@ -51,32 +45,27 @@ export const groupModulesByCategory = (controls: Array<Object>) => {
 };
 
 const moduleControls = [
-  Input,
-  Title,
-  Text,
-  RichText,
-  Article,
-  Paragraph,
-  SelectModule,
-  MultiSelectModule,
+  Agreement,
   Checkbox,
   ClipboardText,
-  Submit,
-  Video,
-  Image,
-  Description,
-  Question,
-  Instructions,
-  InstructionsItem,
-  Agreement,
   Collapsable,
-  Progress,
   Dropdown,
-  RegionSelect,
-  RegionMultiselect,
+  FlexContainer,
+  Image,
   ImageTiles,
-  TagVideo,
+  Input,
+  Instructions,
   MultipleTagVideo,
+  Multiselect,
+  Progress,
+  RegionMultiselect,
+  RegionSelect,
+  RichText,
+  Select,
+  Submit,
+  TagVideo,
+  Text,
+  Video,
 ];
 
 export default moduleControls;

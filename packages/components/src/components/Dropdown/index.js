@@ -1,4 +1,5 @@
 // flow
+import DropdownBase from './DropdownBase';
 import Dropdown from './Dropdown';
 
-export default Dropdown;
+export { DropdownBase, Dropdown };

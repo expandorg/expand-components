@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import cn from 'classnames';
 
 import { timeToPx } from '../utils/timeline';
 
@@ -11,14 +12,16 @@ export default class TimelineRange extends Component {
     duration: PropTypes.number,
     start: PropTypes.number.isRequired,
     end: PropTypes.number.isRequired,
+    index: PropTypes.number,
   };
 
   static defaultProps = {
     duration: 0,
+    index: null,
   };
 
   render() {
-    const { duration, start, end, timelineWidth } = this.props;
+    const { duration, start, end, index, timelineWidth } = this.props;
     if (!duration || !timelineWidth) {
       return null;
     }
@@ -27,7 +30,12 @@ export default class TimelineRange extends Component {
     const width = `${timeToPx(end - start, duration, timelineWidth)}px`;
 
     return (
-      <div className={styles.container} style={{ left, width }}>
+      <div
+        style={{ left, width }}
+        className={cn(styles.container, {
+          [styles[`color-${index}`]]: index !== null,
+        })}
+      >
         <div className={styles.start} />
         <div className={styles.range} />
         <div className={styles.end} />

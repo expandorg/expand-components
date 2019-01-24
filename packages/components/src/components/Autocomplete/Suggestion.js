@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import './AutocompleteInput.styl';
+import './styles.styl';
 
 const Suggestion = ({ value, onSelect }) => (
   <button

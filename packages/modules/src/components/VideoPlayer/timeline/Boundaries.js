@@ -1,4 +1,4 @@
-import React, { PureComponent, Fragment } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import cn from 'classnames';
 
@@ -33,7 +33,7 @@ export default class Boundaries extends PureComponent {
     }
 
     return (
-      <Fragment>
+      <>
         {from && (
           <div
             className={cn(styles.boundary, styles.from)}
@@ -46,7 +46,7 @@ export default class Boundaries extends PureComponent {
             style={{ width: timeToPx(duration - limitTo, duration, width) }}
           />
         )}
-      </Fragment>
+      </>
     );
   }
 }

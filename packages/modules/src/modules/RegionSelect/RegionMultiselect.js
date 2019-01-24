@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 
 import { rules } from '@expandorg/validation';
 
-import Alignment from '../../components/Alignment';
 import { ImageRegionMultiselect } from '../../components/RegionSelect';
 
 import PropControlTypes from '../../form/Form/PropControlTypes';
@@ -85,16 +84,14 @@ export default class RegionMultiselect extends Component {
     const { image, value, readOnly, initial } = this.props;
     const values = readOnly ? getInitialValue(initial) : value;
     return (
-      <Alignment padding="small" justify="center">
-        <ImageRegionMultiselect
-          className={styles.region}
-          src={image}
-          displayToggle={readOnly}
-          readOnly={readOnly}
-          values={values}
-          onChange={this.handleChange}
-        />
-      </Alignment>
+      <ImageRegionMultiselect
+        className={styles.region}
+        src={image}
+        displayToggle={readOnly}
+        readOnly={readOnly}
+        values={values}
+        onChange={this.handleChange}
+      />
     );
   }
 }

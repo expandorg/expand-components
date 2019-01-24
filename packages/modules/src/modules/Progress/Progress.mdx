@@ -1,0 +1,54 @@
+---
+menu: Modules
+name: Progress
+route: /modules-progress
+---
+
+# Progress Module
+
+
+## Progress properties
+
+| Property     | type           | Required | Default | description |
+| ------------ | -------------- | -------- | ------- | ----------- |
+| *type*       | `progress`     | true     | -       | module type |
+| *name*       | string         | true     | -       | module name |
+| *number*     | number         | true     | -       | current step |
+| *total*      | number         | true     | -       | total number of steps |
+
+## Example
+```jsx
+{
+  name: "progress",
+  type: "progress",
+  number: 3,
+  total: 10,
+}
+```
+
+import ModulesPlayground from '../../form/ModulesPlayground/ModulesPlayground.js'
+
+<ModulesPlayground
+  form={{
+    modules: [
+      {
+        name: 'progress',
+        type: 'progress',
+        number: 3,
+        total: 5,
+      },
+      {
+        name: 'p',
+        type: 'text',
+        style: 'body',
+        content:
+          'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ',
+      },
+      {
+        name: 'submit',
+        type: 'submit',
+        caption: 'Next',
+      },
+    ],
+  }}
+/>

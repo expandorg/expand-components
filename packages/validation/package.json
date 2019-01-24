@@ -1,6 +1,6 @@
 {
   "name": "@expandorg/validation",
-  "version": "0.1.4",
+  "version": "0.2.1",
   "description": "Expand UI validation library",
   "main": "index.js",
   "repository": {

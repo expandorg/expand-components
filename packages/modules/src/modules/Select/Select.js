@@ -1,14 +1,20 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import cn from 'classnames';
 
-import formatItem from './formatItem';
-import { IdType, getIdValue } from './ids';
+import { rules } from '@expandorg/validation';
+
+import { Select as UISelect, Choice } from '../../components/Select';
+
+import PropControlTypes from '../../form/Form/PropControlTypes';
+import ModuleCategories from '../../form/Form/ModuleCategories';
+
+import { formatter, IdType } from '../../components/Select/ids';
 
 import styles from './styles.module.styl';
 
 export default class Select extends Component {
   static propTypes = {
+    name: PropTypes.string.isRequired,
     options: PropTypes.arrayOf(
       PropTypes.oneOfType([PropTypes.string, PropTypes.object])
     ).isRequired,
@@ -17,35 +23,101 @@ export default class Select extends Component {
       IdType.capital,
       IdType.roman,
       IdType.numerals,
-    ]).isRequired,
-    className: PropTypes.string,
-    onSelect: PropTypes.func.isRequired,
+    ]),
+    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    answer: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     columns: PropTypes.oneOf([2, 3]),
+    readOnly: PropTypes.bool,
+    onChange: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
-    className: null,
+    value: null,
+    answer: null,
+    readOnly: false,
     columns: 2,
+    idType: IdType.small,
   };
 
-  handleSelect = value => {
-    const { onSelect } = this.props;
-    onSelect(value);
+  static module = {
+    type: 'select',
+    name: 'Select',
+    isInput: true,
+    validation: {
+      isRequired: rules.isRequired,
+      isNotEmpty: rules.isNotEmpty,
+    },
+    verificationScore: value => {
+      const numeric = +value;
+      if (Number.isNaN(numeric)) {
+        return 0;
+      }
+      return Math.min(Math.max(numeric, 0), 1);
+    },
+    editor: {
+      category: ModuleCategories.Input,
+      properties: {
+        columns: {
+          type: PropControlTypes.enum,
+          label: 'Columns number',
+          options: [2, 3],
+          default: 2,
+        },
+        idType: {
+          type: PropControlTypes.enum,
+          label: 'Enumerator type',
+          options: ['numerals', 'small', 'capital', 'roman'],
+          formatter,
+          default: 'small',
+        },
+        answer: {
+          type: PropControlTypes.moduleProperyOptions,
+          label: 'Answer',
+          dependency: 'options',
+        },
+        options: {
+          type: PropControlTypes.options,
+          placeholder: 'Options',
+        },
+        readOnly: {
+          type: PropControlTypes.boolean,
+          label: 'Read only',
+        },
+      },
+      defaults: {
+        options: ['Option 1', 'Option 2', 'Option 3', 'Option 4'],
+      },
+    },
+  };
+
+  handleChange = value => {
+    const { name, onChange } = this.props;
+    onChange(name, value);
   };
 
   render() {
-    const { className, options, children, columns, idType } = this.props;
+    const { value, options, columns, readOnly, answer, idType } = this.props;
 
-    const classes = cn(styles.container, styles[`cols${columns}`], className);
+    const selected = readOnly ? answer : value;
 
     return (
-      <div className={classes}>
-        {options.map((option, idx) =>
-          children({
-            option: formatItem(option, getIdValue(idx, idType)),
-            onSelect: this.handleSelect,
-          })
-        )}
+      <div className={styles.module}>
+        <UISelect
+          options={options}
+          onSelect={this.handleChange}
+          columns={columns}
+          idType={idType}
+        >
+          {({ onSelect, option }) => (
+            <Choice
+              key={option.value}
+              option={option}
+              readOnly={readOnly}
+              selected={selected === option.value}
+              onSelect={onSelect}
+            />
+          )}
+        </UISelect>
       </div>
     );
   }

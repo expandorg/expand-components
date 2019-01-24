@@ -1,0 +1,28 @@
+---
+menu: Components
+name: Dropdown
+route: /components-dropdown
+---
+
+import { Playground, PropsTable } from 'docz'
+import WithState from 'scripts/docz/WithState'
+
+import Dropdown from './Dropdown.js'
+
+## Dropdown
+
+<PropsTable of={Dropdown} />
+
+## Example
+
+<WithState value={3}>
+  {({ onChange, value }) => (
+    <Dropdown
+      value={value}
+      nullValue="Select reason"
+      label="Select reason"
+      onChange={onChange}
+      options={[1,2,3,4]}
+    />
+  )}
+</WithState>

@@ -1,74 +1,87 @@
-@import '~@expandorg/uikit/font';
-@import '~@expandorg/uikit/colors';
+@import '~@expandorg/uikit/colors'
+@import '~@expandorg/uikit/font'
 
 .gem-button
   box-sizing: border-box;
 
-  text-decoration: none;
-  cursor: pointer;
-  display: inline-block;
-  position: relative;
+  padding: 0 0
+  width: 150px;
+  height: 60px;
 
-  padding: 0 20px;
+  font(subtitle)
 
-  border: 0
+  text-align: center;
+  text-transform: uppercase;
+
+  color: color-white;
+
+  background-color: color-pink;
+  border-radius: 5px;
+
   outline: 0
+  cursor: pointer;
 
-  &-small
-    font(font-preset[normal], false, false, 28px)
-    height: 30px
-    border-radius: 2px
+  &:hover
+    background-color: lighten(color-pink, 10%)
 
-  &-medium
-    font(font-preset[menu], false, false, 38px)
-    height: 40px
-    border-radius: 4px
 
-  &-large
-    font(font-preset[menu], false, false, 48px)
-    height: 50px
-    border-radius: 4px
-
-  &-pink
-    color: color-white
-    background-color: color-pink
-    &:hover
-      background-image: linear-gradient(to bottom right, color-pink, color-pink-light)
-
-    &:disabled
-      background-color: darken(color-grey, 20%)
-
-      &:hover
-        background-image: none
-
-  &-white
-    color: color-pink
-    background-color: color-white
-    border: 2px solid color-pink
-
-    &:hover
-      border-color: color-pink-light
-
-    &:disabled
-      background-color: color-grey
-
-  &-transparent
-    color: color-text-1
+  &-link
     background-color: transparent
-    border: 1px solid color-text-gray-1
+    color: color-pink;
+    border: none
 
     &:hover
-      border: 1px solid  color-pink
+      border: none
+      background-color: transparent
+      color: lighten(color-pink, 10%)
+
+
+  &-secondary
+    background-color: transparent
+    border: 1px solid color-pink
+    color: color-pink;
+
+    &:hover
+      background-color: transparent
+      color: lighten(color-pink, 10%)
+      border-color: lighten(color-pink, 10%)
 
   &-aqua
-    color: color-text-1
-    background-color: color-aqua
+    border: 1px solid color-teel-dark;
+    background-color: color-teel-light;
+    color: color-text-teel-dark;
 
     &:hover
-      background-image: linear-gradient(to bottom right, color-aqua, color-aqua-light)
+      background-color: lighten(color-teel-light, 10%);
+
+  &-grey
+    color: color-text-grey
+    background-color: color-grey-background
+
+    &:hover
+      background-color: lighten(color-grey-background, 10%);
+
 
   &-blue
-    color: color-white
-    background-color: color-blue
+    color: color-text-blue;
+    background-color: color-medium-blue
+    border: 1px solid color-heavy-blue
+
     &:hover
-      background-image: linear-gradient(to bottom right, color-blue, lighten(color-blue, 10%))
+      background-color: lighten(color-medium-blue, 10%)
+
+
+  &-white-blue
+    color: color-text-blue;
+    background-color: transparent
+
+    border: 1px solid color-heavy-blue
+
+    &:hover
+      background-color: transparent
+      border-color: lighten(color-heavy-blue, 10%)
+      color: lighten(color-text-blue, 10%)
+
+
+
+

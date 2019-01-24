@@ -1,10 +1,12 @@
+@import '~@expandorg/uikit/font'
 @import '~@expandorg/uikit/colors'
-@import '~@expandorg/uikit/consts'
 
 .text
+  margin-top: 20px
+
   font-size: 16px
   font-weight: 400
-  color: color-text-1
+  color: color-text-dark
 
   &.center
     text-align: center;
@@ -38,17 +40,18 @@
     line-height: 24px;
 
     &.center
-      margin: s-margin-big auto;
+      margin: 25px auto;
       max-width: 800px;
 
       @media(max-width: 660px)
-        margin: s-margin-medium auto;
-        padding: 0 s-margin-medium
+        margin: 10px auto;
+        padding: 0 10px
 
   &.question
     font-size: 16px
     font-weight: 600
     line-height: 24px;
+    color: color-text-blue
 
   &.blue
-    color: color-blue
+    color: color-text-blue

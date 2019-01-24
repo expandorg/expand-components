@@ -1,16 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import {
-  Dialog,
-  DialogHeadline,
-  Button,
-  Textarea,
-  Dropdown,
-  ErrorMessage,
-} from '@expandorg/components';
-
-import DropdownContent from '../../modules/Dropdown/DropdownContent';
+import { Dialog, Button, Dropdown, ErrorMessage } from '@expandorg/components';
 
 import styles from './ReportForm.module.styl';
 
@@ -68,52 +59,50 @@ export default class ReportForm extends Component {
   render() {
     const { reasons, isReporting, error } = this.props;
     const { value, reason } = this.state;
+
     return (
       <Dialog visible onHide={this.handleHide} contentLabel="report">
-        <DialogHeadline>Report</DialogHeadline>
         <form className={styles.container} onSubmit={this.handleSubmit}>
-          <div className={styles.content}>
-            <div className={styles.field}>
-              <div className={styles.label}>Error</div>
-              <Dropdown
-                value={reason}
-                className={styles.dropdown}
-                nullValue="Select reason"
-                onChange={this.handleSelectReason}
-                options={reasons}
-              >
-                {({ formatted }) => (
-                  <DropdownContent
-                    value={formatted}
-                    placeholder="Select reason"
-                  />
-                )}
-              </Dropdown>
-            </div>
+          <div className={styles.inner}>
+            <div className={styles.title}>Report</div>
+
+            {reasons && reasons.length !== 0 && (
+              <div className={styles.field}>
+                <Dropdown
+                  value={reason}
+                  className={styles.dropdown}
+                  nullValue="Select reason"
+                  label="Select reason"
+                  onChange={this.handleSelectReason}
+                  options={reasons}
+                />
+              </div>
+            )}
+
             <div className={styles.field}>
               <div className={styles.label}>Provide some details</div>
-              <Textarea
+              <textarea
                 value={value}
-                className={styles.input}
+                className={styles.textarea}
                 onChange={this.handleChange}
               />
             </div>
           </div>
-          <ErrorMessage error={error} className={styles.error} />
+          <ErrorMessage errors={error} className={styles.error} />
           <div className={styles.actions}>
             <Button
-              onClick={this.handleHide}
-              className={styles.cancel}
-              theme="white"
-            >
-              Cancel
-            </Button>
-            <Button
               type="submit"
-              className={styles.report}
+              className={styles.button}
               disabled={isReporting}
             >
               Report
+            </Button>
+            <Button
+              className={styles.button}
+              theme="grey"
+              onClick={this.handleHide}
+            >
+              go back
             </Button>
           </div>
         </form>

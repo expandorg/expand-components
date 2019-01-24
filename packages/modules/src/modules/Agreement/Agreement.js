@@ -5,18 +5,18 @@ import { rules } from '@expandorg/validation';
 
 import { Button, Checkbox } from '@expandorg/components';
 
-import Alignment from '../../components/Alignment';
 import Modal from '../../components/Modal';
 
 import PropControlTypes from '../../form/Form/PropControlTypes';
 import ModuleCategories from '../../form/Form/ModuleCategories';
+
+import styles from './Agreement.module.styl';
 
 export default class Agreement extends Component {
   static propTypes = {
     name: PropTypes.string.isRequired,
     button: PropTypes.string,
     label: PropTypes.string.isRequired,
-    headline: PropTypes.string,
     value: PropTypes.bool,
     onChange: PropTypes.func.isRequired,
   };
@@ -24,7 +24,6 @@ export default class Agreement extends Component {
   static defaultProps = {
     value: false,
     button: null,
-    headline: null,
   };
 
   static module = {
@@ -36,32 +35,31 @@ export default class Agreement extends Component {
     editor: {
       category: ModuleCategories.Display,
       properties: {
-        button: {
-          type: PropControlTypes.string,
-          placeholder: 'button caption',
-        },
         label: {
           type: PropControlTypes.string,
           placeholder: 'Checkbox label',
           required: true,
         },
-        headline: {
+        button: {
           type: PropControlTypes.string,
-          placeholder: 'Modal headline',
+          placeholder: 'button caption',
         },
         modules: {
           type: PropControlTypes.modules,
+          caption: 'Drop dialog content here',
         },
       },
       defaults: {
         button: 'Rules',
         label: 'You must agree with rules',
-        headline: 'question title',
-        modules: {
-          name: 'p',
-          type: 'paragraph',
-          content: 'Lorem ipsum dolor sit amet, consectetur',
-        },
+        modules: [
+          {
+            name: 'header',
+            type: 'text',
+            style: 'body',
+            content: 'test',
+          },
+        ],
       },
     },
   };
@@ -75,20 +73,13 @@ export default class Agreement extends Component {
   };
 
   render() {
-    const {
-      value,
-      name,
-      button,
-      children,
-      headline,
-      label,
-      onChange,
-    } = this.props;
+    const { value, name, button, children, label, onChange } = this.props;
     const { visible } = this.state;
+
     return (
-      <Alignment padding="small" vCenter>
+      <div className={styles.container}>
         {button && (
-          <Button size="medium" theme="blue" onClick={this.handleToggle}>
+          <Button className={styles.button} onClick={this.handleToggle}>
             {button}
           </Button>
         )}
@@ -99,16 +90,11 @@ export default class Agreement extends Component {
           onChange={changed => onChange(name, changed)}
         />
         {button && (
-          <Modal
-            visible={visible}
-            onHide={this.handleToggle}
-            headline={headline}
-            button="Close"
-          >
+          <Modal visible={visible} onHide={this.handleToggle} button="Close">
             {children}
           </Modal>
         )}
-      </Alignment>
+      </div>
     );
   }
 }

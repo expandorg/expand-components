@@ -1,88 +1,59 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+
 import cn from 'classnames';
 
-import './Dropdown.styl';
+import DropdownBase from './DropdownBase';
 
-const formatItem = option => {
-  if (typeof option === 'string' || typeof option === 'number') {
-    return { value: option, label: option };
-  }
-  return option;
-};
+import './Dropdown.styl';
 
 export default class Dropdown extends Component {
   static propTypes = {
     className: PropTypes.string,
     value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     nullValue: PropTypes.string,
-    options: PropTypes.arrayOf(PropTypes.any).isRequired,
-    disabled: PropTypes.bool,
+    options: PropTypes.arrayOf(
+      PropTypes.oneOfType([PropTypes.string, PropTypes.object])
+    ),
+    label: PropTypes.string,
     onChange: PropTypes.func.isRequired,
-    formatter: PropTypes.func,
   };
 
   static defaultProps = {
+    value: undefined,
     className: null,
     nullValue: null,
-    value: '',
-    disabled: false,
-    formatter: value => value,
+    options: [],
+    label: null,
   };
 
-  handleChange = ({ target }) => {
+  handleChange = value => {
     const { onChange } = this.props;
-    onChange(target.value);
+    onChange(value);
   };
 
   render() {
-    const {
-      value,
-      options,
-      className,
-      children,
-      disabled,
-      nullValue,
-      formatter,
-    } = this.props;
-
-    const classes = cn(
-      'gem-dropdown',
-      { 'gem-dropdown-disabled': disabled },
-      className
-    );
-
-    const selectClasses = cn('gem-dropdown-select', {
-      'gem-dropdown-hidden': !!children,
-    });
-
-    const items = options.map(formatItem);
-    const selected = items.find(x => `${x.value}` === `${value}`);
+    const { className, options, value, label, nullValue } = this.props;
 
     return (
-      <div className={classes}>
-        {children({
-          value,
-          formatted: formatter(selected ? selected.label : ''),
-        })}
-        <select
-          disabled={disabled}
-          className={selectClasses}
-          value={value}
-          onChange={this.handleChange}
-        >
-          {nullValue && (
-            <option disabled value="">
-              {nullValue}
-            </option>
-          )}
-          {items.map(option => (
-            <option key={option.value} value={option.value}>
-              {formatter(option.label)}
-            </option>
-          ))}
-        </select>
-      </div>
+      <DropdownBase
+        options={options}
+        value={value}
+        nullValue={nullValue}
+        onChange={this.handleChange}
+        className={className}
+      >
+        {({ formatted }) => (
+          <div
+            className={cn('gem-dropdown-content', {
+              'gem-dropdown-content-val': formatted,
+            })}
+          >
+            {label && <div className="gem-dropdown-content-label">{label}</div>}
+            {formatted}
+          </div>
+        )}
+      </DropdownBase>
     );
   }
 }

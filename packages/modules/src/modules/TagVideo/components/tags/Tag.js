@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import cn from 'classnames';
 
 import { formatTime } from '../../../../components/VideoPlayer/utils/timeStrings';
 
-import styles from './Tag.module.styl';
+import styles from './Tags.module.styl';
 
 export default class EditTag extends Component {
   static propTypes = {
@@ -12,8 +13,13 @@ export default class EditTag extends Component {
       end: PropTypes.number,
       tag: PropTypes.string,
     }).isRequired,
+    index: PropTypes.number,
     onDelete: PropTypes.func.isRequired,
     onSelect: PropTypes.func.isRequired,
+  };
+
+  static defaultProps = {
+    index: null,
   };
 
   handleSelect = evt => {
@@ -30,17 +36,34 @@ export default class EditTag extends Component {
   };
 
   render() {
-    const { tag } = this.props;
+    const { tag, index } = this.props;
+
+    /* eslint-disable jsx-a11y/no-static-element-interactions */
+    /* eslint-disable jsx-a11y/click-events-have-key-events */
+    /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+
     return (
-      <div className={styles.container} onClick={this.handleSelect}>
-        <button className={styles.delete} onClick={this.handleDelete}>
-          ✕
-        </button>
-        <div className={styles.time}>
-          {formatTime(tag.start)}—{formatTime(tag.end)}
-        </div>
-        <div className={styles.label}>{tag.tag}</div>
-      </div>
+      <tr className={styles.row}>
+        <td
+          className={cn(styles.cell, styles.first, {
+            [styles[`color-${index}`]]: index !== null,
+          })}
+          onClick={this.handleSelect}
+        >
+          {tag.tag}
+        </td>
+        <td className={styles.cell} onClick={this.handleSelect}>
+          {formatTime(tag.start)}
+        </td>
+        <td className={styles.cell} onClick={this.handleSelect}>
+          {formatTime(tag.end)}
+        </td>
+        <td className={cn(styles.cell, styles.cellDelete)}>
+          <button className={styles.delete} onClick={this.handleDelete}>
+            ✕
+          </button>
+        </td>
+      </tr>
     );
   }
 }

@@ -54,9 +54,9 @@ export default class Checkbox extends Component {
     return (
       <UICheckbox
         className={styles.checkbox}
-        name={name}
-        label={label}
         value={value}
+        label={label}
+        name={name}
         onChange={this.handleChange}
       />
     );

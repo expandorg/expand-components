@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { rules } from '@expandorg/validation';
-import Alignment from '../../components/Alignment';
 
 import { ImageTiles as UIImageTiles } from '../../components/ImageTiles';
 
@@ -67,7 +66,7 @@ export default class ImageTiles extends Component {
   render() {
     const { value, image, columns, rows } = this.props;
     return (
-      <Alignment padding="small" justify="center">
+      <div className={styles.container}>
         <div className={styles.region}>
           <UIImageTiles
             src={image}
@@ -77,7 +76,7 @@ export default class ImageTiles extends Component {
             onChange={this.handleChange}
           />
         </div>
-      </Alignment>
+      </div>
     );
   }
 }

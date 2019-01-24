@@ -1,5 +1,224 @@
-.gem-dateinput
-  display: inline-flex;
+@import '~@expandorg/uikit/colors'
+@import '~@expandorg/uikit/font'
 
-  &-dropdown
-    padding: 0 5px;
+/* DayPicker styles */
+
+.DayPicker
+  display: inline-block;
+  font(body, false, false, normal)
+
+
+  &-wrapper
+    position: relative;
+    box-sizing: border-box;
+
+    flex-direction: row;
+
+    user-select: none;
+
+    padding: 0 20px
+
+  &-Months
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+  &-Month
+    display: table;
+    border-spacing: 0;
+    border-collapse: collapse;
+    user-select: none;
+
+  &-NavButton
+    position: absolute;
+    display: inline-block;
+
+    width: 1em;
+    height: 1em;
+
+    top: 26px
+
+    background-position: center;
+    background-size: 50%;
+    background-repeat: no-repeat;
+
+    color: color-text-heavy-blue;
+
+    cursor: pointer;
+
+    &:hover
+      opacity: 0.8;
+
+    &--prev
+      left: 20px
+      background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAwCAYAAAB5R9gVAAAABGdBTUEAALGPC/xhBQAAAVVJREFUWAnN2G0KgjAYwPHpGfRkaZeqvgQaK+hY3SUHrk1YzNLay/OiEFp92I+/Mp2F2Mh2lLISWnflFjzH263RQjzMZ19wgs73ez0o1WmtW+dgA01VxrE3p6l2GLsnBy1VYQOtVSEH/atCCgqpQgKKqYIOiq2CBkqtggLKqQIKgqgCBjpJ2Y5CdJ+zrT9A7HHSTA1dxUdHgzCqJIEwq0SDsKsEg6iqBIEoq/wEcVRZBXFV+QJxV5mBtlDFB5VjYTaGZ2sf4R9PM7U9ZU+lLuaetPP/5Die3ToO1+u+MKtHs06qODB2zBnI/jBd4MPQm1VkY79Tb18gB+C62FdBFsZR6yeIo1YQiLJWMIiqVjQIu1YSCLNWFgijVjYIuhYYCKoWKAiiFgoopxYaKLUWOii2FgkophYp6F3r42W5A9s9OcgNvva8xQaysKXlFytoqdYmQH6tF3toSUo0INq9AAAAAElFTkSuQmCC');
+
+    &--next
+      right: 20px
+
+      background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAwCAYAAAB5R9gVAAAABGdBTUEAALGPC/xhBQAAAXRJREFUWAnN119ugjAcwPHWzJ1gnmxzB/BBE0n24m4xfNkTaOL7wOtsl3AXMMb+Vjaa1BG00N8fSEibPpAP3xAKKs2yjzTPH9RAjhEo9WzPr/Vm8zgE0+gXATAxxuxtqeJ9t5tIwv5AtQAApsfT6TPdbp+kUBcgVwvO51KqVhMkXKsVJFXrOkigVhCIs1Y4iKlWZxB1rX4gwlpRIIpa8SDkWmggrFq4IIRaJKCYWnSgnrXIQV1r8YD+1Vrn+bReagysIFfLABRt31v8oBu1xEBttfRbltmfjgEcWh9snUS2kNdBK6WN1vrOWxObWsz+fjxevsxmB1GQDfINWiev83nhaoiB/CoOU438oPrhXS0WpQ9xc1ZQWxWHqUYe0I0qrKCQKjygDlXIQV2r0IF6ViEBxVTBBSFUQQNhVYkHIVeJAtkNsbQ7c1LtzP6FsObhb2rCKv7NBIGoq4SDmKoEgTirXAcJVGkFSVVpgoSrXICGUMUH/QBZNSUy5XWUhwAAAABJRU5ErkJggg==');
+
+
+    &--interactionDisabled
+      display: none;
+
+  &-Caption
+    display: table-caption;
+    text-align: center;
+
+    > div
+      height: 72px
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: color-text-dark
+      font-size: 18px;
+
+
+  &-Weekdays
+    display: table-header-group;
+    margin-top: 1em;
+
+    &Row
+      display: table-row;
+
+
+  &-Weekday
+    display: table-cell;
+    color: color-text-blue;
+    background-color: color-light-blue
+    font(body-bold, false, 14px, 40px)
+    width: 40px
+    height: 40px
+    text-align: center;
+
+    abbr[title]
+      border-bottom: none;
+      text-decoration: none;
+
+  &-Body
+    display: table-row-group;
+
+
+  &-Week
+    display: table-row;
+
+  &-Day
+    display: table-cell;
+    width: 40px
+    height: 40px
+    font-size: 16px;
+    vertical-align: middle;
+    text-align: center;
+    cursor: pointer;
+
+    &--today
+      color: color-text-grey;
+      font-weight: 700;
+
+    &--outside
+      color: #DCE0E0;
+      cursor: default;
+
+    &--disabled
+      color: #DCE0E0;
+      cursor: default;
+
+    &--sunday
+      background-color: #F7F8F8;
+
+    &--sunday:not(&--today)
+      color: #DCE0E0;
+
+    &--selected:not(&--disabled):not(&--outside)
+      position: relative;
+
+      background-color: color-primary-blue;
+      color: color-white;
+
+    &--selected:not(&--disabled):not(&--outside):hover
+      background-color: color-primary-blue;
+
+
+  &-WeekNumber
+    display: table-cell;
+    padding: 0.5em;
+    min-width: 1em;
+    border-right: 1px solid #EAECEC;
+    color: #8B9898;
+    vertical-align: middle;
+    text-align: right;
+    font-size: 0.75em;
+    cursor: pointer;
+
+  &--interactionDisabled.DayPicker-Day
+      cursor: default;
+
+  &-Footer
+    padding-top: 0.5em;
+
+  &-TodayButton
+    border: none;
+    background-color: transparent;
+    background-image: none;
+    box-shadow: none;
+    color: #4A90E2;
+    font-size: 0.875em;
+    cursor: pointer;
+
+/* Default modifiers */
+
+
+
+/* DayPickerInput */
+
+.DayPickerInput
+  input
+    box-sizing: border-box
+    display: inline-block
+
+    font(body-bold, false, false, normal)
+
+    height: 32px;
+    width: 100%
+
+    padding: 0 15px 10px 0
+
+    background-color: transparent
+    color: color-primary-blue
+
+    border-bottom: 2px solid  color-heavy-blue
+
+    outline: 0
+
+    &:-webkit-autofill
+      transition: background-color 5000s ease-in-out 0s
+
+      &:hover, &:focus, &:active
+        transition: background-color 5000s ease-in-out 0s
+
+    &::placeholder
+      font(body, false, false, normal)
+      color: color-text-dark;
+
+    &:focus
+      border-bottom:  2px solid color-primary-blue
+
+    &.DayPickerInput-error
+      border-bottom-color: color-yellow
+
+      &:focus
+        border-bottom-color: color-yellow
+
+
+  &-OverlayWrapper
+    position: relative;
+
+  &-Overlay
+    position: absolute;
+    left: 0;
+    z-index: 1;
+
+    background: color-white;
+    box-shadow: heavy-shadow
+    border-radius: 5px;

@@ -1,0 +1,61 @@
+@import '~@expandorg/uikit/font'
+@import '~@expandorg/uikit/colors'
+
+.container
+  display: inline-block;
+  width: 100%
+
+.input
+  box-sizing: content-box
+
+  font(body-bold, false, false, 22px)
+
+  height: 22px;
+  width: calc(100% - 10px)
+
+  padding: 0 15px 8px 0
+
+  background-color: transparent
+  color: color-primary-blue
+  border-bottom: 2px solid  color-heavy-blue
+
+  transition: all 0.2s ease-out;
+  cursor: text;
+
+ &.error
+  border-bottom-color: color-yellow
+
+  &:focus
+    border-bottom-color color-yellow
+
+
+& + .label
+  font(body, false, false, 40px)
+  display: block;
+  margin-top: -40px;
+  padding: 0
+  pointer-events: none;
+
+  &:before
+    content: attr(placeholder);
+    display: block;
+    color: color-text-dark
+    white-space: nowrap;
+
+    transition-property: transform font-size font-weight;
+    transition-duration: 0.2s;
+    transition-timing-function: ease-out;
+    transform-origin: left center;
+
+&.filled
+  & + .label:before
+    transform: translateY(-22px)
+    font-size: 11px
+    font-weight: 800
+
+.picker
+  position: absolute;
+  left: 0
+  bottom: 0
+
+  z-index: 3

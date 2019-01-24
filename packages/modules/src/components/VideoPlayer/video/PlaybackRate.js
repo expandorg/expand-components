@@ -33,8 +33,7 @@ export default class PlaybackRate extends PureComponent {
     return (
       <div className={styles.container}>
         <button className={styles.button} onClick={this.handleToggle} {...rest}>
-          <span className={styles.x}>x</span>
-          {rate}
+          X{rate}
         </button>
         {menu && (
           <div className={styles.menu}>

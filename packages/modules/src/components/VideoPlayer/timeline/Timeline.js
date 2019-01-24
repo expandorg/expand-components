@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import TimelineContainer from './TimelineContainer';
@@ -48,7 +48,7 @@ export default class Timeline extends Component {
     return (
       <TimelineContainer className={styles.timeline}>
         {({ width, isHovered, mouseX }) => (
-          <Fragment>
+          <>
             <Ticks width={width} duration={duration} />
             <Boundaries
               width={width}
@@ -67,7 +67,7 @@ export default class Timeline extends Component {
               />
             )}
             {children({ width })}
-          </Fragment>
+          </>
         )}
       </TimelineContainer>
     );

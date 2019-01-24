@@ -5,11 +5,6 @@ import { rules } from '@expandorg/validation';
 
 import { Dropdown as UIDropdown } from '@expandorg/components';
 
-import DropdownContent from './DropdownContent';
-
-import Alignment from '../../components/Alignment';
-import Label from '../../components/Label';
-
 import ModuleCategories from '../../form/Form/ModuleCategories';
 import PropControlTypes from '../../form/Form/PropControlTypes';
 
@@ -19,18 +14,14 @@ export default class Dropdown extends Component {
   static propTypes = {
     name: PropTypes.string.isRequired,
     options: PropTypes.arrayOf(PropTypes.any).isRequired,
-    placeholder: PropTypes.string,
-    justify: PropTypes.string,
     label: PropTypes.string,
     value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     onChange: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
-    placeholder: '',
-    value: '',
     label: '',
-    justify: 'center',
+    value: '',
   };
 
   static module = {
@@ -44,7 +35,12 @@ export default class Dropdown extends Component {
     editor: {
       category: ModuleCategories.Input,
       properties: {
-        content: {
+        label: {
+          type: PropControlTypes.string,
+          placeholder: 'Dropdown label',
+          required: true,
+        },
+        options: {
           type: PropControlTypes.options,
         },
       },
@@ -61,23 +57,15 @@ export default class Dropdown extends Component {
   };
 
   render() {
-    const { options, label, placeholder, value, justify } = this.props;
+    const { options, label, value } = this.props;
     return (
-      <Alignment padding="small" justify={justify}>
-        <Label label={label} className={styles.label}>
-          <UIDropdown
-            className={styles.dropdown}
-            value={value}
-            nullValue={placeholder}
-            options={options}
-            onChange={this.handleChange}
-          >
-            {({ formatted }) => (
-              <DropdownContent value={formatted} placeholder={placeholder} />
-            )}
-          </UIDropdown>
-        </Label>
-      </Alignment>
+      <UIDropdown
+        className={styles.dropdown}
+        value={value}
+        label={label}
+        options={options}
+        onChange={this.handleChange}
+      />
     );
   }
 }

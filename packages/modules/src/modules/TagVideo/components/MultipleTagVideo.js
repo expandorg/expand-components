@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import cn from 'classnames';
@@ -150,10 +150,11 @@ export default class TagVideo extends Component {
           onCursorClick={this.handleCursorClick}
         >
           {({ width }) => (
-            <Fragment>
+            <>
               {!editor &&
-                tags.map(tag => (
+                tags.map((tag, index) => (
                   <TimelineRange
+                    index={index}
                     key={tag.id}
                     start={tag.start}
                     end={tag.end}
@@ -173,7 +174,7 @@ export default class TagVideo extends Component {
                   onDragging={this.handleRangeDragging}
                 />
               )}
-            </Fragment>
+            </>
           )}
         </VideoPlayer>
         {!(readOnly && hideControls) && (

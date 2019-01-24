@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 
 import { rules } from '@expandorg/validation';
 
-import Alignment from '../../components/Alignment';
 import { ImageRegionSelect } from '../../components/RegionSelect';
 
 import PropControlTypes from '../../form/Form/PropControlTypes';
@@ -74,16 +73,14 @@ export default class RegionSelect extends Component {
     const { image, readOnly, initial, value } = this.props;
     const rect = readOnly ? initial : value;
     return (
-      <Alignment padding="small" justify="center">
-        <ImageRegionSelect
-          className={styles.region}
-          src={image}
-          value={rect}
-          readOnly={readOnly}
-          displayToggle={readOnly}
-          onChange={this.handleChange}
-        />
-      </Alignment>
+      <ImageRegionSelect
+        className={styles.region}
+        src={image}
+        value={rect}
+        readOnly={readOnly}
+        displayToggle={readOnly}
+        onChange={this.handleChange}
+      />
     );
   }
 }

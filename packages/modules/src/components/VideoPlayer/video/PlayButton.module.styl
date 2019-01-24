@@ -5,21 +5,25 @@
   box-sizing: border-box;
   position: relative;
 
-  height: 38px
-  width: 38px
+  height: 60px
+  width: 60px
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  background-color: color-pink
-  border-radius: 2px
+  background-color: color-primary-blue
+  border-radius: 5px
+  border: none;
 
   cursor: pointer;
   outline: none
 
   &:hover
-    background-color: color-pink-light
+    background-color: lighten(color-primary-blue, 10%)
+
+  :global(.gem-tooltip-orientation-top)
+    bottom: 70px
 
 .icon
   display: block;
@@ -39,3 +43,4 @@
 .pause
   border-style: double;
   border-width: 0px 0 0px 14px;
+

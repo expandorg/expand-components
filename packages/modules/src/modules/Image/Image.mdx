@@ -1,0 +1,44 @@
+---
+menu: Modules
+name: Image
+route: /modules-image
+---
+
+# Image Module
+
+## Image properties
+
+| Property | type    | Required | Default | description |
+| ---------| ------- | -------- | ------- | ----------- |
+| *type*   | `image` | true     | -       | module type |
+| *name*   | string  | true     | -       | module name |
+| *src*    | string  | true     | -       | image url   |
+
+## Example
+```jsx
+{
+  name: 'image',
+  type: 'image',
+  src: "https://expand.org/images/image-annotation.png",
+}
+```
+
+import ModulesPlayground from '../../form/ModulesPlayground/ModulesPlayground.js'
+
+<ModulesPlayground
+  form={{
+    modules: [
+      {
+        name: 'image',
+        type: 'image',
+        src: 'https://expand.org/images/image-annotation.png',
+      },
+      {
+        name: 'submit',
+        type: 'submit',
+        caption: 'Next',
+      },
+    ],
+  }}
+/>
+

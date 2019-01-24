@@ -28,19 +28,27 @@ export default class Tags extends Component {
       return null;
     }
     return (
-      <div className={styles.container}>
-        <div className={styles.title}>Tags</div>
-        <div className={styles.list}>
-          {tags.map(tag => (
+      <table className={styles.container}>
+        <thead>
+          <tr className={styles.header}>
+            <th className={styles.headLabel}>Label</th>
+            <th className={styles.headLabel}>Start Time</th>
+            <th className={styles.headLabel}>End Time</th>
+            <th className={styles.headLabel}>Remove</th>
+          </tr>
+        </thead>
+        <tbody className={styles.body}>
+          {tags.map((tag, index) => (
             <Tag
+              index={index}
               tag={tag}
               key={tag.id}
               onSelect={onSelect}
               onDelete={onDelete}
             />
           ))}
-        </div>
-      </div>
+        </tbody>
+      </table>
     );
   }
 }

@@ -1,16 +1,55 @@
+@import '~@expandorg/uikit/colors'
+@import '~@expandorg/uikit/font'
 
 .container
+  margin-top: 30px
+  margin-bottom: 30px
   display: flex;
   justify-content: space-between;
 
-.block
-  font-size: 16px;
-  color: rgba(28, 37, 65, 0.5)
+.range
+  width: 100%;
+  flex-grow: 1
   display: flex;
-  align-items: center;
-  text-transform:uppercase;
+  align-items: center
+  justify-content: flex-start
 
-.number
-  padding: 0 10px;
-  font-size: 26px;
-  color: rgba(28, 37, 65, 1)
+.block
+  box-sizing: border-box
+  height 40px
+
+  text-align: center
+  font(subtitle, false, false, 38px)
+
+  color: color-light-blue
+  background-color: color-teel-dark
+  border: 1px solid color-teel-dark
+  margin-left: 2px
+
+  &:first-child
+    border-top-left-radius: 20px
+    border-bottom-left-radius: 20px
+
+  &:last-child
+    border-top-right-radius: 20px
+    border-bottom-right-radius: 20px
+
+  &.next
+    color: color-teel-dark
+    background-color: color-light-blue
+
+.tries
+  position relative
+  box-sizing: border-box
+
+  min-width 40px
+  width 40px
+  height 40px
+  border-radius: 20px
+  font(subtitle, false, false, 40px)
+  text-align: center
+
+  margin-left: 5px
+
+  background-color: color-blue-background
+  color: color-light-blue

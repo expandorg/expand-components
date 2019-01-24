@@ -1,0 +1,113 @@
+---
+menu: Modules
+name: Instructions
+route: /modules-instructions
+---
+
+# Instructions Module
+
+
+## Instructions properties
+ properties
+
+| Property     | type           | Required | Default | description |
+| ------------ | -------------- | -------- | ------- | ----------- |
+| *type*       | `instructionsItem` | true | -       | module type |
+| *name*       | string         | true     | -       | module name |
+| *button*     | string         | false    | -       | trigger button |
+| *modules*   | `module`        | true     | -       | dialog content |
+
+
+## Example
+```jsx
+{
+  type: 'instructions',
+  name: 'instructions',
+  button: 'Instructions',
+  modules: [
+    {
+      name: 'header',
+      type: 'text',
+      style: 'body',
+      content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+    },
+  ],
+}
+```
+
+import ModulesPlayground from '../../form/ModulesPlayground/ModulesPlayground.js'
+
+<ModulesPlayground
+  form={{
+    modules: [
+      {
+        type: 'instructions',
+        name: 'instructions',
+        button: 'Instructions',
+        modules: [
+          {
+            name: 'header',
+            type: 'text',
+            style: 'body',
+            content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+          },
+        ],
+      },
+      {
+        name: 'submit',
+        type: 'submit',
+        caption: 'I Agree',
+      },
+    ],
+  }}
+/>
+
+<ModulesPlayground
+  form={{
+    modules: [
+      {
+        name: 'title',
+        type: 'text',
+        style: 'h2',
+        content: "With flex container"
+      },
+      {
+        type: 'flex',
+        name: 'flex',
+        modules: [
+          {
+            type: 'instructions',
+            name: 'instructions-1',
+            button: 'See instructions',
+            modules: [
+              {
+                name: 'header',
+                type: 'text',
+                style: 'body',
+                content: "instructions content"
+              },
+            ],
+          },
+          {
+            type: 'instructions',
+            name: 'instructions-2',
+            button: 'See rules',
+            modules: [
+              {
+                name: 'header-2',
+                type: 'text',
+                style: 'body',
+                content: "Rules content"
+              },
+            ],
+          },
+        ]
+      },
+      {
+        name: 'submit',
+        type: 'submit',
+        caption: 'I Agree',
+      },
+    ],
+  }}
+/>

@@ -8,8 +8,6 @@ import { Input as UIInput } from '@expandorg/components';
 import PropControlTypes from '../../form/Form/PropControlTypes';
 import ModuleCategories from '../../form/Form/ModuleCategories';
 
-import Label from '../../components/Label';
-
 import styles from './Input.module.styl';
 
 export default class Input extends Component {
@@ -17,7 +15,6 @@ export default class Input extends Component {
     name: PropTypes.string.isRequired,
     inputType: PropTypes.string,
     placeholder: PropTypes.string,
-    label: PropTypes.string,
     value: PropTypes.string,
     initial: PropTypes.string,
     onChange: PropTypes.func.isRequired,
@@ -27,7 +24,6 @@ export default class Input extends Component {
     inputType: 'text',
     value: undefined,
     initial: null,
-    label: null,
     placeholder: '',
   };
 
@@ -65,10 +61,6 @@ export default class Input extends Component {
         initial: {
           type: PropControlTypes.string,
           placeholder: 'Default value',
-        },
-        label: {
-          type: PropControlTypes.string,
-          placeholder: 'Label',
         },
       },
       defaults: {
@@ -109,22 +101,20 @@ export default class Input extends Component {
   };
 
   render() {
-    const { inputType, placeholder, label, value, initial } = this.props;
+    const { inputType, placeholder, value, initial } = this.props;
     const { touched } = this.state;
 
     const val = !value && !touched && initial ? initial : value;
 
     return (
-      <Label className={styles.label} label={label}>
-        <UIInput
-          type={inputType}
-          className={styles.input}
-          onChange={this.handleChange}
-          value={val}
-          autoComplete="off"
-          placeholder={placeholder}
-        />
-      </Label>
+      <UIInput
+        type={inputType}
+        className={styles.input}
+        onChange={this.handleChange}
+        value={val}
+        autoComplete="off"
+        placeholder={placeholder}
+      />
     );
   }
 }

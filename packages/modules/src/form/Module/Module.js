@@ -56,6 +56,7 @@ export default class Module extends Component {
     } = this.props;
 
     const Control = controls[module.type];
+
     if (!Control) {
       return null;
     }
@@ -74,6 +75,7 @@ export default class Module extends Component {
         </Control>
       );
     }
+
     return (
       <Control
         {...module}

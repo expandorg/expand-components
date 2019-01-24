@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { PureComponent, createRef } from 'react';
 import PropTypes from 'prop-types';
 
 import { Button } from '@expandorg/components';
@@ -38,11 +38,17 @@ export default class EditTag extends PureComponent {
     options: [],
   };
 
+  label = createRef();
+
   handleSave = evt => {
     evt.preventDefault();
     const { onSave, tag, readOnly } = this.props;
-    if (tag.tag && !readOnly) {
-      onSave(tag);
+    if (!readOnly) {
+      if (tag.tag) {
+        onSave(tag);
+      } else if (this.label && this.label.current) {
+        this.label.current.focus();
+      }
     }
   };
 
@@ -113,10 +119,10 @@ export default class EditTag extends PureComponent {
     return (
       <div className={styles.container}>
         <div className={styles.field}>
-          <div className={styles.label}>Start time</div>
           <div className={styles.control}>
             <TimeInput
               readOnly={readOnly}
+              placeholder="Start time"
               className={styles.input}
               value={tag.start}
               onChange={this.handleChangeStart}
@@ -124,10 +130,10 @@ export default class EditTag extends PureComponent {
           </div>
         </div>
         <div className={styles.field}>
-          <div className={styles.label}>End Time</div>
           <div className={styles.control}>
             <TimeInput
               readOnly={readOnly}
+              placeholder="End time"
               className={styles.input}
               value={tag.end}
               onChange={this.handleChangeEnd}
@@ -135,10 +141,11 @@ export default class EditTag extends PureComponent {
           </div>
         </div>
         <div className={styles.field}>
-          <div className={styles.label}>Tag</div>
           <div className={styles.control}>
             <LabelInput
+              placeholder="Tag"
               readOnly={readOnly}
+              sendRef={this.label}
               value={tag.tag}
               options={options}
               onChange={this.handleChangeLabel}
@@ -146,14 +153,12 @@ export default class EditTag extends PureComponent {
           </div>
         </div>
         <div className={styles.field}>
-          <div className={styles.label}>&nbsp;</div>
           <div className={styles.actions}>
             {save && !readOnly && (
               <Button
                 className={styles.button}
                 disabled={readOnly}
-                theme="white"
-                size="small"
+                theme="white-blue"
                 onClick={this.handleSave}
               >
                 {tag.id ? 'Save' : 'Add'}

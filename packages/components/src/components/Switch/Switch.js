@@ -8,12 +8,14 @@ export default class Switch extends Component {
   static propTypes = {
     className: PropTypes.string,
     value: PropTypes.bool,
+    name: PropTypes.string,
     onChange: PropTypes.func,
   };
 
   static defaultProps = {
     value: false,
     className: null,
+    name: undefined,
     onChange: Function.prototype,
   };
 
@@ -23,23 +25,26 @@ export default class Switch extends Component {
   };
 
   render() {
-    const { className, value, children, onChange, ...rest } = this.props;
+    const { className, value, children, onChange, name, ...rest } = this.props;
+
+    /* eslint-disable */
     return (
-      <label className={cn('gem-switch', className)} {...rest}>
+      <label className={cn('gem-switch2', className)} {...rest}>
         <input
           type="checkbox"
-          className="gem-switch-input"
+          className="gem-switch2-input"
           checked={value}
+          name={name}
           onClick={this.handleToggle}
           readOnly
         />
         <span
           className={cn(
-            `gem-switch-container`,
-            `gem-switch-container-${value ? 'on' : 'off'}`
+            `gem-switch2-container`,
+            `gem-switch2-container-${value ? 'on' : 'off'}`
           )}
         >
-          <span className="gem-switch-thumb" />
+          <span className="gem-switch2-thumb" />
         </span>
         {children}
       </label>

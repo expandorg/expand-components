@@ -7,48 +7,50 @@
 .button
   box-sizing: border-box;
 
-  height: 38px
-  width: 38px
-  font(normal, 600, false, 38px)
+  height: 60px
+  width: 60px
+  font(h4-bold, false, false, 58px)
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  background-color: color-pink
-  color: color-white
+  background-color: color-light-blue
+  color: color-primary-blue
   border-radius: 2px
+  border: 1px solid color-heavy-blue
 
   cursor: pointer;
   outline: none
 
   &:hover
-    background-color: color-pink-light
+    background-color: color-primary-blue
+    color: color-light-blue
 
 .menu
   position: absolute;
-  bottom: calc(100% + 5px)
+  bottom: calc(100% - 1px)
   border-radius: 2px
 
 .rate
   box-sizing: border-box;
 
-  height: 38px
-  width: 38px
-  font(normal, 600, false, 38px)
+  height: 60px
+  width: 60px
+  font(h4-bold, false, false, 58px)
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  background-color: color-pink
-  color: color-white
+  background-color: color-light-blue
+  color: color-primary-blue
+  border: 1px solid color-heavy-blue
 
   cursor: pointer;
   outline: none
 
   &:hover
-    background-color: color-pink-light
+    background-color: color-heavy-blue
+    color: color-light-blue
 
-.x
-  margin-right: 2px

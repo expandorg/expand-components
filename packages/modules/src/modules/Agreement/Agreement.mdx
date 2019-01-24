@@ -1,0 +1,67 @@
+---
+menu: Modules
+name: Agreement
+route: /modules-agreement
+---
+
+# Agreement Module
+
+## Agreement properties
+
+| Property     | type           | Required | Default | description |
+| ------------ | -------------- | -------- | ------- | ----------- |
+| *type*       | `agreement`    | true     | -       | module type |
+| *name*       | string         | true     | -       | module name |
+| *label*      | string         | true     | -       | Checkbox label |
+| *button*     | string         | -        | -       | Button title |
+| *modules*    | *modules*      | true     | -      | dialog content |
+
+
+## Example
+
+```jsx
+{
+  type: 'agreement',
+  name: 'agreement',
+  button: 'Rules',
+  label: 'I Agree',
+  modules: [
+    {
+      name: 'header',
+      type: 'text',
+      style: 'body',
+      content: 'test',
+    },
+  ],
+}
+```
+
+
+import ModulesPlayground from '../../form/ModulesPlayground/ModulesPlayground.js'
+
+<ModulesPlayground
+  form={{
+    modules: [
+      {
+        type: 'agreement',
+        name: 'agreement',
+        button: 'Rules',
+        label: 'I Agree',
+        modules: [
+          {
+            name: 'header',
+            type: 'text',
+            style: 'body',
+            content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+          },
+        ],
+      },
+      {
+        name: 'submit',
+        type: 'submit',
+        caption: 'I Agree',
+      },
+    ],
+  }}
+/>
+

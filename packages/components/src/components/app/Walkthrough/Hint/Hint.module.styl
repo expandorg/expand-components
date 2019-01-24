@@ -1,0 +1,102 @@
+@import '~@expandorg/uikit/font'
+@import '~@expandorg/uikit/colors'
+
+border-size = 6px
+border-offset = -12px
+
+.hint
+  position: absolute
+  width: 320px
+  padding: 20px 30px
+
+  background-color: color-white
+  color: color-text-blue
+  font(h4-bold)
+  border-radius: 5px
+
+  z-index: 2
+  box-sizing: border-box
+
+  &:after
+    content: ''
+    position: absolute
+
+    border: border-size  solid transparent
+
+.top::after
+  left: calc(160px + 6px)
+  bottom: border-offset
+
+  border-top: border-size solid color-white
+
+.bottom::after
+  left: calc(160px + 6px)
+  top: border-offset
+
+  border-bottom: border-size solid color-white
+
+.right::after
+  top: 20px
+  left: border-offset
+
+  border-right: border-size solid color-white
+
+.left::after
+  top: 20px
+  right: border-offset
+
+  border-left: border-size solid color-white
+
+.actionsConatainer
+  display: flex;
+  justify-content: space-between
+
+  margin-top: 28px
+
+.done
+  width: 100px
+  height: 40px
+
+  background: color-white
+  border: 1px solid color-heavy-blue
+  color: color-text-blue
+
+
+.prev
+.next
+  display: inline-block;
+
+  color: color-text-blue
+  background: color-medium-blue
+  border: 1px solid color-heavy-blue
+
+  width: 40px
+  height: 40px
+
+  box-sizing: border-box
+
+  path
+    fill: color-text-blue
+
+.disabled
+  cursor: default
+  background: color-grey-background
+  &:hover
+    background: color-grey-background
+
+.next
+  svg
+    transform: rotate(90deg);
+
+.prev
+  margin-right: 8px
+  svg
+    transform: rotate(-90deg)
+
+.top
+  bottom: 0
+  left: 0
+
+.container
+  position: absolute
+  transition: all 0.2s ease-out

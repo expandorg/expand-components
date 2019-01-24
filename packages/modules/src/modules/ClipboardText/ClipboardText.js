@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { ClipboardButton } from '@expandorg/components';
-
-import Label from '../../components/Label';
+import { ClipboardButton, Input } from '@expandorg/components';
 
 import PropControlTypes from '../../form/Form/PropControlTypes';
 import ModuleCategories from '../../form/Form/ModuleCategories';
@@ -31,6 +29,10 @@ export default class ClipboardText extends Component {
           type: PropControlTypes.string,
           placeholder: 'Text',
         },
+        label: {
+          type: PropControlTypes.string,
+          placeholder: 'Label',
+        },
       },
       defaults: {
         text: 'Click to copy text',
@@ -41,14 +43,17 @@ export default class ClipboardText extends Component {
   render() {
     const { text, label } = this.props;
     return (
-      <Label className={styles.label} label={label}>
-        <div className={styles.container}>
-          <div className={styles.content}>{text}</div>
-          <ClipboardButton value={text} className={styles.copy}>
-            Copy
-          </ClipboardButton>
-        </div>
-      </Label>
+      <div className={styles.container}>
+        <Input
+          className={styles.text}
+          readOnly
+          placeholder={label}
+          value={text}
+        />
+        <ClipboardButton className={styles.copy} value={text}>
+          Copy
+        </ClipboardButton>
+      </div>
     );
   }
 }

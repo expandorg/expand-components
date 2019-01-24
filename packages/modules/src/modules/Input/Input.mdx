@@ -1,0 +1,68 @@
+---
+menu: Modules
+name: Input
+route: /modules-input
+---
+
+# Input Module
+
+## Input properties
+
+| Property       | type           | Required | Default | description |
+| -------------- | -------------- | -------- | ------- | ----------- |
+| *type*         | `input`     | true     | -       | module type  |
+| *inputType*    | `text` `number` `email` `password`     | true     | `text`       | input type  |
+| *name*         | string         | true     | -       | module name  |
+| *placeholder*  | string         | -        | -       | input placeholder  |
+| *initial*      | string         | -        | -       | initial value |
+
+
+## Example
+```jsx
+{
+  name: 'input',
+  inputType: 'text',
+  type: 'text',
+  placeholder: 'Simple text module',
+}
+```
+
+import ModulesPlayground from '../../form/ModulesPlayground/ModulesPlayground.js'
+
+<ModulesPlayground
+  form={{
+    modules: [
+      {
+        name: 'text',
+        type: 'input',
+        inputType: 'text',
+        label: 'Label',
+        placeholder: 'Simple text',
+      },
+      {
+        name: 'password',
+        type: 'input',
+        inputType: 'password',
+        label: 'Password',
+        placeholder: 'Password',
+      },
+      {
+        name: 'number',
+        type: 'input',
+        inputType: 'number',
+        placeholder: 'Number',
+      },
+      {
+        name: 'email',
+        type: 'input',
+        inputType: 'email',
+        placeholder: 'Email',
+      },
+      {
+        name: 'submit',
+        type: 'submit',
+        caption: 'Next',
+      },
+    ],
+  }}
+/>

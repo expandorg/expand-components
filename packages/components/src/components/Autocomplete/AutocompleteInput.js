@@ -10,7 +10,7 @@ import Suggestion from './Suggestion';
 
 import { containsFilter } from './filterOptions';
 
-import './AutocompleteInput.styl';
+import './styles.styl';
 
 export default class AutocompleteInput extends Component {
   static propTypes = {
@@ -166,27 +166,22 @@ export default class AutocompleteInput extends Component {
           onKeyDown={this.handleKeyDown}
           {...rest}
         />
-        {clear &&
-          value && (
-            <button
-              className="gem-autocomplete-clear"
-              onClick={this.handleClear}
-            >
-              ✕
-            </button>
-          )}
-        {focus &&
-          filtered.length !== 0 && (
-            <Suggestions>
-              {filtered.map(suggest => (
-                <Suggestion
-                  key={suggest}
-                  value={suggest}
-                  onSelect={this.handleSelect}
-                />
-              ))}
-            </Suggestions>
-          )}
+        {clear && value && (
+          <button className="gem-autocomplete-clear" onClick={this.handleClear}>
+            ✕
+          </button>
+        )}
+        {focus && filtered.length !== 0 && (
+          <Suggestions>
+            {filtered.map(suggest => (
+              <Suggestion
+                key={suggest}
+                value={suggest}
+                onSelect={this.handleSelect}
+              />
+            ))}
+          </Suggestions>
+        )}
       </div>
     );
   }

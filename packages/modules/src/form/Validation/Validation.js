@@ -8,19 +8,19 @@ import styles from './Validation.module.styl';
 export default class Validation extends Component {
   static propTypes = {
     name: PropTypes.string.isRequired,
-    error: PropTypes.shape({}),
+    errors: PropTypes.shape({}),
   };
 
   static defaultProps = {
-    error: null,
+    errors: null,
   };
 
   render() {
-    const { children, name, error } = this.props;
+    const { children, name, errors } = this.props;
     return (
       <div className={styles.container}>
         {children}
-        <ErrorMessage field={name} error={error} className={styles.error} />
+        <ErrorMessage field={name} errors={errors} className={styles.error} />
       </div>
     );
   }

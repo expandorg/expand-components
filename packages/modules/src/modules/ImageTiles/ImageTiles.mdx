@@ -1,0 +1,46 @@
+---
+menu: Modules
+name: Image Tiles
+route: /modules-imagetiles
+---
+
+# ImageTiles Module
+
+## ImageTiles properties
+
+| Property | type           | Required | Default | description |
+| ---------| -------------- | -------- | ------- | ----------- |
+| *type*   | `imageTiles`   | true     | -       | module type |
+| *name*   | string         | true     | -       | module name |
+| *image*  | string         | true     | -       | image url   |
+| *columns* | number        | -        | 4       | number of columns   |
+| *rows*  | number          | -        | 4       | number of rows   |
+
+
+## Example
+```jsx
+{
+  name: 'imageTiles',
+  type: 'imageTiles',
+  image: "https://expand.org/images/image-annotation.png",
+}
+```
+
+import ModulesPlayground from '../../form/ModulesPlayground/ModulesPlayground.js'
+
+<ModulesPlayground
+  form={{
+    modules: [
+      {
+        name: 'imageTiles',
+        type: 'imageTiles',
+        image: 'https://expand.org/images/image-annotation.png',
+      },
+      {
+        name: 'submit',
+        type: 'submit',
+        caption: 'Next',
+      },
+    ],
+  }}
+/>

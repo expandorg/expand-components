@@ -1,0 +1,72 @@
+---
+menu: Modules
+name: Text
+route: /modules-text
+---
+
+# Text Module
+
+## Text properties
+
+| Property     | type           | Required | Default | description |
+| ------------ | -------------- | -------- | ------- | ----------- |
+| *type*       | `text`         | true     | -       | module type |
+| *name*       | string         | true     | -       | module name |
+| *style*      | `h1` `h2` `h3` `h4` `pre` `body` `description` 'title' `question` | false    | `body`       | text style |
+| *align*      | `left` `right` `center`  | false    | `left`       | text style |
+| *color*      | `blue` `black`  | false    | `black`       | text color |
+| *content*    | string         | -        | -       | text        |
+
+
+## Example
+```jsx
+{
+  name: 'p',
+  type: 'text',
+  style: 'body',
+  align: 'left',
+  content: 'Lorem ipsum dolor sit amet. Ut enim ad minim veniam',
+}
+```
+
+import ModulesPlayground from '../../form/ModulesPlayground/ModulesPlayground.js'
+
+<ModulesPlayground
+  form={{
+    modules: [
+      {
+        name: 'p',
+        type: 'text',
+        style: 'h1',
+        align: 'left',
+        content: 'H1 title',
+      },
+      {
+        name: 'p2',
+        type: 'text',
+        style: 'h2',
+        align: 'left',
+        content: 'H2 title',
+      },
+      {
+        name: 'p3',
+        type: 'text',
+        style: 'h3',
+        align: 'left',
+        content: 'h3 title',
+      },
+      {
+        name: 'p4',
+        type: 'text',
+        style: 'body',
+        align: 'left',
+        content: 'Lorem ipsum dolor sit amet. Ut enim ad minim veniam Lorem ipsum dolor sit amet. Ut enim ad minim veniam',
+      },
+      {
+        name: 'submit',
+        type: 'submit',
+        caption: 'Next',
+      },
+    ],
+  }}
+/>

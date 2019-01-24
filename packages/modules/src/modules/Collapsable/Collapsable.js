@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 
 import { Collapsable as UICollapsable } from '@expandorg/components';
 
-import Alignment from '../../components/Alignment';
-
 import PropControlTypes from '../../form/Form/PropControlTypes';
 import ModuleCategories from '../../form/Form/ModuleCategories';
 
@@ -38,15 +36,17 @@ export default class Collapsable extends Component {
         },
         modules: {
           type: PropControlTypes.modules,
+          caption: 'Drop content here',
         },
       },
       defaults: {
         header: 'Click to Expand/Collapse',
         modules: {
-          type: 'article',
-          name: 'article',
+          name: 'p-2',
+          type: 'text',
+          style: 'description',
           content:
-            'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco ',
+            'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
         },
       },
     },
@@ -68,16 +68,14 @@ export default class Collapsable extends Component {
     const { header, children } = this.props;
     const { expanded } = this.state;
     return (
-      <Alignment padding="small">
-        <UICollapsable
-          className={styles.collapsable}
-          expanded={expanded}
-          header={<div className={styles.header}>{header}</div>}
-          onToggle={this.handleToggle}
-        >
-          <div className={styles.container}>{children}</div>
-        </UICollapsable>
-      </Alignment>
+      <UICollapsable
+        className={styles.collapsable}
+        expanded={expanded}
+        header={<div className={styles.header}>{header}</div>}
+        onToggle={this.handleToggle}
+      >
+        <div className={styles.container}>{children}</div>
+      </UICollapsable>
     );
   }
 }

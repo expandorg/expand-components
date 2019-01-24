@@ -27,7 +27,11 @@ export const getReasons = (
   const types = Array.from(new Set(getModuleTypes(modules)));
   const formReasons = types.reduce((all, type) => {
     const moduleControl = modulesMap[type];
-    if (!moduleControl.module.report) {
+    if (
+      !moduleControl ||
+      !moduleControl.module ||
+      !moduleControl.module.report
+    ) {
       return all;
     }
     return all.concat(moduleControl.module.report);

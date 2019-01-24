@@ -1,0 +1,53 @@
+---
+menu: Modules
+name: Multiselect
+route: /modules-multiselect
+---
+
+# Multiselect Module
+
+## Multiselect properties
+
+| Property       | type           | Required | Default | description  |
+| -------------- | -------------- | -------- | --------| ------------ |
+| *type*         | `multiselect`  | true     | -       | module type  |
+| *name*         | string         | true     | -       | module name  |
+| *columns*      | `2`, `3`       | false    | `2`     | number of columns  |
+| *options*      | `[ string, string... ]`   | true   | -     | array of options   |
+| *readOnly*     | boolean        | false    | -       | read only    |
+| *order*        | boolean        | false    | -       | consider the order of answers  |
+
+## Example
+```jsx
+{
+  name: 'multiselect',
+  type: 'multiselect',
+  options: ['Option 1', 'Option 2', 'Option 2', 'Option 4'],
+}
+```
+
+import ModulesPlayground from '../../form/ModulesPlayground/ModulesPlayground.js'
+
+<ModulesPlayground
+  form={{
+    modules: [
+      {
+        name: 'text',
+        type: 'type',
+        style: 'h3',
+        content: 'Select many',
+      },
+      {
+        name: 'multiselect',
+        type: 'multiselect',
+        options: ['Option 1', 'Option 2', 'Option 3', 'Option 4'],
+      },
+      {
+        name: 'submit',
+        type: 'submit',
+        caption: 'Next',
+        justify: 'center',
+      },
+    ],
+  }}
+/>

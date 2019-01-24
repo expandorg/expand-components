@@ -1,0 +1,44 @@
+---
+menu: Modules
+name: Checkbox
+route: /modules-checkbox
+---
+
+# Checkbox Module
+
+
+## Checkbox properties
+
+| Property     | type           | Required | Default | description |
+| ------------ | -------------- | -------- | ------- | ----------- |
+| *type*       | `checkbox`     | true     | -       | module type |
+| *name*       | string         | true     | -       | module name |
+| *label*      | string         | -        | -       | Checkbox label |
+
+## Example
+```jsx
+{
+  name: "checkbox",
+  type: "checkbox",
+  label: "select me",
+}
+```
+
+import ModulesPlayground from '../../form/ModulesPlayground/ModulesPlayground.js'
+
+<ModulesPlayground
+  form={{
+    modules: [
+      {
+        name: 'checkbox',
+        type: 'checkbox',
+        label: 'simple checkbox',
+      },
+      {
+        name: 'submit',
+        type: 'submit',
+        caption: 'I Agree',
+      },
+    ],
+  }}
+/>

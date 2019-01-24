@@ -1,45 +1,45 @@
-import React, { Component } from 'react';
+import React, { Component, forwardRef } from 'react';
 import PropTypes from 'prop-types';
 import cn from 'classnames';
 
 import './Button.styl';
 
-export default class Button extends Component {
+export class Button extends Component {
   static propTypes = {
     className: PropTypes.string,
     type: PropTypes.string,
-    size: PropTypes.oneOf(['small', 'medium', 'large']),
-    theme: PropTypes.oneOf([
-      'pink',
-      'white',
-      'transparent',
-      'aqua',
-      'blue',
-      'link',
-      'none',
-    ]),
+    theme: PropTypes.string,
+    forwardedRef: PropTypes.object, // eslint-disable-line
   };
 
   static defaultProps = {
     className: null,
-    theme: 'pink',
-    size: 'medium',
+    forwardedRef: undefined,
     type: 'button',
+    theme: null,
   };
 
   render() {
-    const { children, className, theme, size, type, ...rest } = this.props;
-    const classes = cn(
-      'gem-button',
-      `gem-button-${theme}`,
-      `gem-button-${size}`,
-      className
-    );
+    const {
+      children,
+      type,
+      className,
+      theme,
+      forwardedRef,
+      ...rest
+    } = this.props;
+
+    const classes = cn('gem-button', `gem-button-${theme}`, className);
 
     return (
-      <button className={classes} type={type} {...rest}>
+      <button type={type} className={classes} {...rest} ref={forwardedRef}>
         {children}
       </button>
     );
   }
 }
+
+/* eslint-disable */
+export default forwardRef((props, ref) => (
+  <Button {...props} forwardedRef={ref} />
+));
