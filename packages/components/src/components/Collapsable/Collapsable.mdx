@@ -1,0 +1,29 @@
+---
+menu: Components
+name: Collapsable
+route: /components-collapsable
+---
+
+## Collapsable
+
+import { Playground, PropsTable } from 'docz'
+import WithState from 'scripts/docz/WithState'
+
+import Collapsable from './Collapsable.js'
+import Pane from '../Panel/Panel.js'
+
+<Playground>
+  {() => (
+    <WithState value={false}>
+      {({value, onChange}) => (
+        <Pane>
+          <Collapsable header="collapse/expand" expanded={value} onToggle={onChange}>
+            <h3>Hidden</h3>
+          </Collapsable>
+        </Pane>
+      )}
+    </WithState>
+  )}
+</Playground>
+
+<PropsTable of={Collapsable} />

@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom';
 
 import './Sidebar.styl';
 
-class Sidebar extends Component {
+export class Sidebar extends Component {
   render() {
     const { children } = this.props;
 

@@ -1,0 +1,27 @@
+---
+menu: Components
+name: Checkbox
+route: /components-checkbox
+---
+
+## Checkbox
+
+import { Playground, PropsTable } from 'docz'
+import WithState from 'scripts/docz/WithState'
+
+import Checkbox from './Checkbox.js'
+import Pane from '../Panel/Panel.js'
+
+<Playground>
+    {() => (
+      <WithState value={false}>
+        {({value, onChange}) => (
+          <Pane>
+            <Checkbox label="test" value={value} onChange={onChange} />
+          </Pane>
+        )}
+      </WithState>
+    )}
+</Playground>
+
+<PropsTable of={Checkbox} />

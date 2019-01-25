@@ -1,0 +1,24 @@
+---
+menu: Components
+name: ClipboardButton
+route: /components-clipboardbutton
+---
+
+## ClipboardButton
+
+import { Playground, PropsTable } from 'docz'
+
+import ClipboardButton from './ClipboardButton.js'
+import Pane from '../Panel/Panel.js'
+
+<Playground>
+  {() => (
+    <Pane>
+      <ClipboardButton  value={'copy me'}>
+        Copy me
+      </ClipboardButton>
+    </Pane>
+  )}
+</Playground>
+
+<PropsTable of={ClipboardButton} />

@@ -27,6 +27,9 @@ export default {
       body: {
         fontFamily: 'Avenir',
       },
+      playground: {
+        padding: ['20px', '5px'],
+      },
       // container: {
       //   width: ['100%', '100%', 920],
       //   padding: ['20px', '0 40px 40px'],

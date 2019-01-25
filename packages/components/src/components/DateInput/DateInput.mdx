@@ -1,0 +1,27 @@
+---
+menu: Components
+name: DateInput
+route: /components-dateinput
+---
+
+## DateInput
+
+import { Playground, PropsTable } from 'docz'
+import WithState from 'scripts/docz/WithState'
+
+import DateInput from './DateInput.js'
+import Pane from '../Panel/Panel.js'
+
+<Playground>
+  {() => (
+    <WithState>
+      {({value, onChange}) => (
+        <Pane>
+          <DateInput name="test" placeholder="Enter date" value={value} onChange={e => onChange(e.target.value)} />
+        </Pane>
+      )}
+    </WithState>
+  )}
+</Playground>
+
+<PropsTable of={DateInput} />

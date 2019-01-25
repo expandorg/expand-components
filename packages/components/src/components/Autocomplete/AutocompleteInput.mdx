@@ -1,0 +1,46 @@
+---
+menu: Components
+name: Autocomplete
+route: /components-autocompleteinput
+---
+
+## Autocomplete
+
+import { Playground, PropsTable } from 'docz'
+import WithState from 'scripts/docz/WithState'
+
+import AutocompleteInput from './AutocompleteInput.js'
+import Pane from '../Panel/Panel.js'
+
+<Playground>
+  {() => (
+      <WithState>
+        {({value, onChange}) => (
+          <Pane>
+            <AutocompleteInput
+              placeholder="Type..."
+              value={value}
+              onChange={evt => {
+                onChange(evt.target.value);
+              }}
+              onSelect={onChange}
+              options={[
+                'red',
+                'gren',
+                'blue',
+                'yellow',
+                'magenta',
+                'white',
+                'black',
+                'gray',
+                'brown',
+              ]}
+            />
+          </Pane>
+        )}
+      </WithState>
+  )}
+</Playground>
+
+
+<PropsTable of={AutocompleteInput} />

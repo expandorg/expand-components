@@ -9,6 +9,7 @@ export class Button extends Component {
     className: PropTypes.string,
     type: PropTypes.string,
     theme: PropTypes.string,
+    size: PropTypes.oneOf(['medium', 'small']),
     forwardedRef: PropTypes.object, // eslint-disable-line
   };
 
@@ -16,6 +17,7 @@ export class Button extends Component {
     className: null,
     forwardedRef: undefined,
     type: 'button',
+    size: 'medium',
     theme: null,
   };
 
@@ -25,11 +27,17 @@ export class Button extends Component {
       type,
       className,
       theme,
+      size,
       forwardedRef,
       ...rest
     } = this.props;
 
-    const classes = cn('gem-button', `gem-button-${theme}`, className);
+    const classes = cn(
+      'gem-button',
+      `gem-button-${theme}`,
+      `gem-button-${size}`,
+      className
+    );
 
     return (
       <button type={type} className={classes} {...rest} ref={forwardedRef}>

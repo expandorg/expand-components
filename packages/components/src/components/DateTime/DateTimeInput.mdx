@@ -1,0 +1,45 @@
+---
+menu: Components
+name: DateTimeInput
+route: /components-datetimeInput
+---
+
+## DateTimeInput
+
+import { Playground, PropsTable } from 'docz'
+import WithState from 'scripts/docz/WithState'
+
+import DateTimeInput from './DateTimeInput.js'
+import DateTimePicker from './DateTimePicker.js'
+import Pane from '../Panel/Panel.js'
+
+<PropsTable of={DateTimeInput} />
+
+<Playground>
+  {() => (
+    <WithState>
+      {({value, onChange}) => (
+        <Pane>
+          <DateTimeInput name="test" placeholder="Enter date" value={value} onChange={e => onChange(e.target.value)} />
+        </Pane>
+      )}
+    </WithState>
+  )}
+</Playground>
+
+## DateTimePicker
+
+<PropsTable of={DateTimePicker} />
+
+<Playground>
+  {() => (
+    <WithState>
+      {({value, onChange}) => (
+        <Pane>
+          <DateTimePicker value={value} onChange={onChange} />
+        </Pane>
+      )}
+    </WithState>
+  )}
+</Playground>
+

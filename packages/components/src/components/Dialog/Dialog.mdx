@@ -1,0 +1,38 @@
+---
+menu: Components
+name: Dialog
+route: /components-dialog
+---
+
+## Dialog
+
+import { Playground, PropsTable } from 'docz'
+import WithState from 'scripts/docz/WithState'
+
+import Dialog from './Dialog.js'
+import Pane from '../Panel/Panel.js'
+import Button from '../Button/Button.js'
+
+<Playground>
+  {() => (
+    <WithState value={false}>
+      {({value, onChange}) => (
+        <Pane>
+          <Button onClick={() => onChange(!value)}>
+            dialog
+          </Button>
+          <Dialog visible={value} contentLabel={'test'} visible={value} onHide={() => onChange(!value)}>
+            <div style={{ width: '300px', padding: '30px 40px'}}>
+              <h3 style={{ marginBottom: '30px'}}>Content</h3>
+              <Button onClick={() => onChange(!value)}>
+                hide
+              </Button>
+            </div>
+          </Dialog>
+        </Pane>
+      )}
+    </WithState>
+  )}
+</Playground>
+
+<PropsTable of={Dialog} />

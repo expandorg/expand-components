@@ -5,12 +5,21 @@ route: /components-button
 ---
 
 import { Playground, PropsTable } from 'docz'
+import Pane from '../Panel/Panel.js'
 
 import { Button } from './Button.js'
 
 ## Button
 
+<Playground>
+  <Pane>
+    <Button>Click me</Button>
+  </Pane>
+</Playground>
+
 <PropsTable of={Button} />
+
+### Themes
 
 primary
 <Button>Click me</Button>

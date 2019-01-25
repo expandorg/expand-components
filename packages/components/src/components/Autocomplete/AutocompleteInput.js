@@ -39,7 +39,6 @@ export default class AutocompleteInput extends Component {
 
     this.inputRef = createRef();
     this.containerRef = createRef();
-
     this.state = {
       focus: false,
       options: props.options, // eslint-disable-line react/no-unused-state
