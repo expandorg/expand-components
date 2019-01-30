@@ -59,6 +59,8 @@ export default class Draggable extends Component {
 
   render() {
     const { children, ...rest } = this.props;
+
+    /* eslint-disable jsx-a11y/no-static-element-interactions */
     return (
       <div onMouseDown={this.handleMouseDown} {...rest}>
         {children}

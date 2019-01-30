@@ -9,21 +9,20 @@
   justify-content: center;
 
   box-sizing: border-box;
-  height: 100px
+  height: sz-sidebar-width
 
   color: color-white;
 
-  font(h4)
+  font(h4, false, 9px, 12px)
 
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
   text-decoration: none;
 
-  border-left: 5px solid transparent
-  border-right: 5px solid transparent
+  border-left: 3px solid transparent
+  border-right: 3px solid transparent
 
   outline: 0
-
-  path
-    fill: color-white
 
   &:hover
     border-left-color: color-primary-blue
@@ -33,4 +32,9 @@
 
 
   &-icon
-    margin-bottom: 17px;
+    margin-bottom: 10px;
+    height 18px
+    width: 18px
+
+    path
+      fill: color-white

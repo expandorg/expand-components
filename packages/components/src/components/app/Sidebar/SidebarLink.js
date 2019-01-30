@@ -24,7 +24,12 @@ export default class SidebarLink extends Component {
         exact
         activeClassName="gem-sidebar-link-active"
       >
-        <item.icon className="gem-sidebar-link-icon" />
+        <item.icon
+          className="gem-sidebar-link-icon"
+          width="18px"
+          height="18px"
+          viewBox="0 0 30 23"
+        />
         {item.title}
       </NavLink>
     );

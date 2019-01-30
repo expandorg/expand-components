@@ -38,7 +38,7 @@ export default class Navbar extends Component {
     return (
       <div className={classes}>
         <Link to="/" className="gem-navbar-logo">
-          <Logo />
+          <Logo width="33" height="33" viewBox="0 0 50 50" />
         </Link>
         <h1 className="gem-navbar-title">{title}</h1>
         <div className="gem-navbar-content">{children}</div>
