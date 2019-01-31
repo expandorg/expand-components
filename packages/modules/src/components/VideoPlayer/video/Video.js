@@ -32,10 +32,6 @@ export default class VideoPreview extends Component {
 
   playerRef = createRef();
 
-  // componentDidMount() {
-  //
-  // }
-
   componentDidUpdate({ start: prevStart, stop: prevStop }) {
     const { stop, start } = this.props;
     if (start !== prevStart || stop !== prevStop) {

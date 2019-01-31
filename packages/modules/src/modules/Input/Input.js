@@ -10,6 +10,8 @@ import ModuleCategories from '../../form/Form/ModuleCategories';
 
 import styles from './Input.module.styl';
 
+const hasVal = val => val !== null && val !== undefined;
+
 export default class Input extends Component {
   static propTypes = {
     name: PropTypes.string.isRequired,
@@ -74,7 +76,7 @@ export default class Input extends Component {
   componentDidMount() {
     const { name, value, initial, onChange } = this.props;
 
-    if (initial && value === undefined) {
+    if (hasVal(initial) && value === undefined) {
       onChange(name, initial);
     }
   }
@@ -88,7 +90,7 @@ export default class Input extends Component {
       !touched &&
       value === undefined &&
       prevProps.initial !== initial &&
-      initial
+      hasVal(initial)
     ) {
       onChange(name, initial);
     }
