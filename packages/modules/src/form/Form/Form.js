@@ -63,7 +63,7 @@ export default class Form extends Component {
       const overridedForm = overrideFormVars(nextForm, nextVars);
       this.setState({
         values: getInitialFormValues(overridedForm),
-        form: overridedForm,,
+        form: overridedForm,
       });
     }
     if (nextErrors && nextErrors !== errors) {
