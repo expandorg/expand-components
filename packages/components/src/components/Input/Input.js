@@ -49,7 +49,7 @@ export class Input extends Component {
       <div className={classes}>
         <input
           className={cn('gem-input', { 'gem-input-filled': !!value })}
-          value={value}
+          value={value || ''}
           onChange={onChange}
           ref={forwardedRef}
           {...rest}
