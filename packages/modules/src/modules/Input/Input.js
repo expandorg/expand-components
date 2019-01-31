@@ -10,15 +10,13 @@ import ModuleCategories from '../../form/Form/ModuleCategories';
 
 import styles from './Input.module.styl';
 
-const hasVal = val => val !== null && val !== undefined;
-
 export default class Input extends Component {
   static propTypes = {
     name: PropTypes.string.isRequired,
     inputType: PropTypes.string,
     placeholder: PropTypes.string,
     value: PropTypes.string,
-    initial: PropTypes.string,
+    initial: PropTypes.string, // eslint-disable-line
     onChange: PropTypes.func.isRequired,
   };
 
@@ -71,49 +69,20 @@ export default class Input extends Component {
     },
   };
 
-  state = { touched: false };
-
-  componentDidMount() {
-    const { name, value, initial, onChange } = this.props;
-
-    if (hasVal(initial) && value === undefined) {
-      onChange(name, initial);
-    }
-  }
-
-  componentDidUpdate(prevProps) {
-    const { name, value, initial, onChange } = this.props;
-
-    const { touched } = this.state;
-
-    if (
-      !touched &&
-      value === undefined &&
-      prevProps.initial !== initial &&
-      hasVal(initial)
-    ) {
-      onChange(name, initial);
-    }
-  }
-
   handleChange = ({ target }) => {
     const { name, onChange } = this.props;
-    this.setState({ touched: true });
     onChange(name, target.value);
   };
 
   render() {
-    const { inputType, placeholder, value, initial } = this.props;
-    const { touched } = this.state;
-
-    const val = !value && !touched && initial ? initial : value;
+    const { inputType, placeholder, value } = this.props;
 
     return (
       <UIInput
         type={inputType}
         className={styles.input}
         onChange={this.handleChange}
-        value={val}
+        value={value}
         autoComplete="off"
         placeholder={placeholder}
       />

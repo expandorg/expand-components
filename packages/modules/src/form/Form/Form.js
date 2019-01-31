@@ -9,6 +9,7 @@ import { ErrorMessage } from '@expandorg/components';
 import Validation from '../Validation';
 
 import overrideFormVars from './variables/overrideFormVars';
+import getInitialFormValues from './variables/getInitialFormValues';
 
 import formProps from './formProps';
 
@@ -42,10 +43,12 @@ export default class Form extends Component {
 
   constructor(props) {
     super(props);
+
+    const form = overrideFormVars(props.form, props.variables);
     this.state = {
       controls: getModuleControlsMap(props.controls),
-      values: null,
-      form: overrideFormVars(props.form, props.variables),
+      values: getInitialFormValues(form),
+      form,
       errors: null,
     };
   }
@@ -57,9 +60,10 @@ export default class Form extends Component {
   }) {
     const { errors, form, variables } = this.props;
     if (form !== nextForm || variables !== nextVars) {
+      const overridedForm = overrideFormVars(nextForm, nextVars);
       this.setState({
-        values: null,
-        form: overrideFormVars(nextForm, nextVars),
+        values: getInitialFormValues(overridedForm),
+        form: overridedForm,,
       });
     }
     if (nextErrors && nextErrors !== errors) {

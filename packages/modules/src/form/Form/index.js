@@ -15,6 +15,7 @@ import moduleControls, {
 
 import applyVariables from './variables/applyVariables';
 import getVariablesMap from './variables/getVariablesMap';
+import getInitialFormValues from './variables/getInitialFormValues';
 
 import PropControlTypes from './PropControlTypes';
 import ModuleCategories from './ModuleCategories';
@@ -33,6 +34,7 @@ export {
   calculateVerificationScore,
   applyVariables,
   getVariablesMap,
+  getInitialFormValues,
   PropControlTypes,
   ModuleCategories,
 };

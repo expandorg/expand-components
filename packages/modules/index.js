@@ -15,6 +15,7 @@ import {
   groupModulesByCategory,
   PropControlTypes,
   ModuleCategories,
+  getInitialFormValues,
 } from './src/form/Form';
 
 import { Module, moduleProps } from './src/form/Module';
@@ -35,6 +36,7 @@ export {
   ModuleCategories,
   getVariablesMap,
   groupModulesByCategory,
+  getInitialFormValues,
   Module,
   moduleControls,
   moduleProps,
