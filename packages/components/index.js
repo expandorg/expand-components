@@ -46,6 +46,8 @@ import deferVisibleRender from './src/components/hoc/deferVisibleRender';
 import deferComponentRender from './src/components/hoc/deferComponentRender';
 import windowResize from './src/components/hoc/windowResize';
 
+import * as Table from './src/components/Table';
+
 export {
   AutocompleteInput,
   Suggestions,
@@ -82,4 +84,5 @@ export {
   deferVisibleRender,
   deferComponentRender,
   windowResize,
+  Table,
 };
