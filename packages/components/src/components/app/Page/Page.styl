@@ -7,14 +7,22 @@
   min-height: 100vh;
 
 .gem-content
+  position: relative;
   box-sizing: border-box;
+
   background-color: color-light-blue
   min-height: 100vh
 
-  position: relative;
-
   &__sidebar
-    padding-top: sz-sidebar-width
+    padding-left: sz-navbar-height
+
+    @media(max-width: breakpoint-mobile-sm)
+      padding-left: 0
+      padding-bottom: sz-sidebar-height
+
+      height 100vh
+      overflow: auto
 
   &__navbar
-    padding-left: sz-navbar-height
+    padding-top: sz-sidebar-width
+

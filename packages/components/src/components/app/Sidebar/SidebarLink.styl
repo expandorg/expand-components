@@ -9,7 +9,8 @@
   justify-content: center;
 
   box-sizing: border-box;
-  height: sz-sidebar-width
+  height: sz-sidebar-height
+  width: 100%
 
   color: color-white;
 
@@ -27,8 +28,21 @@
   &:hover
     border-left-color: color-primary-blue
 
+
+  @media(max-width: breakpoint-mobile-sm)
+    border-left: none
+    border-right: none
+
+    border-top: 3px solid transparent
+    border-bottom: 3px solid transparent
+
+    &:hover
+      border-bottom-color: color-primary-blue
+
+
   &-active
     background-color: color-primary-blue
+
 
 
   &-icon
