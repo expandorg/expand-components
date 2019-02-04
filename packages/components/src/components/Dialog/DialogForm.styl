@@ -1,0 +1,98 @@
+@import '~@expandorg/uikit/colors'
+@import '~@expandorg/uikit/font'
+@import '~@expandorg/uikit/size'
+
+.gem-dialogform
+  &-container
+    box-sizing: border-box;
+    padding: 50px 120px
+
+    @media(max-width: breakpoint-mobile-sm)
+      padding: 50px 25px
+
+    &-inner
+      width: 500px
+      max-width: 500px
+      margin: 0 auto;
+      text-align: center;
+
+      @media(max-width: breakpoint-mobile-sm)
+        width: 100%
+        max-width: 100%
+
+  &-title
+    box-sizing: border-box;
+
+    font(h2-title, false, false, 1)
+    color: color-text-dark
+
+    margin: 0 -45px
+
+  &-description
+    box-sizing: border-box;
+    margin-top: 15px
+    font(body)
+    color: color-text-dark
+
+  &-bold
+    font-weight: 800
+
+  &-field
+    position: relative;
+    margin-top: 32px
+    text-align: left;
+
+  &-error
+    position: absolute;
+    top: calc(100% + 15px)
+    left: 0
+    right: 0
+    text-align: center;
+
+  &-actions
+    display: flex;
+    align-content: center;
+    justify-content: center;
+
+    margin-top: 50px
+
+    @media(max-width: breakpoint-mobile-sm)
+      flex-direction: column
+
+    > *
+      margin: 0 7px
+
+      @media(max-width: breakpoint-mobile-sm)
+        margin: 7px 0
+
+
+  &-button
+    width: 200px
+    display block
+    line-height: 58px
+    text-decoration: none
+
+    @media(max-width: breakpoint-mobile-sm)
+      width: 100%
+
+
+  &-icon
+    display: inline-block;
+    width: 64px
+    height: 64px
+    margin-bottom: 20px
+
+
+    &-warning
+      path
+        fill: color-text-yellow
+
+    &-success
+      path
+        fill: color-teel-dark
+
+    &-xpn
+      color: color-text-grey
+      font-weight: 800;
+      margin: 0 5px
+

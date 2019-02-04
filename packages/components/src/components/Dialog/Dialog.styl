@@ -1,5 +1,6 @@
 @import '~@expandorg/uikit/colors';
 @import '~@expandorg/uikit/font'
+@import '~@expandorg/uikit/size'
 
 .gem-dialog
   &-overlay
@@ -16,7 +17,7 @@
     align-items: center;
     justify-content: center;
 
-    @media(max-width: 660px)
+    @media(max-width: breakpoint-mobile-sm)
       align-items: stretch;
 
   &-modal
@@ -32,7 +33,7 @@
     overflow-y: auto;
     outline: none
 
-    @media(max-width: 660px)
+    @media(max-width: breakpoint-mobile-sm)
       width: 100%
 
   &-close

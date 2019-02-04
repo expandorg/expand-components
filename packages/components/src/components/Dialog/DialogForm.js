@@ -5,11 +5,11 @@ import cn from 'classnames';
 import { ReactComponent as Checkmark } from '@expandorg/uikit/assets/checkmark-3.svg';
 import { ReactComponent as Warning } from '@expandorg/uikit/assets/warning.svg';
 
-import styles from './DialogForm.module.styl';
+import './DialogForm.styl';
 
 const Container = ({ children, className }) => (
-  <div className={cn(styles.container, className)}>
-    <div className={styles.inner}>{children}</div>
+  <div className={cn('gem-dialogform-container', className)}>
+    <div className="gem-dialogform-container-inner">{children}</div>
   </div>
 );
 
@@ -22,7 +22,7 @@ Container.defaultProps = {
 };
 
 const Title = ({ children, className }) => (
-  <div className={cn(styles.title, className)}>{children}</div>
+  <div className={cn('gem-dialogform-title', className)}>{children}</div>
 );
 
 Title.propTypes = {
@@ -34,7 +34,7 @@ Title.defaultProps = {
 };
 
 const Field = ({ children, className }) => (
-  <div className={cn(styles.field, className)}>{children}</div>
+  <div className={cn('gem-dialogform-field', className)}>{children}</div>
 );
 
 Field.propTypes = {
@@ -46,7 +46,13 @@ Field.defaultProps = {
 };
 
 const Description = ({ children, className, bold }) => (
-  <div className={cn(styles.description, { [styles.bold]: bold }, className)}>
+  <div
+    className={cn(
+      'gem-dialogform-description',
+      { 'gem-dialogform-bold': bold },
+      className
+    )}
+  >
     {children}
   </div>
 );
@@ -62,7 +68,7 @@ Description.defaultProps = {
 };
 
 const Actions = ({ children, className }) => (
-  <div className={cn(styles.actions, className)}>{children}</div>
+  <div className={cn('gem-dialogform-actions', className)}>{children}</div>
 );
 
 Actions.propTypes = {
@@ -74,7 +80,7 @@ Actions.defaultProps = {
 };
 
 const FormError = ({ children, className }) => (
-  <div className={cn(styles.error, className)}>{children}</div>
+  <div className={cn('gem-dialogform-error', className)}>{children}</div>
 );
 
 FormError.propTypes = {
@@ -86,7 +92,7 @@ FormError.defaultProps = {
 };
 
 const TopIcon = ({ children, className }) => (
-  <div className={cn(styles.icon, className)}>{children}</div>
+  <div className={cn('gem-dialogform-icon', className)}>{children}</div>
 );
 
 TopIcon.propTypes = {
@@ -119,7 +125,7 @@ SuccessIcon.defaultProps = {
 const WarningIcon = ({ className }) => (
   <TopIcon className={className}>
     <Warning
-      className={styles.warning}
+      className="gem-dialogform-icon-warning"
       width={64}
       height={64}
       viewBox="0 0 42 42"
