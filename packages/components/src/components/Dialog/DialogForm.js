@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import cn from 'classnames';
 
 import { ReactComponent as Checkmark } from '@expandorg/uikit/assets/checkmark-3.svg';
+import { ReactComponent as Warning } from '@expandorg/uikit/assets/warning.svg';
 
 import styles from './DialogForm.module.styl';
 
@@ -115,6 +116,25 @@ SuccessIcon.defaultProps = {
   className: null,
 };
 
+const WarningIcon = ({ className }) => (
+  <TopIcon className={className}>
+    <Warning
+      className={styles.warning}
+      width={64}
+      height={64}
+      viewBox="0 0 42 42"
+    />
+  </TopIcon>
+);
+
+WarningIcon.propTypes = {
+  className: PropTypes.string,
+};
+
+WarningIcon.defaultProps = {
+  className: null,
+};
+
 export {
   Container,
   Title,
@@ -124,4 +144,5 @@ export {
   FormError,
   TopIcon,
   SuccessIcon,
+  WarningIcon,
 };
