@@ -16,7 +16,7 @@ import {
   TimePicker,
   Watch,
 } from './src/components/DateTime';
-import { Dialog, setAppElement } from './src/components/Dialog';
+import { Dialog, setAppElement, DialogForm } from './src/components/Dialog';
 import Draggable from './src/components/Draggable';
 import Drawer from './src/components/Drawer';
 import { DropdownBase, Dropdown } from './src/components/Dropdown';
@@ -62,6 +62,7 @@ export {
   TimePicker,
   Watch,
   Dialog,
+  DialogForm,
   setAppElement,
   Draggable,
   Drawer,

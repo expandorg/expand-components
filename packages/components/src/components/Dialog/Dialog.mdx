@@ -9,9 +9,11 @@ route: /components-dialog
 import { Playground, PropsTable } from 'docz'
 import WithState from 'scripts/docz/WithState'
 
-import Dialog from './Dialog.js'
+import { Dialog, DialogForm as DF } from './index.js'
 import Pane from '../Panel/Panel.js'
 import Button from '../Button/Button.js'
+
+
 
 <Playground>
   {() => (
@@ -21,14 +23,19 @@ import Button from '../Button/Button.js'
           <Button onClick={() => onChange(!value)}>
             dialog
           </Button>
+
           <Dialog visible={value} contentLabel={'test'} visible={value} onHide={() => onChange(!value)}>
-            <div style={{ width: '300px', padding: '30px 40px'}}>
-              <h3 style={{ marginBottom: '30px'}}>Content</h3>
-              <Button onClick={() => onChange(!value)}>
-                hide
-              </Button>
-            </div>
+            <DF.Container>
+              <DF.Title>Title</DF.Title>
+              <DF.Description>Description</DF.Description>
+              <DF.Actions>
+                <Button onClick={() => onChange(!value)}>
+                  hide
+                </Button>
+              </DF.Actions>
+            </DF.Container>
           </Dialog>
+
         </Pane>
       )}
     </WithState>
@@ -36,3 +43,43 @@ import Button from '../Button/Button.js'
 </Playground>
 
 <PropsTable of={Dialog} />
+
+## Dialog Form Elements
+
+
+```jsx
+import { Dialog, DialogForm as DF } from '@expandorg/components';
+
+const TestDialog = ({ onHide }) => (
+  <Dialog onHide={onHide} contentLabel="test">
+    <DF.Container>
+      <DF.Title>Title</DF.Title>
+      <DF.Description bold>Description</DF.Description>
+      <DF.Actions>
+        <Button onClick={onHide}>
+          action
+        </Button>
+      </DF.Actions>
+    </DF.Container>
+  </Dialog>
+)
+
+```
+
+### `<DF.Container />`
+<PropsTable of={DF.Container} />
+
+### `<DF.Title />`
+<PropsTable of={DF.Title} />
+
+### `<DF.Description />`
+<PropsTable of={DF.Description} />
+
+### `<DF.Field />`
+<PropsTable of={DF.Field} />
+
+### `<DF.Actions />`
+<PropsTable of={DF.Actions} />
+
+### `<DF.FormError />`
+<PropsTable of={DF.FormError} />
