@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import cn from 'classnames';
 
+import { ReactComponent as Checkmark } from '@expandorg/uikit/assets/checkmark-3.svg';
+
 import styles from './DialogForm.module.styl';
 
 const Container = ({ children, className }) => (
@@ -71,7 +73,7 @@ Actions.defaultProps = {
 };
 
 const FormError = ({ children, className }) => (
-  <div className={cn(styles.Actions, className)}>{children}</div>
+  <div className={cn(styles.error, className)}>{children}</div>
 );
 
 FormError.propTypes = {
@@ -82,4 +84,44 @@ FormError.defaultProps = {
   className: null,
 };
 
-export { Container, Title, Field, Description, Actions, FormError };
+const TopIcon = ({ children, className }) => (
+  <div className={cn(styles.icon, className)}>{children}</div>
+);
+
+TopIcon.propTypes = {
+  className: PropTypes.string,
+};
+
+TopIcon.defaultProps = {
+  className: null,
+};
+
+const SuccessIcon = ({ className }) => (
+  <TopIcon className={className}>
+    <Checkmark
+      className="gem-dialogform-icon-success"
+      width={64}
+      height={48}
+      viewBox="0 0 64 48"
+    />
+  </TopIcon>
+);
+
+SuccessIcon.propTypes = {
+  className: PropTypes.string,
+};
+
+SuccessIcon.defaultProps = {
+  className: null,
+};
+
+export {
+  Container,
+  Title,
+  Field,
+  Description,
+  Actions,
+  FormError,
+  TopIcon,
+  SuccessIcon,
+};

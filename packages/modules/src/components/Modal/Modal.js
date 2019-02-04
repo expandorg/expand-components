@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { Dialog, Button } from '@expandorg/components';
+import { Dialog, Button, DialogForm as DF } from '@expandorg/components';
 
 import styles from './Modal.module.styl';
 
@@ -20,11 +20,11 @@ export default class Modal extends Component {
         <div className={styles.container}>
           <div className={styles.inner}>
             {children}
-            <div className={styles.actions}>
-              <Button className={styles.button} onClick={onHide}>
+            <DF.Actions>
+              <Button className="gem-dialogform-button" onClick={onHide}>
                 {button}
               </Button>
-            </div>
+            </DF.Actions>
           </div>
         </div>
       </Dialog>

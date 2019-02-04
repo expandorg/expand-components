@@ -1,7 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { Dialog, Button, Dropdown, ErrorMessage } from '@expandorg/components';
+import {
+  Dialog,
+  Button,
+  Dropdown,
+  ErrorMessage,
+  DialogForm as DF,
+} from '@expandorg/components';
 
 import styles from './ReportForm.module.styl';
 
@@ -62,12 +68,11 @@ export default class ReportForm extends Component {
 
     return (
       <Dialog visible onHide={this.handleHide} contentLabel="report">
-        <form className={styles.container} onSubmit={this.handleSubmit}>
-          <div className={styles.inner}>
-            <div className={styles.title}>Report</div>
-
+        <DF.Container>
+          <form className={styles.form} onSubmit={this.handleSubmit}>
+            <DF.Title className={styles.title}>Report</DF.Title>
             {reasons && reasons.length !== 0 && (
-              <div className={styles.field}>
+              <DF.Field>
                 <Dropdown
                   value={reason}
                   className={styles.dropdown}
@@ -76,36 +81,38 @@ export default class ReportForm extends Component {
                   onChange={this.handleSelectReason}
                   options={reasons}
                 />
-              </div>
+              </DF.Field>
             )}
 
-            <div className={styles.field}>
+            <DF.Field className={styles.field}>
               <div className={styles.label}>Provide some details</div>
               <textarea
                 value={value}
                 className={styles.textarea}
                 onChange={this.handleChange}
               />
-            </div>
-          </div>
-          <ErrorMessage errors={error} className={styles.error} />
-          <div className={styles.actions}>
-            <Button
-              type="submit"
-              className={styles.button}
-              disabled={isReporting}
-            >
-              Report
-            </Button>
-            <Button
-              className={styles.button}
-              theme="grey"
-              onClick={this.handleHide}
-            >
-              go back
-            </Button>
-          </div>
-        </form>
+            </DF.Field>
+            <DF.FormError>
+              <ErrorMessage errors={error} />
+            </DF.FormError>
+            <DF.Actions>
+              <Button
+                type="submit"
+                className={styles.button}
+                disabled={isReporting}
+              >
+                Report
+              </Button>
+              <Button
+                className={styles.button}
+                theme="grey"
+                onClick={this.handleHide}
+              >
+                go back
+              </Button>
+            </DF.Actions>
+          </form>
+        </DF.Container>
       </Dialog>
     );
   }

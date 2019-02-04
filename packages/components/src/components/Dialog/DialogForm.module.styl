@@ -3,9 +3,7 @@
 
 .container
   box-sizing: border-box;
-  padding: 50px 140px
-
-  text-align: center;
+  padding: 50px 120px
 
   @media(max-width: 720px)
     padding: 20px
@@ -14,6 +12,8 @@
   width: 440px
   max-width: 440px
   margin: 0 auto;
+
+  text-align: center;
 
 .title
   box-sizing: border-box;
@@ -28,20 +28,6 @@
   width: 64px
   height: 64px
   margin-bottom: 20px
-
-.warning
-  path
-    fill: color-text-yellow
-
-.success
-  path
-    fill: color-teel-dark
-
-.gems
-  color: color-text-grey
-  font-weight: 800;
-  margin: 0 5px
-
 
 .description
   box-sizing: border-box;
@@ -74,7 +60,21 @@
   > *
     margin: 0 7px
 
-.button
+
+:global(.gem-dialogform-icon-warning)
+  path
+    fill: color-text-yellow
+
+:global(.gem-dialogform-icon-success)
+  path
+    fill: color-teel-dark
+
+:global(.gem-dialogform-icon-xpn)
+  color: color-text-grey
+  font-weight: 800;
+  margin: 0 5px
+
+:global(.gem-dialogform-button)
   width: 200px
   display block
   line-height: 58px
