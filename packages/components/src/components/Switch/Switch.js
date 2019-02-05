@@ -29,10 +29,10 @@ export default class Switch extends Component {
 
     /* eslint-disable */
     return (
-      <label className={cn('gem-switch2', className)} {...rest}>
+      <label className={cn('gem-switch', className)} {...rest}>
         <input
           type="checkbox"
-          className="gem-switch2-input"
+          className="gem-switchinput"
           checked={value}
           name={name}
           onClick={this.handleToggle}
@@ -40,11 +40,11 @@ export default class Switch extends Component {
         />
         <span
           className={cn(
-            `gem-switch2-container`,
-            `gem-switch2-container-${value ? 'on' : 'off'}`
+            `gem-switch-container`,
+            `gem-switch-container-${value ? 'on' : 'off'}`
           )}
         >
-          <span className="gem-switch2-thumb" />
+          <span className="gem-switch-thumb" />
         </span>
         {children}
       </label>
