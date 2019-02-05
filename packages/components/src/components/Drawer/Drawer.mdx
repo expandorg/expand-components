@@ -1,0 +1,37 @@
+---
+menu: Components
+name: Drawer
+route: /components-drawer
+
+---
+
+## Drawer
+
+import { Playground, PropsTable } from 'docz'
+import Drawer from './Drawer.js'
+import WithState from 'scripts/docz/WithState'
+import Pane from '../Panel/Panel.js'
+import Button from '../Button/Button.js'
+
+
+<Playground>
+  {() => (
+    <WithState value={false}>
+      {({value, onChange}) => (
+        <Pane>
+          <Button onClick={() => onChange(!value)}>
+            toggle
+          </Button>
+          <Drawer width={300} visible={value}>
+            <Pane>
+              <h1>Drawer</h1>
+            </Pane>
+          </Drawer>
+        </Pane>
+      )}
+    </WithState>
+  )}
+</Playground>
+
+
+<PropsTable of={Drawer} />

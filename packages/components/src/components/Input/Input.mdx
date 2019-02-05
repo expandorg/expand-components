@@ -1,0 +1,27 @@
+---
+menu: Components
+name: Input
+route: /components-input
+---
+
+## Input
+
+import { Playground, PropsTable } from 'docz'
+import WithState from 'scripts/docz/WithState'
+
+import { Input } from './Input.js'
+import Pane from '../Panel/Panel.js'
+
+<Playground>
+  {() => (
+    <WithState>
+      {({value, onChange}) => (
+        <Pane>
+          <Input  placeholder="Enter value" value={value} onChange={e => onChange(e.target.value)} />
+        </Pane>
+      )}
+    </WithState>
+  )}
+</Playground>
+
+<PropsTable of={Input} />

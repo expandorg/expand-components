@@ -1,0 +1,56 @@
+---
+menu: Components
+name: Notification
+route: /components-app-notification
+
+---
+
+## Notification
+
+import { Playground, PropsTable } from 'docz'
+import NotificationAnimated from './NotificationAnimated.js'
+import Notification from './Notification.js'
+import WithState from 'scripts/docz/WithState'
+import Pane from '../../Panel/Panel.js'
+import Button from '../../Button/Button.js'
+
+
+<Playground>
+  <Pane>
+    <Notification
+      notification={{message: 'Notification message', type: 'success'}}
+      onClear={Function.prototype}
+    />
+  </Pane>
+  <Pane>
+    <Notification
+      notification={{message: 'Notification message', type: 'error'}}
+      onClear={Function.prototype}
+    />
+  </Pane>
+</Playground>
+
+
+<PropsTable of={Notification} />
+
+
+## NotificationAnimated
+
+
+<Playground>
+  {() => (
+    <WithState value={null}>
+      {({value, onChange}) => (
+        <Pane>
+          <Button onClick={() => onChange(value ? null : { message: 'Notification', type: 'success'})}>
+            toggle
+          </Button>
+          <NotificationAnimated notification={value} onClear={() => onChange(null)}  />
+        </Pane>
+      )}
+    </WithState>
+  )}
+</Playground>
+
+
+<PropsTable of={NotificationAnimated} />
