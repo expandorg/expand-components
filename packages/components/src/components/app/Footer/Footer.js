@@ -31,7 +31,12 @@ export default class Footer extends Component {
         {links.map(({ link, text, isExternal }) => {
           if (isExternal) {
             return (
-              <a className="gem-footer-link" href={link}>
+              <a
+                className="gem-footer-link"
+                href={link}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 {text}
               </a>
             );
