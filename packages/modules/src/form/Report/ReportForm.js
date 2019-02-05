@@ -98,13 +98,13 @@ export default class ReportForm extends Component {
             <DF.Actions>
               <Button
                 type="submit"
-                className={styles.button}
+                className="gem-dialogform-button"
                 disabled={isReporting}
               >
                 Report
               </Button>
               <Button
-                className={styles.button}
+                className="gem-dialogform-button"
                 theme="grey"
                 onClick={this.handleHide}
               >
