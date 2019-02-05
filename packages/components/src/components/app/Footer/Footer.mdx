@@ -1,0 +1,42 @@
+---
+menu: Components
+name: Footer
+route: /components-app-footer
+
+---
+
+## Footer
+
+<Playground>
+  <Footer
+    links={[{
+        link: 'https://expand.org',
+        text: 'Expand 2018',
+        isExternal: true,
+      },
+      {
+        link: '/help',
+        text: 'Help',
+        isExternal: false,
+      },
+      {
+        link: 'https://twitter.com/xpn',
+        text: 'Twitter',
+        isExternal: true,
+      },
+      {
+        link: 'https://t.me/expandorg',
+        text: 'Telegram',
+        isExternal: true,
+      }]}
+    />
+</Playground>
+
+
+import { Playground, PropsTable } from 'docz'
+
+import Footer from './Footer.js'
+
+
+<PropsTable of={Footer} />
+
