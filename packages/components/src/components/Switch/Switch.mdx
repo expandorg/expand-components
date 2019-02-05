@@ -1,0 +1,27 @@
+---
+menu: Components
+name: Switch
+route: /components-switch
+---
+
+## Switch
+
+import { Playground, PropsTable } from 'docz'
+import WithState from 'scripts/docz/WithState'
+
+import Switch from './Switch.js'
+import Pane from '../Panel/Panel.js'
+
+<Playground>
+    {() => (
+      <WithState value={false}>
+        {({value, onChange}) => (
+          <Pane>
+            <Switch label="test" value={value} onChange={onChange} />
+          </Pane>
+        )}
+      </WithState>
+    )}
+</Playground>
+
+<PropsTable of={Switch} />

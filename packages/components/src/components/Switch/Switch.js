@@ -32,7 +32,7 @@ export default class Switch extends Component {
       <label className={cn('gem-switch', className)} {...rest}>
         <input
           type="checkbox"
-          className="gem-switchinput"
+          className="gem-switch-input"
           checked={value}
           name={name}
           onClick={this.handleToggle}
