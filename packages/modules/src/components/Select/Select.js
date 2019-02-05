@@ -13,6 +13,7 @@ export default class Select extends Component {
       PropTypes.oneOfType([PropTypes.string, PropTypes.object])
     ).isRequired,
     idType: PropTypes.oneOf([
+      IdType.none,
       IdType.small,
       IdType.capital,
       IdType.roman,

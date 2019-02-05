@@ -46,7 +46,6 @@ export default class Multiselect extends Component {
         columns: {
           type: PropControlTypes.enum,
           options: [2, 3],
-          default: 2,
         },
         readOnly: {
           type: PropControlTypes.boolean,
@@ -54,6 +53,7 @@ export default class Multiselect extends Component {
         },
       },
       defaults: {
+        columns: 2,
         options: ['Option 1', 'Option 2', 'Option 3', 'Option 4'],
       },
     },

@@ -50,7 +50,6 @@ export default class Text extends Component {
             'description',
             'question',
           ],
-          default: 'body',
           required: true,
         },
         content: {
@@ -62,14 +61,12 @@ export default class Text extends Component {
           type: PropControlTypes.enum,
           label: 'Alignment',
           options: ['left', 'center', 'right'],
-          default: 'left',
           required: true,
         },
         color: {
           type: PropControlTypes.enum,
           label: 'Text Color',
           options: ['black', 'blue'],
-          default: 'black',
           required: true,
         },
       },

@@ -16,6 +16,7 @@ export default class YesNo extends Component {
   static propTypes = {
     name: PropTypes.string.isRequired,
     idType: PropTypes.oneOf([
+      IdType.none,
       IdType.small,
       IdType.capital,
       IdType.roman,
@@ -63,12 +64,12 @@ export default class YesNo extends Component {
         idType: {
           type: PropControlTypes.enum,
           label: 'Enumerator type',
-          options: ['numerals', 'small', 'capital', 'roman'],
+          options: ['none', 'numerals', 'small', 'capital', 'roman'],
           formatter,
-          default: 'small',
         },
       },
       defaults: {
+        idType: 'small',
         yesCaption: 'Yes',
         noCaption: 'No',
       },

@@ -44,15 +44,15 @@ export default class ImageTiles extends Component {
         columns: {
           type: PropControlTypes.number,
           placeholder: 'Number of columns',
-          default: 4,
         },
         rows: {
           type: PropControlTypes.number,
           placeholder: 'Number of rows',
-          default: 4,
         },
       },
       defaults: {
+        columns: 4,
+        rows: 4,
         image: 'https://portal.expand.org/images/complete-tasks.png',
       },
     },

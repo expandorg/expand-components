@@ -16,7 +16,6 @@ export default class Video extends Component {
     autoPlay: PropTypes.bool,
     loop: PropTypes.bool,
     muted: PropTypes.bool,
-    justify: PropTypes.oneOf(['left', 'right', 'center', 'between']),
     height: PropTypes.number,
     width: PropTypes.number,
     src: PropTypes.string.isRequired,
@@ -32,7 +31,6 @@ export default class Video extends Component {
     width: undefined,
     muted: false,
     playerControls: true,
-    justify: 'center',
   };
 
   static module = {
@@ -54,7 +52,6 @@ export default class Video extends Component {
         playerControls: {
           type: PropControlTypes.boolean,
           label: 'Show player controls',
-          default: true,
         },
         autoPlay: {
           type: PropControlTypes.boolean,
@@ -67,12 +64,6 @@ export default class Video extends Component {
         muted: {
           type: PropControlTypes.string,
           label: 'Muted',
-        },
-        justify: {
-          type: PropControlTypes.enum,
-          label: 'justify video',
-          options: ['left', 'right', 'center', 'between'],
-          default: 'center',
         },
       },
       defaults: {
@@ -106,7 +97,6 @@ export default class Video extends Component {
       autoPlay,
       loop,
       muted,
-      justify,
       playerControls,
     } = this.props;
 

@@ -1,6 +1,7 @@
 // @flow
 
 export const IdType = {
+  none: 'none',
   small: 'small',
   capital: 'capital',
   roman: 'roman',
@@ -8,6 +9,7 @@ export const IdType = {
 };
 
 const i18n = {
+  [IdType.none]: 'None',
   [IdType.capital]: 'Capital Letters',
   [IdType.small]: 'Small letters',
   [IdType.numerals]: 'Numerals',
@@ -53,6 +55,8 @@ export const getIdValue = (idx: number, type: string) => {
       return idx + 1;
     case IdType.roman:
       return convertToRoman(idx + 1);
+    case IdType.none:
+      return '';
     default:
       break;
   }

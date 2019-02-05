@@ -32,7 +32,6 @@ export default class FlexContainer extends Component {
           type: PropControlTypes.enum,
           label: 'Justify content',
           options: ['start', 'end', 'center', 'space-between', 'space-around'],
-          default: 'start',
         },
         modules: {
           type: PropControlTypes.modules,
@@ -40,6 +39,7 @@ export default class FlexContainer extends Component {
         },
       },
       defaults: {
+        columns: 'start',
         modules: [],
       },
     },

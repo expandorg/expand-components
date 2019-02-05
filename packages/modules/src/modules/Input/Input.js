@@ -52,7 +52,6 @@ export default class Input extends Component {
           type: PropControlTypes.enum,
           label: 'Input type',
           options: ['text', 'email', 'password', 'number', 'date'],
-          default: 'text',
         },
         placeholder: {
           type: PropControlTypes.string,
@@ -64,6 +63,7 @@ export default class Input extends Component {
         },
       },
       defaults: {
+        inputType: 'text',
         placeholder: 'some text...',
       },
     },

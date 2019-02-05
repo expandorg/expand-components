@@ -19,6 +19,7 @@ export default class Select extends Component {
       PropTypes.oneOfType([PropTypes.string, PropTypes.object])
     ).isRequired,
     idType: PropTypes.oneOf([
+      IdType.none,
       IdType.small,
       IdType.capital,
       IdType.roman,
@@ -61,14 +62,12 @@ export default class Select extends Component {
           type: PropControlTypes.enum,
           label: 'Columns number',
           options: [2, 3],
-          default: 2,
         },
         idType: {
           type: PropControlTypes.enum,
           label: 'Enumerator type',
-          options: ['numerals', 'small', 'capital', 'roman'],
+          options: ['none', 'numerals', 'small', 'capital', 'roman'],
           formatter,
-          default: 'small',
         },
         answer: {
           type: PropControlTypes.moduleProperyOptions,
@@ -85,6 +84,8 @@ export default class Select extends Component {
         },
       },
       defaults: {
+        columns: 2,
+        idType: 'small',
         options: ['Option 1', 'Option 2', 'Option 3', 'Option 4'],
       },
     },
