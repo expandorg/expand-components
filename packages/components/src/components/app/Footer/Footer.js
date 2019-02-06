@@ -32,6 +32,7 @@ export default class Footer extends Component {
           if (isExternal) {
             return (
               <a
+                key={link}
                 className="gem-footer-link"
                 href={link}
                 target="_blank"
@@ -42,7 +43,7 @@ export default class Footer extends Component {
             );
           }
           return (
-            <Link className="gem-footer-link" to={link}>
+            <Link key={link} className="gem-footer-link" to={link}>
               {text}
             </Link>
           );
