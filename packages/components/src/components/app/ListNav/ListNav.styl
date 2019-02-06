@@ -1,0 +1,55 @@
+@import '~@expandorg/uikit/colors'
+@import '~@expandorg/uikit/font'
+@import '~@expandorg/uikit/size'
+
+.gem-listnav
+  box-sizing: border-box;
+  padding: 50px 0
+  -webkit-overflow-scrolling: touch
+
+  @media(max-width: breakpoint-mobile-sm)
+    position fixed
+    left: 0
+    right: 0
+    top: sz-navbar-height
+
+    z-index: 2
+    padding: 0 0
+
+    overflow-x: scroll;
+
+
+    background-color: color-white
+    box-shadow: light-shadow
+    border-top: 1px solid color-light-blue
+
+  &-inner
+    box-sizing: border-box
+    height 40px
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height 100%
+
+    @media(max-width: breakpoint-mobile-sm)
+      justify-content: flex-start
+
+  &-link
+    box-sizing: border-box;
+    padding: 0 34px
+
+    font(h4, false, false, 36px)
+    text-decoration: none;
+    white-space nowrap
+
+    color: color-text-dark
+
+    &-active
+      color: color-white
+      background-color: color-primary-blue;
+      border-radius: 5px;
+
+      @media(max-width: breakpoint-mobile-sm)
+        border-radius: 0;

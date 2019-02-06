@@ -1,0 +1,39 @@
+---
+menu: Components
+name: ListNav
+route: /components-app-listnav
+
+---
+
+## ListNav
+
+import { Playground, PropsTable } from 'docz'
+
+import ListNav from './ListNav.js'
+
+
+<Playground>
+  <ListNav navs={[
+      {
+        href: '/',
+        text: 'All',
+      },
+      {
+        href: '/tasks/scheduled',
+        text: 'Scheduled',
+      },
+      {
+        href: '/tasks/in-progress',
+        text: 'In Progress',
+      },
+      {
+        href: '/tasks/completed',
+        text: 'Completed',
+      },
+    ]}
+  />
+</Playground>
+
+
+<PropsTable of={ListNav} />
+
