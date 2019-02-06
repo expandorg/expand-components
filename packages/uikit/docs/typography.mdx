@@ -3,3 +3,40 @@ menu: UI Kit
 name: Typography
 route: /uikit-rypography
 ---
+
+
+# Typograpy
+
+## Usage:
+
+```css
+@import '~@expandorg/uikit/font'
+
+.container
+  font(h2-title)
+
+.text
+  font(preset-name, weight, size, line-height, letter-spacing)
+
+```
+
+## Font presets
+
+import Font from './components/Font.js'
+
+<Font preset="oversized" settings="(300 96px 1.2)" />
+<Font preset="h1" settings="(300 36px 1.3)" />
+<Font preset="h2-title" settings="(400 24px 1.3)" />
+<Font preset="h2-bold" settings="(600 24px 1.3)" />
+<Font preset="h3-title" settings="(400 18px 1.3)" />
+<Font preset="h3-bold" settings="(800 18px 1.3)" />
+<Font preset="h4" settings="(500 15px 1.3)" />
+<Font preset="h4-bold" settings="(800 15px 1.3)" />
+<Font preset="body" settings="(400 16px 1.3)" />
+<Font preset="body-bold" settings="(800 16px 1.3)" />
+<Font preset="subtitle" settings="(800 14px 1.3 0.15em)" />
+<Font preset="input-label" settings="(800 11px normal)" />
+<Font preset="navigation" settings="(400 10px normal 0.15em)" />
+<Font preset="small-text" settings="(400 14px 1.3)" />
+<Font preset="small-text-bold" settings="(900 14px 1.3)" />
+
