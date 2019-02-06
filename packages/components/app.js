@@ -9,6 +9,8 @@ import {
   NotificationAnimated,
 } from './src/components/app/Notifications';
 
+import ListNav from './src/components/app/ListNav';
+
 import {
   WalkthroughProvider,
   WalkthroughPin,
@@ -18,6 +20,7 @@ import {
 export {
   Navbar,
   Footer,
+  ListNav,
   Page,
   PageDark,
   NotFound,
