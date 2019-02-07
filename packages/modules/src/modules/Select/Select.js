@@ -26,7 +26,6 @@ export default class Select extends Component {
       IdType.numerals,
     ]),
     value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    answer: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     columns: PropTypes.oneOf([2, 3]),
     readOnly: PropTypes.bool,
     onChange: PropTypes.func.isRequired,
@@ -34,7 +33,6 @@ export default class Select extends Component {
 
   static defaultProps = {
     value: null,
-    answer: null,
     readOnly: false,
     columns: 2,
     idType: IdType.small,
@@ -69,11 +67,6 @@ export default class Select extends Component {
           options: ['none', 'numerals', 'small', 'capital', 'roman'],
           formatter,
         },
-        answer: {
-          type: PropControlTypes.moduleProperyOptions,
-          label: 'Answer',
-          dependency: 'options',
-        },
         options: {
           type: PropControlTypes.options,
           placeholder: 'Options',
@@ -97,9 +90,9 @@ export default class Select extends Component {
   };
 
   render() {
-    const { value, options, columns, readOnly, answer, idType } = this.props;
+    const { value, options, columns, readOnly, idType } = this.props;
 
-    const selected = readOnly ? answer : value;
+    const selected = value;
 
     return (
       <div className={styles.module}>
