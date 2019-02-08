@@ -3,3 +3,151 @@ name: Home
 route: /
 order: 10000
 ---
+
+import { Link } from 'docz'
+
+
+# Expand UI
+[![license](https://img.shields.io/npm/l/@expandorg/components.svg?style=flat-square)](https://www.npmjs.com/package/@expandorg/components)
+
+Expand UI & Modules is a collection of React components, tools and guidelines for creating expand products.
+
+* **Modules**[![npm version](https://img.shields.io/npm/v/@expandorg/modules.svg?style=flat-square)](https://www.npmjs.com/package/@expandorg/modules): Dynamic extensible JSON powered form library for React.
+* **UI Components**[![npm version](https://img.shields.io/npm/v/@expandorg/components.svg?style=flat-square)](https://www.npmjs.com/package/@expandorg/components):  set of components such as Buttons, Panels, Menus, HOC's. General purpose components used to build expand.org web applications.
+* **UI Kit**[![npm version](https://img.shields.io/npm/v/@expandorg/uikit.svg?style=flat-square)](https://www.npmjs.com/package/@expandorg/uikit): <Link to="/uikit-colors">Colors</Link>, and <Link to="/uikit-typography">Typography</Link> used across [expand.org](https://expand.org) apps
+
+## Documentation and live playground
+Detailed documentation and forms playground is available here
+
+https://expandorg.github.io/expand-components/
+
+## installation
+
+Expand components library is a set of public npm packages: [@expandorg/components](https://www.npmjs.com/package/@expandorg/components), [@expandorg/modules](https://www.npmjs.com/package/@expandorg/modules), [@expandorg/uikit](https://www.npmjs.com/package/@expandorg/uikit):
+
+```bash
+npm install  @expandorg/modules @expandorg/components @expandorg/uikit --save
+```
+
+## Prerequisites
+
+expand UI & Modules use [stylus](http://stylus-lang.com/) and [css-modules](https://github.com/css-modules/css-modules) by default to import stylesheets.
+It is necessary to import `.styl` files located in `node_modules`. We recommend using webpack, but other bundlers can be configured.
+
+Here is webpack config example
+```jsx
+// webpack.config.babel.js
+export default (env = {}) => {
+  const dev = !!env.dev;
+  return {
+    ...
+    module: {
+      rules: [
+        {
+          test: /^((?!\.module).)*\.styl$/,
+          use: [
+            'style-loader',
+            'css-loader?sourceMap&importLoaders=2',
+            'postcss-loader?sourceMap',
+            'stylus-loader?paths[]=src',
+          ],
+          exclude: /node_modules\/(?!(@expandorg)\/).*/,
+        },
+        {
+          test: /\.module\.styl$/,
+          use: [
+            'style-loader',
+            `css-loader?sourceMap&importLoaders=2&modules&localIdentName=${dev ? '[local]__[path][name]__' : ''}[hash:base64:5]`,
+            'postcss-loader?sourceMap',
+            'stylus-loader?paths[]=src',
+          ],
+          exclude: /node_modules\/(?!(@expandorg)\/).*/,
+        }
+      ],
+    },
+  };
+};
+
+```
+
+## Basic Usage
+
+```jsx
+import React from 'react'
+import { Button } from '@expandorg/components';
+
+const MyComponent = () => (
+  <Button theme="secondary" onClick={() => console.log('click!')}>
+    Hello World
+  </Button>
+);
+```
+import Button from './Button';
+
+<Button theme="secondary" onClick={() => console.log('click!')}>
+  Hello World
+</Button>
+
+
+## Modules Form Usage
+
+```jsx
+import React from 'react'
+import { Form, formProps, FormDataProvider } from '@expandorg/modules';
+
+
+const form = {   // define form modules
+  modules: [{
+    name: "input-1",
+    type: "input",
+    placeholder: "Input value"
+  }]
+}
+
+
+class CustomForm extends Component {    // your form component
+
+  handleSubmit = values => {
+    console.log(values);
+  };
+
+  render() {
+    return (
+      <FormDataProvider formData={null}>
+        <Form
+          form={form}
+          onSubmit={this.handleSubmit}
+        >
+          {moduleProps => <Module {...moduleProps} />}
+        </Form>
+      </FormDataProvider>
+    );
+  }
+}
+```
+
+import { Playground } from 'docz';
+import ModulesPlayground from '../../../modules/src/form/ModulesPlayground/ModulesPlayground.js'
+
+<Playground>
+  <ModulesPlayground
+    form={{
+      modules: [
+        {
+          name: "input-1",
+          type: "input",
+          placeholder: "Input value"
+        },
+        {
+          name: 'submit',
+          type: 'submit',
+          caption: 'Next',
+        },
+      ],
+    }}
+  />
+</Playground>
+
+## License
+
+This project is licensed under the terms of [Mozilla Public License 2.0](./LICENSE).
