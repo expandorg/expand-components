@@ -16,7 +16,7 @@ export default class Select extends Component {
   static propTypes = {
     name: PropTypes.string.isRequired,
     options: PropTypes.arrayOf(
-      PropTypes.oneOfType([PropTypes.string, PropTypes.object])
+      PropTypes.oneOfType([PropTypes.string, PropTypes.number])
     ).isRequired,
     idType: PropTypes.oneOf([
       IdType.none,

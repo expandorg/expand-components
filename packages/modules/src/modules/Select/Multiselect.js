@@ -6,6 +6,7 @@ import { rules } from '@expandorg/validation';
 import { Select, Choice } from '../../components/Select';
 
 import PropControlTypes from '../../form/Form/PropControlTypes';
+import ModuleCategories from '../../form/Form/ModuleCategories';
 
 import styles from './styles.module.styl';
 
@@ -18,9 +19,6 @@ export default class Multiselect extends Component {
     value: PropTypes.arrayOf(
       PropTypes.oneOfType([PropTypes.string, PropTypes.number])
     ),
-    answers: PropTypes.arrayOf(
-      PropTypes.oneOfType([PropTypes.string, PropTypes.number])
-    ),
     columns: PropTypes.oneOf([2, 3]),
     readOnly: PropTypes.bool,
     onChange: PropTypes.func.isRequired,
@@ -28,7 +26,6 @@ export default class Multiselect extends Component {
 
   static defaultProps = {
     value: [],
-    answers: [],
     columns: 2,
     readOnly: false,
   };
@@ -42,10 +39,15 @@ export default class Multiselect extends Component {
       isNotEmpty: rules.isRequiredArray,
     },
     editor: {
+      category: ModuleCategories.Input,
       properties: {
         columns: {
           type: PropControlTypes.enum,
           options: [2, 3],
+        },
+        options: {
+          type: PropControlTypes.options,
+          placeholder: 'Options',
         },
         readOnly: {
           type: PropControlTypes.boolean,
@@ -72,8 +74,8 @@ export default class Multiselect extends Component {
   };
 
   render() {
-    const { value, options, columns, answers, readOnly } = this.props;
-    const selection = readOnly ? answers : value;
+    const { value, options, columns, readOnly } = this.props;
+    const selection = value;
     return (
       <div className={styles.module}>
         <Select
