@@ -5,7 +5,7 @@ const ModuleCategories = {
   Text: 'Text',
   Input: 'Input',
   Image: 'Image',
-  Video: 'Video',
+  Media: 'Media',
   Onboarding: 'Onboarding',
 };
 

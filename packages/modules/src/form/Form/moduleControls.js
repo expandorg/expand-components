@@ -3,6 +3,7 @@ import Agreement from '../../modules/Agreement';
 import Checkbox from '../../modules/Checkbox';
 import ClipboardText from '../../modules/ClipboardText';
 import Collapsable from '../../modules/Collapsable';
+import Conditional from '../../modules/Conditional';
 import Dropdown from '../../modules/Dropdown';
 import FlexContainer from '../../modules/FlexContainer';
 import Image from '../../modules/Image';
@@ -50,6 +51,7 @@ const moduleControls = [
   Checkbox,
   ClipboardText,
   Collapsable,
+  Conditional,
   Dropdown,
   FlexContainer,
   Image,

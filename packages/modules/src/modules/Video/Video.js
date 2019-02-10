@@ -1,6 +1,5 @@
 import React, { Component, createRef } from 'react';
 import PropTypes from 'prop-types';
-import cn from 'classnames';
 
 import PropControlTypes from '../../form/Form/PropControlTypes';
 import ModuleCategories from '../../form/Form/ModuleCategories';
@@ -10,7 +9,6 @@ import styles from './Video.module.styl';
 export default class Video extends Component {
   static propTypes = {
     name: PropTypes.string.isRequired,
-    className: PropTypes.string,
     subtitles: PropTypes.string,
     playerControls: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
     autoPlay: PropTypes.bool,
@@ -23,7 +21,6 @@ export default class Video extends Component {
   };
 
   static defaultProps = {
-    className: null,
     subtitles: null,
     autoPlay: false,
     loop: false,
@@ -38,7 +35,7 @@ export default class Video extends Component {
     name: 'Video',
     report: ['video is not loading'],
     editor: {
-      category: ModuleCategories.Video,
+      category: ModuleCategories.Media,
       properties: {
         src: {
           type: PropControlTypes.string,
@@ -55,7 +52,7 @@ export default class Video extends Component {
         },
         autoPlay: {
           type: PropControlTypes.boolean,
-          label: 'Show player controls',
+          label: 'play video automatically',
         },
         loop: {
           type: PropControlTypes.boolean,
@@ -89,7 +86,6 @@ export default class Video extends Component {
 
   render() {
     const {
-      className,
       src,
       subtitles,
       height,
@@ -110,7 +106,7 @@ export default class Video extends Component {
               key={src}
               height={height}
               width={width}
-              className={cn(styles.video, className)}
+              className={cn(styles.video)}
               controls={playerControls}
               autoPlay={autoPlay}
               loop={loop}

@@ -46,7 +46,7 @@ export default class MultipleTagVideo extends Component {
     },
     report: ['video is not loading'],
     editor: {
-      category: ModuleCategories.Video,
+      category: ModuleCategories.Media,
       properties: {
         src: {
           type: PropControlTypes.string,
