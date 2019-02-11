@@ -1,0 +1,62 @@
+@import '~@expandorg/uikit/colors';
+@import '~@expandorg/uikit/font';
+
+.gem-uploadprogress
+  box-sizing: border-box;
+  position: absolute;
+  left: 0
+  right: 0
+  top: 0
+  bottom: 0
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding: 10px
+
+  &-indicator
+    position: absolute;
+    height: 100%;
+    box-sizing: border-box;
+
+    left: 0
+    top: 0
+    bottom: 0
+    background-color: color-teel-dark
+    color: color-white
+
+    transition: width 200ms linear, color 50ms linear, background-color 50ms linear;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 20px
+
+    border-top-left-radius: 5px
+    border-bottom-left-radius: 5px
+
+    &--error
+      background-color: color-yellow
+      color: color-text-yellow-2
+
+  &-percent
+    font(h3-bold)
+    overflow: hidden;
+    transition: opacity 1000ms linear
+
+  &-cancel
+    box-sizing: border-box;
+    background-color: color-white
+
+    color: color-text-blue
+    border: 1px solid color-text-blue
+    border-radius: 2px
+
+    text-align: center;
+
+    width: 100px
+    height: 40px
+    font(subtitle, false,false, 38px)
+    text-transform: uppercase;
+
+    cursor: pointer;

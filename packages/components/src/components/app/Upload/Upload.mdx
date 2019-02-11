@@ -1,0 +1,69 @@
+---
+menu: Components
+name: Upload
+route: /components-app-upload
+---
+
+## Upload
+
+import { Playground, PropsTable } from 'docz'
+import { useState } from 'react'
+
+import Pane from '../../Panel/Panel.js'
+
+import Upload from './Upload.js'
+import UploadImagePreview from './UploadImagePreview.js'
+import UploadProgressIndicator from './UploadProgressIndicator.js'
+
+<Playground>
+  {() => {
+    const [file, setFile] = useState(null);
+    return (
+      <Pane>
+        <Upload onSelect={setFile}>
+          {() => (
+            file ? (
+              <UploadImagePreview file={file} />
+            ) : (
+              <div>Browse</div>
+            )
+          )}
+        </Upload>
+      </Pane>
+    );
+  }}
+</Playground>
+
+<Playground>
+  {() => {
+    const [file, setFile] = useState(null);
+    return (
+      <Pane>
+        <Upload onSelect={setFile} isUploading={!!file}>
+          {() => (
+            file ? (
+              <UploadProgressIndicator
+                isUploading
+                progress={0.5}
+                onAbort={() => setFile(null)}
+              />
+            )  : (
+              <div>Browse</div>
+            )
+          )}
+        </Upload>
+      </Pane>
+    );
+  }}
+</Playground>
+
+
+### Upload
+<PropsTable of={Upload} />
+
+### UploadImagePreview
+<PropsTable of={UploadImagePreview} />
+
+### UploadProgressIndicator
+<PropsTable of={UploadProgressIndicator} />
+

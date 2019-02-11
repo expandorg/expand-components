@@ -1,0 +1,51 @@
+@import '~@expandorg/uikit/colors';
+@import '~@expandorg/uikit/font';
+
+.gem-uploadpreview
+  box-sizing: border-box;
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 240px
+  min-height: 60px
+
+  width: 100%
+  height: 100%
+
+  &-preview
+    display: block;
+
+    width: auto;
+    height: auto;
+
+    max-width: 300px
+    max-height: 100px
+
+  &-hint
+    box-sizing: border-box;
+    position: absolute;
+
+    background-color: color-white
+
+    left: calc(50% - 120px)
+    top: calc(50% - 30px)
+
+    color: color-blue-background
+    border: 1px solid color-heavy-blue
+    border-radius: 5px
+
+    text-align: center;
+
+    width: 240px
+    height: 60px
+    font(subtitle, false,false, 58px)
+
+    text-transform: uppercase;
+    visibility: hidden;
+
+    .gem-uploadpreview:hover &
+      visibility visible
+

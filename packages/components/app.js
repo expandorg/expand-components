@@ -3,6 +3,11 @@ import Navbar from './src/components/app/Navbar';
 import Footer from './src/components/app/Footer';
 import { Page, PageDark, NotFound } from './src/components/app/Page';
 import { SidebarLink, Sidebar } from './src/components/app/Sidebar';
+import {
+  Upload,
+  UploadImagePreview,
+  UploadProgressIndicator,
+} from './src/components/app/Upload';
 
 import {
   Notification,
@@ -31,4 +36,7 @@ export {
   ToggleWalkthrough,
   Notification,
   NotificationAnimated,
+  Upload,
+  UploadImagePreview,
+  UploadProgressIndicator,
 };
