@@ -24,6 +24,6 @@
     "@expandorg/uikit": "^0.2.12",
     "@expandorg/validation": "^0.2.2",
     "debounce": "^1.2.0",
-    "react-player": "^1.8.0"
+    "react-player": "^1.9.3"
   }
 }

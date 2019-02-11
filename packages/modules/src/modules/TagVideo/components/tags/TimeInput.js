@@ -6,7 +6,7 @@ import { Input } from '@expandorg/components';
 import {
   formatTime,
   parseTime,
-} from '../../../../components/VideoPlayer/utils/timeStrings';
+} from '../../../../components/Timeline/utils/timeStrings';
 
 export default class TimeInput extends Component {
   static propTypes = {

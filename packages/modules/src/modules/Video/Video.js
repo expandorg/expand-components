@@ -106,7 +106,7 @@ export default class Video extends Component {
               key={src}
               height={height}
               width={width}
-              className={cn(styles.video)}
+              className={styles.video}
               controls={playerControls}
               autoPlay={autoPlay}
               loop={loop}

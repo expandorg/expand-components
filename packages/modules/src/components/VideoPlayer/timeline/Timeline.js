@@ -1,16 +1,19 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import TimelineContainer from './TimelineContainer';
+import {
+  TimelineContainer,
+  Ticks,
+  Cursor,
+  Boundaries,
+  Progress,
+} from '../../Timeline';
 
-import Progress from './Progress';
-import Ticks from './Ticks';
-import Boundaries from './Boundaries';
-import Cursor from './Cursor';
-
-import { pxToTime } from '../utils/timeline';
+import { pxToTime } from '../../Timeline/utils/timeline';
 
 import styles from './Timeline.module.styl';
+
+const labelFormatter = time => `start time: ${time}`;
 
 export default class Timeline extends Component {
   static propTypes = {
@@ -59,6 +62,7 @@ export default class Timeline extends Component {
             {showProgress && <Progress duration={duration} seek={seek} />}
             {showCursor && isHovered && (
               <Cursor
+                labelFormatter={labelFormatter}
                 position={mouseX}
                 time={pxToTime(mouseX, duration, width)}
                 limitFrom={limitFrom}

@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 
 import { Draggable, Tooltip } from '@expandorg/components';
 
-import { formatTime } from '../utils/timeStrings';
-import { pxToTime, timeToPx } from '../utils/timeline';
-import RangeBoundaries from '../utils/RangeBoundaries';
+import { formatTime } from '../../Timeline/utils/timeStrings';
+import { pxToTime, timeToPx } from '../../Timeline/utils/timeline';
+import RangeBoundaries from '../../Timeline/utils/RangeBoundaries';
 
 import styles from './TimelineRangeEdit.module.styl';
 

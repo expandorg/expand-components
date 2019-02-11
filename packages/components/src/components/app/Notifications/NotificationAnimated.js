@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import cn from 'classnames';
 
-import { Transition, animated } from 'react-spring';
+import { Transition, animated } from 'react-spring/renderprops';
 
 import Notification from './Notification';
 

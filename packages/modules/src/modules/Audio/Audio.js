@@ -1,22 +1,23 @@
-import React, { Component, createRef } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import PropControlTypes from '../../form/Form/PropControlTypes';
 import ModuleCategories from '../../form/Form/ModuleCategories';
 
+import AudioPlayer from '../../components/AudioPlayer';
+
 import styles from './Audio.module.styl';
 
 export default class Audio extends Component {
   static propTypes = {
-    name: PropTypes.string.isRequired,
-    autoPlay: PropTypes.bool,
-    loop: PropTypes.bool,
     src: PropTypes.string.isRequired,
-    onModuleError: PropTypes.func.isRequired,
+    loop: PropTypes.bool,
+    // autoPlay: PropTypes.bool,
+    // onModuleError: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
-    autoPlay: false,
+    // autoPlay: false,
     loop: false,
   };
 
@@ -29,12 +30,8 @@ export default class Audio extends Component {
       properties: {
         src: {
           type: PropControlTypes.string,
-          placeholder: 'Audo src',
+          placeholder: 'Audio src',
           required: true,
-        },
-        autoPlay: {
-          type: PropControlTypes.boolean,
-          label: 'Automatically play',
         },
         loop: {
           type: PropControlTypes.boolean,
@@ -43,37 +40,34 @@ export default class Audio extends Component {
       },
       defaults: {
         loop: false,
-        autoPlay: false,
-        src: 'http://media.gettyimages.com/videos/cap-video-id896606100',
+        // autoPlay: false,
+        src:
+          'https://storage.googleapis.com/media-session/elephants-dream/the-wires.mp3',
       },
     },
   };
 
-  constructor(props) {
-    super(props);
-    this.player = createRef();
+  state = {
+    playing: true,
+  };
 
-    this.state = {
-      loadError: false,
-    };
-  }
-
-  handleError = () => {
-    const { onModuleError, name, src } = this.props;
-    this.setState({ loadError: true });
-    onModuleError(`${name}: Error while loading video ${src}`);
+  handleTogglePlay = playing => {
+    this.setState({ playing });
   };
 
   render() {
-    const { src, autoPlay, loop } = this.props;
+    const { src, loop } = this.props;
 
-    const { loadError } = this.state;
-
-    console.log(src, autoPlay, loop, loadError);
+    const { playing } = this.state;
 
     return (
       <div className={styles.container}>
-        <div className={styles.content} />
+        <AudioPlayer
+          loop={loop}
+          audio={src}
+          playing={playing}
+          onTogglePlay={this.handleTogglePlay}
+        />
       </div>
     );
   }

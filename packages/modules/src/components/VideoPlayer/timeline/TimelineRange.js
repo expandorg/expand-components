@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import cn from 'classnames';
 
-import { timeToPx } from '../utils/timeline';
+import { timeToPx } from '../../Timeline/utils/timeline';
 
 import styles from './TimelineRange.module.styl';
 

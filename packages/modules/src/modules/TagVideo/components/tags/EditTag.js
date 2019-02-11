@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { Button } from '@expandorg/components';
 
-import RangeBoundaries from '../../../../components/VideoPlayer/utils/RangeBoundaries';
+import RangeBoundaries from '../../../../components/Timeline/utils/RangeBoundaries';
 
 import TimeInput from './TimeInput';
 import LabelInput from './LabelInput';

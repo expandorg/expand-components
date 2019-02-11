@@ -1,5 +1,6 @@
 // @flow
 import Agreement from '../../modules/Agreement';
+import Audio from '../../modules/Audio';
 import Checkbox from '../../modules/Checkbox';
 import ClipboardText from '../../modules/ClipboardText';
 import Collapsable from '../../modules/Collapsable';
@@ -48,6 +49,7 @@ export const groupModulesByCategory = (controls: Array<Object>) => {
 
 const moduleControls = [
   Agreement,
+  Audio,
   Checkbox,
   ClipboardText,
   Collapsable,

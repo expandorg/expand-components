@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import Video from './video/Video';
-import PlayButton from './video/PlayButton';
-import PlaybackRate from './video/PlaybackRate';
+import MediaPlayer from '../MediaPlayer';
+import PlayButton from '../PlayButton';
+
+import PlaybackRate from './PlaybackRate';
 import Timeline from './timeline/Timeline';
 
 import styles from './VideoPlayer.module.styl';
@@ -93,15 +94,16 @@ export default class VideoPlayer extends Component {
     return (
       <div className={styles.content}>
         <div className={styles.video}>
-          <Video
+          <MediaPlayer
             src={video}
             start={start || limitFrom}
             stop={stop}
+            volume={0}
             playing={playing}
             playbackRate={rate}
-            onVideoReady={this.handleVideoReady}
             onTogglePlay={onTogglePlay}
-            onVideoProgress={this.handleVideoProgress}
+            onMediaReady={this.handleVideoReady}
+            onMediaProgress={this.handleVideoProgress}
           />
         </div>
         <div className={styles.timeline}>

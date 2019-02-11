@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Transition, animated } from 'react-spring';
+
+import { Transition, animated } from 'react-spring/renderprops';
 
 const from = { width: 0, opacity: 0 };
 const leave = { width: 0, pointerEvents: 'none', opacity: 0 };

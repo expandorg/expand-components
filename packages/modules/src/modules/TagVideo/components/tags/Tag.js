@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import cn from 'classnames';
 
-import { formatTime } from '../../../../components/VideoPlayer/utils/timeStrings';
+import { formatTime } from '../../../../components/Timeline/utils/timeStrings';
 
 import styles from './Tags.module.styl';
 

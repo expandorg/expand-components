@@ -22,7 +22,7 @@
     "prop-types": "^15.0.0",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
-    "react-spring": "^7.0.0"
+    "react-spring": "^8.0.0"
   },
   "dependencies": {
     "@expandorg/uikit": "^0.2.12",

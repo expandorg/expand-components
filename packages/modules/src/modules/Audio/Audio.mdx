@@ -1,0 +1,45 @@
+---
+menu: Modules
+name: Audio
+route: /modules-audio
+---
+
+# Audio
+
+## Audio properties
+
+| Property    | type    | Required | Default | description    |
+| ----------- | ------- | -------- | ------- | -------------- |
+| *type*      | `audio` | true     | -       | module type    |
+| *name*      | string  | true     | -       | module name    |
+| *src*       | string  | true     | -       | audio url      |
+| *loop*      | bool    | -        | -       | loop audio     |
+
+
+## Example
+```jsx
+{
+  name: 'audio',
+  type: 'audio',
+  src: "https://storage.googleapis.com/media-session/elephants-dream/the-wires.mp3",
+}
+```
+
+import ModulesPlayground from '../../form/ModulesPlayground/ModulesPlayground.js'
+
+<ModulesPlayground
+  form={{
+    modules: [
+      {
+        name: 'audio',
+        type: 'audio',
+        src: ' https://storage.googleapis.com/media-session/elephants-dream/the-wires.mp3',
+      },
+      {
+        name: 'submit',
+        type: 'submit',
+        caption: 'Next',
+      },
+    ],
+  }}
+/>

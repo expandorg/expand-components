@@ -13,6 +13,25 @@ export default {
           href: 'https://codemirror.net/theme/dracula.css',
         },
       ],
+      raw: `
+        <style>
+          html {
+            -webkit-box-sizing: border-box;
+                    box-sizing: border-box;
+          }
+          html,
+          body {
+            font-family: 'Poppins';
+            margin: 0;
+          }
+          * {
+            box-sizing: initial;
+            border: 0;
+            margin: 0;
+            padding: 0;
+          }
+        </style>
+      `,
     },
   },
   themeConfig: {
@@ -24,6 +43,9 @@ export default {
       sidebarBorder: 'transparent',
     },
     styles: {
+      html: {
+        boxSizing: 'border-box',
+      },
       body: {
         fontFamily: 'Avenir',
       },
