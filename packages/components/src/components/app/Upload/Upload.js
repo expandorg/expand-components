@@ -66,7 +66,7 @@ export default class Upload extends Component {
         {({ getRootProps, getInputProps, isDragActive }) => (
           <div
             {...getRootProps()}
-            className={cn('gem-dropdzone', className, {
+            className={cn('gem-dropzone', className, {
               'gem-dropdzone--uploading': isUploading,
               'gem-dropdzone--active': isDragActive,
             })}
