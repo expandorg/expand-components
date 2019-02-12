@@ -6,6 +6,7 @@ import { stopEvt, getMousePosition } from '../../common/dom';
 export default class Draggable extends Component {
   static propTypes = {
     className: PropTypes.string,
+    style: PropTypes.object, //eslint-disable-line
     onDrag: PropTypes.func.isRequired,
     onDragStart: PropTypes.func,
     onDragEnd: PropTypes.func,
@@ -13,6 +14,7 @@ export default class Draggable extends Component {
 
   static defaultProps = {
     className: null,
+    style: undefined,
     onDragStart: Function.prototype,
     onDragEnd: Function.prototype,
   };
@@ -46,7 +48,7 @@ export default class Draggable extends Component {
       const { x: oldX, y: oldY } = this.state;
       const dx = x - oldX;
       const dy = y - oldY;
-      this.setState({ x, y }, () => onDrag(dx, dy));
+      this.setState({ x, y }, () => onDrag(dx, dy, event));
     }
   };
 

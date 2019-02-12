@@ -1,0 +1,29 @@
+---
+menu: Components
+name: Progress
+route: /components-progress
+---
+
+import { Playground, PropsTable } from 'docz'
+import Pane from '../Panel/Panel.js'
+
+import Progress from './Progress.js'
+
+## Progress
+
+<PropsTable of={Progress} />
+
+## Horizontal
+
+<Pane>
+  <Progress value={20} min={0} max={100} />
+</Pane>
+
+
+## Vertical
+
+<Pane>
+  <div style={{ height: '100px' }} >
+    <Progress vertical value={50} min={0} max={100} />
+  </div>
+</Pane>

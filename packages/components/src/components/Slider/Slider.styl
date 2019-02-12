@@ -1,0 +1,39 @@
+@import '~@expandorg/uikit/colors'
+
+.gem-slider
+  display: block;
+  position: relative;
+
+  &--horizontal
+    width: 100%
+    height 4px
+
+  &--vertical
+    height: 100%
+    width 4px
+
+  &-handler
+    position: absolute
+
+    transform-origin: center
+
+    box-sizing: border-box
+
+    width: 18px
+    height 18px
+
+    background-color: color-light-blue
+    border: 5px solid color-primary-blue
+    border-radius: 10px
+
+    cursor pointer
+
+    .gem-slider--horizontal &
+      top: -7px
+      transform: translateX(-8px)
+
+    .gem-slider--vertical &
+      left: -7px
+      transform: translateY(8px)
+
+

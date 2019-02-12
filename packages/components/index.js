@@ -16,6 +16,7 @@ import {
   TimePicker,
   Watch,
 } from './src/components/DateTime';
+
 import { Dialog, setAppElement, DialogForm } from './src/components/Dialog';
 import Draggable from './src/components/Draggable';
 import Drawer from './src/components/Drawer';
@@ -29,6 +30,7 @@ import Input from './src/components/Input';
 import { JsScript, withScript } from './src/components/JsScript';
 import Portal from './src/components/Portal';
 import Panel from './src/components/Panel';
+import Progress from './src/components/Progress';
 
 import {
   ServiceProvider,
@@ -37,6 +39,7 @@ import {
   withServices,
 } from './src/components/ServiceProvider';
 
+import Slider from './src/components/Slider';
 import Switch from './src/components/Switch';
 
 import Tooltip from './src/components/Tooltip';
@@ -74,6 +77,8 @@ export {
   JsScript,
   Portal,
   Panel,
+  Progress,
+  Slider,
   ServiceProvider,
   ServicesContext,
   ServiceLocator,

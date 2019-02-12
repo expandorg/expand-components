@@ -1,0 +1,29 @@
+@import '~@expandorg/uikit/colors'
+
+.gem-progress
+  display: block;
+  position: relative;
+  overflow: hidden;
+
+  background-color: color-medium-blue
+
+  &--horizontal
+    height: 4px
+    width: 100%
+
+  &--vertical
+    width: 4px
+    height: 100%
+
+  &-indicator
+    position absolute
+    background-color: color-primary-blue
+
+    .gem-progress--horizontal &
+      left: 0
+      height: 4px
+
+    .gem-progress--vertical &
+      bottom: 0
+      width: 4px
+

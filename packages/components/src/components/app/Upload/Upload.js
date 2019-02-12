@@ -12,6 +12,7 @@ export default class Upload extends Component {
       PropTypes.object,
       PropTypes.arrayOf(PropTypes.object),
     ]),
+    maxSize: PropTypes.number,
     accept: PropTypes.string,
     multiple: PropTypes.bool,
     className: PropTypes.string,
@@ -23,6 +24,7 @@ export default class Upload extends Component {
   static defaultProps = {
     file: null,
     multiple: false,
+    maxSize: undefined,
     className: null,
     accept: 'image/jpeg, image/png, image/gif',
     isUploading: false,
@@ -54,11 +56,13 @@ export default class Upload extends Component {
       className,
       accept,
       multiple,
+      maxSize,
     } = this.props;
 
     return (
       <Dropzone
         accept={accept}
+        maxSize={maxSize}
         multiple={multiple}
         disabled={isUploading}
         onDrop={this.handleDrop}

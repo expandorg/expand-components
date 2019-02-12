@@ -1,0 +1,48 @@
+---
+menu: Components
+name: Slider
+route: /components-slider
+---
+
+import { Playground, PropsTable } from 'docz'
+import WithState from 'scripts/docz/WithState'
+import Pane from '../Panel/Panel.js'
+
+import Slider from './Slider.js'
+
+## Slider
+
+<PropsTable of={Slider} />
+
+
+## Horzintal
+
+<Playground>
+  {() => (
+    <WithState value={20}>
+      {({ value, onChange }) => (
+        <Pane>
+          <Slider value={value} onChange={onChange} />
+          <div>{value}</div>
+        </Pane>
+      )}
+    </WithState>
+  )}
+</Playground>
+
+## Vertical
+
+<Playground>
+  {() => (
+    <WithState value={20}>
+      {({ value, onChange }) => (
+        <Pane>
+          <div style={{ height: '100px' }} >
+            <Slider vertical value={value} onChange={onChange} />
+          </div>
+          <div>{value}</div>
+        </Pane>
+      )}
+    </WithState>
+  )}
+</Playground>
