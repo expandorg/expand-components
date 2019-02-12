@@ -6,6 +6,10 @@ import { rules } from '@expandorg/validation';
 import PropControlTypes from '../../form/Form/PropControlTypes';
 import ModuleCategories from '../../form/Form/ModuleCategories';
 
+import { FormData } from '../../form/Form';
+
+import UploadControl from './UploadControl';
+
 import styles from './UploadFile.module.styl';
 
 export default class UploadFile extends Component {
@@ -59,6 +63,26 @@ export default class UploadFile extends Component {
   render() {
     const { value, fileType, size } = this.props;
 
-    return <div className={styles.container} />;
+    return (
+      <FormData>
+        {({ formData }) => {
+          if (!formData || !formData.fileUploadService) {
+            return null;
+          }
+
+          return (
+            <div className={styles.container}>
+              <UploadControl
+                fileUploadService={formData.fileUploadService}
+                onChange={this.handleChange}
+                value={value}
+                sizeLimit={size}
+                accept={fileType}
+              />
+            </div>
+          );
+        }}
+      </FormData>
+    );
   }
 }

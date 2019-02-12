@@ -1,4 +1,5 @@
 // @flow
 import UploadFile from './UploadFile';
+import FileUploadServiceBase from './FileUploadServiceBase';
 
-export default UploadFile;
+export { UploadFile, FileUploadServiceBase };
