@@ -34,7 +34,7 @@ export default class Draggable extends Component {
 
     const { x, y } = getMousePosition(event);
     this.setState({ pressed: true, x, y });
-    onDragStart();
+    onDragStart(event);
 
     stopEvt(event);
   };

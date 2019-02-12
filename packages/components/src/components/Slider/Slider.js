@@ -108,6 +108,11 @@ export default class Slider extends Component {
 
     return (
       <div className={classes} ref={this.containerRef}>
+        {/* <Draggable
+          onDrag={this.handleDrag}
+          onDragStart={event => this.handleDrag(0, 0, event)}
+          className="gem-slider-inner"
+        > */}
         <Progress
           className="gem-slider-progress"
           vertical={vertical}
@@ -115,6 +120,7 @@ export default class Slider extends Component {
           min={min}
           value={value}
         />
+        {/* </Draggable> */}
         <Draggable
           style={getStyles(max, min, value, vertical)}
           className="gem-slider-handler"

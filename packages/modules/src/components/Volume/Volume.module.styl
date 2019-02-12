@@ -1,0 +1,34 @@
+@import '~@expandorg/uikit/colors'
+@import '~@expandorg/uikit/font'
+
+.container
+  position: relative;
+
+.button
+  box-sizing: border-box;
+  position: relative;
+
+  height: 60px
+  width: 60px
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: color-light-blue
+  border-radius: 5px
+  border: 1px solid color-heavy-blue;
+
+  cursor: pointer;
+  outline: none
+
+  &:hover
+    background-color: lighten(color-light-blue, 10%)
+
+.opened
+  border-top-left-radius: 0
+  border-top-right-radius: 0
+
+.icon
+  path
+    fill: color-primary-blue

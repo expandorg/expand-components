@@ -5,6 +5,7 @@ import MediaPlayer from '../MediaPlayer';
 import PlayButton from '../PlayButton';
 
 import Timeline from './Timeline';
+import Volume from '../Volume';
 
 import styles from './AudioPlayer.module.styl';
 
@@ -31,6 +32,7 @@ export default class AudioPlayer extends Component {
     this.state = {
       duration: 0,
       seek: 0,
+      volume: 1,
     };
   }
 
@@ -50,10 +52,14 @@ export default class AudioPlayer extends Component {
     }
   };
 
+  handleChangeVolume = volume => {
+    this.setState({ volume });
+  };
+
   render() {
     const { audio, playing, loop, onTogglePlay } = this.props;
 
-    const { duration, seek } = this.state;
+    const { duration, seek, volume } = this.state;
 
     return (
       <div className={styles.content}>
@@ -62,6 +68,7 @@ export default class AudioPlayer extends Component {
             src={audio}
             loop={loop}
             ref={this.player}
+            volume={volume}
             playing={playing}
             onTogglePlay={onTogglePlay}
             onMediaReady={this.handleAudioReady}
@@ -76,6 +83,7 @@ export default class AudioPlayer extends Component {
               tooltip={playing ? 'Pause' : 'Play'}
               onToggle={onTogglePlay}
             />
+            <Volume volume={volume} onChange={this.handleChangeVolume} />
           </div>
           <Timeline
             duration={duration}
