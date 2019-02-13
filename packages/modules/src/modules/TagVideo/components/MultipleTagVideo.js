@@ -148,6 +148,7 @@ export default class TagVideo extends Component {
           stop={selected && selected.end}
           cursor={!selected}
           playbackRate={playbackRate}
+          playbackRateControl
           onReady={this.handleVideoReady}
           onTogglePlay={this.handleTogglePlay}
           onCursorClick={this.handleCursorClick}

@@ -20,7 +20,6 @@ export default class Timeline extends Component {
     limitFrom: PropTypes.number,
     limitTo: PropTypes.number,
     duration: PropTypes.number,
-    playing: PropTypes.bool.isRequired,
     cursor: PropTypes.bool.isRequired,
     seek: PropTypes.number,
     onCursorClick: PropTypes.func,
@@ -41,11 +40,10 @@ export default class Timeline extends Component {
       seek,
       limitFrom,
       limitTo,
-      playing,
       cursor,
       onCursorClick,
     } = this.props;
-    const showProgress = playing && !!duration;
+    const showProgress = !!duration;
     const showCursor = cursor && !!duration;
 
     return (
@@ -70,7 +68,7 @@ export default class Timeline extends Component {
                 onClick={onCursorClick}
               />
             )}
-            {children({ width })}
+            {children && children({ width })}
           </>
         )}
       </TimelineContainer>

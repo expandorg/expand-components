@@ -1,10 +1,11 @@
-import React, { Component } from 'react';
+import React, { Component, createRef } from 'react';
 import PropTypes from 'prop-types';
 
 import MediaPlayer from '../MediaPlayer';
 import PlayButton from '../PlayButton';
 
 import PlaybackRate from './PlaybackRate';
+import Volume from '../Volume';
 import Timeline from './timeline/Timeline';
 
 import styles from './VideoPlayer.module.styl';
@@ -19,6 +20,8 @@ export default class VideoPlayer extends Component {
     playing: PropTypes.bool,
     cursor: PropTypes.bool,
     playbackRate: PropTypes.number,
+    playbackRateControl: PropTypes.bool,
+    volumeControl: PropTypes.bool,
 
     limitFrom: PropTypes.number,
     limitTo: PropTypes.number,
@@ -35,6 +38,8 @@ export default class VideoPlayer extends Component {
     playing: true,
     cursor: true,
     playbackRate: 1,
+    playbackRateControl: false,
+    volumeControl: false,
     limitFrom: undefined,
     limitTo: undefined,
     onReady: Function.prototype,
@@ -45,11 +50,14 @@ export default class VideoPlayer extends Component {
   constructor(props) {
     super(props);
 
+    this.player = createRef();
+
     this.state = {
       duration: 0,
       originalRate: props.playbackRate, // eslint-disable-line react/no-unused-state
       rate: props.playbackRate,
       seek: 0,
+      volume: 0,
     };
   }
 
@@ -62,6 +70,12 @@ export default class VideoPlayer extends Component {
     }
     return null;
   }
+
+  seekTo = seek => {
+    if (this.player.current) {
+      this.player.current.seekTo(seek);
+    }
+  };
 
   handleVideoReady = duration => {
     const { onReady } = this.props;
@@ -77,6 +91,10 @@ export default class VideoPlayer extends Component {
     this.setState({ rate });
   };
 
+  handleChangeVolume = volume => {
+    this.setState({ volume });
+  };
+
   render() {
     const {
       video,
@@ -90,18 +108,21 @@ export default class VideoPlayer extends Component {
       onCursorClick,
       onError,
       cursor,
+      playbackRateControl,
+      volumeControl,
     } = this.props;
 
-    const { duration, seek, rate } = this.state;
+    const { duration, seek, rate, volume } = this.state;
 
     return (
       <div className={styles.content}>
         <div className={styles.video}>
           <MediaPlayer
+            ref={this.player}
             src={video}
             start={start || limitFrom}
             stop={stop}
-            volume={0}
+            volume={volume}
             playing={playing}
             playbackRate={rate}
             onTogglePlay={onTogglePlay}
@@ -118,7 +139,12 @@ export default class VideoPlayer extends Component {
               tooltip={playing ? 'Pause' : 'Play'}
               onToggle={onTogglePlay}
             />
-            <PlaybackRate rate={rate} onChange={this.handleChangeRate} />
+            {playbackRateControl && (
+              <PlaybackRate rate={rate} onChange={this.handleChangeRate} />
+            )}
+            {volumeControl && (
+              <Volume volume={volume} onChange={this.handleChangeVolume} />
+            )}
           </div>
           <Timeline
             duration={duration}
@@ -126,7 +152,6 @@ export default class VideoPlayer extends Component {
             limitFrom={limitFrom}
             limitTo={limitTo}
             cursor={cursor}
-            playing={playing}
             onCursorClick={onCursorClick}
           >
             {children}

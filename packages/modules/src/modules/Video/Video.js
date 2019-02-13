@@ -4,30 +4,24 @@ import PropTypes from 'prop-types';
 import PropControlTypes from '../../form/Form/PropControlTypes';
 import ModuleCategories from '../../form/Form/ModuleCategories';
 
+import { VideoPlayer } from '../../components/VideoPlayer';
+
 import styles from './Video.module.styl';
 
 export default class Video extends Component {
   static propTypes = {
     name: PropTypes.string.isRequired,
-    subtitles: PropTypes.string,
-    playerControls: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
-    autoPlay: PropTypes.bool,
     loop: PropTypes.bool,
-    muted: PropTypes.bool,
-    height: PropTypes.number,
-    width: PropTypes.number,
+    // autoPlay: PropTypes.bool,
+    // muted: PropTypes.bool,
     src: PropTypes.string.isRequired,
     onModuleError: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
-    subtitles: null,
-    autoPlay: false,
     loop: false,
-    height: undefined,
-    width: undefined,
-    muted: false,
-    playerControls: true,
+    // autoPlay: false,
+    // muted: false,
   };
 
   static module = {
@@ -42,18 +36,10 @@ export default class Video extends Component {
           placeholder: 'Video src',
           required: true,
         },
-        subtitles: {
-          type: PropControlTypes.string,
-          placeholder: 'Subtitles src',
-        },
-        playerControls: {
-          type: PropControlTypes.boolean,
-          label: 'Show player controls',
-        },
-        autoPlay: {
-          type: PropControlTypes.boolean,
-          label: 'play video automatically',
-        },
+        // autoPlay: {
+        //   type: PropControlTypes.boolean,
+        //   label: 'play video automatically',
+        // },
         loop: {
           type: PropControlTypes.boolean,
           label: 'Loop video',
@@ -69,59 +55,43 @@ export default class Video extends Component {
     },
   };
 
-  constructor(props) {
-    super(props);
-    this.player = createRef();
+  player = createRef();
 
-    this.state = {
-      loadError: false,
-    };
-  }
+  state = {
+    playing: true,
+  };
+
+  handleTogglePlay = playing => {
+    this.setState({ playing });
+  };
 
   handleError = () => {
     const { onModuleError, name, src } = this.props;
-    this.setState({ loadError: true });
     onModuleError(`${name}: Error while loading video ${src}`);
   };
 
-  render() {
-    const {
-      src,
-      subtitles,
-      height,
-      width,
-      autoPlay,
-      loop,
-      muted,
-      playerControls,
-    } = this.props;
+  handleSeek = seek => {
+    if (this.player.current) {
+      this.player.current.seekTo(seek);
+    }
+  };
 
-    const { loadError } = this.state;
-    /* eslint-disable jsx-a11y/media-has-caption */
+  render() {
+    const { src, loop } = this.props;
+    const { playing } = this.state;
+
     return (
       <div className={styles.container}>
-        <div className={styles.content}>
-          {!loadError && (
-            <video
-              key={src}
-              height={height}
-              width={width}
-              className={styles.video}
-              controls={playerControls}
-              autoPlay={autoPlay}
-              loop={loop}
-              ref={this.player}
-              muted={muted}
-              preload="auto"
-            >
-              <source src={src} type="video/mp4" onError={this.handleError} />
-              {subtitles && (
-                <track default kind="subtitles" srcLang="en" src={subtitles} />
-              )}
-            </video>
-          )}
-          {loadError && <div className={styles.error}>Video loading error</div>}
-        </div>
+        <VideoPlayer
+          ref={this.player}
+          video={src}
+          loop={loop}
+          playing={playing}
+          volumeControl
+          onTogglePlay={this.handleTogglePlay}
+          onCursorClick={this.handleSeek}
+          onError={this.handleError}
+        />
       </div>
     );
   }

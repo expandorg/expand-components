@@ -99,6 +99,7 @@ export default class SignleTagVideo extends Component {
           limitFrom={startTime}
           start={tag && tag.start}
           playbackRate={playbackRate}
+          playbackRateControl
           stop={tag && tag.end}
           cursor={!tag}
           onReady={this.handleVideoReady}
