@@ -18,6 +18,7 @@ import { Select, Multiselect } from '../../modules/Select';
 import Submit from '../../modules/Submit';
 import Text from '../../modules/Text';
 import YesNo from '../../modules/YesNo';
+import { UploadFile } from '../../modules/UploadFile';
 import { TagVideo, MultipleTagVideo } from '../../modules/TagVideo';
 import Video from '../../modules/Video';
 
@@ -70,6 +71,7 @@ const moduleControls = [
   Submit,
   TagVideo,
   Text,
+  // UploadFile,
   YesNo,
   Video,
 ];

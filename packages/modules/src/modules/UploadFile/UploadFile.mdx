@@ -1,0 +1,45 @@
+---
+menu: Modules
+name: Upload
+route: /modules-upload
+---
+
+# Upload Module
+
+## Upload properties
+
+| Property    | type     | Required | Default | description    |
+| ----------- | -------- | -------- | ------- | -------------- |
+| *type*      | `upload` | true    | -       | module type    |
+| *name*      | string   | true     | -       | module name    |
+| *fileType*  | `Images`, `Media`, `Text`, `Any`  | -     | 'Any' | media type    |
+| *size*      | `Large`, `Medium`, `Small`  | -     | 'Any' | file size limit    |
+
+
+## Example
+```jsx
+{
+  name: 'upload',
+  fileType: 'Images',
+  type: 'upload',
+}
+```
+
+import ModulesPlayground from '../../form/ModulesPlayground/ModulesPlayground.js'
+
+<ModulesPlayground
+  form={{
+    modules: [
+      {
+        name: 'upload',
+        type: 'upload',
+        fileType: 'Images'
+      },
+      {
+        name: 'submit',
+        type: 'submit',
+        caption: 'Next',
+      },
+    ],
+  }}
+/>

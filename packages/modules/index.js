@@ -18,6 +18,12 @@ import {
   getInitialFormValues,
 } from './src/form/Form';
 
+import {
+  FileUploadServiceBase,
+  FileUploadTask,
+  UploadState,
+} from './src/modules/UploadFile';
+
 import { Module, moduleProps } from './src/form/Module';
 import { ReportForm, ReportToggle } from './src/form/Report';
 
@@ -42,4 +48,7 @@ export {
   moduleProps,
   ReportForm,
   ReportToggle,
+  FileUploadServiceBase,
+  FileUploadTask,
+  UploadState,
 };

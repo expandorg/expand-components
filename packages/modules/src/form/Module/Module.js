@@ -11,6 +11,7 @@ export default class Module extends Component {
     onChange: PropTypes.func,
     onSubmit: PropTypes.func,
     onModuleError: PropTypes.func,
+    onNotify: PropTypes.func,
     controls: PropTypes.object.isRequired, // eslint-disable-line
   };
 
@@ -18,17 +19,19 @@ export default class Module extends Component {
     value: undefined,
     onChange: Function.prototype,
     onSubmit: Function.prototype,
+    onNotify: Function.prototype,
     onModuleError: Function.prototype,
   };
 
   renderModules = modules => {
-    const { controls, isSubmitting, onModuleError } = this.props;
+    const { controls, isSubmitting, onModuleError, onNotify } = this.props;
     if (!Array.isArray(modules)) {
       return (
         <Module
           onModuleError={onModuleError}
           module={modules}
           controls={controls}
+          onNotify={onNotify}
           isSubmitting={isSubmitting}
         />
       );
@@ -37,6 +40,7 @@ export default class Module extends Component {
       <Module
         key={module.name}
         onModuleError={onModuleError}
+        onNotify={onNotify}
         module={module}
         controls={controls}
         isSubmitting={isSubmitting}
@@ -52,6 +56,7 @@ export default class Module extends Component {
       isSubmitting,
       onSubmit,
       onModuleError,
+      onNotify,
       controls,
     } = this.props;
 
@@ -69,6 +74,7 @@ export default class Module extends Component {
           value={value}
           onModuleError={onModuleError}
           onChange={onChange}
+          onNotify={onNotify}
           {...rest}
         >
           {this.renderModules(modules)}
@@ -84,6 +90,7 @@ export default class Module extends Component {
         onSubmit={onSubmit}
         onModuleError={onModuleError}
         isSubmitting={isSubmitting}
+        onNotify={onNotify}
         renderModules={this.renderModules}
       />
     );

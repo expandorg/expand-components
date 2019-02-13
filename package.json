@@ -67,6 +67,7 @@
     "prettier": "^1.16.4",
     "prop-types": "^15.7.0",
     "react": "^16.8.1",
+    "react-document-title": "^2.0.3",
     "react-dom": "^16.8.1",
     "react-dropzone": "^8.1.0",
     "react-spring": "^8.0.5",

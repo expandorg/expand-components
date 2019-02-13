@@ -26,7 +26,7 @@ export default class Upload extends Component {
     multiple: false,
     maxSize: undefined,
     className: null,
-    accept: 'image/jpeg, image/png, image/gif',
+    accept: undefined,
     isUploading: false,
     onReject: Function.prototype,
   };

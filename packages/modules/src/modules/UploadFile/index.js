@@ -1,5 +1,8 @@
 // @flow
 import UploadFile from './UploadFile';
-import FileUploadServiceBase from './FileUploadServiceBase';
+import FileUploadServiceBase, {
+  FileUploadTask,
+  UploadState,
+} from './FileUploadServiceBase';
 
-export { UploadFile, FileUploadServiceBase };
+export { UploadFile, FileUploadServiceBase, FileUploadTask, UploadState };

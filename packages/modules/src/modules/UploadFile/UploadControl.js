@@ -9,62 +9,71 @@ import {
 
 import { ReactComponent as Placeholder } from '@expandorg/uikit/assets/data.svg';
 
-import FileUploadServiceBase from './FileUploadServiceBase';
+import { UploadState } from './FileUploadServiceBase';
 
 import styles from './UploadControl.module.styl';
 
 export default class UploadControl extends Component {
   static propTypes = {
-    fileUploadService: PropTypes.instanceOf(FileUploadServiceBase).isRequired,
+    fileUploadService: PropTypes.object.isRequired, // eslint-disable-line
     value: PropTypes.string,
     sizeLimit: PropTypes.number,
     accept: PropTypes.string,
     onChange: PropTypes.func.isRequired,
-    onNotify: PropTypes.func.isRequired,
+    onNotify: PropTypes.func,
   };
 
   static defaultProps = {
     value: null,
-    sizeLimit: null,
-    accept: null,
+    sizeLimit: undefined,
+    accept: undefined,
+    onNotify: Function.prototype,
   };
 
   state = {
     progress: 0,
-    isUploading: false,
-    isUploaded: false,
-    isUploadError: false,
+    uploadState: UploadState.Initial,
+  };
+
+  uploadTask = null;
+
+  componentWillUnmount() {
+    if (this.uploadTask !== null) {
+      this.uploadTask.cancel();
+    }
+  }
+
+  handleAbort = () => {
+    if (this.uploadTask !== null) {
+      this.uploadTask.abort();
+      this.setState({ progress: 0, uploadState: UploadState.Initial });
+    }
   };
 
   handleProgress = progress => {
     this.setState({ progress });
   };
 
-  handleAbort = () => {
-    if (this.uploadProgress) {
-      this.uploadProgress.abortRequest();
-    }
-  };
+  handleSelect = async file => {
+    const { onChange, fileUploadService } = this.props;
+    const { uploadState } = this.state;
 
-  handleSelect = async () => {
-    // const { onChange, fileUploadService } = this.props;
-    // const { isUploading } = this.state;
-    // if (!isUploading) {
-    //   try {
-    //     this.setState({ isUploading: true, progress: 0 });
-    //     this.uploadProgress = new fileUploadService.beginUpload(
-    //       this.handleProgress
-    //     );
-    //     const { fileUrl } = await imagesApi.upload({
-    //       thumbnail,
-    //       cb: this.progress,
-    //     });
-    //     onChange(fileUrl);
-    //     this.setState({ isUploading: false, isUploaded: true, progress: 0 });
-    //   } catch (e) {
-    //     this.setState({ isUploading: false, isUploadError: true });
-    //   }
-    // }
+    if (uploadState !== UploadState.Uploading) {
+      try {
+        this.uploadTask = fileUploadService.getTask(file, this.handleProgress);
+
+        this.setState({ uploadState: UploadState.Uploading, progress: 0 });
+        const result = await this.uploadTask.upload();
+        if (result) {
+          this.setState({ uploadState: UploadState.Uploaded, progress: 0 });
+          onChange(result.fileUrl);
+        }
+      } catch (e) {
+        this.setState({ uploadState: UploadState.UploadError, progress: 0 });
+      } finally {
+        this.uploadTask = null;
+      }
+    }
   };
 
   handleReject = () => {
@@ -75,7 +84,12 @@ export default class UploadControl extends Component {
 
   render() {
     const { value, accept, sizeLimit } = this.props;
-    const { isUploading, isUploaded, isUploadError, progress } = this.state;
+    const { uploadState, progress } = this.state;
+
+    const isUploading = uploadState === UploadState.Uploading;
+    const isUploaded = uploadState === UploadState.Uploaded;
+    const isUploadError = uploadState === UploadState.UploadError;
+
     const indicator = isUploading || isUploadError;
 
     return (

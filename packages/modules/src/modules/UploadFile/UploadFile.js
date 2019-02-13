@@ -12,6 +12,20 @@ import UploadControl from './UploadControl';
 
 import styles from './UploadFile.module.styl';
 
+const mediaTypes = {
+  Any: undefined,
+  Images: 'image/jpeg, image/png, image/gif, image/svg+xml',
+  Media:
+    'image/jpeg, image/png, image/gif, image/svg+xml, audio/basic, audio/mp4, audio/mpeg, video/mpeg, video/mp4',
+  Documents: 'text/csv, application/pdf, text/plain, text/markdown',
+};
+
+const fileSizes = {
+  Large: undefined,
+  Medium: undefined,
+  Small: undefined,
+};
+
 export default class UploadFile extends Component {
   static propTypes = {
     name: PropTypes.string.isRequired,
@@ -19,12 +33,14 @@ export default class UploadFile extends Component {
     fileType: PropTypes.string,
     size: PropTypes.string,
     onChange: PropTypes.func.isRequired,
+    onNotify: PropTypes.func,
   };
 
   static defaultProps = {
     value: null,
     fileType: 'Any',
     size: 'Large',
+    onNotify: Function.prototype,
   };
 
   static module = {
@@ -61,7 +77,7 @@ export default class UploadFile extends Component {
   };
 
   render() {
-    const { value, fileType, size } = this.props;
+    const { value, fileType, size, onNotify } = this.props;
 
     return (
       <FormData>
@@ -76,8 +92,9 @@ export default class UploadFile extends Component {
                 fileUploadService={formData.fileUploadService}
                 onChange={this.handleChange}
                 value={value}
-                sizeLimit={size}
-                accept={fileType}
+                sizeLimit={fileSizes[size]}
+                accept={mediaTypes[fileType]}
+                onNotify={onNotify}
               />
             </div>
           );
