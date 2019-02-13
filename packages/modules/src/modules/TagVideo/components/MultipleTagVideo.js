@@ -40,6 +40,7 @@ export default class TagVideo extends Component {
     options: PropTypes.arrayOf(PropTypes.string),
     startTime: PropTypes.number,
     onChange: PropTypes.func.isRequired,
+    onError: PropTypes.func,
   };
 
   static defaultProps = {
@@ -50,6 +51,7 @@ export default class TagVideo extends Component {
     playbackRate: 1,
     tags: [],
     options: [],
+    onError: Function.prototype,
   };
 
   state = {
@@ -130,6 +132,7 @@ export default class TagVideo extends Component {
       readOnly,
       hideControls,
       playbackRate,
+      onError,
     } = this.props;
     const { duration, selected, playing } = this.state;
 
@@ -148,6 +151,7 @@ export default class TagVideo extends Component {
           onReady={this.handleVideoReady}
           onTogglePlay={this.handleTogglePlay}
           onCursorClick={this.handleCursorClick}
+          onError={onError}
         >
           {({ width }) => (
             <>

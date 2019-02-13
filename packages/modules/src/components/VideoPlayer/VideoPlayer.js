@@ -26,6 +26,7 @@ export default class VideoPlayer extends Component {
     onTogglePlay: PropTypes.func.isRequired,
     onReady: PropTypes.func,
     onCursorClick: PropTypes.func,
+    onError: PropTypes.func,
   };
 
   static defaultProps = {
@@ -38,6 +39,7 @@ export default class VideoPlayer extends Component {
     limitTo: undefined,
     onReady: Function.prototype,
     onCursorClick: Function.prototype,
+    onError: Function.prototype,
   };
 
   constructor(props) {
@@ -86,6 +88,7 @@ export default class VideoPlayer extends Component {
       stop,
       onTogglePlay,
       onCursorClick,
+      onError,
       cursor,
     } = this.props;
 
@@ -104,6 +107,7 @@ export default class VideoPlayer extends Component {
             onTogglePlay={onTogglePlay}
             onMediaReady={this.handleVideoReady}
             onMediaProgress={this.handleVideoProgress}
+            onError={onError}
           />
         </div>
         <div className={styles.timeline}>

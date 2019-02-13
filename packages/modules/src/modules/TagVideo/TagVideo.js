@@ -26,6 +26,7 @@ export default class TagVideo extends Component {
     options: PropTypes.arrayOf(PropTypes.string),
     startTime: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     onChange: PropTypes.func.isRequired,
+    onModuleError: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
@@ -91,6 +92,11 @@ export default class TagVideo extends Component {
     onChange(name, tag);
   };
 
+  handleError = () => {
+    const { onModuleError, name, src } = this.props;
+    onModuleError(`${name}: Error while loading audio ${src}`);
+  };
+
   render() {
     const {
       src,
@@ -115,6 +121,7 @@ export default class TagVideo extends Component {
         tag={tag}
         options={options}
         onChange={this.handleChange}
+        onError={this.handleError}
       />
     );
   }

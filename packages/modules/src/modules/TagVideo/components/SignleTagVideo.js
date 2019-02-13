@@ -28,6 +28,7 @@ export default class SignleTagVideo extends Component {
     options: PropTypes.arrayOf(PropTypes.string),
     startTime: PropTypes.number,
     onChange: PropTypes.func.isRequired,
+    onError: PropTypes.func,
   };
 
   static defaultProps = {
@@ -38,6 +39,7 @@ export default class SignleTagVideo extends Component {
     className: null,
     tag: null,
     options: [],
+    onError: Function.prototype,
   };
 
   state = {
@@ -84,6 +86,7 @@ export default class SignleTagVideo extends Component {
       playbackRate,
       hideControls,
       options,
+      onError,
     } = this.props;
     const { duration, playing } = this.state;
 
@@ -101,6 +104,7 @@ export default class SignleTagVideo extends Component {
           onReady={this.handleVideoReady}
           onTogglePlay={this.handleTogglePlay}
           onCursorClick={this.handleCursorClick}
+          onError={onError}
         >
           {({ width }) =>
             editor && (

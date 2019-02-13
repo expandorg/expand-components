@@ -16,12 +16,14 @@ export default class AudioPlayer extends Component {
     playing: PropTypes.bool,
     onTogglePlay: PropTypes.func.isRequired,
     onReady: PropTypes.func,
+    onError: PropTypes.func,
   };
 
   static defaultProps = {
     loop: true,
     playing: false,
     onReady: Function.prototype,
+    onError: Function.prototype,
   };
 
   constructor(props) {
@@ -57,7 +59,7 @@ export default class AudioPlayer extends Component {
   };
 
   render() {
-    const { audio, playing, loop, onTogglePlay } = this.props;
+    const { audio, playing, loop, onTogglePlay, onError } = this.props;
 
     const { duration, seek, volume } = this.state;
 
@@ -67,6 +69,7 @@ export default class AudioPlayer extends Component {
           <MediaPlayer
             src={audio}
             loop={loop}
+            onError={onError}
             ref={this.player}
             volume={volume}
             playing={playing}

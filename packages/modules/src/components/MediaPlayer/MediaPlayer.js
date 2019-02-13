@@ -22,6 +22,7 @@ export default class MediaPlayer extends Component {
 
     onMediaReady: PropTypes.func.isRequired,
     onMediaProgress: PropTypes.func.isRequired,
+    onError: PropTypes.func,
   };
 
   static defaultProps = {
@@ -30,6 +31,7 @@ export default class MediaPlayer extends Component {
     stop: null,
     playbackRate: 1,
     volume: null,
+    onError: Function.prototype,
   };
 
   state = {
@@ -90,7 +92,7 @@ export default class MediaPlayer extends Component {
   };
 
   render() {
-    const { src, playing, playbackRate, volume, loop } = this.props;
+    const { src, playing, playbackRate, volume, loop, onError } = this.props;
 
     const { canPlay } = this.state;
 
@@ -110,6 +112,7 @@ export default class MediaPlayer extends Component {
         onPlay={this.handlePlay}
         onDuration={this.handleDuration}
         onProgress={this.handleProgress}
+        onError={onError}
       />
     );
   }

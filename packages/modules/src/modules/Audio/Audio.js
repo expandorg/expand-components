@@ -10,10 +10,11 @@ import styles from './Audio.module.styl';
 
 export default class Audio extends Component {
   static propTypes = {
+    name: PropTypes.string.isRequired,
     src: PropTypes.string.isRequired,
     loop: PropTypes.bool,
     // autoPlay: PropTypes.bool,
-    // onModuleError: PropTypes.func.isRequired,
+    onModuleError: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
@@ -55,6 +56,11 @@ export default class Audio extends Component {
     this.setState({ playing });
   };
 
+  handleError = () => {
+    const { onModuleError, name, src } = this.props;
+    onModuleError(`${name}: Error while loading audio ${src}`);
+  };
+
   render() {
     const { src, loop } = this.props;
 
@@ -67,6 +73,7 @@ export default class Audio extends Component {
           audio={src}
           playing={playing}
           onTogglePlay={this.handleTogglePlay}
+          onError={this.handleError}
         />
       </div>
     );
