@@ -47,6 +47,10 @@ export default class Volume extends Component {
             widht="15px"
             height="15px"
           />
+          <ins
+            className={styles.elem}
+            style={{ width: `${8 - 8 * volume}px` }}
+          />
         </button>
         {opened && (
           <VolumeSlider
