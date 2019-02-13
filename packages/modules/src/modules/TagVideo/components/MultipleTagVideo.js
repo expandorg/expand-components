@@ -197,7 +197,9 @@ export default class TagVideo extends Component {
                 />
               )}
               {!selected && !!duration && (
-                <div className={styles.placeholder}>Pick start time</div>
+                <div className={styles.placeholder}>
+                  Pick a start time by clicking on the timeline.
+                </div>
               )}
             </div>
             <div className={styles.tags}>
