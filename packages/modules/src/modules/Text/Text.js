@@ -33,7 +33,7 @@ export default class Text extends Component {
 
   static module = {
     type: 'text',
-    name: 'Text',
+    name: 'HTML (Text)',
     editor: {
       category: ModuleCategories.Text,
       properties: {
