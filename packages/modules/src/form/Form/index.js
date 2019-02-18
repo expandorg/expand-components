@@ -16,6 +16,7 @@ import moduleControls, {
 import applyVariables from './variables/applyVariables';
 import getVariablesMap from './variables/getVariablesMap';
 import getInitialFormValues from './variables/getInitialFormValues';
+import overrideFormVars from './variables/overrideFormVars';
 
 import PropControlTypes from './PropControlTypes';
 import ModuleCategories from './ModuleCategories';
@@ -25,6 +26,7 @@ export {
   formProps,
   formValidationRules,
   getDefaultRuleMessage,
+  overrideFormVars,
   FormContext,
   FormData,
   FormDataProvider,
