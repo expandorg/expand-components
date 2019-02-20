@@ -124,8 +124,11 @@ export default class Form extends Component {
 
     const props = {
       controls,
+      values,
+
       isSubmitting,
       isFormBuilder,
+
       onChange: this.handleChange,
       onSubmit: this.handleSubmit,
       onModuleError,
@@ -141,7 +144,6 @@ export default class Form extends Component {
           <Validation key={module.name} name={module.name} errors={errors}>
             {children({
               module,
-              value: values ? values[module.name] : undefined,
               ...props,
             })}
           </Validation>

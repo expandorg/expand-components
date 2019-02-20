@@ -6,18 +6,21 @@ import moduleProps from './moduleProps';
 export default class Module extends Component {
   static propTypes = {
     module: moduleProps.isRequired,
-    value: PropTypes.any, // eslint-disable-line
+
+    controls: PropTypes.object.isRequired, // eslint-disable-line
+    values: PropTypes.any, // eslint-disable-line
+
     isSubmitting: PropTypes.bool.isRequired,
     isFormBuilder: PropTypes.bool,
+
     onChange: PropTypes.func,
     onSubmit: PropTypes.func,
     onModuleError: PropTypes.func,
     onNotify: PropTypes.func,
-    controls: PropTypes.object.isRequired, // eslint-disable-line
   };
 
   static defaultProps = {
-    value: undefined,
+    values: undefined,
     isFormBuilder: false,
     onChange: Function.prototype,
     onSubmit: Function.prototype,
@@ -27,33 +30,44 @@ export default class Module extends Component {
 
   renderModules = modules => {
     const {
+      values,
       controls,
+
       isSubmitting,
+      isFormBuilder,
+      onChange,
+      onSubmit,
       onModuleError,
       onNotify,
-      isFormBuilder,
     } = this.props;
+
     if (!Array.isArray(modules)) {
       return (
         <Module
-          onModuleError={onModuleError}
-          isFormBuilder={isFormBuilder}
           module={modules}
+          values={values}
           controls={controls}
-          onNotify={onNotify}
           isSubmitting={isSubmitting}
+          isFormBuilder={isFormBuilder}
+          onChange={onChange}
+          onSubmit={onSubmit}
+          onNotify={onNotify}
+          onModuleError={onModuleError}
         />
       );
     }
     return modules.map(module => (
       <Module
         key={module.name}
-        isFormBuilder={isFormBuilder}
-        onModuleError={onModuleError}
-        onNotify={onNotify}
         module={module}
+        values={values}
         controls={controls}
+        isFormBuilder={isFormBuilder}
         isSubmitting={isSubmitting}
+        onChange={onChange}
+        onSubmit={onSubmit}
+        onNotify={onNotify}
+        onModuleError={onModuleError}
       />
     ));
   };
@@ -61,7 +75,7 @@ export default class Module extends Component {
   render() {
     const {
       module,
-      value,
+      values,
       onChange,
       isSubmitting,
       isFormBuilder,
@@ -76,27 +90,15 @@ export default class Module extends Component {
     if (!Control) {
       return null;
     }
-    if (typeof module.modules !== 'undefined') {
-      const { modules, ...rest } = module;
+    const value = values ? values[module.name] : undefined;
 
-      return (
-        <Control
-          renderModules={this.renderModules}
-          value={value}
-          isFormBuilder={isFormBuilder}
-          onModuleError={onModuleError}
-          onChange={onChange}
-          onNotify={onNotify}
-          {...rest}
-        >
-          {this.renderModules(modules)}
-        </Control>
-      );
-    }
+    const { modules, ...rest } = module;
+
+    const hasChildren = modules !== null && modules !== undefined;
 
     return (
       <Control
-        {...module}
+        {...rest}
         value={value}
         onChange={onChange}
         onSubmit={onSubmit}
@@ -104,8 +106,9 @@ export default class Module extends Component {
         isSubmitting={isSubmitting}
         isFormBuilder={isFormBuilder}
         onNotify={onNotify}
-        renderModules={this.renderModules}
-      />
+      >
+        {hasChildren && this.renderModules(modules)}
+      </Control>
     );
   }
 }
