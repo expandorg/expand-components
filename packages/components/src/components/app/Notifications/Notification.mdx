@@ -42,7 +42,7 @@ import Button from '../../Button/Button.js'
     <WithState value={null}>
       {({value, onChange}) => (
         <Pane>
-          <Button onClick={() => onChange(value ? null : { message: 'Notification', type: 'success'})}>
+          <Button onClick={() => onChange(value ? null : { message: 'Notification Notification', type: 'success'})}>
             toggle
           </Button>
           <NotificationAnimated notification={value} onClear={() => onChange(null)}  />
