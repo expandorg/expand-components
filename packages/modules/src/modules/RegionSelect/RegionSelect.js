@@ -5,8 +5,10 @@ import { rules } from '@expandorg/validation';
 
 import { ImageRegionSelect } from '../../components/RegionSelect';
 
-import PropControlTypes from '../../form/Form/PropControlTypes';
-import ModuleCategories from '../../form/Form/ModuleCategories';
+import {
+  PropControlTypes,
+  ModuleCategories,
+} from '../../form/components/Module';
 
 import styles from './styles.module.styl';
 

@@ -1,8 +1,10 @@
 import React, { Component, createRef } from 'react';
 import PropTypes from 'prop-types';
 
-import PropControlTypes from '../../form/Form/PropControlTypes';
-import ModuleCategories from '../../form/Form/ModuleCategories';
+import {
+  PropControlTypes,
+  ModuleCategories,
+} from '../../form/components/Module';
 
 import { VideoPlayer } from '../../components/VideoPlayer';
 

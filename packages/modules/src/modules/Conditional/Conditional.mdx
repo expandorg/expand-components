@@ -31,37 +31,55 @@ route: /modules-conditional
 }
 ```
 
-import ModulesPlayground from '../../form/ModulesPlayground/ModulesPlayground.js'
+import ModulesPlayground from '../../form/components/Playground/ModulesPlayground.js'
 
 <ModulesPlayground
   form={{
     modules: [
       {
-        name: "conditional",
+        type: 'text',
+        name: 'p1',
+        style: 'h2',
+        align: 'center',
+        content: 'Uncontrolled conditional'
+      },
+      {
+        name: "conditional-u",
         type: "conditional",
         condition: "true",
         modules: [{
           name: "p-2",
           type: "text",
-          style: "description",
+          style: "body",
           content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
         }],
       },
-       {
-        name: "conditional",
+      {
+        type: 'text',
+        name: 'p2',
+        style: 'h2',
+        align: 'center',
+        content: 'Controlled conditional'
+      },
+      {
+        name: "checkbox",
+        type: "checkbox",
+        label: "select me",
+      },
+      {
+        name: "conditional-c",
         type: "conditional",
-        condition: "",
+        condition: "$(checkbox)",
         modules: [{
-          name: "p-3",
-          type: "text",
-          style: "description",
-          content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+          name: "input",
+          type: "input",
+          inputType: 'text',
         }],
       },
       {
         name: 'submit',
         type: 'submit',
-        caption: 'Next',
+        caption: 'Submit',
       },
     ],
   }}

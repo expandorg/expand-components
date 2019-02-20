@@ -4,8 +4,10 @@ import PropTypes from 'prop-types';
 import { rules } from '@expandorg/validation';
 import { Checkbox as UICheckbox } from '@expandorg/components';
 
-import PropControlTypes from '../../form/Form/PropControlTypes';
-import ModuleCategories from '../../form/Form/ModuleCategories';
+import {
+  PropControlTypes,
+  ModuleCategories,
+} from '../../form/components/Module';
 
 import styles from './Checkbox.module.styl';
 

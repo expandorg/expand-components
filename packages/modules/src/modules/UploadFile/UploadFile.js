@@ -3,10 +3,12 @@ import PropTypes from 'prop-types';
 
 import { rules } from '@expandorg/validation';
 
-import PropControlTypes from '../../form/Form/PropControlTypes';
-import ModuleCategories from '../../form/Form/ModuleCategories';
+import { FormData } from '../../form/components/Form';
 
-import { FormData } from '../../form/Form';
+import {
+  PropControlTypes,
+  ModuleCategories,
+} from '../../form/components/Module';
 
 import UploadControl from './UploadControl';
 

@@ -5,8 +5,10 @@ import { rules } from '@expandorg/validation';
 
 import { Dropdown as UIDropdown } from '@expandorg/components';
 
-import ModuleCategories from '../../form/Form/ModuleCategories';
-import PropControlTypes from '../../form/Form/PropControlTypes';
+import {
+  PropControlTypes,
+  ModuleCategories,
+} from '../../form/components/Module';
 
 import styles from './Dropdown.module.styl';
 

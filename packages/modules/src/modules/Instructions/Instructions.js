@@ -5,8 +5,10 @@ import { Button } from '@expandorg/components';
 
 import Modal from '../../components/Modal';
 
-import PropControlTypes from '../../form/Form/PropControlTypes';
-import ModuleCategories from '../../form/Form/ModuleCategories';
+import {
+  PropControlTypes,
+  ModuleCategories,
+} from '../../form/components/Module';
 
 import styles from './Instructions.module.styl';
 

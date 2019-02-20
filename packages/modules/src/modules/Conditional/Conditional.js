@@ -1,16 +1,21 @@
-import { Component } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import PropControlTypes from '../../form/Form/PropControlTypes';
-import ModuleCategories from '../../form/Form/ModuleCategories';
+import { ValuesContextClient } from '../../form/components/Form';
+import {
+  PropControlTypes,
+  ModuleCategories,
+} from '../../form/components/Module';
+
+import ConditionControl from './ConditionControl';
 
 export default class Conditional extends Component {
   static propTypes = {
-    condition: PropTypes.any, // eslint-disable-line
+    condition: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
   };
 
   static defaultProps = {
-    condition: false,
+    condition: '',
   };
 
   static module = {
@@ -29,18 +34,17 @@ export default class Conditional extends Component {
         },
       },
       defaults: {
+        condition: '',
         modules: [],
       },
     },
   };
 
   render() {
-    const { condition, children } = this.props;
-
-    if (!condition || condition === '0' || condition === 'false') {
-      return null;
-    }
-
-    return children;
+    return (
+      <ValuesContextClient>
+        {values => <ConditionControl {...this.props} values={values} />}
+      </ValuesContextClient>
+    );
   }
 }

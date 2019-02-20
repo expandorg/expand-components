@@ -2,54 +2,45 @@
 import {
   Form,
   formProps,
-  formValidationRules,
-  getDefaultRuleMessage,
-  overrideFormVars,
-  FormContext,
+  ValuesContext,
+  ValuesContextClient,
   FormData,
   FormDataProvider,
-  moduleControls,
-  getModuleControlsMap,
-  groupModulesByCategory,
-  calculateVerificationScore,
-  applyVariables,
-  getVariablesMap,
-  getInitialFormValues,
+} from './src/form/components/Form';
+
+import {
+  Module,
+  moduleProps,
   PropControlTypes,
   ModuleCategories,
-} from './src/form/Form';
+} from './src/form/components/Module';
+import { ReportForm, ReportToggle } from './src/form/components/Report';
 
 import {
   FileUploadServiceBase,
   FileUploadTask,
   UploadState,
 } from './src/modules/UploadFile';
-
-import { Module, moduleProps } from './src/form/Module';
-import { ReportForm, ReportToggle } from './src/form/Report';
+import FileUploadServiceMock from './src/form/components/Playground/FileUploadServiceMock';
 
 export {
-  applyVariables,
-  calculateVerificationScore,
+  // Form
   Form,
-  FormContext,
+  formProps,
   FormData,
   FormDataProvider,
-  formProps,
-  formValidationRules,
-  getDefaultRuleMessage,
-  overrideFormVars,
-  getModuleControlsMap,
+  ValuesContext,
+  ValuesContextClient,
+  // base modules
+  Module,
+  moduleProps,
   PropControlTypes,
   ModuleCategories,
-  getVariablesMap,
-  groupModulesByCategory,
-  getInitialFormValues,
-  Module,
-  moduleControls,
-  moduleProps,
+  // reporting
   ReportForm,
   ReportToggle,
+  // utilities
+  FileUploadServiceMock,
   FileUploadServiceBase,
   FileUploadTask,
   UploadState,

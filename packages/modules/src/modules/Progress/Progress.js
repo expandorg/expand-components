@@ -5,9 +5,8 @@ import cn from 'classnames';
 import { range } from '@expandorg/components/src/common/immutable';
 import { Tooltip } from '@expandorg/components';
 
-import { FormData } from '../../form/Form';
-
-import ModuleCategories from '../../form/Form/ModuleCategories';
+import { FormData } from '../../form/components/Form';
+import { ModuleCategories } from '../../form/components/Module';
 
 import styles from './Progress.module.styl';
 

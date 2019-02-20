@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import cn from 'classnames';
 
-import ModuleCategories from '../../form/Form/ModuleCategories';
-import PropControlTypes from '../../form/Form/PropControlTypes';
+import {
+  PropControlTypes,
+  ModuleCategories,
+} from '../../form/components/Module';
 
 import styles from './FlexContainer.module.styl';
 

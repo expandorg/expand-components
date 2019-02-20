@@ -5,8 +5,10 @@ import { rules } from '@expandorg/validation';
 
 import { Select as UISelect, Choice } from '../../components/Select';
 
-import PropControlTypes from '../../form/Form/PropControlTypes';
-import ModuleCategories from '../../form/Form/ModuleCategories';
+import {
+  PropControlTypes,
+  ModuleCategories,
+} from '../../form/components/Module';
 
 import { formatter, IdType } from '../../components/Select/ids';
 

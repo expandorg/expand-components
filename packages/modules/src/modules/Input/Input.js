@@ -5,8 +5,10 @@ import { rules } from '@expandorg/validation';
 
 import { Input as UIInput } from '@expandorg/components';
 
-import PropControlTypes from '../../form/Form/PropControlTypes';
-import ModuleCategories from '../../form/Form/ModuleCategories';
+import {
+  PropControlTypes,
+  ModuleCategories,
+} from '../../form/components/Module';
 
 import styles from './Input.module.styl';
 

@@ -3,8 +3,10 @@ import PropTypes from 'prop-types';
 
 import SignleTagVideo from './components/SignleTagVideo';
 
-import PropControlTypes from '../../form/Form/PropControlTypes';
-import ModuleCategories from '../../form/Form/ModuleCategories';
+import {
+  PropControlTypes,
+  ModuleCategories,
+} from '../../form/components/Module';
 
 export default class TagVideo extends Component {
   static propTypes = {

@@ -5,8 +5,10 @@ import { rules } from '@expandorg/validation';
 
 import UIMultipleTagVideo from './components/MultipleTagVideo';
 
-import PropControlTypes from '../../form/Form/PropControlTypes';
-import ModuleCategories from '../../form/Form/ModuleCategories';
+import {
+  PropControlTypes,
+  ModuleCategories,
+} from '../../form/components/Module';
 
 export default class MultipleTagVideo extends Component {
   static propTypes = {
