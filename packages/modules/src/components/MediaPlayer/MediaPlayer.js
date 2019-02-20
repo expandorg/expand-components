@@ -44,16 +44,17 @@ export default class MediaPlayer extends Component {
     const { stop, start } = this.props;
     if (start !== prevStart || stop !== prevStop) {
       if (start !== prevStart && start !== null && start !== undefined) {
-        this.playerRef.current.seekTo(start);
+        this.seekTo(start);
       } else if (stop !== prevStop && stop !== null && stop !== undefined) {
-        this.playerRef.current.seekTo(stop);
+        this.seekTo(stop);
       }
     }
   }
 
   seekTo = seek => {
     if (this.playerRef.current) {
-      this.playerRef.current.seekTo(seek);
+      const value = seek < 1 ? 0 : seek;
+      this.playerRef.current.seekTo(value);
     }
   };
 
@@ -62,7 +63,7 @@ export default class MediaPlayer extends Component {
 
     this.setState({ canPlay: true });
     if (start) {
-      this.playerRef.current.seekTo(start);
+      this.seekTo(start);
     }
   };
 
@@ -75,7 +76,7 @@ export default class MediaPlayer extends Component {
     const { stop, start, onMediaProgress } = this.props;
     if (start !== null && stop !== null) {
       if (playedSeconds > stop) {
-        this.playerRef.current.seekTo(start);
+        this.seekTo(start);
       }
     }
     onMediaProgress(playedSeconds);

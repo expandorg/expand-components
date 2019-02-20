@@ -114,6 +114,8 @@ export default class VideoPlayer extends Component {
 
     const { duration, seek, rate, volume } = this.state;
 
+    console.log('!!start ', start);
+
     return (
       <div className={styles.content}>
         <div className={styles.video}>

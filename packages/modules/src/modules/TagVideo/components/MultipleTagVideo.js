@@ -23,7 +23,7 @@ const DEFAULT_SPAN_SEC = 2;
 
 const tagId = tag => `${tag.start}-${tag.end}`;
 
-export default class TagVideo extends Component {
+export default class MultipleTagVideo extends Component {
   static propTypes = {
     video: PropTypes.string.isRequired,
     className: PropTypes.string,
