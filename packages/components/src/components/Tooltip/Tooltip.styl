@@ -3,11 +3,17 @@
 
 .gem-tooltip
   position: absolute
-  padding: 15px 15px;
+  box-sizing: border-box
+  padding: 16px 18px;
 
-  background: color-text-dark
-  color: color-white
-  font(font-preset[caption])
+  background-color: color-white
+  color: color-blue-background
+  font(h4)
+  letter-spacing: 0
+  font-style: normal
+
+  box-shadow: heavy-shadow
+
   border-radius: 3px
   z-index: 2
   white-space: nowrap;
@@ -44,7 +50,7 @@
 
         bottom: -15px
         border: 8px solid transparent
-        border-top: 8px solid color-text-dark
+        border-top: 8px solid color-white
 
     &-bottom
       top: 40px
@@ -55,7 +61,7 @@
 
         top: -15px
         border: 8px solid transparent
-        border-bottom: 8px solid color-text-dark
+        border-bottom: 8px solid color-white
 
 
     &-right
@@ -68,4 +74,4 @@
 
         left: -15px
         border: 8px solid transparent
-        border-right: 8px solid color-text-dark
+        border-right: 8px solid color-white
