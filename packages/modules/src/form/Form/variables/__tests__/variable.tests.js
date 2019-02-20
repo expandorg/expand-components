@@ -38,15 +38,18 @@ describe('form variables', () => {
         name: 'paragraph',
         type: 'paragraph',
         content: '$(foo)',
+        content2: '$(bar)',
       };
       const vars = {
         foo: 'bar',
+        bar: '',
       };
       const result = applyVariables(module, vars);
       expect(result).toEqual({
         name: 'paragraph',
         type: 'paragraph',
         content: 'bar',
+        content2: '',
       });
     });
 
@@ -56,10 +59,13 @@ describe('form variables', () => {
         type: 'paragraph',
         test: '$(baz)',
         content: '$(foo) bar',
+        content2: '$(foo) $(bar) + $(bar1)',
       };
       const vars = {
         foo: 'bar',
         baz: 1,
+        bar: '',
+        bar1: '',
       };
       const result = applyVariables(module, vars);
       expect(result).toEqual({
@@ -67,6 +73,7 @@ describe('form variables', () => {
         type: 'paragraph',
         test: 1,
         content: 'bar bar',
+        content2: 'bar  + ',
       });
     });
 

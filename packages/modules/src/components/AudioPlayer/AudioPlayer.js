@@ -12,6 +12,7 @@ import styles from './AudioPlayer.module.styl';
 export default class AudioPlayer extends Component {
   static propTypes = {
     audio: PropTypes.string.isRequired,
+    disabled: PropTypes.bool,
     loop: PropTypes.bool,
     playing: PropTypes.bool,
     onTogglePlay: PropTypes.func.isRequired,
@@ -21,6 +22,7 @@ export default class AudioPlayer extends Component {
 
   static defaultProps = {
     loop: true,
+    disabled: false,
     playing: false,
     onReady: Function.prototype,
     onError: Function.prototype,
@@ -59,24 +61,34 @@ export default class AudioPlayer extends Component {
   };
 
   render() {
-    const { audio, playing, loop, onTogglePlay, onError } = this.props;
+    const {
+      audio,
+      playing,
+      loop,
+      onTogglePlay,
+      onError,
+      disabled,
+    } = this.props;
 
     const { duration, seek, volume } = this.state;
 
     return (
       <div className={styles.content}>
         <div className={styles.player}>
-          <MediaPlayer
-            src={audio}
-            loop={loop}
-            onError={onError}
-            ref={this.player}
-            volume={volume}
-            playing={playing}
-            onTogglePlay={onTogglePlay}
-            onMediaReady={this.handleAudioReady}
-            onMediaProgress={this.handleAudioProgress}
-          />
+          {!disabled && (
+            <MediaPlayer
+              disabled={disabled}
+              src={audio}
+              loop={loop}
+              onError={onError}
+              ref={this.player}
+              volume={volume}
+              playing={playing}
+              onTogglePlay={onTogglePlay}
+              onMediaReady={this.handleAudioReady}
+              onMediaProgress={this.handleAudioProgress}
+            />
+          )}
         </div>
         <div className={styles.timeline}>
           <div className={styles.actions}>

@@ -8,6 +8,7 @@ export default class Module extends Component {
     module: moduleProps.isRequired,
     value: PropTypes.any, // eslint-disable-line
     isSubmitting: PropTypes.bool.isRequired,
+    isFormBuilder: PropTypes.bool,
     onChange: PropTypes.func,
     onSubmit: PropTypes.func,
     onModuleError: PropTypes.func,
@@ -17,6 +18,7 @@ export default class Module extends Component {
 
   static defaultProps = {
     value: undefined,
+    isFormBuilder: false,
     onChange: Function.prototype,
     onSubmit: Function.prototype,
     onNotify: Function.prototype,
@@ -24,11 +26,18 @@ export default class Module extends Component {
   };
 
   renderModules = modules => {
-    const { controls, isSubmitting, onModuleError, onNotify } = this.props;
+    const {
+      controls,
+      isSubmitting,
+      onModuleError,
+      onNotify,
+      isFormBuilder,
+    } = this.props;
     if (!Array.isArray(modules)) {
       return (
         <Module
           onModuleError={onModuleError}
+          isFormBuilder={isFormBuilder}
           module={modules}
           controls={controls}
           onNotify={onNotify}
@@ -39,6 +48,7 @@ export default class Module extends Component {
     return modules.map(module => (
       <Module
         key={module.name}
+        isFormBuilder={isFormBuilder}
         onModuleError={onModuleError}
         onNotify={onNotify}
         module={module}
@@ -54,6 +64,7 @@ export default class Module extends Component {
       value,
       onChange,
       isSubmitting,
+      isFormBuilder,
       onSubmit,
       onModuleError,
       onNotify,
@@ -72,6 +83,7 @@ export default class Module extends Component {
         <Control
           renderModules={this.renderModules}
           value={value}
+          isFormBuilder={isFormBuilder}
           onModuleError={onModuleError}
           onChange={onChange}
           onNotify={onNotify}
@@ -90,6 +102,7 @@ export default class Module extends Component {
         onSubmit={onSubmit}
         onModuleError={onModuleError}
         isSubmitting={isSubmitting}
+        isFormBuilder={isFormBuilder}
         onNotify={onNotify}
         renderModules={this.renderModules}
       />

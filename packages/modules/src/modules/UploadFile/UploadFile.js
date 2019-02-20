@@ -66,7 +66,7 @@ export default class UploadFile extends Component {
       },
       defaults: {
         fileType: 'Any',
-        size: 'large',
+        size: 'Large',
       },
     },
   };

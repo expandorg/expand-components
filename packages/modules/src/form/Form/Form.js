@@ -28,6 +28,7 @@ export default class Form extends Component {
     controls: PropTypes.arrayOf(PropTypes.func), // eslint-disable-line
     validation: PropTypes.bool,
     variables: PropTypes.object, // eslint-disable-line
+    isFormBuilder: PropTypes.bool,
     onSubmit: PropTypes.func.isRequired,
     onModuleError: PropTypes.func,
     onNotify: PropTypes.func,
@@ -37,6 +38,7 @@ export default class Form extends Component {
     className: null,
     controls: moduleControls,
     isSubmitting: false,
+    isFormBuilder: false,
     validation: true,
     errors: null,
     onModuleError: Function.prototype,
@@ -112,6 +114,7 @@ export default class Form extends Component {
     const {
       className,
       isSubmitting,
+      isFormBuilder,
       onModuleError,
       children,
       onNotify,
@@ -122,6 +125,7 @@ export default class Form extends Component {
     const props = {
       controls,
       isSubmitting,
+      isFormBuilder,
       onChange: this.handleChange,
       onSubmit: this.handleSubmit,
       onModuleError,
