@@ -53,6 +53,19 @@ describe('form variables', () => {
       });
     });
 
+    it('should use blank as default value', () => {
+      const module = {
+        content: '$(bar)',
+      };
+      const vars = {
+        foo: 'bar',
+      };
+      const result = applyVariables(module, vars);
+      expect(result).toEqual({
+        content: '',
+      });
+    });
+
     it('should replace vars within text content', () => {
       const module = {
         name: 'paragraph',

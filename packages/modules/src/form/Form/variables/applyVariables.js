@@ -5,7 +5,8 @@ import getVariablesMap from './getVariablesMap';
 const overrideProperty = (
   value: any,
   raw: Map<string, any>,
-  substitutions: Map<string, any>
+  substitutions: Map<string, any>,
+  defaultValue?: string = null
 ): any => {
   if (Array.isArray(value)) {
     return value.map(item => overrideProperty(item, raw, substitutions));
@@ -20,7 +21,7 @@ const overrideProperty = (
       if (substitutions.has(value)) {
         return substitutions.get(value);
       }
-      return template(value, raw);
+      return template(value, raw, defaultValue);
     }
     default:
       break;
@@ -35,7 +36,7 @@ const applyVariables = (module: Module, variables: Object): Module => {
   const { name, type, ...rest } = module;
   return Reflect.ownKeys(rest).reduce(
     (mod, fieldName) => {
-      mod[fieldName] = overrideProperty(module[fieldName], raw, subst); // eslint-disable-line
+      mod[fieldName] = overrideProperty(module[fieldName], raw, subst, ''); // eslint-disable-line
       return mod;
     },
     { name, type }
