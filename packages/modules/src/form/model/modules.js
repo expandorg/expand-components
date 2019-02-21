@@ -8,7 +8,7 @@ export const deepCopyModule = (
   let modules;
 
   if (children) {
-    modules = children.map(child => deepCopyModule(child));
+    modules = children.map(child => deepCopyModule(child, getName));
   }
 
   return {
