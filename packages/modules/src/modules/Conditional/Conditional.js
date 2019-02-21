@@ -43,7 +43,9 @@ export default class Conditional extends Component {
   render() {
     return (
       <ValuesContextClient>
-        {values => <ConditionControl {...this.props} values={values} />}
+        {({ form, values }) => (
+          <ConditionControl {...this.props} form={form} values={values} />
+        )}
       </ValuesContextClient>
     );
   }

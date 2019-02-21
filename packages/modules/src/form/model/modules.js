@@ -11,6 +11,17 @@ export const getModuleControlsMap = (
     {}
   );
 
+export const getFormModulesNames = (root: Object) => {
+  let names = root.name ? [root.name] : [];
+  if (root.modules) {
+    names = root.modules.reduce(
+      (all, m) => all.concat(getFormModulesNames(m)),
+      names
+    );
+  }
+  return names;
+};
+
 export const groupModulesByCategory = (controls: Array<Object>) => {
   const grouped = controls.reduce((map, Control) => {
     if (Control.module.editor && Control.module.editor.category) {

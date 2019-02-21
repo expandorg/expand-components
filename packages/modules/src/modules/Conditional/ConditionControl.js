@@ -3,13 +3,18 @@ import PropTypes from 'prop-types';
 
 import debounce from 'debounce';
 
-import evaluateCondition from './evaluateCondition';
+import { calculateCondition, getFormValues } from './calculateCondition';
+
+import { getFormModulesNames } from '../../form/model/modules';
+
+import { formProps } from '../../form/components/Form';
 
 const DEBOUNCE = 100;
 
 export default class ConditionalControl extends Component {
   static propTypes = {
     condition: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
+    form: formProps.isRequired,
     values: PropTypes.object, // eslint-disable-line
   };
 
@@ -21,30 +26,49 @@ export default class ConditionalControl extends Component {
   constructor(props) {
     super(props);
 
-    this.reEvaluateCondition = debounce(this.reEvaluateCondition, DEBOUNCE);
+    this.recalculate = debounce(this.recalculate, DEBOUNCE);
+
+    const moduleNames = getFormModulesNames(props.form);
+
+    const values = getFormValues(props.values, moduleNames);
+    const visible = calculateCondition(props.condition, values);
 
     this.state = {
-      visible: evaluateCondition(props.condition, props.values),
+      form: props.form, // eslint-disable-line react/no-unused-state
+      moduleNames,
+      visible,
     };
+  }
+
+  static getDerivedStateFromProps({ form }, state) {
+    if (form !== state.form) {
+      return {
+        form,
+        moduleNames: getFormModulesNames(form),
+      };
+    }
+    return null;
   }
 
   componentDidUpdate({ values: prevValues }) {
     const { values } = this.props;
     if (values !== prevValues) {
-      this.reEvaluateCondition();
+      this.recalculate();
     }
   }
 
   componentWillUnmount() {
-    this.reEvaluateCondition.clear();
+    this.recalculate.clear();
   }
 
-  reEvaluateCondition = () => {
+  recalculate = () => {
     const { condition, values } = this.props;
-    const { visible: old } = this.state;
+    const { visible: current, moduleNames } = this.state;
 
-    const visible = evaluateCondition(condition, values);
-    if (old !== visible) {
+    const formValues = getFormValues(values, moduleNames);
+    const visible = calculateCondition(condition, formValues);
+
+    if (current !== visible) {
       this.setState({ visible });
     }
   };
