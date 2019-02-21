@@ -2,7 +2,7 @@
 import {
   Form,
   formProps,
-  ValuesContext,
+  ValuesContextProvider,
   ValuesContextClient,
   FormData,
   FormDataProvider,
@@ -29,7 +29,7 @@ export {
   formProps,
   FormData,
   FormDataProvider,
-  ValuesContext,
+  ValuesContextProvider,
   ValuesContextClient,
   // base modules
   Module,
