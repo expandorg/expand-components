@@ -16,10 +16,12 @@ export default class ConditionalControl extends Component {
     condition: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
     form: formProps.isRequired,
     values: PropTypes.object, // eslint-disable-line
+    isFormBuilder: PropTypes.bool,
   };
 
   static defaultProps = {
     condition: '',
+    isFormBuilder: false,
     values: null,
   };
 
@@ -74,9 +76,9 @@ export default class ConditionalControl extends Component {
   };
 
   render() {
-    const { children } = this.props;
+    const { children, isFormBuilder } = this.props;
     const { visible } = this.state;
 
-    return visible ? children : null;
+    return visible || isFormBuilder ? children : null;
   }
 }

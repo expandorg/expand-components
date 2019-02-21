@@ -12,10 +12,12 @@ import ConditionControl from './ConditionControl';
 export default class Conditional extends Component {
   static propTypes = {
     condition: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
+    isFormBuilder: PropTypes.bool,
   };
 
   static defaultProps = {
     condition: '',
+    isFormBuilder: false,
   };
 
   static module = {
