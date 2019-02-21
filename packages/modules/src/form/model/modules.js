@@ -1,5 +1,24 @@
 // @flow
 
+export const deepCopyModule = (
+  module: Object,
+  unqiIdGenerator: (type: string) => string
+) => {
+  const { modules: children, type, ...rest } = module;
+  let modules;
+
+  if (children) {
+    modules = children.map(child => deepCopyModule(child));
+  }
+
+  return {
+    ...rest,
+    type,
+    name: unqiIdGenerator(type),
+    modules,
+  };
+};
+
 export const getModuleControlsMap = (
   controls: Array<Object>
 ): ModuleControlsMap =>

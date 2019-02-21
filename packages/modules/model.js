@@ -20,6 +20,8 @@ import {
 import {
   getModuleControlsMap,
   groupModulesByCategory,
+  getFormModulesNames,
+  deepCopyModule,
 } from './src/form/model/modules';
 
 import { getModuleTypes, getReasons } from './src/form/model/reportReasons';
@@ -39,6 +41,8 @@ export {
   // modules
   getModuleControlsMap,
   groupModulesByCategory,
+  getFormModulesNames,
+  deepCopyModule,
   // reasons
   getModuleTypes,
   getReasons,
