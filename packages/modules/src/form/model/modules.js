@@ -2,7 +2,7 @@
 
 export const deepCopyModule = (
   module: Object,
-  unqiIdGenerator: (type: string) => string
+  getName: (m: Object) => string = m => m.name
 ) => {
   const { modules: children, type, ...rest } = module;
   let modules;
@@ -14,7 +14,7 @@ export const deepCopyModule = (
   return {
     ...rest,
     type,
-    name: unqiIdGenerator(type),
+    name: getName(module),
     modules,
   };
 };
