@@ -16,30 +16,28 @@ export const tokenize = (str: string): Array<string> => {
 const replaceVariable = (value: stirng, variables: Map): string =>
   variables.has(value) ? variables.get(value) : value;
 
+const valueExpr = (expr: string, variables: Map): boolean => {
+  if (expr.startsWith('!')) {
+    const replaced = replaceVariable(expr.substring(1).trim(), variables);
+    return isFalseValue(replaced);
+  }
+  const replaced = replaceVariable(expr, variables);
+  return !isFalseValue(replaced);
+};
+
+const andExpr = (expression: Array<string>, variables: Map): boolean =>
+  expression.reduce((value, expr) => value && valueExpr(expr, variables), true);
+
+const orExpr = (expression: Array<Array<string>>, variables: Map): boolean =>
+  expression.reduce(
+    (or, expr) => (expr.length ? or || andExpr(expr, variables) : or),
+    false
+  );
+
 export const interpretExpression = (
   tree: Array<Array<string>>,
   variables: Map
-): boolean => {
-  const expressionValue = tree.reduce((orValue, andExpression) => {
-    if (!andExpression.length) {
-      return orValue;
-    }
-
-    return (
-      orValue ||
-      andExpression.reduce((andValue, expr) => {
-        if (expr.startsWith('!')) {
-          const replaced = replaceVariable(expr.substring(1).trim(), variables);
-          return andValue && isFalseValue(replaced);
-        }
-        const replaced = replaceVariable(expr, variables);
-        return andValue && !isFalseValue(replaced);
-      }, true)
-    );
-  }, false);
-
-  return expressionValue;
-};
+): boolean => orExpr(tree, variables);
 
 export const calculateCondition = (condition: ?string, variables: ?Object) => {
   if (!condition) {
@@ -55,11 +53,10 @@ export const calculateCondition = (condition: ?string, variables: ?Object) => {
     return false;
   }
 
-  const tokens = tokenize(nomralized);
-
-  const vars = getVariablesMap(variables || {}, k => `$(${k})`);
-
-  return interpretExpression(tokens, vars);
+  return interpretExpression(
+    tokenize(nomralized),
+    getVariablesMap(variables || {}, k => `$(${k})`)
+  );
 };
 
 export const getFormValues = (values: ?Object, names: Array<string>) =>

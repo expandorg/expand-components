@@ -78,6 +78,30 @@ import ModulesPlayground from '../../form/components/Playground/ModulesPlaygroun
         }],
       },
       {
+        type: 'text',
+        name: 'p3',
+        style: 'h2',
+        align: 'center',
+        content: 'Controlled with input'
+      },
+      {
+        name: "input-2",
+        type: "input",
+        placeholder: 'type value',
+        inputType: 'text',
+      },
+      {
+        name: "conditional-3",
+        type: "conditional",
+        condition: "$(input-2)",
+        modules: [{
+          type: 'text',
+          name: 'p4',
+          style: 'body',
+          content: 'Hidden text'
+        }],
+      },
+      {
         name: 'submit',
         type: 'submit',
         caption: 'Submit',
