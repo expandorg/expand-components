@@ -7,29 +7,28 @@ import { validateForm } from '@expandorg/validation';
 import { ErrorMessage } from '@expandorg/components';
 
 import Validation from '../Validation';
-
-import { overrideFormVars, getInitialFormValues } from '../../model/variables';
-
+import { ExecutionContextProvider } from './ExecutionContext';
 import formProps from './formProps';
 
 import { getModuleControlsMap } from '../../model/modules';
-
-import { ValuesContextProvider } from './ValuesContext';
-
 import { formValidationRules } from '../../model/validation';
+import { overrideFormVars, getInitialFormValues } from '../../model/variables';
 
 import styles from './Form.module.styl';
 
 export default class Form extends Component {
   static propTypes = {
     className: PropTypes.string,
+
     form: formProps.isRequired,
-    errors: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
-    isSubmitting: PropTypes.bool,
-    controls: PropTypes.arrayOf(PropTypes.func), // eslint-disable-line
     validation: PropTypes.bool,
+    errors: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
+
+    services: PropTypes.instanceOf(Map),
+    controls: PropTypes.arrayOf(PropTypes.func).isRequired, // eslint-disable-line
     variables: PropTypes.object, // eslint-disable-line
-    isFormBuilder: PropTypes.bool,
+
+    isSubmitting: PropTypes.bool,
     onSubmit: PropTypes.func.isRequired,
     onModuleError: PropTypes.func,
     onNotify: PropTypes.func,
@@ -37,9 +36,8 @@ export default class Form extends Component {
 
   static defaultProps = {
     className: null,
-    controls: [],
+    services: new Map(),
     isSubmitting: false,
-    isFormBuilder: false,
     validation: true,
     errors: null,
     onModuleError: Function.prototype,
@@ -116,10 +114,11 @@ export default class Form extends Component {
     const {
       className,
       isSubmitting,
-      isFormBuilder,
       onModuleError,
       children,
       onNotify,
+      variables,
+      services,
     } = this.props;
 
     const { values, errors, form, controls } = this.state;
@@ -127,10 +126,7 @@ export default class Form extends Component {
     const props = {
       controls,
       values,
-
       isSubmitting,
-      isFormBuilder,
-
       onChange: this.handleChange,
       onSubmit: this.handleSubmit,
       onModuleError,
@@ -138,22 +134,25 @@ export default class Form extends Component {
     };
 
     return (
-      <ValuesContextProvider form={form} values={values} controls={controls}>
+      <ExecutionContextProvider
+        form={form}
+        values={values}
+        services={services}
+        variables={variables}
+        controls={controls}
+      >
         <form
           className={cn(styles.container, className)}
           onSubmit={this.handleSubmit}
         >
           {form.modules.map(module => (
             <Validation key={module.name} name={module.name} errors={errors}>
-              {children({
-                module,
-                ...props,
-              })}
+              {children({ module, ...props })}
             </Validation>
           ))}
           <ErrorMessage className={styles.error} errors={errors} />
         </form>
-      </ValuesContextProvider>
+      </ExecutionContextProvider>
     );
   }
 }

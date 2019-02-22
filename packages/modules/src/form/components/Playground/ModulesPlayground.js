@@ -11,7 +11,7 @@ import FileUploadServiceMock from './FileUploadServiceMock';
 
 import styles from './ModulesPlayground.module.styl';
 
-const fileUploadService = new FileUploadServiceMock();
+const services = new Map([['fileUpload', new FileUploadServiceMock()]]);
 
 export default class ModulesPlayground extends Component {
   static propTypes = {
@@ -22,7 +22,6 @@ export default class ModulesPlayground extends Component {
     formData: {
       allowedRetries: 3,
       currentTry: 1,
-      fileUploadService,
     },
     notification: null,
   };
@@ -46,6 +45,7 @@ export default class ModulesPlayground extends Component {
             <Form
               controls={moduleControls}
               form={form}
+              services={services}
               className={styles.form}
               onSubmit={this.handleSubmit}
               onNotify={this.handleNotify}

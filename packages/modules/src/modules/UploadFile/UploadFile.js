@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { rules } from '@expandorg/validation';
 
-import { FormData } from '../../form/components/Form';
+import { ExecutionContextClient } from '../../form/components/Form';
 
 import {
   PropControlTypes,
@@ -82,16 +82,16 @@ export default class UploadFile extends Component {
     const { value, fileType, size, onNotify } = this.props;
 
     return (
-      <FormData>
-        {({ formData }) => {
-          if (!formData || !formData.fileUploadService) {
+      <ExecutionContextClient>
+        {({ services }) => {
+          if (!services.has('fileUpload')) {
             return null;
           }
 
           return (
             <div className={styles.container}>
               <UploadControl
-                fileUploadService={formData.fileUploadService}
+                fileUploadService={services.get('fileUpload')}
                 onChange={this.handleChange}
                 value={value}
                 sizeLimit={fileSizes[size]}
@@ -101,7 +101,7 @@ export default class UploadFile extends Component {
             </div>
           );
         }}
-      </FormData>
+      </ExecutionContextClient>
     );
   }
 }

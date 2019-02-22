@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { ValuesContextClient } from '../../form/components/Form';
+import { ExecutionContextClient } from '../../form/components/Form';
 import {
   PropControlTypes,
   ModuleCategories,
@@ -44,11 +44,16 @@ export default class Conditional extends Component {
 
   render() {
     return (
-      <ValuesContextClient>
-        {({ form, values }) => (
-          <ConditionControl {...this.props} form={form} values={values} />
+      <ExecutionContextClient>
+        {({ form, values, variables }) => (
+          <ConditionControl
+            {...this.props}
+            form={form}
+            values={values}
+            variables={variables}
+          />
         )}
-      </ValuesContextClient>
+      </ExecutionContextClient>
     );
   }
 }
