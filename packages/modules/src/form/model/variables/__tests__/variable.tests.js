@@ -62,9 +62,7 @@ describe('form variables', () => {
       };
       const result = applyVariables(module, vars);
       expect(result).toEqual({
-        name: undefined,
-        type: undefined,
-        content: '$(bar)',
+        content: '',
       });
     });
 
@@ -75,6 +73,7 @@ describe('form variables', () => {
         test: '$(baz)',
         content: '$(foo) bar',
         content2: '$(foo) $(bar) + $(bar1)',
+        content3: 'test $(baz) $(empty)',
       };
       const vars = {
         foo: 'bar',
@@ -89,6 +88,7 @@ describe('form variables', () => {
         test: 1,
         content: 'bar bar',
         content2: 'bar  + ',
+        content3: 'test 1 ',
       });
     });
 

@@ -30,18 +30,33 @@ const overrideProperty = (
   return value;
 };
 
-const applyVariables = (module: Module, variables: Object): Module => {
+type FilterProperty = (module: Object, propertyName: string) => boolean;
+
+export const variablesPropertyFilter: FilterProperty = (
+  module: Object,
+  propertyName: string
+) => {
+  if (propertyName === 'type' || propertyName === 'name') {
+    return false;
+  }
+  return true;
+};
+
+const applyVariables = (
+  module: Module,
+  variables: Object,
+  filter: FilterProperty = variablesPropertyFilter
+): Module => {
   const raw = getVariablesMap(variables);
   const subst = getVariablesMap(variables, k => `$(${k})`);
 
-  const { name, type, ...rest } = module;
-  return Reflect.ownKeys(rest).reduce(
-    (mod, fieldName) => {
-      mod[fieldName] = overrideProperty(module[fieldName], raw, subst); // eslint-disable-line
-      return mod;
-    },
-    { name, type }
-  );
+  return Reflect.ownKeys(module).reduce((mod, fieldName) => {
+    mod[fieldName] = filter(mod, fieldName)
+      ? overrideProperty(module[fieldName], raw, subst, '')
+      : module[fieldName];
+
+    return mod;
+  }, {});
 };
 
 export default applyVariables;

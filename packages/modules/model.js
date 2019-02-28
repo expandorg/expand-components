@@ -7,6 +7,7 @@ import {
 
 import {
   applyVariables,
+  variablesPropertyFilter,
   getVariablesMap,
   getInitialFormValues,
   overrideFormVars,
@@ -33,6 +34,7 @@ export {
   // variabels
   overrideFormVars,
   applyVariables,
+  variablesPropertyFilter,
   getVariablesMap,
   getInitialFormValues,
   // verification
