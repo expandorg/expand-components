@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { ExecutionContextClient } from '../../form/components/Form';
+import { ExecutionContextClient } from '../../form/components/ExecutionContext';
 import {
   PropControlTypes,
   ModuleCategories,

@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import Validation from '../Validation';
+import { Logic } from '../Logic';
+
 import moduleProps from './moduleProps';
 
 export default class Module extends Component {
@@ -9,6 +12,7 @@ export default class Module extends Component {
 
     controls: PropTypes.object.isRequired, // eslint-disable-line
     values: PropTypes.any, // eslint-disable-line
+    errors: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
 
     isSubmitting: PropTypes.bool.isRequired,
     isFormBuilder: PropTypes.bool,
@@ -21,6 +25,7 @@ export default class Module extends Component {
 
   static defaultProps = {
     values: undefined,
+    errors: null,
     isFormBuilder: false,
     onChange: Function.prototype,
     onSubmit: Function.prototype,
@@ -32,6 +37,7 @@ export default class Module extends Component {
     const {
       values,
       controls,
+      errors,
 
       isSubmitting,
       isFormBuilder,
@@ -46,6 +52,7 @@ export default class Module extends Component {
       return (
         <Module
           module={modules}
+          errors={errors}
           values={values}
           controls={controls}
           isSubmitting={isSubmitting}
@@ -60,6 +67,7 @@ export default class Module extends Component {
     return modules.map(module => (
       <Module
         key={module.name}
+        errors={errors}
         module={module}
         values={values}
         controls={controls}
@@ -84,6 +92,7 @@ export default class Module extends Component {
       onModuleError,
       onNotify,
       controls,
+      errors,
     } = this.props;
 
     const Control = controls[module.type];
@@ -98,18 +107,22 @@ export default class Module extends Component {
     const hasChildren = modules !== null && modules !== undefined;
 
     return (
-      <Control
-        {...rest}
-        value={value}
-        onChange={onChange}
-        onSubmit={onSubmit}
-        onModuleError={onModuleError}
-        isSubmitting={isSubmitting}
-        isFormBuilder={isFormBuilder}
-        onNotify={onNotify}
-      >
-        {hasChildren && this.renderModules(modules)}
-      </Control>
+      <Logic module={module} isFormBuilder={isFormBuilder}>
+        <Validation name={module.name} errors={errors}>
+          <Control
+            {...rest}
+            value={value}
+            onChange={onChange}
+            onSubmit={onSubmit}
+            onModuleError={onModuleError}
+            isSubmitting={isSubmitting}
+            isFormBuilder={isFormBuilder}
+            onNotify={onNotify}
+          >
+            {hasChildren && this.renderModules(modules)}
+          </Control>
+        </Validation>
+      </Logic>
     );
   }
 }

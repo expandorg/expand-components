@@ -1,4 +1,5 @@
 // @flow
+import type { Form } from '../types.flow';
 
 const getInitialFormValues = (form: Form): Form => {
   const initialValues = form.modules.reduce((result, module) => {

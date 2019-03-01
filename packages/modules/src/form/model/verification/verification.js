@@ -1,5 +1,6 @@
 // @flow
 import { getModuleControlsMap } from '../modules';
+import type { Module, ModuleControl } from '../types.flow';
 
 export const avg = (values: Array<?number>): number => {
   const filtered = values.filter(v => typeof v !== 'undefined');
@@ -20,13 +21,13 @@ export const calculateModuleScore = (
   return Control.module.verificationScore(value);
 };
 
-type totalScoreFn = (scores: Array<?number>) => number;
+type TotalScoreFn = (scores: Array<?number>) => number;
 
 export const calculateVerificationScore = (
   response: Object,
   formModules: Array<Module>,
-  controls: Array<Object>,
-  scoreMethod: totalScoreFn = avg
+  controls: Array<ModuleControl>,
+  scoreMethod: TotalScoreFn = avg
 ) => {
   if (!response) {
     return 0;

@@ -30,13 +30,20 @@ const overrideProperty = (
   return value;
 };
 
-type FilterProperty = (module: Object, propertyName: string) => boolean;
+type FilterProperty = (
+  module: Object,
+  propertyName: string,
+  reserved?: Set
+) => boolean;
+
+const reserveredProperties = new Set(['type', 'name', 'validation', 'logic']);
 
 export const variablesPropertyFilter: FilterProperty = (
-  module: Object,
-  propertyName: string
+  module: Module,
+  propertyName: string,
+  reserved: Set = reserveredProperties
 ) => {
-  if (propertyName === 'type' || propertyName === 'name') {
+  if (reserved.has(propertyName)) {
     return false;
   }
   return true;

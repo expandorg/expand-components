@@ -22,7 +22,7 @@ export const getModuleTypes = (
 
 export const getReasons = (
   modules: Array<Module>,
-  modulesMap: Object
+  modulesMap: ModuleControlsMap
 ): Array<string> => {
   const types = Array.from(new Set(getModuleTypes(modules)));
   const formReasons = types.reduce((all, type) => {

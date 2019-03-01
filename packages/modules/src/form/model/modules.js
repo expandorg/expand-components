@@ -1,8 +1,8 @@
 // @flow
 
 export const deepCopyModule = (
-  module: Object,
-  getName: (m: Object) => string = m => m.name
+  module: Module,
+  getName: (m: Module) => string = m => m.name
 ) => {
   const { modules: children, type, ...rest } = module;
   let modules;
@@ -20,7 +20,7 @@ export const deepCopyModule = (
 };
 
 export const getModuleControlsMap = (
-  controls: Array<Object>
+  controls: Array<ModuleControl>
 ): ModuleControlsMap =>
   controls.reduce(
     (map, Control) => ({
@@ -30,7 +30,7 @@ export const getModuleControlsMap = (
     {}
   );
 
-export const getFormModulesNames = (root: Object) => {
+export const getFormModulesNames = (root: Module | Form) => {
   let names = root.name ? [root.name] : [];
   if (root.modules) {
     names = root.modules.reduce(
@@ -41,7 +41,7 @@ export const getFormModulesNames = (root: Object) => {
   return names;
 };
 
-export const groupModulesByCategory = (controls: Array<Object>) => {
+export const groupModulesByCategory = (controls: Array<ModuleControl>) => {
   const grouped = controls.reduce((map, Control) => {
     if (Control.module.editor && Control.module.editor.category) {
       let category = map[Control.module.editor.category];

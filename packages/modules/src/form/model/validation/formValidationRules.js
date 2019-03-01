@@ -1,6 +1,8 @@
 // @flow
 import getDefaultRuleMessage from './getDefaultRuleMessage';
 
+import type { Module } from '../types.flow';
+
 const getFieldRules = (validation: Object, rules: Object) =>
   Reflect.ownKeys(validation)
     .filter(ruleName => !!rules[ruleName])
@@ -13,7 +15,10 @@ const getFieldRules = (validation: Object, rules: Object) =>
       return [rules[ruleName], message];
     });
 
-const formValidationRules = (modules: Array<Module>, controlsMap: Object) =>
+const formValidationRules = (
+  modules: Array<Module>,
+  controlsMap: ModuleControlsMap
+) =>
   modules.reduce((formRules, module) => {
     const Control = controlsMap[module.type];
     if (!Control || !Control.module.validation || !module.validation) {

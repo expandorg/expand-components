@@ -6,8 +6,8 @@ import cn from 'classnames';
 import { validateForm } from '@expandorg/validation';
 import { ErrorMessage } from '@expandorg/components';
 
-import Validation from '../Validation';
-import { ExecutionContextProvider } from './ExecutionContext';
+import { ExecutionContextProvider } from '../ExecutionContext';
+
 import formProps from './formProps';
 
 import { getModuleControlsMap } from '../../model/modules';
@@ -126,6 +126,7 @@ export default class Form extends Component {
     const props = {
       controls,
       values,
+      errors,
       isSubmitting,
       onChange: this.handleChange,
       onSubmit: this.handleSubmit,
@@ -145,11 +146,9 @@ export default class Form extends Component {
           className={cn(styles.container, className)}
           onSubmit={this.handleSubmit}
         >
-          {form.modules.map(module => (
-            <Validation key={module.name} name={module.name} errors={errors}>
-              {children({ module, ...props })}
-            </Validation>
-          ))}
+          {form.modules.map(module =>
+            children({ module, key: module.name, ...props })
+          )}
           <ErrorMessage className={styles.error} errors={errors} />
         </form>
       </ExecutionContextProvider>

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { rules } from '@expandorg/validation';
 
-import { ExecutionContextClient } from '../../form/components/Form';
+import { ExecutionContextClient } from '../../form/components/ExecutionContext';
 
 import {
   PropControlTypes,

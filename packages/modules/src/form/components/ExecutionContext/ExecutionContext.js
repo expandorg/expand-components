@@ -1,7 +1,7 @@
 import React, { createContext } from 'react';
 import PropTypes from 'prop-types';
 
-import formProps from './formProps';
+import formProps from '../Form/formProps';
 
 const ExecutionContext = createContext(null);
 
