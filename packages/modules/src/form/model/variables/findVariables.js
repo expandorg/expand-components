@@ -2,7 +2,7 @@
 
 export const getVariableName = (def: string) => def.slice(2, def.length - 1);
 
-export const isVariable = (str: string): string =>
+export const isVariable = (str: string): boolean =>
   str.startsWith('$(') && str.endsWith(')');
 
 const findVariables = (text: string): Array<Object> => {
