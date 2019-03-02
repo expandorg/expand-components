@@ -11,6 +11,9 @@ import {
   getVariablesMap,
   getInitialFormValues,
   overrideFormVars,
+  findVariables,
+  isVariable,
+  getVariableName,
 } from './src/form/model/variables';
 
 import {
@@ -37,6 +40,9 @@ export {
   variablesPropertyFilter,
   getVariablesMap,
   getInitialFormValues,
+  findVariables,
+  isVariable,
+  getVariableName,
   // verification
   calculateModuleScore,
   calculateVerificationScore,
