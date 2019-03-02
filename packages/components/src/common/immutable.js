@@ -15,3 +15,5 @@ export const replaceAtIndex = (
   index: number,
   item: ?any
 ) => [...array.slice(0, index), item, ...array.slice(index + 1)];
+
+export const distinct = (items: Array<string | number>) => [...new Set(items)];

@@ -1,7 +1,7 @@
 // @flow
 import getDefaultRuleMessage from './getDefaultRuleMessage';
 
-import type { Module } from '../types.flow';
+import { type Module } from '../types.flow';
 
 const getFieldRules = (validation: Object, rules: Object) =>
   Reflect.ownKeys(validation)
@@ -18,19 +18,31 @@ const getFieldRules = (validation: Object, rules: Object) =>
 const formValidationRules = (
   modules: Array<Module>,
   controlsMap: ModuleControlsMap
-) =>
-  modules.reduce((formRules, module) => {
+): Object => {
+  const rules = {};
+  if (!modules) {
+    return rules;
+  }
+  return modules.reduce((formRules, module) => {
     const Control = controlsMap[module.type];
-    if (!Control || !Control.module.validation || !module.validation) {
+    if (!module.validation || !Control || !Control.module.validation) {
+      if (module.modules && module.modules) {
+        return {
+          ...formRules,
+          ...formValidationRules(module.modules, controlsMap),
+        };
+      }
       return formRules;
     }
     return {
       ...formRules,
+      ...formValidationRules(module.modules, controlsMap),
       [module.name]: getFieldRules(
         module.validation,
         Control.module.validation
       ),
     };
-  }, {});
+  }, rules);
+};
 
 export default formValidationRules;

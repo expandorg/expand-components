@@ -67,19 +67,20 @@ import ModulesPlayground from '../../form/components/Playground/ModulesPlaygroun
         label: "select me",
       },
       {
-        name: "conditional-c",
-        type: "conditional",
-        condition: "$(checkbox)",
-        modules: [{
-          name: "input",
-          type: "input",
-          placeholder: 'type something',
-          inputType: 'text',
-        }],
+        name: "input",
+        type: "input",
+        placeholder: 'type something',
+        inputType: 'text',
+        logic: {
+          visibility: {
+            condition: ['$(checkbox)', '==', 'true'],
+            success: true,
+          }
+        },
       },
       {
         type: 'text',
-        name: 'p3',
+        name: 'p34',
         style: 'h2',
         align: 'center',
         content: 'Controlled with input'

@@ -1,6 +1,6 @@
 // @flow
 import { getModuleControlsMap } from '../modules';
-import type { Module, ModuleControl } from '../types.flow';
+import { type Module, type ModuleControl } from '../types.flow';
 
 export const avg = (values: Array<?number>): number => {
   const filtered = values.filter(v => typeof v !== 'undefined');

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import { ExecutionContextClient } from '../ExecutionContext';
+import VisibilityLogic from './VisibilityLogic';
 
 import moduleProps from '../Module/moduleProps';
 

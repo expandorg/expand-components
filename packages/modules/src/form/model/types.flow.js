@@ -1,8 +1,4 @@
 // @flow
-export type ConditionalExression = {
-  operand1: ConditionalExression | string,
-  operand2: ConditionalExression | string,
-};
 
 export type Module = {
   name: string,
@@ -12,7 +8,10 @@ export type Module = {
     [key: string]: string | boolean,
   },
   logic?: {
-    visiblity: ConditionalExression,
+    visibility?: {
+      condition: Array<string>,
+      success: boolean,
+    },
   },
   [key: string]: string | Object | number | boolean,
 };

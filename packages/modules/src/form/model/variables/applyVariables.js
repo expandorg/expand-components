@@ -42,12 +42,7 @@ export const variablesPropertyFilter: FilterProperty = (
   module: Module,
   propertyName: string,
   reserved: Set = reserveredProperties
-) => {
-  if (reserved.has(propertyName)) {
-    return false;
-  }
-  return true;
-};
+) => !reserved.has(propertyName);
 
 const applyVariables = (
   module: Module,

@@ -1,7 +1,53 @@
 import getVariablesMap from '../getVariablesMap';
 import applyVariables from '../applyVariables';
+import { findVariables } from '../findVariables';
 
 describe('form variables', () => {
+  describe('findVariables()', () => {
+    it('should return empty array wnen no vars provided', () => {
+      const result = findVariables('');
+      const result2 = findVariables('test testtest');
+
+      expect(result).toEqual([]);
+      expect(result2).toEqual([]);
+    });
+    it('should find single var', () => {
+      const result = findVariables('test $(variable) asdsd');
+
+      expect(result).toEqual([
+        {
+          variable: '$(variable)',
+          name: 'variable',
+          start: 5,
+          end: 16,
+        },
+      ]);
+    });
+    it('should find multiple vars', () => {
+      const result = findVariables('$(v1) test $(v2) asdsd$(v3)');
+
+      expect(result).toEqual([
+        {
+          variable: '$(v1)',
+          name: 'v1',
+          start: 0,
+          end: 5,
+        },
+        {
+          variable: '$(v2)',
+          name: 'v2',
+          start: 11,
+          end: 16,
+        },
+        {
+          variable: '$(v3)',
+          name: 'v3',
+          start: 22,
+          end: 27,
+        },
+      ]);
+    });
+  });
   describe('getVariablesMap()', () => {
     it('should return map: key => value', () => {
       const vars = {
