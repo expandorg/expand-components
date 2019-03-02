@@ -1,6 +1,6 @@
 {
   "name": "@expandorg/modules",
-  "version": "0.2.70",
+  "version": "0.2.71",
   "description": "expand modules",
   "main": "index.js",
   "repository": {
