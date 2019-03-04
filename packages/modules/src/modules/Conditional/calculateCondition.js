@@ -6,7 +6,7 @@ import { getVariablesMap } from '../../form/model/variables';
 const isFalseValue = (value: ?string) =>
   !value || value === '0' || value === 'false';
 
-export const tokenize = (str: string): Array<string> => {
+export const tokenize = (str: string): Array<Array<string>> => {
   const tree = str
     .split('||')
     .map(ors => ors.split('&&').map(exp => exp.trim()));

@@ -10,7 +10,7 @@ Expand UI & Modules is a collection of React components, tools and guidelines fo
 
 
 ## Documentation and live playground
-Detailed documentation and forms playground is available in storybook
+Detailed documentation and forms playground is available in docz
 
 https://expandorg.github.io/expand-components/
 

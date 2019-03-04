@@ -7,6 +7,7 @@ const template = (
 ) =>
   str.replace(/\$\(([^()]+)\)/g, (full, word) => {
     if (variables.has(word)) {
+      // $FlowFixMe
       return variables.get(word);
     }
     return defaultValue !== null && defaultValue !== undefined

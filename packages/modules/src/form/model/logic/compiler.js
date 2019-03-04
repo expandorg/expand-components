@@ -18,7 +18,7 @@ export type Op =
   | '*'
   | '/';
 
-export const ops: Op = [
+export const ops: Array<Op> = [
   '>',
   '<',
   '>=',

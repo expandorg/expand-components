@@ -8,6 +8,7 @@ export const targetIsDescendant = (event: Event, parent: any): boolean => {
     if (node === parent) {
       return true;
     }
+    // $FlowFixMe
     node = node.parentNode;
   }
   return false;
@@ -33,8 +34,11 @@ export const KeyCodes = {
 };
 export const getElementOffset = (el: HTMLElement) => {
   const { top, left } = el.getBoundingClientRect();
+
   return {
+    // $FlowFixMe
     top: top - el.scrollTop - document.documentElement.clientTop,
+    // $FlowFixMe
     left: left - el.scrollLeft - document.documentElement.clientLeft,
   };
 };

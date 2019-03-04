@@ -14,6 +14,10 @@ class FileUploadTaskMock extends FileUploadTask {
   cancelled = false;
 
   async upload() {
+    if (this.file == null || this.file === undefined) {
+      return null;
+    }
+
     const timeout = Math.floor(this.TIME / 100);
 
     for (let i = 0; i < 1; i += 0.01) {
