@@ -25,7 +25,7 @@ export type Form = {
 
 export type ModuleControlMeta = {
   type: string,
-  title?: string,
+  name: string,
   description?: string,
   previewUrl?: string,
   report?: Array<string>,

@@ -1,4 +1,5 @@
 // @flow
+import type { Module, ModuleControlsMap } from './types.flow';
 
 export const getModuleTypes = (
   modules?: Array<Module> | Module
