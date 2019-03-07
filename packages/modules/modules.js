@@ -4,7 +4,6 @@ import Audio from './src/modules/Audio';
 import Checkbox from './src/modules/Checkbox';
 import ClipboardText from './src/modules/ClipboardText';
 import Collapsable from './src/modules/Collapsable';
-import Conditional from './src/modules/Conditional';
 import Dropdown from './src/modules/Dropdown';
 import FlexContainer from './src/modules/FlexContainer';
 import Image from './src/modules/Image';
@@ -28,7 +27,6 @@ export {
   Checkbox,
   ClipboardText,
   Collapsable,
-  Conditional,
   Dropdown,
   FlexContainer,
   Image,

@@ -1,24 +1,9 @@
 // @flow
 
 import { isVariable, getVariableName } from '../variables';
+import type { Expression } from '../types.flow';
 
-export type Op =
-  | '>'
-  | '<'
-  | '>='
-  | '<='
-  | '=='
-  | '!='
-  | '==='
-  | '!=='
-  | '||'
-  | '&&'
-  | '+'
-  | '-'
-  | '*'
-  | '/';
-
-export const ops: Array<Op> = [
+export const ops: Array<string> = [
   '>',
   '<',
   '>=',
@@ -35,13 +20,9 @@ export const ops: Array<Op> = [
   '/',
 ];
 
-export type Term = string | number | [Term, Op, Term];
-
-export type Expression = Term | Array<Term>;
-
 export type CompiledExpression = {
   js: string,
-  variables: Array<string>,
+  variables: { [key: string]: mixed },
 };
 
 export type Token = {
@@ -49,7 +30,7 @@ export type Token = {
   value: string | number | boolean,
 };
 
-const parseBool = (str: string): ?Token =>
+const parseBool = (str: string): Token | null =>
   str === 'true' || str === 'false'
     ? { value: str === 'true', type: 'value' }
     : null;
@@ -89,7 +70,9 @@ export const translate = (expression: Expression): CompiledExpression => {
       const token = parseToken(term);
 
       if (token.type === 'variable') {
+        // $FlowFixMe
         variables[token.value] = 0;
+        // $FlowFixMe
         return `vars["${token.value}"]`;
       }
       return token.value;
@@ -98,7 +81,11 @@ export const translate = (expression: Expression): CompiledExpression => {
   return { js, variables };
 };
 
-export const compile = (expression: Expression): Function => {
+export const compile = (expression: ?Expression): ?Function => {
+  if (!expression) {
+    return null;
+  }
+
   const { js, variables: defaults } = translate(expression);
 
   // eslint-disable-next-line no-new-func
@@ -110,8 +97,9 @@ export const compile = (expression: Expression): Function => {
 
   const compiled = expr();
 
-  return values => {
+  return (values: Object) => {
     const args = { ...defaults, ...values };
+    // $FlowFixMe
     return compiled(args);
   };
 };

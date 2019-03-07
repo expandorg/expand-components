@@ -1,7 +1,7 @@
 // @flow
 import { type Form } from '../types.flow';
 
-const getInitialFormValues = (form: Form): Form => {
+const getInitialFormValues = (form: Form): ?Object => {
   const initialValues = form.modules.reduce((result, module) => {
     const hasInitial =
       module.initial !== null &&

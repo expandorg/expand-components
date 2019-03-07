@@ -13,7 +13,7 @@ class FileUploadTaskMock extends FileUploadTask {
 
   cancelled = false;
 
-  async upload() {
+  async upload(): any {
     if (this.file == null || this.file === undefined) {
       return null;
     }

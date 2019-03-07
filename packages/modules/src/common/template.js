@@ -3,7 +3,7 @@
 const template = (
   str: string,
   variables: Map<string, any>,
-  defaultValue: string
+  defaultValue?: ?string
 ) =>
   str.replace(/\$\(([^()]+)\)/g, (full, word) => {
     if (variables.has(word)) {

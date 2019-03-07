@@ -1,13 +1,13 @@
 // @flow
 import template from '../../../common/template';
-
+import type { Module } from '../types.flow';
 import getVariablesMap from './getVariablesMap';
 
 const overrideProperty = (
   value: any,
   raw: Map<string, any>,
   substitutions: Map<string, any>,
-  defaultValue?: string = null
+  defaultValue?: ?string = null
 ): any => {
   if (Array.isArray(value)) {
     return value.map(item => overrideProperty(item, raw, substitutions));
@@ -30,10 +30,10 @@ const overrideProperty = (
   return value;
 };
 
-type FilterProperty = (
+export type FilterProperty = (
   module: Object,
   propertyName: string,
-  reserved?: Set
+  reserved?: Set<string>
 ) => boolean;
 
 const reserveredProperties = new Set(['type', 'name', 'validation', 'logic']);
@@ -41,7 +41,7 @@ const reserveredProperties = new Set(['type', 'name', 'validation', 'logic']);
 export const variablesPropertyFilter: FilterProperty = (
   module: Module,
   propertyName: string,
-  reserved: Set = reserveredProperties
+  reserved: Set<string> = reserveredProperties
 ) => !reserved.has(propertyName);
 
 const applyVariables = (

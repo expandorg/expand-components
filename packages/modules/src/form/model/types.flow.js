@@ -1,5 +1,11 @@
 // @flow
 
+export type Term = string | Array<Term>;
+
+export type Expression = Array<Term>;
+
+export type LogicAction = 'hide' | 'show';
+
 export type Module = {
   name: string,
   type: string,
@@ -8,10 +14,7 @@ export type Module = {
     [key: string]: string | boolean,
   },
   logic?: {
-    visibility?: {
-      condition: Array<string>,
-      success: boolean,
-    },
+    [key: LogicAction]: ?Expression,
   },
   [key: string]: string | Object | number | boolean,
 };

@@ -1,9 +1,8 @@
 // @flow
 
-import applyVariables, {
-  variablesPropertyFilter,
-  type FilterProperty,
-} from './applyVariables';
+import applyVariables, { variablesPropertyFilter } from './applyVariables';
+import type { FilterProperty } from './applyVariables';
+import type { Form } from '../types.flow';
 
 const overrideFormVars = (
   form: Form,
