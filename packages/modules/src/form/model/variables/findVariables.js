@@ -5,7 +5,7 @@ export const getVariableName = (def: string) => def.slice(2, def.length - 1);
 export const isVariable = (str: string): boolean =>
   str.startsWith('$(') && str.endsWith(')');
 
-const findVariables = (text: string): Array<Object> => {
+export const findVariables = (text: string): Array<Object> => {
   const regex = /\$\(([^(^)]+)\)/g;
   const found = [];
   let result = regex.exec(text);
@@ -21,5 +21,3 @@ const findVariables = (text: string): Array<Object> => {
   }
   return found;
 };
-
-export { findVariables };
