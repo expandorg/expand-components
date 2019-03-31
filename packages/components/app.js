@@ -3,6 +3,7 @@ import Navbar from './src/components/app/Navbar';
 import Footer from './src/components/app/Footer';
 import { Page, PageDark, NotFound } from './src/components/app/Page';
 import { SidebarLink, Sidebar } from './src/components/app/Sidebar';
+import JobLogo from './src/components/app/JobLogo';
 import {
   Upload,
   UploadImagePreview,
@@ -26,6 +27,7 @@ export {
   Navbar,
   Footer,
   ListNav,
+  JobLogo,
   Page,
   PageDark,
   NotFound,

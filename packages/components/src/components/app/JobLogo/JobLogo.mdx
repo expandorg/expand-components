@@ -1,0 +1,38 @@
+---
+menu: Components
+name: Job Logo
+route: /components-app-joblogo
+
+---
+
+import { Playground, PropsTable } from 'docz'
+import JobLogo from './JobLogo.js'
+
+
+## Job Logo
+
+###Small
+
+<Playground>
+  <div>
+    <JobLogo name="Test Job" />
+    <JobLogo name="Test Job" src="https://portal.expand.org/images/the-q.jpg" />
+  </div>
+</Playground>
+
+
+
+###Large
+
+<Playground>
+  <div>
+    <JobLogo name="Test Job" size="large" src="https://portal.expand.org/images/the-q.jpg" />
+    <JobLogo name="Test Job" size="large" />
+  </div>
+</Playground>
+
+
+### PropTypes
+
+<PropsTable of={JobLogo} />
+
