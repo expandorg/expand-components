@@ -1,0 +1,237 @@
+---
+menu: Components
+name: Tooltip
+route: /components-tooltip
+---
+
+import { Playground, PropsTable } from 'docz'
+
+import { Button } from '../Button/Button.js'
+import Tooltip from './Tooltip.js'
+
+## Image Tooltip
+
+<Playground>
+  {() => {
+    const Btn = Tooltip(Button)
+    return (
+      <div style={{backgroundColor: '#DBEBFF', padding: '20px' }}>
+        <h3>Orientation: Top</h3>
+        <div style={{marginBottom: '20px', marginTop: '10px'}}>
+          <span style={{marginRight: '20px'}}>
+            <Btn
+              tooltip="Top, Left"
+              tooltipPosition="left"
+              tooltipOrientation="top"
+              className="gem-docz-relative"
+            >
+              Left
+            </Btn>
+          </span>
+          <span style={{marginRight: '20px'}}>
+            <Btn
+              tooltip="Top, Center"
+              tooltipPosition="center"
+              tooltipOrientation="top"
+              className="gem-docz-relative"
+            >
+              Center
+            </Btn>
+          </span>
+          <span style={{marginRight: '20px'}}>
+            <Btn
+              tooltip="Top, Right"
+              tooltipPosition="right"
+              tooltipOrientation="top"
+              className="gem-docz-relative"
+            >
+              Right
+            </Btn>
+          </span>
+        </div>
+        <h3>Orientation: Bottom</h3>
+        <div style={{marginBottom: '20px', marginTop: '10px'}}>
+          <span style={{marginRight: '20px'}}>
+            <Btn
+              tooltip="Bottom, Left"
+              tooltipPosition="left"
+              tooltipOrientation="bottom"
+              className="gem-docz-relative"
+            >
+              Left
+            </Btn>
+          </span>
+          <span style={{marginRight: '20px'}}>
+            <Btn
+              tooltip="Bottom, Center"
+              tooltipPosition="center"
+              tooltipOrientation="bottom"
+              className="gem-docz-relative"
+            >
+              Center
+            </Btn>
+          </span>
+          <span style={{marginRight: '20px'}}>
+            <Btn
+              tooltip="Bottom, Right"
+              tooltipPosition="right"
+              tooltipOrientation="bottom"
+              className="gem-docz-relative"
+            >
+              Right
+            </Btn>
+          </span>
+        </div>
+        <h3>Orientation: Right</h3>
+        <div style={{marginBottom: '20px', marginTop: '10px'}}>
+          <span style={{marginRight: '20px'}}>
+            <Btn
+              tooltip={<div><div>Right</div><div>Top</div></div>}
+              tooltipPosition="top"
+              tooltipOrientation="right"
+              className="gem-docz-relative"
+            >
+              Top
+            </Btn>
+          </span>
+          <span style={{marginRight: '20px'}}>
+            <Btn
+              tooltip={<div><div>Right</div><div>Center</div></div>}
+              tooltipPosition="center"
+              tooltipOrientation="right"
+              className="gem-docz-relative"
+            >
+              Center
+            </Btn>
+          </span>
+          <span style={{marginRight: '20px'}}>
+            <Btn
+              tooltip={<div><div>Right</div><div>Bottom</div></div>}
+              tooltipPosition="bottom"
+              tooltipOrientation="right"
+              className="gem-docz-relative"
+            >
+              Bottom
+            </Btn>
+          </span>
+        </div>
+      </div>
+    )
+  }}
+</Playground>
+
+## Image Tooltip
+
+<Playground>
+  {() => {
+    const Btn = Tooltip(Button)
+    return (
+      <div style={{backgroundColor: '#DBEBFF', padding: '20px' }}>
+        <h3>Orientation: Top</h3>
+        <div style={{marginBottom: '20px', marginTop: '10px'}}>
+          <span style={{marginRight: '20px'}}>
+            <Btn
+              tooltip={<img style={{maxWidth: '300px'}} src="https://expand.org/images/image-annotation.png" alt="test" />}
+              tooltipPosition="left"
+              tooltipOrientation="top"
+              className="gem-docz-relative"
+            >
+              Left
+            </Btn>
+          </span>
+          <span style={{marginRight: '20px'}}>
+            <Btn
+              tooltip={<img style={{maxWidth: '300px'}} src="https://expand.org/images/image-annotation.png" alt="test" />}
+              tooltipPosition="center"
+              tooltipOrientation="top"
+              className="gem-docz-relative"
+            >
+              Center
+            </Btn>
+          </span>
+          <span style={{marginRight: '20px'}}>
+            <Btn
+              tooltip={<img style={{maxWidth: '300px'}} src="https://expand.org/images/image-annotation.png" alt="test" />}
+              tooltipPosition="right"
+              tooltipOrientation="top"
+              className="gem-docz-relative"
+            >
+              Right
+            </Btn>
+          </span>
+        </div>
+        <h3>Orientation: Bottom</h3>
+        <div style={{marginBottom: '20px', marginTop: '10px'}}>
+          <span style={{marginRight: '20px'}}>
+            <Btn
+              tooltip={<img style={{maxWidth: '300px'}} src="https://expand.org/images/image-annotation.png" alt="test" />}
+              tooltipPosition="left"
+              tooltipOrientation="bottom"
+              className="gem-docz-relative"
+            >
+              Left
+            </Btn>
+          </span>
+          <span style={{marginRight: '20px'}}>
+            <Btn
+              tooltip={<img style={{maxWidth: '300px'}} src="https://expand.org/images/image-annotation.png" alt="test" />}
+              tooltipPosition="center"
+              tooltipOrientation="bottom"
+              className="gem-docz-relative"
+            >
+              Center
+            </Btn>
+          </span>
+          <span style={{marginRight: '20px'}}>
+            <Btn
+              tooltip={<img style={{maxWidth: '300px'}} src="https://expand.org/images/image-annotation.png" alt="test" />}
+              tooltipPosition="right"
+              tooltipOrientation="bottom"
+              className="gem-docz-relative"
+            >
+              Right
+            </Btn>
+          </span>
+        </div>
+        <h3>Orientation: Right</h3>
+        <div style={{marginBottom: '20px', marginTop: '10px'}}>
+          <span style={{marginRight: '20px'}}>
+            <Btn
+              tooltip={<img style={{maxWidth: '300px'}} src="https://expand.org/images/image-annotation.png" alt="test" />}
+              tooltipPosition="top"
+              tooltipOrientation="right"
+              className="gem-docz-relative"
+            >
+              Top
+            </Btn>
+          </span>
+          <span style={{marginRight: '20px'}}>
+            <Btn
+              tooltip={<img style={{maxWidth: '300px'}} src="https://expand.org/images/image-annotation.png" alt="test" />}
+              tooltipPosition="center"
+              tooltipOrientation="right"
+              className="gem-docz-relative"
+            >
+              Center
+            </Btn>
+          </span>
+          <span style={{marginRight: '20px'}}>
+            <Btn
+              tooltip={<img style={{maxWidth: '300px'}} src="https://expand.org/images/image-annotation.png" alt="test" />}
+              tooltipPosition="bottom"
+              tooltipOrientation="right"
+              className="gem-docz-relative"
+            >
+              Bottom
+            </Btn>
+          </span>
+        </div>
+      </div>
+    )
+  }}
+</Playground>
+
+## Props
+
+<PropsTable of={Tooltip(() => <div />)} />
+

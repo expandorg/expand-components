@@ -30,6 +30,9 @@ export default {
             margin: 0;
             padding: 0;
           }
+          .gem-docz-relative {
+            position: relative;
+          }
         </style>
       `,
     },

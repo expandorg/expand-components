@@ -8,8 +8,10 @@
 
   background-color: color-white
   color: color-blue-background
+
   font(h4)
   letter-spacing: 0
+  text-align: left
   font-style: normal
 
   box-shadow: heavy-shadow
@@ -17,6 +19,36 @@
   border-radius: 3px
   z-index: 2
   white-space: nowrap;
+
+  &:after
+    position: absolute
+    content: ''
+
+    border: 8px solid transparent
+
+
+  &-orientation
+    &-top
+      bottom: calc(100% + 8px)
+
+      &:after
+        bottom: -15px
+        border-top: 8px solid color-white
+
+    &-bottom
+      top: calc(100% + 8px)
+
+      &:after
+        top: -15px
+        border-bottom: 8px solid color-white
+
+
+    &-right
+      left: calc(100% + 8px)
+
+      &:after
+        left: -15px
+        border-right: 8px solid color-white
 
   &-position
 
@@ -33,45 +65,29 @@
         left: 8px
 
     &-center
-      left: 50%
+      &.gem-tooltip-orientation-top
+      &.gem-tooltip-orientation-bottom
+        left: 50%
+        transform: translateX(-50%)
 
-      transform: translateX(-50%)
+        &:after
+          left: calc(50% - 8px)
 
-      &:after
-        left: calc(50% - 8px)
+      &.gem-tooltip-orientation-right
+        top: 50%
+        transform: translateY(-50%)
 
-  &-orientation
+        &:after
+          top: calc(50% - 8px)
+
     &-top
-      bottom: 40px
+      top: 0
 
       &:after
-        position: absolute
-        content: ''
-
-        bottom: -15px
-        border: 8px solid transparent
-        border-top: 8px solid color-white
+        top: 8px
 
     &-bottom
-      top: 40px
+      bottom: 0
 
       &:after
-        position: absolute
-        content: ''
-
-        top: -15px
-        border: 8px solid transparent
-        border-bottom: 8px solid color-white
-
-
-    &-right
-      top: calc(50% - 24px)
-      left: calc(100% + 10px)
-
-      &:after
-        position: absolute
-        content: ''
-
-        left: -15px
-        border: 8px solid transparent
-        border-right: 8px solid color-white
+        bottom: 8px

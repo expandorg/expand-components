@@ -7,8 +7,14 @@ import './Tooltip.styl';
 export default Wrapped => {
   class Tooltip extends Component {
     static propTypes = {
-      tooltipPosition: PropTypes.oneOf(['left', 'right', 'center']),
-      tooltipOrientation: PropTypes.oneOf(['top', 'bottom', 'left', 'right']),
+      tooltipPosition: PropTypes.oneOf([
+        'top',
+        'bottom',
+        'left',
+        'right',
+        'center',
+      ]),
+      tooltipOrientation: PropTypes.oneOf(['top', 'bottom', 'right']),
       tooltip: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     };
 
@@ -41,10 +47,7 @@ export default Wrapped => {
       const className = cn(
         'gem-tooltip',
         `gem-tooltip-orientation-${tooltipOrientation}`,
-        {
-          [`gem-tooltip-position-${tooltipPosition}`]:
-            tooltipOrientation !== 'left' && tooltipOrientation !== 'right',
-        }
+        `gem-tooltip-position-${tooltipPosition}`
       );
 
       const childProps = {
