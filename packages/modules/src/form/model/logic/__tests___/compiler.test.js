@@ -90,6 +90,13 @@ describe('compiler', () => {
         js: '"adsad adasd" + true * (3 + 3)',
         variables: {},
       });
+
+      expect(
+        translate([['1', '+', '1'], '*', ['3', '+', '3'], '-', ['2', '+', '2']])
+      ).toEqual({
+        js: '(1 + 1) * (3 + 3) - (2 + 2)',
+        variables: {},
+      });
     });
 
     it('should find variables', () => {
