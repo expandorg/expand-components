@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import { NotificationAnimated } from '@expandorg/components/app';
 
@@ -16,6 +17,11 @@ const services = new Map([['fileUpload', new FileUploadServiceMock()]]);
 export default class ModulesPlayground extends Component {
   static propTypes = {
     form: formProps.isRequired,
+    variables: PropTypes.shape({}),
+  };
+
+  static defaultProps = {
+    variables: undefined,
   };
 
   state = {
@@ -35,7 +41,7 @@ export default class ModulesPlayground extends Component {
   };
 
   render() {
-    const { form } = this.props;
+    const { form, variables } = this.props;
     const { formData, notification } = this.state;
 
     return (
@@ -45,6 +51,7 @@ export default class ModulesPlayground extends Component {
             <Form
               controls={moduleControls}
               form={form}
+              variables={variables}
               services={services}
               className={styles.form}
               onSubmit={this.handleSubmit}

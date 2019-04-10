@@ -35,7 +35,11 @@ const parseBool = (str: string): Token | null =>
     ? { value: str === 'true', type: 'value' }
     : null;
 
-export const parseToken = (token: string): Token => {
+export const parseToken = (token: boolean | number | string): Token => {
+  if (typeof token === 'number' || typeof token === 'boolean') {
+    return { value: token, type: 'value' };
+  }
+
   const value = token.trim();
 
   if (!Number.isNaN(+value)) {

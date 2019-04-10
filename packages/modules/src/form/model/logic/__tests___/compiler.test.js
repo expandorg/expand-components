@@ -118,6 +118,7 @@ describe('compiler', () => {
   describe('compile()', () => {
     it('should comile simple', () => {
       expect(compile(['2', '+', '2'])()).toEqual(4);
+      expect(compile([2, '+', '2'])()).toEqual(4);
       expect(compile(['2', '==', '2'])()).toEqual(true);
       expect(compile(['asd', '==', 'asd'])()).toEqual(true);
       expect(compile(['bcd', '!=', 'asd'])()).toEqual(true);
