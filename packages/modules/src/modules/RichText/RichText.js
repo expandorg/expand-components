@@ -15,7 +15,7 @@ export default class RichText extends Component {
 
   static module = {
     type: 'richText',
-    name: 'Rich text',
+    name: 'Text',
     editor: {
       category: ModuleCategories.Text,
       properties: {
