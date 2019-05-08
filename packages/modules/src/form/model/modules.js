@@ -48,6 +48,17 @@ export const getFormModulesNames = (root: Module | Form): Array<mixed> => {
   return names;
 };
 
+export const getFormModules = (root: Module | Form): Array<mixed> => {
+  let result = root.name ? [root] : [];
+  if (root.modules) {
+    result = root.modules.reduce(
+      (all, m) => all.concat(getFormModules(m)),
+      result
+    );
+  }
+  return result;
+};
+
 export const groupModulesByCategory = (controls: Array<ModuleControl>) => {
   const grouped = controls.reduce((map, Control) => {
     if (Control.module.editor && Control.module.editor.category) {
