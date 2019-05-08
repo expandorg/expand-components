@@ -37,7 +37,7 @@ export const getModuleControlsMap = (
     {}
   );
 
-export const getFormModulesNames = (root: Module | Form): Array<mixed> => {
+export const getFormModulesNames = (root: Module | Form): Array<string> => {
   let names = root.name ? [root.name] : [];
   if (root.modules) {
     names = root.modules.reduce(
@@ -45,10 +45,11 @@ export const getFormModulesNames = (root: Module | Form): Array<mixed> => {
       names
     );
   }
+  // $FlowFixMe
   return names;
 };
 
-export const getFormModules = (root: Module | Form): Array<mixed> => {
+export const getFormModules = (root: Module | Form): Array<Module> => {
   let result = root.name ? [root] : [];
   if (root.modules) {
     result = root.modules.reduce(
@@ -56,6 +57,7 @@ export const getFormModules = (root: Module | Form): Array<mixed> => {
       result
     );
   }
+  // $FlowFixMe
   return result;
 };
 
