@@ -32,7 +32,6 @@ export default class Dropdown extends Component {
     isInput: true,
     validation: {
       isRequired: rules.isRequired,
-      isNotEmpty: rules.isNotEmpty,
     },
     editor: {
       category: ModuleCategories.Input,

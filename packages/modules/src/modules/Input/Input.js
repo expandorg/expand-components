@@ -36,7 +36,6 @@ export default class Input extends Component {
     isInput: true,
     validation: {
       isRequired: rules.isRequired,
-      isNotEmpty: rules.isNotEmpty,
       isEmail: rules.isEmail,
       isNumber: rules.isNumber,
     },

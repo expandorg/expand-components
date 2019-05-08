@@ -44,7 +44,6 @@ export default class RegionSelect extends Component {
     isInput: true,
     validation: {
       isRequired: rules.isRequired,
-      isNotEmpty: rules.isNotEmpty,
     },
     report: ['Image is not loading'],
     editor: {

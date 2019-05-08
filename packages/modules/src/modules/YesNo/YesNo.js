@@ -41,7 +41,6 @@ export default class YesNo extends Component {
     isInput: true,
     validation: {
       isRequired: rules.isRequired,
-      isNotEmpty: rules.isNotEmpty,
     },
     verificationScore: value => {
       const numeric = +value;
@@ -87,8 +86,8 @@ export default class YesNo extends Component {
     const { value, idType, noCaption, yesCaption } = this.props;
 
     const options = [
-      { value: 1, caption: yesCaption },
-      { value: 0, caption: noCaption },
+      { value: '1', caption: yesCaption },
+      { value: '0', caption: noCaption },
     ];
 
     return (

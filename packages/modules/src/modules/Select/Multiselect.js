@@ -38,7 +38,6 @@ export default class Multiselect extends Component {
     isInput: true,
     validation: {
       isRequired: rules.isRequiredArray,
-      isNotEmpty: rules.isRequiredArray,
     },
     editor: {
       category: ModuleCategories.Input,

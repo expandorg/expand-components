@@ -2,7 +2,6 @@
 
 const messages = {
   isRequired: 'Is required',
-  isNotEmpty: 'Should not be empty',
   isEmail: 'Should be valid email address',
   isTrue: 'Should be checked',
   isNumber: 'Should be a number',

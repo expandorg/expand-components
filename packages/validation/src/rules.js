@@ -4,7 +4,6 @@ import isNumeric from 'validator/lib/isNumeric';
 
 export const rules = {
   isRequired: (value: any) => typeof value !== 'undefined' && value !== '',
-  isNotEmpty: (value: any) => typeof value !== 'undefined' && value !== '',
   isEmail: (value: any) => typeof value !== 'undefined' && isEmail(value),
   isTrue: (value: any) => value === true,
   isNumber: (value: any) =>

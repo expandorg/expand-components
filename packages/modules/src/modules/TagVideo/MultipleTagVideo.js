@@ -45,7 +45,6 @@ export default class MultipleTagVideo extends Component {
     isInput: true,
     validation: {
       isRequired: rules.isRequiredArray,
-      isNotEmpty: rules.isRequiredArray,
     },
     report: ['video is not loading'],
     editor: {

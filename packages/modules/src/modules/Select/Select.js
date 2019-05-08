@@ -46,7 +46,6 @@ export default class Select extends Component {
     isInput: true,
     validation: {
       isRequired: rules.isRequired,
-      isNotEmpty: rules.isNotEmpty,
     },
     verificationScore: value => {
       const numeric = +value;

@@ -56,7 +56,6 @@ export default class RegionMultiselect extends Component {
     report: ['Image is not loading'],
     validation: {
       isRequired: rules.isRequiredArray,
-      isNotEmpty: rules.isRequiredArray,
     },
     editor: {
       category: ModuleCategories.Image,
