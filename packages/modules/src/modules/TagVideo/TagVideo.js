@@ -69,6 +69,10 @@ export default class TagVideo extends Component {
           type: PropControlTypes.boolean,
           label: 'Read only',
         },
+        initial: {
+          type: PropControlTypes.timelineRange,
+          title: 'Set initial value',
+        },
         hideControls: {
           type: PropControlTypes.boolean,
           label: 'Hide controls',

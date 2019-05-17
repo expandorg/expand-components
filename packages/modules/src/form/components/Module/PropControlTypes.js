@@ -10,6 +10,8 @@ const PropControlTypes = {
   options: 'options',
   modules: 'modules',
   moduleProperyOptions: 'moduleProperyOptions',
+  timelineRange: 'timelineRange',
+  imageRegion: 'imageRegion',
 };
 
 export default PropControlTypes;

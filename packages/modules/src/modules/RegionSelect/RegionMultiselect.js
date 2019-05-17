@@ -65,6 +65,11 @@ export default class RegionMultiselect extends Component {
           placeholder: 'Image Url',
           required: true,
         },
+        initial: {
+          type: PropControlTypes.imageRegion,
+          title: 'Set initial values',
+          multiple: true,
+        },
         readOnly: {
           type: PropControlTypes.boolean,
           label: 'Read only',

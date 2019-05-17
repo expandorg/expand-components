@@ -54,6 +54,10 @@ export default class RegionSelect extends Component {
           placeholder: 'Image Url',
           required: true,
         },
+        initial: {
+          type: PropControlTypes.imageRegion,
+          title: 'Set initial value',
+        },
         readOnly: {
           type: PropControlTypes.boolean,
           label: 'Read only',
