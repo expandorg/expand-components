@@ -14,7 +14,7 @@ export default class Module extends Component {
     values: PropTypes.any, // eslint-disable-line
     errors: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
 
-    isSubmitting: PropTypes.bool.isRequired,
+    isSubmitting: PropTypes.bool,
     isFormBuilder: PropTypes.bool,
 
     onChange: PropTypes.func,
@@ -27,6 +27,7 @@ export default class Module extends Component {
     values: undefined,
     errors: null,
     isFormBuilder: false,
+    isSubmitting: false,
     onChange: Function.prototype,
     onSubmit: Function.prototype,
     onNotify: Function.prototype,
