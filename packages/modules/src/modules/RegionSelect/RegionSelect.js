@@ -56,7 +56,7 @@ export default class RegionSelect extends Component {
         },
         initial: {
           type: PropControlTypes.imageRegion,
-          title: 'Set initial value',
+          title: 'Initial value',
         },
         readOnly: {
           type: PropControlTypes.boolean,

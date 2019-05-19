@@ -13,8 +13,12 @@ import styles from './Submit.module.styl';
 export default class Submit extends Component {
   static propTypes = {
     caption: PropTypes.string.isRequired,
-    isSubmitting: PropTypes.bool.isRequired,
+    isSubmitting: PropTypes.bool,
     onSubmit: PropTypes.func.isRequired,
+  };
+
+  static defaultProps = {
+    isSubmitting: false,
   };
 
   static module = {

@@ -71,7 +71,7 @@ export default class TagVideo extends Component {
         },
         initial: {
           type: PropControlTypes.timelineRange,
-          title: 'Set initial value',
+          title: 'Initial value',
         },
         hideControls: {
           type: PropControlTypes.boolean,
