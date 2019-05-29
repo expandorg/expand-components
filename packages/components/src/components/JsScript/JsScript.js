@@ -4,7 +4,7 @@ import useScript from './useScript';
 
 export default function JsScript({ src, async, defer, disable, children }) {
   const jsLoaded = useScript(src, disable, async, defer);
-  return children({ jsLoaded });
+  return children ? children({ jsLoaded }) : null;
 }
 
 JsScript.propTypes = {
@@ -12,9 +12,6 @@ JsScript.propTypes = {
   async: PropTypes.bool,
   defer: PropTypes.bool,
   disable: PropTypes.bool,
-  services: PropTypes.shape({
-    resolve: PropTypes.func,
-  }).isRequired,
 };
 
 JsScript.defaultProps = {
