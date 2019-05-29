@@ -15,7 +15,9 @@ export default function JsScript(
   useEffect(() => {
     let unsubsribe = null;
     if (!disable) {
-      unsubsribe = jsScripts.addScript(src, async, defer, setLoaded(true));
+      unsubsribe = jsScripts.addScript(src, async, defer, () =>
+        setLoaded(true)
+      );
     }
     return () => {
       if (unsubsribe) {
