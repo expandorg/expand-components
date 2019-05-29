@@ -27,7 +27,7 @@ import ErrorMessage from './src/components/ErrorMessage';
 
 import Input from './src/components/Input';
 
-import { JsScript, withScript } from './src/components/JsScript';
+import { JsScript, withScript, useScript } from './src/components/JsScript';
 import Portal from './src/components/Portal';
 import Panel from './src/components/Panel';
 import Progress from './src/components/Progress';
@@ -37,6 +37,7 @@ import {
   ServicesContext,
   ServiceLocator,
   withServices,
+  useService,
 } from './src/components/ServiceProvider';
 
 import Slider from './src/components/Slider';
@@ -75,6 +76,7 @@ export {
   ErrorMessage,
   Input,
   JsScript,
+  useScript,
   Portal,
   Panel,
   Progress,
@@ -86,6 +88,7 @@ export {
   Tooltip,
   withScript,
   withServices,
+  useService,
   clickOutside,
   deferVisibleRender,
   deferComponentRender,
