@@ -7,14 +7,24 @@ route: /components-app-navbar
 
 ## Navbar
 
-<Playground>
-  <Navbar title="Test" top={false} />
+import { Playground, Props } from 'docz'
+import Navbar from './Navbar.js'
+import { BrowserRouter } from 'react-router-dom';
+
+
+<Playground >
+  <BrowserRouter>
+    <Navbar title="Test" top={false} />
+  </BrowserRouter>
 </Playground>
 
-
-import { Playground, Props } from 'docz'
-
-import Navbar from './Navbar.js'
+<Playground >
+  <BrowserRouter>
+  <div style={{backgroundColor: '#1C2541'}}>
+    <Navbar title="Test" theme="dark" top={false} />
+  </div>
+  </BrowserRouter>
+</Playground>
 
 
 <Props of={Navbar} />

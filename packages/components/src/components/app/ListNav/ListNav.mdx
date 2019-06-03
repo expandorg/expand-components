@@ -8,31 +8,55 @@ route: /components-app-listnav
 ## ListNav
 
 import { Playground, Props } from 'docz'
+import { BrowserRouter } from 'react-router-dom';
 
 import ListNav from './ListNav.js'
 
+<Playground>
+  <BrowserRouter>
+    <ListNav navs={
+      [
+        {
+          href: '/', text: 'All',
+        },
+        {
+          href: '/tasks/scheduled', text: 'Scheduled',
+        },
+        {
+          href: '/tasks/in-progress', text: 'In Progress',
+        },
+        {
+          href: '/tasks/completed', text: 'Completed',
+        },
+      ]}
+    />
+  </BrowserRouter>
+</Playground>
+
 
 <Playground>
-  <ListNav navs={[
-      {
-        href: '/',
-        text: 'All',
-      },
-      {
-        href: '/tasks/scheduled',
-        text: 'Scheduled',
-      },
-      {
-        href: '/tasks/in-progress',
-        text: 'In Progress',
-      },
-      {
-        href: '/tasks/completed',
-        text: 'Completed',
-      },
-    ]}
-  />
+    <div style={{backgroundColor: '#F3F9FF', padding: '40px 0'}}>
+    <BrowserRouter>
+      <ListNav theme="raised" navs={
+        [
+          {
+            href: '/', text: 'All',
+          },
+          {
+            href: '/tasks/scheduled', text: 'Scheduled',
+          },
+          {
+            href: '/tasks/in-progress', text: 'In Progress',
+          },
+          {
+            href: '/tasks/completed', text: 'Completed',
+          },
+        ]}
+      />
+    </BrowserRouter>
+  </div>
 </Playground>
+
 
 
 <Props of={ListNav} />
