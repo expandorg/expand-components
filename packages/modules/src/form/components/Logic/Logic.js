@@ -8,18 +8,18 @@ import moduleProps from '../Module/moduleProps';
 
 export default class Logic extends Component {
   static propTypes = {
-    isFormBuilder: PropTypes.bool,
+    isModulePreview: PropTypes.bool,
     module: moduleProps.isRequired,
   };
 
   static defaultProps = {
-    isFormBuilder: false,
+    isModulePreview: false,
   };
 
   render() {
-    const { children, module, isFormBuilder } = this.props;
+    const { children, module, isModulePreview } = this.props;
 
-    if (!module.logic || isFormBuilder) {
+    if (!module.logic || isModulePreview) {
       return children;
     }
 

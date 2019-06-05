@@ -57,7 +57,7 @@ export default class ModulesPlayground extends Component {
               onSubmit={this.handleSubmit}
               onNotify={this.handleNotify}
             >
-              {moduleProps => <Module {...moduleProps} />}
+              {moduleProps => <Module isModulePreview {...moduleProps} />}
             </Form>
           </FormDataProvider>
         </div>

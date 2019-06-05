@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { ClipboardButton, Input } from '@expandorg/components';
+import { ClipboardButton, Input, VarsPlaceholder } from '@expandorg/components';
 
 import {
   PropControlTypes,
@@ -14,10 +14,12 @@ export default class ClipboardText extends Component {
   static propTypes = {
     text: PropTypes.string,
     label: PropTypes.string,
+    isModulePreview: PropTypes.bool,
   };
 
   static defaultProps = {
     label: null,
+    isModulePreview: false,
     text: '',
   };
 
@@ -43,7 +45,7 @@ export default class ClipboardText extends Component {
   };
 
   render() {
-    const { text, label } = this.props;
+    const { text, label, isModulePreview } = this.props;
     return (
       <div className={styles.container}>
         <Input
@@ -51,6 +53,12 @@ export default class ClipboardText extends Component {
           readOnly
           placeholder={label}
           value={text}
+        />
+        <VarsPlaceholder
+          vval={text}
+          isModulePreview={isModulePreview}
+          inline
+          vcn={styles.ph}
         />
         <ClipboardButton className={styles.copy} value={text}>
           Copy

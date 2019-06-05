@@ -15,7 +15,7 @@ export default class Module extends Component {
     errors: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
 
     isSubmitting: PropTypes.bool,
-    isFormBuilder: PropTypes.bool,
+    isModulePreview: PropTypes.bool,
 
     onChange: PropTypes.func,
     onSubmit: PropTypes.func,
@@ -26,7 +26,7 @@ export default class Module extends Component {
   static defaultProps = {
     values: undefined,
     errors: null,
-    isFormBuilder: false,
+    isModulePreview: false,
     isSubmitting: false,
     onChange: Function.prototype,
     onSubmit: Function.prototype,
@@ -41,7 +41,7 @@ export default class Module extends Component {
       errors,
 
       isSubmitting,
-      isFormBuilder,
+      isModulePreview,
 
       onChange,
       onSubmit,
@@ -57,7 +57,7 @@ export default class Module extends Component {
           values={values}
           controls={controls}
           isSubmitting={isSubmitting}
-          isFormBuilder={isFormBuilder}
+          isModulePreview={isModulePreview}
           onChange={onChange}
           onSubmit={onSubmit}
           onNotify={onNotify}
@@ -72,7 +72,7 @@ export default class Module extends Component {
         module={module}
         values={values}
         controls={controls}
-        isFormBuilder={isFormBuilder}
+        isModulePreview={isModulePreview}
         isSubmitting={isSubmitting}
         onChange={onChange}
         onSubmit={onSubmit}
@@ -88,7 +88,7 @@ export default class Module extends Component {
       values,
       onChange,
       isSubmitting,
-      isFormBuilder,
+      isModulePreview,
       onSubmit,
       onModuleError,
       onNotify,
@@ -108,7 +108,7 @@ export default class Module extends Component {
     const hasChildren = modules !== null && modules !== undefined;
 
     return (
-      <Logic module={module} isFormBuilder={isFormBuilder}>
+      <Logic module={module} isModulePreview={isModulePreview}>
         <Validation name={module.name} errors={errors}>
           <Control
             {...rest}
@@ -117,7 +117,7 @@ export default class Module extends Component {
             onSubmit={onSubmit}
             onModuleError={onModuleError}
             isSubmitting={isSubmitting}
-            isFormBuilder={isFormBuilder}
+            isModulePreview={isModulePreview}
             onNotify={onNotify}
           >
             {hasChildren && this.renderModules(modules)}

@@ -16,14 +16,14 @@ export default class Audio extends Component {
     src: PropTypes.string.isRequired,
     loop: PropTypes.bool,
     // autoPlay: PropTypes.bool,
-    isFormBuilder: PropTypes.bool,
+    isModulePreview: PropTypes.bool,
     onModuleError: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
     // autoPlay: false,
     loop: false,
-    isFormBuilder: false,
+    isModulePreview: false,
   };
 
   static module = {
@@ -66,14 +66,14 @@ export default class Audio extends Component {
   };
 
   render() {
-    const { src, loop, isFormBuilder } = this.props;
+    const { src, loop, isModulePreview } = this.props;
 
     const { playing } = this.state;
 
     return (
       <div className={styles.container}>
         <AudioPlayer
-          disabled={isFormBuilder}
+          isModulePreview={isModulePreview}
           loop={loop}
           audio={src}
           playing={playing}

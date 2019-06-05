@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { Collapsable as UICollapsable } from '@expandorg/components';
+import {
+  Collapsable as UICollapsable,
+  VarsPlaceholder,
+} from '@expandorg/components';
 
 import {
   PropControlTypes,
@@ -15,10 +18,12 @@ export default class Collapsable extends Component {
     header: PropTypes.oneOfType([PropTypes.string, PropTypes.element])
       .isRequired,
     expanded: PropTypes.bool, //eslint-disable-line
+    isModulePreview: PropTypes.bool,
   };
 
   static defaultProps = {
     expanded: false,
+    isModulePreview: false,
   };
 
   static module = {
@@ -69,13 +74,18 @@ export default class Collapsable extends Component {
   };
 
   render() {
-    const { header, children } = this.props;
+    const { header, children, isModulePreview } = this.props;
     const { expanded } = this.state;
     return (
       <UICollapsable
         className={styles.collapsable}
         expanded={expanded}
-        header={<div className={styles.header}>{header}</div>}
+        header={
+          <div className={styles.header}>
+            {header}
+            <VarsPlaceholder vval={header} isModulePreview={isModulePreview} />
+          </div>
+        }
         onToggle={this.handleToggle}
       >
         <div className={styles.container}>{children}</div>

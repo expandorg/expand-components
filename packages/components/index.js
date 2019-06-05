@@ -51,6 +51,7 @@ import deferComponentRender from './src/components/hoc/deferComponentRender';
 import windowResize from './src/components/hoc/windowResize';
 
 import * as Table from './src/components/Table';
+import VarsPlaceholder from './src/components/VarsPlaceholder';
 
 export {
   AutocompleteInput,
@@ -94,4 +95,5 @@ export {
   deferComponentRender,
   windowResize,
   Table,
+  VarsPlaceholder,
 };

@@ -13,15 +13,13 @@ import Checkbox from './Checkbox.js'
 import Pane from '../Panel/Panel.js'
 
 <Playground>
-    {() => (
-      <WithState value={false}>
-        {({value, onChange}) => (
-          <Pane>
-            <Checkbox label="test" value={value} onChange={onChange} />
-          </Pane>
-        )}
-      </WithState>
+  <WithState value={false}>
+    {({value, onChange}) => (
+      <Pane>
+        <Checkbox label="test" value={value} onChange={onChange} />
+      </Pane>
     )}
+  </WithState>
 </Playground>
 
 <Props of={Checkbox} />

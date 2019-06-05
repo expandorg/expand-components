@@ -16,11 +16,13 @@ export default class Checkbox extends Component {
     name: PropTypes.string.isRequired,
     label: PropTypes.string,
     value: PropTypes.bool,
+    isModulePreview: PropTypes.bool,
     onChange: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
     label: '',
+    isModulePreview: false,
     value: undefined,
   };
 
@@ -52,9 +54,10 @@ export default class Checkbox extends Component {
   };
 
   render() {
-    const { label, name, value } = this.props;
+    const { label, name, value, isModulePreview } = this.props;
     return (
       <UICheckbox
+        isModulePreview={isModulePreview}
         className={styles.checkbox}
         value={value}
         label={label}

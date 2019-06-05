@@ -1,6 +1,8 @@
 import React, { Component, createRef } from 'react';
 import PropTypes from 'prop-types';
 
+import { VarsPlaceholder } from '@expandorg/components';
+
 import MediaPlayer from '../MediaPlayer';
 import PlayButton from '../PlayButton';
 
@@ -15,6 +17,7 @@ export default class AudioPlayer extends Component {
     disabled: PropTypes.bool,
     loop: PropTypes.bool,
     playing: PropTypes.bool,
+    isModulePreview: PropTypes.bool,
     onTogglePlay: PropTypes.func.isRequired,
     onReady: PropTypes.func,
     onError: PropTypes.func,
@@ -23,6 +26,7 @@ export default class AudioPlayer extends Component {
   static defaultProps = {
     loop: true,
     disabled: false,
+    isModulePreview: false,
     playing: false,
     onReady: Function.prototype,
     onError: Function.prototype,
@@ -68,6 +72,7 @@ export default class AudioPlayer extends Component {
       onTogglePlay,
       onError,
       disabled,
+      isModulePreview,
     } = this.props;
 
     const { duration, seek, volume } = this.state;
@@ -100,11 +105,14 @@ export default class AudioPlayer extends Component {
             />
             <Volume volume={volume} onChange={this.handleChangeVolume} />
           </div>
-          <Timeline
-            duration={duration}
-            seek={seek}
-            onCursorClick={this.handleCursorClick}
-          />
+          <div className={styles.timelineContainer}>
+            <Timeline
+              duration={duration}
+              seek={seek}
+              onCursorClick={this.handleCursorClick}
+            />
+            <VarsPlaceholder vval={audio} isModulePreview={isModulePreview} />
+          </div>
         </div>
       </div>
     );
