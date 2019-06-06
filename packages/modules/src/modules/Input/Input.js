@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { rules } from '@expandorg/validation';
 
-import { Input as UIInput } from '@expandorg/components';
+import { Input as UIInput, VarsPlaceholder } from '@expandorg/components';
 
 import {
   PropControlTypes,
@@ -19,6 +19,7 @@ export default class Input extends Component {
     placeholder: PropTypes.string,
     value: PropTypes.string,
     initial: PropTypes.string, // eslint-disable-line
+    isModulePreview: PropTypes.bool,
     onChange: PropTypes.func.isRequired,
   };
 
@@ -26,6 +27,7 @@ export default class Input extends Component {
     inputType: 'text',
     value: undefined,
     initial: null,
+    isModulePreview: false,
     placeholder: '',
   };
 
@@ -76,17 +78,30 @@ export default class Input extends Component {
   };
 
   render() {
-    const { inputType, placeholder, value } = this.props;
+    const {
+      inputType,
+      placeholder,
+      value,
+      isModulePreview,
+      initial,
+    } = this.props;
 
     return (
-      <UIInput
-        type={inputType}
-        className={styles.input}
-        onChange={this.handleChange}
-        value={value}
-        autoComplete="off"
-        placeholder={placeholder}
-      />
+      <div className={styles.container}>
+        <UIInput
+          type={inputType}
+          className={styles.input}
+          onChange={this.handleChange}
+          value={value}
+          autoComplete="off"
+          placeholder={placeholder}
+        />
+        <VarsPlaceholder
+          vval={initial}
+          pos="left"
+          isModulePreview={isModulePreview}
+        />
+      </div>
     );
   }
 }

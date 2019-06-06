@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { Button } from '@expandorg/components';
+import { Button, VarsPlaceholder } from '@expandorg/components';
 
 import Modal from '../../components/Modal';
 
@@ -15,10 +15,12 @@ import styles from './Instructions.module.styl';
 export default class Instructions extends Component {
   static propTypes = {
     button: PropTypes.string,
+    isModulePreview: PropTypes.bool,
   };
 
   static defaultProps = {
     button: null,
+    isModulePreview: false,
   };
 
   static module = {
@@ -59,7 +61,7 @@ export default class Instructions extends Component {
   };
 
   render() {
-    const { button, children } = this.props;
+    const { button, children, isModulePreview } = this.props;
     const { visible } = this.state;
 
     return (
@@ -70,6 +72,11 @@ export default class Instructions extends Component {
           onClick={this.handleToggle}
         >
           {button}
+          <VarsPlaceholder
+            vval={button}
+            isModulePreview={isModulePreview}
+            pos="center"
+          />
         </Button>
         <Modal visible={visible} onHide={this.handleToggle} button="Close">
           {children}
