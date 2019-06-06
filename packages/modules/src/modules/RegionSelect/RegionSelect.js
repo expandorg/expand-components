@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 
 import { rules } from '@expandorg/validation';
 
+import { VarsPlaceholder } from '@expandorg/components';
+
 import { ImageRegionSelect } from '../../components/RegionSelect';
 
 import {
@@ -28,6 +30,7 @@ export default class RegionSelect extends Component {
       y2: PropTypes.number,
     }),
     name: PropTypes.string.isRequired,
+    isModulePreview: PropTypes.bool,
     image: PropTypes.string.isRequired,
     onChange: PropTypes.func.isRequired,
   };
@@ -35,6 +38,7 @@ export default class RegionSelect extends Component {
   static defaultProps = {
     value: null,
     readOnly: false,
+    isModulePreview: false,
     initial: null,
   };
 
@@ -75,17 +79,25 @@ export default class RegionSelect extends Component {
   };
 
   render() {
-    const { image, readOnly, initial, value } = this.props;
+    const { image, readOnly, initial, value, isModulePreview } = this.props;
     const rect = readOnly ? initial : value;
     return (
-      <ImageRegionSelect
-        className={styles.region}
-        src={image}
-        value={rect}
-        readOnly={readOnly}
-        displayToggle={readOnly}
-        onChange={this.handleChange}
-      />
+      <div className={styles.container}>
+        <ImageRegionSelect
+          className={styles.region}
+          isModulePreview={isModulePreview}
+          src={image}
+          value={rect}
+          readOnly={readOnly}
+          displayToggle={readOnly}
+          onChange={this.handleChange}
+        />
+        <VarsPlaceholder
+          vval={initial}
+          isModulePreview={isModulePreview}
+          pos="center"
+        />
+      </div>
     );
   }
 }

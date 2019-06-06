@@ -27,6 +27,7 @@ export default class TagVideo extends Component {
     playbackRate: PropTypes.number,
     options: PropTypes.arrayOf(PropTypes.string),
     startTime: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+    isModulePreview: PropTypes.bool,
     onChange: PropTypes.func.isRequired,
     onModuleError: PropTypes.func.isRequired,
   };
@@ -37,6 +38,7 @@ export default class TagVideo extends Component {
     hideControls: false,
     readOnly: false,
     playbackRate: 1,
+    isModulePreview: false,
     options: [],
     startTime: undefined,
   };
@@ -113,12 +115,14 @@ export default class TagVideo extends Component {
       startTime,
       playbackRate,
       hideControls,
+      isModulePreview,
     } = this.props;
     const tag = readOnly ? initial : value;
 
     return (
       <SignleTagVideo
         key={src}
+        isModulePreview={isModulePreview}
         hideControls={hideControls}
         startTime={typeof startTime === 'string' ? +startTime : startTime}
         playbackRate={playbackRate}

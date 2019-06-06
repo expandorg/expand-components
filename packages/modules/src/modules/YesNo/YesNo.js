@@ -27,11 +27,13 @@ export default class YesNo extends Component {
     yesCaption: PropTypes.string.isRequired,
     noCaption: PropTypes.string.isRequired,
     value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    isModulePreview: PropTypes.bool,
     onChange: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
     value: null,
+    isModulePreview: false,
     idType: IdType.small,
   };
 
@@ -83,7 +85,13 @@ export default class YesNo extends Component {
   };
 
   render() {
-    const { value, idType, noCaption, yesCaption } = this.props;
+    const {
+      value,
+      idType,
+      noCaption,
+      yesCaption,
+      isModulePreview,
+    } = this.props;
 
     const options = [
       { value: '1', caption: yesCaption },
@@ -103,6 +111,7 @@ export default class YesNo extends Component {
               key={option.value}
               option={option}
               selected={value === option.value}
+              isModulePreview={isModulePreview}
               onSelect={onSelect}
             />
           )}

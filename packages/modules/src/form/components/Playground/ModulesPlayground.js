@@ -18,10 +18,12 @@ export default class ModulesPlayground extends Component {
   static propTypes = {
     form: formProps.isRequired,
     variables: PropTypes.shape({}),
+    isModulePreview: PropTypes.bool,
   };
 
   static defaultProps = {
     variables: undefined,
+    isModulePreview: true,
   };
 
   state = {
@@ -41,7 +43,7 @@ export default class ModulesPlayground extends Component {
   };
 
   render() {
-    const { form, variables } = this.props;
+    const { form, variables, isModulePreview } = this.props;
     const { formData, notification } = this.state;
 
     return (
@@ -57,7 +59,9 @@ export default class ModulesPlayground extends Component {
               onSubmit={this.handleSubmit}
               onNotify={this.handleNotify}
             >
-              {moduleProps => <Module isModulePreview {...moduleProps} />}
+              {moduleProps => (
+                <Module isModulePreview={isModulePreview} {...moduleProps} />
+              )}
             </Form>
           </FormDataProvider>
         </div>

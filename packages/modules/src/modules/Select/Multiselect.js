@@ -22,12 +22,14 @@ export default class Multiselect extends Component {
       PropTypes.oneOfType([PropTypes.string, PropTypes.number])
     ),
     columns: PropTypes.oneOf([2, 3]),
+    isModulePreview: PropTypes.bool,
     readOnly: PropTypes.bool,
     onChange: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
     value: [],
+    isModulePreview: false,
     columns: 2,
     readOnly: false,
   };
@@ -75,7 +77,7 @@ export default class Multiselect extends Component {
   };
 
   render() {
-    const { value, options, columns, readOnly } = this.props;
+    const { value, options, columns, readOnly, isModulePreview } = this.props;
     const selection = value;
     return (
       <div className={styles.module}>
@@ -89,6 +91,7 @@ export default class Multiselect extends Component {
               key={option.value}
               checkMark
               selected={selection.includes(option.value)}
+              isModulePreview={isModulePreview}
               readOnly={readOnly}
               onSelect={onSelect}
               option={option}

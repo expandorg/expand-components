@@ -31,12 +31,14 @@ export default class ImageRegionMultiselect extends Component {
       })
     ),
     readOnly: PropTypes.bool,
+    isModulePreview: PropTypes.bool,
     displayToggle: PropTypes.bool,
     onChange: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
     className: null,
+    isModulePreview: false,
     values: [],
     readOnly: false,
     displayToggle: false,
@@ -70,49 +72,61 @@ export default class ImageRegionMultiselect extends Component {
   };
 
   render() {
-    const { src, values, className, readOnly, displayToggle } = this.props;
+    const {
+      src,
+      values,
+      className,
+      readOnly,
+      displayToggle,
+      isModulePreview,
+    } = this.props;
     const { showValues } = this.state;
     return (
-      <ImageContainer className={className} src={src}>
+      <ImageContainer
+        src={src}
+        className={className}
+        isModulePreview={isModulePreview}
+      >
         {({ imageWidth, width, height }) => (
-          <SelectRegionBase
-            readOnly={readOnly}
-            className={cn(styles.region, { [styles.readOnly]: readOnly })}
-            key={src}
-            width={width}
-            height={height}
-            onSelectionEnd={rect => this.handleSelect(rect, width, imageWidth)}
-          >
-            {({ selection }) => (
-              <>
-                {showValues &&
-                  values.map((value, index) => (
-                    <Selection
-                      selection={fixRatio(value, width, imageWidth)}
-                      cWidth={width}
-                      cHeight={height}
-                      key={getKey(value)}
-                      editable={!readOnly}
-                      onDelete={() => this.handleDelete(index)}
-                      onResize={resized =>
-                        this.handleResize(resized, width, imageWidth, index)
-                      }
-                    />
-                  ))}
-                <Selection
-                  selection={selection}
-                  cWidth={width}
-                  cHeight={height}
-                />
-                {displayToggle && (
-                  <ValuesToggle
-                    onToggle={this.handleToggle}
-                    value={showValues}
+          <>
+            <SelectRegionBase
+              readOnly={readOnly}
+              className={cn(styles.region, { [styles.readOnly]: readOnly })}
+              key={src}
+              width={width}
+              height={height}
+              onSelectionEnd={rect =>
+                this.handleSelect(rect, width, imageWidth)
+              }
+            >
+              {({ selection }) => (
+                <>
+                  {showValues &&
+                    values.map((value, index) => (
+                      <Selection
+                        selection={fixRatio(value, width, imageWidth)}
+                        cWidth={width}
+                        cHeight={height}
+                        key={getKey(value)}
+                        editable={!readOnly}
+                        onDelete={() => this.handleDelete(index)}
+                        onResize={resized =>
+                          this.handleResize(resized, width, imageWidth, index)
+                        }
+                      />
+                    ))}
+                  <Selection
+                    selection={selection}
+                    cWidth={width}
+                    cHeight={height}
                   />
-                )}
-              </>
+                </>
+              )}
+            </SelectRegionBase>
+            {displayToggle && (
+              <ValuesToggle onToggle={this.handleToggle} value={showValues} />
             )}
-          </SelectRegionBase>
+          </>
         )}
       </ImageContainer>
     );

@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import cn from 'classnames';
 
+import { VarsPlaceholder } from '@expandorg/components';
+
 import { ReactComponent as Checkmark } from '@expandorg/uikit/assets/checkmark-3.svg';
 
 import styles from './Choice.module.styl';
@@ -12,11 +14,13 @@ export default class Choice extends Component {
     selected: PropTypes.bool,
     checkMark: PropTypes.bool,
     readOnly: PropTypes.bool,
+    isModulePreview: PropTypes.bool,
     onSelect: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
     checkMark: false,
+    isModulePreview: false,
     readOnly: false,
     selected: false,
   };
@@ -30,7 +34,13 @@ export default class Choice extends Component {
   };
 
   render() {
-    const { option, selected, readOnly, checkMark } = this.props;
+    const {
+      option,
+      selected,
+      readOnly,
+      checkMark,
+      isModulePreview,
+    } = this.props;
     const classes = cn(styles.container, {
       [styles.selected]: selected,
       [styles.readOnly]: readOnly,
@@ -50,7 +60,10 @@ export default class Choice extends Component {
             />
           </div>
         )}
-        <span className={styles.caption}>{caption}</span>
+        <span className={styles.caption}>
+          {caption}
+          <VarsPlaceholder vval={caption} isModulePreview={isModulePreview} />
+        </span>
       </button>
     );
   }

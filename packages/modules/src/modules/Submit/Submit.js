@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { Button } from '@expandorg/components';
+import { Button, VarsPlaceholder } from '@expandorg/components';
 
 import {
   PropControlTypes,
@@ -14,10 +14,12 @@ export default class Submit extends Component {
   static propTypes = {
     caption: PropTypes.string.isRequired,
     isSubmitting: PropTypes.bool,
+    isModulePreview: PropTypes.bool,
     onSubmit: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
+    isModulePreview: false,
     isSubmitting: false,
   };
 
@@ -40,7 +42,7 @@ export default class Submit extends Component {
   };
 
   render() {
-    const { caption, isSubmitting, onSubmit } = this.props;
+    const { caption, isSubmitting, onSubmit, isModulePreview } = this.props;
     return (
       <Button
         className={styles.submit}
@@ -49,6 +51,11 @@ export default class Submit extends Component {
         disabled={isSubmitting}
       >
         {caption}
+        <VarsPlaceholder
+          vval={caption}
+          isModulePreview={isModulePreview}
+          pos="center"
+        />
       </Button>
     );
   }

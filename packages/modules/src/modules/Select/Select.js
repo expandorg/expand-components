@@ -29,6 +29,7 @@ export default class Select extends Component {
     ]),
     value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     columns: PropTypes.oneOf([2, 3]),
+    isModulePreview: PropTypes.bool,
     readOnly: PropTypes.bool,
     onChange: PropTypes.func.isRequired,
   };
@@ -36,6 +37,7 @@ export default class Select extends Component {
   static defaultProps = {
     value: null,
     readOnly: false,
+    isModulePreview: false,
     columns: 2,
     idType: IdType.small,
   };
@@ -91,7 +93,14 @@ export default class Select extends Component {
   };
 
   render() {
-    const { value, options, columns, readOnly, idType } = this.props;
+    const {
+      value,
+      options,
+      columns,
+      readOnly,
+      idType,
+      isModulePreview,
+    } = this.props;
 
     const selected = value;
 
@@ -108,6 +117,7 @@ export default class Select extends Component {
               key={option.value}
               option={option}
               readOnly={readOnly}
+              isModulePreview={isModulePreview}
               selected={selected === option.value}
               onSelect={onSelect}
             />

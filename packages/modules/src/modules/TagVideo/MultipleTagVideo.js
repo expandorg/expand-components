@@ -27,6 +27,7 @@ export default class MultipleTagVideo extends Component {
     options: PropTypes.arrayOf(PropTypes.string),
     startTime: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     onChange: PropTypes.func.isRequired,
+    isModulePreview: PropTypes.bool,
     onModuleError: PropTypes.func.isRequired,
   };
 
@@ -35,6 +36,7 @@ export default class MultipleTagVideo extends Component {
     options: [],
     readOnly: false,
     hideControls: false,
+    isModulePreview: false,
     playbackRate: 1,
     startTime: undefined,
   };
@@ -98,11 +100,13 @@ export default class MultipleTagVideo extends Component {
       playbackRate,
       readOnly,
       hideControls,
+      isModulePreview,
     } = this.props;
 
     return (
       <UIMultipleTagVideo
         key={src}
+        isModulePreview={isModulePreview}
         playbackRate={playbackRate}
         options={options}
         readOnly={readOnly}

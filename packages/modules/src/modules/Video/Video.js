@@ -17,11 +17,13 @@ export default class Video extends Component {
     // autoPlay: PropTypes.bool,
     // muted: PropTypes.bool,
     src: PropTypes.string.isRequired,
+    isModulePreview: PropTypes.bool,
     onModuleError: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
     loop: false,
+    isModulePreview: false,
     // autoPlay: false,
     // muted: false,
   };
@@ -79,13 +81,14 @@ export default class Video extends Component {
   };
 
   render() {
-    const { src, loop } = this.props;
+    const { src, loop, isModulePreview } = this.props;
     const { playing } = this.state;
 
     return (
       <div className={styles.container}>
         <VideoPlayer
           ref={this.player}
+          isModulePreview={isModulePreview}
           video={src}
           loop={loop}
           playing={playing}
