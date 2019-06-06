@@ -96,7 +96,7 @@ export default class Agreement extends Component {
             <VarsPlaceholder
               vval={button}
               isModulePreview={isModulePreview}
-              inline
+              pos="center"
             />
           </Button>
         )}

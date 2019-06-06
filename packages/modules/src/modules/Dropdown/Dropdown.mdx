@@ -1,0 +1,52 @@
+---
+menu: Modules
+name: Dropdown
+route: /modules-dropdown
+---
+
+# Dropdown Module
+
+## Dropdown properties
+
+| Property       | type           | Required | Default | description  |
+| -------------- | -------------- | -------- | --------| ------------ |
+| *type*         | `dropdown`       | true     | -       | module type  |
+| *name*         | string         | true     | -       | module name  |
+| *label*        | string         | false    | -       | label        |
+| *options*      | `[ string, string... ]`   | []      | -     | array of options   |
+
+## Example
+```jsx
+{
+  name: 'dropdown',
+  type: 'dropdown',
+  label: 'test',
+  options: ['Option 1', 'Option 2', 'Option 2', 'Option 4'],
+}
+```
+
+import ModulesPlayground from '../../form/components/Playground/ModulesPlayground.js'
+
+<ModulesPlayground
+  form={{
+    modules: [
+      {
+        name: 'text',
+        type: 'text',
+        style: 'h3',
+        content: 'Select one',
+      },
+      {
+        name: 'dropdown',
+        type: 'dropdown',
+        label: '$(test)',
+        options: ['Option 1', 'Option 2', 'Option 3', 'Option 4'],
+      },
+      {
+        name: 'submit',
+        type: 'submit',
+        caption: 'Next',
+      },
+    ],
+  }}
+/>

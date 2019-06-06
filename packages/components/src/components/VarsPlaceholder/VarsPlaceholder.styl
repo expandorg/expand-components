@@ -4,10 +4,6 @@
 .gem-varsplaceholder
   box-sizing: border-box
   position absolute
-  left: -2px
-  top: -2px
-  right: -2px
-  bottom: -2px
 
   display: flex;
   align-items: center;
@@ -23,15 +19,23 @@
   text-transform: uppercase;
   text-align: center
 
-  &__inline
+  &__fill
+    left: -2px
+    top: -2px
+    right: -2px
+    bottom: -2px
+
+  &__center
     left: 50%
     top: 50%
     padding: 5px 20px
-
     bottom: auto
     right: auto
-
     transform: translate(-50%, -50%)
 
-
-
+  &__left
+    left: 0
+    top: 0
+    padding: 5px 20px
+    bottom: auto
+    right: auto

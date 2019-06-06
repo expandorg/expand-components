@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { rules } from '@expandorg/validation';
 
-import { Dropdown as UIDropdown } from '@expandorg/components';
+import { Dropdown as UIDropdown, VarsPlaceholder } from '@expandorg/components';
 
 import {
   PropControlTypes,
@@ -18,12 +18,15 @@ export default class Dropdown extends Component {
     options: PropTypes.arrayOf(PropTypes.any).isRequired,
     label: PropTypes.string,
     value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    isModulePreview: PropTypes.bool,
+
     onChange: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
     label: '',
     value: '',
+    isModulePreview: false,
   };
 
   static module = {
@@ -58,15 +61,21 @@ export default class Dropdown extends Component {
   };
 
   render() {
-    const { options, label, value } = this.props;
+    const { options, label, value, isModulePreview } = this.props;
     return (
-      <UIDropdown
-        className={styles.dropdown}
-        value={value}
-        label={label}
-        options={options}
-        onChange={this.handleChange}
-      />
+      <div className={styles.container}>
+        <UIDropdown
+          value={value}
+          label={label}
+          options={options}
+          onChange={this.handleChange}
+        />
+        <VarsPlaceholder
+          vval={label}
+          pos="left"
+          isModulePreview={isModulePreview}
+        />
+      </div>
     );
   }
 }

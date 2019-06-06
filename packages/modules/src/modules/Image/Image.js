@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import { VarsPlaceholder } from '@expandorg/components';
+
 import {
   PropControlTypes,
   ModuleCategories,
@@ -12,6 +14,11 @@ export default class Image extends Component {
   static propTypes = {
     name: PropTypes.string.isRequired,
     src: PropTypes.string.isRequired,
+    isModulePreview: PropTypes.bool,
+  };
+
+  static defaultProps = {
+    isModulePreview: false,
   };
 
   static module = {
@@ -34,10 +41,11 @@ export default class Image extends Component {
   };
 
   render() {
-    const { src, name } = this.props;
+    const { src, name, isModulePreview } = this.props;
     return (
       <div className={styles.container}>
         <img className={styles.img} src={src} alt={name} />
+        <VarsPlaceholder vval={src} isModulePreview={isModulePreview} />
       </div>
     );
   }

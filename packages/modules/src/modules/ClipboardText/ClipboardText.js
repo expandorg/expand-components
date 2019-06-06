@@ -57,8 +57,7 @@ export default class ClipboardText extends Component {
         <VarsPlaceholder
           vval={text}
           isModulePreview={isModulePreview}
-          inline
-          vcn={styles.ph}
+          pos="left"
         />
         <ClipboardButton className={styles.copy} value={text}>
           Copy
