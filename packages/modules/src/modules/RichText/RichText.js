@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
 import {
@@ -8,7 +8,7 @@ import {
 
 import styles from './RichText.module.styl';
 
-export default class RichText extends Component {
+export default class RichText extends PureComponent {
   static propTypes = {
     content: PropTypes.string.isRequired,
   };

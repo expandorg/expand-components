@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+
 import { rules } from '@expandorg/validation';
+
+import { VarsPlaceholder } from '@expandorg/components';
 
 import { ImageTiles as UIImageTiles } from '../../components/ImageTiles';
 
@@ -18,10 +21,12 @@ export default class ImageTiles extends Component {
     image: PropTypes.string.isRequired,
     columns: PropTypes.number,
     rows: PropTypes.number,
+    isModulePreview: PropTypes.bool,
     onChange: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
+    isModulePreview: false,
     columns: 4,
     rows: 4,
     value: [],
@@ -65,7 +70,7 @@ export default class ImageTiles extends Component {
   };
 
   render() {
-    const { value, image, columns, rows } = this.props;
+    const { value, image, columns, rows, isModulePreview } = this.props;
     return (
       <div className={styles.container}>
         <div className={styles.region}>
@@ -76,6 +81,7 @@ export default class ImageTiles extends Component {
             selection={value}
             onChange={this.handleChange}
           />
+          <VarsPlaceholder vval={image} isModulePreview={isModulePreview} />
         </div>
       </div>
     );
