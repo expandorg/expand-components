@@ -90,7 +90,7 @@ describe('form validation', () => {
         }
       );
       expect(field1[0][0]).toEqual(rules.isRequired);
-      expect(field1[0][1]).toEqual('Is required');
+      expect(field1[0][1]).toEqual('Required');
       expect(field1[1][0]).toEqual(isDefined);
       expect(field1[1][1]).toEqual('Invalid');
     });

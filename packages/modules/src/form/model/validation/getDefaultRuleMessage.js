@@ -1,7 +1,7 @@
 // @flow
 
 const messages = {
-  isRequired: 'Is required',
+  isRequired: 'Required',
   isEmail: 'Should be valid email address',
   isTrue: 'Should be checked',
   isNumber: 'Should be a number',
