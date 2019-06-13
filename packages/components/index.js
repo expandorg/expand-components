@@ -46,6 +46,7 @@ import Switch from './src/components/Switch';
 import Tooltip from './src/components/Tooltip';
 
 import clickOutside from './src/components/hoc/clickOutside';
+import useClickOutside from './src/components/hoc/useClickOutside';
 import deferVisibleRender from './src/components/hoc/deferVisibleRender';
 import deferComponentRender from './src/components/hoc/deferComponentRender';
 import windowResize from './src/components/hoc/windowResize';
@@ -90,6 +91,7 @@ export {
   withScript,
   withServices,
   useService,
+  useClickOutside,
   clickOutside,
   deferVisibleRender,
   deferComponentRender,
