@@ -1,18 +1,18 @@
 import { useEffect } from 'react';
-import { targetIsDescendant } from '../../common/dom';
 
 export default function useClickOutside(ref, handler) {
   useEffect(() => {
-    const documentClick = evt => {
-      if (!targetIsDescendant(evt, ref.current)) {
-        handler(evt);
+    const listener = event => {
+      if (!ref.current || ref.current.contains(event.target)) {
+        return;
       }
+      handler(event);
     };
-    document.addEventListener('click', documentClick, true);
-    document.addEventListener('touchstart', documentClick, true);
+    document.addEventListener('click', listener, true);
+    document.addEventListener('touchstart', listener, true);
     return () => {
-      document.removeEventListener('click', documentClick);
-      document.removeEventListener('touchstart', documentClick);
+      document.removeEventListener('click', listener);
+      document.removeEventListener('touchstart', listener);
     };
   }, [ref, handler]);
 }
