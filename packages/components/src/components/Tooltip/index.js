@@ -1,4 +1,5 @@
 // flow
 import Tooltip from './Tooltip';
+import useTooltip from './useTooltip';
 
-export default Tooltip;
+export { Tooltip, useTooltip };

@@ -43,7 +43,7 @@ import {
 import Slider from './src/components/Slider';
 import Switch from './src/components/Switch';
 
-import Tooltip from './src/components/Tooltip';
+import { Tooltip, useTooltip } from './src/components/Tooltip';
 
 import clickOutside from './src/components/hoc/clickOutside';
 import useClickOutside from './src/components/hoc/useClickOutside';
@@ -88,6 +88,7 @@ export {
   ServiceLocator,
   Switch,
   Tooltip,
+  useTooltip,
   withScript,
   withServices,
   useService,
