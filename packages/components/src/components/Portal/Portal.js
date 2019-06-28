@@ -1,17 +1,7 @@
 import React, { Component } from 'react';
 import { createPortal } from 'react-dom';
 
-import PropTypes from 'prop-types';
-
 export default class Portal extends Component {
-  static propTypes = {
-    className: PropTypes.string,
-  };
-
-  static defaultProps = {
-    className: null,
-  };
-
   portal = document.getElementById('portal');
   el = document.createElement('div');
 
@@ -24,8 +14,8 @@ export default class Portal extends Component {
   }
 
   render() {
-    const { children, className } = this.props;
+    const { children, ...rest } = this.props;
 
-    return createPortal(<div className={className}>{children}</div>, this.el);
+    return createPortal(<div {...rest}>{children}</div>, this.el);
   }
 }
