@@ -27,7 +27,7 @@ export default class ClipboardText extends Component {
     type: 'clipboardText',
     name: 'Copy to clipboard',
     editor: {
-      category: ModuleCategories.Text,
+      category: ModuleCategories.Display,
       properties: {
         text: {
           type: PropControlTypes.string,
