@@ -26,7 +26,7 @@ export default class FlexContainer extends Component {
 
   static module = {
     type: 'flex',
-    name: 'Flex Container',
+    name: 'Horizontal alignment',
     editor: {
       category: ModuleCategories.Display,
       properties: {
