@@ -24,6 +24,7 @@ export default class MultipleTagVideo extends Component {
     readOnly: PropTypes.bool,
     hideControls: PropTypes.bool,
     playbackRate: PropTypes.number,
+    autoPlay: PropTypes.bool,
     options: PropTypes.arrayOf(PropTypes.string),
     startTime: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     onChange: PropTypes.func.isRequired,
@@ -35,6 +36,7 @@ export default class MultipleTagVideo extends Component {
     value: [],
     options: [],
     readOnly: false,
+    autoPlay: false,
     hideControls: false,
     isModulePreview: false,
     playbackRate: 1,
@@ -56,6 +58,10 @@ export default class MultipleTagVideo extends Component {
           type: PropControlTypes.string,
           placeholder: 'Video url',
           required: true,
+        },
+        autoPlay: {
+          type: PropControlTypes.boolean,
+          label: 'play video automatically',
         },
         readOnly: {
           type: PropControlTypes.boolean,
@@ -101,11 +107,13 @@ export default class MultipleTagVideo extends Component {
       readOnly,
       hideControls,
       isModulePreview,
+      autoPlay,
     } = this.props;
 
     return (
       <UIMultipleTagVideo
         key={src}
+        autoPlay={autoPlay}
         isModulePreview={isModulePreview}
         playbackRate={playbackRate}
         options={options}

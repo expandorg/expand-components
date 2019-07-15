@@ -14,7 +14,7 @@ export default class Video extends Component {
   static propTypes = {
     name: PropTypes.string.isRequired,
     loop: PropTypes.bool,
-    // autoPlay: PropTypes.bool,
+    autoPlay: PropTypes.bool,
     // muted: PropTypes.bool,
     src: PropTypes.string.isRequired,
     isModulePreview: PropTypes.bool,
@@ -24,7 +24,7 @@ export default class Video extends Component {
   static defaultProps = {
     loop: false,
     isModulePreview: false,
-    // autoPlay: false,
+    autoPlay: false,
     // muted: false,
   };
 
@@ -40,10 +40,10 @@ export default class Video extends Component {
           placeholder: 'Video src',
           required: true,
         },
-        // autoPlay: {
-        //   type: PropControlTypes.boolean,
-        //   label: 'play video automatically',
-        // },
+        autoPlay: {
+          type: PropControlTypes.boolean,
+          label: 'play video automatically',
+        },
         loop: {
           type: PropControlTypes.boolean,
           label: 'Loop video',
@@ -61,9 +61,12 @@ export default class Video extends Component {
 
   player = createRef();
 
-  state = {
-    playing: true,
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      playing: props.autoPlay,
+    };
+  }
 
   handleTogglePlay = playing => {
     this.setState({ playing });

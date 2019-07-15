@@ -17,6 +17,7 @@ export default class SignleTagVideo extends Component {
   static propTypes = {
     video: PropTypes.string.isRequired,
     className: PropTypes.string,
+    autoPlay: PropTypes.bool,
     tag: PropTypes.shape({
       start: PropTypes.number.isRequired,
       end: PropTypes.number.isRequired,
@@ -37,6 +38,7 @@ export default class SignleTagVideo extends Component {
     readOnly: false,
     hideControls: false,
     playbackRate: 1,
+    autoPlay: false,
     isModulePreview: false,
     className: null,
     tag: null,
@@ -44,10 +46,13 @@ export default class SignleTagVideo extends Component {
     onError: Function.prototype,
   };
 
-  state = {
-    duration: 0,
-    playing: true,
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      duration: 0,
+      playing: props.autoPlay,
+    };
+  }
 
   handleVideoReady = duration => {
     this.setState({ duration });

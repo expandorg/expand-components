@@ -15,13 +15,13 @@ export default class Audio extends Component {
     name: PropTypes.string.isRequired,
     src: PropTypes.string.isRequired,
     loop: PropTypes.bool,
-    // autoPlay: PropTypes.bool,
+    autoPlay: PropTypes.bool,
     isModulePreview: PropTypes.bool,
     onModuleError: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
-    // autoPlay: false,
+    autoPlay: false,
     loop: false,
     isModulePreview: false,
   };
@@ -42,19 +42,26 @@ export default class Audio extends Component {
           type: PropControlTypes.boolean,
           label: 'Loop',
         },
+        autoPlay: {
+          type: PropControlTypes.boolean,
+          label: 'Autoplay',
+        },
       },
       defaults: {
         loop: false,
-        // autoPlay: false,
+        autoPlay: false,
         src:
           'https://storage.googleapis.com/media-session/elephants-dream/the-wires.mp3',
       },
     },
   };
 
-  state = {
-    playing: true,
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      playing: props.autoPlay,
+    };
+  }
 
   handleTogglePlay = playing => {
     this.setState({ playing });

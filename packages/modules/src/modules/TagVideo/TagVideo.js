@@ -18,6 +18,7 @@ export default class TagVideo extends Component {
       tag: PropTypes.string,
     }),
     readOnly: PropTypes.bool,
+    autoPlay: PropTypes.bool,
     hideControls: PropTypes.bool,
     initial: PropTypes.shape({
       start: PropTypes.number.isRequired,
@@ -37,6 +38,7 @@ export default class TagVideo extends Component {
     initial: null,
     hideControls: false,
     readOnly: false,
+    autoPlay: false,
     playbackRate: 1,
     isModulePreview: false,
     options: [],
@@ -116,6 +118,7 @@ export default class TagVideo extends Component {
       playbackRate,
       hideControls,
       isModulePreview,
+      autoPlay,
     } = this.props;
     const tag = readOnly ? initial : value;
 
@@ -124,6 +127,7 @@ export default class TagVideo extends Component {
         key={src}
         isModulePreview={isModulePreview}
         hideControls={hideControls}
+        autoPlay={autoPlay}
         startTime={typeof startTime === 'string' ? +startTime : startTime}
         playbackRate={playbackRate}
         video={src}

@@ -35,6 +35,7 @@ export default class MultipleTagVideo extends Component {
       })
     ),
     playbackRate: PropTypes.number,
+    autoPlay: PropTypes.bool,
     readOnly: PropTypes.bool,
     hideControls: PropTypes.bool,
     options: PropTypes.arrayOf(PropTypes.string),
@@ -48,6 +49,7 @@ export default class MultipleTagVideo extends Component {
     startTime: undefined,
     readOnly: false,
     hideControls: false,
+    autoPlay: false,
     isModulePreview: false,
     className: null,
     playbackRate: 1,
@@ -56,11 +58,14 @@ export default class MultipleTagVideo extends Component {
     onError: Function.prototype,
   };
 
-  state = {
-    duration: 0,
-    playing: true,
-    selected: null,
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      duration: 0,
+      playing: props.autoPlay,
+      selected: null,
+    };
+  }
 
   handleVideoReady = duration => {
     this.setState({ duration });
