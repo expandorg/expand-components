@@ -1,0 +1,11 @@
+.DS_Store
+.Spotlight-V100
+.Trashes
+.npm
+.settings/
+.node-gyp
+node_modules
+yarn-error.log
+npm-debug.log
+.cache
+.vscode

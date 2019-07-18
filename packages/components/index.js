@@ -46,7 +46,14 @@ import Switch from './src/components/Switch';
 import { Tooltip, useTooltip } from './src/components/Tooltip';
 
 import clickOutside from './src/components/hoc/clickOutside';
-import useClickOutside from './src/components/hoc/useClickOutside';
+
+import useClickOutside from './src/components/hooks/useClickOutside';
+import useClientRect from './src/components/hooks/useClientRect';
+import useLocalStorage from './src/components/hooks/useLocalStorage';
+import usePrevious from './src/components/hooks/usePrevious';
+import useSyncedState from './src/components/hooks/useSyncedState';
+import useToggle from './src/components/hooks/useToggle';
+
 import deferVisibleRender from './src/components/hoc/deferVisibleRender';
 import deferComponentRender from './src/components/hoc/deferComponentRender';
 import windowResize from './src/components/hoc/windowResize';
@@ -88,12 +95,17 @@ export {
   ServiceLocator,
   Switch,
   Tooltip,
-  useTooltip,
   withScript,
   withServices,
   useService,
   useClickOutside,
   clickOutside,
+  useLocalStorage,
+  useTooltip,
+  useClientRect,
+  usePrevious,
+  useSyncedState,
+  useToggle,
   deferVisibleRender,
   deferComponentRender,
   windowResize,
