@@ -1,4 +1,5 @@
 // @flow
 import Input from './Input';
+import InputLabel from './InputLabel';
 
-export default Input;
+export { Input, InputLabel };

@@ -2,9 +2,11 @@ import React, { Component, createRef } from 'react';
 import PropTypes from 'prop-types';
 import cn from 'classnames';
 
+import { ReactComponent as ArrowDown } from '@expandorg/uikit/assets/arrow-down.svg';
+
 import { targetIsDescendant, KeyCodes } from '../../common/dom';
 
-import Input from '../Input';
+import { Input } from '../Input';
 import Suggestions from './Suggestions';
 import Suggestion from './Suggestion';
 
@@ -17,8 +19,8 @@ export default class AutocompleteInput extends Component {
     value: PropTypes.string,
     className: PropTypes.string,
     allowAdd: PropTypes.bool,
-    clear: PropTypes.bool,
     options: PropTypes.arrayOf(PropTypes.string),
+    theme: PropTypes.oneOf(['default', 'white']),
     onChange: PropTypes.func.isRequired,
     onSelect: PropTypes.func,
     filterFn: PropTypes.func,
@@ -26,8 +28,8 @@ export default class AutocompleteInput extends Component {
 
   static defaultProps = {
     value: '',
-    clear: false,
     allowAdd: false,
+    theme: 'default',
     options: [],
     className: null,
     filterFn: containsFilter,
@@ -132,11 +134,6 @@ export default class AutocompleteInput extends Component {
     this.blur();
   };
 
-  handleClear = evt => {
-    evt.preventDefault();
-    this.handleSelect('');
-  };
-
   render() {
     const {
       value,
@@ -146,13 +143,18 @@ export default class AutocompleteInput extends Component {
       onChange,
       filterFn,
       allowAdd,
-      clear,
+      theme,
       ...rest
     } = this.props;
+
     const { focus, filtered } = this.state;
     return (
       <div
-        className={cn('gem-autocomplete', className)}
+        className={cn(
+          'gem-autocomplete',
+          `gem-autocomplete-theme-${theme}`,
+          className
+        )}
         ref={this.containerRef}
       >
         <Input
@@ -160,16 +162,13 @@ export default class AutocompleteInput extends Component {
           className="gem-autocomplete-input"
           value={value}
           ref={this.inputRef}
+          theme={theme}
           onFocus={this.handleFocus}
           onChange={this.handleChange}
           onKeyDown={this.handleKeyDown}
           {...rest}
         />
-        {clear && value && (
-          <button className="gem-autocomplete-clear" onClick={this.handleClear}>
-            ✕
-          </button>
-        )}
+        <ArrowDown className="gem-autocomplete-arrow" />
         {focus && filtered.length !== 0 && (
           <Suggestions>
             {filtered.map(suggest => (

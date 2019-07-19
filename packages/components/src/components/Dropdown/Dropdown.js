@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import cn from 'classnames';
+import { ReactComponent as ArrowDown } from '@expandorg/uikit/assets/arrow-down.svg';
 
+import { InputLabel } from '../Input';
 import DropdownBase from './DropdownBase';
 
 import './Dropdown.styl';
@@ -15,6 +17,7 @@ export default class Dropdown extends Component {
     options: PropTypes.arrayOf(
       PropTypes.oneOfType([PropTypes.string, PropTypes.object])
     ),
+    theme: PropTypes.oneOf(['default', 'white']),
     label: PropTypes.string,
     onChange: PropTypes.func.isRequired,
   };
@@ -23,6 +26,7 @@ export default class Dropdown extends Component {
     value: undefined,
     className: null,
     nullValue: null,
+    theme: 'default',
     options: [],
     label: null,
   };
@@ -33,7 +37,7 @@ export default class Dropdown extends Component {
   };
 
   render() {
-    const { className, options, value, label, nullValue } = this.props;
+    const { className, options, value, label, nullValue, theme } = this.props;
 
     return (
       <DropdownBase
@@ -41,7 +45,7 @@ export default class Dropdown extends Component {
         value={value}
         nullValue={nullValue}
         onChange={this.handleChange}
-        className={className}
+        className={cn(`gem-dropdown-theme-${theme}`, className)}
       >
         {({ formatted }) => (
           <div
@@ -49,8 +53,9 @@ export default class Dropdown extends Component {
               'gem-dropdown-content-val': formatted,
             })}
           >
-            {label && <div className="gem-dropdown-content-label">{label}</div>}
+            <InputLabel placeholder={label} />
             {formatted}
+            <ArrowDown className="gem-dropdown-arrow" />
           </div>
         )}
       </DropdownBase>

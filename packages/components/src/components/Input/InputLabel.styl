@@ -1,0 +1,23 @@
+@import '~@expandorg/uikit/colors'
+@import '~@expandorg/uikit/font'
+
+.gem-input-label
+  font(body, false, false, 22px)
+  position absolute
+  left: 0
+  top: 18px
+  padding: 0
+  pointer-events: none;
+  background-color: transparent
+
+  &:before
+    content: attr(placeholder);
+    display: block;
+    color: color-text-grey
+    white-space: nowrap;
+
+    transition-property: transform font-size font-weight color;
+    transition-duration: 0.2s;
+    transition-timing-function: ease-out;
+    transform-origin: left center;
+

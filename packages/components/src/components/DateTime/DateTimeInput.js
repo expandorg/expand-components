@@ -4,6 +4,8 @@ import cn from 'classnames';
 
 import format from 'date-fns/format';
 
+import { InputLabel } from '../Input';
+
 import DateTimePicker from './DateTimePicker';
 
 import styles from './DateTimeInput.module.styl';
@@ -16,6 +18,7 @@ export default class DateTimeInput extends Component {
     readOnly: PropTypes.bool,
     error: PropTypes.bool,
     placeholder: PropTypes.string,
+    theme: PropTypes.oneOf(['default', 'white']),
     disabledDays: PropTypes.any, // eslint-disable-line
     formatter: PropTypes.func,
     onChange: PropTypes.func.isRequired,
@@ -26,6 +29,7 @@ export default class DateTimeInput extends Component {
     name: null,
     error: false,
     placeholder: null,
+    theme: 'default',
     disabledDays: undefined,
     readOnly: false,
     formatter: value => format(value, 'MM/DD/YYYY HH:mm'),
@@ -64,6 +68,7 @@ export default class DateTimeInput extends Component {
       formatter,
       className,
       error,
+      theme,
     } = this.props;
     const { picker } = this.state;
 
@@ -72,7 +77,7 @@ export default class DateTimeInput extends Component {
     /* eslint-disable jsx-a11y/label-has-associated-control */
     /* eslint-disable jsx-a11y/label-has-for */
 
-    const classes = cn(styles.input, {
+    const classes = cn(styles.input, `gem-dateinput-theme-${theme}`, {
       [styles.error]: error,
       [styles.filled]: !!value,
     });
@@ -82,9 +87,7 @@ export default class DateTimeInput extends Component {
         <div className={classes} onClick={this.handleToggle}>
           {value && formatter(value)}
         </div>
-        {placeholder && (
-          <label className={styles.label} placeholder={placeholder} />
-        )}
+        <InputLabel placeholder={placeholder} />
         {picker && (
           <DateTimePicker
             disabledDays={disabledDays}

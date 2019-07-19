@@ -25,7 +25,7 @@ import DropdownDate from './src/components/DropdownDate';
 
 import ErrorMessage from './src/components/ErrorMessage';
 
-import Input from './src/components/Input';
+import { Input, InputLabel } from './src/components/Input';
 
 import { JsScript, withScript, useScript } from './src/components/JsScript';
 import Portal from './src/components/Portal';
@@ -84,6 +84,7 @@ export {
   DropdownDate,
   ErrorMessage,
   Input,
+  InputLabel,
   JsScript,
   useScript,
   Portal,

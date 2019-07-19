@@ -1,28 +1,45 @@
 @import '~@expandorg/uikit/colors'
 @import '~@expandorg/uikit/font'
 
+theme(thm)
+  .gem-input-theme-{thm} &
+    {block}
+
+.gem-input-container
+  box-sizing: border-box
+  display: inline-block;
+  position relative
+
+  width: 100%
+  height 48px
+  padding-top: 16px
+
 .gem-input
-  box-sizing: content-box
+  box-sizing: border-box
 
-  font(body, false, false, normal)
+  width: 100%
+  height 32px
+  padding: 0 0 10px 0
 
-  height: 22px;
-  width: calc(100% - 10px)
+  font(body, false, false, 22px)
 
-  padding: 0 15px 8px 0
-
-  background-color: transparent
   color: color-blue-background
-  border: 1px solid transparent
+  background-color: transparent
   border-bottom: 2px solid  color-heavy-blue
-
   transition: all 0.2s ease-out;
 
   outline: none;
   resize: none;
 
+  +theme('white')
+    border-bottom-color color-white
+    color: color-white
+
   &:focus
     border-bottom-color color-primary-blue
+
+    +theme('white')
+      border-bottom-color color-white
 
   .gem-input-error &
     border-bottom-color: color-yellow
@@ -30,39 +47,23 @@
     &:focus
       border-bottom-color color-yellow
 
+  &-label:before
+    +theme('white')
+      color color-white
+
+  &:focus,
+  &:active,
+  &.gem-input-filled
+    & + .gem-input-label:before
+      transform: translateY(-18px)
+      font-size: 11px
+      font-weight: 700
+      color: color-primary-blue
+
+      +theme('white')
+        color color-white
 
   &:-webkit-autofill
     transition: background-color 5000s ease-in-out 0s
     &:hover, &:focus, &:active
       transition: background-color 5000s ease-in-out 0s
-
-  & + .gem-input-label
-    font(body, false, false, 40px)
-    display: block;
-    margin-top: -40px;
-    padding: 0
-    pointer-events: none;
-
-    &:before
-      content: attr(placeholder);
-      display: block;
-      color: color-text-grey
-      white-space: nowrap;
-
-      transition-property: transform font-size font-weight color;
-      transition-duration: 0.2s;
-      transition-timing-function: ease-out;
-      transform-origin: left center;
-
-  &-container
-    display: inline-block;
-    width: 100%
-
-  &:focus,
-  &.active,
-  &.gem-input-filled
-    & + .gem-input-label:before
-      transform: translateY(-22px)
-      font-size: 11px
-      font-weight: 800
-      color: color-primary-blue

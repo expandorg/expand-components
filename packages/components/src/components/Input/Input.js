@@ -4,6 +4,8 @@ import cn from 'classnames';
 
 import './Input.styl';
 
+import InputLabel from './InputLabel';
+
 export class Input extends Component {
   static propTypes = {
     value: PropTypes.string,
@@ -11,6 +13,7 @@ export class Input extends Component {
     className: PropTypes.string,
     placeholder: PropTypes.string,
     error: PropTypes.bool, // eslint-disable-line
+    theme: PropTypes.oneOf(['default', 'white']),
     forwardedRef: PropTypes.object, // eslint-disable-line
   };
 
@@ -20,6 +23,7 @@ export class Input extends Component {
     forwardedRef: undefined,
     onChange: undefined,
     className: null,
+    theme: 'default',
     error: false,
   };
 
@@ -31,11 +35,13 @@ export class Input extends Component {
       error,
       placeholder,
       forwardedRef,
+      theme,
       ...rest
     } = this.props;
 
     const classes = cn(
       'gem-input-container',
+      `gem-input-theme-${theme}`,
       {
         'gem-input-error': error,
       },
@@ -54,9 +60,7 @@ export class Input extends Component {
           ref={forwardedRef}
           {...rest}
         />
-        {placeholder && (
-          <label className="gem-input-label" placeholder={placeholder} />
-        )}
+        <InputLabel placeholder={placeholder} />
       </div>
     );
   }

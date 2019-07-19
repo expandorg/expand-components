@@ -5,6 +5,7 @@ route: /components-dropdown
 ---
 
 import { Playground, Props } from 'docz'
+import Pane from '../Panel/Panel.js'
 import WithState from 'scripts/docz/WithState'
 
 import Dropdown from './Dropdown.js'
@@ -15,14 +16,39 @@ import Dropdown from './Dropdown.js'
 
 ## Example
 
-<WithState value={3}>
-  {({ onChange, value }) => (
-    <Dropdown
-      value={value}
-      nullValue="Select reason"
-      label="Select reason"
-      onChange={onChange}
-      options={[1,2,3,4]}
-    />
+<Playground>
+  {() => (
+    <Pane>
+      <WithState value={null}>
+        {({ onChange, value }) => (
+          <Dropdown
+            value={value}
+            nullValue="Select reason"
+            label="Select reason"
+            onChange={onChange}
+            options={[1,2,3,4]}
+          />
+        )}
+      </WithState>
+    </Pane>
   )}
-</WithState>
+</Playground>
+
+<Playground>
+  {() => (
+    <WithState value={null}>
+      {({ onChange, value }) => (
+        <div style={{backgroundColor: '#1C2541', padding: '30px', marginTop: '50px'}}>
+          <Dropdown
+            value={value}
+            theme="white"
+            nullValue="Select reason"
+            label="Select reason"
+            onChange={onChange}
+            options={[1,2,3,4]}
+          />
+        </div>
+      )}
+    </WithState>
+  )}
+</Playground>

@@ -23,19 +23,13 @@
     font(h2-title)
     color: color-text-dark
 
-    &:after
-      position: absolute
-      content: ''
-      right: 0
-      top: calc(50% - 3px)
-      width: 12px
-      height: 16px
-      background-color: transparent;
-      background-position: center;
-      background-origin: border-box
-      background-repeat: no-repeat
-      background-image: url("~@expandorg/uikit/assets/arrow-down.svg")
+ &-arrow
+    position absolute
+    right: 0
+    top: 50%
 
+    path
+      fill color-heavy-blue
 
   &-content
     box-sizing: border-box;

@@ -1,61 +1,24 @@
 @import '~@expandorg/uikit/font'
 @import '~@expandorg/uikit/colors'
 
+theme(thm)
+  .gem-autocomplete-theme-{thm} &
+    {block}
+
 .gem-autocomplete
   position: relative;
+  box-sizing: border-box
 
-  &:after
-    position: absolute
-    content: ''
+  &-arrow
+    position absolute
     right: 0
-    top: calc(50% - 8px)
-    width: 12px
-    height: 16px
-    background-color: transparent;
-    background-position: center;
-    background-origin: border-box
-    background-repeat: no-repeat
-    background-image: url("~@expandorg/uikit/assets/arrow-down.svg")
+    top: calc(28px);
 
-  &-input
-    box-sizing: border-box
+    path
+      fill color-heavy-blue
 
-    font(body, false, false, normal)
-
-    height: 32px;
-    width: 100%
-    padding: 0 15px 10px 0
-
-    background-color: transparent
-    color: color-text-dark
-
-    box-shadow: none;
-    border: none;
-    border-bottom: 1px solid  color-heavy-blue
-
-    transition: all 0.2s ease-out;
-
-    resize: none;
-
-    &:focus
-      border-bottom-color color-primary-blue
-
-  &-clear
-    position: absolute;
-    right: 8px;
-    top: calc(50% - 7px);
-
-    height: 10px;
-    line-height: 14px
-
-    color: color-text-dark
-
-    outline: 0
-    cursor: pointer;
-
-    &:hover
-      color: lighten(color-text-dark, 20%);
-
+      +theme('white')
+        fill color-white
 
   &-suggestions
     position: absolute;
@@ -63,7 +26,7 @@
 
     left: 0
     right: 0
-    top: 33px;
+    top: calc(100% + 3px)
     padding: 0
 
     z-index: 2

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import cn from 'classnames';
 
 import { Transition, animated } from 'react-spring/renderprops';
+import { ReactComponent as ArrowDown } from '@expandorg/uikit/assets/arrow-down.svg';
 
 import './Collapsable.styl';
 
@@ -39,6 +40,7 @@ export default class Collapsable extends Component {
       <div className={cn('gem-collapsable', className)}>
         <div className="gem-collapsable-header" onClick={this.handleToggle}>
           {header}
+          <ArrowDown className="gem-collapsable-arrow" />
         </div>
         <Transition
           native

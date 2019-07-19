@@ -1,48 +1,52 @@
 @import '~@expandorg/uikit/colors';
 @import '~@expandorg/uikit/font';
 
+
+theme(thm)
+  .gem-dropdown-theme-{thm} &
+    {block}
+
+
 .gem-dropdown-content
   box-sizing: border-box
   position relative
 
   width: 100%
-  height: 30px
-  padding-bottom 10px
+  height: 48px
+  padding 18px 0 0 0
 
-  font(body, false, false, 20px)
-  color: color-text-dark
-  border-bottom: 1px solid color-primary-blue
-
+  font(body, false, false, 22px)
+  color: color-blue-background
+  border-bottom: 2px solid color-heavy-blue
   transition: all 0.2s ease-out;
 
-  &:after
-    position: absolute
-    content: ''
-    right: 0
-    top: calc(50% - 8px)
-    width: 12px
-    height: 16px
-    background-color: transparent;
-    background-position: center;
-    background-origin: border-box
-    background-repeat: no-repeat
-    background-image: url("~@expandorg/uikit/assets/arrow-down.svg")
+  +theme('white')
+    color color-white
+    border-bottom-color: color-white
 
-  &-label
-    transition-property: transform font-size color;
-    color: color-text-dark
-    transition-duration: 0.2s;
-    transition-timing-function: ease-out;
-    transform-origin: left center;
-    white-space: nowrap;
+  .gem-input-label:before
+    +theme('white')
+      color color-white
 
   &-val
-    color: color-text-blue
+    border-bottom-color: color-primary-blue
 
-    .gem-dropdown-content-label
-      position: absolute;
-      top: -15px
-      padding: 0
-      pointer-events: none;
-      color: color-primary-blue
+    .gem-input-label:before
+      transform: translateY(-18px)
       font-size: 11px
+      font-weight: 700
+      color: color-primary-blue
+
+      +theme('white')
+        color color-white
+
+.gem-dropdown-arrow
+  position absolute
+  right: 0
+  top: calc(28px);
+
+  path
+    fill color-heavy-blue
+
+    +theme('white')
+      fill color-white

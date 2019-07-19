@@ -24,4 +24,17 @@ import Pane from '../Panel/Panel.js'
   )}
 </Playground>
 
+
+<Playground>
+  {() => (
+    <WithState>
+      {({value, onChange}) => (
+        <div style={{backgroundColor: '#1C2541', padding: '30px'}}>
+          <DateInput name="test" theme="white" placeholder="Enter date" value={value} onChange={e => onChange(e.target.value)} />
+        </div>
+      )}
+    </WithState>
+  )}
+</Playground>
+
 <Props of={DateInput} />

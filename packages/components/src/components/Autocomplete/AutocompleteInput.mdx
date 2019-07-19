@@ -8,38 +8,71 @@ route: /components-autocompleteinput
 
 
 import { Playground, Props } from 'docz'
+import Pane from '../Panel/Panel.js'
 import WithState from 'scripts/docz/WithState'
 
 import AutocompleteInput from './AutocompleteInput.js'
-import Pane from '../Panel/Panel.js'
 
 <Playground>
   {() => (
-      <WithState>
-        {({value, onChange}) => (
-          <Pane>
-            <AutocompleteInput
-              placeholder="Type..."
-              value={value}
-              onChange={evt => {
-                onChange(evt.target.value);
-              }}
-              onSelect={onChange}
-              options={[
-                'red',
-                'gren',
-                'blue',
-                'yellow',
-                'magenta',
-                'white',
-                'black',
-                'gray',
-                'brown',
-              ]}
-            />
-          </Pane>
-        )}
-      </WithState>
+    <WithState>
+      {({value, onChange}) => (
+        <Pane>
+          <AutocompleteInput
+            placeholder="Type..."
+            value={value}
+            onChange={evt => {
+              onChange(evt.target.value);
+            }}
+            onSelect={onChange}
+            options={[
+              'red',
+              'gren',
+              'blue',
+              'yellow',
+              'magenta',
+              'white',
+              'black',
+              'gray',
+              'brown',
+            ]}
+          />
+        </Pane>
+      )}
+    </WithState>
+  )}
+</Playground>
+
+
+
+<Playground>
+  {() => (
+    <WithState>
+      {({value, onChange}) => (
+        <div style={{backgroundColor: '#1C2541', padding: '30px'}}>
+          <AutocompleteInput
+            placeholder="Type..."
+            value={value}
+            theme="white"
+            onChange={evt => {
+              onChange(evt.target.value);
+            }}
+            onSelect={onChange}
+            options={[
+              'red',
+              'gren',
+              'blue',
+              'yellow',
+              'magenta',
+              'white',
+              'black',
+              'gray',
+              'brown',
+            ]}
+          />
+        </div>
+      )}
+    </WithState>
   )}
 </Playground>
 
