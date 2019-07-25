@@ -30,7 +30,16 @@ import Pane from '../Panel/Panel.js'
     <WithState>
       {({value, onChange}) => (
         <div style={{backgroundColor: '#1C2541', padding: '30px'}}>
-          <DateInput name="test" theme="white" placeholder="Enter date" value={value} onChange={e => onChange(e.target.value)} />
+          <DateInput
+          name="test"
+          theme="white"
+          placeholder="Enter date"
+          value={value}
+          onChange={e => onChange(e.target.value)}
+          dayPickerProps={{
+            disabledDays: d => d >= new Date(),
+          }}
+        />
         </div>
       )}
     </WithState>

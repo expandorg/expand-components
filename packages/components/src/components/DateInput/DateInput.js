@@ -27,6 +27,7 @@ export default class DateInput extends Component {
     placeholder: PropTypes.string,
     theme: PropTypes.oneOf(['default', 'white']),
     error: PropTypes.bool,
+    dayPickerProps: PropTypes.shape({}),
     onChange: PropTypes.func.isRequired,
   };
 
@@ -35,10 +36,19 @@ export default class DateInput extends Component {
     theme: 'default',
     placeholder: null,
     error: false,
+    dayPickerProps: undefined,
   };
 
   render() {
-    const { onChange, name, placeholder, value, error, theme } = this.props;
+    const {
+      onChange,
+      name,
+      placeholder,
+      value,
+      error,
+      theme,
+      dayPickerProps,
+    } = this.props;
     return (
       <DayPickerInput
         value={value}
@@ -47,6 +57,7 @@ export default class DateInput extends Component {
             'DayPickerInput-error': error,
           }),
         }}
+        dayPickerProps={dayPickerProps}
         placeholder={placeholder}
         formatDate={formatDate}
         format="MM/DD/YYYY"
