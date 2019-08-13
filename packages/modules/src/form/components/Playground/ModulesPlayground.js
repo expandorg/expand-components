@@ -52,6 +52,7 @@ export default class ModulesPlayground extends Component {
           <FormDataProvider formData={formData}>
             <Form
               controls={moduleControls}
+              timeThreshold={5}
               form={form}
               variables={variables}
               services={services}

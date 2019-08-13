@@ -53,6 +53,7 @@ import useLocalStorage from './src/components/hooks/useLocalStorage';
 import usePrevious from './src/components/hooks/usePrevious';
 import useSyncedState from './src/components/hooks/useSyncedState';
 import useToggle from './src/components/hooks/useToggle';
+import useHotkey from './src/components/hooks/useHotkey';
 
 import deferVisibleRender from './src/components/hoc/deferVisibleRender';
 import deferComponentRender from './src/components/hoc/deferComponentRender';
@@ -107,6 +108,7 @@ export {
   usePrevious,
   useSyncedState,
   useToggle,
+  useHotkey,
   deferVisibleRender,
   deferComponentRender,
   windowResize,
