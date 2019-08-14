@@ -3,17 +3,23 @@ import getDefaultRuleMessage from './getDefaultRuleMessage';
 
 import type { Module, ModuleControlsMap } from '../types.flow';
 
-const getFieldRules = (validation: Object, rules: Object) =>
-  Reflect.ownKeys(validation)
+const getFieldRules = (validation: Object, rules: Object) => {
+  return Reflect.ownKeys(validation)
     .filter(ruleName => !!rules[ruleName])
     .map(ruleName => {
-      const message =
-        typeof validation[ruleName] === 'string'
-          ? validation[ruleName]
-          : getDefaultRuleMessage(ruleName);
+      const fn = rules[ruleName];
+      const ruleParams = validation[ruleName];
 
-      return [rules[ruleName], message];
+      if (Array.isArray(ruleParams)) {
+        return [fn, ...ruleParams];
+      }
+
+      if (typeof ruleParams === 'string') {
+        return [fn, ruleParams];
+      }
+      return [fn, getDefaultRuleMessage(ruleName)];
     });
+};
 
 const formValidationRules = (
   modules: ?Array<Module>,
