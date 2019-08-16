@@ -40,12 +40,12 @@ export default class Input extends Component {
       isRequired: rules.isRequired,
       isEmail: rules.isEmail,
       isNumber: rules.isNumber,
-      isGreater: rules.isGreater,
-      isGreaterOrEqual: rules.isGreaterOrEqual,
-      isLess: rules.isLess,
-      isLessOrEqual: rules.isLessOrEqual,
+      // isGreater: rules.isGreater,
+      // isGreaterOrEqual: rules.isGreaterOrEqual,
+      // isLess: rules.isLess,
+      // isLessOrEqual: rules.isLessOrEqual,
       isMinCharacterCount: rules.isMinCharacterCount,
-      isMaxCharacterCount: rules.isMaxCharacterCount,
+      // isMaxCharacterCount: rules.isMaxCharacterCount,
     },
     verificationScore: value => {
       const numeric = +value;
