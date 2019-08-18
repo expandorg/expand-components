@@ -23,6 +23,7 @@ export default class AutocompleteInput extends Component {
     theme: PropTypes.oneOf(['default', 'white']),
     onChange: PropTypes.func.isRequired,
     onSelect: PropTypes.func,
+    onKeyDown: PropTypes.func,
     filterFn: PropTypes.func,
   };
 
@@ -34,6 +35,7 @@ export default class AutocompleteInput extends Component {
     className: null,
     filterFn: containsFilter,
     onSelect: Function.prototype,
+    onKeyDown: null,
   };
 
   constructor(props) {
@@ -85,7 +87,10 @@ export default class AutocompleteInput extends Component {
   };
 
   handleKeyDown = evt => {
-    const { allowAdd } = this.props;
+    const { allowAdd, onKeyDown } = this.props;
+    if (onKeyDown) {
+      onKeyDown(evt);
+    }
     switch (evt.keyCode) {
       case KeyCodes.ESC:
       case KeyCodes.TAB:
