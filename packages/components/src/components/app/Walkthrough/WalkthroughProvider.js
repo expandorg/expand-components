@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+// eslint-disable-next-line max-classes-per-file
+import React, { Component, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 import windowResize from '../../hoc/windowResize';
@@ -12,6 +13,17 @@ import Hint from './Hint/Hint';
 import Overlay from './Overlay';
 
 import styles from './WalkthroughProvider.module.styl';
+
+// eslint-disable-next-line no-unused-vars
+function DocumentClick({ onClick }) {
+  useEffect(() => {
+    document.addEventListener('click', onClick);
+    return () => {
+      document.removeEventListener('click', onClick);
+    };
+  }, [onClick]);
+  return null;
+}
 
 class WalkthroughProvider extends Component {
   static propTypes = {
@@ -47,7 +59,7 @@ class WalkthroughProvider extends Component {
     });
   };
 
-  handleHide = () => {
+  handleHideActive = () => {
     this.setState({
       active: null,
       position: null,
@@ -60,25 +72,29 @@ class WalkthroughProvider extends Component {
     }));
   };
 
-  handleToggleWalkThrough = () => {
-    const { enabled } = this.state;
-    this.setState({
-      enabled: !enabled,
-    });
+  handleToggle = evt => {
+    if (evt) {
+      evt.preventDefault();
+      evt.stopPropagation();
+    }
+    this.setState(({ enabled }) => ({ enabled: !enabled }));
+  };
+
+  handleHide = () => {
+    this.setState({ enabled: false });
   };
 
   handleResize = () => {
     const { settings } = this.props;
     const { active, enabled } = this.state;
-    if (enabled && active) {
-      const position = getPositionById(settings[active].htmlId);
+    if (enabled) {
       this.setState({
-        screen: {
-          width: window.innerWidth,
-          height: window.innerHeight,
-        },
-        position,
+        screen: { width: window.innerWidth, height: window.innerHeight },
       });
+      if (active) {
+        const position = getPositionById(settings[active].htmlId);
+        this.setState({ position });
+      }
     }
   };
 
@@ -93,15 +109,20 @@ class WalkthroughProvider extends Component {
       position,
       onActiveChange: this.handleActiveChange,
       onTogglePresence: this.handleTogglePresence,
-      onToggle: this.handleToggleWalkThrough,
+      onToggle: this.handleToggle,
     };
 
     return (
       <WalkthroughContext.Provider value={value}>
         {children}
+        {enabled && !active && <DocumentClick onClick={this.handleHide} />}
         {active && (
           <Portal className={styles.portal}>
-            <Overlay position={position} screen={screen} />
+            <Overlay
+              position={position}
+              screen={screen}
+              onClick={this.handleHideActive}
+            />
             <Hint
               settings={settings}
               active={active}
@@ -109,7 +130,7 @@ class WalkthroughProvider extends Component {
               screen={screen}
               presence={presence}
               onActiveChange={this.handleActiveChange}
-              onHide={this.handleHide}
+              onHide={this.handleHideActive}
             />
           </Portal>
         )}

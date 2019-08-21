@@ -44,6 +44,7 @@ class WalkthroughPin extends Component {
 
   handleClick = evt => {
     evt.preventDefault();
+    evt.nativeEvent.stopImmediatePropagation();
 
     const { id, onActiveChange } = this.props;
     onActiveChange(id);
