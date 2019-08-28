@@ -50,6 +50,9 @@ theme-raised()
       padding: 0 34px
       color: color-text-dark
 
+      &:hover
+        color: lighten(color-text-dark, 20%)
+
     +theme-raised()
       font(h4-title, false, false, 48px)
       color: color-black
@@ -58,6 +61,10 @@ theme-raised()
       border-left: none
       text-align: center
       min-width: 170px
+
+      &:hover
+        color: lighten(color-black, 20%)
+        border-color: lighten(color-heavy-blue, 20%)
 
       &:first-child
         border-left: 1px solid color-heavy-blue
@@ -82,6 +89,12 @@ theme-raised()
         color: color-white
         background-color: color-primary-blue;
         border-radius: 5px;
+
+        &:hover
+          color: color-white
+          background-color: lighten(color-primary-blue, 20%)
+          border-color: lighten(color-heavy-blue, 20%)
+
 
         @media(max-width: breakpoint-mobile-sm)
           border-radius: 0;

@@ -90,8 +90,9 @@ export default {
             options: {
               sourceMap: true,
               importLoaders: 2,
-              modules: true,
-              localIdentName: `[local]__[path][name]__[hash:base64:5]`,
+              modules: {
+                localIdentName: '[local]__[path][name]__[hash:base64:5]',
+              },
             },
           },
           'postcss-loader?sourceMap',
