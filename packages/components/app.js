@@ -1,4 +1,6 @@
 // @flow
+import { ContextMenu, ContextMenuItem } from './src/components/app/ContextMenu';
+
 import Navbar from './src/components/app/Navbar';
 import Footer from './src/components/app/Footer';
 import { Page, PageDark, NotFound } from './src/components/app/Page';
@@ -16,6 +18,7 @@ import {
 } from './src/components/app/Notifications';
 
 import ListNav from './src/components/app/ListNav';
+import { Pagination, getPages } from './src/components/app/Pagination';
 
 import {
   WalkthroughProvider,
@@ -24,6 +27,8 @@ import {
 } from './src/components/app/Walkthrough';
 
 export {
+  ContextMenu,
+  ContextMenuItem,
   Navbar,
   Footer,
   ListNav,
@@ -41,4 +46,6 @@ export {
   Upload,
   UploadImagePreview,
   UploadProgressIndicator,
+  Pagination,
+  getPages,
 };

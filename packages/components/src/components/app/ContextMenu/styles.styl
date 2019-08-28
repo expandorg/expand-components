@@ -1,0 +1,46 @@
+@import '~@expandorg/uikit/colors';
+@import '~@expandorg/uikit/font';
+
+.gem-contextmenu
+  position: absolute
+  box-sizing: border-box
+
+  right: 0
+  top: calc(100% + 10px)
+
+  max-height: 300px
+  width: 170px
+
+  overflow-y: auto
+
+  background-color: color-white
+  box-shadow: heavy-shadow
+  z-index: 10
+
+  &-item
+    box-sizing: border-box
+
+    width: 170px
+    height: 46px
+
+    padding: 0 25px
+
+    background-color: color-white;
+    transition: background-color 0.4s cubic-bezier(.27,1.27,.48,.56);
+
+    color: color-text-dark
+    font(body, false, false, 46px)
+    text-align: left
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    border: 0
+    outline: 0
+    cursor pointer
+
+    &:hover
+      background-color: color-medium-blue;
+
+
