@@ -22,6 +22,7 @@ export default function Wizard({ children, onSubmit, isSubmitting }) {
   }, [current, setCurrent]);
 
   const step = Children.toArray(children)[current];
+  const last = current === stepCount - 1;
 
   return (
     <div className={styles.container}>
@@ -32,8 +33,8 @@ export default function Wizard({ children, onSubmit, isSubmitting }) {
             Back
           </Button>
         )}
-        {current < stepCount - 1 && <Button onClick={next}>Next</Button>}
-        {current === stepCount - 1 && (
+        {!last && <Button onClick={next}>Next</Button>}
+        {last && (
           <Button onClick={onSubmit} type="submit" disabled={isSubmitting}>
             Submit
           </Button>
