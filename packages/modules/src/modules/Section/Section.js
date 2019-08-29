@@ -1,6 +1,9 @@
 import React from 'react';
 
-import { ModuleCategories } from '../../form/components/Module';
+import {
+  ModuleCategories,
+  PropControlTypes,
+} from '../../form/components/Module';
 
 import styles from './Section.module.styl';
 
@@ -13,7 +16,12 @@ Section.module = {
   name: 'Section',
   editor: {
     category: ModuleCategories.Display,
-    properties: {},
+    properties: {
+      modules: {
+        type: PropControlTypes.modules,
+        caption: 'Drop content here',
+      },
+    },
     defaults: {},
   },
 };

@@ -3,7 +3,10 @@ import PropTypes from 'prop-types';
 
 import { Button, useSyncedState } from '@expandorg/components';
 
-import { ModuleCategories } from '../../form/components/Module';
+import {
+  ModuleCategories,
+  PropControlTypes,
+} from '../../form/components/Module';
 import { useExecutionContext } from '../../form/components/ExecutionContext';
 
 import styles from './Wizard.module.styl';
@@ -56,7 +59,12 @@ Wizard.module = {
   name: 'Wizard',
   editor: {
     category: ModuleCategories.Display,
-    properties: {},
+    properties: {
+      modules: {
+        type: PropControlTypes.modules,
+        caption: 'Drop content here',
+      },
+    },
     defaults: {},
   },
 };
