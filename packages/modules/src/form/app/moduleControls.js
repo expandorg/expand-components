@@ -20,6 +20,8 @@ import YesNo from '../../modules/YesNo';
 import { UploadFile } from '../../modules/UploadFile';
 import { TagVideo, MultipleTagVideo } from '../../modules/TagVideo';
 import Video from '../../modules/Video';
+import Section from '../../modules/Section';
+import Wizard from '../../modules/Wizard';
 
 const moduleControls = [
   Agreement,
@@ -46,6 +48,8 @@ const moduleControls = [
   UploadFile,
   YesNo,
   Video,
+  Section,
+  Wizard,
 ];
 
 export default moduleControls;

@@ -1,0 +1,45 @@
+---
+menu: Modules
+name: Section
+route: /modules-section
+---
+
+# Section Module
+
+## Section properties
+
+| Property     | type           | Required | Default | description |
+| ------------ | -------------- | -------- | ------- | ----------- |
+| *type*       | `section`      | true     | -       | module type |
+| *name*       | string         | true     | -       | module name |
+
+
+## Example
+```jsx
+{
+  name: "section",
+  type: "section",
+  modules: [{
+    name: "richText",
+    type: "richText",
+    content: "<h3>Lorem ipsum dolor sit amet</h3>"
+  }]
+}
+```
+import ModulesPlayground from '../../form/components/Playground/ModulesPlayground.js'
+
+<ModulesPlayground
+  form={{
+    modules: [
+      {
+        name: "section",
+        type: "section",
+        modules: [{
+          name: "richText",
+          type: "richText",
+          content: "<h3>Lorem ipsum dolor sit amet</h3>"
+        }]
+      }
+    ],
+  }}
+/>

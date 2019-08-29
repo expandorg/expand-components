@@ -1,0 +1,58 @@
+---
+menu: Modules
+name: Wizard
+route: /modules-wizard
+---
+
+# Wizard Module
+
+## Wizard properties
+
+| Property     | type           | Required | Default | description |
+| ------------ | -------------- | -------- | ------- | ----------- |
+| *type*       | `wizard`       | true     | -       | module type |
+| *name*       | string         | true     | -       | module name |
+
+
+## Example
+```jsx
+{
+  name: "wizard",
+  type: "wizard",
+  modules: [{
+    name: "richText",
+    type: "richText",
+    content: "<h3>Step1</h3>"
+  }, {
+    name: "richText2",
+    type: "richText",
+    content: "<h3>Step2</h3>"
+  }]
+}
+
+```
+import ModulesPlayground from '../../form/components/Playground/ModulesPlayground.js'
+
+<ModulesPlayground
+  form={{
+    modules: [
+      {
+        name: "wizard",
+        type: "wizard",
+        modules: [{
+          name: "richText",
+          type: "richText",
+          content: "<h3>Step1</h3>"
+        }, {
+          name: "richText2",
+          type: "richText",
+          content: "<h3>Step2</h3>"
+        }, {
+          name: "richText3",
+          type: "richText",
+          content: "<h3>Step3</h3>"
+        }]
+      }
+    ],
+  }}
+/>
