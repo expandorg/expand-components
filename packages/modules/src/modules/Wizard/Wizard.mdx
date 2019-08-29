@@ -20,13 +20,20 @@ route: /modules-wizard
   name: "wizard",
   type: "wizard",
   modules: [{
-    name: "richText",
-    type: "richText",
-    content: "<h3>Step1</h3>"
+    name: "input-1",
+    type: "input",
+    placeholder: "What is your name",
+    validation: {
+      isRequired: true,
+    }
   }, {
     name: "richText2",
     type: "richText",
     content: "<h3>Step2</h3>"
+  }, {
+    name: "richText3",
+    type: "richText",
+    content: "<h3>Step3</h3>"
   }]
 }
 
