@@ -10,7 +10,7 @@ import {
 import {
   ExecutionContext,
   ExecutionContextProvider,
-  ExecutionContextClient,
+  useExecutionContext,
 } from './src/form/components/ExecutionContext';
 
 import {
@@ -37,7 +37,7 @@ export {
   FormDataContext,
   ExecutionContext,
   ExecutionContextProvider,
-  ExecutionContextClient,
+  useExecutionContext,
   // base modules
   Module,
   moduleProps,

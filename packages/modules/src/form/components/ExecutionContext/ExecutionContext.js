@@ -1,4 +1,4 @@
-import React, { createContext } from 'react';
+import React, { createContext, useContext } from 'react';
 import PropTypes from 'prop-types';
 
 import formProps from '../Form/formProps';
@@ -11,10 +11,18 @@ const ExecutionContextProvider = ({
   form,
   controls,
   services,
+  onValidate,
   children,
 }) => (
   <ExecutionContext.Provider
-    value={{ form, values, variables, services, controls }}
+    value={{
+      form,
+      values,
+      variables,
+      services,
+      controls,
+      onValidate,
+    }}
   >
     {children}
   </ExecutionContext.Provider>
@@ -26,6 +34,7 @@ ExecutionContextProvider.propTypes = {
   controls: PropTypes.shape({}).isRequired,
   services: PropTypes.shape({}),
   values: PropTypes.shape({}),
+  onValidate: PropTypes.func.isRequired,
 };
 
 ExecutionContextProvider.defaultProps = {
@@ -34,10 +43,8 @@ ExecutionContextProvider.defaultProps = {
   variables: null,
 };
 
-const ExecutionContextClient = ({ children }) => (
-  <ExecutionContext.Consumer>
-    {data => children(data)}
-  </ExecutionContext.Consumer>
-);
+const useExecutionContext = () => {
+  return useContext(ExecutionContext);
+};
 
-export { ExecutionContext, ExecutionContextProvider, ExecutionContextClient };
+export { ExecutionContext, ExecutionContextProvider, useExecutionContext };

@@ -1,9 +1,8 @@
-import React, { Component } from 'react';
+import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 
 import { rules } from '@expandorg/validation';
-
-import { ExecutionContextClient } from '../../form/components/ExecutionContext';
+import { useExecutionContext } from '../../form/components/ExecutionContext';
 
 import {
   PropControlTypes,
@@ -28,80 +27,81 @@ const fileSizes = {
   Small: undefined,
 };
 
-export default class UploadFile extends Component {
-  static propTypes = {
-    name: PropTypes.string.isRequired,
-    value: PropTypes.string,
-    fileType: PropTypes.string,
-    size: PropTypes.string,
-    onChange: PropTypes.func.isRequired,
-    onNotify: PropTypes.func,
-  };
+export default function UploadFile({
+  value,
+  fileType,
+  size,
+  onNotify,
+  name,
+  onChange,
+}) {
+  const { services } = useExecutionContext();
 
-  static defaultProps = {
-    value: null,
-    fileType: 'Any',
-    size: 'Large',
-    onNotify: Function.prototype,
-  };
-
-  static module = {
-    type: 'upload',
-    name: 'File Upload',
-    isInput: true,
-    validation: {
-      isRequired: rules.isRequired,
+  const change = useCallback(
+    val => {
+      onChange(name, val);
     },
-    editor: {
-      category: ModuleCategories.Input,
-      properties: {
-        fileType: {
-          type: PropControlTypes.enum,
-          label: 'File type',
-          options: ['Images', 'Media', 'Text', 'Any'],
-        },
-        size: {
-          type: PropControlTypes.enum,
-          label: 'File size',
-          options: ['Large', 'Medium', 'Small'],
-        },
-      },
-      defaults: {
-        fileType: 'Any',
-        size: 'Large',
-      },
-    },
-  };
+    [name, onChange]
+  );
 
-  handleChange = value => {
-    const { name, onChange } = this.props;
-    onChange(name, value);
-  };
-
-  render() {
-    const { value, fileType, size, onNotify } = this.props;
-
-    return (
-      <ExecutionContextClient>
-        {({ services }) => {
-          if (!services.has('fileUpload')) {
-            return null;
-          }
-
-          return (
-            <div className={styles.container}>
-              <UploadControl
-                fileUploadService={services.get('fileUpload')}
-                onChange={this.handleChange}
-                value={value}
-                sizeLimit={fileSizes[size]}
-                accept={mediaTypes[fileType]}
-                onNotify={onNotify}
-              />
-            </div>
-          );
-        }}
-      </ExecutionContextClient>
-    );
+  if (!services.has('fileUpload')) {
+    return null;
   }
+
+  return (
+    <div className={styles.container}>
+      <UploadControl
+        fileUploadService={services.get('fileUpload')}
+        onChange={change}
+        value={value}
+        sizeLimit={fileSizes[size]}
+        accept={mediaTypes[fileType]}
+        onNotify={onNotify}
+      />
+    </div>
+  );
 }
+
+UploadFile.propTypes = {
+  name: PropTypes.string.isRequired,
+  value: PropTypes.string,
+  fileType: PropTypes.string,
+  size: PropTypes.string,
+  onChange: PropTypes.func.isRequired,
+  onNotify: PropTypes.func,
+};
+
+UploadFile.defaultProps = {
+  value: null,
+  fileType: 'Any',
+  size: 'Large',
+  onNotify: Function.prototype,
+};
+
+UploadFile.module = {
+  type: 'upload',
+  name: 'File Upload',
+  isInput: true,
+  validation: {
+    isRequired: rules.isRequired,
+  },
+  editor: {
+    category: ModuleCategories.Input,
+    properties: {
+      fileType: {
+        type: PropControlTypes.enum,
+        label: 'File type',
+        options: ['Images', 'Media', 'Text', 'Any'],
+      },
+      size: {
+        type: PropControlTypes.enum,
+        label: 'File size',
+        options: ['Large', 'Medium', 'Small'],
+      },
+    },
+    defaults: {
+      fileType: 'Any',
+      size: 'Large',
+    },
+  },
+};

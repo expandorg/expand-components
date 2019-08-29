@@ -103,21 +103,20 @@ export default class Module extends Component {
     }
     const value = values ? values[module.name] : undefined;
 
-    const { modules, ...rest } = module;
-
+    const { modules } = module;
     const hasChildren = modules !== null && modules !== undefined;
 
     return (
       <Logic module={module} isModulePreview={isModulePreview}>
         <Validation name={module.name} errors={errors}>
           <Control
-            {...rest}
+            {...module}
             value={value}
+            isSubmitting={isSubmitting}
+            isModulePreview={isModulePreview}
             onChange={onChange}
             onSubmit={onSubmit}
             onModuleError={onModuleError}
-            isSubmitting={isSubmitting}
-            isModulePreview={isModulePreview}
             onNotify={onNotify}
           >
             {hasChildren && this.renderModules(modules)}

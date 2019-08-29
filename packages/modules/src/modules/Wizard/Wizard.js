@@ -4,18 +4,25 @@ import PropTypes from 'prop-types';
 import { Button, useSyncedState } from '@expandorg/components';
 
 import { ModuleCategories } from '../../form/components/Module';
+import { useExecutionContext } from '../../form/components/ExecutionContext';
 
 import styles from './Wizard.module.styl';
 
 const reset = () => 0;
 
-export default function Wizard({ children, onSubmit, isSubmitting }) {
+export default function Wizard({ children, onSubmit, isSubmitting, modules }) {
+  const { onValidate } = useExecutionContext();
+
   const stepCount = Children.count(children);
+
   const [current, setCurrent] = useSyncedState(stepCount, reset);
 
   const next = useCallback(() => {
-    setCurrent(current + 1);
-  }, [current, setCurrent]);
+    const hasErrors = onValidate([modules[current]]);
+    if (!hasErrors) {
+      setCurrent(current + 1);
+    }
+  }, [current, modules, onValidate, setCurrent]);
 
   const prev = useCallback(() => {
     setCurrent(current - 1);
@@ -55,10 +62,12 @@ Wizard.module = {
 };
 
 Wizard.propTypes = {
+  modules: PropTypes.arrayOf(PropTypes.object),
   isSubmitting: PropTypes.bool,
   onSubmit: PropTypes.func.isRequired,
 };
 
 Wizard.defaultProps = {
+  modules: [],
   isSubmitting: false,
 };

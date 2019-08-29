@@ -96,11 +96,25 @@ export default class Form extends Component {
     }));
   };
 
+  handleValidate = modules => {
+    const { values, controls } = this.state;
+    const { validation } = this.props;
+
+    if (!validation) {
+      return null;
+    }
+    const errors = validateForm(
+      values || {},
+      formValidationRules(modules, controls)
+    );
+    this.setState({ errors });
+    return errors;
+  };
+
   handleSubmit = evt => {
     evt.preventDefault();
     const { onSubmit, validation, timeThreshold, onNotify } = this.props;
-    const { values, form, controls, startTime } = this.state;
-
+    const { values, form, startTime } = this.state;
     if (
       timeThreshold &&
       differenceInSeconds(new Date(), startTime) < timeThreshold
@@ -110,17 +124,12 @@ export default class Form extends Component {
     }
 
     if (validation) {
-      const rules = formValidationRules(form.modules, controls);
-      const errors = validateForm(values || {}, rules);
-
-      if (errors) {
-        this.setState({ errors });
-      } else {
-        this.setState({ errors: null }, () => onSubmit(values));
+      if (!this.handleValidate(form.modules)) {
+        onSubmit(values);
       }
-    } else {
-      this.setState({ errors: null }, () => onSubmit(values));
+      return;
     }
+    onSubmit(values);
   };
 
   render() {
@@ -154,6 +163,7 @@ export default class Form extends Component {
         services={services}
         variables={variables}
         controls={controls}
+        onValidate={this.handleValidate}
       >
         <form
           className={cn(styles.container, className)}

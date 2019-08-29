@@ -3,7 +3,7 @@
 import {
   ExecutionContext,
   ExecutionContextProvider,
-  ExecutionContextClient,
+  useExecutionContext,
 } from './ExecutionContext';
 
-export { ExecutionContext, ExecutionContextProvider, ExecutionContextClient };
+export { ExecutionContext, ExecutionContextProvider, useExecutionContext };
