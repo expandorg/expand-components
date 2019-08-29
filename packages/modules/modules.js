@@ -20,6 +20,8 @@ import Text from './src/modules/Text';
 import { UploadFile } from './src/modules/UploadFile';
 import Video from './src/modules/Video';
 import YesNo from './src/modules/YesNo';
+import Wizard from './src/modules/Wizard';
+import Section from './src/modules/Section';
 
 export {
   Agreement,
@@ -46,4 +48,6 @@ export {
   UploadFile,
   Video,
   YesNo,
+  Wizard,
+  Section,
 };

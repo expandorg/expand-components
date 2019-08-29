@@ -29,15 +29,10 @@ export default function Wizard({ children, onSubmit, isSubmitting }) {
       <div className={styles.actions}>
         {current !== 0 && (
           <Button onClick={prev} theme="secondary">
-            {' '}
-            Back{' '}
+            Back
           </Button>
         )}
-        {current < stepCount - 1 && (
-          <Button onClick={next} theme="">
-            Next
-          </Button>
-        )}
+        {current < stepCount - 1 && <Button onClick={next}>Next</Button>}
         {current === stepCount - 1 && (
           <Button onClick={onSubmit} type="submit" disabled={isSubmitting}>
             Submit
