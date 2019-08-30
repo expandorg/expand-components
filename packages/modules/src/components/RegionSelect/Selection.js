@@ -40,19 +40,21 @@ export default class Selection extends Component {
     super(props);
 
     this.state = {
+      original: props.selection,
       selection: props.selection,
       rect: normalizeRect(props.selection, props.cWidth, props.cHeight),
     };
   }
 
-  componentWillReceiveProps({ selection: nextSelection, cWidth, cHeight }) {
-    const { selection } = this.props;
-    if (nextSelection !== selection) {
-      this.setState({
-        selection: nextSelection,
-        rect: normalizeRect(nextSelection, cWidth, cHeight),
-      });
+  static getDerivedStateFromProps({ selection: next, cWidth, cHeight }, state) {
+    if (next !== state.original) {
+      return {
+        selection: next,
+        original: next,
+        rect: normalizeRect(next, cWidth, cHeight),
+      };
     }
+    return null;
   }
 
   handleDelete = evt => {
