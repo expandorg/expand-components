@@ -7,25 +7,6 @@ import type {
   ModuleControlsMap,
 } from './types.flow';
 
-export const deepCopyModule = (
-  module: Module,
-  getName: (m: Module) => string = m => m.name
-) => {
-  const { modules: children, type, ...rest } = module;
-  let modules;
-
-  if (children) {
-    modules = children.map<Module>(child => deepCopyModule(child, getName));
-  }
-
-  return {
-    ...rest,
-    type,
-    name: getName(module),
-    modules,
-  };
-};
-
 export const getModuleControlsMap = (
   controls: Array<ModuleControl>
 ): ModuleControlsMap =>
@@ -59,20 +40,4 @@ export const getFormModules = (root: Module | Form): Array<Module> => {
   }
   // $FlowFixMe
   return result;
-};
-
-export const groupModulesByCategory = (controls: Array<ModuleControl>) => {
-  const grouped = controls.reduce((map, Control) => {
-    if (Control.module.editor && Control.module.editor.category) {
-      let category = map[Control.module.editor.category];
-      if (!category) {
-        map[Control.module.editor.category] = [];
-        // $FlowFixMe
-        category = map[Control.module.editor.category];
-      }
-      category.push(Control);
-    }
-    return map;
-  }, {});
-  return grouped;
 };

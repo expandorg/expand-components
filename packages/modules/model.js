@@ -23,10 +23,8 @@ import {
 
 import {
   getModuleControlsMap,
-  groupModulesByCategory,
   getFormModules,
   getFormModulesNames,
-  deepCopyModule,
 } from './src/form/model/modules';
 
 import { getModuleTypes, getReasons } from './src/form/model/reportReasons';
@@ -49,10 +47,8 @@ export {
   calculateVerificationScore,
   // modules
   getModuleControlsMap,
-  groupModulesByCategory,
   getFormModules,
   getFormModulesNames,
-  deepCopyModule,
   // reasons
   getModuleTypes,
   getReasons,
