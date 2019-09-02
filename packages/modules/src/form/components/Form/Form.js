@@ -145,7 +145,7 @@ export default class Form extends Component {
 
     const { values, errors, form, controls } = this.state;
 
-    const props = { controls, values, errors, onModuleError, onNotify };
+    const props = { controls, values, errors, onModuleError };
 
     return (
       <ExecutionContextProvider
@@ -157,6 +157,7 @@ export default class Form extends Component {
         isSubmitting={isSubmitting}
         onSubmit={this.handleSubmit}
         onValidate={this.handleValidate}
+        onNotify={onNotify}
       >
         <form
           className={cn(styles.container, className)}

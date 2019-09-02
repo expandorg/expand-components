@@ -14,6 +14,7 @@ const ExecutionContextProvider = ({
   isSubmitting,
   onSubmit,
   onValidate,
+  onNotify,
   children,
 }) => (
   <ExecutionContext.Provider
@@ -25,6 +26,7 @@ const ExecutionContextProvider = ({
       controls,
       isSubmitting,
       onValidate,
+      onNotify,
       onSubmit,
     }}
   >
@@ -40,6 +42,7 @@ ExecutionContextProvider.propTypes = {
   services: PropTypes.shape({}),
   values: PropTypes.shape({}),
   onValidate: PropTypes.func.isRequired,
+  onNotify: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
 };
 

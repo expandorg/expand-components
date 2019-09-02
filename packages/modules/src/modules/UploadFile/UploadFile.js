@@ -27,15 +27,8 @@ const fileSizes = {
   Small: undefined,
 };
 
-export default function UploadFile({
-  value,
-  fileType,
-  size,
-  onNotify,
-  name,
-  onChange,
-}) {
-  const { services } = useExecutionContext();
+export default function UploadFile({ value, fileType, size, name, onChange }) {
+  const { services, onNotify } = useExecutionContext();
 
   const change = useCallback(
     val => {
@@ -68,14 +61,12 @@ UploadFile.propTypes = {
   fileType: PropTypes.string,
   size: PropTypes.string,
   onChange: PropTypes.func.isRequired,
-  onNotify: PropTypes.func,
 };
 
 UploadFile.defaultProps = {
   value: null,
   fileType: 'Any',
   size: 'Large',
-  onNotify: Function.prototype,
 };
 
 UploadFile.module = {

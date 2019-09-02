@@ -18,7 +18,6 @@ export default class Module extends Component {
 
     onChange: PropTypes.func,
     onModuleError: PropTypes.func,
-    onNotify: PropTypes.func,
   };
 
   static defaultProps = {
@@ -26,7 +25,6 @@ export default class Module extends Component {
     errors: null,
     isModulePreview: false,
     onChange: Function.prototype,
-    onNotify: Function.prototype,
     onModuleError: Function.prototype,
   };
 
@@ -38,23 +36,8 @@ export default class Module extends Component {
       isModulePreview,
       onChange,
       onModuleError,
-      onNotify,
     } = this.props;
 
-    if (!Array.isArray(modules)) {
-      return (
-        <Module
-          module={modules}
-          errors={errors}
-          values={values}
-          controls={controls}
-          isModulePreview={isModulePreview}
-          onChange={onChange}
-          onNotify={onNotify}
-          onModuleError={onModuleError}
-        />
-      );
-    }
     return modules.map(module => (
       <Module
         key={module.name}
@@ -64,7 +47,6 @@ export default class Module extends Component {
         controls={controls}
         isModulePreview={isModulePreview}
         onChange={onChange}
-        onNotify={onNotify}
         onModuleError={onModuleError}
       />
     ));
@@ -77,7 +59,6 @@ export default class Module extends Component {
       onChange,
       isModulePreview,
       onModuleError,
-      onNotify,
       controls,
       errors,
     } = this.props;
@@ -101,7 +82,6 @@ export default class Module extends Component {
             isModulePreview={isModulePreview}
             onChange={onChange}
             onModuleError={onModuleError}
-            onNotify={onNotify}
           >
             {hasChildren && this.renderModules(modules)}
           </Control>
