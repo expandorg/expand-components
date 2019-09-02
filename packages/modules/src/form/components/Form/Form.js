@@ -103,10 +103,8 @@ export default class Form extends Component {
     if (!validation) {
       return null;
     }
-    const errors = validateForm(
-      values || {},
-      formValidationRules(modules, controls)
-    );
+    const rules = formValidationRules(modules, controls);
+    const errors = validateForm(values || {}, rules);
     this.setState({ errors });
     return errors;
   };
@@ -159,10 +157,7 @@ export default class Form extends Component {
         onValidate={this.handleValidate}
         onNotify={onNotify}
       >
-        <form
-          className={cn(styles.container, className)}
-          onSubmit={this.handleSubmit}
-        >
+        <form className={cn(styles.container, className)}>
           {form.modules.map(module =>
             children({ module, key: module.name, ...props })
           )}
