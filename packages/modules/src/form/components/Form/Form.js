@@ -145,16 +145,7 @@ export default class Form extends Component {
 
     const { values, errors, form, controls } = this.state;
 
-    const props = {
-      controls,
-      values,
-      errors,
-      isSubmitting,
-      onChange: this.handleChange,
-      onSubmit: this.handleSubmit,
-      onModuleError,
-      onNotify,
-    };
+    const props = { controls, values, errors, onModuleError, onNotify };
 
     return (
       <ExecutionContextProvider
@@ -163,6 +154,8 @@ export default class Form extends Component {
         services={services}
         variables={variables}
         controls={controls}
+        isSubmitting={isSubmitting}
+        onSubmit={this.handleSubmit}
         onValidate={this.handleValidate}
       >
         <form

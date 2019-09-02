@@ -14,11 +14,9 @@ export default class Module extends Component {
     values: PropTypes.any, // eslint-disable-line
     errors: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
 
-    isSubmitting: PropTypes.bool,
     isModulePreview: PropTypes.bool,
 
     onChange: PropTypes.func,
-    onSubmit: PropTypes.func,
     onModuleError: PropTypes.func,
     onNotify: PropTypes.func,
   };
@@ -27,9 +25,7 @@ export default class Module extends Component {
     values: undefined,
     errors: null,
     isModulePreview: false,
-    isSubmitting: false,
     onChange: Function.prototype,
-    onSubmit: Function.prototype,
     onNotify: Function.prototype,
     onModuleError: Function.prototype,
   };
@@ -39,12 +35,8 @@ export default class Module extends Component {
       values,
       controls,
       errors,
-
-      isSubmitting,
       isModulePreview,
-
       onChange,
-      onSubmit,
       onModuleError,
       onNotify,
     } = this.props;
@@ -56,10 +48,8 @@ export default class Module extends Component {
           errors={errors}
           values={values}
           controls={controls}
-          isSubmitting={isSubmitting}
           isModulePreview={isModulePreview}
           onChange={onChange}
-          onSubmit={onSubmit}
           onNotify={onNotify}
           onModuleError={onModuleError}
         />
@@ -73,9 +63,7 @@ export default class Module extends Component {
         values={values}
         controls={controls}
         isModulePreview={isModulePreview}
-        isSubmitting={isSubmitting}
         onChange={onChange}
-        onSubmit={onSubmit}
         onNotify={onNotify}
         onModuleError={onModuleError}
       />
@@ -87,9 +75,7 @@ export default class Module extends Component {
       module,
       values,
       onChange,
-      isSubmitting,
       isModulePreview,
-      onSubmit,
       onModuleError,
       onNotify,
       controls,
@@ -112,10 +98,8 @@ export default class Module extends Component {
           <Control
             {...module}
             value={value}
-            isSubmitting={isSubmitting}
             isModulePreview={isModulePreview}
             onChange={onChange}
-            onSubmit={onSubmit}
             onModuleError={onModuleError}
             onNotify={onNotify}
           >

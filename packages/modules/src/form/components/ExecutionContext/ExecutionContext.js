@@ -11,6 +11,8 @@ const ExecutionContextProvider = ({
   form,
   controls,
   services,
+  isSubmitting,
+  onSubmit,
   onValidate,
   children,
 }) => (
@@ -21,7 +23,9 @@ const ExecutionContextProvider = ({
       variables,
       services,
       controls,
+      isSubmitting,
       onValidate,
+      onSubmit,
     }}
   >
     {children}
@@ -30,11 +34,13 @@ const ExecutionContextProvider = ({
 
 ExecutionContextProvider.propTypes = {
   form: formProps.isRequired,
+  isSubmitting: PropTypes.bool.isRequired,
   variables: PropTypes.shape({}),
   controls: PropTypes.shape({}).isRequired,
   services: PropTypes.shape({}),
   values: PropTypes.shape({}),
   onValidate: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
 };
 
 ExecutionContextProvider.defaultProps = {

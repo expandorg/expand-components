@@ -13,8 +13,8 @@ import styles from './Wizard.module.styl';
 
 const reset = () => 0;
 
-export default function Wizard({ children, onSubmit, isSubmitting, modules }) {
-  const { onValidate } = useExecutionContext();
+export default function Wizard({ children, modules }) {
+  const { onValidate, onSubmit, isSubmitting } = useExecutionContext();
 
   const stepCount = Children.count(children);
 
@@ -71,11 +71,8 @@ Wizard.module = {
 
 Wizard.propTypes = {
   modules: PropTypes.arrayOf(PropTypes.object),
-  isSubmitting: PropTypes.bool,
-  onSubmit: PropTypes.func.isRequired,
 };
 
 Wizard.defaultProps = {
   modules: [],
-  isSubmitting: false,
 };
