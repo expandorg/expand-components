@@ -143,7 +143,13 @@ export default class Form extends Component {
 
     const { values, errors, form, controls } = this.state;
 
-    const props = { controls, values, errors, onModuleError };
+    const props = {
+      controls,
+      values,
+      errors,
+      onModuleError,
+      onChange: this.handleChange,
+    };
 
     return (
       <ExecutionContextProvider

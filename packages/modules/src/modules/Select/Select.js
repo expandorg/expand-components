@@ -81,7 +81,7 @@ export default class Select extends Component {
       },
       defaults: {
         columns: 2,
-        idType: 'small',
+        idType: IdType.small,
         options: ['Option 1', 'Option 2', 'Option 3', 'Option 4'],
       },
     },

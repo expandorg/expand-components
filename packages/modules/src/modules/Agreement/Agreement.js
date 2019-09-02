@@ -56,14 +56,6 @@ export default class Agreement extends Component {
       defaults: {
         button: 'Rules',
         label: 'You must agree with rules',
-        modules: [
-          {
-            name: 'header',
-            type: 'text',
-            style: 'body',
-            content: 'test',
-          },
-        ],
       },
     },
   };

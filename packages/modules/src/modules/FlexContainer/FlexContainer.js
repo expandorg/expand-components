@@ -42,7 +42,6 @@ export default class FlexContainer extends Component {
       },
       defaults: {
         columns: 'start',
-        modules: [],
       },
     },
   };

@@ -40,14 +40,6 @@ export default class Instructions extends Component {
       },
       defaults: {
         button: 'Instructions',
-        modules: [
-          {
-            name: 'header',
-            type: 'text',
-            style: 'body',
-            content: 'test',
-          },
-        ],
       },
     },
   };
