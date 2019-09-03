@@ -21,7 +21,7 @@ export default class Select extends Component {
     ]).isRequired,
     className: PropTypes.string,
     onSelect: PropTypes.func.isRequired,
-    columns: PropTypes.oneOf([2, 3]),
+    columns: PropTypes.oneOf([1, 2, 3]),
   };
 
   static defaultProps = {

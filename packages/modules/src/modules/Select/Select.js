@@ -28,7 +28,7 @@ export default class Select extends Component {
       IdType.numerals,
     ]),
     value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    columns: PropTypes.oneOf([2, 3]),
+    columns: PropTypes.oneOf([1, 2, 3]),
     isModulePreview: PropTypes.bool,
     readOnly: PropTypes.bool,
     onChange: PropTypes.func.isRequired,

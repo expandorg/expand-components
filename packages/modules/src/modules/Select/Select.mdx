@@ -13,7 +13,7 @@ route: /modules-select
 | *type*         | `select`       | true     | -       | module type  |
 | *name*         | string         | true     | -       | module name  |
 | *idType*       | `none`, `small`, `capital`, `roman`, `numerals` | false    | numerals       | enumerator type  |
-| *columns*      | `2`, `3`       | false    | `2`     | number of columns  |
+| *columns*      | `1`,`2`, `3`   | false    | `2`     | number of columns  |
 | *options*      | `[ string, string... ]`   | true   | -     | array of options   |
 | *readOnly*     | boolean        | -        | false   | read only    |
 
@@ -27,28 +27,33 @@ route: /modules-select
 }
 ```
 
+import { Playground } from 'docz'
+
 import ModulesPlayground from '../../form/components/Playground/ModulesPlayground.js'
 
-<ModulesPlayground
-  form={{
-    modules: [
-      {
-        name: 'text',
-        type: 'type',
-        style: 'h3',
-        content: 'Select one',
-      },
-      {
-        name: 'select',
-        type: 'select',
-        idType: 'none',
-        options: ['Option 1', 'Option 2', 'Option 3', 'Option 4'],
-      },
-      {
-        name: 'submit',
-        type: 'submit',
-        caption: 'Next',
-      },
-    ],
-  }}
-/>
+<Playground>
+  <ModulesPlayground
+    form={{
+      modules: [
+        {
+          name: 'text',
+          type: 'type',
+          style: 'h3',
+          content: 'Select one',
+        },
+        {
+          name: 'select',
+          type: 'select',
+          idType: 'none',
+          columns: 1,
+          options: ['Option 1', 'Option 2', 'Option 3', 'Option 4'],
+        },
+        {
+          name: 'submit',
+          type: 'submit',
+          caption: 'Next',
+        },
+      ],
+    }}
+  />
+</Playground>
