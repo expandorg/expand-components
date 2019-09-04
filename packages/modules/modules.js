@@ -22,6 +22,7 @@ import Video from './src/modules/Video';
 import YesNo from './src/modules/YesNo';
 import Wizard from './src/modules/Wizard';
 import Section from './src/modules/Section';
+import Slider from './src/modules/Slider';
 
 export {
   Agreement,
@@ -50,4 +51,5 @@ export {
   YesNo,
   Wizard,
   Section,
+  Slider,
 };

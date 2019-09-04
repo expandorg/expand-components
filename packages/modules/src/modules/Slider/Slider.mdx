@@ -1,0 +1,57 @@
+---
+menu: Modules
+name: Slider
+route: /modules-slider
+---
+
+# Slider Module
+
+## Slider properties
+
+| Property       | type           | Required | Default | description |
+| -------------- | -------------- | -------- | ------- | ----------- |
+| *type*         | `slider`       | true     | -       | module type  |
+| *name*         | string         | true     | -       | module name  |
+| *min*          | number         | -        | -       | Min value  |
+| *max*          | number         | -        | -       | Max  value |
+| *step*         | number         | -        | -       | Step size |
+
+
+## Example
+```jsx
+{
+  name: 'slider',
+  type: 'slider',
+  min: 0,
+  max: 100,
+  step: 1,
+}
+```
+
+import ModulesPlayground from '../../form/components/Playground/ModulesPlayground.js'
+
+<ModulesPlayground
+  form={{
+    modules: [
+     {
+       name: 'p4',
+       type: 'text',
+       style: 'body',
+       align: 'left',
+       content: 'Lorem ipsum dolor sit amet. Ut enim ad minim veniam Lorem ipsum dolor sit amet. Ut enim ad minim veniam',
+     },
+     {
+        type: 'slider',
+        name: 'slider',
+        min: 0,
+        max: 100,
+        step: 1,
+      },
+      {
+        name: 'submit',
+        type: 'submit',
+        caption: 'Next',
+      },
+    ],
+  }}
+/>

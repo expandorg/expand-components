@@ -21,6 +21,7 @@ import { UploadFile } from '../../modules/UploadFile';
 import { TagVideo, MultipleTagVideo } from '../../modules/TagVideo';
 import Video from '../../modules/Video';
 import Section from '../../modules/Section';
+import Slider from '../../modules/Slider';
 import Wizard from '../../modules/Wizard';
 
 const moduleControls = [
@@ -49,6 +50,7 @@ const moduleControls = [
   YesNo,
   Video,
   Section,
+  Slider,
   Wizard,
 ];
 
