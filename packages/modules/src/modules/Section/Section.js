@@ -16,6 +16,7 @@ Section.module = {
   name: 'Section',
   editor: {
     category: ModuleCategories.Display,
+    skipPreview: true,
     properties: {
       modules: {
         type: PropControlTypes.modules,
