@@ -36,6 +36,7 @@ export type ModuleControlMeta = {
   },
   editor?: {
     category: string,
+    skipPreview?: boolean,
     properties?: {
       [key: string]: {
         type: string,
