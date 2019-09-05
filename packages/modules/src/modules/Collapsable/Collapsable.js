@@ -14,44 +14,6 @@ import {
 import styles from './Collapsable.module.styl';
 
 export default class Collapsable extends Component {
-  static propTypes = {
-    header: PropTypes.oneOfType([PropTypes.string, PropTypes.element])
-      .isRequired,
-    expanded: PropTypes.bool, //eslint-disable-line
-    isModulePreview: PropTypes.bool,
-  };
-
-  static defaultProps = {
-    expanded: false,
-    isModulePreview: false,
-  };
-
-  static module = {
-    type: 'collapsable',
-    name: 'Collapsable',
-    editor: {
-      category: ModuleCategories.Display,
-      properties: {
-        header: {
-          type: PropControlTypes.string,
-          placeholder: 'Title text',
-          required: true,
-        },
-        expanded: {
-          type: PropControlTypes.boolean,
-          label: 'Expanded by default',
-        },
-        modules: {
-          type: PropControlTypes.modules,
-          caption: 'Drop content here',
-        },
-      },
-      defaults: {
-        header: 'Click to Expand/Collapse',
-      },
-    },
-  };
-
   constructor(props) {
     super(props);
 
@@ -84,3 +46,40 @@ export default class Collapsable extends Component {
     );
   }
 }
+
+Collapsable.propTypes = {
+  header: PropTypes.oneOfType([PropTypes.string, PropTypes.element]).isRequired,
+  expanded: PropTypes.bool, //eslint-disable-line
+  isModulePreview: PropTypes.bool,
+};
+
+Collapsable.defaultProps = {
+  expanded: false,
+  isModulePreview: false,
+};
+
+Collapsable.module = {
+  type: 'collapsable',
+  name: 'Collapsable',
+  editor: {
+    category: ModuleCategories.Display,
+    properties: {
+      header: {
+        type: PropControlTypes.string,
+        placeholder: 'Title text',
+        required: true,
+      },
+      expanded: {
+        type: PropControlTypes.boolean,
+        label: 'Expanded by default',
+      },
+      modules: {
+        type: PropControlTypes.modules,
+        caption: 'Drop content here',
+      },
+    },
+    defaults: {
+      header: 'Click to Expand/Collapse',
+    },
+  },
+};
