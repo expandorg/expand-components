@@ -59,6 +59,7 @@ Wizard.module = {
   name: 'Wizard',
   editor: {
     category: ModuleCategories.Display,
+    skipPreview: true,
     properties: {
       modules: {
         type: PropControlTypes.modules,
