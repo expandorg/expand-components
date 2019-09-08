@@ -1,0 +1,45 @@
+---
+menu: Modules
+name: Iframe
+route: /modules-iframe
+---
+
+# Iframe Module
+
+## Iframe properties
+
+| Property | type    | Required | Default | description |
+| ---------| ------- | -------- | ------- | ----------- |
+| *type*   | `iframe` | true     | -       | module type |
+| *name*   | string  | true     | -       | module name |
+| *src*    | string  | true     | -       | iframe url   |
+| *title*  | string  | false    | -       | iframe title   |
+
+## Example
+```jsx
+{
+  name: 'iframe',
+  type: 'iframe',
+  src: "https://expand.org/images/image-annotation.png",
+}
+```
+
+import ModulesPlayground from '../../form/components/Playground/ModulesPlayground.js'
+
+<ModulesPlayground
+  form={{
+    modules: [
+      {
+        name: 'iframe',
+        type: 'iframe',
+        src: "https://expand.org/images/image-annotation.png",
+      },
+      {
+        name: 'submit',
+        type: 'submit',
+        caption: 'Next',
+      },
+    ],
+  }}
+/>
+
