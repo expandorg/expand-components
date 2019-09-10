@@ -3,12 +3,8 @@
 @import '~@expandorg/uikit/size'
 
 
-theme-default()
-  .gem-listnav__default &
-    {block}
-
-theme-raised()
-  .gem-listnav__raised &
+theme(thm)
+  .gem-listnav__{thm} &
     {block}
 
 .gem-listnav
@@ -45,7 +41,7 @@ theme-raised()
     text-decoration: none;
     white-space nowrap
 
-    +theme-default()
+    +theme('default')
       font(h4, false, false, 36px)
       padding: 0 34px
       color: color-text-dark
@@ -53,7 +49,7 @@ theme-raised()
       &:hover
         color: lighten(color-text-dark, 20%)
 
-    +theme-raised()
+    +theme('raised')
       font(h4-title, false, false, 48px)
       color: color-black
       background-color:  transparent
@@ -75,7 +71,6 @@ theme-raised()
           border-top-left-radius: 0
           border-bottom-left-radius: 0
 
-
       &:last-child
         border-top-right-radius: 25px
         border-bottom-right-radius: 25px
@@ -84,8 +79,21 @@ theme-raised()
           border-top-right-radius: 0
           border-bottom-right-radius: 0
 
+    +theme('underline')
+      height 32px
+      padding: 0 10px
+      min-width: 170px
+      text-align: center
+
+      font(subtitle, 400, false, 16px)
+      border-bottom: 1px solid color-heavy-blue
+
+      color: color-black
+      background-color: transparent
+      text-transform: uppercase
+
     &-active
-      +theme-default()
+      +theme('default')
         color: color-white
         background-color: color-primary-blue;
         border-radius: 5px;
@@ -99,7 +107,11 @@ theme-raised()
         @media(max-width: breakpoint-mobile-sm)
           border-radius: 0;
 
-      +theme-raised()
+      +theme('raised')
         background-color: color-white;
         font-weight: 600
+
+      +theme('underline')
+        font-weight: 600
+        border-bottom: 5px solid color-primary-blue
 

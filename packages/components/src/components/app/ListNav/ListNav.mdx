@@ -12,6 +12,7 @@ import { BrowserRouter } from 'react-router-dom';
 
 import ListNav from './ListNav.js'
 
+### default
 <Playground>
   <BrowserRouter>
     <ListNav navs={
@@ -33,7 +34,7 @@ import ListNav from './ListNav.js'
   </BrowserRouter>
 </Playground>
 
-
+### raised
 <Playground>
     <div style={{backgroundColor: '#F3F9FF', padding: '40px 0'}}>
     <BrowserRouter>
@@ -58,6 +59,29 @@ import ListNav from './ListNav.js'
 </Playground>
 
 
+### underline
+<Playground>
+  <BrowserRouter>
+    <ListNav theme="underline" navs={
+      [
+        {
+          href: '/', text: 'All',
+        },
+        {
+          href: '/tasks/scheduled', text: 'Scheduled',
+        },
+        {
+          href: '/tasks/in-progress', text: 'In Progress',
+        },
+        {
+          href: '/tasks/completed', text: 'Completed',
+        },
+      ]}
+    />
+  </BrowserRouter>
+</Playground>
 
+
+## PropTypes
 <Props of={ListNav} />
 

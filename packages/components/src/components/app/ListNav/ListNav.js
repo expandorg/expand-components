@@ -16,7 +16,7 @@ export default class ListNav extends Component {
         text: PropTypes.string,
       })
     ),
-    theme: PropTypes.oneOf(['default', 'raised']),
+    theme: PropTypes.oneOf(['default', 'raised', 'underline']),
   };
 
   static defaultProps = {
