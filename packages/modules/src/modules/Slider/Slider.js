@@ -23,9 +23,9 @@ export default function Slider({ value, min, max, step, name, onChange }) {
       <UISlider
         className={styles.slider}
         value={+value}
-        step={step}
-        min={min}
-        max={max}
+        step={+step}
+        min={+min}
+        max={+max}
         onChange={change}
       />
       <div className={styles.value}>{value}</div>
@@ -68,9 +68,9 @@ Slider.module = {
 Slider.propTypes = {
   name: PropTypes.string.isRequired,
   value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-  min: PropTypes.number,
-  max: PropTypes.number,
-  step: PropTypes.number,
+  min: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  max: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  step: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   onChange: PropTypes.func.isRequired,
 };
 
