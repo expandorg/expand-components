@@ -73,6 +73,7 @@ Input.module = {
   validation: {
     isRequired: rules.isRequired,
     isEmail: rules.isEmail,
+    isUrl: rules.isUrl,
     isNumber: rules.isNumber,
     // isGreater: rules.isGreater,
     // isGreaterOrEqual: rules.isGreaterOrEqual,

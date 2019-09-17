@@ -1,10 +1,12 @@
 // @flow
 import isEmail from 'validator/lib/isEmail';
 import isNumeric from 'validator/lib/isNumeric';
+import isURL from 'validator/lib/isURL';
 
 export const rules = {
   isRequired: (value: any) => typeof value !== 'undefined' && value !== '',
   isEmail: (value: any) => typeof value !== 'undefined' && isEmail(value),
+  isUrl: (value: any) => typeof value !== 'undefined' && isURL(value),
   isTrue: (value: any) => value === true,
   isNumber: (value: any) =>
     typeof value !== 'undefined' && isNumeric(value.toString()),
