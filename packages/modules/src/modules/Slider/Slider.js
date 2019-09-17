@@ -56,11 +56,16 @@ Slider.module = {
         type: PropControlTypes.number,
         placeholder: 'Max value (default 100)',
       },
+      initial: {
+        type: PropControlTypes.string,
+        placeholder: 'Default value',
+      },
     },
     defaults: {
       min: 0,
       max: 10,
       step: 1,
+      initial: 0,
     },
   },
 };
