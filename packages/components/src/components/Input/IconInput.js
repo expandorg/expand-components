@@ -14,6 +14,8 @@ export function IconInput({
   value,
   className,
   tooltip,
+  tooltipPosition,
+  tooltipOrientation,
   copy,
   ...rest
 }) {
@@ -26,7 +28,13 @@ export function IconInput({
             Copy
           </ClipboardButton>
         )}
-        {tooltip && <TooltipIcon tooltip={tooltip} />}
+        {tooltip && (
+          <TooltipIcon
+            tooltip={tooltip}
+            position={tooltipPosition}
+            orientation={tooltipOrientation}
+          />
+        )}
       </div>
     </Input>
   );
@@ -36,6 +44,8 @@ IconInput.propTypes = {
   value: PropTypes.string,
   className: PropTypes.string,
   tooltip: PropTypes.string,
+  tooltipPosition: PropTypes.string,
+  tooltipOrientation: PropTypes.string,
   copy: PropTypes.bool,
 };
 
@@ -43,6 +53,8 @@ IconInput.defaultProps = {
   className: null,
   value: undefined,
   tooltip: null,
+  tooltipPosition: null,
+  tooltipOrientation: null,
   copy: false,
 };
 

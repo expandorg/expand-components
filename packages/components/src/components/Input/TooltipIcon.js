@@ -7,8 +7,8 @@ import { ReactComponent as Icon } from './tooltip.svg';
 
 import './TooltipIcon.styl';
 
-export default function TooltipIcon({ tooltip }) {
-  const [props, visible, ttcn] = useTooltip();
+export default function TooltipIcon({ tooltip, position, orientation }) {
+  const [props, visible, ttcn] = useTooltip(orientation, position);
 
   if (!tooltip) {
     return null;
@@ -23,8 +23,12 @@ export default function TooltipIcon({ tooltip }) {
 
 TooltipIcon.propTypes = {
   tooltip: PropTypes.string,
+  position: PropTypes.string,
+  orientation: PropTypes.string,
 };
 
 TooltipIcon.defaultProps = {
   tooltip: null,
+  position: 'center',
+  orientation: 'top',
 };
