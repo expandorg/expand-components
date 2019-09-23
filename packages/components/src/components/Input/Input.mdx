@@ -10,30 +10,42 @@ import { Playground, Props } from 'docz'
 import WithState from 'scripts/docz/WithState'
 
 import { Input } from './Input.js'
+import { IconInput } from './IconInput.js'
+
 import Pane from '../Panel/Panel.js'
 
 <Playground>
   {() => (
-    <WithState>
-      {({value, onChange}) => (
-        <Pane>
-          <Input  placeholder="Enter value" value={value} onChange={e => onChange(e.target.value)} />
-        </Pane>
-      )}
-    </WithState>
-  )}
-</Playground>
-
-
-<Playground>
-  {() => (
-    <WithState>
-      {({value, onChange}) => (
-        <div style={{backgroundColor: '#1C2541', padding: '30px'}}>
-          <Input theme="white" placeholder="Enter value" value={value} onChange={e => onChange(e.target.value)} />
-        </div>
-      )}
-    </WithState>
+    <div>
+      <Pane>
+        <WithState>
+          {({value, onChangeEvent}) => (
+            <Input placeholder="Enter value" value={value} onChange={onChangeEvent} />
+          )}
+        </WithState>
+      </Pane>
+      <Pane>
+        <WithState>
+          {({value, onChangeEvent}) => (
+            <Input placeholder="Enter value" error value={value} onChange={onChangeEvent} />
+          )}
+        </WithState>
+      </Pane>
+      <div style={{backgroundColor: '#1C2541', padding: '40px 30px',  margin: '30px 0'}}>
+        <WithState>
+          {({value, onChangeEvent}) => (
+            <Input theme="white" placeholder="Enter value" value={value} onChange={onChangeEvent} />
+          )}
+        </WithState>
+      </div>
+      <Pane>
+        <WithState>
+          {({value, onChangeEvent}) => (
+            <IconInput placeholder="Enter value" tooltip="test" copy value={value} onChange={onChangeEvent} />
+          )}
+        </WithState>
+      </Pane>
+    </div>
   )}
 </Playground>
 

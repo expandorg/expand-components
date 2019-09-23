@@ -30,7 +30,7 @@
     "docz"
   ],
   "devDependencies": {
-    "@expandorg/eslint-config": "^0.5.3",
+    "@expandorg/eslint-config": "^0.5.4",
     "babel-eslint": "^10.0.3",
     "classnames": "^2.2.6",
     "css-loader": "^3.2.0",

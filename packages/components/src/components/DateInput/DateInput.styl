@@ -7,7 +7,6 @@
   display: inline-block;
   font(body, false, false, normal)
 
-
   &-wrapper
     position: relative;
     box-sizing: border-box;
@@ -174,33 +173,22 @@ theme(thm)
   .DayPickerInput-theme-{thm} &
     {block}
 
-
-
 .DayPickerInput
   box-sizing: border-box
   display: inline-block;
   position relative
-
   width: 100%
-  height 48px
-  padding-top: 16px
 
-  input
+  &-input
     box-sizing: border-box
 
-    font(body, false, false, normal)
-
-    height: 32px;
     width: 100%
-
-    padding: 0 0 10px 0
+    font(body, false, false, 22px)
+    height 56px
+    padding: 10px 0 0 16px
 
     background-color: transparent
-    color: color-text-dark
-
     border: none
-    border-bottom: 2px solid  color-heavy-blue
-
     outline: 0
 
     &:-webkit-autofill
@@ -209,19 +197,30 @@ theme(thm)
       &:hover, &:focus, &:active
         transition: background-color 5000s ease-in-out 0s
 
+    &.DayPickerInput-theme-default
+      border-top-left-radius: 5px
+      border-top-right-radius: 5px
+
+      color: color-text-dark
+      background-color: color-light-blue
+      border-bottom: 1px solid color-heavy-blue
+
+      &:focus
+        border-bottom-color color-primary-blue
+
+        &::placeholder
+          color: #558098;
+
     &.DayPickerInput-theme-white
-      color: white
-      border-bottom-color: white
+      padding-left: 0
+      color: color-white
+      border-bottom: 1px solid  color-white
 
       &::placeholder
         color: color-white;
 
       &:focus
         border-bottom-color:  color-white
-
-    &::placeholder
-      font(body, false, false, normal)
-      color: color-text-dark;
 
     &:focus
       border-bottom-color:  color-primary-blue

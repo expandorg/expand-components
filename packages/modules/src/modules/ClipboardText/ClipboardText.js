@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
-import { ClipboardButton, Input, VarsPlaceholder } from '@expandorg/components';
+import { IconInput, VarsPlaceholder } from '@expandorg/components';
 
 import {
   PropControlTypes,
@@ -10,59 +10,54 @@ import {
 
 import styles from './ClipboardText.module.styl';
 
-export default class ClipboardText extends Component {
-  static propTypes = {
-    text: PropTypes.string,
-    label: PropTypes.string,
-    isModulePreview: PropTypes.bool,
-  };
+export default function ClipboardText({ text, label, isModulePreview }) {
+  return (
+    <div className={styles.container}>
+      <IconInput
+        className={styles.text}
+        readOnly
+        copy
+        placeholder={label}
+        value={text}
+      />
+      <VarsPlaceholder
+        vval={text}
+        isModulePreview={isModulePreview}
+        pos="left"
+      />
+    </div>
+  );
+}
 
-  static defaultProps = {
-    label: null,
-    isModulePreview: false,
-    text: '',
-  };
+ClipboardText.propTypes = {
+  text: PropTypes.string,
+  label: PropTypes.string,
+  isModulePreview: PropTypes.bool,
+};
 
-  static module = {
-    type: 'clipboardText',
-    name: 'Copy to clipboard',
-    editor: {
-      category: ModuleCategories.Display,
-      properties: {
-        text: {
-          type: PropControlTypes.string,
-          placeholder: 'Text',
-        },
-        label: {
-          type: PropControlTypes.string,
-          placeholder: 'Label',
-        },
+ClipboardText.defaultProps = {
+  label: null,
+  isModulePreview: false,
+  text: '',
+};
+
+ClipboardText.module = {
+  type: 'clipboardText',
+  name: 'Copy to clipboard',
+  editor: {
+    category: ModuleCategories.Display,
+    properties: {
+      text: {
+        type: PropControlTypes.string,
+        placeholder: 'Text',
       },
-      defaults: {
-        text: 'Click to copy text',
+      label: {
+        type: PropControlTypes.string,
+        placeholder: 'Label',
       },
     },
-  };
-
-  render() {
-    const { text, label, isModulePreview } = this.props;
-    return (
-      <div className={styles.container}>
-        <Input
-          className={styles.text}
-          readOnly
-          placeholder={label}
-          value={text}
-        />
-        <VarsPlaceholder
-          vval={text}
-          isModulePreview={isModulePreview}
-          pos="left"
-        />
-        <ClipboardButton className={styles.copy} value={text}>
-          Copy
-        </ClipboardButton>
-      </div>
-    );
-  }
-}
+    defaults: {
+      text: 'Click to copy text',
+    },
+  },
+};

@@ -6,47 +6,81 @@ theme(thm)
   .gem-dropdown-theme-{thm} &
     {block}
 
-
 .gem-dropdown-content
   box-sizing: border-box
   position relative
 
   width: 100%
-  height: 48px
-  padding 18px 0 0 0
-
+  height: 56px
+  padding: 24px 0 0 16px
   font(body, false, false, 22px)
-  color: color-blue-background
-  border-bottom: 2px solid color-heavy-blue
   transition: all 0.2s ease-out;
 
-  +theme('white')
-    color color-white
-    border-bottom-color: color-white
+  +theme('default')
+    border-top-left-radius: 5px
+    border-top-right-radius: 5px
+    color: color-text-dark
+    background-color: color-light-blue
+    border-bottom: 1px solid color-heavy-blue
 
-  .gem-input-label:before
-    +theme('white')
+    .gem-input-label
+      left: 16px
+      &:before
+        color: #558098;
+
+  +theme('white')
+    padding-left: 0
+    color color-white
+    border-bottom: 1px solid color-white
+
+    .gem-input-label:before
       color color-white
+
+    .gem-input-tooltip
+      path
+        fill: color-white
 
   &-val
     border-bottom-color: color-primary-blue
 
     .gem-input-label:before
-      transform: translateY(-18px)
       font-size: 11px
       font-weight: 700
-      color: color-primary-blue
+      transform: translateY(-14px)
+
+      +theme('default')
+        color: color-primary-blue
 
       +theme('white')
         color color-white
 
-.gem-dropdown-arrow
-  position absolute
-  right: 0
-  top: calc(28px);
+  &-icons
+    position absolute
+    right: 16px
+    top: calc(50% - 8px)
 
-  path
-    fill color-heavy-blue
+    display: flex
+    align-items: center
+    justify-content: flex-end
+    flex-wrap: nowrap
+
+    > *
+      margin-left: 10px
+      &:first-child
+        margin-left: 0
 
     +theme('white')
-      fill color-white
+      right: 0
+
+  &-arrow
+    height: 22px
+    path
+      fill color-primary-blue
+
+    +theme('white')
+      path
+        fill color-white
+
+.gem-dropdown--tooltip
+  .gem-dropdown-select
+    width: calc(100% - 40px)

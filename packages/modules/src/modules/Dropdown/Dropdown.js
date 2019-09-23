@@ -73,6 +73,7 @@ export default class Dropdown extends Component {
         <VarsPlaceholder
           vval={label}
           pos="left"
+          vcn={styles.placeholder}
           isModulePreview={isModulePreview}
         />
       </div>

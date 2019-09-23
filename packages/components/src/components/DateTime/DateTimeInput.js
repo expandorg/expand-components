@@ -77,17 +77,23 @@ export default class DateTimeInput extends Component {
     /* eslint-disable jsx-a11y/label-has-associated-control */
     /* eslint-disable jsx-a11y/label-has-for */
 
-    const classes = cn(styles.input, `gem-dateinput-theme-${theme}`, {
+    const classes = cn(styles.input, {
       [styles.error]: error,
       [styles.filled]: !!value,
     });
 
     return (
-      <div className={cn(styles.container, className)}>
+      <div
+        className={cn(
+          styles.container,
+          `gem-dateinput-theme-${theme}`,
+          className
+        )}
+      >
         <div className={classes} onClick={this.handleToggle}>
           {value && formatter(value)}
+          <InputLabel placeholder={placeholder} />
         </div>
-        <InputLabel placeholder={placeholder} />
         {picker && (
           <DateTimePicker
             disabledDays={disabledDays}

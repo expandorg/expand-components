@@ -1,0 +1,43 @@
+@import '~@expandorg/uikit/colors'
+@import '~@expandorg/uikit/font'
+
+error()
+  .gem-input-error &
+    {block}
+
+.gem-iconinput
+
+  .gem-input
+    padding-right: 40px
+
+  &-icons
+    position absolute
+    right: 16px
+    top: calc(50% - 8px)
+
+    display: flex
+    align-items: center
+    justify-content: flex-end
+    flex-wrap: nowrap
+
+    > *
+      margin-left: 10px
+      &:first-child
+        margin-left: 0
+
+  &-copy
+    box-sizing: border-box
+
+    font(subtitle, 800)
+    text-transform: uppercase
+
+    color: color-primary-blue
+    background-color: transparent
+    border: 0
+
+    outline: none
+    cursor pointer
+
+    +error()
+      color: color-text-yellow-2
+

@@ -1,0 +1,21 @@
+@import '~@expandorg/uikit/colors'
+@import '~@expandorg/uikit/font'
+
+error()
+  .gem-input-error &
+    {block}
+
+.gem-input-tooltip
+  position relative
+  display: block
+  line-height: 20px
+  height 20px
+
+  &-icon
+    path
+      fill color-primary-blue
+
+    +error()
+      path
+        fill color-text-yellow-2
+

@@ -9,6 +9,7 @@ import { targetIsDescendant, KeyCodes } from '../../common/dom';
 import { Input } from '../Input';
 import Suggestions from './Suggestions';
 import Suggestion from './Suggestion';
+import TooltipIcon from '../Input/TooltipIcon';
 
 import { containsFilter } from './filterOptions';
 
@@ -21,6 +22,7 @@ export default class AutocompleteInput extends Component {
     allowAdd: PropTypes.bool,
     options: PropTypes.arrayOf(PropTypes.string),
     theme: PropTypes.oneOf(['default', 'white']),
+    tooltip: PropTypes.string,
     onChange: PropTypes.func.isRequired,
     onSelect: PropTypes.func,
     onKeyDown: PropTypes.func,
@@ -33,6 +35,7 @@ export default class AutocompleteInput extends Component {
     theme: 'default',
     options: [],
     className: null,
+    tooltip: null,
     filterFn: containsFilter,
     onSelect: Function.prototype,
     onKeyDown: null,
@@ -149,6 +152,7 @@ export default class AutocompleteInput extends Component {
       filterFn,
       allowAdd,
       theme,
+      tooltip,
       ...rest
     } = this.props;
 
@@ -172,8 +176,12 @@ export default class AutocompleteInput extends Component {
           onChange={this.handleChange}
           onKeyDown={this.handleKeyDown}
           {...rest}
-        />
-        <ArrowDown className="gem-autocomplete-arrow" />
+        >
+          <div className="gem-autocomplete-icons">
+            <ArrowDown className="gem-autocomplete-arrow" />
+            {tooltip && <TooltipIcon tooltip={tooltip} />}
+          </div>
+        </Input>
         {focus && filtered.length !== 0 && (
           <Suggestions>
             {filtered.map(suggest => (
