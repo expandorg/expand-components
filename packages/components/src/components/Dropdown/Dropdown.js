@@ -15,7 +15,7 @@ export default class Dropdown extends Component {
     className: PropTypes.string,
     value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     nullValue: PropTypes.string,
-    tooltip: PropTypes.string,
+    tooltip: PropTypes.any, // eslint-disable-line react/forbid-prop-types
     tooltipPosition: PropTypes.string,
     tooltipOrientation: PropTypes.string,
     options: PropTypes.arrayOf(

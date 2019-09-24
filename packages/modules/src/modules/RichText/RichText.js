@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import {
@@ -8,39 +8,39 @@ import {
 
 import styles from './RichText.module.styl';
 
-export default class RichText extends PureComponent {
-  static propTypes = {
-    content: PropTypes.string.isRequired,
-  };
+export default function RichText({ content }) {
+  /* eslint-disable react/no-danger */
+  return (
+    <div
+      className={styles.richText}
+      dangerouslySetInnerHTML={{ __html: content }}
+    />
+  );
+}
 
-  static module = {
-    type: 'richText',
-    name: 'Text',
-    editor: {
-      category: ModuleCategories.Text,
-      properties: {
-        content: {
-          type: PropControlTypes.richText,
-          placeholder: 'Text...',
-          required: true,
-        },
-      },
-      defaults: {
-        content:
-          'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor',
+RichText.propTypes = {
+  content: PropTypes.string,
+};
+
+RichText.defaultProps = {
+  content: '',
+};
+
+RichText.module = {
+  type: 'richText',
+  name: 'Text',
+  editor: {
+    category: ModuleCategories.Text,
+    properties: {
+      content: {
+        type: PropControlTypes.richText,
+        placeholder: 'Text...',
+        required: true,
       },
     },
-  };
-
-  render() {
-    const { content } = this.props;
-
-    /* eslint-disable react/no-danger */
-    return (
-      <div
-        className={styles.richText}
-        dangerouslySetInnerHTML={{ __html: content }}
-      />
-    );
-  }
-}
+    defaults: {
+      content:
+        'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor',
+    },
+  },
+};

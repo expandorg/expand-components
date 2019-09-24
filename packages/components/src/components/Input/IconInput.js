@@ -43,7 +43,7 @@ export function IconInput({
 IconInput.propTypes = {
   value: PropTypes.string,
   className: PropTypes.string,
-  tooltip: PropTypes.string,
+  tooltip: PropTypes.any, // eslint-disable-line react/forbid-prop-types
   tooltipPosition: PropTypes.string,
   tooltipOrientation: PropTypes.string,
   copy: PropTypes.bool,

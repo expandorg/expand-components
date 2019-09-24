@@ -22,7 +22,7 @@ export default function TooltipIcon({ tooltip, position, orientation }) {
 }
 
 TooltipIcon.propTypes = {
-  tooltip: PropTypes.string,
+  tooltip: PropTypes.any, // eslint-disable-line react/forbid-prop-types
   position: PropTypes.string,
   orientation: PropTypes.string,
 };
