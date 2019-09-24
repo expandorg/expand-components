@@ -16,6 +16,8 @@ export default class Dropdown extends Component {
     value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     nullValue: PropTypes.string,
     tooltip: PropTypes.string,
+    tooltipPosition: PropTypes.string,
+    tooltipOrientation: PropTypes.string,
     options: PropTypes.arrayOf(
       PropTypes.oneOfType([PropTypes.string, PropTypes.object])
     ),
@@ -29,6 +31,8 @@ export default class Dropdown extends Component {
     className: null,
     tooltip: null,
     nullValue: null,
+    tooltipPosition: undefined,
+    tooltipOrientation: undefined,
     theme: 'default',
     options: [],
     label: null,
@@ -47,6 +51,8 @@ export default class Dropdown extends Component {
       label,
       nullValue,
       tooltip,
+      tooltipPosition,
+      tooltipOrientation,
       theme,
     } = this.props;
 
@@ -72,7 +78,14 @@ export default class Dropdown extends Component {
             {formatted}
             <div className="gem-dropdown-content-icons">
               <ArrowDown className="gem-dropdown-content-arrow" />
-              {tooltip && <TooltipIcon tooltip={tooltip} />}
+              {tooltip && (
+                <TooltipIcon
+                  tooltip={tooltip}
+                  p
+                  position={tooltipPosition}
+                  orientation={tooltipOrientation}
+                />
+              )}
             </div>
           </div>
         )}
