@@ -53,8 +53,8 @@ IconInput.defaultProps = {
   className: null,
   value: undefined,
   tooltip: null,
-  tooltipPosition: null,
-  tooltipOrientation: null,
+  tooltipPosition: undefined,
+  tooltipOrientation: undefined,
   copy: false,
 };
 
