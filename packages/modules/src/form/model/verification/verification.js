@@ -1,5 +1,5 @@
 // @flow
-import { getModuleControlsMap } from '../modules';
+import { getModuleControlsMap, findModuleVisitor } from '../modules';
 import { type Module, type ModuleControl } from '../types.flow';
 
 export const avg = (values: Array<?number>): number => {
@@ -35,8 +35,11 @@ export const calculateVerificationScore = (
   const controlsMap = getModuleControlsMap(controls);
 
   const moduleScores = Reflect.ownKeys(response).map(fieldName => {
-    const formModule = formModules.find(m => m.name === fieldName);
-    if (typeof formModule === 'undefined') {
+    const formModule = findModuleVisitor(
+      formModules,
+      m => m.name === fieldName
+    );
+    if (formModule === null || formModule === undefined) {
       return undefined;
     }
     return calculateModuleScore(

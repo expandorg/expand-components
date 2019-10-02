@@ -7,6 +7,27 @@ import type {
   ModuleControlsMap,
 } from './types.flow';
 
+export const findModuleVisitor = (
+  modules: Array<Module>,
+  condition: Module => boolean
+): ?Module => {
+  // eslint-disable-next-line
+  for (const mod of modules) {
+    const meet = condition(mod);
+    if (meet) {
+      return mod;
+    }
+    if (mod.modules) {
+      const meetChildren = findModuleVisitor(mod.modules, condition);
+
+      if (meetChildren) {
+        return meetChildren;
+      }
+    }
+  }
+  return null;
+};
+
 export const getModuleControlsMap = (
   controls: Array<ModuleControl>
 ): ModuleControlsMap =>
