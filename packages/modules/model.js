@@ -26,6 +26,7 @@ import {
   getFormModules,
   getFormModulesNames,
   findModuleVisitor,
+  bfsVisitor,
 } from './src/form/model/modules';
 
 import { getModuleTypes, getReasons } from './src/form/model/reportReasons';
@@ -44,6 +45,7 @@ export {
   isVariable,
   getVariableName,
   findModuleVisitor,
+  bfsVisitor,
   // verification
   calculateModuleScore,
   calculateVerificationScore,

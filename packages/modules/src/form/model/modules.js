@@ -7,6 +7,20 @@ import type {
   ModuleControlsMap,
 } from './types.flow';
 
+export const bfsVisitor = (
+  modules: Array<Module>,
+  fn: (mod: Module) => any
+) => {
+  const queue = [...modules];
+  while (queue.length) {
+    const m = queue.shift();
+    fn(m);
+    if (m.modules && m.modules.length) {
+      queue.push(...m.modules);
+    }
+  }
+};
+
 export const findModuleVisitor = (
   modules: Array<Module>,
   condition: Module => boolean
