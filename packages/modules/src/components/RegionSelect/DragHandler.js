@@ -31,7 +31,9 @@ export default class DragHandler extends Component {
         className="gem-selectregion-drag"
         onDrag={this.handleDrag}
         onDragEnd={this.handleDragEnd}
-      />
+      >
+        <div className="gem-selectregion-drag-inner" />
+      </Draggable>
     );
   }
 }
