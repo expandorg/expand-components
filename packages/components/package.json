@@ -1,6 +1,6 @@
 {
   "name": "@expandorg/components",
-  "version": "0.2.81-y.1",
+  "version": "0.2.82",
   "description": "expand UI components library",
   "main": "index.js",
   "repository": {
