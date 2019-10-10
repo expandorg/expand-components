@@ -1,0 +1,55 @@
+---
+menu: Modules
+name: Padding
+route: /modules-padding
+---
+
+# Padding Module
+
+## Padding properties
+
+| Property     | type           | Required | Default | description |
+| ------------ | -------------- | -------- | ------- | ----------- |
+| *type*       | `padding`      | true     | -       | module type |
+| *name*       | string         | true     | -       | module name |
+
+## Example
+```jsx
+{
+  name: "padding",
+  type: "padding",
+}
+```
+
+import { Playground } from 'docz';
+import ModulesPlayground from '../../form/components/Playground/ModulesPlayground.js'
+
+<Playground>
+  <ModulesPlayground
+    form={{
+      modules: [
+        {
+          name: "h1",
+          type: "text",
+          style: "h2",
+          content: "With paragrahs"
+        },
+        {
+          name: "padding",
+          type: "padding",
+        },
+        {
+          name: "p-2",
+          type: "text",
+          style: "body",
+          content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+        },
+        {
+          name: 'submit',
+          type: 'submit',
+          caption: 'Next',
+        },
+      ],
+    }}
+  />
+</Playground>

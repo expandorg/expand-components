@@ -15,6 +15,7 @@ import RichText from '../../modules/RichText';
 import { RegionSelect, RegionMultiselect } from '../../modules/RegionSelect';
 import { Select, Multiselect } from '../../modules/Select';
 import Submit from '../../modules/Submit';
+import Padding from '../../modules/Padding';
 import Text from '../../modules/Text';
 import YesNo from '../../modules/YesNo';
 import { UploadFile } from '../../modules/UploadFile';
@@ -42,6 +43,7 @@ const moduleControls = [
   RegionMultiselect,
   RegionSelect,
   RichText,
+  Padding,
   Select,
   Submit,
   TagVideo,

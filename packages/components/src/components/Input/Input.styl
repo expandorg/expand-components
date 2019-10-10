@@ -5,65 +5,89 @@ theme(thm)
   .gem-input-theme-{thm} &
     {block}
 
-.gem-input-container
-  box-sizing: border-box
-  display: inline-block;
-  position relative
+error(thm)
+  .gem-input-theme-{thm}.gem-input-error &
+    {block}
 
-  width: 100%
-  height 48px
-  padding-top: 16px
+.gem-input
+  &-container
+    box-sizing: border-box
+    display: inline-block;
+    position relative
+    width: 100%
 
 .gem-input
   box-sizing: border-box
-
   width: 100%
-  height 32px
-  padding: 0 0 10px 0
+
+  transition: all 0.2s ease-out;
 
   font(body, false, false, 22px)
+  height 56px
+  padding: 10px 0 0 16px
 
-  color: color-blue-background
   background-color: transparent
-  border-bottom: 2px solid  color-heavy-blue
-  transition: all 0.2s ease-out;
 
   outline: none;
   resize: none;
 
-  +theme('white')
-    border-bottom-color color-white
-    color: color-white
+  +theme('default')
+    border-top-left-radius: 5px
+    border-top-right-radius: 5px
 
-  &:focus
-    border-bottom-color color-primary-blue
-
-    +theme('white')
-      border-bottom-color color-white
-
-  .gem-input-error &
-    border-bottom-color: color-yellow
+    color: color-text-dark
+    background-color: color-light-blue
+    border-bottom: 1px solid color-heavy-blue
 
     &:focus
-      border-bottom-color color-yellow
+      border-bottom-color color-primary-blue
 
-  &-label:before
-    +theme('white')
-      color color-white
+    &-label
+      left: 16px
+      &:before
+        color: #558098;
+
+  +error('default')
+    background-color: color-yellow-light-bg
+    color: color-text-yellow-2
+    border-bottom-color: #FBBC05
+
+    &-label
+      left: 16px
+      &:before
+        color: color-text-yellow-2;
+
+  +theme('white')
+    padding-left: 0
+    color: color-white
+    border-bottom: 1px solid  color-white
+
+    &-label
+      top: 22px
+      &:before
+        color color-white
 
   &:focus,
   &:active,
   &.gem-input-filled
     & + .gem-input-label:before
-      transform: translateY(-18px)
       font-size: 11px
       font-weight: 700
-      color: color-primary-blue
+      transform: translateY(-14px)
+
+      +theme('default')
+        color: color-primary-blue
+
+      +error('default')
+        color: color-text-yellow-2;
 
       +theme('white')
+        transform: translateY(-20px)
         color color-white
+
 
   &:-webkit-autofill
     transition: background-color 5000s ease-in-out 0s
     &:hover, &:focus, &:active
       transition: background-color 5000s ease-in-out 0s
+

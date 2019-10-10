@@ -40,6 +40,7 @@ export default function Input({
       />
       <VarsPlaceholder
         vval={initial}
+        className={styles.placeholder}
         pos="left"
         isModulePreview={isModulePreview}
       />

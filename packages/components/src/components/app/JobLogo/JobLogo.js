@@ -22,7 +22,7 @@ export default function JobLogo({ src, name, size, className }) {
           `gem-joblogo-${size}`,
           className
         )}
-        alt={name}
+        alt=""
       />
     );
   }

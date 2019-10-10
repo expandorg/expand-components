@@ -52,9 +52,13 @@ export default class DateInput extends Component {
       <DayPickerInput
         inputProps={{
           ...inputProps,
-          className: cn(`DayPickerInput-theme-${theme}`, {
-            'DayPickerInput-error': error,
-          }),
+          className: cn(
+            'DayPickerInput-input',
+            `DayPickerInput-theme-${theme}`,
+            {
+              'DayPickerInput-error': error,
+            }
+          ),
         }}
         formatDate={formatDate}
         format="MM/DD/YYYY"

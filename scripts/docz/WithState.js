@@ -22,10 +22,18 @@ export default class WithState extends Component {
     this.setState({ value });
   };
 
+  handleChangeEvent = e => {
+    this.setState({ value: e.target.value });
+  };
+
   render() {
     const { children } = this.props;
     const { value } = this.state;
 
-    return children({ onChange: this.handleChange, value });
+    return children({
+      onChange: this.handleChange,
+      onChangeEvent: this.handleChangeEvent,
+      value,
+    });
   }
 }

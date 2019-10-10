@@ -1,4 +1,4 @@
-import React, { Component, forwardRef } from 'react';
+import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 import cn from 'classnames';
 
@@ -6,65 +6,63 @@ import './Input.styl';
 
 import InputLabel from './InputLabel';
 
-export class Input extends Component {
-  static propTypes = {
-    value: PropTypes.string,
-    onChange: PropTypes.func,
-    className: PropTypes.string,
-    placeholder: PropTypes.string,
-    error: PropTypes.bool, // eslint-disable-line
-    theme: PropTypes.oneOf(['default', 'white']),
-    forwardedRef: PropTypes.object, // eslint-disable-line
-  };
+export function Input({
+  onChange,
+  className,
+  value,
+  error,
+  placeholder,
+  forwardedRef,
+  children,
+  theme,
+  ...rest
+}) {
+  const classes = cn(
+    'gem-input-container',
+    `gem-input-theme-${theme}`,
+    {
+      'gem-input-error': error,
+    },
+    className
+  );
 
-  static defaultProps = {
-    value: undefined,
-    placeholder: undefined,
-    forwardedRef: undefined,
-    onChange: undefined,
-    className: null,
-    theme: 'default',
-    error: false,
-  };
+  /* eslint-disable jsx-a11y/label-has-associated-control */
+  /* eslint-disable jsx-a11y/label-has-for */
 
-  render() {
-    const {
-      onChange,
-      className,
-      value,
-      error,
-      placeholder,
-      forwardedRef,
-      theme,
-      ...rest
-    } = this.props;
-
-    const classes = cn(
-      'gem-input-container',
-      `gem-input-theme-${theme}`,
-      {
-        'gem-input-error': error,
-      },
-      className
-    );
-
-    /* eslint-disable jsx-a11y/label-has-associated-control */
-    /* eslint-disable jsx-a11y/label-has-for */
-
-    return (
-      <div className={classes}>
-        <input
-          className={cn('gem-input', { 'gem-input-filled': !!value })}
-          value={value || ''}
-          onChange={onChange}
-          ref={forwardedRef}
-          {...rest}
-        />
-        <InputLabel placeholder={placeholder} />
-      </div>
-    );
-  }
+  return (
+    <div className={classes}>
+      <input
+        className={cn('gem-input', { 'gem-input-filled': !!value })}
+        value={value || ''}
+        onChange={onChange}
+        ref={forwardedRef}
+        {...rest}
+      />
+      <InputLabel placeholder={placeholder} theme={theme} />
+      {children}
+    </div>
+  );
 }
+
+Input.propTypes = {
+  value: PropTypes.string,
+  onChange: PropTypes.func,
+  className: PropTypes.string,
+  placeholder: PropTypes.string,
+  error: PropTypes.bool,
+  theme: PropTypes.oneOf(['default', 'white', 'transparent']),
+  forwardedRef: PropTypes.shape({}),
+};
+
+Input.defaultProps = {
+  value: undefined,
+  placeholder: undefined,
+  forwardedRef: undefined,
+  onChange: undefined,
+  className: null,
+  theme: 'default',
+  error: false,
+};
 
 /* eslint-disable */
 export default forwardRef((props, ref) => (

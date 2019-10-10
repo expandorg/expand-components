@@ -46,6 +46,7 @@ export default class Multiselect extends Component {
       properties: {
         columns: {
           type: PropControlTypes.enum,
+          label: 'Number of Columns',
           options: [1, 2, 3],
         },
         options: {
