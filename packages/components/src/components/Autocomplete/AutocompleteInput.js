@@ -2,14 +2,14 @@ import React, { Component, createRef } from 'react';
 import PropTypes from 'prop-types';
 import cn from 'classnames';
 
-import { ReactComponent as ArrowDown } from '@expandorg/uikit/assets/arrow-down.svg';
-
 import { targetIsDescendant, KeyCodes } from '../../common/dom';
 
 import { Input } from '../Input';
 import Suggestions from './Suggestions';
 import Suggestion from './Suggestion';
-import TooltipIcon from '../Input/TooltipIcon';
+import TooltipIcon from '../common/TooltipIcon';
+import InputIconsContainer from '../common/InputIconsContainer';
+import ArrowDownIcon from '../common/ArrowDownIcon';
 
 import { containsFilter } from './filterOptions';
 
@@ -177,10 +177,10 @@ export default class AutocompleteInput extends Component {
           onKeyDown={this.handleKeyDown}
           {...rest}
         >
-          <div className="gem-autocomplete-icons">
-            <ArrowDown className="gem-autocomplete-arrow" />
+          <InputIconsContainer theme={theme}>
+            <ArrowDownIcon theme={theme} />
             {tooltip && <TooltipIcon tooltip={tooltip} />}
-          </div>
+          </InputIconsContainer>
         </Input>
         {focus && filtered.length !== 0 && (
           <Suggestions>

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import cn from 'classnames';
 
@@ -14,7 +14,7 @@ import setYear from 'date-fns/set_year';
 
 import { range, rangeFrom } from '../../common/immutable';
 
-import { DropdownBase } from '../Dropdown';
+import { Dropdown } from '../Dropdown';
 
 import './DropdownDate.styl';
 
@@ -28,66 +28,69 @@ const fixDate = (value, year, month) => {
   return setDate(value, adjustedDay);
 };
 
-export default class DateInput extends Component {
-  static propTypes = {
-    className: PropTypes.string,
-    value: PropTypes.instanceOf(Date),
-    onChange: PropTypes.func.isRequired,
-  };
+export default function DropdownDate({ className, value, theme, onChange }) {
+  const changeDate = useCallback(date => onChange(setDate(value, date)), [
+    onChange,
+    value,
+  ]);
 
-  static defaultProps = {
-    className: null,
-    value: new Date(),
-  };
+  const changeMonth = useCallback(
+    month => {
+      const fixed = fixDate(value, getYear(value), month);
+      onChange(setMonth(fixed, month));
+    },
+    [onChange, value]
+  );
 
-  handleChangeDate = date => {
-    const { onChange, value } = this.props;
-    onChange(setDate(value, date));
-  };
+  const changeYear = useCallback(
+    year => {
+      const fixed = fixDate(value, year, getMonth(value));
+      onChange(setYear(fixed, year));
+    },
+    [onChange, value]
+  );
 
-  handleChangeMonth = month => {
-    const { onChange, value } = this.props;
-    const fixed = fixDate(value, getYear(value), month);
-    onChange(setMonth(fixed, month));
-  };
-
-  handleChangeYear = year => {
-    const { onChange, value } = this.props;
-    const fixed = fixDate(value, year, getMonth(value));
-    onChange(setYear(fixed, year));
-  };
-
-  render() {
-    const { className, value } = this.props;
-    return (
-      <div className={cn('gem-dateinput', className)}>
-        <DropdownBase
-          value={getMonth(value)}
-          options={monthes}
-          className="gem-dateinput-dropdown"
-          onChange={this.handleChangeMonth}
-          formatter={month => format(setMonth(value, month), 'MMM')}
-        >
-          {({ formatted }) => formatted}
-        </DropdownBase>
-        <DropdownBase
-          value={getDate(value)}
-          options={range(getDaysInMonth(value))}
-          className="gem-dateinput-dropdown"
-          onChange={this.handleChangeDate}
-          formatter={day => day + 1}
-        >
-          {({ formatted }) => formatted}
-        </DropdownBase>
-        <DropdownBase
-          value={getYear(value)}
-          options={dates}
-          className="gem-dateinput-dropdown"
-          onChange={this.handleChangeYear}
-        >
-          {({ formatted }) => formatted}
-        </DropdownBase>
-      </div>
-    );
-  }
+  return (
+    <div className={cn('gem-dropdowndate', className)}>
+      <Dropdown
+        label="Month"
+        theme={theme}
+        value={getMonth(value)}
+        options={monthes}
+        className="gem-dropdowndate-dropdown"
+        onChange={changeMonth}
+        formatter={month => format(setMonth(value, month), 'MMM')}
+      />
+      <Dropdown
+        label="Day"
+        theme={theme}
+        value={getDate(value)}
+        options={range(getDaysInMonth(value))}
+        className="gem-dropdowndate-dropdown"
+        onChange={changeDate}
+        formatter={day => day + 1}
+      />
+      <Dropdown
+        label="Year"
+        theme={theme}
+        value={getYear(value)}
+        options={dates}
+        className="gem-dropdowndate-dropdown"
+        onChange={changeYear}
+      />
+    </div>
+  );
 }
+
+DropdownDate.propTypes = {
+  className: PropTypes.string,
+  value: PropTypes.instanceOf(Date),
+  theme: PropTypes.oneOf(['default', 'white']),
+  onChange: PropTypes.func.isRequired,
+};
+
+DropdownDate.defaultProps = {
+  className: null,
+  theme: 'default',
+  value: new Date(),
+};

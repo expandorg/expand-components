@@ -1,21 +1,43 @@
 ---
 menu: Components
-name: Autocomplete
-route: /components-autocompleteinput
+name: Dropdowns
+route: /components-dropdown-inputs
 ---
 
-## Autocomplete
-
+## Dropdown-inputs
 
 import { Playground, Props } from 'docz'
-import Pane from '../Panel/Panel.js'
 import WithState from 'scripts/docz/WithState'
 
-import AutocompleteInput from './AutocompleteInput.js'
+import { IconInput } from './Input/IconInput.js'
+import Dropdown from './Dropdown/Dropdown.js'
+import AutocompleteInput from './Autocomplete/AutocompleteInput.js'
+
+import Pane from './Panel/Panel.js'
 
 <Playground>
   {() => (
     <Pane>
+      <WithState>
+        {({value, onChangeEvent}) => (
+          <IconInput placeholder="Enter value" tooltip="test" copy value={value} onChange={onChangeEvent} />
+        )}
+      </WithState>
+      <br />
+      <br />
+      <WithState value={null}>
+        {({ onChange, value }) => (
+          <Dropdown
+            value={value}
+            nullValue="Select reason"
+            label="Select reason"
+            onChange={onChange}
+            options={[1,2,3,4]}
+          />
+        )}
+      </WithState>
+      <br />
+      <br />
       <WithState>
         {({value, onChange}) => (
           <AutocompleteInput
@@ -49,38 +71,3 @@ import AutocompleteInput from './AutocompleteInput.js'
   )}
 </Playground>
 
-
-
-<Playground>
-  {() => (
-    <WithState>
-      {({value, onChange}) => (
-        <div style={{backgroundColor: '#1C2541', padding: '30px'}}>
-          <AutocompleteInput
-            placeholder="Type..."
-            value={value}
-            theme="white"
-            onChange={evt => {
-              onChange(evt.target.value);
-            }}
-            onSelect={onChange}
-            options={[
-              'red',
-              'gren',
-              'blue',
-              'yellow',
-              'magenta',
-              'white',
-              'black',
-              'gray',
-              'brown',
-            ]}
-          />
-        </div>
-      )}
-    </WithState>
-  )}
-</Playground>
-
-
-<Props of={AutocompleteInput} />

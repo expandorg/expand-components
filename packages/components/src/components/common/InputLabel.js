@@ -10,8 +10,12 @@ export default function InputLabel({ placeholder, className }) {
   if (!placeholder) {
     return null;
   }
-  const classes = cn('gem-input-label', className);
-  return <label className={classes} placeholder={placeholder} />;
+  return (
+    <label
+      className={cn('gem-input-label', className)}
+      placeholder={placeholder}
+    />
+  );
 }
 
 InputLabel.propTypes = {

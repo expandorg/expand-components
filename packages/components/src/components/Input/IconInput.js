@@ -4,8 +4,9 @@ import cn from 'classnames';
 
 // eslint-disable-next-line import/no-named-as-default
 import Input from './Input';
-import TooltipIcon from './TooltipIcon';
 import ClipboardButton from '../ClipboardButton';
+import InputIconsContainer from '../common/InputIconsContainer';
+import TooltipIcon from '../common/TooltipIcon';
 
 import './IconInput.styl';
 
@@ -22,7 +23,7 @@ export function IconInput({
   return (
     <Input className={cn('gem-iconinput', className)} value={value} {...rest}>
       {children}
-      <div className="gem-iconinput-icons">
+      <InputIconsContainer className="gem-iconinput-icons">
         {copy && (
           <ClipboardButton className="gem-iconinput-copy" value={value}>
             Copy
@@ -35,7 +36,7 @@ export function IconInput({
             orientation={tooltipOrientation}
           />
         )}
-      </div>
+      </InputIconsContainer>
     </Input>
   );
 }

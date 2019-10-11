@@ -4,7 +4,7 @@ import cn from 'classnames';
 
 import format from 'date-fns/format';
 
-import { InputLabel } from '../Input';
+import InputLabel from '../common/InputLabel';
 
 import DateTimePicker from './DateTimePicker';
 

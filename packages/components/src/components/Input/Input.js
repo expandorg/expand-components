@@ -4,7 +4,7 @@ import cn from 'classnames';
 
 import './Input.styl';
 
-import InputLabel from './InputLabel';
+import InputLabel from '../common/InputLabel';
 
 export function Input({
   onChange,

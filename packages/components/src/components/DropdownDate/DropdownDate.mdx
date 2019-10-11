@@ -1,18 +1,18 @@
 ---
 menu: Components
-name: Dropdown
-route: /components-dropdown
+name: DropdownDate
+route: /components-DropdownDate
 ---
 
 import { Playground, Props } from 'docz'
 import Pane from '../Panel/Panel.js'
 import WithState from 'scripts/docz/WithState'
 
-import Dropdown from './Dropdown.js'
+import DropdownDate from './DropdownDate.js'
 
-## Dropdown
+## DropdownDate
 
-<Props of={Dropdown} />
+<Props of={DropdownDate} />
 
 ## Example
 
@@ -21,30 +21,13 @@ import Dropdown from './Dropdown.js'
     <Pane>
       <WithState value={null}>
         {({ onChange, value }) => (
-          <Dropdown
+          <DropdownDate
             value={value}
-            tooltip="Test"
-            nullValue="Select reason"
             label="Select reason"
             onChange={onChange}
-            options={[1,2,3,4]}
           />
         )}
       </WithState>
-      <br />
-      <br />
-      <WithState value={null}>
-        {({ onChange, value }) => (
-          <Dropdown
-            value={value}
-            nullValue="Select reason"
-            label="Select reason"
-            onChange={onChange}
-            options={[1,2,3,4]}
-          />
-        )}
-      </WithState>
-
     </Pane>
   )}
 </Playground>
@@ -55,13 +38,11 @@ import Dropdown from './Dropdown.js'
     <WithState value={null}>
       {({ onChange, value }) => (
         <div style={{backgroundColor: '#1C2541', padding: '30px', marginTop: '50px'}}>
-          <Dropdown
+          <DropdownDate
             value={value}
             theme="white"
-            nullValue="Select reason"
             label="Select reason"
             onChange={onChange}
-            options={[1,2,3,4]}
           />
         </div>
       )}
