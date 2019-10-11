@@ -1,0 +1,99 @@
+@import '~@expandorg/uikit/colors'
+@import '~@expandorg/uikit/font'
+@import '~@expandorg/uikit/size'
+
+theme(thm)
+  .gem-tabs__{thm} &
+    {block}
+
+.gem-tabs
+  box-sizing: border-box
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &-tab
+    box-sizing: border-box;
+
+    text-decoration: none;
+    white-space nowrap
+
+    outline: 0
+    cursor pointer
+
+    +theme('default')
+      font(h4, false, false, 36px)
+      padding: 0 34px
+      color: color-text-dark
+
+      &:hover
+        color: lighten(color-text-dark, 20%)
+
+    +theme('raised')
+      font(h4-title, false, false, 48px)
+      color: color-black
+      background-color:  transparent
+      border: 1px solid color-heavy-blue
+      border-left: none
+      text-align: center
+      min-width: 170px
+
+      &:hover
+        color: lighten(color-black, 20%)
+        border-color: lighten(color-heavy-blue, 20%)
+
+      &:first-child
+        border-left: 1px solid color-heavy-blue
+        border-top-left-radius: 25px
+        border-bottom-left-radius: 25px
+
+        @media(max-width: breakpoint-mobile-sm)
+          border-top-left-radius: 0
+          border-bottom-left-radius: 0
+
+      &:last-child
+        border-top-right-radius: 25px
+        border-bottom-right-radius: 25px
+
+        @media(max-width: breakpoint-mobile-sm)
+          border-top-right-radius: 0
+          border-bottom-right-radius: 0
+
+    +theme('underline')
+      height 32px
+      padding: 0 10px
+      min-width: 170px
+      text-align: center
+
+      font(subtitle, 400, false, 16px)
+      border-bottom: 1px solid color-heavy-blue
+
+      color: color-black
+      background-color: transparent
+      text-transform: uppercase
+
+      &:hover
+        border-bottom: 5px solid color-primary-blue
+
+    &-active
+      +theme('default')
+        color: color-white
+        background-color: color-primary-blue;
+        border-radius: 5px;
+
+        &:hover
+          color: color-white
+          background-color: lighten(color-primary-blue, 20%)
+          border-color: lighten(color-heavy-blue, 20%)
+
+
+        @media(max-width: breakpoint-mobile-sm)
+          border-radius: 0;
+
+      +theme('raised')
+        background-color: color-white;
+        font-weight: 600
+
+      +theme('underline')
+        font-weight: 600
+        border-bottom: 5px solid color-primary-blue

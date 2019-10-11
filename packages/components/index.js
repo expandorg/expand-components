@@ -44,6 +44,7 @@ import Slider from './src/components/Slider';
 import Switch from './src/components/Switch';
 
 import { Tooltip, useTooltip } from './src/components/Tooltip';
+import { Tab, Tabs } from './src/components/Tabs';
 
 import clickOutside from './src/components/hoc/clickOutside';
 
@@ -98,6 +99,8 @@ export {
   ServiceLocator,
   Switch,
   Tooltip,
+  Tab,
+  Tabs,
   withScript,
   withServices,
   useService,

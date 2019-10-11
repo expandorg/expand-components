@@ -1,0 +1,47 @@
+---
+menu: Components
+name: Tabs
+route: /components-tabs
+
+---
+
+## Tabs
+
+import { Playground, Props } from 'docz'
+import { Tabs, Tab } from './Tabs.js'
+
+### underline
+<Playground>
+  <Tabs theme="underline">
+    <Tab>Recent</Tab>
+    <Tab active>Amount</Tab>
+    <Tab>Test</Tab>
+  </Tabs>
+</Playground>
+
+
+### default
+<Playground>
+  <Tabs theme="default">
+    <Tab>Recent</Tab>
+    <Tab active>Amount</Tab>
+    <Tab>Test</Tab>
+  </Tabs>
+</Playground>
+
+### raised
+<Playground>
+  <Tabs theme="raised">
+    <Tab>Recent</Tab>
+    <Tab active>Amount</Tab>
+    <Tab>Test</Tab>
+  </Tabs>
+</Playground>
+
+## `Tabs` PropTypes
+<Props of={Tabs} />
+
+
+## `Tab` PropTypes
+<Props of={Tab} />
+
