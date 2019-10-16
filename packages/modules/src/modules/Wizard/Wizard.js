@@ -13,7 +13,7 @@ import styles from './Wizard.module.styl';
 
 const reset = () => 0;
 
-export default function Wizard({ children, modules, hideBack }) {
+export default function Wizard({ children, modules, submitCaption, hideBack }) {
   const { onValidate, onSubmit, isSubmitting } = useExecutionContext();
 
   const stepCount = Children.count(children);
@@ -46,7 +46,7 @@ export default function Wizard({ children, modules, hideBack }) {
         {!last && <Button onClick={next}>Next</Button>}
         {last && (
           <Button onClick={onSubmit} type="submit" disabled={isSubmitting}>
-            Submit
+            {submitCaption}
           </Button>
         )}
       </div>
@@ -61,6 +61,11 @@ Wizard.module = {
     category: ModuleCategories.Display,
     skipPreview: true,
     properties: {
+      submitCaption: {
+        type: PropControlTypes.string,
+        placeholder: 'Submit Button caption',
+        required: true,
+      },
       hideBack: {
         type: PropControlTypes.boolean,
         label: 'Hide back button',
@@ -71,6 +76,7 @@ Wizard.module = {
       },
     },
     defaults: {
+      submitCaption: 'Submit',
       hideBack: false,
     },
   },
@@ -79,9 +85,11 @@ Wizard.module = {
 Wizard.propTypes = {
   modules: PropTypes.arrayOf(PropTypes.object),
   hideBack: PropTypes.bool,
+  submitCaption: PropTypes.string,
 };
 
 Wizard.defaultProps = {
   modules: [],
   hideBack: false,
+  submitCaption: 'Submit',
 };
