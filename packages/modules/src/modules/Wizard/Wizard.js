@@ -13,7 +13,7 @@ import styles from './Wizard.module.styl';
 
 const reset = () => 0;
 
-export default function Wizard({ children, modules }) {
+export default function Wizard({ children, modules, hideBack }) {
   const { onValidate, onSubmit, isSubmitting } = useExecutionContext();
 
   const stepCount = Children.count(children);
@@ -38,7 +38,7 @@ export default function Wizard({ children, modules }) {
     <div className={styles.container}>
       {step}
       <div className={styles.actions}>
-        {current !== 0 && (
+        {!hideBack && current !== 0 && (
           <Button onClick={prev} theme="secondary">
             Back
           </Button>
@@ -61,19 +61,27 @@ Wizard.module = {
     category: ModuleCategories.Display,
     skipPreview: true,
     properties: {
+      hideBack: {
+        type: PropControlTypes.boolean,
+        label: 'Hide back button',
+      },
       modules: {
         type: PropControlTypes.modules,
         caption: 'Drop content here',
       },
     },
-    defaults: {},
+    defaults: {
+      hideBack: false,
+    },
   },
 };
 
 Wizard.propTypes = {
   modules: PropTypes.arrayOf(PropTypes.object),
+  hideBack: PropTypes.bool,
 };
 
 Wizard.defaultProps = {
   modules: [],
+  hideBack: false,
 };
