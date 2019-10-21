@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import cn from 'classnames';
 
-import { differenceInSeconds } from 'date-fns';
-
 import { validateForm } from '@expandorg/validation';
 import { ErrorMessage } from '@expandorg/components';
 
@@ -28,7 +26,6 @@ export default class Form extends Component {
     services: PropTypes.instanceOf(Map),
     controls: PropTypes.arrayOf(PropTypes.func).isRequired, // eslint-disable-line
     variables: PropTypes.object, // eslint-disable-line
-    timeThreshold: PropTypes.number,
 
     isSubmitting: PropTypes.bool,
     onSubmit: PropTypes.func.isRequired,
@@ -42,7 +39,6 @@ export default class Form extends Component {
     isSubmitting: false,
     validation: true,
     errors: null,
-    timeThreshold: 0,
     onModuleError: Function.prototype,
     onNotify: Function.prototype,
   };
@@ -55,7 +51,6 @@ export default class Form extends Component {
     this.state = {
       controls: getModuleControlsMap(props.controls),
       values: getInitialFormValues(form),
-      startTime: new Date(),
       form,
       errors: null,
     };
@@ -72,7 +67,6 @@ export default class Form extends Component {
       this.setState({
         values: getInitialFormValues(overridedForm),
         form: overridedForm,
-        startTime: new Date(),
       });
     }
     if (nextErrors && nextErrors !== errors) {
@@ -111,15 +105,8 @@ export default class Form extends Component {
 
   handleSubmit = evt => {
     evt.preventDefault();
-    const { onSubmit, validation, timeThreshold, onNotify } = this.props;
-    const { values, form, startTime } = this.state;
-    if (
-      timeThreshold &&
-      differenceInSeconds(new Date(), startTime) < timeThreshold
-    ) {
-      onNotify('error', 'You spent too little time on the task');
-      return;
-    }
+    const { onSubmit, validation } = this.props;
+    const { values, form } = this.state;
 
     if (validation) {
       if (!this.handleValidate(form.modules)) {
