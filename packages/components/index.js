@@ -50,7 +50,11 @@ import clickOutside from './src/components/hoc/clickOutside';
 
 import useClickOutside from './src/components/hooks/useClickOutside';
 import useClientRect from './src/components/hooks/useClientRect';
-import useLocalStorage from './src/components/hooks/useLocalStorage';
+import {
+  useLocalStorage,
+  lsWrite,
+  lsRead,
+} from './src/components/hooks/useLocalStorage';
 import usePrevious from './src/components/hooks/usePrevious';
 import useSyncedState from './src/components/hooks/useSyncedState';
 import useToggle from './src/components/hooks/useToggle';
@@ -64,6 +68,8 @@ import windowResize from './src/components/hoc/windowResize';
 import * as Table from './src/components/Table';
 
 export {
+  lsWrite,
+  lsRead,
   AutocompleteInput,
   Suggestions,
   Suggestion,
