@@ -1,13 +1,14 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import { useExecutionContext } from '../ExecutionContext';
 import VisibilityLogic from './VisibilityLogic';
+import { useVarsPreviewContext } from '../VarsPlaceholder';
 
 import moduleProps from '../Module/moduleProps';
 
-export default function Logic({ children, module, isModulePreview }) {
+export default function Logic({ children, module }) {
   const { values, variables } = useExecutionContext();
+  const isModulePreview = useVarsPreviewContext();
 
   if (!module.logic || isModulePreview) {
     return children;
@@ -20,10 +21,5 @@ export default function Logic({ children, module, isModulePreview }) {
 }
 
 Logic.propTypes = {
-  isModulePreview: PropTypes.bool,
   module: moduleProps.isRequired,
-};
-
-Logic.defaultProps = {
-  isModulePreview: false,
 };

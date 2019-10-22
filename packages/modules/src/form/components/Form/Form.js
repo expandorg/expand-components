@@ -6,6 +6,7 @@ import { validateForm } from '@expandorg/validation';
 import { ErrorMessage } from '@expandorg/components';
 
 import { ExecutionContextProvider } from '../ExecutionContext';
+import { VarsPreviewContextProvider } from '../VarsPlaceholder';
 
 import formProps from './formProps';
 
@@ -24,7 +25,7 @@ export default class Form extends Component {
     errors: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
 
     services: PropTypes.instanceOf(Map),
-    controls: PropTypes.arrayOf(PropTypes.func).isRequired, // eslint-disable-line
+    controls: PropTypes.arrayOf(PropTypes.func).isRequired,
     variables: PropTypes.object, // eslint-disable-line
 
     isSubmitting: PropTypes.bool,
@@ -105,14 +106,15 @@ export default class Form extends Component {
 
   handleSubmit = evt => {
     evt.preventDefault();
+
     const { onSubmit, validation } = this.props;
     const { values, form } = this.state;
 
     if (validation) {
-      if (!this.handleValidate(form.modules)) {
-        onSubmit(values);
+      const err = this.handleValidate(form.modules);
+      if (err) {
+        return;
       }
-      return;
     }
     onSubmit(values);
   };
@@ -134,29 +136,31 @@ export default class Form extends Component {
       controls,
       values,
       errors,
-      onModuleError,
       onChange: this.handleChange,
     };
 
     return (
-      <ExecutionContextProvider
-        form={form}
-        values={values}
-        services={services}
-        variables={variables}
-        controls={controls}
-        isSubmitting={isSubmitting}
-        onSubmit={this.handleSubmit}
-        onValidate={this.handleValidate}
-        onNotify={onNotify}
-      >
-        <form className={cn(styles.container, className)}>
-          {form.modules.map(module =>
-            children({ module, key: module.name, ...props })
-          )}
-          <ErrorMessage className={styles.error} errors={errors} />
-        </form>
-      </ExecutionContextProvider>
+      <VarsPreviewContextProvider>
+        <ExecutionContextProvider
+          form={form}
+          values={values}
+          services={services}
+          variables={variables}
+          controls={controls}
+          isSubmitting={isSubmitting}
+          onSubmit={this.handleSubmit}
+          onValidate={this.handleValidate}
+          onModuleError={onModuleError}
+          onNotify={onNotify}
+        >
+          <form className={cn(styles.container, className)}>
+            {form.modules.map(module =>
+              children({ module, key: module.name, ...props })
+            )}
+            <ErrorMessage className={styles.error} errors={errors} />
+          </form>
+        </ExecutionContextProvider>
+      </VarsPreviewContextProvider>
     );
   }
 }

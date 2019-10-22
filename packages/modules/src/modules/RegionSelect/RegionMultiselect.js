@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import { rules } from '@expandorg/validation';
-import { VarsPlaceholder } from '@expandorg/components';
 
+import { VarsPlaceholder } from '../../form/components/VarsPlaceholder';
 import { ImageRegionMultiselect } from '../../components/RegionSelect';
 
 import {
@@ -40,7 +40,6 @@ export default class RegionMultiselect extends Component {
       })
     ),
     name: PropTypes.string.isRequired,
-    isModulePreview: PropTypes.bool,
     image: PropTypes.string.isRequired,
     onChange: PropTypes.func.isRequired,
   };
@@ -48,7 +47,6 @@ export default class RegionMultiselect extends Component {
   static defaultProps = {
     value: [],
     readOnly: false,
-    isModulePreview: false,
     initial: [],
   };
 
@@ -90,24 +88,19 @@ export default class RegionMultiselect extends Component {
   };
 
   render() {
-    const { image, value, readOnly, initial, isModulePreview } = this.props;
+    const { image, value, readOnly, initial } = this.props;
     const values = getValue(readOnly ? initial : value);
     return (
       <div className={styles.container}>
         <ImageRegionMultiselect
           className={styles.region}
-          isModulePreview={isModulePreview}
           src={image}
           displayToggle={readOnly}
           readOnly={readOnly}
           values={values}
           onChange={this.handleChange}
         />
-        <VarsPlaceholder
-          vval={initial}
-          isModulePreview={isModulePreview}
-          pos="center"
-        />
+        <VarsPlaceholder vval={initial} pos="center" />
       </div>
     );
   }

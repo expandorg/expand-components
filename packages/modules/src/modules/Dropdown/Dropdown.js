@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 
 import { rules } from '@expandorg/validation';
 
-import { Dropdown as UIDropdown, VarsPlaceholder } from '@expandorg/components';
+import { Dropdown as UIDropdown } from '@expandorg/components';
+import { VarsPlaceholder } from '../../form/components/VarsPlaceholder';
 
 import {
   PropControlTypes,
@@ -12,14 +13,7 @@ import {
 
 import styles from './Dropdown.module.styl';
 
-export default function Dropdown({
-  options,
-  name,
-  label,
-  value,
-  onChange,
-  isModulePreview,
-}) {
+export default function Dropdown({ options, name, label, value, onChange }) {
   const change = useCallback(
     v => {
       onChange(name, v);
@@ -35,12 +29,7 @@ export default function Dropdown({
         options={options}
         onChange={change}
       />
-      <VarsPlaceholder
-        vval={label}
-        pos="left"
-        vcn={styles.placeholder}
-        isModulePreview={isModulePreview}
-      />
+      <VarsPlaceholder vval={label} pos="left" vcn={styles.placeholder} />
     </div>
   );
 }
@@ -50,14 +39,12 @@ Dropdown.propTypes = {
   options: PropTypes.arrayOf(PropTypes.any).isRequired,
   label: PropTypes.string,
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  isModulePreview: PropTypes.bool,
   onChange: PropTypes.func.isRequired,
 };
 
 Dropdown.defaultProps = {
   label: '',
   value: '',
-  isModulePreview: false,
 };
 
 Dropdown.module = {

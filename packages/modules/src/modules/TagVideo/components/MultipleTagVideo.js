@@ -39,7 +39,6 @@ export default class MultipleTagVideo extends Component {
     readOnly: PropTypes.bool,
     hideControls: PropTypes.bool,
     options: PropTypes.arrayOf(PropTypes.string),
-    isModulePreview: PropTypes.bool,
     startTime: PropTypes.number,
     onChange: PropTypes.func.isRequired,
     onError: PropTypes.func,
@@ -50,7 +49,6 @@ export default class MultipleTagVideo extends Component {
     readOnly: false,
     hideControls: false,
     autoPlay: false,
-    isModulePreview: false,
     className: null,
     playbackRate: 1,
     tags: [],
@@ -140,7 +138,6 @@ export default class MultipleTagVideo extends Component {
       hideControls,
       playbackRate,
       onError,
-      isModulePreview,
     } = this.props;
     const { duration, selected, playing } = this.state;
 
@@ -151,7 +148,6 @@ export default class MultipleTagVideo extends Component {
         <VideoPlayer
           video={video}
           playing={playing}
-          isModulePreview={isModulePreview}
           limitFrom={startTime}
           start={selected && selected.start}
           stop={selected && selected.end}

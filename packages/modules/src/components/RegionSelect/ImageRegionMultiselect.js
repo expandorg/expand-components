@@ -31,14 +31,12 @@ export default class ImageRegionMultiselect extends Component {
       })
     ),
     readOnly: PropTypes.bool,
-    isModulePreview: PropTypes.bool,
     displayToggle: PropTypes.bool,
     onChange: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
     className: null,
-    isModulePreview: false,
     values: [],
     readOnly: false,
     displayToggle: false,
@@ -72,21 +70,10 @@ export default class ImageRegionMultiselect extends Component {
   };
 
   render() {
-    const {
-      src,
-      values,
-      className,
-      readOnly,
-      displayToggle,
-      isModulePreview,
-    } = this.props;
+    const { src, values, className, readOnly, displayToggle } = this.props;
     const { showValues } = this.state;
     return (
-      <ImageContainer
-        src={src}
-        className={className}
-        isModulePreview={isModulePreview}
-      >
+      <ImageContainer src={src} className={className}>
         {({ imageWidth, width, height }) => (
           <>
             <SelectRegionBase

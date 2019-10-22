@@ -1,7 +1,7 @@
 import React, { Component, createRef } from 'react';
 import PropTypes from 'prop-types';
 
-import { VarsPlaceholder } from '@expandorg/components';
+import { VarsPlaceholder } from '../../form/components/VarsPlaceholder';
 
 import MediaPlayer from '../MediaPlayer';
 import PlayButton from '../PlayButton';
@@ -24,7 +24,6 @@ export default class VideoPlayer extends Component {
     playbackRate: PropTypes.number,
     playbackRateControl: PropTypes.bool,
     volumeControl: PropTypes.bool,
-    isModulePreview: PropTypes.bool,
 
     limitFrom: PropTypes.number,
     limitTo: PropTypes.number,
@@ -40,7 +39,6 @@ export default class VideoPlayer extends Component {
     stop: null,
     playing: true,
     cursor: true,
-    isModulePreview: false,
     playbackRate: 1,
     playbackRateControl: false,
     volumeControl: false,
@@ -114,7 +112,6 @@ export default class VideoPlayer extends Component {
       cursor,
       playbackRateControl,
       volumeControl,
-      isModulePreview,
     } = this.props;
 
     const { duration, seek, rate, volume } = this.state;
@@ -135,7 +132,7 @@ export default class VideoPlayer extends Component {
             onMediaProgress={this.handleVideoProgress}
             onError={onError}
           />
-          <VarsPlaceholder vval={video} isModulePreview={isModulePreview} />
+          <VarsPlaceholder vval={video} />
         </div>
         <div className={styles.timeline}>
           <div className={styles.actions}>

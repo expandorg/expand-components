@@ -3,8 +3,9 @@ import PropTypes from 'prop-types';
 
 import { rules } from '@expandorg/validation';
 
-import { Button, Checkbox, VarsPlaceholder } from '@expandorg/components';
+import { Button, Checkbox } from '@expandorg/components';
 
+import { VarsPlaceholder } from '../../form/components/VarsPlaceholder';
 import Modal from '../../components/Modal';
 
 import {
@@ -20,13 +21,11 @@ export default class Agreement extends Component {
     button: PropTypes.string,
     label: PropTypes.string.isRequired,
     value: PropTypes.bool,
-    isModulePreview: PropTypes.bool,
     onChange: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
     value: false,
-    isModulePreview: false,
     button: null,
   };
 
@@ -69,15 +68,7 @@ export default class Agreement extends Component {
   };
 
   render() {
-    const {
-      value,
-      name,
-      button,
-      children,
-      label,
-      onChange,
-      isModulePreview,
-    } = this.props;
+    const { value, name, button, children, label, onChange } = this.props;
     const { visible } = this.state;
 
     return (
@@ -85,15 +76,10 @@ export default class Agreement extends Component {
         {button && (
           <Button className={styles.button} onClick={this.handleToggle}>
             {button}
-            <VarsPlaceholder
-              vval={button}
-              isModulePreview={isModulePreview}
-              pos="center"
-            />
+            <VarsPlaceholder vval={button} pos="center" />
           </Button>
         )}
         <Checkbox
-          isModulePreview={isModulePreview}
           name={name}
           label={label}
           value={value}

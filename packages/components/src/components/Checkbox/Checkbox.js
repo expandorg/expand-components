@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import cn from 'classnames';
 
-import VarsPlaceholder from '../VarsPlaceholder';
-
 import './Checkbox.styl';
 
 export default class Checkbox extends Component {
@@ -28,7 +26,7 @@ export default class Checkbox extends Component {
   };
 
   render() {
-    const { label, value, className, ...rest } = this.props;
+    const { label, value, className } = this.props;
 
     /* eslint-disable jsx-a11y/label-has-associated-control */
     /* eslint-disable jsx-a11y/label-has-for */
@@ -42,12 +40,7 @@ export default class Checkbox extends Component {
           onChange={this.handleChange}
         />
         <span className="gem-checkbox-mark" />
-        {label && (
-          <span className="gem-checkbox-label">
-            {label}
-            <VarsPlaceholder vval={label} {...rest} />
-          </span>
-        )}
+        {label && <span className="gem-checkbox-label">{label}</span>}
       </label>
     );
   }

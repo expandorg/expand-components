@@ -16,7 +16,6 @@ export type Module = {
   logic?: {
     [key: LogicAction]: ?Expression,
   },
-  isModulePreview?: boolean,
   [key: string]: string | Object | number | boolean,
 };
 

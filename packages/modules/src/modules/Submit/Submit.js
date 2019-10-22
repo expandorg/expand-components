@@ -1,17 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Button, VarsPlaceholder } from '@expandorg/components';
+import { Button } from '@expandorg/components';
+
+import { VarsPlaceholder } from '../../form/components/VarsPlaceholder';
 
 import {
   PropControlTypes,
   ModuleCategories,
 } from '../../form/components/Module';
+
 import { useExecutionContext } from '../../form/components/ExecutionContext';
 
 import styles from './Submit.module.styl';
 
-export default function Submit({ caption, isModulePreview }) {
+export default function Submit({ caption }) {
   const { isSubmitting, onSubmit } = useExecutionContext();
   return (
     <Button
@@ -21,22 +24,13 @@ export default function Submit({ caption, isModulePreview }) {
       disabled={isSubmitting}
     >
       {caption}
-      <VarsPlaceholder
-        vval={caption}
-        isModulePreview={isModulePreview}
-        pos="center"
-      />
+      <VarsPlaceholder vval={caption} pos="center" />
     </Button>
   );
 }
 
 Submit.propTypes = {
   caption: PropTypes.string.isRequired,
-  isModulePreview: PropTypes.bool,
-};
-
-Submit.defaultProps = {
-  isModulePreview: false,
 };
 
 Submit.module = {

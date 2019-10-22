@@ -21,7 +21,6 @@ export default class ImageRegionSelect extends Component {
       x2: PropTypes.number,
       y2: PropTypes.number,
     }),
-    isModulePreview: PropTypes.bool,
     readOnly: PropTypes.bool,
     displayToggle: PropTypes.bool,
     onChange: PropTypes.func.isRequired,
@@ -30,7 +29,6 @@ export default class ImageRegionSelect extends Component {
   static defaultProps = {
     value: null,
     className: null,
-    isModulePreview: false,
     readOnly: false,
     displayToggle: false,
   };
@@ -54,21 +52,10 @@ export default class ImageRegionSelect extends Component {
   };
 
   render() {
-    const {
-      src,
-      className,
-      value,
-      readOnly,
-      displayToggle,
-      isModulePreview,
-    } = this.props;
+    const { src, className, value, readOnly, displayToggle } = this.props;
     const { showValue } = this.state;
     return (
-      <ImageContainer
-        className={className}
-        src={src}
-        isModulePreview={isModulePreview}
-      >
+      <ImageContainer className={className} src={src}>
         {({ imageWidth, width, height }) => (
           <>
             <SelectRegionBase

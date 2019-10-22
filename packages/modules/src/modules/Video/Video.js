@@ -1,4 +1,4 @@
-import React, { Component, createRef } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 
 import {
@@ -8,99 +8,83 @@ import {
 
 import { VideoPlayer } from '../../components/VideoPlayer';
 
+import { useExecutionContext } from '../../form/components/ExecutionContext';
+
 import styles from './Video.module.styl';
 
-export default class Video extends Component {
-  static propTypes = {
-    name: PropTypes.string.isRequired,
-    loop: PropTypes.bool,
-    autoPlay: PropTypes.bool,
-    // muted: PropTypes.bool,
-    src: PropTypes.string.isRequired,
-    isModulePreview: PropTypes.bool,
-    onModuleError: PropTypes.func.isRequired,
-  };
+export default function Video({ src, name, loop, autoPlay }) {
+  const player = useRef(null);
+  const [playing, setPlaying] = useState(autoPlay);
 
-  static defaultProps = {
-    loop: false,
-    isModulePreview: false,
-    autoPlay: false,
-    // muted: false,
-  };
+  const { onModuleError } = useExecutionContext();
 
-  static module = {
-    type: 'video',
-    name: 'Video',
-    report: ['video is not loading'],
-    editor: {
-      category: ModuleCategories.Media,
-      properties: {
-        src: {
-          type: PropControlTypes.string,
-          placeholder: 'Video src',
-          required: true,
-        },
-        autoPlay: {
-          type: PropControlTypes.boolean,
-          label: 'play video automatically',
-        },
-        loop: {
-          type: PropControlTypes.boolean,
-          label: 'Loop video',
-        },
-        muted: {
-          type: PropControlTypes.string,
-          label: 'Muted',
-        },
+  const handleError = useCallback(() => {
+    onModuleError(`${name}: Error while loading video ${src}`);
+  }, [name, onModuleError, src]);
+
+  const handleSeek = useCallback(seek => {
+    if (player.current) {
+      player.current.seekTo(seek);
+    }
+  }, []);
+
+  return (
+    <div className={styles.container}>
+      <VideoPlayer
+        ref={player}
+        video={src}
+        loop={loop}
+        playing={playing}
+        volumeControl
+        onTogglePlay={setPlaying}
+        onCursorClick={handleSeek}
+        onError={handleError}
+      />
+    </div>
+  );
+}
+
+Video.propTypes = {
+  name: PropTypes.string.isRequired,
+  loop: PropTypes.bool,
+  autoPlay: PropTypes.bool,
+  // muted: PropTypes.bool,
+  src: PropTypes.string.isRequired,
+};
+
+Video.defaultProps = {
+  loop: false,
+  autoPlay: false,
+  // muted: false,
+};
+
+Video.module = {
+  type: 'video',
+  name: 'Video',
+  report: ['video is not loading'],
+  editor: {
+    category: ModuleCategories.Media,
+    properties: {
+      src: {
+        type: PropControlTypes.string,
+        placeholder: 'Video src',
+        required: true,
       },
-      defaults: {
-        src: 'http://media.gettyimages.com/videos/cap-video-id896606100',
+      autoPlay: {
+        type: PropControlTypes.boolean,
+        label: 'play video automatically',
+      },
+      loop: {
+        type: PropControlTypes.boolean,
+        label: 'Loop video',
+      },
+      muted: {
+        type: PropControlTypes.string,
+        label: 'Muted',
       },
     },
-  };
-
-  player = createRef();
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      playing: props.autoPlay,
-    };
-  }
-
-  handleTogglePlay = playing => {
-    this.setState({ playing });
-  };
-
-  handleError = () => {
-    const { onModuleError, name, src } = this.props;
-    onModuleError(`${name}: Error while loading video ${src}`);
-  };
-
-  handleSeek = seek => {
-    if (this.player.current) {
-      this.player.current.seekTo(seek);
-    }
-  };
-
-  render() {
-    const { src, loop, isModulePreview } = this.props;
-    const { playing } = this.state;
-
-    return (
-      <div className={styles.container}>
-        <VideoPlayer
-          ref={this.player}
-          isModulePreview={isModulePreview}
-          video={src}
-          loop={loop}
-          playing={playing}
-          volumeControl
-          onTogglePlay={this.handleTogglePlay}
-          onCursorClick={this.handleSeek}
-          onError={this.handleError}
-        />
-      </div>
-    );
-  }
-}
+    defaults: {
+      src: 'http://media.gettyimages.com/videos/cap-video-id896606100',
+    },
+  },
+};

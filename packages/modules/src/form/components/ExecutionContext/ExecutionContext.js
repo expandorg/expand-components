@@ -12,6 +12,7 @@ const ExecutionContextProvider = ({
   controls,
   services,
   isSubmitting,
+  onModuleError,
   onSubmit,
   onValidate,
   onNotify,
@@ -25,6 +26,7 @@ const ExecutionContextProvider = ({
       services,
       controls,
       isSubmitting,
+      onModuleError,
       onValidate,
       onNotify,
       onSubmit,
@@ -41,12 +43,14 @@ ExecutionContextProvider.propTypes = {
   controls: PropTypes.shape({}).isRequired,
   services: PropTypes.shape({}),
   values: PropTypes.shape({}),
+  onModuleError: PropTypes.func,
   onValidate: PropTypes.func.isRequired,
   onNotify: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
 };
 
 ExecutionContextProvider.defaultProps = {
+  onModuleError: Function.prototype,
   values: null,
   services: new Map(),
   variables: null,

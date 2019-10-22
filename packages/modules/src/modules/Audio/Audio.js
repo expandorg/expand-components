@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
 
 import {
@@ -9,85 +9,67 @@ import {
 import AudioPlayer from '../../components/AudioPlayer';
 
 import styles from './Audio.module.styl';
+import { useExecutionContext } from '../../form/components/ExecutionContext';
 
-export default class Audio extends Component {
-  static propTypes = {
-    name: PropTypes.string.isRequired,
-    src: PropTypes.string.isRequired,
-    loop: PropTypes.bool,
-    autoPlay: PropTypes.bool,
-    isModulePreview: PropTypes.bool,
-    onModuleError: PropTypes.func.isRequired,
-  };
+export default function Audio({ src, loop, autoPlay, name }) {
+  const { onModuleError } = useExecutionContext();
+  const [playing, setPlaying] = useState(autoPlay);
 
-  static defaultProps = {
-    autoPlay: false,
-    loop: false,
-    isModulePreview: false,
-  };
+  const handleError = useCallback(() => {
+    onModuleError(`${name}: Error while loading audio ${src}`);
+  }, [name, onModuleError, src]);
 
-  static module = {
-    type: 'audio',
-    name: 'Audio',
-    report: ['auido is not loading'],
-    editor: {
-      category: ModuleCategories.Media,
-      properties: {
-        src: {
-          type: PropControlTypes.string,
-          placeholder: 'Audio src',
-          required: true,
-        },
-        loop: {
-          type: PropControlTypes.boolean,
-          label: 'Loop',
-        },
-        autoPlay: {
-          type: PropControlTypes.boolean,
-          label: 'Autoplay',
-        },
+  return (
+    <div className={styles.container}>
+      <AudioPlayer
+        loop={loop}
+        audio={src}
+        playing={playing}
+        onTogglePlay={setPlaying}
+        onError={handleError}
+      />
+    </div>
+  );
+}
+
+Audio.propTypes = {
+  name: PropTypes.string.isRequired,
+  src: PropTypes.string.isRequired,
+  loop: PropTypes.bool,
+  autoPlay: PropTypes.bool,
+};
+
+Audio.defaultProps = {
+  autoPlay: false,
+  loop: false,
+};
+
+Audio.module = {
+  type: 'audio',
+  name: 'Audio',
+  report: ['auido is not loading'],
+  editor: {
+    category: ModuleCategories.Media,
+    properties: {
+      src: {
+        type: PropControlTypes.string,
+        placeholder: 'Audio src',
+        required: true,
       },
-      defaults: {
-        loop: false,
-        autoPlay: false,
-        src:
-          'https://storage.googleapis.com/media-session/elephants-dream/the-wires.mp3',
+      loop: {
+        type: PropControlTypes.boolean,
+        label: 'Loop',
+      },
+      autoPlay: {
+        type: PropControlTypes.boolean,
+        label: 'Autoplay',
       },
     },
-  };
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      playing: props.autoPlay,
-    };
-  }
-
-  handleTogglePlay = playing => {
-    this.setState({ playing });
-  };
-
-  handleError = () => {
-    const { onModuleError, name, src } = this.props;
-    onModuleError(`${name}: Error while loading audio ${src}`);
-  };
-
-  render() {
-    const { src, loop, isModulePreview } = this.props;
-
-    const { playing } = this.state;
-
-    return (
-      <div className={styles.container}>
-        <AudioPlayer
-          isModulePreview={isModulePreview}
-          loop={loop}
-          audio={src}
-          playing={playing}
-          onTogglePlay={this.handleTogglePlay}
-          onError={this.handleError}
-        />
-      </div>
-    );
-  }
-}
+    defaults: {
+      loop: false,
+      autoPlay: false,
+      src:
+        'https://storage.googleapis.com/media-session/elephants-dream/the-wires.mp3',
+    },
+  },
+};

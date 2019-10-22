@@ -21,7 +21,6 @@ export default function YesNo({
   idType,
   noCaption,
   yesCaption,
-  isModulePreview,
 }) {
   const change = useCallback(
     v => {
@@ -43,7 +42,6 @@ export default function YesNo({
             key={option.value}
             option={option}
             selected={value === option.value}
-            isModulePreview={isModulePreview}
             onSelect={onSelect}
           />
         )}
@@ -64,13 +62,11 @@ YesNo.propTypes = {
   yesCaption: PropTypes.string.isRequired,
   noCaption: PropTypes.string.isRequired,
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  isModulePreview: PropTypes.bool,
   onChange: PropTypes.func.isRequired,
 };
 
 YesNo.defaultProps = {
   value: null,
-  isModulePreview: false,
   idType: IdType.small,
 };
 

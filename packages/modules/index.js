@@ -14,6 +14,13 @@ import {
 } from './src/form/components/ExecutionContext';
 
 import {
+  VarsPreviewContext,
+  VarsPreviewContextProvider,
+  useVarsPreviewContext,
+  VarsPlaceholder,
+} from './src/form/components/VarsPlaceholder';
+
+import {
   Module,
   moduleProps,
   PropControlTypes,
@@ -51,4 +58,9 @@ export {
   FileUploadServiceBase,
   FileUploadTask,
   UploadState,
+  // vars preview
+  VarsPreviewContext,
+  VarsPreviewContextProvider,
+  useVarsPreviewContext,
+  VarsPlaceholder,
 };

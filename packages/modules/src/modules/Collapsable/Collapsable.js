@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import {
-  Collapsable as UICollapsable,
-  VarsPlaceholder,
-} from '@expandorg/components';
+import { Collapsable as UICollapsable } from '@expandorg/components';
+
+import { VarsPlaceholder } from '../../form/components/VarsPlaceholder';
 
 import {
   PropControlTypes,
@@ -27,7 +26,7 @@ export default class Collapsable extends Component {
   };
 
   render() {
-    const { header, children, isModulePreview } = this.props;
+    const { header, children } = this.props;
     const { expanded } = this.state;
     return (
       <UICollapsable
@@ -36,7 +35,7 @@ export default class Collapsable extends Component {
         header={
           <div className={styles.header}>
             {header}
-            <VarsPlaceholder vval={header} isModulePreview={isModulePreview} />
+            <VarsPlaceholder vval={header} />
           </div>
         }
         onToggle={this.handleToggle}
@@ -50,12 +49,10 @@ export default class Collapsable extends Component {
 Collapsable.propTypes = {
   header: PropTypes.oneOfType([PropTypes.string, PropTypes.element]).isRequired,
   expanded: PropTypes.bool, //eslint-disable-line
-  isModulePreview: PropTypes.bool,
 };
 
 Collapsable.defaultProps = {
   expanded: false,
-  isModulePreview: false,
 };
 
 Collapsable.module = {

@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { IconInput, VarsPlaceholder } from '@expandorg/components';
+import { IconInput } from '@expandorg/components';
+import { VarsPlaceholder } from '../../form/components/VarsPlaceholder';
 
 import {
   PropControlTypes,
@@ -10,7 +11,7 @@ import {
 
 import styles from './ClipboardText.module.styl';
 
-export default function ClipboardText({ text, label, isModulePreview }) {
+export default function ClipboardText({ text, label }) {
   return (
     <div className={styles.container}>
       <IconInput
@@ -20,11 +21,7 @@ export default function ClipboardText({ text, label, isModulePreview }) {
         placeholder={label}
         value={text}
       />
-      <VarsPlaceholder
-        vval={text}
-        isModulePreview={isModulePreview}
-        pos="left"
-      />
+      <VarsPlaceholder vval={text} pos="left" />
     </div>
   );
 }
@@ -32,12 +29,10 @@ export default function ClipboardText({ text, label, isModulePreview }) {
 ClipboardText.propTypes = {
   text: PropTypes.string,
   label: PropTypes.string,
-  isModulePreview: PropTypes.bool,
 };
 
 ClipboardText.defaultProps = {
   label: null,
-  isModulePreview: false,
   text: '',
 };
 

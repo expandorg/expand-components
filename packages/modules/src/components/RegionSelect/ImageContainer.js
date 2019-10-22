@@ -2,10 +2,9 @@ import React, { Component, createRef } from 'react';
 import PropTypes from 'prop-types';
 
 import debounce from 'debounce';
-
-import { VarsPlaceholder } from '@expandorg/components';
-
 import cn from 'classnames';
+
+import { VarsPlaceholder } from '../../form/components/VarsPlaceholder';
 
 import styles from './ImageContainer.module.styl';
 
@@ -15,13 +14,11 @@ export default class ImageContainer extends Component {
   static propTypes = {
     className: PropTypes.string,
     src: PropTypes.string.isRequired,
-    isModulePreview: PropTypes.bool,
     onImageLoaded: PropTypes.func,
   };
 
   static defaultProps = {
     className: null,
-    isModulePreview: false,
     onImageLoaded: Function.prototype,
   };
 
@@ -86,7 +83,7 @@ export default class ImageContainer extends Component {
   };
 
   render() {
-    const { children, className, isModulePreview } = this.props;
+    const { children, className } = this.props;
     const { imageWidth, imageHeight, width, height, src } = this.state;
     return (
       <div className={cn(styles.container, className)}>
@@ -98,7 +95,7 @@ export default class ImageContainer extends Component {
           onLoad={this.handleLoad}
         />
         {children({ imageWidth, imageHeight, width, height })}
-        <VarsPlaceholder vval={src} isModulePreview={isModulePreview} />
+        <VarsPlaceholder vval={src} />
       </div>
     );
   }

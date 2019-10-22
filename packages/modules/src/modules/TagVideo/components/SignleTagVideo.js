@@ -27,7 +27,6 @@ export default class SignleTagVideo extends Component {
     hideControls: PropTypes.bool,
     readOnly: PropTypes.bool,
     options: PropTypes.arrayOf(PropTypes.string),
-    isModulePreview: PropTypes.bool,
     startTime: PropTypes.number,
     onChange: PropTypes.func.isRequired,
     onError: PropTypes.func,
@@ -39,7 +38,6 @@ export default class SignleTagVideo extends Component {
     hideControls: false,
     playbackRate: 1,
     autoPlay: false,
-    isModulePreview: false,
     className: null,
     tag: null,
     options: [],
@@ -94,7 +92,6 @@ export default class SignleTagVideo extends Component {
       hideControls,
       options,
       onError,
-      isModulePreview,
     } = this.props;
     const { duration, playing } = this.state;
 
@@ -106,7 +103,6 @@ export default class SignleTagVideo extends Component {
           playing={playing}
           limitFrom={startTime}
           start={tag && tag.start}
-          isModulePreview={isModulePreview}
           playbackRate={playbackRate}
           playbackRateControl
           stop={tag && tag.end}

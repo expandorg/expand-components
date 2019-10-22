@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 
 import { rules } from '@expandorg/validation';
 
-import { Input as UIInput, VarsPlaceholder } from '@expandorg/components';
+import { Input as UIInput } from '@expandorg/components';
+
+import { VarsPlaceholder } from '../../form/components/VarsPlaceholder';
 
 import {
   PropControlTypes,
@@ -17,7 +19,6 @@ export default function Input({
   value,
   placeholder,
   inputType,
-  isModulePreview,
   initial,
   onChange,
 }) {
@@ -42,7 +43,6 @@ export default function Input({
         vval={initial}
         className={styles.placeholder}
         pos="left"
-        isModulePreview={isModulePreview}
       />
     </div>
   );
@@ -54,7 +54,6 @@ Input.propTypes = {
   placeholder: PropTypes.string,
   value: PropTypes.string,
   initial: PropTypes.string, // eslint-disable-line
-  isModulePreview: PropTypes.bool,
   onChange: PropTypes.func.isRequired,
 };
 
@@ -62,7 +61,6 @@ Input.defaultProps = {
   inputType: 'text',
   value: undefined,
   initial: null,
-  isModulePreview: false,
   placeholder: '',
 };
 
