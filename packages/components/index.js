@@ -54,6 +54,7 @@ import {
   useLocalStorage,
   lsWrite,
   lsRead,
+  lsRemove,
 } from './src/components/hooks/useLocalStorage';
 import usePrevious from './src/components/hooks/usePrevious';
 import useSyncedState from './src/components/hooks/useSyncedState';
@@ -70,6 +71,7 @@ import * as Table from './src/components/Table';
 export {
   lsWrite,
   lsRead,
+  lsRemove,
   AutocompleteInput,
   Suggestions,
   Suggestion,

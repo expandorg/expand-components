@@ -18,6 +18,14 @@ export function lsWrite(key: string, value: any) {
   }
 }
 
+export function lsRemove(key: string) {
+  try {
+    window.localStorage.removeItem(key);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 export function useLocalStorage(key: string, initial?: any) {
   const [saved, setSaved] = useState(() => lsRead(key, initial));
 
