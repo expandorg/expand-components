@@ -1,28 +1,21 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import cn from 'classnames';
 
-import DocumentTitle from 'react-document-title';
+import useDocumentTitle from '../../hooks/useDocumentTitle';
 
 import './PageDark.styl';
 
-export default class PageDark extends Component {
-  static propTypes = {
-    title: PropTypes.string.isRequired,
-    className: PropTypes.string,
-  };
-
-  static defaultProps = {
-    className: null,
-  };
-
-  render() {
-    const { children, title, className } = this.props;
-
-    return (
-      <DocumentTitle title={title}>
-        <div className={cn('gem-pagedark', className)}>{children}</div>
-      </DocumentTitle>
-    );
-  }
+export default function PageDark({ children, title, className }) {
+  useDocumentTitle(title);
+  return <div className={cn('gem-pagedark', className)}>{children}</div>;
 }
+
+PageDark.propTypes = {
+  title: PropTypes.string.isRequired,
+  className: PropTypes.string,
+};
+
+PageDark.defaultProps = {
+  className: null,
+};

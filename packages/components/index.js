@@ -55,6 +55,7 @@ import usePrevious from './src/components/hooks/usePrevious';
 import useSyncedState from './src/components/hooks/useSyncedState';
 import useToggle from './src/components/hooks/useToggle';
 import useHotkey from './src/components/hooks/useHotkey';
+import useDocumentTitle from './src/components/hooks/useDocumentTitle';
 
 import deferVisibleRender from './src/components/hoc/deferVisibleRender';
 import deferComponentRender from './src/components/hoc/deferComponentRender';
@@ -111,6 +112,7 @@ export {
   useSyncedState,
   useToggle,
   useHotkey,
+  useDocumentTitle,
   deferVisibleRender,
   deferComponentRender,
   windowResize,
