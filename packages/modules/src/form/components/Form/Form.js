@@ -23,7 +23,6 @@ export default class Form extends Component {
     form: formProps.isRequired,
     validation: PropTypes.bool,
     initial: PropTypes.shape({}),
-    errors: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
 
     services: PropTypes.instanceOf(Map),
     controls: PropTypes.arrayOf(PropTypes.func).isRequired,
@@ -41,7 +40,6 @@ export default class Form extends Component {
     services: new Map(),
     isSubmitting: false,
     validation: true,
-    errors: null,
     initial: undefined,
     onChange: Function.prototype,
     onModuleError: Function.prototype,
@@ -51,33 +49,36 @@ export default class Form extends Component {
   constructor(props) {
     super(props);
 
-    const form = overrideFormVars(props.form, props.variables);
+    const overrided = overrideFormVars(props.form, props.variables);
 
     this.state = {
       controls: getModuleControlsMap(props.controls),
-      values: getInitialFormValues(form, props.initial),
-      form,
+      form: overrided,
+      values: getInitialFormValues(overrided, props.initial),
+      // eslint-disable-next-line react/no-unused-state
+      original: {
+        form: props.form,
+        variables: props.variables,
+        initial: props.initial,
+      },
       errors: null,
     };
   }
 
-  componentWillReceiveProps({
-    form: nextForm,
-    variables: nextVars,
-    errors: nextErrors,
-    initial: nextInitial,
-  }) {
-    const { errors, form, variables } = this.props;
-    if (form !== nextForm || variables !== nextVars) {
-      const overrided = overrideFormVars(nextForm, nextVars);
-      this.setState({
-        values: getInitialFormValues(overrided, nextInitial),
+  static getDerivedStateFormProps({ form, variables, initial }, { original }) {
+    if (
+      form !== original.form ||
+      variables !== original.variables ||
+      initial !== origin.initial
+    ) {
+      const overrided = overrideFormVars(form, variables);
+      return {
         form: overrided,
-      });
+        values: getInitialFormValues(overrided, initial),
+        original: { form, variables, initial },
+      };
     }
-    if (nextErrors && nextErrors !== errors) {
-      this.setState({ errors: nextErrors });
-    }
+    return null;
   }
 
   handleChange = (name, value) => {
