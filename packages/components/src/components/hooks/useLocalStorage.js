@@ -1,7 +1,7 @@
 // @flow
 import { useState, useCallback } from 'react';
 
-export function lsRead(key: string, initial: any) {
+export function lsRead(key: string, initial?: any) {
   try {
     const item = window.localStorage.getItem(key);
     return item ? JSON.parse(item) : initial;
@@ -10,24 +10,23 @@ export function lsRead(key: string, initial: any) {
   }
 }
 
-export function lsWrite(key: string | Function, value: any, stored: any) {
-  const valueToStore = value instanceof Function ? value(stored) : value;
+export function lsWrite(key: string, value: any) {
   try {
-    window.localStorage.setItem(key, JSON.stringify(valueToStore));
+    window.localStorage.setItem(key, JSON.stringify(value));
   } catch (error) {
     console.log(error);
   }
-  return valueToStore;
 }
 
-export function useLocalStorage(key: string, initial: any) {
+export function useLocalStorage(key: string, initial?: any) {
   const [saved, setSaved] = useState(() => lsRead(key, initial));
 
   const set = useCallback(
     (value: any) => {
-      setSaved(lsWrite(key, value, saved));
+      lsWrite(key, value);
+      setSaved(value);
     },
-    [key, saved]
+    [key]
   );
 
   return [saved, set];
