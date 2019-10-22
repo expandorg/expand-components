@@ -1,11 +1,11 @@
 // @flow
 import { type Form } from '../types.flow';
 
-const getInitialFormValues = (
+export default function getInitialFormValues(
   form: Form,
-  initial?: ?Object = null
-): ?Object => {
-  const initialValues = form.modules.reduce((result, module) => {
+  prev?: ?Object = null
+): ?Object {
+  const values = form.modules.reduce((result, module) => {
     const hasInitial =
       module.initial !== null &&
       module.initial !== undefined &&
@@ -17,8 +17,10 @@ const getInitialFormValues = (
       ...result,
       [module.name]: module.initial,
     };
-  }, initial || {});
-  return Reflect.ownKeys(initialValues).length !== 0 ? initialValues : null;
-};
+  }, {});
 
-export default getInitialFormValues;
+  if (!Reflect.ownKeys(values).length !== 0 && !prev) {
+    return null;
+  }
+  return { ...(values || {}), ...(prev || {}) };
+}

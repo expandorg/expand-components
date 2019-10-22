@@ -22,6 +22,7 @@ export default class Form extends Component {
 
     form: formProps.isRequired,
     validation: PropTypes.bool,
+    initial: PropTypes.shape({}),
     errors: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
 
     services: PropTypes.instanceOf(Map),
@@ -30,6 +31,7 @@ export default class Form extends Component {
 
     isSubmitting: PropTypes.bool,
     onSubmit: PropTypes.func.isRequired,
+    onChange: PropTypes.func,
     onModuleError: PropTypes.func,
     onNotify: PropTypes.func,
   };
@@ -40,6 +42,8 @@ export default class Form extends Component {
     isSubmitting: false,
     validation: true,
     errors: null,
+    initial: undefined,
+    onChange: Function.prototype,
     onModuleError: Function.prototype,
     onNotify: Function.prototype,
   };
@@ -51,7 +55,7 @@ export default class Form extends Component {
 
     this.state = {
       controls: getModuleControlsMap(props.controls),
-      values: getInitialFormValues(form),
+      values: getInitialFormValues(form, props.initial),
       form,
       errors: null,
     };
@@ -61,13 +65,14 @@ export default class Form extends Component {
     form: nextForm,
     variables: nextVars,
     errors: nextErrors,
+    initial: nextInitial,
   }) {
     const { errors, form, variables } = this.props;
     if (form !== nextForm || variables !== nextVars) {
-      const overridedForm = overrideFormVars(nextForm, nextVars);
+      const overrided = overrideFormVars(nextForm, nextVars);
       this.setState({
-        values: getInitialFormValues(overridedForm),
-        form: overridedForm,
+        values: getInitialFormValues(overrided, nextInitial),
+        form: overrided,
       });
     }
     if (nextErrors && nextErrors !== errors) {
@@ -75,20 +80,25 @@ export default class Form extends Component {
     }
   }
 
-  handleChange = (module, value) => {
-    this.setState(({ values, errors }) => ({
-      values: {
-        ...(values || {}),
-        [module]: value,
-      },
-      errors: !errors
-        ? errors
-        : {
-            ...errors,
-            commonMessage: undefined,
-            [module]: undefined,
-          },
-    }));
+  handleChange = (name, value) => {
+    const { onChange } = this.props;
+
+    this.setState(
+      ({ values, errors }) => ({
+        values: {
+          ...(values || {}),
+          [name]: value,
+        },
+        errors: !errors
+          ? errors
+          : {
+              ...errors,
+              commonMessage: undefined,
+              [name]: undefined,
+            },
+      }),
+      () => onChange(this.state.values)
+    );
   };
 
   handleValidate = modules => {
@@ -110,11 +120,8 @@ export default class Form extends Component {
     const { onSubmit, validation } = this.props;
     const { values, form } = this.state;
 
-    if (validation) {
-      const err = this.handleValidate(form.modules);
-      if (err) {
-        return;
-      }
+    if (validation && this.handleValidate(form.modules)) {
+      return;
     }
     onSubmit(values);
   };
@@ -140,27 +147,27 @@ export default class Form extends Component {
     };
 
     return (
-      <VarsPreviewContextProvider>
-        <ExecutionContextProvider
-          form={form}
-          values={values}
-          services={services}
-          variables={variables}
-          controls={controls}
-          isSubmitting={isSubmitting}
-          onSubmit={this.handleSubmit}
-          onValidate={this.handleValidate}
-          onModuleError={onModuleError}
-          onNotify={onNotify}
-        >
+      <ExecutionContextProvider
+        form={form}
+        values={values}
+        services={services}
+        variables={variables}
+        controls={controls}
+        isSubmitting={isSubmitting}
+        onSubmit={this.handleSubmit}
+        onValidate={this.handleValidate}
+        onModuleError={onModuleError}
+        onNotify={onNotify}
+      >
+        <VarsPreviewContextProvider>
           <form className={cn(styles.container, className)}>
             {form.modules.map(module =>
               children({ module, key: module.name, ...props })
             )}
             <ErrorMessage className={styles.error} errors={errors} />
           </form>
-        </ExecutionContextProvider>
-      </VarsPreviewContextProvider>
+        </VarsPreviewContextProvider>
+      </ExecutionContextProvider>
     );
   }
 }

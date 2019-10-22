@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
 
 import { NotificationAnimated } from '@expandorg/components/app';
@@ -14,58 +14,60 @@ import styles from './ModulesPlayground.module.styl';
 
 const services = new Map([['fileUpload', new FileUploadServiceMock()]]);
 
-export default class ModulesPlayground extends Component {
-  static propTypes = {
-    form: formProps.isRequired,
-    variables: PropTypes.shape({}),
-  };
+const fd = {
+  allowedRetries: 3,
+  currentTry: 1,
+};
 
-  static defaultProps = {
-    variables: undefined,
-  };
+export default function ModulesPlayground({ form, variables, initial }) {
+  const [notification, setNotification] = useState(null);
 
-  state = {
-    formData: {
-      allowedRetries: 3,
-      currentTry: 1,
-    },
-    notification: null,
-  };
+  const notify = useCallback((type, message) => {
+    setNotification({ type, message });
+  }, []);
 
-  handleSubmit = values => {
+  const submit = useCallback(values => {
     alert(JSON.stringify(values, undefined, 2));
-  };
+  }, []);
 
-  handleNotify = (type, message) => {
-    this.setState({ notification: { type, message } });
-  };
+  const change = useCallback(values => {
+    console.log(JSON.stringify(values, undefined, 2));
+  }, []);
 
-  render() {
-    const { form, variables } = this.props;
-    const { formData, notification } = this.state;
-
-    return (
-      <div className={styles.container}>
-        <div className={styles.panel}>
-          <FormDataProvider formData={formData}>
-            <Form
-              controls={moduleControls}
-              form={form}
-              variables={variables}
-              services={services}
-              className={styles.form}
-              onSubmit={this.handleSubmit}
-              onNotify={this.handleNotify}
-            >
-              {moduleProps => <Module {...moduleProps} />}
-            </Form>
-          </FormDataProvider>
-        </div>
-        <NotificationAnimated
-          notification={notification}
-          onClear={() => this.setState({ notification: null })}
-        />
+  return (
+    <div className={styles.container}>
+      <div className={styles.panel}>
+        <FormDataProvider formData={fd}>
+          <Form
+            controls={moduleControls}
+            form={form}
+            variables={variables}
+            initial={initial}
+            services={services}
+            className={styles.form}
+            onSubmit={submit}
+            onNotify={notify}
+            onChange={change}
+          >
+            {props => <Module {...props} />}
+          </Form>
+        </FormDataProvider>
       </div>
-    );
-  }
+      <NotificationAnimated
+        notification={notification}
+        onClear={() => setNotification(null)}
+      />
+    </div>
+  );
 }
+
+ModulesPlayground.propTypes = {
+  form: formProps.isRequired,
+  variables: PropTypes.shape({}),
+  initial: PropTypes.shape({}),
+};
+
+ModulesPlayground.defaultProps = {
+  variables: undefined,
+  initial: undefined,
+};

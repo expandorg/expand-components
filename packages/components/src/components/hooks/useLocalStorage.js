@@ -11,7 +11,7 @@ export default function useLocalStorage(key: string, initialValue: any) {
     }
   });
 
-  const setValue = useCallback(
+  const set = useCallback(
     (value: any) => {
       try {
         const valueToStore =
@@ -25,5 +25,5 @@ export default function useLocalStorage(key: string, initialValue: any) {
     [key, storedValue]
   );
 
-  return [storedValue, setValue];
+  return [storedValue, set];
 }
