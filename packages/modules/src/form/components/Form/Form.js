@@ -64,14 +64,13 @@ export default class Form extends Component {
     };
   }
 
-
-  static getDerivedStateFormProps({ form, variables, initial }, { original }) {
+  static getDerivedStateFromProps({ form, variables, initial }, { original }) {
     if (form !== original.form || variables !== original.variables) {
       const overrided = overrideFormVars(form, variables);
       return {
         form: overrided,
         values: getInitialFormValues(overrided, initial),
-        original: { form, variables  },
+        original: { form, variables },
       };
     }
     return null;
