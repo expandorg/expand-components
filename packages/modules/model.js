@@ -17,6 +17,11 @@ import {
 } from './src/form/model/variables';
 
 import {
+  verificationFormGenerator,
+  previewFormGenerator,
+} from './src/form/model/transform';
+
+import {
   calculateModuleScore,
   calculateVerificationScore,
 } from './src/form/model/verification/verification';
@@ -26,7 +31,7 @@ import {
   getFormModules,
   getFormModulesNames,
   findModuleVisitor,
-  bfsVisitor,
+  dfsVisitor,
 } from './src/form/model/modules';
 
 import { getModuleTypes, getReasons } from './src/form/model/reportReasons';
@@ -45,10 +50,13 @@ export {
   isVariable,
   getVariableName,
   findModuleVisitor,
-  bfsVisitor,
+  dfsVisitor,
   // verification
   calculateModuleScore,
   calculateVerificationScore,
+  // generators
+  verificationFormGenerator,
+  previewFormGenerator,
   // modules
   getModuleControlsMap,
   getFormModules,

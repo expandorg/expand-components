@@ -7,12 +7,14 @@
   padding: 30px
   background-color: color-light-blue
 
+
   @media(max-width: breakpoint-mobile-sm)
     padding: 0
 
 .panel
   box-sizing: border-box
   padding: 15px 30px 30px 30px
+  position relative
 
   max-width 1100px
   margin: 0 auto
@@ -20,3 +22,8 @@
   background: color-white
   box-shadow: light-shadow
 
+.title
+  position absolute
+  left 0
+  top -20px
+  font(h4-bold)

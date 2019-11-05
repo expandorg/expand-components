@@ -7,7 +7,7 @@ import type {
   ModuleControlsMap,
 } from './types.flow';
 
-export const bfsVisitor = (
+export const dfsVisitor = (
   modules: Array<Module>,
   fn: (mod: Module) => any
 ) => {

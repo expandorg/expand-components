@@ -6,6 +6,8 @@ import Player from 'react-player';
 export const intervalMs = 40;
 
 export default class MediaPlayer extends Component {
+  playerRef = createRef();
+
   static propTypes = {
     src: PropTypes.string.isRequired,
     playing: PropTypes.bool.isRequired,
@@ -37,8 +39,6 @@ export default class MediaPlayer extends Component {
   state = {
     canPlay: false,
   };
-
-  playerRef = createRef();
 
   componentDidUpdate({ start: prevStart, stop: prevStop }) {
     const { stop, start } = this.props;

@@ -19,7 +19,7 @@ const fd = {
   currentTry: 1,
 };
 
-export default function ModulesPlayground({ form, variables, initial }) {
+export default function ModulesPlayground({ form, variables, initial, title }) {
   const [notification, setNotification] = useState(null);
 
   const notify = useCallback((type, message) => {
@@ -37,6 +37,7 @@ export default function ModulesPlayground({ form, variables, initial }) {
   return (
     <div className={styles.container}>
       <div className={styles.panel}>
+        {title && <div className={styles.title}>{title}</div>}
         <FormDataProvider formData={fd}>
           <Form
             controls={moduleControls}
@@ -63,11 +64,13 @@ export default function ModulesPlayground({ form, variables, initial }) {
 
 ModulesPlayground.propTypes = {
   form: formProps.isRequired,
+  title: PropTypes.string,
   variables: PropTypes.shape({}),
   initial: PropTypes.shape({}),
 };
 
 ModulesPlayground.defaultProps = {
+  title: undefined,
   variables: undefined,
   initial: undefined,
 };

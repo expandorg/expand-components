@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import cn from 'classnames';
 
@@ -9,49 +9,46 @@ import {
 
 import styles from './FlexContainer.module.styl';
 
-export default class FlexContainer extends Component {
-  static propTypes = {
-    justify: PropTypes.oneOf([
-      'start',
-      'end',
-      'center',
-      'space-between',
-      'space-around',
-    ]),
-  };
+export default function FlexContainer({ children, justify }) {
+  return (
+    <div className={cn(styles.container, styles[`justify-${justify}`])}>
+      {children}
+    </div>
+  );
+}
 
-  static defaultProps = {
-    justify: 'start',
-  };
+FlexContainer.propTypes = {
+  justify: PropTypes.oneOf([
+    'start',
+    'end',
+    'center',
+    'space-between',
+    'space-around',
+  ]),
+};
 
-  static module = {
-    type: 'flex',
-    name: 'Horizontal alignment',
-    editor: {
-      category: ModuleCategories.Display,
-      properties: {
-        columns: {
-          type: PropControlTypes.enum,
-          label: 'Justify content',
-          options: ['start', 'end', 'center', 'space-between', 'space-around'],
-        },
-        modules: {
-          type: PropControlTypes.modules,
-          caption: 'Drop content here',
-        },
+FlexContainer.defaultProps = {
+  justify: 'start',
+};
+
+FlexContainer.module = {
+  type: 'flex',
+  name: 'Horizontal alignment',
+  editor: {
+    category: ModuleCategories.Display,
+    properties: {
+      columns: {
+        type: PropControlTypes.enum,
+        label: 'Justify content',
+        options: ['start', 'end', 'center', 'space-between', 'space-around'],
       },
-      defaults: {
-        columns: 'start',
+      modules: {
+        type: PropControlTypes.modules,
+        caption: 'Drop content here',
       },
     },
-  };
-
-  render() {
-    const { children, justify } = this.props;
-    return (
-      <div className={cn(styles.container, styles[`justify-${justify}`])}>
-        {children}
-      </div>
-    );
-  }
-}
+    defaults: {
+      columns: 'start',
+    },
+  },
+};

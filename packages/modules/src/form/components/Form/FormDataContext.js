@@ -1,4 +1,4 @@
-import React, { createContext } from 'react';
+import React, { createContext, useContext } from 'react';
 import PropTypes from 'prop-types';
 
 const FormDataContext = createContext(null);
@@ -17,10 +17,8 @@ FormDataProvider.defaultProps = {
   formData: null,
 };
 
-const FormData = ({ children }) => (
-  <FormDataContext.Consumer>
-    {formData => children({ formData })}
-  </FormDataContext.Consumer>
-);
+const useFormData = () => {
+  return useContext(FormDataContext);
+};
 
-export { FormData, FormDataProvider, FormDataContext };
+export { useFormData, FormDataProvider, FormDataContext };

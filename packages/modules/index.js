@@ -2,7 +2,7 @@
 import {
   Form,
   formProps,
-  FormData,
+  useFormData,
   FormDataProvider,
   FormDataContext,
 } from './src/form/components/Form';
@@ -39,7 +39,7 @@ export {
   // Form
   Form,
   formProps,
-  FormData,
+  useFormData,
   FormDataProvider,
   FormDataContext,
   ExecutionContext,

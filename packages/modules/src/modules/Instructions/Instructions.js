@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Button } from '@expandorg/components';
+import { Button, useToggle } from '@expandorg/components';
 
 import Modal from '../../components/Modal';
 import { VarsPlaceholder } from '../../form/components/VarsPlaceholder';
@@ -13,62 +13,47 @@ import {
 
 import styles from './Instructions.module.styl';
 
-export default class Instructions extends Component {
-  static propTypes = {
-    button: PropTypes.string,
-  };
+export default function Instructions({ button, children }) {
+  const [visible, toggle] = useToggle(false);
 
-  static defaultProps = {
-    button: null,
-  };
+  return (
+    <div className={styles.container}>
+      <Button className={styles.button} theme="white-blue" onClick={toggle}>
+        {button}
+        <VarsPlaceholder vval={button} pos="center" />
+      </Button>
+      <Modal visible={visible} onHide={toggle} button="Close">
+        {children}
+      </Modal>
+    </div>
+  );
+}
 
-  static module = {
-    type: 'instructions',
-    name: 'Instructions',
-    editor: {
-      category: ModuleCategories.Display,
-      properties: {
-        button: {
-          type: PropControlTypes.string,
-          placeholder: 'button caption',
-        },
-        modules: {
-          type: PropControlTypes.modules,
-          caption: 'Drop dialog content here',
-        },
+Instructions.propTypes = {
+  button: PropTypes.string,
+};
+
+Instructions.defaultProps = {
+  button: null,
+};
+
+Instructions.module = {
+  type: 'instructions',
+  name: 'Instructions',
+  editor: {
+    category: ModuleCategories.Display,
+    properties: {
+      button: {
+        type: PropControlTypes.string,
+        placeholder: 'button caption',
       },
-      defaults: {
-        button: 'Instructions',
+      modules: {
+        type: PropControlTypes.modules,
+        caption: 'Drop dialog content here',
       },
     },
-  };
-
-  state = {
-    visible: false,
-  };
-
-  handleToggle = () => {
-    this.setState(({ visible }) => ({ visible: !visible }));
-  };
-
-  render() {
-    const { button, children } = this.props;
-    const { visible } = this.state;
-
-    return (
-      <div className={styles.container}>
-        <Button
-          className={styles.button}
-          theme="white-blue"
-          onClick={this.handleToggle}
-        >
-          {button}
-          <VarsPlaceholder vval={button} pos="center" />
-        </Button>
-        <Modal visible={visible} onHide={this.handleToggle} button="Close">
-          {children}
-        </Modal>
-      </div>
-    );
-  }
-}
+    defaults: {
+      button: 'Instructions',
+    },
+  },
+};

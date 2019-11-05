@@ -32,37 +32,6 @@ export default class Multiselect extends Component {
     readOnly: false,
   };
 
-  static module = {
-    type: 'multiselect',
-    name: 'Select (multiple)',
-    isInput: true,
-    validation: {
-      isRequired: rules.isRequiredArray,
-    },
-    editor: {
-      category: ModuleCategories.Input,
-      properties: {
-        columns: {
-          type: PropControlTypes.enum,
-          label: 'Number of Columns',
-          options: [1, 2, 3],
-        },
-        options: {
-          type: PropControlTypes.options,
-          placeholder: 'Options',
-        },
-        readOnly: {
-          type: PropControlTypes.boolean,
-          label: 'Read only',
-        },
-      },
-      defaults: {
-        columns: 2,
-        options: ['Option 1', 'Option 2', 'Option 3', 'Option 4'],
-      },
-    },
-  };
-
   handleChange = answerId => {
     const { name, onChange, value } = this.props;
 
@@ -100,3 +69,34 @@ export default class Multiselect extends Component {
     );
   }
 }
+
+Multiselect.module = {
+  type: 'multiselect',
+  name: 'Select (multiple)',
+  isInput: true,
+  validation: {
+    isRequired: rules.isRequiredArray,
+  },
+  editor: {
+    category: ModuleCategories.Input,
+    properties: {
+      columns: {
+        type: PropControlTypes.enum,
+        label: 'Number of Columns',
+        options: [1, 2, 3],
+      },
+      options: {
+        type: PropControlTypes.options,
+        placeholder: 'Options',
+      },
+      readOnly: {
+        type: PropControlTypes.boolean,
+        label: 'Read only',
+      },
+    },
+    defaults: {
+      columns: 2,
+      options: ['Option 1', 'Option 2', 'Option 3', 'Option 4'],
+    },
+  },
+};

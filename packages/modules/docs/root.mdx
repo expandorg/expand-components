@@ -81,7 +81,7 @@ const MyComponent = () => (
   </Button>
 );
 ```
-import Button from './Button';
+import Button from '../../components/src/components/Button';
 
 <Button theme="secondary" onClick={() => console.log('click!')}>
   Hello World
@@ -126,7 +126,7 @@ class CustomForm extends Component {    // your form component
 ```
 
 import { Playground } from 'docz';
-import ModulesPlayground from '../../../modules/src/form/components/Playground/ModulesPlayground.js'
+import ModulesPlayground from '../src/form/components/Playground/ModulesPlayground.js'
 
 <Playground>
   <ModulesPlayground
