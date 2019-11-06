@@ -13,18 +13,29 @@ import {
 
 import styles from './Dropdown.module.styl';
 
-export default function Dropdown({ options, name, label, value, onChange }) {
+export default function Dropdown({
+  name,
+  readOnly,
+  initial,
+  options,
+  label,
+  value,
+  onChange,
+}) {
   const change = useCallback(
     v => {
-      onChange(name, v);
+      if (!readOnly) {
+        onChange(name, v);
+      }
     },
-    [name, onChange]
+    [name, onChange, readOnly]
   );
+  const val = readOnly ? initial : value;
 
   return (
     <div className={styles.container}>
       <UIDropdown
-        value={value}
+        value={val}
         label={label}
         options={options}
         onChange={change}
@@ -36,15 +47,19 @@ export default function Dropdown({ options, name, label, value, onChange }) {
 
 Dropdown.propTypes = {
   name: PropTypes.string.isRequired,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  readOnly: PropTypes.bool,
+  initial: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   options: PropTypes.arrayOf(PropTypes.any).isRequired,
   label: PropTypes.string,
-  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   onChange: PropTypes.func.isRequired,
 };
 
 Dropdown.defaultProps = {
-  label: '',
   value: '',
+  readOnly: false,
+  initial: '',
+  label: '',
 };
 
 Dropdown.module = {
@@ -64,6 +79,14 @@ Dropdown.module = {
       },
       options: {
         type: PropControlTypes.options,
+      },
+      readOnly: {
+        type: PropControlTypes.boolean,
+        label: 'Read only',
+      },
+      initial: {
+        type: PropControlTypes.string,
+        placeholder: 'Initial value',
       },
     },
     defaults: {

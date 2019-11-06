@@ -10,49 +10,15 @@ import { Playground, Props } from 'docz'
 import { verificationFormGenerator as v, previewFormGenerator as p } from '../model'
 import ModulesPlayground from '../src/form/components/Playground/ModulesPlayground.js'
 
-## Form
 
-export const form = {
+## Simple input modules
+
+export const simpleInputs = {
   modules: [
-    {
-      type: 'agreement',
-      name: 'agreement',
-      button: '$(Rules)',
-      label: 'I Agree',
-      modules: [
-        {
-          name: 'header',
-          type: 'text',
-          style: 'body',
-          content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-        },
-      ],
-    },
-    {
-      name: 'audio',
-      type: 'audio',
-      src: ' https://soundcloud.com/dalyaka/ubud',
-    },
-    {
-      name: 'clipboardText',
-      type: 'clipboardText',
-      text: 'copy me',
-    },
     {
       name: 'checkbox',
       type: 'checkbox',
       label: 'select me',
-    },
-    {
-      name: "collapsable",
-      type: "collapsable",
-      header: 'Click to Expand/Collapse',
-      modules: [{
-        name: "p-2",
-        type: "text",
-        style: "body",
-        content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-      }],
     },
     {
       name: 'dropdown',
@@ -61,69 +27,11 @@ export const form = {
       options: ['Option 1', 'Option 2', 'Option 3', 'Option 4'],
     },
     {
-      name: "flex",
-      type: "flex",
-      modules: [{
-        name: "flex-2",
-        type: "text",
-        style: "body",
-        content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-      }, {
-        name: "flex-3",
-        type: "text",
-        style: "body",
-        content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-      }],
-    },
-    {
-      name: 'image',
-      type: 'image',
-      src: 'https://expand.org/images/image-annotation.png',
-    },
-    {
-      name: 'imageTiles',
-      type: 'imageTiles',
-      image: 'https://expand.org/images/image-annotation.png',
-    },
-    {
-      name: 'text',
+      name: 'input',
       type: 'input',
       inputType: 'text',
       label: 'Label',
       placeholder: 'Simple text',
-    },
-    {
-      type: 'instructions',
-      name: 'instructions',
-      button: 'Instructions',
-      modules: [
-        {
-          name: 'instructions-header',
-          type: 'text',
-          style: 'body',
-          content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-        },
-      ],
-    },
-    {
-      name: "padding",
-      type: "padding",
-    },
-    {
-      name: 'progress',
-      type: 'progress',
-      number: 3,
-      total: 5,
-    },
-    {
-      name: "regionSelect",
-      type: "regionSelect",
-      image: "https://expand.org/images/image-annotation.png"
-    },
-    {
-      name: "richText",
-      type: "richText",
-      content: "<h3>Lorem ipsum dolor sit amet</h3>"
     },
     {
       name: 'select',
@@ -144,6 +52,48 @@ export const form = {
       step: 1,
     },
     {
+      name: 'yesno',
+      type: 'yesno',
+      idType: 'small',
+      yesCaption: 'Yes',
+      noCaption: 'No',
+    },
+    { name: 'submit', type: 'submit', caption: 'Submit' }
+  ]
+}
+
+export const simpleInputsAnsw = {
+  "checkbox": true,
+  "dropdown": "Option 2",
+  "input": "asda",
+  "select": "Option 1",
+  "multiselect": [
+    "Option 1"
+  ],
+  "slider": 27,
+  "yesno": "1"
+}
+
+<ModulesPlayground form={simpleInputs} initial={simpleInputsAnsw} />
+<ModulesPlayground title="Verification" variables={simpleInputsAnsw} form={v(simpleInputs)} />
+<ModulesPlayground title="Preview" variables={simpleInputsAnsw} form={p(simpleInputs)} />
+
+
+## Media input modules
+
+export const mediaInputs = {
+  modules: [
+    {
+      name: 'imageTiles',
+      type: 'imageTiles',
+      image: 'https://expand.org/images/image-annotation.png',
+    },
+    {
+      name: "regionSelect",
+      type: "regionSelect",
+      image: "https://expand.org/images/image-annotation.png"
+    },
+    {
       name: 'tag',
       type: 'tagVideo',
       options: [
@@ -154,25 +104,6 @@ export const form = {
       src: 'https://www.youtube.com/watch?v=PXi3Mv6KMzY',
     },
     {
-      name: 'text-p3',
-      type: 'text',
-      style: 'h3',
-      align: 'left',
-      content: 'h3 title <a href="https://expand.org" _target="blank">expand.org<a/>',
-    },
-    {
-      name: 'video',
-      type: 'video',
-      src: "http://media.gettyimages.com/videos/cap-video-id896606100",
-    },
-    {
-      name: 'yesno',
-      type: 'yesno',
-      idType: 'small',
-      yesCaption: 'Yes',
-      noCaption: 'No',
-    },
-    {
       name: 'submit',
       type: 'submit',
       caption: 'Submit',
@@ -180,10 +111,26 @@ export const form = {
   ],
 }
 
-<ModulesPlayground form={form} />
-<ModulesPlayground title="Verification" form={v(form)} />
-<ModulesPlayground title="Preview" form={p(form)} />
+export const mediaInputsAnsw = {
+  "imageTiles": [
+    4
+  ],
+  "regionSelect": {
+    "x1": 363.9058823529412,
+    "y1": 86.07941176470588,
+    "x2": 558.9176470588235,
+    "y2": 239.3029411764706
+  },
+  "tag": {
+    "start": 26.709090909090907,
+    "end": 28.709090909090907,
+    "tag": ""
+  },
+}
 
+<ModulesPlayground form={mediaInputs} initial={mediaInputsAnsw} />
+<ModulesPlayground title="Verification" variables={mediaInputsAnsw} form={v(mediaInputs)} />
+<ModulesPlayground title="Preview" variables={mediaInputsAnsw} form={p(mediaInputs)} />
 
 ## Wizard
 
@@ -215,4 +162,123 @@ export const wizard = {
 <ModulesPlayground form={wizard} />
 <ModulesPlayground title="Verification" form={v(wizard)} />
 <ModulesPlayground title="Preview" form={p(wizard)} />
+
+
+## Display modules
+
+export const display = {
+  modules: [
+    {
+      name: 'clipboardText',
+      type: 'clipboardText',
+      text: 'clipboardText module',
+    },
+    {
+      name: 'text-p3',
+      type: 'text',
+      style: 'h3',
+      align: 'left',
+      content: 'text module: title <a href="https://expand.org" _target="blank">expand.org<a/>',
+    },
+    {
+      name: "richText",
+      type: "richText",
+      content: "<h3><b>richText</b> Lorem ipsum dolor sit amet</h3>"
+    },
+    {
+      name: 'progress',
+      type: 'progress',
+      number: 3,
+      total: 5,
+    },
+  ]
+}
+
+
+<ModulesPlayground form={display} />
+<ModulesPlayground title="Verification" form={v(display)} />
+<ModulesPlayground title="Preview" form={p(display)} />
+
+
+## Media modules
+
+export const media = {
+  modules: [
+    {
+      name: 'audio',
+      type: 'audio',
+      src: ' https://soundcloud.com/dalyaka/ubud',
+    },
+    {
+      name: 'image',
+      type: 'image',
+      src: 'https://expand.org/images/image-annotation.png',
+    },
+    {
+      name: 'video',
+      type: 'video',
+      src: "http://media.gettyimages.com/videos/cap-video-id896606100",
+    },
+  ]
+}
+
+
+<ModulesPlayground form={media} />
+<ModulesPlayground title="Verification" form={v(media)} />
+<ModulesPlayground title="Preview" form={p(media)} />
+
+
+## Container modules
+
+export const containers = {
+  modules: [
+    {
+      name: "collapsable",
+      type: "collapsable",
+      header: 'Click to Expand/Collapse',
+      modules: [{
+        name: "p-2",
+        type: "text",
+        style: "body",
+        content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+      }],
+    },
+    {
+      name: "flex",
+      type: "flex",
+      modules: [{
+        name: "flex-2",
+        type: "text",
+        style: "body",
+        content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+      }, {
+        name: "flex-3",
+        type: "text",
+        style: "body",
+        content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+      }],
+    },
+    {
+      name: "padding",
+      type: "padding",
+    },
+    {
+      type: 'instructions',
+      name: 'instructions',
+      button: 'Instructions',
+      modules: [
+        {
+          name: 'instructions-header',
+          type: 'text',
+          style: 'body',
+          content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+        },
+      ],
+    },
+  ]
+}
+
+<ModulesPlayground form={containers} />
+<ModulesPlayground title="Verification" form={v(containers)} />
+<ModulesPlayground title="Preview" form={p(containers)} />
 

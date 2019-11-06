@@ -13,40 +13,24 @@ import {
 import styles from './styles.module.styl';
 
 export default class Multiselect extends Component {
-  static propTypes = {
-    name: PropTypes.string.isRequired,
-    options: PropTypes.arrayOf(
-      PropTypes.oneOfType([PropTypes.string, PropTypes.number])
-    ).isRequired,
-    value: PropTypes.arrayOf(
-      PropTypes.oneOfType([PropTypes.string, PropTypes.number])
-    ),
-    columns: PropTypes.oneOf([2, 3]),
-    readOnly: PropTypes.bool,
-    onChange: PropTypes.func.isRequired,
-  };
-
-  static defaultProps = {
-    value: [],
-    columns: 2,
-    readOnly: false,
-  };
-
   handleChange = answerId => {
-    const { name, onChange, value } = this.props;
+    const { name, onChange, value, readOnly } = this.props;
+    if (!readOnly) {
+      const selection = value || [];
 
-    const selection = value || [];
+      const updated = selection.includes(answerId)
+        ? selection.filter(el => el !== answerId)
+        : [...selection, answerId];
 
-    const updated = selection.includes(answerId)
-      ? selection.filter(el => el !== answerId)
-      : [...selection, answerId];
-
-    onChange(name, updated);
+      onChange(name, updated);
+    }
   };
 
   render() {
-    const { value, options, columns, readOnly } = this.props;
-    const selection = value;
+    const { value, options, columns, readOnly, initial } = this.props;
+
+    const selection = readOnly ? initial : value;
+
     return (
       <div className={styles.module}>
         <Select
@@ -69,6 +53,29 @@ export default class Multiselect extends Component {
     );
   }
 }
+
+Multiselect.propTypes = {
+  name: PropTypes.string.isRequired,
+  options: PropTypes.arrayOf(
+    PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+  ).isRequired,
+  value: PropTypes.arrayOf(
+    PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+  ),
+  readOnly: PropTypes.bool,
+  initial: PropTypes.arrayOf(
+    PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+  ),
+  columns: PropTypes.oneOf([2, 3]),
+  onChange: PropTypes.func.isRequired,
+};
+
+Multiselect.defaultProps = {
+  value: [],
+  readOnly: false,
+  initial: [],
+  columns: 2,
+};
 
 Multiselect.module = {
   type: 'multiselect',

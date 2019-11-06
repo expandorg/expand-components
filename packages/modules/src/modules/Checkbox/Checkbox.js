@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 
 import { rules } from '@expandorg/validation';
@@ -11,56 +11,78 @@ import {
 
 import styles from './Checkbox.module.styl';
 
-export default class Checkbox extends Component {
-  static propTypes = {
-    name: PropTypes.string.isRequired,
-    label: PropTypes.string,
-    value: PropTypes.bool,
-    onChange: PropTypes.func.isRequired,
-  };
-
-  static defaultProps = {
-    label: '',
-    value: undefined,
-  };
-
-  static module = {
-    type: 'checkbox',
-    name: 'Checkbox',
-    isInput: true,
-    validation: {
-      isTrue: rules.isTrue,
+export default function Checkbox({
+  name,
+  readOnly,
+  initial,
+  label,
+  value,
+  onChange,
+}) {
+  const change = useCallback(
+    v => {
+      if (!readOnly) {
+        onChange(name, v);
+      }
     },
-    verificationScore: value => (value ? 1 : 0),
-    editor: {
-      category: ModuleCategories.Input,
-      properties: {
-        label: {
-          type: PropControlTypes.string,
-          placeholder: 'Checkbox label',
-        },
-      },
-      defaults: {
-        label: 'Checkbox label',
-      },
-    },
-  };
+    [name, onChange, readOnly]
+  );
 
-  handleChange = value => {
-    const { name, onChange } = this.props;
-    onChange(name, value);
-  };
+  const val = readOnly ? initial : value;
 
-  render() {
-    const { label, name, value } = this.props;
-    return (
-      <UICheckbox
-        className={styles.checkbox}
-        value={value}
-        label={label}
-        name={name}
-        onChange={this.handleChange}
-      />
-    );
-  }
+  return (
+    <UICheckbox
+      className={styles.checkbox}
+      value={val}
+      label={label}
+      name={name}
+      onChange={change}
+    />
+  );
 }
+
+Checkbox.propTypes = {
+  name: PropTypes.string.isRequired,
+  value: PropTypes.bool,
+  readOnly: PropTypes.bool,
+  initial: PropTypes.bool,
+  label: PropTypes.string,
+  onChange: PropTypes.func.isRequired,
+};
+
+Checkbox.defaultProps = {
+  value: undefined,
+  readOnly: false,
+  initial: undefined,
+  label: '',
+};
+
+Checkbox.module = {
+  type: 'checkbox',
+  name: 'Checkbox',
+  isInput: true,
+  validation: {
+    isTrue: rules.isTrue,
+  },
+  verificationScore: value => (value ? 1 : 0),
+  editor: {
+    category: ModuleCategories.Input,
+    properties: {
+      label: {
+        type: PropControlTypes.string,
+        placeholder: 'Checkbox label',
+      },
+      readOnly: {
+        type: PropControlTypes.boolean,
+        label: 'Read only',
+      },
+      initial: {
+        type: PropControlTypes.boolean,
+        placeholder: 'Initial value',
+      },
+    },
+    defaults: {
+      label: 'Checkbox label',
+    },
+  },
+};

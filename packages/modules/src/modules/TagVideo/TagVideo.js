@@ -24,7 +24,14 @@ export default function TagVideo({
   onChange,
 }) {
   const { onModuleError } = useExecutionContext();
-  const change = useCallback(tag => onChange(name, tag), [name, onChange]);
+  const change = useCallback(
+    tag => {
+      if (!readOnly) {
+        onChange(name, tag);
+      }
+    },
+    [name, onChange, readOnly]
+  );
 
   const handleError = useCallback(() => {
     onModuleError(`${name}: Error while loading audio ${src}`);
@@ -58,13 +65,13 @@ TagVideo.propTypes = {
     tag: PropTypes.string,
   }),
   readOnly: PropTypes.bool,
-  autoPlay: PropTypes.bool,
-  hideControls: PropTypes.bool,
   initial: PropTypes.shape({
     start: PropTypes.number.isRequired,
     end: PropTypes.number.isRequired,
     tag: PropTypes.string,
   }),
+  autoPlay: PropTypes.bool,
+  hideControls: PropTypes.bool,
   playbackRate: PropTypes.number,
   options: PropTypes.arrayOf(PropTypes.string),
   startTime: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
@@ -106,14 +113,6 @@ TagVideo.module = {
         placeholder: 'Video url',
         required: true,
       },
-      readOnly: {
-        type: PropControlTypes.boolean,
-        label: 'Read only',
-      },
-      initial: {
-        type: PropControlTypes.timelineRange,
-        title: 'Initial value',
-      },
       hideControls: {
         type: PropControlTypes.boolean,
         label: 'Hide controls',
@@ -125,6 +124,14 @@ TagVideo.module = {
       startTime: {
         type: PropControlTypes.number,
         placeholder: 'Start playback from',
+      },
+      readOnly: {
+        type: PropControlTypes.boolean,
+        label: 'Read only',
+      },
+      initial: {
+        type: PropControlTypes.timelineRange,
+        title: 'Initial value',
       },
     },
     defaults: {

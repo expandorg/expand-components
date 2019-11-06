@@ -4,11 +4,11 @@ import applyVariables, { variablesPropertyFilter } from './applyVariables';
 import type { FilterProperty } from './applyVariables';
 import type { Form } from '../types.flow';
 
-const overrideFormVars = (
+export default function overrideFormVars(
   form: Form,
   variables: Object,
   filterProp: FilterProperty = variablesPropertyFilter
-): Form => {
+): Form {
   if (!variables) {
     return form;
   }
@@ -18,6 +18,4 @@ const overrideFormVars = (
       applyVariables(module, variables, filterProp)
     ),
   };
-};
-
-export default overrideFormVars;
+}

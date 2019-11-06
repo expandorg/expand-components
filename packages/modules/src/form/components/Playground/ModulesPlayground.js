@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import { NotificationAnimated } from '@expandorg/components/app';
 
+import { useToggle } from '@expandorg/components';
 import { Module } from '../Module';
 import { Form, formProps, FormDataProvider } from '../Form';
 
@@ -22,6 +23,8 @@ const fd = {
 export default function ModulesPlayground({ form, variables, initial, title }) {
   const [notification, setNotification] = useState(null);
 
+  const [src, toggle] = useToggle();
+
   const notify = useCallback((type, message) => {
     setNotification({ type, message });
   }, []);
@@ -37,7 +40,15 @@ export default function ModulesPlayground({ form, variables, initial, title }) {
   return (
     <div className={styles.container}>
       <div className={styles.panel}>
+        <button className={styles.toggle} onClick={toggle}>
+          src
+        </button>
         {title && <div className={styles.title}>{title}</div>}
+        {src && (
+          <pre className={styles.src}>
+            {JSON.stringify(form.modules, undefined, 2)}
+          </pre>
+        )}
         <FormDataProvider formData={fd}>
           <Form
             controls={moduleControls}
@@ -53,6 +64,10 @@ export default function ModulesPlayground({ form, variables, initial, title }) {
             {props => <Module {...props} />}
           </Form>
         </FormDataProvider>
+
+        {form.modules && !form.modules.length && (
+          <div className={styles.empty}>No modules</div>
+        )}
       </div>
       <NotificationAnimated
         notification={notification}

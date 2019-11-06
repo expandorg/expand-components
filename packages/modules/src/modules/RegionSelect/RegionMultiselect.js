@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 
 import { rules } from '@expandorg/validation';
@@ -20,88 +20,96 @@ const getValue = initial => {
   return initial;
 };
 
-export default class RegionMultiselect extends Component {
-  static propTypes = {
-    value: PropTypes.arrayOf(
-      PropTypes.shape({
-        x1: PropTypes.number,
-        y1: PropTypes.number,
-        x2: PropTypes.number,
-        y2: PropTypes.number,
-      })
-    ),
-    readOnly: PropTypes.bool,
-    initial: PropTypes.arrayOf(
-      PropTypes.shape({
-        x1: PropTypes.number,
-        y1: PropTypes.number,
-        x2: PropTypes.number,
-        y2: PropTypes.number,
-      })
-    ),
-    name: PropTypes.string.isRequired,
-    image: PropTypes.string.isRequired,
-    onChange: PropTypes.func.isRequired,
-  };
-
-  static defaultProps = {
-    value: [],
-    readOnly: false,
-    initial: [],
-  };
-
-  static module = {
-    type: 'regionMultiselect',
-    name: 'Image Region Multiselect',
-    isInput: true,
-    report: ['Image is not loading'],
-    validation: {
-      isRequired: rules.isRequiredArray,
+export default function RegionMultiselect({
+  image,
+  value,
+  readOnly,
+  initial,
+  name,
+  onChange,
+}) {
+  const change = useCallback(
+    v => {
+      if (!readOnly) {
+        onChange(name, v);
+      }
     },
-    editor: {
-      category: ModuleCategories.Image,
-      properties: {
-        image: {
-          type: PropControlTypes.string,
-          placeholder: 'Image Url',
-          required: true,
-        },
-        initial: {
-          type: PropControlTypes.imageRegion,
-          title: 'Initial values',
-          multiple: true,
-        },
-        readOnly: {
-          type: PropControlTypes.boolean,
-          label: 'Read only',
-        },
-      },
-      defaults: {
-        image: 'https://portal.expand.org/images/complete-tasks.png',
-      },
-    },
-  };
+    [name, onChange, readOnly]
+  );
 
-  handleChange = value => {
-    const { name, onChange } = this.props;
-    onChange(name, value);
-  };
-
-  render() {
-    const { image, value, readOnly, initial } = this.props;
-    const values = getValue(readOnly ? initial : value);
-    return (
-      <div className={styles.container}>
-        <ImageRegionMultiselect
-          className={styles.region}
-          src={image}
-          displayToggle={readOnly}
-          readOnly={readOnly}
-          values={values}
-          onChange={this.handleChange}
-        />
-        <VarsPlaceholder vval={initial} pos="center" />
-      </div>
-    );
-  }
+  const values = getValue(readOnly ? initial : value);
+  return (
+    <div className={styles.container}>
+      <ImageRegionMultiselect
+        className={styles.region}
+        src={image}
+        displayToggle={readOnly}
+        readOnly={readOnly}
+        values={values}
+        onChange={change}
+      />
+      <VarsPlaceholder vval={initial} pos="center" />
+    </div>
+  );
 }
+
+RegionMultiselect.propTypes = {
+  value: PropTypes.arrayOf(
+    PropTypes.shape({
+      x1: PropTypes.number,
+      y1: PropTypes.number,
+      x2: PropTypes.number,
+      y2: PropTypes.number,
+    })
+  ),
+  readOnly: PropTypes.bool,
+  initial: PropTypes.arrayOf(
+    PropTypes.shape({
+      x1: PropTypes.number,
+      y1: PropTypes.number,
+      x2: PropTypes.number,
+      y2: PropTypes.number,
+    })
+  ),
+  name: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+};
+
+RegionMultiselect.defaultProps = {
+  value: [],
+  readOnly: false,
+  initial: [],
+};
+
+RegionMultiselect.module = {
+  type: 'regionMultiselect',
+  name: 'Image Region Multiselect',
+  isInput: true,
+  report: ['Image is not loading'],
+  validation: {
+    isRequired: rules.isRequiredArray,
+  },
+  editor: {
+    category: ModuleCategories.Image,
+    properties: {
+      image: {
+        type: PropControlTypes.string,
+        placeholder: 'Image Url',
+        required: true,
+      },
+      readOnly: {
+        type: PropControlTypes.boolean,
+        label: 'Read only',
+      },
+      initial: {
+        type: PropControlTypes.imageRegion,
+        title: 'Initial values',
+        multiple: true,
+      },
+    },
+    defaults: {
+      image: 'https://portal.expand.org/images/complete-tasks.png',
+    },
+  },
+};

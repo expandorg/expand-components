@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import PropTypes from 'prop-types';
 
 import { rules } from '@expandorg/validation';
@@ -16,23 +16,32 @@ import styles from './YesNo.module.styl';
 
 export default function YesNo({
   value,
-  onChange,
   name,
+  readOnly,
+  initial,
   idType,
   noCaption,
   yesCaption,
+  onChange,
 }) {
-  const change = useCallback(
-    v => {
-      onChange(name, v);
-    },
-    [name, onChange]
+  const options = useMemo(
+    () => [
+      { value: '1', caption: yesCaption },
+      { value: '0', caption: noCaption },
+    ],
+    [noCaption, yesCaption]
   );
 
-  const options = [
-    { value: '1', caption: yesCaption },
-    { value: '0', caption: noCaption },
-  ];
+  const change = useCallback(
+    v => {
+      if (!readOnly) {
+        onChange(name, v);
+      }
+    },
+    [name, onChange, readOnly]
+  );
+
+  const val = readOnly ? initial : value;
 
   return (
     <div className={styles.module}>
@@ -41,7 +50,7 @@ export default function YesNo({
           <Choice
             key={option.value}
             option={option}
-            selected={value === option.value}
+            selected={val === option.value}
             onSelect={onSelect}
           />
         )}
@@ -52,6 +61,12 @@ export default function YesNo({
 
 YesNo.propTypes = {
   name: PropTypes.string.isRequired,
+  readOnly: PropTypes.bool,
+  initial: PropTypes.oneOfType(
+    PropTypes.bool,
+    PropTypes.string,
+    PropTypes.number
+  ),
   idType: PropTypes.oneOf([
     IdType.none,
     IdType.small,
@@ -67,6 +82,8 @@ YesNo.propTypes = {
 
 YesNo.defaultProps = {
   value: null,
+  readOnly: false,
+  initial: null,
   idType: IdType.small,
 };
 
@@ -102,6 +119,14 @@ YesNo.module = {
         label: 'Enumerator type',
         options: ['none', 'numerals', 'small', 'capital', 'roman'],
         formatter,
+      },
+      readOnly: {
+        type: PropControlTypes.boolean,
+        label: 'Read only',
+      },
+      initial: {
+        type: PropControlTypes.boolean,
+        title: 'Initial value',
       },
     },
     defaults: {

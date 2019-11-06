@@ -21,13 +21,17 @@ export default function RegionSelect({
   initial,
   value,
 }) {
-  const rect = readOnly ? initial : value;
   const change = useCallback(
     v => {
-      onChange(name, v);
+      if (!readOnly) {
+        onChange(name, v);
+      }
     },
-    [name, onChange]
+    [name, onChange, readOnly]
   );
+
+  const rect = readOnly ? initial : value;
+
   return (
     <div className={styles.container}>
       <ImageRegionSelect
@@ -38,7 +42,7 @@ export default function RegionSelect({
         displayToggle={readOnly}
         onChange={change}
       />
-      <VarsPlaceholder vval={initial} pos="center" />
+      <VarsPlaceholder vval={rect} pos="center" />
     </div>
   );
 }
@@ -84,13 +88,13 @@ RegionSelect.module = {
         placeholder: 'Image Url',
         required: true,
       },
-      initial: {
-        type: PropControlTypes.imageRegion,
-        title: 'Initial value',
-      },
       readOnly: {
         type: PropControlTypes.boolean,
         label: 'Read only',
+      },
+      initial: {
+        type: PropControlTypes.imageRegion,
+        title: 'Initial value',
       },
     },
     defaults: {

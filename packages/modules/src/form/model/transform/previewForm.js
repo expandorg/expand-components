@@ -2,36 +2,25 @@
 import type { Form, Module } from '../types.flow';
 
 import { dfsVisitor } from '../modules';
-import {
-  transformModule,
-  checkboxTransform,
-  dropdownTransform,
-  imageTilesTransform,
-  inputTransform,
-  regionSelectTransform,
-  regionMultiselectTransform,
-  selectTransform,
-  sliderTransform,
-  tagVideoTranform,
-  multipleTagVideoTranform,
-  yesNoTransform,
-} from './modules';
+import { transformModule } from './transformModule';
 
-function flattenForm(form: Form): Array<Module> {
-  const supported = new Set([
-    'agreement',
-    'checkbox',
-    'dropdown',
-    'imageTiles',
-    'input',
-    'regionSelect',
-    'regionMultiselect',
-    'select',
-    'slider',
-    'tagVideo',
-    'multipleTagVideo',
-    'yesno',
-  ]);
+import { initialValueTransform } from './transforms';
+
+const supported = new Set([
+  'checkbox',
+  'dropdown',
+  'imageTiles',
+  'input',
+  'regionSelect',
+  'regionMultiselect',
+  'select',
+  'slider',
+  'tagVideo',
+  'multipleTagVideo',
+  'yesno',
+]);
+
+function flatForm(form: Form): Array<Module> {
   const result = [];
   dfsVisitor(form.modules, m => {
     if (supported.has(m.type)) {
@@ -41,27 +30,25 @@ function flattenForm(form: Form): Array<Module> {
   return result;
 }
 
+const transforms = {
+  checkbox: initialValueTransform,
+  dropdown: initialValueTransform,
+  imageTiles: initialValueTransform,
+  input: initialValueTransform,
+  regionSelect: initialValueTransform,
+  regionMultiselect: initialValueTransform,
+  select: initialValueTransform,
+  slider: initialValueTransform,
+  tagVideo: initialValueTransform,
+  multipleTagVideo: initialValueTransform,
+  yesno: initialValueTransform,
+};
+
 export default function previewForm(form: Form): Form {
-  const previewModules = {
-    checkbox: checkboxTransform,
-    dropdown: dropdownTransform,
-    imageTiles: imageTilesTransform,
-    input: inputTransform,
-    regionSelect: regionSelectTransform,
-    regionMultiselect: regionMultiselectTransform,
-    select: selectTransform,
-    slider: sliderTransform,
-    tagVideo: tagVideoTranform,
-    multipleTagVideo: multipleTagVideoTranform,
-    yesNo: yesNoTransform,
-  };
-
-  const modules = flattenForm(form)
-    .map(module => transformModule(module, previewModules))
-    .filter(Boolean);
-
   return {
-    modules,
     autogenenrated: true,
+    modules: flatForm(form)
+      .map(module => transformModule(module, transforms))
+      .filter(Boolean),
   };
 }

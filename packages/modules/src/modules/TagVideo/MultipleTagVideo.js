@@ -15,20 +15,30 @@ export default function MultipleTagVideo({
   src,
   value,
   name,
+  readOnly,
+  initial,
   onChange,
   startTime,
   options,
   playbackRate,
-  readOnly,
   hideControls,
   autoPlay,
 }) {
   const { onModuleError } = useExecutionContext();
-  const change = useCallback(tags => onChange(name, tags), [name, onChange]);
+  const change = useCallback(
+    tags => {
+      if (!readOnly) {
+        onChange(name, tags);
+      }
+    },
+    [name, onChange, readOnly]
+  );
 
   const handleError = useCallback(() => {
     onModuleError(`${name}: Error while loading audio ${src}`);
   }, [name, onModuleError, src]);
+
+  const tags = readOnly ? initial : value;
 
   return (
     <UIMultipleTagVideo
@@ -40,7 +50,7 @@ export default function MultipleTagVideo({
       hideControls={hideControls}
       startTime={typeof startTime === 'string' ? +startTime : startTime}
       video={src}
-      tags={value}
+      tags={tags}
       onChange={change}
       onError={handleError}
     />
@@ -58,6 +68,13 @@ MultipleTagVideo.propTypes = {
     })
   ),
   readOnly: PropTypes.bool,
+  initial: PropTypes.arrayOf(
+    PropTypes.shape({
+      start: PropTypes.number.isRequired,
+      end: PropTypes.number.isRequired,
+      tag: PropTypes.string,
+    })
+  ),
   hideControls: PropTypes.bool,
   playbackRate: PropTypes.number,
   autoPlay: PropTypes.bool,
@@ -70,6 +87,7 @@ MultipleTagVideo.defaultProps = {
   value: [],
   options: [],
   readOnly: false,
+  initial: [],
   autoPlay: false,
   hideControls: false,
   playbackRate: 1,
@@ -96,10 +114,6 @@ MultipleTagVideo.module = {
         type: PropControlTypes.boolean,
         label: 'play video automatically',
       },
-      readOnly: {
-        type: PropControlTypes.boolean,
-        label: 'Read only',
-      },
       hideControls: {
         type: PropControlTypes.boolean,
         label: 'Hide controls',
@@ -111,6 +125,10 @@ MultipleTagVideo.module = {
       startTime: {
         type: PropControlTypes.number,
         placeholder: 'Start playback from',
+      },
+      readOnly: {
+        type: PropControlTypes.boolean,
+        label: 'Read only',
       },
     },
     defaults: {

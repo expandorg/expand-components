@@ -11,24 +11,35 @@ import {
 
 import styles from './Slider.module.styl';
 
-export default function Slider({ value, min, max, step, name, onChange }) {
+export default function Slider({
+  value,
+  readOnly,
+  initial,
+  min,
+  max,
+  step,
+  name,
+  onChange,
+}) {
   const change = useCallback(
     val => {
       onChange(name, val);
     },
     [name, onChange]
   );
+  const val = readOnly ? initial : value;
+
   return (
     <div className={styles.contianer}>
       <UISlider
         className={styles.slider}
-        value={+value}
+        value={+val}
         step={+step}
         min={+min}
         max={+max}
         onChange={change}
       />
-      <div className={styles.value}>{value}</div>
+      <div className={styles.value}>{val}</div>
     </div>
   );
 }
@@ -56,9 +67,13 @@ Slider.module = {
         type: PropControlTypes.number,
         placeholder: 'Max value (default 100)',
       },
+      readOnly: {
+        type: PropControlTypes.boolean,
+        label: 'Read only',
+      },
       initial: {
         type: PropControlTypes.string,
-        placeholder: 'Default value',
+        placeholder: 'Initial value',
       },
     },
     defaults: {
@@ -73,6 +88,8 @@ Slider.module = {
 Slider.propTypes = {
   name: PropTypes.string.isRequired,
   value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  readOnly: PropTypes.bool,
+  initial: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   min: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   max: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   step: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
@@ -81,6 +98,8 @@ Slider.propTypes = {
 
 Slider.defaultProps = {
   value: 0,
+  initial: 0,
+  readOnly: false,
   min: 0,
   max: 10,
   step: 1,

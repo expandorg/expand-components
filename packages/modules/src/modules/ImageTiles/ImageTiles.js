@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 
 import { rules } from '@expandorg/validation';
@@ -13,74 +13,94 @@ import {
 
 import styles from './ImageTiles.module.styl';
 
-export default class ImageTiles extends Component {
-  static propTypes = {
-    value: PropTypes.arrayOf(PropTypes.number),
-    name: PropTypes.string.isRequired,
-    image: PropTypes.string.isRequired,
-    columns: PropTypes.number,
-    rows: PropTypes.number,
-    onChange: PropTypes.func.isRequired,
-  };
-
-  static defaultProps = {
-    columns: 4,
-    rows: 4,
-    value: [],
-  };
-
-  static module = {
-    type: 'imageTiles',
-    name: 'Image Tiles',
-    isInput: true,
-    validation: {
-      isRequired: rules.isRequiredArray,
+export default function ImageTiles({
+  name,
+  value,
+  readOnly,
+  initial,
+  image,
+  columns,
+  rows,
+  onChange,
+}) {
+  const change = useCallback(
+    v => {
+      if (!readOnly) {
+        onChange(name, v);
+      }
     },
-    editor: {
-      category: ModuleCategories.Image,
-      properties: {
-        image: {
-          type: PropControlTypes.string,
-          placeholder: 'Image Url',
-          required: true,
-        },
-        columns: {
-          type: PropControlTypes.number,
-          placeholder: 'Number of columns',
-        },
-        rows: {
-          type: PropControlTypes.number,
-          placeholder: 'Number of rows',
-        },
-      },
-      defaults: {
-        columns: 4,
-        rows: 4,
-        image: 'https://portal.expand.org/images/complete-tasks.png',
-      },
-    },
-  };
+    [name, onChange, readOnly]
+  );
 
-  handleChange = value => {
-    const { name, onChange } = this.props;
-    onChange(name, value);
-  };
+  const val = readOnly ? initial : value;
 
-  render() {
-    const { value, image, columns, rows } = this.props;
-    return (
-      <div className={styles.container}>
-        <div className={styles.region}>
-          <UIImageTiles
-            src={image}
-            columns={columns}
-            rows={rows}
-            selection={value}
-            onChange={this.handleChange}
-          />
-          <VarsPlaceholder vval={image} />
-        </div>
+  return (
+    <div className={styles.container}>
+      <div className={styles.region}>
+        <UIImageTiles
+          src={image}
+          columns={columns}
+          rows={rows}
+          selection={val}
+          onChange={change}
+        />
+        <VarsPlaceholder vval={image} />
       </div>
-    );
-  }
+    </div>
+  );
 }
+
+ImageTiles.propTypes = {
+  name: PropTypes.string.isRequired,
+  value: PropTypes.arrayOf(PropTypes.number),
+  readOnly: PropTypes.bool,
+  initial: PropTypes.arrayOf(PropTypes.number),
+  image: PropTypes.string.isRequired,
+  columns: PropTypes.number,
+  rows: PropTypes.number,
+  onChange: PropTypes.func.isRequired,
+};
+
+ImageTiles.defaultProps = {
+  value: [],
+  readOnly: false,
+  initial: [],
+  columns: 4,
+  rows: 4,
+};
+
+ImageTiles.module = {
+  type: 'imageTiles',
+  name: 'Image Tiles',
+  isInput: true,
+  validation: {
+    isRequired: rules.isRequiredArray,
+  },
+  editor: {
+    category: ModuleCategories.Image,
+    properties: {
+      image: {
+        type: PropControlTypes.string,
+        placeholder: 'Image Url',
+        required: true,
+      },
+      columns: {
+        type: PropControlTypes.number,
+        placeholder: 'Number of columns',
+      },
+      rows: {
+        type: PropControlTypes.number,
+        placeholder: 'Number of rows',
+      },
+      readOnly: {
+        type: PropControlTypes.boolean,
+        label: 'Read only',
+      },
+    },
+    defaults: {
+      columns: 4,
+      rows: 4,
+      image: 'https://portal.expand.org/images/complete-tasks.png',
+    },
+  },
+};

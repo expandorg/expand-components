@@ -1,48 +1,11 @@
 // @flow
 import type { Module } from '../types.flow';
 
-type TransformFn = (module: Module) => ?Module;
-
-const verificaitonModuleProps = (module: Module) => ({
-  name: `${module.name}-answ`,
-  __tfId: module.name,
-});
-
-// eslint-disable-next-line no-unused-vars
-export function emptyTransform(_: Module): ?Module {
-  return null;
-}
-
-export function identityTransform(module: Module): Module {
-  return { ...module, ...verificaitonModuleProps(module) };
-}
-
-export function transformModule(
-  module: Module,
-  transformMap: { [name: string]: TransformFn },
-  prev?: Map<string, Module>
-): ?Module {
-  const { modules: nested, ...rest } = module;
-  let result = !!prev && prev.get(rest.name);
-
-  if (!result) {
-    const transformFn = transformMap[module.type] || identityTransform;
-    result = transformFn(rest);
-  }
-
-  if (!result) {
-    return result;
-  }
-
-  if (!nested) {
-    return result;
-  }
-
+export function initialValueTransform(module: Module) {
   return {
-    ...result,
-    modules: nested
-      .map(child => transformModule(child, transformMap, prev))
-      .filter(Boolean),
+    ...module,
+    readOnly: true,
+    initial: `$(${module.name})`,
   };
 }
 
@@ -51,7 +14,6 @@ const text = (
   contentFn: (answ: string) => string,
   style?: string = 'body'
 ) => ({
-  ...verificaitonModuleProps(module),
   type: 'text',
   align: 'left',
   style,

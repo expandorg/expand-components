@@ -17,17 +17,22 @@ import styles from './Input.module.styl';
 export default function Input({
   name,
   value,
+  readOnly,
+  initial,
   placeholder,
   inputType,
-  initial,
   onChange,
 }) {
   const change = useCallback(
     ({ target }) => {
-      onChange(name, target.value);
+      if (!readOnly) {
+        onChange(name, target.value);
+      }
     },
-    [name, onChange]
+    [name, onChange, readOnly]
   );
+
+  const val = readOnly ? initial : value;
 
   return (
     <div className={styles.container}>
@@ -35,7 +40,8 @@ export default function Input({
         type={inputType}
         className={styles.input}
         onChange={change}
-        value={value}
+        readOnly={readOnly}
+        value={val}
         autoComplete="off"
         placeholder={placeholder}
       />
@@ -50,17 +56,19 @@ export default function Input({
 
 Input.propTypes = {
   name: PropTypes.string.isRequired,
+  readOnly: PropTypes.bool,
+  initial: PropTypes.string,
   inputType: PropTypes.string,
   placeholder: PropTypes.string,
   value: PropTypes.string,
-  initial: PropTypes.string, // eslint-disable-line
   onChange: PropTypes.func.isRequired,
 };
 
 Input.defaultProps = {
-  inputType: 'text',
   value: undefined,
-  initial: null,
+  readOnly: false,
+  initial: undefined,
+  inputType: 'text',
   placeholder: '',
 };
 
@@ -74,12 +82,7 @@ Input.module = {
     isEmail: rules.isEmail,
     isUrl: rules.isUrl,
     isNumber: rules.isNumber,
-    // isGreater: rules.isGreater,
-    // isGreaterOrEqual: rules.isGreaterOrEqual,
-    // isLess: rules.isLess,
-    // isLessOrEqual: rules.isLessOrEqual,
     isMinCharacterCount: rules.isMinCharacterCount,
-    // isMaxCharacterCount: rules.isMaxCharacterCount,
   },
   verificationScore: value => {
     const numeric = +value;
@@ -99,6 +102,10 @@ Input.module = {
       placeholder: {
         type: PropControlTypes.string,
         placeholder: 'Placeholder',
+      },
+      readOnly: {
+        type: PropControlTypes.boolean,
+        label: 'Read only',
       },
       initial: {
         type: PropControlTypes.string,
