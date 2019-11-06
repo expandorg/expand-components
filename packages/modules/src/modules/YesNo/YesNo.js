@@ -51,6 +51,7 @@ export default function YesNo({
             key={option.value}
             option={option}
             selected={val === option.value}
+            readOnly={readOnly}
             onSelect={onSelect}
           />
         )}

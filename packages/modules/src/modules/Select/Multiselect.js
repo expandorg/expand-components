@@ -15,6 +15,7 @@ import styles from './styles.module.styl';
 export default class Multiselect extends Component {
   handleChange = answerId => {
     const { name, onChange, value, readOnly } = this.props;
+
     if (!readOnly) {
       const selection = value || [];
 

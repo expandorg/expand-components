@@ -10,19 +10,11 @@ import {
 } from './transformModule';
 
 import {
+  initialValueTransform,
   checkboxTransform,
   dropdownTransform,
-  imageTilesTransform,
   inputTransform,
-  regionSelectTransform,
-  regionMultiselectTransform,
-  selectTransform,
-  sliderTransform,
-  submitTranform,
-  tagVideoTranform,
-  multipleTagVideoTranform,
   wizardTransform,
-  yesNoTransform,
 } from './transforms';
 
 const transforms = {
@@ -30,17 +22,17 @@ const transforms = {
   agreement: nullTransform,
   checkbox: checkboxTransform,
   dropdown: dropdownTransform,
-  imageTiles: imageTilesTransform,
+  imageTiles: initialValueTransform,
   input: inputTransform,
-  regionSelect: regionSelectTransform,
-  regionMultiselect: regionMultiselectTransform,
-  select: selectTransform,
-  slider: sliderTransform,
-  submit: submitTranform,
-  tagVideo: tagVideoTranform,
-  multipleTagVideo: multipleTagVideoTranform,
+  regionSelect: initialValueTransform,
+  regionMultiselect: initialValueTransform,
+  select: initialValueTransform,
+  multiselect: initialValueTransform,
+  slider: initialValueTransform,
+  tagVideo: initialValueTransform,
+  multipleTagVideo: initialValueTransform,
   wizard: wizardTransform,
-  yesNo: yesNoTransform,
+  yesno: initialValueTransform,
 };
 
 function getModulesMap(modules: Array<Module>): Map<string, Module> {

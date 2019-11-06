@@ -31,47 +31,11 @@ export function dropdownTransform(module: Module): Module {
   return text(module, answVar => `${module.label}: $(${answVar})`);
 }
 
-export function imageTilesTransform(module: Module): Module {
-  return module;
-}
-
 export function inputTransform(module: Module): Module {
   // $FlowFixMe
   return text(module, answVar => `${module.placeholder}: $(${answVar})`);
 }
 
-export function regionSelectTransform(module: Module): Module {
-  return module;
-}
-
-export function regionMultiselectTransform(module: Module): Module {
-  return module;
-}
-
-export function selectTransform(module: Module): Module {
-  return module;
-}
-
-export function sliderTransform(module: Module): Module {
-  return module;
-}
-
-export function submitTranform(module: Module): Module {
-  return module;
-}
-
-export function tagVideoTranform(module: Module): Module {
-  return module;
-}
-
-export function multipleTagVideoTranform(module: Module): Module {
-  return module;
-}
-
 export function wizardTransform(module: Module): Module {
-  return module;
-}
-
-export function yesNoTransform(module: Module): Module {
   return module;
 }
