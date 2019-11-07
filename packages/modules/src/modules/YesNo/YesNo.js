@@ -63,11 +63,11 @@ export default function YesNo({
 YesNo.propTypes = {
   name: PropTypes.string.isRequired,
   readOnly: PropTypes.bool,
-  initial: PropTypes.oneOfType(
+  initial: PropTypes.oneOfType([
     PropTypes.bool,
     PropTypes.string,
     PropTypes.number
-  ),
+  ]),
   idType: PropTypes.oneOf([
     IdType.none,
     IdType.small,
