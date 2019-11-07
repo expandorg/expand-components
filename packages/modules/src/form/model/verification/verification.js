@@ -25,7 +25,7 @@ type TotalScoreFn = (scores: Array<?number>) => number;
 
 export const calculateVerificationScore = (
   response: Object,
-  formModules: Array<Module>,
+  form: Array<Module>,
   controls: Array<ModuleControl>,
   scoreMethod: TotalScoreFn = avg
 ) => {
@@ -34,19 +34,13 @@ export const calculateVerificationScore = (
   }
   const controlsMap = getModuleControlsMap(controls);
 
-  const moduleScores = Reflect.ownKeys(response).map(fieldName => {
-    const formModule = findModuleVisitor(
-      formModules,
-      m => m.name === fieldName
-    );
-    if (formModule === null || formModule === undefined) {
+  const scores = Reflect.ownKeys(response).map(fieldName => {
+    const module = findModuleVisitor(form, m => m.name === fieldName);
+    if (module === null || module === undefined) {
       return undefined;
     }
-    return calculateModuleScore(
-      response[fieldName],
-      controlsMap[formModule.type]
-    );
+    return calculateModuleScore(response[fieldName], controlsMap[module.type]);
   });
 
-  return scoreMethod(moduleScores);
+  return scoreMethod(scores);
 };

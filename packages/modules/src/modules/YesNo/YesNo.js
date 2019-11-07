@@ -66,7 +66,7 @@ YesNo.propTypes = {
   initial: PropTypes.oneOfType([
     PropTypes.bool,
     PropTypes.string,
-    PropTypes.number
+    PropTypes.number,
   ]),
   idType: PropTypes.oneOf([
     IdType.none,
@@ -131,7 +131,7 @@ YesNo.module = {
       },
     },
     defaults: {
-      idType: 'small',
+      idType: IdType.small,
       yesCaption: 'Yes',
       noCaption: 'No',
     },

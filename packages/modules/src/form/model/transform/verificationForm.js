@@ -33,6 +33,7 @@ const transforms = {
   multipleTagVideo: initialValueTransform,
   wizard: wizardTransform,
   yesno: initialValueTransform,
+  submit: nullTransform,
 };
 
 function getModulesMap(modules: Array<Module>): Map<string, Module> {
@@ -45,7 +46,7 @@ function getModulesMap(modules: Array<Module>): Map<string, Module> {
   return result;
 }
 
-const createDecorator = (prev: Form = { modules: [] }): TransformDecorator => {
+function createDecorator(prev: Form = { modules: [] }): TransformDecorator {
   const exisiting = getModulesMap(prev.modules);
 
   return (original: Module, tf: TransformFn): TransformFn => {
@@ -67,7 +68,23 @@ const createDecorator = (prev: Form = { modules: [] }): TransformDecorator => {
       };
     };
   };
-};
+}
+
+function addScoreModules(modules: Array<Module>): Array<Module> {
+  const yesno = {
+    name: 'response',
+    type: 'yesno',
+    idType: 'none',
+    yesCaption: 'Correct',
+    noCaption: 'Incorrect',
+  };
+  const submit = {
+    name: 'submit',
+    type: 'submit',
+    caption: 'Submit',
+  };
+  return [...modules, yesno, submit];
+}
 
 export default function verificationForm(
   taskForm: Form,
@@ -80,7 +97,7 @@ export default function verificationForm(
     .filter(Boolean);
 
   return {
-    modules,
+    modules: addScoreModules(modules),
     autogenenrated: true,
   };
 }
