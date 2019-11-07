@@ -127,7 +127,7 @@ YesNo.module = {
       },
       initial: {
         type: PropControlTypes.boolean,
-        title: 'Initial value',
+        label: 'Initial value',
       },
     },
     defaults: {

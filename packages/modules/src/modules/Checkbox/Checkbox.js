@@ -78,7 +78,7 @@ Checkbox.module = {
       },
       initial: {
         type: PropControlTypes.boolean,
-        placeholder: 'Initial value',
+        label: 'Initial value',
       },
     },
     defaults: {
