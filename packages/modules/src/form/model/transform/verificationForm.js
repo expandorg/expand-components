@@ -77,11 +77,13 @@ function addScoreModules(modules: Array<Module>): Array<Module> {
     idType: 'none',
     yesCaption: 'Correct',
     noCaption: 'Incorrect',
+    __tfId: 'response',
   };
   const submit = {
     name: 'submit',
     type: 'submit',
     caption: 'Submit',
+    __tfId: 'submit',
   };
   return [...modules, yesno, submit];
 }
