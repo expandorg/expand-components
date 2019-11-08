@@ -70,8 +70,11 @@ function createDecorator(prev: Form = { modules: [] }): TransformDecorator {
   };
 }
 
-function addScoreModules(modules: Array<Module>): Array<Module> {
-  const yesno = {
+function addScoreModules(
+  modules: Array<Module>,
+  cache: Map<string, Module>
+): Array<Module> {
+  const yesno = cache.get('response') || {
     name: 'response',
     type: 'yesno',
     idType: 'none',
@@ -79,7 +82,7 @@ function addScoreModules(modules: Array<Module>): Array<Module> {
     noCaption: 'Incorrect',
     __tfId: 'response',
   };
-  const submit = {
+  const submit = cache.get('submit') || {
     name: 'submit',
     type: 'submit',
     caption: 'Submit',
@@ -99,7 +102,7 @@ export default function verificationForm(
     .filter(Boolean);
 
   return {
-    modules: addScoreModules(modules),
+    modules: addScoreModules(modules, getModulesMap(prev.modules)),
     autogenenrated: true,
   };
 }
