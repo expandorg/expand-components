@@ -46,7 +46,7 @@ function getModulesMap(modules: Array<Module>): Map<string, Module> {
   return result;
 }
 
-function createDecorator(prev: Form = { modules: [] }): TransformDecorator {
+function createDecorator(prev?: Form = { modules: [] }): TransformDecorator {
   const exisiting = getModulesMap(prev.modules);
 
   return (original: Module, tf: TransformFn): TransformFn => {
@@ -93,7 +93,7 @@ function addScoreModules(
 
 export default function verificationForm(
   taskForm: Form,
-  prev: Form = { modules: [] }
+  prev?: Form = { modules: [] }
 ): Form {
   const decorate = createDecorator(prev);
 

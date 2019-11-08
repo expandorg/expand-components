@@ -9,17 +9,20 @@ export function initialValueTransform(module: Module) {
   };
 }
 
-const text = (
+function text(
   module: Module,
   contentFn: (answ: string) => string,
   style?: string = 'body'
-) => ({
-  type: 'text',
-  align: 'left',
-  style,
-  color: 'black',
-  content: contentFn(module.name),
-});
+): Module {
+  return {
+    name: module.name,
+    type: 'text',
+    align: 'left',
+    color: 'black',
+    style,
+    content: contentFn(module.name),
+  };
+}
 
 export function checkboxTransform(module: Module): Module {
   // $FlowFixMe
@@ -37,5 +40,8 @@ export function inputTransform(module: Module): Module {
 }
 
 export function wizardTransform(module: Module): Module {
-  return module;
+  return {
+    name: module.name,
+    type: 'section',
+  };
 }
