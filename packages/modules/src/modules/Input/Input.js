@@ -84,13 +84,6 @@ Input.module = {
     isNumber: rules.isNumber,
     isMinCharacterCount: rules.isMinCharacterCount,
   },
-  verificationScore: value => {
-    const numeric = +value;
-    if (Number.isNaN(numeric)) {
-      return 0;
-    }
-    return Math.min(Math.max(numeric, 0), 1);
-  },
   editor: {
     category: ModuleCategories.Input,
     properties: {

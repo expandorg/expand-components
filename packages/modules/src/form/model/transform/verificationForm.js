@@ -31,12 +31,12 @@ const transforms = {
   slider: initialValueTransform,
   tagVideo: initialValueTransform,
   multipleTagVideo: initialValueTransform,
-  wizard: wizardTransform,
   yesno: initialValueTransform,
   submit: nullTransform,
+  wizard: wizardTransform,
 };
 
-function getModulesMap(modules: Array<Module>): Map<string, Module> {
+function generatedModules(modules: Array<Module>): Map<string, Module> {
   const result = new Map();
   dfsVisitor(modules, m => {
     if (typeof m.__tfId === 'string') {
@@ -46,23 +46,22 @@ function getModulesMap(modules: Array<Module>): Map<string, Module> {
   return result;
 }
 
-function createDecorator(prev?: Form = { modules: [] }): TransformDecorator {
-  const exisiting = getModulesMap(prev.modules);
-
+function createDecorator(exisiting: Map<string, Module>): TransformDecorator {
   return (original: Module, tf: TransformFn): TransformFn => {
     return (module: Module): ?Module => {
-      let result = exisiting.get(module.name);
-      if (result) {
-        return result;
+      const found = exisiting.get(module.name);
+      if (found) {
+        return found;
       }
 
-      result = tf(module);
-      if (!result) {
-        return result;
+      const transformed = tf(module);
+
+      if (!transformed) {
+        return transformed;
       }
 
       return {
-        ...result,
+        ...transformed,
         __tfId: original.name,
         name: `${original.name}-answ`,
       };
@@ -92,17 +91,18 @@ function addScoreModules(
 }
 
 export default function verificationForm(
-  taskForm: Form,
+  form: Form,
   prev?: Form = { modules: [] }
 ): Form {
-  const decorate = createDecorator(prev);
+  const existing = generatedModules(prev.modules);
+  const decorate = createDecorator(existing);
 
-  const modules = taskForm.modules
+  const modules = form.modules
     .map(m => transformModule(m, transforms, decorate))
     .filter(Boolean);
 
   return {
-    modules: addScoreModules(modules, getModulesMap(prev.modules)),
+    modules: addScoreModules(modules, existing),
     autogenenrated: true,
   };
 }

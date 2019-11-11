@@ -1,37 +1,13 @@
 // @flow
-import type { Form, Module } from '../types.flow';
+import type { Form } from '../types.flow';
 
-import { dfsVisitor } from '../modules';
-import { transformModule } from './transformModule';
+import { transformModule, nullTransform } from './transformModule';
 
-import { initialValueTransform } from './transforms';
-
-const supported = new Set([
-  'checkbox',
-  'dropdown',
-  'imageTiles',
-  'input',
-  'regionSelect',
-  'regionMultiselect',
-  'select',
-  'multiselect',
-  'slider',
-  'tagVideo',
-  'multipleTagVideo',
-  'yesno',
-]);
-
-function flatForm(form: Form): Array<Module> {
-  const result = [];
-  dfsVisitor(form.modules, m => {
-    if (supported.has(m.type)) {
-      result.push(m);
-    }
-  });
-  return result;
-}
+import { initialValueTransform, wizardTransform } from './transforms';
 
 const transforms = {
+  progress: nullTransform,
+  agreement: nullTransform,
   checkbox: initialValueTransform,
   dropdown: initialValueTransform,
   imageTiles: initialValueTransform,
@@ -44,13 +20,16 @@ const transforms = {
   tagVideo: initialValueTransform,
   multipleTagVideo: initialValueTransform,
   yesno: initialValueTransform,
+  submit: nullTransform,
+  wizard: wizardTransform,
 };
 
 export default function previewForm(form: Form): Form {
+  const modules = form.modules
+    .map(module => transformModule(module, transforms))
+    .filter(Boolean);
+
   return {
-    autogenenrated: true,
-    modules: flatForm(form)
-      .map(module => transformModule(module, transforms))
-      .filter(Boolean),
+    modules,
   };
 }
