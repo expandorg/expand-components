@@ -36,26 +36,29 @@ describe('response verification', () => {
         ],
       };
 
-      const score = calculateVerificationScore(
+      const result = calculateVerificationScore(
         { field1: '12' },
         verificationForm.modules,
         moduleControls
       );
-      expect(score).toEqual(1);
+      expect(result.score).toEqual(1);
+      expect(result.reason).toEqual('');
 
-      const score2 = calculateVerificationScore(
+      const result2 = calculateVerificationScore(
         { field1: '0.5' },
         verificationForm.modules,
         moduleControls
       );
-      expect(score2).toEqual(0.5);
+      expect(result2.score).toEqual(0.5);
+      expect(result2.reason).toEqual('');
 
-      const score3 = calculateVerificationScore(
+      const result3 = calculateVerificationScore(
         { field1: '-1' },
         verificationForm.modules,
         moduleControls
       );
-      expect(score3).toEqual(0);
+      expect(result3.score).toEqual(0);
+      expect(result3.reason).toEqual('');
     });
   });
 
@@ -76,11 +79,12 @@ describe('response verification', () => {
         },
       ],
     };
-    const score = calculateVerificationScore(
+    const result = calculateVerificationScore(
       { field1: '0.1', field2: '0.7' },
       verificationForm.modules,
       moduleControls
     );
-    expect(score).toEqual(0.4);
+    expect(result.score).toEqual(0.4);
+    expect(result.reason).toEqual('');
   });
 });

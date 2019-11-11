@@ -21,16 +21,21 @@ export const calculateModuleScore = (
   return Control.module.verificationScore(value);
 };
 
-type TotalScoreFn = (scores: Array<?number>) => number;
+export type TotalScoreFn = (scores: Array<?number>) => number;
+
+export type VerificationResult = {
+  score: number,
+  reason: string,
+};
 
 export const calculateVerificationScore = (
   response: Object,
   form: Array<Module>,
   controls: Array<ModuleControl>,
   scoreMethod: TotalScoreFn = avg
-) => {
+): VerificationResult => {
   if (!response) {
-    return 0;
+    return { score: 0, reason: '' };
   }
   const controlsMap = getModuleControlsMap(controls);
 
@@ -41,6 +46,6 @@ export const calculateVerificationScore = (
     }
     return calculateModuleScore(response[fieldName], controlsMap[module.type]);
   });
-
-  return scoreMethod(scores);
+  const score = scoreMethod(scores);
+  return { score, reason: '' };
 };
