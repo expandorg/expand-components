@@ -1,20 +1,19 @@
 // @flow
 import { findModuleVisitor } from '../modules';
-import { type Module } from '../types.flow';
+import { type Form } from '../types.flow';
 
 export type VerificationResult = {
   score: number,
   reason: string,
 };
 
-// eslint-disable-next-line import/prefer-default-export
-export const calculateVerificationScore = (
+export default function getVerificationResponse(
   response: Object,
-  form: Array<Module>
-): VerificationResult => {
+  form: Form
+): VerificationResult {
   if (response) {
     const module = Reflect.ownKeys(response)
-      .map(field => findModuleVisitor(form, m => m.name === field))
+      .map(field => findModuleVisitor(form.modules, m => m.name === field))
       .filter(Boolean)
       .find(m => m.type === 'verify');
 
@@ -23,4 +22,4 @@ export const calculateVerificationScore = (
     }
   }
   return { score: 0, reason: '' };
-};
+}
