@@ -21,10 +21,7 @@ import {
   previewFormGenerator,
 } from './src/form/model/transform';
 
-import {
-  calculateModuleScore,
-  calculateVerificationScore,
-} from './src/form/model/verification/verification';
+import { calculateVerificationScore } from './src/form/model/verification/verification';
 
 import {
   getModuleControlsMap,
@@ -52,7 +49,6 @@ export {
   findModuleVisitor,
   dfsVisitor,
   // verification
-  calculateModuleScore,
   calculateVerificationScore,
   // generators
   verificationFormGenerator,

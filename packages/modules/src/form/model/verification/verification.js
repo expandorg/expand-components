@@ -1,51 +1,26 @@
 // @flow
-import { getModuleControlsMap, findModuleVisitor } from '../modules';
-import { type Module, type ModuleControl } from '../types.flow';
-
-export const avg = (values: Array<?number>): number => {
-  const filtered = values.filter(v => typeof v !== 'undefined');
-  if (!filtered.length) {
-    return 0;
-  }
-  const sum = filtered.reduce((all, next) => all + next, 0);
-  return Math.round((sum / values.length) * 1000) / 1000;
-};
-
-export const calculateModuleScore = (
-  value: any,
-  Control: ModuleControl
-): ?number => {
-  if (!Control || !Control.module || !Control.module.verificationScore) {
-    return undefined;
-  }
-  return Control.module.verificationScore(value);
-};
-
-export type TotalScoreFn = (scores: Array<?number>) => number;
+import { findModuleVisitor } from '../modules';
+import { type Module } from '../types.flow';
 
 export type VerificationResult = {
   score: number,
   reason: string,
 };
 
+// eslint-disable-next-line import/prefer-default-export
 export const calculateVerificationScore = (
   response: Object,
-  form: Array<Module>,
-  controls: Array<ModuleControl>,
-  scoreMethod: TotalScoreFn = avg
+  form: Array<Module>
 ): VerificationResult => {
-  if (!response) {
-    return { score: 0, reason: '' };
-  }
-  const controlsMap = getModuleControlsMap(controls);
+  if (response) {
+    const module = Reflect.ownKeys(response)
+      .map(field => findModuleVisitor(form, m => m.name === field))
+      .filter(Boolean)
+      .find(m => m.type === 'verify');
 
-  const scores = Reflect.ownKeys(response).map(fieldName => {
-    const module = findModuleVisitor(form, m => m.name === fieldName);
-    if (module === null || module === undefined) {
-      return undefined;
+    if (module) {
+      return response[module.name];
     }
-    return calculateModuleScore(response[fieldName], controlsMap[module.type]);
-  });
-  const score = scoreMethod(scores);
-  return { score, reason: '' };
+  }
+  return { score: 0, reason: '' };
 };

@@ -18,13 +18,14 @@ export default class Select extends Component {
       IdType.capital,
       IdType.roman,
       IdType.numerals,
-    ]).isRequired,
+    ]),
     className: PropTypes.string,
     onSelect: PropTypes.func.isRequired,
     columns: PropTypes.oneOf([1, 2, 3]),
   };
 
   static defaultProps = {
+    idType: IdType.none,
     className: null,
     columns: 2,
   };
