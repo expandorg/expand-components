@@ -64,6 +64,7 @@ Checkbox.module = {
   validation: {
     isTrue: rules.isTrue,
   },
+  verificationScore: value => (value ? 1 : 0),
   editor: {
     category: ModuleCategories.Input,
     properties: {
