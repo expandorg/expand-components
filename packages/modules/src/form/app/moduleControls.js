@@ -24,6 +24,7 @@ import Video from '../../modules/Video';
 import Section from '../../modules/Section';
 import Slider from '../../modules/Slider';
 import Wizard from '../../modules/Wizard';
+import Verify from '../../modules/Verify';
 
 const moduleControls = [
   Agreement,
@@ -53,6 +54,7 @@ const moduleControls = [
   Video,
   Section,
   Slider,
+  Verify,
   Wizard,
 ];
 

@@ -1,7 +1,4 @@
-import {
-  calculateVerificationScore,
-  calculateModuleScore,
-} from '../verification';
+import { calculateVerificationScore, calculateModuleScore } from '../score';
 
 import moduleControls from '../../../app/moduleControls';
 import { getModuleControlsMap } from '../../modules';

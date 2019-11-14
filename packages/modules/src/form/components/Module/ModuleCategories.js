@@ -7,6 +7,7 @@ const ModuleCategories = {
   Image: 'Image',
   Media: 'Media',
   Onboarding: 'Onboarding',
+  Verification: 'Verification',
 };
 
 export default ModuleCategories;

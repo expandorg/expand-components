@@ -1,28 +1,26 @@
 ---
 menu: Modules
-name: Yes/No
-route: /modules-yesno
+name: Verify
+route: /modules-verify
 ---
 
 
-# Yes/No
+# Verify
 
 ## Select properties
 
 | Property       | type           | Required | Default | description  |
 | -------------- | -------------- | -------- | --------| ------------ |
-| *type*         | `yesno`        | true     | -       | module type  |
+| *type*         | `verify`       | true     | -       | module type  |
 | *name*         | string         | true     | -       | module name  |
-| *idType*       | `none`, `small`, `capital`, `roman`, `numerals` | false    | numerals       | enumerator type  |
 | *yesCaption*   | string         | true     | -       | yes caption  |
 | *noCaption*    | string         | true     | -       | no caption   |
 
 ## Example
 ```jsx
 {
-  name: 'yesno',
-  type: 'yesno',
-  idType: 'small',
+  name: 'verify',
+  type: 'verify',
   yesCaption: 'Yes',
   noCaption: 'No',
 }
@@ -40,11 +38,10 @@ import ModulesPlayground from '../../form/components/Playground/ModulesPlaygroun
         content: 'Answer is correct?',
       },
       {
-        name: 'yesno',
-        type: 'yesno',
-        idType: 'small',
-        yesCaption: 'Yes',
-        noCaption: 'No',
+        name: 'verify',
+        type: 'verify',
+        yesCaption: 'Answer is correct',
+        noCaption: 'Incorrect',
       },
       {
         name: 'submit',

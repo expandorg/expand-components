@@ -36,7 +36,7 @@ const transforms = {
   wizard: wizardTransform,
 };
 
-function generatedModules(modules: Array<Module>): Map<string, Module> {
+function getModulesCache(modules: Array<Module>): Map<string, Module> {
   const result = new Map();
   dfsVisitor(modules, m => {
     if (typeof m.__tfId === 'string') {
@@ -69,40 +69,48 @@ function createDecorator(exisiting: Map<string, Module>): TransformDecorator {
   };
 }
 
-function addScoreModules(
+export const VERIFY_NAME = 'verification-response';
+export const SUBMIT_NAME = 'submit-verification';
+
+function appendScoreModules(
   modules: Array<Module>,
   cache: Map<string, Module>
 ): Array<Module> {
-  const yesno = cache.get('response') || {
-    name: 'response',
-    type: 'yesno',
-    idType: 'none',
-    yesCaption: 'Correct',
-    noCaption: 'Incorrect',
-    __tfId: 'response',
-  };
-  const submit = cache.get('submit') || {
-    name: 'submit',
-    type: 'submit',
-    caption: 'Submit',
-    __tfId: 'submit',
-  };
-  return [...modules, yesno, submit];
+  const scoreModules = [
+    cache.get(VERIFY_NAME) || {
+      __tfId: VERIFY_NAME,
+      name: VERIFY_NAME,
+      type: 'verify',
+      yesCaption: 'Correct',
+      noCaption: 'Incorrect',
+      validation: {
+        isRequired: true,
+      },
+    },
+    cache.get(SUBMIT_NAME) || {
+      __tfId: SUBMIT_NAME,
+      name: SUBMIT_NAME,
+      type: 'submit',
+      caption: 'Verify',
+    },
+  ];
+
+  return [...modules, ...scoreModules];
 }
 
 export default function verificationForm(
   form: Form,
   prev?: Form = { modules: [] }
 ): Form {
-  const existing = generatedModules(prev.modules);
-  const decorate = createDecorator(existing);
+  const cache = getModulesCache(prev.modules);
+  const decorate = createDecorator(cache);
 
   const modules = form.modules
     .map(m => transformModule(m, transforms, decorate))
     .filter(Boolean);
 
   return {
-    modules: addScoreModules(modules, existing),
     autogenenrated: true,
+    modules: appendScoreModules(modules, cache),
   };
 }
