@@ -111,8 +111,8 @@ Verify.module = {
       },
     },
     defaults: {
-      yesCaption: 'Yes',
-      noCaption: 'No',
+      yesCaption: 'Yes! Approve',
+      noCaption: 'No! Reject',
     },
   },
 };
