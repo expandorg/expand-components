@@ -11,8 +11,8 @@ const formatItem = (option: string | Object, id: string): OptionType => {
   }
 
   return {
-    value: option,
     id,
+    value: option,
     caption: option,
   };
 };

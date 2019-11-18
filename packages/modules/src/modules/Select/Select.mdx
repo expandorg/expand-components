@@ -57,3 +57,30 @@ import ModulesPlayground from '../../form/components/Playground/ModulesPlaygroun
     }}
   />
 </Playground>
+
+
+<Playground>
+  <ModulesPlayground
+    form={{
+      modules: [
+        {
+          name: 'text',
+          type: 'type',
+          style: 'h3',
+          content: 'Select one',
+        },
+        {
+          name: 'select',
+          type: 'select',
+          idType: 'none',
+          options: ['lorem loremloremloremlorem lorem lorem lorem', 'Option 2', 'Option 3', 'Option 4'],
+        },
+        {
+          name: 'submit',
+          type: 'submit',
+          caption: 'Next',
+        },
+      ],
+    }}
+  />
+</Playground>

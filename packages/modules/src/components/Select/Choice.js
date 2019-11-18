@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import cn from 'classnames';
 
@@ -8,55 +8,64 @@ import { VarsPlaceholder } from '../../form/components/VarsPlaceholder';
 
 import styles from './Choice.module.styl';
 
-export default class Choice extends Component {
-  static propTypes = {
-    option: PropTypes.object.isRequired, // eslint-disable-line
-    selected: PropTypes.bool,
-    checkMark: PropTypes.bool,
-    readOnly: PropTypes.bool,
-    onSelect: PropTypes.func.isRequired,
-  };
+export default function Choice({
+  option,
+  selected,
+  readOnly,
+  checkMark,
+  onSelect,
+}) {
+  const select = useCallback(
+    evt => {
+      evt.preventDefault();
+      if (!readOnly) {
+        onSelect(option.value);
+      }
+    },
+    [onSelect, option.value, readOnly]
+  );
 
-  static defaultProps = {
-    checkMark: false,
-    readOnly: false,
-    selected: false,
-  };
+  const classes = cn(styles.container, {
+    [styles.selected]: selected,
+    [styles.readOnly]: readOnly,
+  });
 
-  handleSelect = evt => {
-    evt.preventDefault();
-    const { onSelect, option, readOnly } = this.props;
-    if (!readOnly) {
-      onSelect(option.value);
-    }
-  };
-
-  render() {
-    const { option, selected, readOnly, checkMark } = this.props;
-    const classes = cn(styles.container, {
-      [styles.selected]: selected,
-      [styles.readOnly]: readOnly,
-    });
-
-    const { id, caption } = option;
-    return (
-      <button type="button" className={classes} onClick={this.handleSelect}>
-        {id && !checkMark && <span className={styles.id}>{id}</span>}
-        {checkMark && (
-          <div className={styles.mark}>
-            <Checkmark
-              width="20"
-              height="20"
-              viewBox="0 0 64 48"
-              className={styles.icon}
-            />
-          </div>
-        )}
-        <span className={styles.caption}>
-          {caption}
-          <VarsPlaceholder vval={caption} />
-        </span>
-      </button>
-    );
-  }
+  const { id, caption } = option;
+  return (
+    <button type="button" className={classes} onClick={select}>
+      {id && !checkMark && <span className={styles.id}>{id}</span>}
+      {checkMark && (
+        <div className={styles.mark}>
+          <Checkmark
+            width="20"
+            height="20"
+            viewBox="0 0 64 48"
+            className={styles.icon}
+          />
+        </div>
+      )}
+      <span className={styles.caption}>
+        {caption}
+        <VarsPlaceholder vval={caption} />
+      </span>
+    </button>
+  );
 }
+
+Choice.propTypes = {
+  option: PropTypes.shape({
+    id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    caption: PropTypes.string,
+    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  }).isRequired,
+  selected: PropTypes.bool,
+  checkMark: PropTypes.bool,
+  readOnly: PropTypes.bool,
+  onSelect: PropTypes.func.isRequired,
+};
+
+Choice.defaultProps = {
+  checkMark: false,
+  readOnly: false,
+  selected: false,
+};
