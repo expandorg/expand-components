@@ -30,7 +30,7 @@
     "docz"
   ],
   "devDependencies": {
-    "@expandorg/eslint-config": "^0.5.6",
+    "@expandorg/eslint-config": "^0.5.7",
     "babel-eslint": "^10.0.3",
     "classnames": "^2.2.6",
     "css-loader": "^3.2.0",
@@ -43,7 +43,7 @@
     "eslint": "^6.6.0",
     "flow-bin": "^0.112.0",
     "jest": "^24.9.0",
-    "lerna": "^3.18.4",
+    "lerna": "^3.19.0",
     "postcss-loader": "^3.0.0",
     "postcss-preset-env": "^6.7.0",
     "prettier": "^1.19.1",

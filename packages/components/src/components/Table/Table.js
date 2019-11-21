@@ -1,25 +1,21 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import cn from 'classnames';
 
 import './Table.styl';
 
-export default class Table extends Component {
-  static propTypes = {
-    className: PropTypes.string,
-  };
-
-  static defaultProps = {
-    className: null,
-  };
-
-  render() {
-    const { children, className } = this.props;
-
-    return (
-      <table className={cn('gem-table', className)}>
-        <tbody className="gem-tbody">{children}</tbody>
-      </table>
-    );
-  }
+export default function Table({ children, className }) {
+  return (
+    <table className={cn('gem-table', className)}>
+      <tbody className="gem-tbody">{children}</tbody>
+    </table>
+  );
 }
+
+Table.propTypes = {
+  className: PropTypes.string,
+};
+
+Table.defaultProps = {
+  className: null,
+};
