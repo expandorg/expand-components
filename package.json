@@ -30,7 +30,7 @@
     "docz"
   ],
   "devDependencies": {
-    "@expandorg/eslint-config": "^0.5.7",
+    "@expandorg/eslint-config": "^0.5.8",
     "babel-eslint": "^10.0.3",
     "classnames": "^2.2.6",
     "css-loader": "^3.2.0",
@@ -41,7 +41,7 @@
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.15.1",
     "eslint": "^6.6.0",
-    "flow-bin": "^0.112.0",
+    "flow-bin": "^0.113.0",
     "jest": "^24.9.0",
     "lerna": "^3.19.0",
     "postcss-loader": "^3.0.0",

@@ -7,7 +7,10 @@ export default function getPages(
   selected: number,
   total: number,
   display: number
-) {
+): Array<number> {
+  if (!total || total === 1) {
+    return [];
+  }
   if (total <= display) {
     return range(total);
   }
