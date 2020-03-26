@@ -32,7 +32,7 @@ export default function Verify({
   );
 
   const changeScore = useCallback(
-    newScore => {
+    (newScore) => {
       const result = {
         score: newScore,
         reason: newScore === 0 ? reason : '',

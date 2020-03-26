@@ -26,17 +26,17 @@ function text(
 
 export function checkboxTransform(module: Module): Module {
   // $FlowFixMe
-  return text(module, answVar => `${module.label}: $(${answVar})`);
+  return text(module, (answVar) => `${module.label}: $(${answVar})`);
 }
 
 export function dropdownTransform(module: Module): Module {
   // $FlowFixMe
-  return text(module, answVar => `${module.label}: $(${answVar})`);
+  return text(module, (answVar) => `${module.label}: $(${answVar})`);
 }
 
 export function inputTransform(module: Module): Module {
   // $FlowFixMe
-  return text(module, answVar => `${module.placeholder}: $(${answVar})`);
+  return text(module, (answVar) => `${module.placeholder}: $(${answVar})`);
 }
 
 export function wizardTransform(module: Module): Module {

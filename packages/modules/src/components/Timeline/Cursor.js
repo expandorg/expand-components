@@ -21,11 +21,11 @@ export default class Cursor extends Component {
   static defaultProps = {
     limitFrom: undefined,
     limitTo: undefined,
-    labelFormatter: time => `${time}`,
+    labelFormatter: (time) => `${time}`,
     onClick: Function.prototype,
   };
 
-  handleClick = evt => {
+  handleClick = (evt) => {
     const { position, time, onClick } = this.props;
     onClick(time, position, evt);
   };

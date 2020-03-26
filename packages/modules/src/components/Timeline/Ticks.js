@@ -36,7 +36,7 @@ export default class Ticks extends PureComponent {
     const ticks = getTicks(0, duration, width, 50);
     return (
       <div className={styles.container}>
-        {ticks.map(tick => (
+        {ticks.map((tick) => (
           <Tick
             key={tick.tick}
             tick={tick}

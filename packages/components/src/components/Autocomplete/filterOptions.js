@@ -8,7 +8,7 @@ export const containsFilter = (
     return options;
   }
   return options.filter(
-    o => o.toLowerCase().indexOf(query.toLowerCase()) !== -1
+    (o) => o.toLowerCase().indexOf(query.toLowerCase()) !== -1
   );
 };
 
@@ -19,5 +19,5 @@ export const startWithFilter = (
   if (!query) {
     return options;
   }
-  return options.filter(o => o.toLowerCase().startsWith(query.toLowerCase()));
+  return options.filter((o) => o.toLowerCase().startsWith(query.toLowerCase()));
 };

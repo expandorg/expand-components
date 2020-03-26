@@ -19,7 +19,7 @@ export default class Switch extends Component {
     onChange: Function.prototype,
   };
 
-  handleToggle = evt => {
+  handleToggle = (evt) => {
     const { onChange, value } = this.props;
     onChange(!value, evt);
   };

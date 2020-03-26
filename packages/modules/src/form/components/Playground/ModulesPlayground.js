@@ -29,11 +29,11 @@ export default function ModulesPlayground({ form, variables, initial, title }) {
     setNotification({ type, message });
   }, []);
 
-  const submit = useCallback(values => {
+  const submit = useCallback((values) => {
     alert(JSON.stringify(values, undefined, 2));
   }, []);
 
-  const change = useCallback(values => {
+  const change = useCallback((values) => {
     console.log(JSON.stringify(values, undefined, 2));
   }, []);
 
@@ -61,7 +61,7 @@ export default function ModulesPlayground({ form, variables, initial, title }) {
             onNotify={notify}
             onChange={change}
           >
-            {props => <Module {...props} />}
+            {(props) => <Module {...props} />}
           </Form>
         </FormDataProvider>
 

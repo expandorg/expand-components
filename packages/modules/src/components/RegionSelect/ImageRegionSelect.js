@@ -64,7 +64,7 @@ export default class ImageRegionSelect extends Component {
               width={width}
               height={height}
               className={cn(styles.region, { [styles.readOnly]: readOnly })}
-              onSelectionEnd={rect =>
+              onSelectionEnd={(rect) =>
                 this.handleSelect(rect, width, imageWidth)
               }
             >
@@ -82,7 +82,7 @@ export default class ImageRegionSelect extends Component {
                     cWidth={width}
                     cHeight={height}
                     editable={!readOnly}
-                    onResize={resized =>
+                    onResize={(resized) =>
                       this.handleResize(resized, width, imageWidth)
                     }
                   />

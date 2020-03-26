@@ -53,7 +53,7 @@ export default class ImageRegionMultiselect extends Component {
     }
   };
 
-  handleDelete = index => {
+  handleDelete = (index) => {
     const { onChange, values } = this.props;
     onChange(removeAtIndex(values, index));
   };
@@ -82,7 +82,7 @@ export default class ImageRegionMultiselect extends Component {
               key={src}
               width={width}
               height={height}
-              onSelectionEnd={rect =>
+              onSelectionEnd={(rect) =>
                 this.handleSelect(rect, width, imageWidth)
               }
             >
@@ -97,7 +97,7 @@ export default class ImageRegionMultiselect extends Component {
                         key={getKey(value)}
                         editable={!readOnly}
                         onDelete={() => this.handleDelete(index)}
-                        onResize={resized =>
+                        onResize={(resized) =>
                           this.handleResize(resized, width, imageWidth, index)
                         }
                       />

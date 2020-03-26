@@ -40,8 +40,8 @@ export const calculateVerificationScore = (
   const controlsMap = getModuleControlsMap(controls);
 
   const scores = Reflect.ownKeys(response)
-    .map(fieldName => {
-      const module = findModuleVisitor(form, m => m.name === fieldName);
+    .map((fieldName) => {
+      const module = findModuleVisitor(form, (m) => m.name === fieldName);
       if (module === null || module === undefined) {
         return undefined;
       }
@@ -50,7 +50,7 @@ export const calculateVerificationScore = (
         controlsMap[module.type]
       );
     })
-    .filter(r => typeof r !== 'undefined');
+    .filter((r) => typeof r !== 'undefined');
 
   return scoreMethod(scores);
 };

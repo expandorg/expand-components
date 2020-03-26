@@ -24,7 +24,7 @@ export default function ImageTiles({
   onChange,
 }) {
   const change = useCallback(
-    v => {
+    (v) => {
       if (!readOnly) {
         onChange(name, v);
       }

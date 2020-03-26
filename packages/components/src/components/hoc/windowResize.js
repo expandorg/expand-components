@@ -24,7 +24,7 @@ export default function windowResize(
       document.removeEventListener('resize', this.handleResize, true);
     }
 
-    handleResize = evt => {
+    handleResize = (evt) => {
       const { current } = this.wrap;
       if (current && typeof current.handleResize === 'function') {
         current.handleResize(evt);

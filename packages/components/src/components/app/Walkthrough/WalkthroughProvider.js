@@ -45,7 +45,7 @@ class WalkthroughProvider extends Component {
     },
   };
 
-  handleActiveChange = active => {
+  handleActiveChange = (active) => {
     const { settings } = this.props;
     this.setState({
       active,
@@ -53,7 +53,7 @@ class WalkthroughProvider extends Component {
     });
   };
 
-  handlePositionChange = position => {
+  handlePositionChange = (position) => {
     this.setState({
       position,
     });
@@ -68,11 +68,11 @@ class WalkthroughProvider extends Component {
 
   handleTogglePresence = (id, add) => {
     this.setState(({ presence }) => ({
-      presence: add ? [...presence, id] : presence.filter(p => p !== id),
+      presence: add ? [...presence, id] : presence.filter((p) => p !== id),
     }));
   };
 
-  handleToggle = evt => {
+  handleToggle = (evt) => {
     if (evt) {
       evt.preventDefault();
       evt.stopPropagation();

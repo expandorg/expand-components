@@ -22,7 +22,7 @@ export default function Video({ src, name, loop, autoPlay }) {
     onModuleError(`${name}: Error while loading video ${src}`);
   }, [name, onModuleError, src]);
 
-  const handleSeek = useCallback(seek => {
+  const handleSeek = useCallback((seek) => {
     if (player.current) {
       player.current.seekTo(seek);
     }

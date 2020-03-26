@@ -30,7 +30,7 @@ describe('compiler', () => {
     });
 
     it('parse ops', () => {
-      ops.forEach(op => {
+      ops.forEach((op) => {
         expect(parseToken(op)).toEqual({
           type: 'op',
           value: op,

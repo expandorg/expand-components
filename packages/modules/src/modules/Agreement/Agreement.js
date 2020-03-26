@@ -83,7 +83,7 @@ export default class Agreement extends Component {
           name={name}
           label={label}
           value={value}
-          onChange={changed => onChange(name, changed)}
+          onChange={(changed) => onChange(name, changed)}
         />
         {button && (
           <Modal visible={visible} onHide={this.handleToggle} button="Close">

@@ -5,8 +5,8 @@ import type { Module, ModuleControlsMap } from '../types.flow';
 
 const getFieldRules = (validation: Object, rules: Object) => {
   return Reflect.ownKeys(validation)
-    .filter(ruleName => !!rules[ruleName])
-    .map(ruleName => {
+    .filter((ruleName) => !!rules[ruleName])
+    .map((ruleName) => {
       const fn = rules[ruleName];
       const ruleParams = validation[ruleName];
 

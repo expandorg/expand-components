@@ -13,7 +13,7 @@ import { pxToTime } from '../../Timeline/utils/timeline';
 
 import styles from './Timeline.module.styl';
 
-const labelFormatter = time => `start time: ${time}`;
+const labelFormatter = (time) => `start time: ${time}`;
 
 export default class Timeline extends Component {
   static propTypes = {

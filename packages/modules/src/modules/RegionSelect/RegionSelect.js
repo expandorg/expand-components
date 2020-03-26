@@ -22,7 +22,7 @@ export default function RegionSelect({
   value,
 }) {
   const change = useCallback(
-    v => {
+    (v) => {
       if (!readOnly) {
         onChange(name, v);
       }

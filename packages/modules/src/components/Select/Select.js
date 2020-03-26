@@ -30,7 +30,7 @@ export default class Select extends Component {
     columns: 2,
   };
 
-  handleSelect = value => {
+  handleSelect = (value) => {
     const { onSelect } = this.props;
     onSelect(value);
   };

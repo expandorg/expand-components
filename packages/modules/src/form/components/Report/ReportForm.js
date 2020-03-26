@@ -40,7 +40,7 @@ export default class ReportForm extends Component {
     this.setState({ value: target.value });
   };
 
-  handleSelectReason = reason => {
+  handleSelectReason = (reason) => {
     this.setState({ reason });
   };
 
@@ -51,7 +51,7 @@ export default class ReportForm extends Component {
     }
   };
 
-  handleSubmit = evt => {
+  handleSubmit = (evt) => {
     evt.preventDefault();
     evt.stopPropagation();
 

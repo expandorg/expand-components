@@ -53,10 +53,7 @@ const parsePart = (part: ?string): number => {
 
 export const parseTime = (str: string): ?number => {
   try {
-    const parts = str
-      .trim()
-      .split(':')
-      .reverse();
+    const parts = str.trim().split(':').reverse();
 
     if (!parts.length) {
       return null;

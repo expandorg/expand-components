@@ -19,9 +19,9 @@ export default function NotificationAnimated({
 }) {
   return (
     <Transition items={notification} from={from} enter={enter} leave={leave}>
-      {n =>
+      {(n) =>
         n &&
-        (style => (
+        ((style) => (
           <animated.div
             style={style}
             className={cn(styles.container, className)}

@@ -51,7 +51,7 @@ export default class MediaPlayer extends Component {
     }
   }
 
-  seekTo = seek => {
+  seekTo = (seek) => {
     if (this.playerRef.current) {
       const value = seek < 1 ? 0 : seek;
       this.playerRef.current.seekTo(value);
@@ -67,7 +67,7 @@ export default class MediaPlayer extends Component {
     }
   };
 
-  handleDuration = duration => {
+  handleDuration = (duration) => {
     const { onMediaReady } = this.props;
     onMediaReady(duration);
   };

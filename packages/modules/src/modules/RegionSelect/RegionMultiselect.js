@@ -13,7 +13,7 @@ import {
 
 import styles from './styles.module.styl';
 
-const getValue = initial => {
+const getValue = (initial) => {
   if (!initial || !Array.isArray(initial)) {
     return [];
   }
@@ -29,7 +29,7 @@ export default function RegionMultiselect({
   onChange,
 }) {
   const change = useCallback(
-    v => {
+    (v) => {
       if (!readOnly) {
         onChange(name, v);
       }

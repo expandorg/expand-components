@@ -1,7 +1,7 @@
 // @flow
 
 const range = (count: number, from: number = 0): Array<number> =>
-  [...Array(count).keys()].map(i => i + from);
+  [...Array(count).keys()].map((i) => i + from);
 
 export default function getPages(
   selected: number,

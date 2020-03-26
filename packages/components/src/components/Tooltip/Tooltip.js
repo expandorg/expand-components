@@ -4,7 +4,7 @@ import cn from 'classnames';
 
 import './Tooltip.styl';
 
-export default Wrapped => {
+export default (Wrapped) => {
   class Tooltip extends Component {
     static propTypes = {
       tooltipPosition: PropTypes.oneOf([

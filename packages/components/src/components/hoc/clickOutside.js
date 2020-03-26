@@ -25,7 +25,7 @@ export default function clickOutside(Wrapped) {
       );
     }
 
-    handleDocumentClick = evt => {
+    handleDocumentClick = (evt) => {
       if (
         !targetIsDescendant(evt, this.elementRef.current) &&
         typeof this.wrap.current.handleClickOutside === 'function'

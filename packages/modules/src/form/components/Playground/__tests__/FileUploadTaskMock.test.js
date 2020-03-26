@@ -4,7 +4,7 @@ describe('FileUploadTaskMock', () => {
   it('should run', async () => {
     const service = new FileUploadServiceMock();
     let result = 0;
-    const handleProgres = progress => {
+    const handleProgres = (progress) => {
       result = progress;
       console.log(progress);
     };

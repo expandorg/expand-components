@@ -97,7 +97,7 @@ export default class Form extends Component {
     );
   };
 
-  handleValidate = modules => {
+  handleValidate = (modules) => {
     const { values, controls } = this.state;
     const { validation } = this.props;
 
@@ -110,7 +110,7 @@ export default class Form extends Component {
     return errors;
   };
 
-  handleSubmit = evt => {
+  handleSubmit = (evt) => {
     evt.preventDefault();
 
     const { onSubmit, validation } = this.props;
@@ -157,7 +157,7 @@ export default class Form extends Component {
       >
         <VarsPreviewContextProvider>
           <form className={cn(styles.container, className)}>
-            {form.modules.map(module =>
+            {form.modules.map((module) =>
               children({ module, key: module.name, ...props })
             )}
             <ErrorMessage className={styles.error} errors={errors} />

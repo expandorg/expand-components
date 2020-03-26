@@ -32,7 +32,7 @@ export default class DateTimeInput extends Component {
     theme: 'default',
     disabledDays: undefined,
     readOnly: false,
-    formatter: value => format(value, 'MM/DD/YYYY HH:mm'),
+    formatter: (value) => format(value, 'MM/DD/YYYY HH:mm'),
     value: undefined,
   };
 
@@ -40,7 +40,7 @@ export default class DateTimeInput extends Component {
     picker: false,
   };
 
-  handleToggle = evt => {
+  handleToggle = (evt) => {
     if (evt) {
       evt.preventDefault();
     }
@@ -54,7 +54,7 @@ export default class DateTimeInput extends Component {
     this.setState({ picker: false });
   };
 
-  handleChange = value => {
+  handleChange = (value) => {
     const { onChange, name } = this.props;
     onChange({ target: { name, value } });
     this.handleHide();

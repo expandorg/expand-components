@@ -69,7 +69,7 @@ describe('form variables', () => {
         foo2: 'bar',
       };
 
-      const result = getVariablesMap(vars, k => `$(${k})`);
+      const result = getVariablesMap(vars, (k) => `$(${k})`);
       expect(result).toBeInstanceOf(Map);
 
       expect(result.size).toEqual(2);

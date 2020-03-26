@@ -26,7 +26,7 @@ export default class Draggable extends Component {
     document.removeEventListener('mouseup', this.handleMouseUp);
   }
 
-  handleMouseDown = event => {
+  handleMouseDown = (event) => {
     document.addEventListener('mousemove', this.handleMouseMove);
     document.addEventListener('mouseup', this.handleMouseUp);
 
@@ -39,7 +39,7 @@ export default class Draggable extends Component {
     stopEvt(event);
   };
 
-  handleMouseMove = event => {
+  handleMouseMove = (event) => {
     const { onDrag } = this.props;
     const { pressed } = this.state;
     if (pressed) {

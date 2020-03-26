@@ -31,7 +31,7 @@ export default class ImageTiles extends Component {
     rows: 4,
   };
 
-  handleSelect = element => {
+  handleSelect = (element) => {
     const { selection, onChange } = this.props;
 
     const index = selection.indexOf(element);
@@ -47,9 +47,9 @@ export default class ImageTiles extends Component {
       <div className={cn('gem-imagetiles', className)}>
         <img src={src} className="gem-imagetiles-image" alt="Select tiles" />
         <div className="gem-imagetiles-tiles">
-          {range(rows).map(row => (
+          {range(rows).map((row) => (
             <Fragment key={row}>
-              {range(columns).map(column => (
+              {range(columns).map((column) => (
                 <ImageTile
                   key={column}
                   column={column}

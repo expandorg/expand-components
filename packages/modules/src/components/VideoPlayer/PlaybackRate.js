@@ -22,7 +22,7 @@ export default class PlaybackRate extends PureComponent {
     evt.preventDefault();
   };
 
-  handleToggle = evt => {
+  handleToggle = (evt) => {
     evt.preventDefault();
     this.setState(({ menu }) => ({ menu: !menu }));
   };
@@ -37,11 +37,11 @@ export default class PlaybackRate extends PureComponent {
         </button>
         {menu && (
           <div className={styles.menu}>
-            {rates.map(r => (
+            {rates.map((r) => (
               <button
                 key={r}
                 className={styles.rate}
-                onClick={evt => this.handleChange(r, evt)}
+                onClick={(evt) => this.handleChange(r, evt)}
               >
                 <span className={styles.x}>x</span>
                 {r}

@@ -31,7 +31,7 @@ export default function UploadFile({ value, fileType, size, name, onChange }) {
   const { services, onNotify } = useExecutionContext();
 
   const change = useCallback(
-    val => {
+    (val) => {
       onChange(name, val);
     },
     [name, onChange]

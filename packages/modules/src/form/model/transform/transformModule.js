@@ -8,7 +8,7 @@ export type TransformDecorator = (
   transform: TransformFn
 ) => TransformFn;
 
-export const identityTransform: TransformFn = m => m;
+export const identityTransform: TransformFn = (m) => m;
 
 export const nullTransform: TransformFn = () => null;
 
@@ -35,7 +35,7 @@ export function transformModule(
   return {
     ...result,
     modules: nested
-      .map(child => transformModule(child, transformMap, decorate))
+      .map((child) => transformModule(child, transformMap, decorate))
       .filter(Boolean),
   };
 }

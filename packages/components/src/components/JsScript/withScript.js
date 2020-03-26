@@ -3,12 +3,9 @@ import PropTypes from 'prop-types';
 
 import JsScript from './JsScript';
 
-const withScript = (
-  src,
-  async = true,
-  defer = false,
-  disable = false
-) => Wrapped => {
+const withScript = (src, async = true, defer = false, disable = false) => (
+  Wrapped
+) => {
   class WithScriptWrapper extends Component {
     static propTypes = {
       forwardedRef: PropTypes.func,

@@ -52,7 +52,7 @@ export default class SignleTagVideo extends Component {
     };
   }
 
-  handleVideoReady = duration => {
+  handleVideoReady = (duration) => {
     this.setState({ duration });
   };
 
@@ -63,7 +63,7 @@ export default class SignleTagVideo extends Component {
     }
   };
 
-  handleCursorClick = start => {
+  handleCursorClick = (start) => {
     const { onChange, readOnly } = this.props;
     const { duration } = this.state;
     if (duration && !readOnly) {
@@ -72,11 +72,11 @@ export default class SignleTagVideo extends Component {
     }
   };
 
-  handleRangeDragging = dragging => {
+  handleRangeDragging = (dragging) => {
     this.setState({ playing: !dragging });
   };
 
-  handleTogglePlay = playing => {
+  handleTogglePlay = (playing) => {
     this.setState({ playing });
   };
 

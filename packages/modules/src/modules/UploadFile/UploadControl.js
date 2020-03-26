@@ -50,11 +50,11 @@ export default class UploadControl extends Component {
     }
   };
 
-  handleProgress = progress => {
+  handleProgress = (progress) => {
     this.setState({ progress });
   };
 
-  handleSelect = async file => {
+  handleSelect = async (file) => {
     const { onChange, fileUploadService } = this.props;
     const { uploadState } = this.state;
 

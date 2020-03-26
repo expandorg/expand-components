@@ -22,7 +22,7 @@ export default function Slider({
   onChange,
 }) {
   const change = useCallback(
-    val => {
+    (val) => {
       onChange(name, val);
     },
     [name, onChange]

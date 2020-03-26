@@ -16,7 +16,7 @@ export default function Choice({
   onSelect,
 }) {
   const select = useCallback(
-    evt => {
+    (evt) => {
       evt.preventDefault();
       if (!readOnly) {
         onSelect(option.value);

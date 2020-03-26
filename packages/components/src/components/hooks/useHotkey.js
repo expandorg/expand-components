@@ -2,7 +2,7 @@ import { useEffect, useCallback } from 'react';
 
 export default function useHotkey(keyCode, handler) {
   const keyDown = useCallback(
-    evt => {
+    (evt) => {
       if (evt.keyCode === keyCode) {
         handler(evt);
       }

@@ -22,13 +22,13 @@ export default class EditTag extends Component {
     index: null,
   };
 
-  handleSelect = evt => {
+  handleSelect = (evt) => {
     evt.preventDefault();
     const { tag, onSelect } = this.props;
     onSelect(tag);
   };
 
-  handleDelete = evt => {
+  handleDelete = (evt) => {
     evt.preventDefault();
     evt.stopPropagation();
     const { tag, onDelete } = this.props;

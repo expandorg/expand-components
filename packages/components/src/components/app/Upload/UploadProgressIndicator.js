@@ -24,7 +24,7 @@ export default class UploadProgressIndicator extends Component {
     className: null,
   };
 
-  handleAbort = evt => {
+  handleAbort = (evt) => {
     evt.preventDefault();
 
     const { isUploading, onAbort } = this.props;

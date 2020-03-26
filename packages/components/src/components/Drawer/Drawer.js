@@ -32,9 +32,9 @@ export default class Drawer extends Component {
 
     return (
       <Transition items={visible} from={from} enter={enter} leave={leave}>
-        {v =>
+        {(v) =>
           v &&
-          (styles => (
+          ((styles) => (
             <animated.div style={styles} className={className}>
               {children}
             </animated.div>

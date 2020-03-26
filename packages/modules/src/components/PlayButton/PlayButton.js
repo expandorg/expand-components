@@ -13,7 +13,7 @@ class PlayButton extends PureComponent {
     onToggle: PropTypes.func.isRequired,
   };
 
-  handleClick = evt => {
+  handleClick = (evt) => {
     const { playing, onToggle } = this.props;
     onToggle(!playing);
     evt.preventDefault();

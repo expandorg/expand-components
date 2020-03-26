@@ -61,7 +61,7 @@ export default {
       // },
     },
   },
-  modifyBundlerConfig: config => {
+  modifyBundlerConfig: (config) => {
     const jsRules = config.module.rules[0];
     jsRules.exclude = /node_modules\/(?!(@expandorg)\/).*/;
     config.module.rules.push(

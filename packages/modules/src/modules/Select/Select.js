@@ -25,7 +25,7 @@ export default function Select({
   onChange,
 }) {
   const change = useCallback(
-    v => {
+    (v) => {
       if (!readOnly) {
         onChange(name, v);
       }
@@ -91,7 +91,7 @@ Select.module = {
   validation: {
     isRequired: rules.isRequired,
   },
-  verificationScore: value => {
+  verificationScore: (value) => {
     const numeric = +value;
     if (Number.isNaN(numeric)) {
       return 0;

@@ -7,7 +7,7 @@ import {
 } from '../../../modules/UploadFile';
 
 const delay = (timeout: number) =>
-  new Promise(resolve => setTimeout(resolve, timeout));
+  new Promise((resolve) => setTimeout(resolve, timeout));
 
 class FileUploadTaskMock extends FileUploadTask {
   TIME = 5000;

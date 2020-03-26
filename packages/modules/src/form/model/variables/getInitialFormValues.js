@@ -8,7 +8,7 @@ export default function getInitialFormValues(
 ): ?Object {
   const values = {};
 
-  dfsVisitor(form.modules, module => {
+  dfsVisitor(form.modules, (module) => {
     const hasInitial =
       module.initial !== null &&
       module.initial !== undefined &&

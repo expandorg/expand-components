@@ -73,27 +73,27 @@ export default class VideoPlayer extends Component {
     return null;
   }
 
-  seekTo = seek => {
+  seekTo = (seek) => {
     if (this.player.current) {
       this.player.current.seekTo(seek);
     }
   };
 
-  handleVideoReady = duration => {
+  handleVideoReady = (duration) => {
     const { onReady } = this.props;
     this.setState({ duration });
     onReady(duration);
   };
 
-  handleVideoProgress = seek => {
+  handleVideoProgress = (seek) => {
     this.setState({ seek });
   };
 
-  handleChangeRate = rate => {
+  handleChangeRate = (rate) => {
     this.setState({ rate });
   };
 
-  handleChangeVolume = volume => {
+  handleChangeVolume = (volume) => {
     this.setState({ volume });
   };
 

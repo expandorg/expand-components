@@ -38,7 +38,7 @@ const transforms = {
 
 function getModulesCache(modules: Array<Module>): Map<string, Module> {
   const result = new Map();
-  dfsVisitor(modules, m => {
+  dfsVisitor(modules, (m) => {
     if (typeof m.__tfId === 'string') {
       result.set(m.__tfId, m);
     }
@@ -106,7 +106,7 @@ export default function verificationForm(
   const decorate = createDecorator(cache);
 
   const modules = form.modules
-    .map(m => transformModule(m, transforms, decorate))
+    .map((m) => transformModule(m, transforms, decorate))
     .filter(Boolean);
 
   return {

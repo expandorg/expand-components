@@ -14,7 +14,7 @@ export default function overrideFormVars(
   }
   return {
     ...form,
-    modules: form.modules.map(module =>
+    modules: form.modules.map((module) =>
       applyVariables(module, variables, filterProp)
     ),
   };

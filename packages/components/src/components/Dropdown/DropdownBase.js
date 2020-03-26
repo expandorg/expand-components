@@ -4,7 +4,7 @@ import cn from 'classnames';
 
 import './DropdownBase.styl';
 
-const formatItem = option => {
+const formatItem = (option) => {
   if (typeof option === 'string' || typeof option === 'number') {
     return { value: option, label: option };
   }
@@ -36,7 +36,7 @@ export default function DropdownBase({
   });
 
   const items = options.map(formatItem);
-  const selected = items.find(x => `${x.value}` === `${value}`);
+  const selected = items.find((x) => `${x.value}` === `${value}`);
 
   return (
     <div className={classes}>
@@ -55,7 +55,7 @@ export default function DropdownBase({
             {nullValue}
           </option>
         )}
-        {items.map(option => (
+        {items.map((option) => (
           <option key={option.value} value={option.value}>
             {formatter(option.label)}
           </option>
@@ -80,5 +80,5 @@ DropdownBase.defaultProps = {
   nullValue: null,
   value: '',
   disabled: false,
-  formatter: value => value,
+  formatter: (value) => value,
 };

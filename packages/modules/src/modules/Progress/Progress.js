@@ -27,7 +27,7 @@ export default function Progress({ number, total }) {
   return (
     <div className={styles.container}>
       <div className={styles.range}>
-        {range(total).map(index => (
+        {range(total).map((index) => (
           <div
             className={cn(styles.block, {
               [styles.next]: index > number,

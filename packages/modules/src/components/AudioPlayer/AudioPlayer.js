@@ -42,23 +42,23 @@ export default class AudioPlayer extends Component {
     };
   }
 
-  handleAudioReady = duration => {
+  handleAudioReady = (duration) => {
     const { onReady } = this.props;
     this.setState({ duration });
     onReady(duration);
   };
 
-  handleAudioProgress = seek => {
+  handleAudioProgress = (seek) => {
     this.setState({ seek });
   };
 
-  handleCursorClick = seek => {
+  handleCursorClick = (seek) => {
     if (this.player.current) {
       this.player.current.seekTo(seek);
     }
   };
 
-  handleChangeVolume = volume => {
+  handleChangeVolume = (volume) => {
     this.setState({ volume });
   };
 

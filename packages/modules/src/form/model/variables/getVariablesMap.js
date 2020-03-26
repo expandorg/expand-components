@@ -9,7 +9,7 @@ const getVariablesMap = (
   }
   return new Map(
     // $FlowFixMe
-    Reflect.ownKeys(vars).map(key => [keyTransform(key), vars[key]])
+    Reflect.ownKeys(vars).map((key) => [keyTransform(key), vars[key]])
   );
 };
 

@@ -23,7 +23,7 @@ export const dfsVisitor = (
 
 export const findModuleVisitor = (
   modules: Array<Module>,
-  condition: Module => boolean
+  condition: (Module) => boolean
 ): ?Module => {
   // eslint-disable-next-line
   for (const mod of modules) {

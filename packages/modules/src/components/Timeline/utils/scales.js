@@ -52,13 +52,13 @@ export const getTicks = (
   size: number
 ): Array<{ tick: number, time: string }> => {
   const intervalSeconds = calculateInterval(start, end, width, size);
-  const s = scales.find(set => set[1] > intervalSeconds);
+  const s = scales.find((set) => set[1] > intervalSeconds);
   if (!s) {
     return [];
   }
   const [formatter, increment] = s;
   const times = getShiftedTicks(start, end, increment);
-  return times.map(tick => ({
+  return times.map((tick) => ({
     tick,
     time: formatter(tick),
   }));

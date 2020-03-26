@@ -9,10 +9,10 @@ import { range } from '../../common/immutable';
 
 import styles from './Watch.module.styl';
 
-const getTransform = d =>
+const getTransform = (d) =>
   `rotate(${d * 30}deg) translate(0, -73px) rotate(-${d * 30}deg)`;
 
-const getAmHours = date => {
+const getAmHours = (date) => {
   if (!date) {
     return null;
   }
@@ -29,7 +29,7 @@ export default class Watch extends Component {
     date: null,
   };
 
-  handleClick = evt => {
+  handleClick = (evt) => {
     evt.preventDefault();
     const { date, onChange } = this.props;
     if (date) {
@@ -50,7 +50,7 @@ export default class Watch extends Component {
             style={{ transform: `rotate(${(time - 3) * 30}deg)` }}
           />
         )}
-        {range(12).map(h => (
+        {range(12).map((h) => (
           <button
             key={h}
             onClick={this.handleClick}

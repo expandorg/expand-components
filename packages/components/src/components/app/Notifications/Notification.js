@@ -9,7 +9,7 @@ import styles from './Notification.module.styl';
 
 export default function Notification({ notification, onClear }) {
   const clear = useCallback(
-    evt => {
+    (evt) => {
       evt.preventDefault();
       onClear();
     },

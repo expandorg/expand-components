@@ -9,7 +9,7 @@ import Watch from './Watch';
 
 import styles from './TimePicker.module.styl';
 
-const getAMPM = date => {
+const getAMPM = (date) => {
   if (!date) {
     return null;
   }
@@ -26,12 +26,12 @@ export default class TimePicker extends Component {
     value: undefined,
   };
 
-  handleChangeTime = value => {
+  handleChangeTime = (value) => {
     const { onChange } = this.props;
     onChange(value);
   };
 
-  handleToggle = evt => {
+  handleToggle = (evt) => {
     const { value, onChange } = this.props;
     if (value) {
       const ampm = evt.target.dataset.val;

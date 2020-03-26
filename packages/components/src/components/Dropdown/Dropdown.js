@@ -23,7 +23,7 @@ export default function Dropdown({
   theme,
   formatter,
 }) {
-  const change = useCallback(v => onChange(v), [onChange]);
+  const change = useCallback((v) => onChange(v), [onChange]);
 
   return (
     <DropdownBase
@@ -89,5 +89,5 @@ Dropdown.defaultProps = {
   theme: 'default',
   options: [],
   label: null,
-  formatter: value => value,
+  formatter: (value) => value,
 };

@@ -57,7 +57,7 @@ export default class Selection extends Component {
     return null;
   }
 
-  handleDelete = evt => {
+  handleDelete = (evt) => {
     evt.preventDefault();
     const { onDelete } = this.props;
     onDelete();

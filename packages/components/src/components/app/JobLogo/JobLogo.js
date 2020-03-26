@@ -4,7 +4,7 @@ import cn from 'classnames';
 
 import './JobLogo.styl';
 
-const getInitials = name => {
+const getInitials = (name) => {
   if (!name) {
     return name;
   }

@@ -2,10 +2,10 @@ import React, { forwardRef } from 'react';
 
 import ServicesContext from './ServicesContext';
 
-const withServices = Component =>
+const withServices = (Component) =>
   forwardRef((props, ref) => (
     <ServicesContext.Consumer>
-      {services => <Component {...props} services={services} ref={ref} />}
+      {(services) => <Component {...props} services={services} ref={ref} />}
     </ServicesContext.Consumer>
   ));
 

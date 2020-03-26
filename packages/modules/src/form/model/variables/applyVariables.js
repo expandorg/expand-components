@@ -10,7 +10,7 @@ const overrideProperty = (
   defaultValue?: ?string = null
 ): any => {
   if (Array.isArray(value)) {
-    return value.map(item => overrideProperty(item, raw, substitutions));
+    return value.map((item) => overrideProperty(item, raw, substitutions));
   }
   switch (typeof value) {
     case 'object':
@@ -50,7 +50,7 @@ const applyVariables = (
   filter: FilterProperty = variablesPropertyFilter
 ): Module => {
   const raw = getVariablesMap(variables);
-  const subst = getVariablesMap(variables, k => `$(${k})`);
+  const subst = getVariablesMap(variables, (k) => `$(${k})`);
 
   return Reflect.ownKeys(module).reduce((mod, fieldName) => {
     mod[fieldName] = filter(mod, fieldName)

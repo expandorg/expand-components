@@ -33,7 +33,7 @@ export default function YesNo({
   );
 
   const change = useCallback(
-    v => {
+    (v) => {
       if (!readOnly) {
         onChange(name, v);
       }
@@ -95,7 +95,7 @@ YesNo.module = {
   validation: {
     isRequired: rules.isRequired,
   },
-  verificationScore: value => {
+  verificationScore: (value) => {
     const numeric = +value;
     if (Number.isNaN(numeric)) {
       return 0;

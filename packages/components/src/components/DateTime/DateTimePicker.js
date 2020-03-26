@@ -52,7 +52,7 @@ export default class DateTimePicker extends Component {
     }
   };
 
-  handleDone = evt => {
+  handleDone = (evt) => {
     const { onChange } = this.props;
     const { value } = this.state;
     if (value) {
@@ -61,7 +61,7 @@ export default class DateTimePicker extends Component {
     evt.preventDefault();
   };
 
-  handleCancel = evt => {
+  handleCancel = (evt) => {
     const { onHide } = this.props;
     onHide();
 

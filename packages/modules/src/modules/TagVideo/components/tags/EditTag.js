@@ -14,6 +14,7 @@ export default class EditTag extends PureComponent {
   static propTypes = {
     duration: PropTypes.number.isRequired,
     tag: PropTypes.shape({
+      id: PropTypes.any,
       start: PropTypes.number,
       end: PropTypes.number,
       tag: PropTypes.string,
@@ -40,7 +41,7 @@ export default class EditTag extends PureComponent {
 
   label = createRef();
 
-  handleSave = evt => {
+  handleSave = (evt) => {
     evt.preventDefault();
     const { onSave, tag, readOnly } = this.props;
     if (!readOnly) {
@@ -52,7 +53,7 @@ export default class EditTag extends PureComponent {
     }
   };
 
-  handleClear = evt => {
+  handleClear = (evt) => {
     evt.preventDefault();
     const { onSave, readOnly } = this.props;
     if (!readOnly) {
@@ -60,7 +61,7 @@ export default class EditTag extends PureComponent {
     }
   };
 
-  handleChangeStart = value => {
+  handleChangeStart = (value) => {
     const {
       tag,
       duration,
@@ -83,7 +84,7 @@ export default class EditTag extends PureComponent {
     onChange({ ...tag, start, end });
   };
 
-  handleChangeEnd = value => {
+  handleChangeEnd = (value) => {
     const {
       tag,
       onChange,
@@ -107,7 +108,7 @@ export default class EditTag extends PureComponent {
     onChange({ ...tag, start, end });
   };
 
-  handleChangeLabel = value => {
+  handleChangeLabel = (value) => {
     const { tag, onChange, readOnly } = this.props;
     if (!readOnly) {
       onChange({ ...tag, tag: value });

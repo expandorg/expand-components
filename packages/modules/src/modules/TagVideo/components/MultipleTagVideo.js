@@ -21,7 +21,7 @@ import styles from './styles.module.styl';
 
 const DEFAULT_SPAN_SEC = 2;
 
-const tagId = tag => `${tag.start}-${tag.end}`;
+const tagId = (tag) => `${tag.start}-${tag.end}`;
 
 export default class MultipleTagVideo extends Component {
   static propTypes = {
@@ -65,11 +65,11 @@ export default class MultipleTagVideo extends Component {
     };
   }
 
-  handleVideoReady = duration => {
+  handleVideoReady = (duration) => {
     this.setState({ duration });
   };
 
-  handleChangeTag = selected => {
+  handleChangeTag = (selected) => {
     this.setState({ selected });
   };
 
@@ -81,7 +81,7 @@ export default class MultipleTagVideo extends Component {
     }
   };
 
-  handleCursorClick = start => {
+  handleCursorClick = (start) => {
     const { readOnly } = this.props;
     if (!readOnly) {
       const { duration } = this.state;
@@ -92,22 +92,22 @@ export default class MultipleTagVideo extends Component {
     }
   };
 
-  handleRangeDragging = dragging => {
+  handleRangeDragging = (dragging) => {
     this.setState({ playing: !dragging });
   };
 
-  handleTogglePlay = playing => {
+  handleTogglePlay = (playing) => {
     this.setState({ playing });
   };
 
-  handleSaveTag = tag => {
+  handleSaveTag = (tag) => {
     const { tags, onChange } = this.props;
     this.setState({ selected: null });
     if (tag) {
       if (!tag.id) {
         onChange([...tags, { id: tagId(tag), ...tag }]);
       } else {
-        const index = tags.findIndex(t => t.id === tag.id);
+        const index = tags.findIndex((t) => t.id === tag.id);
         if (index !== -1) {
           onChange(replaceAtIndex(tags, index, tag));
         }
@@ -115,11 +115,11 @@ export default class MultipleTagVideo extends Component {
     }
   };
 
-  handleSelectTag = selected => {
+  handleSelectTag = (selected) => {
     this.setState({ selected });
   };
 
-  handleDeleteTag = tag => {
+  handleDeleteTag = (tag) => {
     const { tags, onChange } = this.props;
     const index = tags.indexOf(tag);
     if (index !== -1) {

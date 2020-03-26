@@ -24,9 +24,9 @@ describe('form validation', () => {
     ],
   };
 
-  const isDefined = input => typeof input !== 'undefined';
-  const notZero = input => input !== 0;
-  const rule42 = input => input === 42;
+  const isDefined = (input) => typeof input !== 'undefined';
+  const notZero = (input) => input !== 0;
+  const rule42 = (input) => input === 42;
 
   const controls = {
     module1: {

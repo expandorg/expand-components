@@ -22,7 +22,7 @@ export default class Volume extends Component {
     opened: false,
   };
 
-  handleToggle = evt => {
+  handleToggle = (evt) => {
     evt.preventDefault();
     this.setState(({ opened }) => ({ opened: !opened }));
   };

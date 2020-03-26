@@ -42,7 +42,7 @@ class WalkthroughPin extends Component {
     }
   }
 
-  handleClick = evt => {
+  handleClick = (evt) => {
     evt.preventDefault();
     evt.nativeEvent.stopImmediatePropagation();
 

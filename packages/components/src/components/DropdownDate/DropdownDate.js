@@ -29,13 +29,13 @@ const fixDate = (value, year, month) => {
 };
 
 export default function DropdownDate({ className, value, theme, onChange }) {
-  const changeDate = useCallback(date => onChange(setDate(value, date)), [
+  const changeDate = useCallback((date) => onChange(setDate(value, date)), [
     onChange,
     value,
   ]);
 
   const changeMonth = useCallback(
-    month => {
+    (month) => {
       const fixed = fixDate(value, getYear(value), month);
       onChange(setMonth(fixed, month));
     },
@@ -43,7 +43,7 @@ export default function DropdownDate({ className, value, theme, onChange }) {
   );
 
   const changeYear = useCallback(
-    year => {
+    (year) => {
       const fixed = fixDate(value, year, getMonth(value));
       onChange(setYear(fixed, year));
     },
@@ -59,7 +59,7 @@ export default function DropdownDate({ className, value, theme, onChange }) {
         options={monthes}
         className="gem-dropdowndate-dropdown"
         onChange={changeMonth}
-        formatter={month => format(setMonth(value, month), 'MMM')}
+        formatter={(month) => format(setMonth(value, month), 'MMM')}
       />
       <Dropdown
         label="Day"
@@ -68,7 +68,7 @@ export default function DropdownDate({ className, value, theme, onChange }) {
         options={range(getDaysInMonth(value))}
         className="gem-dropdowndate-dropdown"
         onChange={changeDate}
-        formatter={day => day + 1}
+        formatter={(day) => day + 1}
       />
       <Dropdown
         label="Year"

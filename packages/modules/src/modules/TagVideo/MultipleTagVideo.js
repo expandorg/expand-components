@@ -26,7 +26,7 @@ export default function MultipleTagVideo({
 }) {
   const { onModuleError } = useExecutionContext();
   const change = useCallback(
-    tags => {
+    (tags) => {
       if (!readOnly) {
         onChange(name, tags);
       }

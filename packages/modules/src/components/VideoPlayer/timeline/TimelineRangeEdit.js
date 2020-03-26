@@ -31,7 +31,7 @@ export default class TimelineRangeEdit extends Component {
     duration: 0,
   };
 
-  handleChangeStart = dx => {
+  handleChangeStart = (dx) => {
     const {
       duration,
       start: startTime,
@@ -58,7 +58,7 @@ export default class TimelineRangeEdit extends Component {
     onChange(start, end);
   };
 
-  handleMove = dx => {
+  handleMove = (dx) => {
     const {
       duration,
       readOnly,
@@ -84,7 +84,7 @@ export default class TimelineRangeEdit extends Component {
     onChange(start, end);
   };
 
-  handleChangeEnd = dx => {
+  handleChangeEnd = (dx) => {
     const {
       duration,
       start: startTime,

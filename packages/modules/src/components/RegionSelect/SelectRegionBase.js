@@ -58,7 +58,7 @@ export default class SelectRegionBase extends Component {
     document.removeEventListener('mouseup', this.handleMouseUp);
   }
 
-  handleMouseDown = evt => {
+  handleMouseDown = (evt) => {
     const { onSelectionBegin, readOnly } = this.props;
     if (readOnly) {
       return;
@@ -83,7 +83,7 @@ export default class SelectRegionBase extends Component {
     stopEvt(evt);
   };
 
-  handleMouseMove = evt => {
+  handleMouseMove = (evt) => {
     const { onSelection, width, height, readOnly } = this.props;
     if (readOnly) {
       return;

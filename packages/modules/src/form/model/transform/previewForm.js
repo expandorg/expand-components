@@ -26,7 +26,7 @@ const transforms = {
 
 export default function previewForm(form: Form): Form {
   const modules = form.modules
-    .map(module => transformModule(module, transforms))
+    .map((module) => transformModule(module, transforms))
     .filter(Boolean);
 
   return {

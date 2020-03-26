@@ -23,7 +23,7 @@ export default function Dropdown({
   onChange,
 }) {
   const change = useCallback(
-    v => {
+    (v) => {
       if (!readOnly) {
         onChange(name, v);
       }

@@ -20,7 +20,7 @@ export default function Checkbox({
   onChange,
 }) {
   const change = useCallback(
-    v => {
+    (v) => {
       if (!readOnly) {
         onChange(name, v);
       }
@@ -64,7 +64,7 @@ Checkbox.module = {
   validation: {
     isTrue: rules.isTrue,
   },
-  verificationScore: value => (value ? 1 : 0),
+  verificationScore: (value) => (value ? 1 : 0),
   editor: {
     category: ModuleCategories.Input,
     properties: {

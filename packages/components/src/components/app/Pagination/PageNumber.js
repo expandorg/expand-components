@@ -18,7 +18,7 @@ export default function PageNumber({
         [styles.disabled]: disabled,
       })}
       disabled={disabled}
-      onClick={evt => onClick(page, disabled, evt)}
+      onClick={(evt) => onClick(page, disabled, evt)}
     >
       {children}
     </button>

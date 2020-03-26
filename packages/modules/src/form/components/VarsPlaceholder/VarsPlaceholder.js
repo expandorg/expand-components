@@ -6,9 +6,9 @@ import { useVarsPreviewContext } from './VarsPreviewContext';
 
 import './VarsPlaceholder.styl';
 
-const getVariableName = def => def.slice(2, def.length - 1);
+const getVariableName = (def) => def.slice(2, def.length - 1);
 
-const isVariable = str =>
+const isVariable = (str) =>
   typeof str === 'string' && str.startsWith('$(') && str.endsWith(')');
 
 function VarsPlaceholder({ vval, pos, vcn }) {

@@ -8,7 +8,7 @@ import './styles.styl';
 
 export default function ContextMenu({ onHide, className, children }) {
   const ref = useRef();
-  useClickOutside(ref, evt => onHide(evt));
+  useClickOutside(ref, (evt) => onHide(evt));
 
   return (
     <div ref={ref} className={cn('gem-contextmenu', className)}>

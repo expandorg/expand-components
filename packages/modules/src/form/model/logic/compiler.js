@@ -61,11 +61,11 @@ export const parseToken = (token: boolean | number | string): Token => {
 export const translate = (expression: Expression): CompiledExpression => {
   const variables = {};
   const js = expression
-    .map(term => {
+    .map((term) => {
       if (Array.isArray(term)) {
         const { js: subprogram, variables: vars } = translate(term);
 
-        Reflect.ownKeys(vars).forEach(k => {
+        Reflect.ownKeys(vars).forEach((k) => {
           variables[k] = 0;
         });
         return `(${subprogram})`;

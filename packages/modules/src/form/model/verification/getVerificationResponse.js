@@ -17,9 +17,9 @@ export default function getVerificationResponse(
     return { score: 0, reason: '' };
   }
   const verify = Reflect.ownKeys(response)
-    .map(field => findModuleVisitor(form.modules, m => m.name === field))
+    .map((field) => findModuleVisitor(form.modules, (m) => m.name === field))
     .filter(Boolean)
-    .find(m => m.type === 'verify');
+    .find((m) => m.type === 'verify');
 
   if (verify) {
     return response[verify.name];

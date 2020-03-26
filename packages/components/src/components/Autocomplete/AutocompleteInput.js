@@ -82,14 +82,14 @@ export default class AutocompleteInput extends Component {
     return null;
   }
 
-  handleDocumentClick = event => {
+  handleDocumentClick = (event) => {
     const { focus } = this.state;
     if (focus && !targetIsDescendant(event, this.containerRef.current)) {
       this.blur();
     }
   };
 
-  handleKeyDown = evt => {
+  handleKeyDown = (evt) => {
     const { allowAdd, onKeyDown } = this.props;
     if (onKeyDown) {
       onKeyDown(evt);
@@ -115,7 +115,7 @@ export default class AutocompleteInput extends Component {
     }
   };
 
-  handleChange = evt => {
+  handleChange = (evt) => {
     const { onChange } = this.props;
     onChange(evt);
   };
@@ -136,7 +136,7 @@ export default class AutocompleteInput extends Component {
     this.inputRef.current.focus();
   };
 
-  handleSelect = value => {
+  handleSelect = (value) => {
     const { onSelect } = this.props;
     onSelect(value);
     this.blur();
@@ -184,7 +184,7 @@ export default class AutocompleteInput extends Component {
         </Input>
         {focus && filtered.length !== 0 && (
           <Suggestions>
-            {filtered.map(suggest => (
+            {filtered.map((suggest) => (
               <Suggestion
                 key={suggest}
                 value={suggest}

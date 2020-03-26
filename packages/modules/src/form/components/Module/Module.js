@@ -20,7 +20,7 @@ export default function Module({ module, values, onChange, controls, errors }) {
         <Control {...module} value={value} onChange={onChange}>
           {module.modules !== null &&
             module.modules !== undefined &&
-            module.modules.map(m => (
+            module.modules.map((m) => (
               <Module
                 key={m.name}
                 errors={errors}

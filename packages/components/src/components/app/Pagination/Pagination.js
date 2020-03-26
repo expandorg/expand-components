@@ -44,7 +44,7 @@ export default function Pagination({
       <PageNumber page={current - 1} disabled={current === 0} onClick={click}>
         <Arrow className={styles.left} />
       </PageNumber>
-      {pages.map(p => (
+      {pages.map((p) => (
         <PageNumber key={p} page={p} active={p === current} onClick={click}>
           {p + 1}
         </PageNumber>

@@ -49,9 +49,9 @@ export default class Collapsable extends Component {
           enter={transitions.enter}
           leave={transitions.leave}
         >
-          {ex =>
+          {(ex) =>
             ex &&
-            (styles => (
+            ((styles) => (
               <animated.div style={styles} className="gem-collapsable-content">
                 {children}
               </animated.div>

@@ -25,7 +25,7 @@ export default function TagVideo({
 }) {
   const { onModuleError } = useExecutionContext();
   const change = useCallback(
-    tag => {
+    (tag) => {
       if (!readOnly) {
         onChange(name, tag);
       }
@@ -94,7 +94,7 @@ TagVideo.module = {
   name: 'Video Tagging',
   isInput: true,
   validation: {
-    isRequired: value => {
+    isRequired: (value) => {
       if (!value) {
         return false;
       }
