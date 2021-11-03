@@ -14,6 +14,6 @@
   "license": "MPL-2.0",
   "author": "expand.org",
   "dependencies": {
-    "validator": "^11.1.0"
+    "validator": "^13.7.0"
   }
 }
